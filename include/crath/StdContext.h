@@ -25,6 +25,7 @@ namespace cr
 		inline static constexpr float inv_half_pi = 2.0f * std::numbers::inv_pi_v<float>;
 		inline static constexpr float four_inv_pi = 4.0f * inv_pi;
 		inline static constexpr float half_sqrt_two = 0.7071067811865476f;
+		inline static constexpr float sqrt_two = 1.4142135623730951f;
 
 		inline constexpr static float sqrt0(float x) {
 			auto const i0 = std::bit_cast<uint32_t>(x);
