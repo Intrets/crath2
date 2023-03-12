@@ -49,7 +49,7 @@ struct TestResult
 		float referenceDomanMin{};
 		float referenceDomanMax{};
 
-		float scale = 1.0f;
+		bool normalize = false;
 
 		template<class F>
 		void time(auto approximation, int N, float min_x, float max_x) {
@@ -98,7 +98,7 @@ struct TestResult
 		}
 
 		template<class F>
-		void accuracy_test(auto approximation, auto reference, float min_x, float max_x, float ref_min_x, float ref_max_x) {
+		void accuracy_test(auto approximation, auto reference, float min_x, float max_x, float ref_min_x, float ref_max_x, bool normalize_) {
 			if constexpr (std::same_as<F, float>) {
 				this->approximationFunction = approximation;
 			}
@@ -115,13 +115,20 @@ struct TestResult
 			this->referenceDomanMin = ref_min_x;
 			this->referenceDomanMax = ref_max_x;
 
+			this->normalize = normalize_;
+
 			this->calculateAccuracyOnDomain();
 		}
 
 		float calculateError(float approximation_x, float reference_x) {
 			auto res = this->approximationFunction(approximation_x);
 			auto ref = this->referenceFunction(reference_x);
-			return std::abs((res - ref) / this->scale);
+			if (this->normalize) {
+				return std::abs((res - ref) / ref);
+			}
+			else {
+				return std::abs((res - ref));
+			}
 		}
 
 		void calculateAccuracyOnDomain() {
@@ -135,8 +142,11 @@ struct TestResult
 				float ref = this->referenceFunction(x_ref);
 
 				float const e = std::abs(res - ref);
-				if (ref != 0.0f) {
-					this->maximumError = std::max(maximumError, e / this->scale);
+				if (this->normalize) {
+					this->maximumError = std::max(maximumError, e / std::abs(ref));
+				}
+				else {
+					this->maximumError = std::max(maximumError, e);
 				}
 
 				this->error += e / N;

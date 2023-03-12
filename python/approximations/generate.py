@@ -180,12 +180,13 @@ class function_info2(NamedTuple):
     max_x: float
     ref_min_x: float
     ref_max_x: float
+    normalize_error: bool
 
 
 function_infos2: list[function_info2] = []
 
 
-def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max_x, name, N, ref, x_type=x_normal, return_type=return_normal):
+def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max_x, name, N, ref, x_type=x_normal, return_type=return_normal, normalize_error=False):
     name_full = name
     tags = [name]
     if x_type.name():
@@ -217,7 +218,8 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
         min_x=min_x,
         max_x=max_x,
         ref_min_x=ref_min_x,
-        ref_max_x=ref_max_x
+        ref_max_x=ref_max_x,
+        normalize_error=normalize_error
     )
     function_infos2.append(info)
 
@@ -229,7 +231,8 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
         min_x=min_x,
         max_x=max_x,
         ref_min_x=ref_min_x,
-        ref_max_x=ref_max_x
+        ref_max_x=ref_max_x,
+        normalize_error = normalize_error
     )
     function_infos2.append(info)
 
@@ -241,7 +244,8 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
         min_x=min_x,
         max_x=max_x,
         ref_min_x=ref_min_x,
-        ref_max_x=ref_max_x
+        ref_max_x=ref_max_x,
+        normalize_error = normalize_error
     )
     function_infos2.append(info)
 
@@ -353,6 +357,7 @@ def add_exp(N, out):
             max_x=10,
             ref_min_x=-10,
             ref_max_x=10,
+            normalize_error=True
         )
 
 
@@ -428,14 +433,15 @@ def add_special_exp(N, out):
             out=out,
             fma_type=fma_type,
             name="exp_special",
-            ref="std::logf",
+            ref=f"[](float x) {{ return {base} * std::powf({2**(1/12)}, x * 127); }}",
             N=N,
             x_type=x_normal,
             return_type=special_exp_return,
-            min_x=0.1,
-            max_x=10,
-            ref_min_x=0.1,
-            ref_max_x=10,
+            min_x=0,
+            max_x=1,
+            ref_min_x=0,
+            ref_max_x=1,
+            normalize_error=True
         )
 
 
@@ -480,7 +486,8 @@ def main():
         out(f'entry.tags = {{ {tags} }};')
         out(f'entry.subName = "{test.function_name}";')
         if test.reference_function:
-            out(f'entry.accuracy_test<{test.value_type}>({test.function_name}, {test.reference_function}, {float(test.min_x)}f, {float(test.max_x)}f, {float(test.ref_min_x)}f, {float(test.ref_max_x)}f);')
+            normalize_error = 'true' if test.normalize_error else 'false'
+            out(f'entry.accuracy_test<{test.value_type}>({test.function_name}, {test.reference_function}, {float(test.min_x)}f, {float(test.max_x)}f, {float(test.ref_min_x)}f, {float(test.ref_max_x)}f, {normalize_error});')
         out(f'entry.time<{test.value_type}>({test.function_name}, M, {float(test.min_x)}f, {float(test.max_x)}f);')
         out('}')
 
