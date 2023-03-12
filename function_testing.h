@@ -1260,255 +1260,1137 @@ sinEntry.time<float>(sin_half_fma_T8_float_simd, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_quart_T4<float>";
+sinEntry.accuracy_test<float>(cos_unit1_quart_T4<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_T4<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_quart_T4<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_quart_T4<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_quart_T4<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float", "simd",  };
+sinEntry.subName = "cos_unit1_quart_T4_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_quart_T4_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_T4_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_half_T4<float>";
+sinEntry.accuracy_test<float>(cos_unit1_half_T4<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_half_T4<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_half_T4<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_half_T4<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_half_T4<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "float", "simd",  };
+sinEntry.subName = "cos_unit1_half_T4_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_half_T4_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_half_T4_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_quart_fma_T4<float>";
+sinEntry.accuracy_test<float>(cos_unit1_quart_fma_T4<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_fma_T4<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_quart_fma_T4<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_quart_fma_T4<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_quart_fma_T4<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit1_quart_fma_T4_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_quart_fma_T4_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_fma_T4_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_half_fma_T4<float>";
+sinEntry.accuracy_test<float>(cos_unit1_half_fma_T4<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_half_fma_T4<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_half_fma_T4<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_half_fma_T4<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_half_fma_T4<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit1_half_fma_T4_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_half_fma_T4_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_half_fma_T4_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_quart_T4<float>";
+sinEntry.accuracy_test<float>(cos_unit2_quart_T4<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_T4<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_quart_T4<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_quart_T4<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_quart_T4<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float", "simd",  };
+sinEntry.subName = "cos_unit2_quart_T4_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_quart_T4_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_T4_float_simd, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_half_T4<float>";
+sinEntry.accuracy_test<float>(cos_unit2_half_T4<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_half_T4<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_half_T4<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_half_T4<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_half_T4<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "float", "simd",  };
+sinEntry.subName = "cos_unit2_half_T4_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_half_T4_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_half_T4_float_simd, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_quart_fma_T4<float>";
+sinEntry.accuracy_test<float>(cos_unit2_quart_fma_T4<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_fma_T4<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_quart_fma_T4<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_quart_fma_T4<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_quart_fma_T4<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit2_quart_fma_T4_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_quart_fma_T4_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_fma_T4_float_simd, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_half_fma_T4<float>";
+sinEntry.accuracy_test<float>(cos_unit2_half_fma_T4<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_half_fma_T4<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_half_fma_T4<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_half_fma_T4<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_half_fma_T4<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit2_half_fma_T4_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_half_fma_T4_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_half_fma_T4_float_simd, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "float", "scalar",  };
 sinEntry.subName = "cos_quart_T4<float>";
-sinEntry.accuracy_test<float>(cos_quart_T4<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_quart_T4<float>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_quart_T4<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_T4<float>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "float2x4", "simd",  };
 sinEntry.subName = "cos_quart_T4<cr::simd::float2x4>";
-sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_T4<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<cr::simd::float2x4>(cos_quart_T4<cr::simd::float2x4>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_T4<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_quart_T4<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "float", "simd",  };
 sinEntry.subName = "cos_quart_T4_float_simd";
-sinEntry.accuracy_test<float>(cos_quart_T4_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_quart_T4_float_simd, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_quart_T4_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_T4_float_simd, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "float", "scalar",  };
 sinEntry.subName = "cos_half_T4<float>";
-sinEntry.accuracy_test<float>(cos_half_T4<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_half_T4<float>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_half_T4<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_half_T4<float>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "float2x4", "simd",  };
 sinEntry.subName = "cos_half_T4<cr::simd::float2x4>";
-sinEntry.accuracy_test<cr::simd::float2x4>(cos_half_T4<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<cr::simd::float2x4>(cos_half_T4<cr::simd::float2x4>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_half_T4<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_half_T4<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "float", "simd",  };
 sinEntry.subName = "cos_half_T4_float_simd";
-sinEntry.accuracy_test<float>(cos_half_T4_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_half_T4_float_simd, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_half_T4_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_half_T4_float_simd, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "fma", "float", "scalar",  };
 sinEntry.subName = "cos_quart_fma_T4<float>";
-sinEntry.accuracy_test<float>(cos_quart_fma_T4<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_quart_fma_T4<float>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_quart_fma_T4<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_fma_T4<float>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "fma", "float2x4", "simd",  };
 sinEntry.subName = "cos_quart_fma_T4<cr::simd::float2x4>";
-sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_fma_T4<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<cr::simd::float2x4>(cos_quart_fma_T4<cr::simd::float2x4>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_fma_T4<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_quart_fma_T4<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "fma", "float", "simd",  };
 sinEntry.subName = "cos_quart_fma_T4_float_simd";
-sinEntry.accuracy_test<float>(cos_quart_fma_T4_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_quart_fma_T4_float_simd, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_quart_fma_T4_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_fma_T4_float_simd, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "fma", "float", "scalar",  };
 sinEntry.subName = "cos_half_fma_T4<float>";
-sinEntry.accuracy_test<float>(cos_half_fma_T4<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_half_fma_T4<float>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_half_fma_T4<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_half_fma_T4<float>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "fma", "float2x4", "simd",  };
 sinEntry.subName = "cos_half_fma_T4<cr::simd::float2x4>";
-sinEntry.accuracy_test<cr::simd::float2x4>(cos_half_fma_T4<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<cr::simd::float2x4>(cos_half_fma_T4<cr::simd::float2x4>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_half_fma_T4<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_half_fma_T4<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "fma", "float", "simd",  };
 sinEntry.subName = "cos_half_fma_T4_float_simd";
-sinEntry.accuracy_test<float>(cos_half_fma_T4_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_half_fma_T4_float_simd, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_half_fma_T4_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_half_fma_T4_float_simd, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_quart_T5<float>";
+sinEntry.accuracy_test<float>(cos_unit1_quart_T5<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_T5<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_quart_T5<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_quart_T5<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_quart_T5<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float", "simd",  };
+sinEntry.subName = "cos_unit1_quart_T5_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_quart_T5_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_T5_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_quart_fma_T5<float>";
+sinEntry.accuracy_test<float>(cos_unit1_quart_fma_T5<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_fma_T5<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_quart_fma_T5<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_quart_fma_T5<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_quart_fma_T5<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit1_quart_fma_T5_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_quart_fma_T5_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_fma_T5_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_quart_T5<float>";
+sinEntry.accuracy_test<float>(cos_unit2_quart_T5<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_T5<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_quart_T5<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_quart_T5<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_quart_T5<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float", "simd",  };
+sinEntry.subName = "cos_unit2_quart_T5_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_quart_T5_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_T5_float_simd, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_quart_fma_T5<float>";
+sinEntry.accuracy_test<float>(cos_unit2_quart_fma_T5<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_fma_T5<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_quart_fma_T5<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_quart_fma_T5<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_quart_fma_T5<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit2_quart_fma_T5_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_quart_fma_T5_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_fma_T5_float_simd, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "float", "scalar",  };
+sinEntry.subName = "cos_quart_T5<float>";
+sinEntry.accuracy_test<float>(cos_quart_T5<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_T5<float>, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "float2x4", "simd",  };
+sinEntry.subName = "cos_quart_T5<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_T5<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_quart_T5<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "float", "simd",  };
+sinEntry.subName = "cos_quart_T5_float_simd";
+sinEntry.accuracy_test<float>(cos_quart_T5_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_T5_float_simd, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_quart_fma_T5<float>";
+sinEntry.accuracy_test<float>(cos_quart_fma_T5<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_fma_T5<float>, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_quart_fma_T5<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_fma_T5<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_quart_fma_T5<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "fma", "float", "simd",  };
+sinEntry.subName = "cos_quart_fma_T5_float_simd";
+sinEntry.accuracy_test<float>(cos_quart_fma_T5_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_fma_T5_float_simd, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_quart_T6<float>";
+sinEntry.accuracy_test<float>(cos_unit1_quart_T6<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_T6<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_quart_T6<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_quart_T6<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_quart_T6<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float", "simd",  };
+sinEntry.subName = "cos_unit1_quart_T6_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_quart_T6_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_T6_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_half_T6<float>";
+sinEntry.accuracy_test<float>(cos_unit1_half_T6<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_half_T6<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_half_T6<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_half_T6<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_half_T6<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "float", "simd",  };
+sinEntry.subName = "cos_unit1_half_T6_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_half_T6_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_half_T6_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_quart_fma_T6<float>";
+sinEntry.accuracy_test<float>(cos_unit1_quart_fma_T6<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_fma_T6<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_quart_fma_T6<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_quart_fma_T6<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_quart_fma_T6<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit1_quart_fma_T6_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_quart_fma_T6_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_fma_T6_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_half_fma_T6<float>";
+sinEntry.accuracy_test<float>(cos_unit1_half_fma_T6<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_half_fma_T6<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_half_fma_T6<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_half_fma_T6<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_half_fma_T6<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit1_half_fma_T6_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_half_fma_T6_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_half_fma_T6_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_quart_T6<float>";
+sinEntry.accuracy_test<float>(cos_unit2_quart_T6<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_T6<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_quart_T6<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_quart_T6<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_quart_T6<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float", "simd",  };
+sinEntry.subName = "cos_unit2_quart_T6_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_quart_T6_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_T6_float_simd, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_half_T6<float>";
+sinEntry.accuracy_test<float>(cos_unit2_half_T6<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_half_T6<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_half_T6<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_half_T6<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_half_T6<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "float", "simd",  };
+sinEntry.subName = "cos_unit2_half_T6_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_half_T6_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_half_T6_float_simd, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_quart_fma_T6<float>";
+sinEntry.accuracy_test<float>(cos_unit2_quart_fma_T6<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_fma_T6<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_quart_fma_T6<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_quart_fma_T6<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_quart_fma_T6<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit2_quart_fma_T6_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_quart_fma_T6_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_fma_T6_float_simd, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_half_fma_T6<float>";
+sinEntry.accuracy_test<float>(cos_unit2_half_fma_T6<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_half_fma_T6<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_half_fma_T6<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_half_fma_T6<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_half_fma_T6<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit2_half_fma_T6_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_half_fma_T6_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_half_fma_T6_float_simd, M, 0.0f, 2.0f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "float", "scalar",  };
 sinEntry.subName = "cos_quart_T6<float>";
-sinEntry.accuracy_test<float>(cos_quart_T6<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_quart_T6<float>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_quart_T6<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_T6<float>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "float2x4", "simd",  };
 sinEntry.subName = "cos_quart_T6<cr::simd::float2x4>";
-sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_T6<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<cr::simd::float2x4>(cos_quart_T6<cr::simd::float2x4>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_T6<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_quart_T6<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "float", "simd",  };
 sinEntry.subName = "cos_quart_T6_float_simd";
-sinEntry.accuracy_test<float>(cos_quart_T6_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_quart_T6_float_simd, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_quart_T6_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_T6_float_simd, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "float", "scalar",  };
 sinEntry.subName = "cos_half_T6<float>";
-sinEntry.accuracy_test<float>(cos_half_T6<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_half_T6<float>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_half_T6<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_half_T6<float>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "float2x4", "simd",  };
 sinEntry.subName = "cos_half_T6<cr::simd::float2x4>";
-sinEntry.accuracy_test<cr::simd::float2x4>(cos_half_T6<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<cr::simd::float2x4>(cos_half_T6<cr::simd::float2x4>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_half_T6<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_half_T6<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "float", "simd",  };
 sinEntry.subName = "cos_half_T6_float_simd";
-sinEntry.accuracy_test<float>(cos_half_T6_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_half_T6_float_simd, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_half_T6_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_half_T6_float_simd, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "fma", "float", "scalar",  };
 sinEntry.subName = "cos_quart_fma_T6<float>";
-sinEntry.accuracy_test<float>(cos_quart_fma_T6<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_quart_fma_T6<float>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_quart_fma_T6<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_fma_T6<float>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "fma", "float2x4", "simd",  };
 sinEntry.subName = "cos_quart_fma_T6<cr::simd::float2x4>";
-sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_fma_T6<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<cr::simd::float2x4>(cos_quart_fma_T6<cr::simd::float2x4>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_fma_T6<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_quart_fma_T6<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "fma", "float", "simd",  };
 sinEntry.subName = "cos_quart_fma_T6_float_simd";
-sinEntry.accuracy_test<float>(cos_quart_fma_T6_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_quart_fma_T6_float_simd, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_quart_fma_T6_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_fma_T6_float_simd, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "fma", "float", "scalar",  };
 sinEntry.subName = "cos_half_fma_T6<float>";
-sinEntry.accuracy_test<float>(cos_half_fma_T6<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_half_fma_T6<float>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_half_fma_T6<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_half_fma_T6<float>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "fma", "float2x4", "simd",  };
 sinEntry.subName = "cos_half_fma_T6<cr::simd::float2x4>";
-sinEntry.accuracy_test<cr::simd::float2x4>(cos_half_fma_T6<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<cr::simd::float2x4>(cos_half_fma_T6<cr::simd::float2x4>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_half_fma_T6<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_half_fma_T6<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "fma", "float", "simd",  };
 sinEntry.subName = "cos_half_fma_T6_float_simd";
-sinEntry.accuracy_test<float>(cos_half_fma_T6_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_half_fma_T6_float_simd, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_half_fma_T6_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_half_fma_T6_float_simd, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_quart_T7<float>";
+sinEntry.accuracy_test<float>(cos_unit1_quart_T7<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_T7<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_quart_T7<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_quart_T7<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_quart_T7<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float", "simd",  };
+sinEntry.subName = "cos_unit1_quart_T7_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_quart_T7_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_T7_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_quart_fma_T7<float>";
+sinEntry.accuracy_test<float>(cos_unit1_quart_fma_T7<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_fma_T7<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_quart_fma_T7<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_quart_fma_T7<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_quart_fma_T7<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit1_quart_fma_T7_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_quart_fma_T7_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_fma_T7_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_quart_T7<float>";
+sinEntry.accuracy_test<float>(cos_unit2_quart_T7<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_T7<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_quart_T7<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_quart_T7<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_quart_T7<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float", "simd",  };
+sinEntry.subName = "cos_unit2_quart_T7_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_quart_T7_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_T7_float_simd, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_quart_fma_T7<float>";
+sinEntry.accuracy_test<float>(cos_unit2_quart_fma_T7<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_fma_T7<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_quart_fma_T7<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_quart_fma_T7<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_quart_fma_T7<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit2_quart_fma_T7_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_quart_fma_T7_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_fma_T7_float_simd, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "float", "scalar",  };
+sinEntry.subName = "cos_quart_T7<float>";
+sinEntry.accuracy_test<float>(cos_quart_T7<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_T7<float>, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "float2x4", "simd",  };
+sinEntry.subName = "cos_quart_T7<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_T7<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_quart_T7<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "float", "simd",  };
+sinEntry.subName = "cos_quart_T7_float_simd";
+sinEntry.accuracy_test<float>(cos_quart_T7_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_T7_float_simd, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_quart_fma_T7<float>";
+sinEntry.accuracy_test<float>(cos_quart_fma_T7<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_fma_T7<float>, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_quart_fma_T7<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_fma_T7<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_quart_fma_T7<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "fma", "float", "simd",  };
+sinEntry.subName = "cos_quart_fma_T7_float_simd";
+sinEntry.accuracy_test<float>(cos_quart_fma_T7_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_fma_T7_float_simd, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_quart_T8<float>";
+sinEntry.accuracy_test<float>(cos_unit1_quart_T8<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_T8<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_quart_T8<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_quart_T8<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_quart_T8<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float", "simd",  };
+sinEntry.subName = "cos_unit1_quart_T8_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_quart_T8_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_T8_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_half_T8<float>";
+sinEntry.accuracy_test<float>(cos_unit1_half_T8<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_half_T8<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_half_T8<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_half_T8<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_half_T8<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "float", "simd",  };
+sinEntry.subName = "cos_unit1_half_T8_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_half_T8_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_half_T8_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_quart_fma_T8<float>";
+sinEntry.accuracy_test<float>(cos_unit1_quart_fma_T8<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_fma_T8<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_quart_fma_T8<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_quart_fma_T8<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_quart_fma_T8<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit1_quart_fma_T8_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_quart_fma_T8_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_fma_T8_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_half_fma_T8<float>";
+sinEntry.accuracy_test<float>(cos_unit1_half_fma_T8<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_half_fma_T8<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_half_fma_T8<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_half_fma_T8<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_half_fma_T8<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "half", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit1_half_fma_T8_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_half_fma_T8_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_half_fma_T8_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_quart_T8<float>";
+sinEntry.accuracy_test<float>(cos_unit2_quart_T8<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_T8<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_quart_T8<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_quart_T8<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_quart_T8<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float", "simd",  };
+sinEntry.subName = "cos_unit2_quart_T8_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_quart_T8_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_T8_float_simd, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_half_T8<float>";
+sinEntry.accuracy_test<float>(cos_unit2_half_T8<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_half_T8<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_half_T8<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_half_T8<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_half_T8<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "float", "simd",  };
+sinEntry.subName = "cos_unit2_half_T8_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_half_T8_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_half_T8_float_simd, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_quart_fma_T8<float>";
+sinEntry.accuracy_test<float>(cos_unit2_quart_fma_T8<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_fma_T8<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_quart_fma_T8<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_quart_fma_T8<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_quart_fma_T8<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit2_quart_fma_T8_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_quart_fma_T8_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_fma_T8_float_simd, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_half_fma_T8<float>";
+sinEntry.accuracy_test<float>(cos_unit2_half_fma_T8<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_half_fma_T8<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_half_fma_T8<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_half_fma_T8<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_half_fma_T8<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "half", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit2_half_fma_T8_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_half_fma_T8_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_half_fma_T8_float_simd, M, 0.0f, 2.0f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "float", "scalar",  };
 sinEntry.subName = "cos_quart_T8<float>";
-sinEntry.accuracy_test<float>(cos_quart_T8<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_quart_T8<float>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_quart_T8<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_T8<float>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "float2x4", "simd",  };
 sinEntry.subName = "cos_quart_T8<cr::simd::float2x4>";
-sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_T8<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<cr::simd::float2x4>(cos_quart_T8<cr::simd::float2x4>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_T8<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_quart_T8<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "float", "simd",  };
 sinEntry.subName = "cos_quart_T8_float_simd";
-sinEntry.accuracy_test<float>(cos_quart_T8_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_quart_T8_float_simd, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_quart_T8_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_T8_float_simd, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "float", "scalar",  };
 sinEntry.subName = "cos_half_T8<float>";
-sinEntry.accuracy_test<float>(cos_half_T8<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_half_T8<float>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_half_T8<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_half_T8<float>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "float2x4", "simd",  };
 sinEntry.subName = "cos_half_T8<cr::simd::float2x4>";
-sinEntry.accuracy_test<cr::simd::float2x4>(cos_half_T8<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<cr::simd::float2x4>(cos_half_T8<cr::simd::float2x4>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_half_T8<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_half_T8<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "float", "simd",  };
 sinEntry.subName = "cos_half_T8_float_simd";
-sinEntry.accuracy_test<float>(cos_half_T8_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_half_T8_float_simd, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_half_T8_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_half_T8_float_simd, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "fma", "float", "scalar",  };
 sinEntry.subName = "cos_quart_fma_T8<float>";
-sinEntry.accuracy_test<float>(cos_quart_fma_T8<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_quart_fma_T8<float>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_quart_fma_T8<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_fma_T8<float>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "fma", "float2x4", "simd",  };
 sinEntry.subName = "cos_quart_fma_T8<cr::simd::float2x4>";
-sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_fma_T8<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<cr::simd::float2x4>(cos_quart_fma_T8<cr::simd::float2x4>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_fma_T8<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_quart_fma_T8<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "quart", "fma", "float", "simd",  };
 sinEntry.subName = "cos_quart_fma_T8_float_simd";
-sinEntry.accuracy_test<float>(cos_quart_fma_T8_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_quart_fma_T8_float_simd, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_quart_fma_T8_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_fma_T8_float_simd, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "fma", "float", "scalar",  };
 sinEntry.subName = "cos_half_fma_T8<float>";
-sinEntry.accuracy_test<float>(cos_half_fma_T8<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_half_fma_T8<float>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_half_fma_T8<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_half_fma_T8<float>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "fma", "float2x4", "simd",  };
 sinEntry.subName = "cos_half_fma_T8<cr::simd::float2x4>";
-sinEntry.accuracy_test<cr::simd::float2x4>(cos_half_fma_T8<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<cr::simd::float2x4>(cos_half_fma_T8<cr::simd::float2x4>, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_half_fma_T8<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_half_fma_T8<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
 sinEntry.tags = { "cos", "half", "fma", "float", "simd",  };
 sinEntry.subName = "cos_half_fma_T8_float_simd";
-sinEntry.accuracy_test<float>(cos_half_fma_T8_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
-sinEntry.time<float>(cos_half_fma_T8_float_simd, M, 0.0f, 1.0f);
+sinEntry.accuracy_test<float>(cos_half_fma_T8_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_half_fma_T8_float_simd, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_quart_T9<float>";
+sinEntry.accuracy_test<float>(cos_unit1_quart_T9<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_T9<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_quart_T9<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_quart_T9<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_quart_T9<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "float", "simd",  };
+sinEntry.subName = "cos_unit1_quart_T9_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_quart_T9_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_T9_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit1_quart_fma_T9<float>";
+sinEntry.accuracy_test<float>(cos_unit1_quart_fma_T9<float>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_fma_T9<float>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit1_quart_fma_T9<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit1_quart_fma_T9<cr::simd::float2x4>, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit1_quart_fma_T9<cr::simd::float2x4>, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit1", "quart", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit1_quart_fma_T9_float_simd";
+sinEntry.accuracy_test<float>(cos_unit1_quart_fma_T9_float_simd, std::cosf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit1_quart_fma_T9_float_simd, M, 0.0f, 1.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_quart_T9<float>";
+sinEntry.accuracy_test<float>(cos_unit2_quart_T9<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_T9<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_quart_T9<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_quart_T9<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_quart_T9<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "float", "simd",  };
+sinEntry.subName = "cos_unit2_quart_T9_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_quart_T9_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_T9_float_simd, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_unit2_quart_fma_T9<float>";
+sinEntry.accuracy_test<float>(cos_unit2_quart_fma_T9<float>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_fma_T9<float>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_unit2_quart_fma_T9<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_unit2_quart_fma_T9<cr::simd::float2x4>, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_unit2_quart_fma_T9<cr::simd::float2x4>, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos_unit2", "quart", "fma", "float", "simd",  };
+sinEntry.subName = "cos_unit2_quart_fma_T9_float_simd";
+sinEntry.accuracy_test<float>(cos_unit2_quart_fma_T9_float_simd, std::cosf, 0.0f, 2.0f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_unit2_quart_fma_T9_float_simd, M, 0.0f, 2.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "float", "scalar",  };
+sinEntry.subName = "cos_quart_T9<float>";
+sinEntry.accuracy_test<float>(cos_quart_T9<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_T9<float>, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "float2x4", "simd",  };
+sinEntry.subName = "cos_quart_T9<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_T9<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_quart_T9<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "float", "simd",  };
+sinEntry.subName = "cos_quart_T9_float_simd";
+sinEntry.accuracy_test<float>(cos_quart_T9_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_T9_float_simd, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "fma", "float", "scalar",  };
+sinEntry.subName = "cos_quart_fma_T9<float>";
+sinEntry.accuracy_test<float>(cos_quart_fma_T9<float>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_fma_T9<float>, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "fma", "float2x4", "simd",  };
+sinEntry.subName = "cos_quart_fma_T9<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(cos_quart_fma_T9<cr::simd::float2x4>, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<cr::simd::float2x4>(cos_quart_fma_T9<cr::simd::float2x4>, M, 0.0f, 6.283185307179586f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "cos", "quart", "fma", "float", "simd",  };
+sinEntry.subName = "cos_quart_fma_T9_float_simd";
+sinEntry.accuracy_test<float>(cos_quart_fma_T9_float_simd, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+sinEntry.time<float>(cos_quart_fma_T9_float_simd, M, 0.0f, 6.283185307179586f);
 }
 {
 auto& sinEntry = testResult.entries.emplace_back();
@@ -2517,4 +3399,298 @@ sinEntry.tags = { "log", "fma", "float", "simd",  };
 sinEntry.subName = "log_fma_T9_float_simd";
 sinEntry.accuracy_test<float>(log_fma_T9_float_simd, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
 sinEntry.time<float>(log_fma_T9_float_simd, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float", "scalar",  };
+sinEntry.subName = "exp_special_T3<float>";
+sinEntry.accuracy_test<float>(exp_special_T3<float>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_T3<float>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float2x4", "simd",  };
+sinEntry.subName = "exp_special_T3<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(exp_special_T3<cr::simd::float2x4>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<cr::simd::float2x4>(exp_special_T3<cr::simd::float2x4>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float", "simd",  };
+sinEntry.subName = "exp_special_T3_float_simd";
+sinEntry.accuracy_test<float>(exp_special_T3_float_simd, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_T3_float_simd, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float", "scalar",  };
+sinEntry.subName = "exp_special_fma_T3<float>";
+sinEntry.accuracy_test<float>(exp_special_fma_T3<float>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_fma_T3<float>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float2x4", "simd",  };
+sinEntry.subName = "exp_special_fma_T3<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T3<cr::simd::float2x4>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<cr::simd::float2x4>(exp_special_fma_T3<cr::simd::float2x4>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float", "simd",  };
+sinEntry.subName = "exp_special_fma_T3_float_simd";
+sinEntry.accuracy_test<float>(exp_special_fma_T3_float_simd, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_fma_T3_float_simd, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float", "scalar",  };
+sinEntry.subName = "exp_special_T4<float>";
+sinEntry.accuracy_test<float>(exp_special_T4<float>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_T4<float>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float2x4", "simd",  };
+sinEntry.subName = "exp_special_T4<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(exp_special_T4<cr::simd::float2x4>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<cr::simd::float2x4>(exp_special_T4<cr::simd::float2x4>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float", "simd",  };
+sinEntry.subName = "exp_special_T4_float_simd";
+sinEntry.accuracy_test<float>(exp_special_T4_float_simd, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_T4_float_simd, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float", "scalar",  };
+sinEntry.subName = "exp_special_fma_T4<float>";
+sinEntry.accuracy_test<float>(exp_special_fma_T4<float>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_fma_T4<float>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float2x4", "simd",  };
+sinEntry.subName = "exp_special_fma_T4<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T4<cr::simd::float2x4>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<cr::simd::float2x4>(exp_special_fma_T4<cr::simd::float2x4>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float", "simd",  };
+sinEntry.subName = "exp_special_fma_T4_float_simd";
+sinEntry.accuracy_test<float>(exp_special_fma_T4_float_simd, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_fma_T4_float_simd, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float", "scalar",  };
+sinEntry.subName = "exp_special_T5<float>";
+sinEntry.accuracy_test<float>(exp_special_T5<float>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_T5<float>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float2x4", "simd",  };
+sinEntry.subName = "exp_special_T5<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(exp_special_T5<cr::simd::float2x4>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<cr::simd::float2x4>(exp_special_T5<cr::simd::float2x4>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float", "simd",  };
+sinEntry.subName = "exp_special_T5_float_simd";
+sinEntry.accuracy_test<float>(exp_special_T5_float_simd, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_T5_float_simd, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float", "scalar",  };
+sinEntry.subName = "exp_special_fma_T5<float>";
+sinEntry.accuracy_test<float>(exp_special_fma_T5<float>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_fma_T5<float>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float2x4", "simd",  };
+sinEntry.subName = "exp_special_fma_T5<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T5<cr::simd::float2x4>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<cr::simd::float2x4>(exp_special_fma_T5<cr::simd::float2x4>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float", "simd",  };
+sinEntry.subName = "exp_special_fma_T5_float_simd";
+sinEntry.accuracy_test<float>(exp_special_fma_T5_float_simd, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_fma_T5_float_simd, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float", "scalar",  };
+sinEntry.subName = "exp_special_T6<float>";
+sinEntry.accuracy_test<float>(exp_special_T6<float>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_T6<float>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float2x4", "simd",  };
+sinEntry.subName = "exp_special_T6<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(exp_special_T6<cr::simd::float2x4>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<cr::simd::float2x4>(exp_special_T6<cr::simd::float2x4>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float", "simd",  };
+sinEntry.subName = "exp_special_T6_float_simd";
+sinEntry.accuracy_test<float>(exp_special_T6_float_simd, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_T6_float_simd, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float", "scalar",  };
+sinEntry.subName = "exp_special_fma_T6<float>";
+sinEntry.accuracy_test<float>(exp_special_fma_T6<float>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_fma_T6<float>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float2x4", "simd",  };
+sinEntry.subName = "exp_special_fma_T6<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T6<cr::simd::float2x4>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<cr::simd::float2x4>(exp_special_fma_T6<cr::simd::float2x4>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float", "simd",  };
+sinEntry.subName = "exp_special_fma_T6_float_simd";
+sinEntry.accuracy_test<float>(exp_special_fma_T6_float_simd, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_fma_T6_float_simd, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float", "scalar",  };
+sinEntry.subName = "exp_special_T7<float>";
+sinEntry.accuracy_test<float>(exp_special_T7<float>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_T7<float>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float2x4", "simd",  };
+sinEntry.subName = "exp_special_T7<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(exp_special_T7<cr::simd::float2x4>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<cr::simd::float2x4>(exp_special_T7<cr::simd::float2x4>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float", "simd",  };
+sinEntry.subName = "exp_special_T7_float_simd";
+sinEntry.accuracy_test<float>(exp_special_T7_float_simd, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_T7_float_simd, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float", "scalar",  };
+sinEntry.subName = "exp_special_fma_T7<float>";
+sinEntry.accuracy_test<float>(exp_special_fma_T7<float>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_fma_T7<float>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float2x4", "simd",  };
+sinEntry.subName = "exp_special_fma_T7<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T7<cr::simd::float2x4>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<cr::simd::float2x4>(exp_special_fma_T7<cr::simd::float2x4>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float", "simd",  };
+sinEntry.subName = "exp_special_fma_T7_float_simd";
+sinEntry.accuracy_test<float>(exp_special_fma_T7_float_simd, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_fma_T7_float_simd, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float", "scalar",  };
+sinEntry.subName = "exp_special_T8<float>";
+sinEntry.accuracy_test<float>(exp_special_T8<float>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_T8<float>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float2x4", "simd",  };
+sinEntry.subName = "exp_special_T8<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(exp_special_T8<cr::simd::float2x4>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<cr::simd::float2x4>(exp_special_T8<cr::simd::float2x4>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float", "simd",  };
+sinEntry.subName = "exp_special_T8_float_simd";
+sinEntry.accuracy_test<float>(exp_special_T8_float_simd, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_T8_float_simd, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float", "scalar",  };
+sinEntry.subName = "exp_special_fma_T8<float>";
+sinEntry.accuracy_test<float>(exp_special_fma_T8<float>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_fma_T8<float>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float2x4", "simd",  };
+sinEntry.subName = "exp_special_fma_T8<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T8<cr::simd::float2x4>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<cr::simd::float2x4>(exp_special_fma_T8<cr::simd::float2x4>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float", "simd",  };
+sinEntry.subName = "exp_special_fma_T8_float_simd";
+sinEntry.accuracy_test<float>(exp_special_fma_T8_float_simd, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_fma_T8_float_simd, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float", "scalar",  };
+sinEntry.subName = "exp_special_T9<float>";
+sinEntry.accuracy_test<float>(exp_special_T9<float>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_T9<float>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float2x4", "simd",  };
+sinEntry.subName = "exp_special_T9<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(exp_special_T9<cr::simd::float2x4>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<cr::simd::float2x4>(exp_special_T9<cr::simd::float2x4>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "float", "simd",  };
+sinEntry.subName = "exp_special_T9_float_simd";
+sinEntry.accuracy_test<float>(exp_special_T9_float_simd, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_T9_float_simd, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float", "scalar",  };
+sinEntry.subName = "exp_special_fma_T9<float>";
+sinEntry.accuracy_test<float>(exp_special_fma_T9<float>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_fma_T9<float>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float2x4", "simd",  };
+sinEntry.subName = "exp_special_fma_T9<cr::simd::float2x4>";
+sinEntry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T9<cr::simd::float2x4>, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<cr::simd::float2x4>(exp_special_fma_T9<cr::simd::float2x4>, M, 0.1f, 10.0f);
+}
+{
+auto& sinEntry = testResult.entries.emplace_back();
+sinEntry.tags = { "exp_special", "fma", "float", "simd",  };
+sinEntry.subName = "exp_special_fma_T9_float_simd";
+sinEntry.accuracy_test<float>(exp_special_fma_T9_float_simd, std::logf, 0.1f, 10.0f, 0.1f, 10.0f);
+sinEntry.time<float>(exp_special_fma_T9_float_simd, M, 0.1f, 10.0f);
 }

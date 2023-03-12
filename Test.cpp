@@ -20,8 +20,8 @@
 
 #include "crath/StdContext.h"
 
-#include "crath/simd/float2x4.h"
 #include "crath/Functions.h"
+#include "crath/simd/float2x4.h"
 
 thread_local ImGuiContext* MyImGuiTLS;
 
@@ -34,10 +34,22 @@ struct TestResult
 		std::string subName{};
 		std::vector<std::string> tags{};
 		uint64_t picoseconds{};
+
 		float error{};
 		float maximumError{};
-		float maximumValue{};
-		float minimumValue{};
+
+		float range_min{};
+		float range_max{};
+
+		std::function<float(float)> approximationFunction{};
+		float approximationDomanMin{};
+		float approximationDomanMax{};
+
+		std::function<float(float)> referenceFunction{};
+		float referenceDomanMin{};
+		float referenceDomanMax{};
+
+		float scale = 1.0f;
 
 		template<class F>
 		void time(auto approximation, int N, float min_x, float max_x) {
@@ -87,31 +99,82 @@ struct TestResult
 
 		template<class F>
 		void accuracy_test(auto approximation, auto reference, float min_x, float max_x, float ref_min_x, float ref_max_x) {
+			if constexpr (std::same_as<F, float>) {
+				this->approximationFunction = approximation;
+			}
+			else {
+				this->approximationFunction = [=](float x) {
+					return approximation(x)[0];
+				};
+			}
+			this->referenceFunction = reference;
+
+			this->approximationDomanMin = min_x;
+			this->approximationDomanMax = max_x;
+
+			this->referenceDomanMin = ref_min_x;
+			this->referenceDomanMax = ref_max_x;
+
+			this->calculateAccuracyOnDomain();
+		}
+
+		float calculateError(float approximation_x, float reference_x) {
+			auto res = this->approximationFunction(approximation_x);
+			auto ref = this->referenceFunction(reference_x);
+			return std::abs((res - ref) / this->scale);
+		}
+
+		void calculateAccuracyOnDomain() {
 			auto const N = 10000;
 
-			this->maximumValue = std::numeric_limits<float>::min();
-			this->minimumValue = std::numeric_limits<float>::max();
 			for (size_t i = 0; i < N - 1; i++) {
-				auto x = min_x + (max_x - min_x) * i / N;
-				auto x_ref = ref_min_x + (ref_max_x - ref_min_x) * i / N;
+				auto x = this->approximationDomanMin + (this->approximationDomanMax - this->approximationDomanMin) * i / N;
+				auto x_ref = this->referenceDomanMin + (this->referenceDomanMax - this->referenceDomanMin) * i / N;
 
-				float res = 0.0;
-				if constexpr (std::same_as<float, F>) {
-					res = approximation(x);
-				}
-				else {
-					res = approximation(x)[0];
-				}
-				float ref = reference(x_ref);
+				float res = this->approximationFunction(x);
+				float ref = this->referenceFunction(x_ref);
 
-				this->maximumValue = std::max(this->maximumValue, res);
-				this->minimumValue = std::min(this->minimumValue, res);
 				float const e = std::abs(res - ref);
 				if (ref != 0.0f) {
-					this->maximumError = std::max(maximumError, e / ref);
+					this->maximumError = std::max(maximumError, e / this->scale);
 				}
 
 				this->error += e / N;
+			}
+		}
+
+		void calculateDomain(float maximumNormalizedError) {
+			auto approximation_x = (this->approximationDomanMin + this->approximationDomanMax) * 0.5f;
+			auto approximation_dx = (this->approximationDomanMax - this->approximationDomanMin) * 0.001f;
+
+			auto reference_x = (this->referenceDomanMin + this->referenceDomanMax) * 0.5f;
+			auto reference_dx = (this->referenceDomanMax - this->referenceDomanMin) * 0.001f;
+
+			{
+				size_t i = 0;
+				for (; i < 10000; i++) {
+					auto approx_x = approximation_x + approximation_dx * i;
+					auto ref_x = reference_x + reference_dx * i;
+
+					if (this->calculateError(approx_x, ref_x) > maximumNormalizedError) {
+						break;
+					}
+				}
+
+				this->range_max = approximation_x + approximation_dx * i;
+			}
+			{
+				size_t i = 0;
+				for (; i < 10000; i++) {
+					auto approx_x = approximation_x - approximation_dx * i;
+					auto ref_x = reference_x - reference_dx * i;
+
+					if (this->calculateError(approx_x, ref_x) > maximumNormalizedError) {
+						break;
+					}
+				}
+
+				this->range_min = approximation_x - approximation_dx * i;
 			}
 		}
 	};
@@ -121,6 +184,12 @@ struct TestResult
 	std::vector<Entry> entries{};
 	std::unordered_map<std::string, bool> tags{};
 	std::vector<std::string_view> searchTags{};
+
+	float maxErrorDecibels = -60.0f;
+	float maxError = 0.001f;
+
+	float minDomainMin = -10.0f;
+	float maxDomainMax = 10.0f;
 
 	void show() {
 		ImGui::InputText("OR", &this->filterString0);
@@ -145,11 +214,33 @@ struct TestResult
 			j++;
 		}
 
+		if (ImGui::SliderFloat("max error", &this->maxErrorDecibels, -100.0f, 0.0f, "%.3fdB")) {
+			if (this->maxErrorDecibels == 0.0f) {
+				this->maxError = std::numeric_limits<float>::max();
+			}
+			else {
+				this->maxError = std::pow(10.0f, this->maxErrorDecibels / 20.0f);
+			}
+			for (auto& entry : this->entries) {
+				entry.calculateDomain(this->maxError);
+			}
+		}
+		ImGui::Text("Maximum error on domain: %f", this->maxError);
+		if (ImGui::SliderFloat("Min Domain", &this->minDomainMin, -10.0f, 10.0f)) {
+			this->maxDomainMax = std::max(this->minDomainMin, this->maxDomainMax);
+		}
+
+		if (ImGui::SliderFloat("Max Domain", &this->maxDomainMax, -10.0f, 10.0f)) {
+			this->minDomainMin = std::min(this->minDomainMin, this->maxDomainMax);
+		}
+
 		ImGui::BeginChild("Child", {}, true);
-		ImGui::BeginTable("Things", 4, ImGuiTableFlags_Sortable | ImGuiTableFlags_RowBg);
+		ImGui::BeginTable("Things", 6, ImGuiTableFlags_Sortable | ImGuiTableFlags_RowBg | ImGuiTableFlags_Resizable);
 		ImGui::TableSetupColumn("Name");
 		ImGui::TableSetupColumn("Error");
 		ImGui::TableSetupColumn("Maximum Normalized Error");
+		ImGui::TableSetupColumn("Domain Min");
+		ImGui::TableSetupColumn("Domain Max");
 		ImGui::TableSetupColumn("Time");
 
 		ImGuiTableSortSpecs* sorts_specs = ImGui::TableGetSortSpecs();
@@ -169,6 +260,12 @@ struct TestResult
 					return entry0.maximumError < entry1.maximumError;
 				}
 				else if (i == 3) {
+					return entry0.range_min < entry1.range_min;
+				}
+				else if (i == 4) {
+					return entry0.range_max < entry1.range_max;
+				}
+				else if (i == 5) {
 					return entry0.picoseconds < entry1.picoseconds;
 				}
 				else {
@@ -187,6 +284,12 @@ struct TestResult
 					return entry0.maximumError > entry1.maximumError;
 				}
 				else if (i == 3) {
+					return entry0.range_min > entry1.range_min;
+				}
+				else if (i == 4) {
+					return entry0.range_max > entry1.range_max;
+				}
+				else if (i == 5) {
 					return entry0.picoseconds > entry1.picoseconds;
 				}
 				else {
@@ -204,6 +307,18 @@ struct TestResult
 
 		ImGui::TableHeadersRow();
 		for (auto& entry : this->entries) {
+			if (entry.range_min != entry.range_max) {
+				if (entry.range_min > this->minDomainMin) {
+					continue;
+				}
+				if (entry.range_max < this->maxDomainMax) {
+					continue;
+				}
+			}
+			else {
+				continue;
+			}
+
 			bool tagFound = true;
 
 			for (auto tag : this->searchTags) {
@@ -249,6 +364,18 @@ struct TestResult
 			ImGui::Text("%10.10f", entry.error);
 			ImGui::TableNextColumn();
 			ImGui::Text("%10.10f", entry.maximumError);
+
+			if (entry.range_min == entry.range_max) {
+				ImGui::TableNextColumn();
+				ImGui::TableNextColumn();
+			}
+			else {
+				ImGui::TableNextColumn();
+				ImGui::Text("%f", entry.range_min);
+				ImGui::TableNextColumn();
+				ImGui::Text("%f", entry.range_max);
+			}
+
 			ImGui::TableNextColumn();
 			ImGui::Text("%dps", entry.picoseconds);
 		}
@@ -262,14 +389,18 @@ int main() {
 	using namespace cr;
 	TestResult testResult{};
 
-	auto constexpr t = StdContext::sin_c(0.8f);
+	// auto constexpr t = StdContext::sin(800.0f);
+	//  auto constexpr testing = StdContext::fdivmod<float, 2.0f>(-13.0f);
 
 	// auto constexpr M = 6'000'000;
+	// auto constexpr M = 1'000'000;
 	auto constexpr M = 1'000;
 
-	// testResult.entries.emplace_back().accuracy_test(sin_fma_normal_T4)
-
 #include "function_testing.h"
+
+	for (auto& entry : testResult.entries) {
+		entry.calculateDomain(testResult.maxError);
+	}
 
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0) {
 		printf("Error: %s\n", SDL_GetError());

@@ -33,14 +33,15 @@ namespace cr
 			return std::bit_cast<float>(i1);
 		}
 
-		inline constexpr static float log_c(float x) {
-			return log_T9(x);
-		}
-
 		template<class F>
 		inline constexpr static F log(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
-				return log_fma_T9_float_simd(x);
+				if (std::is_constant_evaluated()) {
+					return log_T9(x);
+				}
+				else {
+					return log_fma_T9_float_simd(x);
+				}
 			}
 			else {
 				return log_fma_T9(x);
@@ -50,21 +51,27 @@ namespace cr
 		template<class F>
 		inline constexpr static F tanh(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
-				return tanh_fma_T7_float_simd(x);
+				if (std::is_constant_evaluated()) {
+					return tanh_T8(x);
+				}
+				else {
+					return tanh_fma_T7_float_simd(x);
+				}
 			}
 			else {
 				return tanh_fma_T7(x);
 			}
 		}
-		
-		inline constexpr static float sin_c(float x) {
-			return sin_half_T7(x);
-		}
 
 		template<class F>
 		inline constexpr static F sin(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
-				return sin_half_T7_float_simd(x);
+				if (std::is_constant_evaluated()) {
+					return sin_quart_T8(fmod<two_pi>(x));
+				}
+				else {
+					return sin_half_fma_T7_float_simd(x);
+				}
 			}
 			else {
 				return sin_half_fma_T7(x);
@@ -72,9 +79,119 @@ namespace cr
 		}
 
 		template<class F>
+		inline constexpr static F sin_unit_1(in_t(F) x) {
+			if constexpr (std::same_as<F, float>) {
+				if (std::is_constant_evaluated()) {
+					return sin_unit1_quart_T8(fmod<two_pi>(x));
+				}
+				else {
+					return sin_unit1_half_fma_T7_float_simd(x);
+				}
+			}
+			else {
+				return sin_unit1_half_fma_T7(x);
+			}
+		}
+
+		template<class F>
+		inline constexpr static F sin_unit_2(in_t(F) x) {
+			if constexpr (std::same_as<F, float>) {
+				if (std::is_constant_evaluated()) {
+					return sin_unit2_quart_T8(fmod<two_pi>(x));
+				}
+				else {
+					return sin_unit2_half_fma_T7_float_simd(x);
+				}
+			}
+			else {
+				return sin_unit2_half_fma_T7(x);
+			}
+		}
+
+		template<class F>
+		inline constexpr static F cos_unit_1(in_t(F) x) {
+			if constexpr (std::same_as<F, float>) {
+				if (std::is_constant_evaluated()) {
+					return cos_half_T6(fmod<two_pi>(x));
+				}
+				else {
+					return cos_half_fma_T6_float_simd(x);
+				}
+			}
+			else {
+				return cos_half_fma_T6(x);
+			}
+		}
+
+		template<class F>
+		inline constexpr static F cos(in_t(F) x) {
+			if constexpr (std::same_as<F, float>) {
+				if (std::is_constant_evaluated()) {
+					return cos_half_T6(fmod<two_pi>(x));
+				}
+				else {
+					return cos_half_fma_T6_float_simd(x);
+				}
+			}
+			else {
+				return cos_half_fma_T6(x);
+			}
+		}
+
+		template<class F>
+		inline constexpr static F tan(in_t(F) x) {
+			if constexpr (std::same_as<F, float>) {
+				if (std::is_constant_evaluated()) {
+					return cos_half_T6(fmod<two_pi>(x));
+				}
+				else {
+					return cos_half_fma_T6_float_simd(x);
+				}
+			}
+			else {
+				return cos_half_fma_T6(x);
+			}
+		}
+
+		template<class F>
+		inline constexpr static F exp(in_t(F) x) {
+			if constexpr (std::same_as<F, float>) {
+				if (std::is_constant_evaluated()) {
+					return exp_T8(x);
+				}
+				else {
+					return exp_fma_T4_float_simd(x);
+				}
+			}
+			else {
+				return exp_fma_T4(x);
+			}
+		}
+
+		template<class F>
+		inline constexpr static F specialized_frequency_exp(in_t(F) x) {
+			if constexpr (std::same_as<F, float>) {
+				if (std::is_constant_evaluated()) {
+					return exp_special_T8(x);
+				}
+				else {
+					return exp_special_fma_T4_float_simd(x);
+				}
+			}
+			else {
+				return exp_special_fma_T4(x);
+			}
+		}
+
+		template<class F>
 		inline constexpr static F recip(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
-				return simd::float1x4(x).recip()[0];
+				if (std::is_constant_evaluated()) {
+					return 1 / x;
+				}
+				else {
+					return simd::float1x4(x).recip()[0];
+				}
 			}
 			else if constexpr (std::same_as<F, double>) {
 				return 1 / x;
@@ -84,13 +201,32 @@ namespace cr
 			}
 		}
 
+	private:
+		template<class F>
+		inline constexpr static F div_helper(F x, F m) {
+			if (x >= F(0.0)) {
+				return (F)(int64_t)(x / m);
+			}
+			else {
+				return (F)((int64_t)(x / m) - F(1));
+			}
+		}
+
+	public:
 		template<class F2, te::literal<F2> m, class F>
 		inline constexpr static std::pair<F, F> fdivmod(in_t(F) f) {
 			if constexpr (m.value == 1.0f) {
 				if constexpr (std::same_as<F, float> || std::same_as<F, double>) {
-					auto div = std::floor(f);
+					if (std::is_constant_evaluated()) {
+						auto div = div_helper(f, F(1));
 
-					return { div, f - div };
+						return { div, f - div };
+					}
+					else {
+						auto div = std::floor(f);
+
+						return { div, f - div };
+					}
 				}
 				else {
 					auto div = f.floor();
@@ -100,9 +236,16 @@ namespace cr
 			}
 			else {
 				if constexpr (std::same_as<F, float> || std::same_as<F, double>) {
-					auto div = std::floor(f * recip(m.value));
+					if (std::is_constant_evaluated()) {
+						auto div = div_helper(f, m.value);
 
-					return { div, f - m.value * div };
+						return { div, f - m.value * div };
+					}
+					else {
+						auto div = std::floor(f / m.value);
+
+						return { div, f - m.value * div };
+					}
 				}
 				else {
 					auto div = (f / F(m.value)).floor();
@@ -116,7 +259,12 @@ namespace cr
 		inline constexpr static F fmod(in_t(F) f) {
 			if constexpr (m.value == 1.0f) {
 				if constexpr (std::same_as<F, float>) {
-					return f - std::floorf(f);
+					if (std::is_constant_evaluated()) {
+						return f - div_helper(f, 1.0f);
+					}
+					else {
+						return f - std::floorf(f);
+					}
 				}
 				else {
 					return f - f.floor();
@@ -124,10 +272,16 @@ namespace cr
 			}
 			else {
 				if constexpr (std::same_as<F, float>) {
-					return f - m.value * std::floorf(f * recip(m.value));
+					if (std::is_constant_evaluated()) {
+						return f - m.value * div_helper(f, m.value);
+					}
+					else {
+						auto constexpr recip_m = 1.0f / m.value;
+						return f - m.value * std::floorf(f * recip_m);
+					}
 				}
 				else {
-					return f - F(m.value) * (f * F(recip(m.value))).floor();
+					return f - F(m.value) * (f / F(m.value)).floor();
 				}
 			}
 		}
@@ -138,17 +292,23 @@ namespace cr
 				return f - std::floor(f);
 			}
 			else {
-				return f - m.value * std::floor(f * recip(m.value));
+				auto constexpr recip_m = 1.0 / m.value;
+				return f - m.value * std::floor(f * recip_m);
 			}
 		}
 
 		template<class F>
 		inline constexpr static F fmod(in_t(F) f, in_t(F) m) {
 			if constexpr (std::same_as<F, float>) {
-				return f - m * std::floorf(f / m);
+				if (std::is_constant_evaluated()) {
+					return f - m * div_helper(f, m);
+				}
+				else {
+					return f - m * std::floorf(f / m);
+				}
 			}
 			else {
-				return f - F(m) * (f * F(m).recip()).floor();
+				return f - F(m) * (f / F(m)).floor();
 			}
 		}
 
@@ -178,8 +338,13 @@ namespace cr
 			}
 		}
 
-		inline static float clamp(float f_, float min_, float max_) {
-			return simd::float1x4::clamp(f_, min_, max_)[0];
+		inline static constexpr float clamp(float f_, float min_, float max_) {
+			if (std::is_constant_evaluated()) {
+				return std::clamp(f_, min_, max_);
+			}
+			else {
+				return simd::float1x4::clamp(f_, min_, max_)[0];
+			}
 		}
 
 		inline static int clamp(int i_, int min_, int max_) {

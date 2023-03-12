@@ -31,8 +31,21 @@ namespace cr
 			}
 		}
 
-		inline static float clamp(float f_, float min_, float max_) {
-			return simd::float1x4::clamp(f_, min_, max_)[0];
+		inline constexpr static float clamp(float f_, float min_, float max_) {
+			if (std::is_constant_evaluated()) {
+				if (f_ < min_) {
+					return min_;
+				}
+				else if (f_ > max_) {
+					return max_;
+				}
+				else {
+					return f_;
+				}
+			}
+			else {
+				return simd::float1x4::clamp(f_, min_, max_)[0];
+			}
 		}
 
 		template<class F>
@@ -48,11 +61,17 @@ namespace cr
 		template<class F>
 		inline constexpr static F abs(in_t(F) f) {
 			if constexpr (std::same_as<F, float> || std::same_as<F, double>) {
-				// auto masked = std::bit_cast<uint32_t>(f) & ~(1U << 31);
-
-				// return std::bit_cast<float>(masked);
-
-				return std::abs(f);
+				if (std::is_constant_evaluated()) {
+					if (f < 0.0f) {
+						return -f;
+					}
+					else {
+						return f;
+					}
+				}
+				else {
+					return std::abs(f);
+				}
 			}
 			else {
 				return f.abs();
@@ -66,6 +85,36 @@ namespace cr
 			}
 			else {
 				return F::fmac(a, b, c);
+			}
+		}
+
+		template<class F>
+		inline constexpr static F setSign(in_t(F) f, in_t(F) s) {
+			if constexpr (std::same_as<F, float>) {
+				auto const signbit = std::bit_cast<uint32_t>(s) & (1U << 31);
+				auto const maskedF = std::bit_cast<uint32_t>(f) & ~(1U << 31);
+
+				return std::bit_cast<float>(maskedF | signbit);
+			}
+			else {
+				auto const signbit = s & F(std::bit_cast<float>(1U << 31));
+				auto const mask = F(std::bit_cast<float>(~(1U << 31)));
+
+				return (f & mask) | signbit;
+			}
+		}
+
+		template<class F>
+		inline constexpr static F xorSign(in_t(F) f, in_t(F) s) {
+			if constexpr (std::same_as<F, float>) {
+				auto const signbit = std::bit_cast<uint32_t>(s) & (1U << 31);
+
+				return std::bit_cast<float>(std::bit_cast<uint32_t>(f) ^ signbit);
+			}
+			else {
+				auto const signbit = s & F(std::bit_cast<float>(1U << 31));
+
+				return f ^ signbit;
 			}
 		}
 	};
