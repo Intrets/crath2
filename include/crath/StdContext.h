@@ -113,14 +113,14 @@ namespace cr
 		inline constexpr static F cos_unit_1(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
-					return cos_half_T6(fmod<two_pi>(x));
+					return cos_unit1_half_T8(fmod<two_pi>(x));
 				}
 				else {
-					return cos_half_fma_T6_float_simd(x);
+					return cos_unit1_half_fma_T6_float_simd(x);
 				}
 			}
 			else {
-				return cos_half_fma_T6(x);
+				return cos_unit1_half_fma_T6(x);
 			}
 		}
 
