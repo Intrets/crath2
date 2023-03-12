@@ -24,10 +24,14 @@ make_module(
 		function_testing.h
 )
 
-add_executable(${MODULE_NAME}_test Test.cpp)
-target_link_libraries(${MODULE_NAME}_test
+find_package(OpenGL REQUIRED)
+find_package(GLFW3 REQUIRED)
+
+add_executable(${MODULE_NAME}_glfw_test TestGlfw.cpp)
+target_link_libraries(${MODULE_NAME}_glfw_test
 	crath
-	imgui
+	imgui_glfw
 	opengl32
 	font_resources
+	GLFW3
 )

@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <chrono>
 #include <iostream>
 #include <random>
 #include <ranges>
@@ -6,21 +7,17 @@
 #include <unordered_map>
 #include <vector>
 
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+
+#include "imgui_stdlib.h"
+
+#include <GLFW/glfw3.h>
+
 #include <font_resources.h>
 
-#include "imgui.h"
-#include "imgui_impl_opengl3.h"
-#include "imgui_impl_sdl2.h"
-#include "imgui_stdlib.h"
-#include <stdio.h>
-#define SDL_MAIN_HANDLED
-#include <SDL.h>
-#include <SDL_opengl.h>
-#include <chrono>
-
 #include "crath/StdContext.h"
-
-#include "crath/Functions.h"
 #include "crath/simd/float2x4.h"
 
 thread_local ImGuiContext* MyImGuiTLS;
@@ -399,10 +396,6 @@ int main() {
 	using namespace cr;
 	TestResult testResult{};
 
-	// auto constexpr t = StdContext::sin(800.0f);
-	//  auto constexpr testing = StdContext::fdivmod<float, 2.0f>(-13.0f);
-
-
 	// auto constexpr M = 6'000'000;
 	// auto constexpr M = 1'000'000;
 	auto constexpr M = 1'000;
@@ -413,29 +406,24 @@ int main() {
 		entry.calculateDomain(testResult.maxError);
 	}
 
-	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0) {
-		printf("Error: %s\n", SDL_GetError());
-		return -1;
+	if (!glfwInit()) {
+		return 1;
 	}
 
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, 0);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
-	// Create window with graphics context
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-	SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
-	SDL_WindowFlags window_flags = (SDL_WindowFlags)(SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI | SDL_WINDOW_MAXIMIZED);
-	SDL_Window* window = SDL_CreateWindow("Dear ImGui SDL2+OpenGL3 example", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, window_flags);
-	SDL_GLContext gl_context = SDL_GL_CreateContext(window);
-	SDL_GL_MakeCurrent(window, gl_context);
-	SDL_GL_SetSwapInterval(1); // Enable vsync
+	GLFWwindow* window = glfwCreateWindow(1280, 720, "Dear ImGui GLFW+OpenGL3 example", NULL, NULL);
+	if (window == NULL) {
+		return 1;
+	}
+	glfwMaximizeWindow(window);
+	glfwMakeContextCurrent(window);
+	glfwSwapInterval(1);
 
-	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
+
 	auto fontBuffer = getBuffer(font_resources_enum::Nunito_Medium_ttf);
 
 	if (fontBuffer->getSize<char>() <= static_cast<size_t>(std::numeric_limits<int>::max())) {
@@ -446,62 +434,46 @@ int main() {
 		auto size = static_cast<int>(fontBuffer->getSize<char>());
 		io.Fonts->AddFontFromMemoryTTF(freeBuffer, size, 17.0f);
 	}
-	// io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-	// io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 
 	ImGui::StyleColorsLight();
 
-	[[maybe_unused]] auto b = wrangled::gl::init();
-	// Setup Platform/Renderer backends
-	ImGui_ImplSDL2_InitForOpenGL(window, gl_context);
+	if (!wrangled::gl::init()) {
+		return 1;
+	}
+
+	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init_Custom(io);
 
-	// Our state
 	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-	// Main loop
-	bool done = false;
-	while (!done) {
-		SDL_Event event;
-		while (SDL_PollEvent(&event)) {
-			ImGui_ImplSDL2_ProcessEvent(&event);
-			if (event.type == SDL_QUIT)
-				done = true;
-			if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_CLOSE && event.window.windowID == SDL_GetWindowID(window))
-				done = true;
-		}
+	while (!glfwWindowShouldClose(window)) {
+		glfwPollEvents();
 
 		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplSDL2_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
-
-		// if (show_demo_window) {
-		//	ImGui::ShowDemoWindow(&show_demo_window);
-		// }
 
 		ImGui::Begin("Result", nullptr);
 		testResult.show();
 		ImGui::End();
 
-		// Rendering
 		ImGui::Render();
-		glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
+		int display_w, display_h;
+		glfwGetFramebufferSize(window, &display_w, &display_h);
+		glViewport(0, 0, display_w, display_h);
 		glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
 		glClear(GL_COLOR_BUFFER_BIT);
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(16));
-		SDL_GL_SwapWindow(window);
+		glfwSwapBuffers(window);
 	}
 
-	// Cleanup
 	ImGui_ImplOpenGL3_Shutdown_Custom(io);
-	ImGui_ImplSDL2_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
 
-	SDL_GL_DeleteContext(gl_context);
-	SDL_DestroyWindow(window);
-	SDL_Quit();
+	glfwDestroyWindow(window);
+	glfwTerminate();
 
 	return 0;
 }
