@@ -41,3 +41,11 @@ def log(scale=1):
     for n in range(1, 30):
         tay.append(scale ** n * sp.Rational((-1) ** (n + 1), n))
     return tay
+
+
+def tan(scale=1):
+    tay = [0]
+    for n in range(1, 30):
+        tay.append(sp.Rational(scale ** (2 * n - 1) * sp.bernoulli(2 * n) * (-4) ** n * (1 - 4 ** n), factorial(2 * n)))
+        tay.append(0)
+    return tay

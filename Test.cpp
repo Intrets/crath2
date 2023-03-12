@@ -402,6 +402,7 @@ int main() {
 	// auto constexpr t = StdContext::sin(800.0f);
 	//  auto constexpr testing = StdContext::fdivmod<float, 2.0f>(-13.0f);
 
+
 	// auto constexpr M = 6'000'000;
 	// auto constexpr M = 1'000'000;
 	auto constexpr M = 1'000;

@@ -142,14 +142,14 @@ namespace cr
 		inline constexpr static F tan(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
-					return cos_half_T6(fmod<two_pi>(x));
+					return tan_T9(fmod<two_pi>(x));
 				}
 				else {
-					return cos_half_fma_T6_float_simd(x);
+					return tan_fma_T6_float_simd(x);
 				}
 			}
 			else {
-				return cos_half_fma_T6(x);
+				return tan_fma_T6(x);
 			}
 		}
 

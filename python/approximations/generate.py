@@ -232,7 +232,7 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
         max_x=max_x,
         ref_min_x=ref_min_x,
         ref_max_x=ref_max_x,
-        normalize_error = normalize_error
+        normalize_error=normalize_error
     )
     function_infos2.append(info)
 
@@ -245,7 +245,7 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
         max_x=max_x,
         ref_min_x=ref_min_x,
         ref_max_x=ref_max_x,
-        normalize_error = normalize_error
+        normalize_error=normalize_error
     )
     function_infos2.append(info)
 
@@ -433,7 +433,7 @@ def add_special_exp(N, out):
             out=out,
             fma_type=fma_type,
             name="exp_special",
-            ref=f"[](float x) {{ return {base} * std::powf({2**(1/12)}, x * 127); }}",
+            ref=f"[](float x) {{ return {base} * std::powf({2 ** (1 / 12)}, x * 127); }}",
             N=N,
             x_type=x_normal,
             return_type=special_exp_return,
@@ -442,6 +442,24 @@ def add_special_exp(N, out):
             ref_min_x=0,
             ref_max_x=1,
             normalize_error=True
+        )
+
+
+def add_tan(N, out):
+    for fma_type in [fma_normal, fma]:
+        add_function2(
+            taylor.tan(),
+            out=out,
+            fma_type=fma_type,
+            name="tan",
+            ref="std::tanf",
+            N=N,
+            x_type=x_normal,
+            return_type=return_normal,
+            min_x=-1.5,
+            max_x=1.5,
+            ref_min_x=-1.5,
+            ref_max_x=1.5,
         )
 
 
@@ -474,6 +492,9 @@ def main():
 
     for N in range(3, 10):
         add_special_exp(N, out)
+
+    for N in range(3, 10):
+        add_tan(N, out)
 
     out = lambda x: function_testing_inc.write(x + '\n')
 

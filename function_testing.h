@@ -3694,3 +3694,297 @@ entry.subName = "exp_special_fma_T9_float_simd";
 entry.accuracy_test<float>(exp_special_fma_T9_float_simd, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_fma_T9_float_simd, M, 0.0f, 1.0f);
 }
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float", "scalar",  };
+entry.subName = "tan_T3<float>";
+entry.accuracy_test<float>(tan_T3<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_T3<float>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float2x4", "simd",  };
+entry.subName = "tan_T3<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_T3<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<cr::simd::float2x4>(tan_T3<cr::simd::float2x4>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float", "simd",  };
+entry.subName = "tan_T3_float_simd";
+entry.accuracy_test<float>(tan_T3_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_T3_float_simd, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float", "scalar",  };
+entry.subName = "tan_fma_T3<float>";
+entry.accuracy_test<float>(tan_fma_T3<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_fma_T3<float>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float2x4", "simd",  };
+entry.subName = "tan_fma_T3<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_fma_T3<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<cr::simd::float2x4>(tan_fma_T3<cr::simd::float2x4>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float", "simd",  };
+entry.subName = "tan_fma_T3_float_simd";
+entry.accuracy_test<float>(tan_fma_T3_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_fma_T3_float_simd, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float", "scalar",  };
+entry.subName = "tan_T4<float>";
+entry.accuracy_test<float>(tan_T4<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_T4<float>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float2x4", "simd",  };
+entry.subName = "tan_T4<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_T4<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<cr::simd::float2x4>(tan_T4<cr::simd::float2x4>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float", "simd",  };
+entry.subName = "tan_T4_float_simd";
+entry.accuracy_test<float>(tan_T4_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_T4_float_simd, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float", "scalar",  };
+entry.subName = "tan_fma_T4<float>";
+entry.accuracy_test<float>(tan_fma_T4<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_fma_T4<float>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float2x4", "simd",  };
+entry.subName = "tan_fma_T4<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_fma_T4<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<cr::simd::float2x4>(tan_fma_T4<cr::simd::float2x4>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float", "simd",  };
+entry.subName = "tan_fma_T4_float_simd";
+entry.accuracy_test<float>(tan_fma_T4_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_fma_T4_float_simd, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float", "scalar",  };
+entry.subName = "tan_T5<float>";
+entry.accuracy_test<float>(tan_T5<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_T5<float>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float2x4", "simd",  };
+entry.subName = "tan_T5<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_T5<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<cr::simd::float2x4>(tan_T5<cr::simd::float2x4>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float", "simd",  };
+entry.subName = "tan_T5_float_simd";
+entry.accuracy_test<float>(tan_T5_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_T5_float_simd, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float", "scalar",  };
+entry.subName = "tan_fma_T5<float>";
+entry.accuracy_test<float>(tan_fma_T5<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_fma_T5<float>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float2x4", "simd",  };
+entry.subName = "tan_fma_T5<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_fma_T5<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<cr::simd::float2x4>(tan_fma_T5<cr::simd::float2x4>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float", "simd",  };
+entry.subName = "tan_fma_T5_float_simd";
+entry.accuracy_test<float>(tan_fma_T5_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_fma_T5_float_simd, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float", "scalar",  };
+entry.subName = "tan_T6<float>";
+entry.accuracy_test<float>(tan_T6<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_T6<float>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float2x4", "simd",  };
+entry.subName = "tan_T6<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_T6<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<cr::simd::float2x4>(tan_T6<cr::simd::float2x4>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float", "simd",  };
+entry.subName = "tan_T6_float_simd";
+entry.accuracy_test<float>(tan_T6_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_T6_float_simd, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float", "scalar",  };
+entry.subName = "tan_fma_T6<float>";
+entry.accuracy_test<float>(tan_fma_T6<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_fma_T6<float>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float2x4", "simd",  };
+entry.subName = "tan_fma_T6<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_fma_T6<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<cr::simd::float2x4>(tan_fma_T6<cr::simd::float2x4>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float", "simd",  };
+entry.subName = "tan_fma_T6_float_simd";
+entry.accuracy_test<float>(tan_fma_T6_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_fma_T6_float_simd, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float", "scalar",  };
+entry.subName = "tan_T7<float>";
+entry.accuracy_test<float>(tan_T7<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_T7<float>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float2x4", "simd",  };
+entry.subName = "tan_T7<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_T7<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<cr::simd::float2x4>(tan_T7<cr::simd::float2x4>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float", "simd",  };
+entry.subName = "tan_T7_float_simd";
+entry.accuracy_test<float>(tan_T7_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_T7_float_simd, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float", "scalar",  };
+entry.subName = "tan_fma_T7<float>";
+entry.accuracy_test<float>(tan_fma_T7<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_fma_T7<float>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float2x4", "simd",  };
+entry.subName = "tan_fma_T7<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_fma_T7<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<cr::simd::float2x4>(tan_fma_T7<cr::simd::float2x4>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float", "simd",  };
+entry.subName = "tan_fma_T7_float_simd";
+entry.accuracy_test<float>(tan_fma_T7_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_fma_T7_float_simd, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float", "scalar",  };
+entry.subName = "tan_T8<float>";
+entry.accuracy_test<float>(tan_T8<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_T8<float>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float2x4", "simd",  };
+entry.subName = "tan_T8<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_T8<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<cr::simd::float2x4>(tan_T8<cr::simd::float2x4>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float", "simd",  };
+entry.subName = "tan_T8_float_simd";
+entry.accuracy_test<float>(tan_T8_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_T8_float_simd, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float", "scalar",  };
+entry.subName = "tan_fma_T8<float>";
+entry.accuracy_test<float>(tan_fma_T8<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_fma_T8<float>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float2x4", "simd",  };
+entry.subName = "tan_fma_T8<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_fma_T8<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<cr::simd::float2x4>(tan_fma_T8<cr::simd::float2x4>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float", "simd",  };
+entry.subName = "tan_fma_T8_float_simd";
+entry.accuracy_test<float>(tan_fma_T8_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_fma_T8_float_simd, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float", "scalar",  };
+entry.subName = "tan_T9<float>";
+entry.accuracy_test<float>(tan_T9<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_T9<float>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float2x4", "simd",  };
+entry.subName = "tan_T9<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_T9<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<cr::simd::float2x4>(tan_T9<cr::simd::float2x4>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "float", "simd",  };
+entry.subName = "tan_T9_float_simd";
+entry.accuracy_test<float>(tan_T9_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_T9_float_simd, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float", "scalar",  };
+entry.subName = "tan_fma_T9<float>";
+entry.accuracy_test<float>(tan_fma_T9<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_fma_T9<float>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float2x4", "simd",  };
+entry.subName = "tan_fma_T9<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_fma_T9<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<cr::simd::float2x4>(tan_fma_T9<cr::simd::float2x4>, M, -1.5f, 1.5f);
+}
+{
+auto& entry = testResult.entries.emplace_back();
+entry.tags = { "tan", "fma", "float", "simd",  };
+entry.subName = "tan_fma_T9_float_simd";
+entry.accuracy_test<float>(tan_fma_T9_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f, false);
+entry.time<float>(tan_fma_T9_float_simd, M, -1.5f, 1.5f);
+}
