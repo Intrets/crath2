@@ -17,7 +17,6 @@ return sin_unit1_quart_T4<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F sin_unit1_half_T4(in_t(F) x) {
-using math = ApproxContext;
 x = F(0.5f) - x;
 auto const x2 = x * x;
 auto const a2 = F(-26.154954478620255f);
@@ -83,7 +82,6 @@ return sin_unit2_quart_T4<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F sin_unit2_half_T4(in_t(F) x) {
-using math = ApproxContext;
 x = F(1.0f) - x;
 auto const x2 = x * x;
 auto const a2 = F(-3.269369309827532f);
@@ -149,7 +147,6 @@ return sin_quart_T4<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F sin_half_T4(in_t(F) x) {
-using math = ApproxContext;
 x = F(3.141592653589793f) - x;
 auto const x2 = x * x;
 auto const a2 = F(-0.1054421768707483f);
@@ -216,7 +213,6 @@ return sin_unit1_quart_T5<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F sin_unit1_half_T5(in_t(F) x) {
-using math = ApproxContext;
 x = F(0.5f) - x;
 auto const x2 = x * x;
 auto const a3 = F(32.441913673244855f);
@@ -286,7 +282,6 @@ return sin_unit2_quart_T5<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F sin_unit2_half_T5(in_t(F) x) {
-using math = ApproxContext;
 x = F(1.0f) - x;
 auto const x2 = x * x;
 auto const a3 = F(1.0138098022889017f);
@@ -356,7 +351,6 @@ return sin_quart_T5<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F sin_half_T5(in_t(F) x) {
-using math = ApproxContext;
 x = F(3.141592653589793f) - x;
 auto const x2 = x * x;
 auto const a3 = F(0.003312890812890813f);
@@ -427,7 +421,6 @@ return sin_unit1_quart_T6<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F sin_unit1_half_T6(in_t(F) x) {
-using math = ApproxContext;
 x = F(0.5f) - x;
 auto const x2 = x * x;
 auto const a3 = F(28.433704932550953f);
@@ -501,7 +494,6 @@ return sin_unit2_quart_T6<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F sin_unit2_half_T6(in_t(F) x) {
-using math = ApproxContext;
 x = F(1.0f) - x;
 auto const x2 = x * x;
 auto const a3 = F(0.8885532791422168f);
@@ -575,7 +567,6 @@ return sin_quart_T6<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F sin_half_T6(in_t(F) x) {
-using math = ApproxContext;
 x = F(3.141592653589793f) - x;
 auto const x2 = x * x;
 auto const a3 = F(0.002903582100496801f);
@@ -650,7 +641,6 @@ return sin_unit1_quart_T7<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F sin_unit1_half_T7(in_t(F) x) {
-using math = ApproxContext;
 x = F(0.5f) - x;
 auto const x2 = x * x;
 auto const a4 = F(-16.09512739111402f);
@@ -728,7 +718,6 @@ return sin_unit2_quart_T7<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F sin_unit2_half_T7(in_t(F) x) {
-using math = ApproxContext;
 x = F(1.0f) - x;
 auto const x2 = x * x;
 auto const a4 = F(-0.12574318274307827f);
@@ -806,7 +795,6 @@ return sin_quart_T7<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F sin_half_T7(in_t(F) x) {
-using math = ApproxContext;
 x = F(3.141592653589793f) - x;
 auto const x2 = x * x;
 auto const a4 = F(-4.163277313164616e-05f);
@@ -885,7 +873,6 @@ return sin_unit1_quart_T8<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F sin_unit1_half_T8(in_t(F) x) {
-using math = ApproxContext;
 x = F(0.5f) - x;
 auto const x2 = x * x;
 auto const a4 = F(-13.896097480429436f);
@@ -967,7 +954,6 @@ return sin_unit2_quart_T8<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F sin_unit2_half_T8(in_t(F) x) {
-using math = ApproxContext;
 x = F(1.0f) - x;
 auto const x2 = x * x;
 auto const a4 = F(-0.10856326156585497f);
@@ -1049,7 +1035,6 @@ return sin_quart_T8<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F sin_half_T8(in_t(F) x) {
-using math = ApproxContext;
 x = F(3.141592653589793f) - x;
 auto const x2 = x * x;
 auto const a4 = F(-3.594460980391885e-05f);
@@ -1126,7 +1111,6 @@ return cos_unit1_quart_T4<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F cos_unit1_half_T4(in_t(F) x) {
-using math = ApproxContext;
 x = F(0.5f) - x;
 auto const x2 = x * x;
 auto const a2 = F(-32.26354020491294f);
@@ -1190,7 +1174,6 @@ return cos_unit2_quart_T4<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F cos_unit2_half_T4(in_t(F) x) {
-using math = ApproxContext;
 x = F(1.0f) - x;
 auto const x2 = x * x;
 auto const a2 = F(-2.016471262807059f);
@@ -1254,7 +1237,6 @@ return cos_quart_T4<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F cos_half_T4(in_t(F) x) {
-using math = ApproxContext;
 x = F(3.141592653589793f) - x;
 auto const x2 = x * x;
 auto const a2 = F(-0.020701058201058203f);
@@ -1422,7 +1404,6 @@ return cos_unit1_quart_T6<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F cos_unit1_half_T6(in_t(F) x) {
-using math = ApproxContext;
 x = F(0.5f) - x;
 auto const x2 = x * x;
 auto const a3 = F(22.909813329588246f);
@@ -1494,7 +1475,6 @@ return cos_unit2_quart_T6<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F cos_unit2_half_T6(in_t(F) x) {
-using math = ApproxContext;
 x = F(1.0f) - x;
 auto const x2 = x * x;
 auto const a3 = F(0.35796583327481624f);
@@ -1566,7 +1546,6 @@ return cos_quart_T6<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F cos_half_T6(in_t(F) x) {
-using math = ApproxContext;
 x = F(3.141592653589793f) - x;
 auto const x2 = x * x;
 auto const a3 = F(0.0003723422685287092f);
@@ -1754,7 +1733,6 @@ return cos_unit1_quart_T8<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F cos_unit1_half_T8(in_t(F) x) {
-using math = ApproxContext;
 x = F(0.5f) - x;
 auto const x2 = x * x;
 auto const a4 = F(-8.31187662099933f);
@@ -1834,7 +1812,6 @@ return cos_unit2_quart_T8<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F cos_unit2_half_T8(in_t(F) x) {
-using math = ApproxContext;
 x = F(1.0f) - x;
 auto const x2 = x * x;
 auto const a4 = F(-0.03246826805077863f);
@@ -1914,7 +1891,6 @@ return cos_quart_T8<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F cos_half_T8(in_t(F) x) {
-using math = ApproxContext;
 x = F(3.141592653589793f) - x;
 auto const x2 = x * x;
 auto const a4 = F(-3.421843486182193e-06f);
@@ -2280,7 +2256,6 @@ return tanh_fma_T8<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F exp_T3(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a2 = F(0.00013020833333333333f);
 auto const b1 = F(0.00625f);
@@ -2316,7 +2291,6 @@ return exp_fma_T3<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F exp_T4(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a2 = F(0.00018601190476190475f);
 auto const b2 = F(2.3251488095238097e-06f);
@@ -2354,7 +2328,6 @@ return exp_fma_T4<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F exp_T5(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a3 = F(3.229373346560847e-08f);
 auto const b2 = F(3.875248015873016e-06f);
@@ -2394,7 +2367,6 @@ return exp_fma_T5<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F exp_T6(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a3 = F(6.165167297979798e-08f);
 auto const b3 = F(3.669742439273689e-10f);
@@ -2436,7 +2408,6 @@ return exp_fma_T6<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F exp_T7(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a4 = F(3.528598499301624e-12f);
 auto const b3 = F(7.904060638435639e-10f);
@@ -2480,7 +2451,6 @@ return exp_fma_T7<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F exp_T8(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a4 = F(8.468636398323898e-12f);
 auto const b4 = F(2.94049874941802e-14f);
@@ -2784,7 +2754,6 @@ return atan_fma_T8<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F log_T3(in_t(F) x) {
-using math = ApproxContext;
 x = x - F(1.0f);
 auto const a3 = F(0.18333333333333332f);
 auto const b3 = F(0.05f);
@@ -2818,7 +2787,6 @@ return log_fma_T3<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F log_T4(in_t(F) x) {
-using math = ApproxContext;
 x = x - F(1.0f);
 auto const a4 = F(0.05952380952380952f);
 auto const b4 = F(0.014285714285714285f);
@@ -2856,7 +2824,6 @@ return log_fma_T4<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F log_T5(in_t(F) x) {
-using math = ApproxContext;
 x = x - F(1.0f);
 auto const a5 = F(0.018121693121693122f);
 auto const b5 = F(0.003968253968253968f);
@@ -2898,7 +2865,6 @@ return log_fma_T5<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F log_T6(in_t(F) x) {
-using math = ApproxContext;
 x = x - F(1.0f);
 auto const a6 = F(0.005303030303030303f);
 auto const b6 = F(0.0010822510822510823f);
@@ -2944,7 +2910,6 @@ return log_fma_T6<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F log_T7(in_t(F) x) {
-using math = ApproxContext;
 x = x - F(1.0f);
 auto const a7 = F(0.001510989010989011f);
 auto const b7 = F(0.0002913752913752914f);
@@ -2994,7 +2959,6 @@ return log_fma_T7<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F log_T8(in_t(F) x) {
-using math = ApproxContext;
 x = x - F(1.0f);
 auto const a8 = F(0.00042235542235542236f);
 auto const b8 = F(7.77000777000777e-05f);
@@ -3048,7 +3012,6 @@ return log_fma_T8<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F log_T9(in_t(F) x) {
-using math = ApproxContext;
 x = x - F(1.0f);
 auto const a9 = F(0.00011637055754702813f);
 auto const b9 = F(2.0567667626491154e-05f);
@@ -3106,7 +3069,6 @@ return log_fma_T9<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F exp_special_T3(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a2 = F(0.02570115212202806f);
 auto const b1 = F(0.33633796273813665f);
@@ -3142,7 +3104,6 @@ return exp_special_fma_T3<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F exp_special_T4(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a2 = F(0.0367159316028971f);
 auto const b2 = F(0.006733525308264321f);
@@ -3180,7 +3141,6 @@ return exp_special_fma_T4<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F exp_special_T5(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a3 = F(0.00034302671209318625f);
 auto const b2 = F(0.01122254218044283f);
@@ -3220,7 +3180,6 @@ return exp_special_fma_T5<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F exp_special_T6(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a3 = F(0.0006548691776282478f);
 auto const b3 = F(5.719040869095471e-05f);
@@ -3262,7 +3221,6 @@ return exp_special_fma_T6<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F exp_special_T7(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a4 = F(2.0170088422897386e-06f);
 auto const b3 = F(0.00012317934192651592f);
@@ -3306,7 +3264,6 @@ return exp_special_fma_T7<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F exp_special_T8(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a4 = F(4.840820565732429e-06f);
 auto const b4 = F(2.466064330519657e-07f);
@@ -3352,7 +3309,6 @@ return exp_special_fma_T8<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F exp_special_T9(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a5 = F(6.651191597484285e-09f);
 auto const b4 = F(6.527952791657299e-07f);
@@ -3400,7 +3356,6 @@ return exp_special_fma_T9<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F tan_T3(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a2 = F(-0.06666666666666667f);
 auto const b1 = F(-0.4f);
@@ -3428,7 +3383,6 @@ return tan_fma_T3<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F tan_T4(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a2 = F(-0.09523809523809523f);
 auto const b2 = F(0.009523809523809525f);
@@ -3458,7 +3412,6 @@ return tan_fma_T4<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F tan_T5(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a3 = F(0.0010582010582010583f);
 auto const b2 = F(0.015873015873015872f);
@@ -3490,7 +3443,6 @@ return tan_fma_T5<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F tan_T6(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a3 = F(0.00202020202020202f);
 auto const b3 = F(-9.62000962000962e-05f);
@@ -3524,7 +3476,6 @@ return tan_fma_T6<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F tan_T7(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a4 = F(-7.4000074000074e-06f);
 auto const b3 = F(-0.0002072002072002072f);
@@ -3560,7 +3511,6 @@ return tan_fma_T7<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F tan_T8(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a4 = F(-1.776001776001776e-05f);
 auto const b4 = F(4.9333382666716e-07f);
@@ -3598,7 +3548,6 @@ return tan_fma_T8<cr::simd::float1x4>(x)[0];
 }
 template <class F>
 inline constexpr static F tan_T9(in_t(F) x) {
-using math = ApproxContext;
 auto const x2 = x * x;
 auto const a5 = F(2.901963686277412e-08f);
 auto const b4 = F(1.3058836588248353e-06f);

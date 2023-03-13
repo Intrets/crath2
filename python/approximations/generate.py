@@ -2,7 +2,7 @@ import rat_pade
 import taylor
 from expression import *
 from math import pi, log
-from typing import NamedTuple, Optional
+from typing import NamedTuple, Optional, List
 
 
 def return_normal(out, a):
@@ -136,17 +136,6 @@ class x_double_abs:
         out(f'x = math::abs(math::abs(x - quarter) - F({max_x * 0.5}f)) - quarter;')
 
 
-def add_function(taylor_series, out, fma_type, name, N, x_type=x_normal, return_type=return_normal):
-    out('template <class F>')
-    out(f'inline constexpr static F {name}_T{N}(in_t(F) x) {{')
-    out('using math = ApproxContext;')
-
-    x_type.run(out, 1.0)
-
-    make(taylor_series, N, fma_type=fma_type, out=out, return_type=return_type)
-    out('}')
-
-
 class test_function_info:
     def __init__(self, name, reference_function, min_x, max_x, ref_min_x, ref_max_x):
         self.name = name
@@ -199,11 +188,21 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
 
     out('template <class F>')
     out(f'inline constexpr static F {name_full}(in_t(F) x) {{')
-    out('using math = ApproxContext;')
 
-    x_type.run(out, max_x)
+    buffer : List[str] = []
 
-    make(taylor_series, N, fma_type=fma_type, out=out, return_type=return_type)
+    x_type.run(out=lambda x: buffer.append(x), max_x=max_x)
+
+    make(taylor_series, N, fma_type=fma_type, out=lambda x: buffer.append(x), return_type=return_type)
+
+    for line in buffer:
+        if 'math' in line:
+            out('using math = ApproxContext;')
+            break
+
+    for line in buffer:
+        out(line)
+
     out('}')
 
     out(f'inline static float {name_full}_float_simd(float x) {{')

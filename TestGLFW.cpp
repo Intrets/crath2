@@ -396,9 +396,9 @@ int main() {
 	using namespace cr;
 	TestResult testResult{};
 
-	// auto constexpr M = 6'000'000;
+	 auto constexpr M = 6'000'000;
 	// auto constexpr M = 1'000'000;
-	auto constexpr M = 1'000;
+	//auto constexpr M = 1'000;
 
 #include "function_testing.h"
 

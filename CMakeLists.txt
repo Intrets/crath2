@@ -35,3 +35,9 @@ target_link_libraries(${MODULE_NAME}_glfw_test
 	font_resources
 	GLFW3
 )
+
+target_default_compiler_options(
+	TARGETS 
+		${MODULE_NAME}_glfw_test
+		crath
+)
