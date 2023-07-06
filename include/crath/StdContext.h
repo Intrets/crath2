@@ -4,6 +4,8 @@
 #include <concepts>
 #include <cstdint>
 #include <numbers>
+#include <algorithm>
+#include <type_traits>
 
 #include <immintrin.h>
 
