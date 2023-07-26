@@ -432,7 +432,7 @@ def add_special_exp(N, out):
             out=out,
             fma_type=fma_type,
             name="exp_special",
-            ref=f"[](float x) {{ return {base} * std::powf({2 ** (1 / 12)}, x * 127); }}",
+            ref=f"[](float x) {{ return {base}f * std::powf({2 ** (1 / 12)}f, x * 127.0f); }}",
             N=N,
             x_type=x_normal,
             return_type=special_exp_return,

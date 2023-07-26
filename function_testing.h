@@ -3404,294 +3404,294 @@ entry.time<float>(log_fma_T9_float_simd, M, 0.1f, 10.0f);
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float", "scalar",  };
 entry.subName = "exp_special_T3<float>";
-entry.accuracy_test<float>(exp_special_T3<float>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_T3<float>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_T3<float>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float2x4", "simd",  };
 entry.subName = "exp_special_T3<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(exp_special_T3<cr::simd::float2x4>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<cr::simd::float2x4>(exp_special_T3<cr::simd::float2x4>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<cr::simd::float2x4>(exp_special_T3<cr::simd::float2x4>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float", "simd",  };
 entry.subName = "exp_special_T3_float_simd";
-entry.accuracy_test<float>(exp_special_T3_float_simd, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_T3_float_simd, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_T3_float_simd, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float", "scalar",  };
 entry.subName = "exp_special_fma_T3<float>";
-entry.accuracy_test<float>(exp_special_fma_T3<float>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_fma_T3<float>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_fma_T3<float>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float2x4", "simd",  };
 entry.subName = "exp_special_fma_T3<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T3<cr::simd::float2x4>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T3<cr::simd::float2x4>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<cr::simd::float2x4>(exp_special_fma_T3<cr::simd::float2x4>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float", "simd",  };
 entry.subName = "exp_special_fma_T3_float_simd";
-entry.accuracy_test<float>(exp_special_fma_T3_float_simd, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_fma_T3_float_simd, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_fma_T3_float_simd, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float", "scalar",  };
 entry.subName = "exp_special_T4<float>";
-entry.accuracy_test<float>(exp_special_T4<float>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_T4<float>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_T4<float>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float2x4", "simd",  };
 entry.subName = "exp_special_T4<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(exp_special_T4<cr::simd::float2x4>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<cr::simd::float2x4>(exp_special_T4<cr::simd::float2x4>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<cr::simd::float2x4>(exp_special_T4<cr::simd::float2x4>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float", "simd",  };
 entry.subName = "exp_special_T4_float_simd";
-entry.accuracy_test<float>(exp_special_T4_float_simd, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_T4_float_simd, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_T4_float_simd, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float", "scalar",  };
 entry.subName = "exp_special_fma_T4<float>";
-entry.accuracy_test<float>(exp_special_fma_T4<float>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_fma_T4<float>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_fma_T4<float>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float2x4", "simd",  };
 entry.subName = "exp_special_fma_T4<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T4<cr::simd::float2x4>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T4<cr::simd::float2x4>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<cr::simd::float2x4>(exp_special_fma_T4<cr::simd::float2x4>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float", "simd",  };
 entry.subName = "exp_special_fma_T4_float_simd";
-entry.accuracy_test<float>(exp_special_fma_T4_float_simd, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_fma_T4_float_simd, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_fma_T4_float_simd, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float", "scalar",  };
 entry.subName = "exp_special_T5<float>";
-entry.accuracy_test<float>(exp_special_T5<float>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_T5<float>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_T5<float>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float2x4", "simd",  };
 entry.subName = "exp_special_T5<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(exp_special_T5<cr::simd::float2x4>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<cr::simd::float2x4>(exp_special_T5<cr::simd::float2x4>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<cr::simd::float2x4>(exp_special_T5<cr::simd::float2x4>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float", "simd",  };
 entry.subName = "exp_special_T5_float_simd";
-entry.accuracy_test<float>(exp_special_T5_float_simd, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_T5_float_simd, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_T5_float_simd, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float", "scalar",  };
 entry.subName = "exp_special_fma_T5<float>";
-entry.accuracy_test<float>(exp_special_fma_T5<float>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_fma_T5<float>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_fma_T5<float>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float2x4", "simd",  };
 entry.subName = "exp_special_fma_T5<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T5<cr::simd::float2x4>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T5<cr::simd::float2x4>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<cr::simd::float2x4>(exp_special_fma_T5<cr::simd::float2x4>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float", "simd",  };
 entry.subName = "exp_special_fma_T5_float_simd";
-entry.accuracy_test<float>(exp_special_fma_T5_float_simd, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_fma_T5_float_simd, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_fma_T5_float_simd, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float", "scalar",  };
 entry.subName = "exp_special_T6<float>";
-entry.accuracy_test<float>(exp_special_T6<float>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_T6<float>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_T6<float>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float2x4", "simd",  };
 entry.subName = "exp_special_T6<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(exp_special_T6<cr::simd::float2x4>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<cr::simd::float2x4>(exp_special_T6<cr::simd::float2x4>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<cr::simd::float2x4>(exp_special_T6<cr::simd::float2x4>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float", "simd",  };
 entry.subName = "exp_special_T6_float_simd";
-entry.accuracy_test<float>(exp_special_T6_float_simd, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_T6_float_simd, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_T6_float_simd, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float", "scalar",  };
 entry.subName = "exp_special_fma_T6<float>";
-entry.accuracy_test<float>(exp_special_fma_T6<float>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_fma_T6<float>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_fma_T6<float>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float2x4", "simd",  };
 entry.subName = "exp_special_fma_T6<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T6<cr::simd::float2x4>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T6<cr::simd::float2x4>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<cr::simd::float2x4>(exp_special_fma_T6<cr::simd::float2x4>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float", "simd",  };
 entry.subName = "exp_special_fma_T6_float_simd";
-entry.accuracy_test<float>(exp_special_fma_T6_float_simd, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_fma_T6_float_simd, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_fma_T6_float_simd, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float", "scalar",  };
 entry.subName = "exp_special_T7<float>";
-entry.accuracy_test<float>(exp_special_T7<float>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_T7<float>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_T7<float>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float2x4", "simd",  };
 entry.subName = "exp_special_T7<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(exp_special_T7<cr::simd::float2x4>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<cr::simd::float2x4>(exp_special_T7<cr::simd::float2x4>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<cr::simd::float2x4>(exp_special_T7<cr::simd::float2x4>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float", "simd",  };
 entry.subName = "exp_special_T7_float_simd";
-entry.accuracy_test<float>(exp_special_T7_float_simd, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_T7_float_simd, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_T7_float_simd, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float", "scalar",  };
 entry.subName = "exp_special_fma_T7<float>";
-entry.accuracy_test<float>(exp_special_fma_T7<float>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_fma_T7<float>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_fma_T7<float>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float2x4", "simd",  };
 entry.subName = "exp_special_fma_T7<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T7<cr::simd::float2x4>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T7<cr::simd::float2x4>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<cr::simd::float2x4>(exp_special_fma_T7<cr::simd::float2x4>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float", "simd",  };
 entry.subName = "exp_special_fma_T7_float_simd";
-entry.accuracy_test<float>(exp_special_fma_T7_float_simd, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_fma_T7_float_simd, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_fma_T7_float_simd, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float", "scalar",  };
 entry.subName = "exp_special_T8<float>";
-entry.accuracy_test<float>(exp_special_T8<float>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_T8<float>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_T8<float>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float2x4", "simd",  };
 entry.subName = "exp_special_T8<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(exp_special_T8<cr::simd::float2x4>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<cr::simd::float2x4>(exp_special_T8<cr::simd::float2x4>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<cr::simd::float2x4>(exp_special_T8<cr::simd::float2x4>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float", "simd",  };
 entry.subName = "exp_special_T8_float_simd";
-entry.accuracy_test<float>(exp_special_T8_float_simd, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_T8_float_simd, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_T8_float_simd, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float", "scalar",  };
 entry.subName = "exp_special_fma_T8<float>";
-entry.accuracy_test<float>(exp_special_fma_T8<float>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_fma_T8<float>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_fma_T8<float>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float2x4", "simd",  };
 entry.subName = "exp_special_fma_T8<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T8<cr::simd::float2x4>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T8<cr::simd::float2x4>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<cr::simd::float2x4>(exp_special_fma_T8<cr::simd::float2x4>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float", "simd",  };
 entry.subName = "exp_special_fma_T8_float_simd";
-entry.accuracy_test<float>(exp_special_fma_T8_float_simd, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_fma_T8_float_simd, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_fma_T8_float_simd, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float", "scalar",  };
 entry.subName = "exp_special_T9<float>";
-entry.accuracy_test<float>(exp_special_T9<float>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_T9<float>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_T9<float>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float2x4", "simd",  };
 entry.subName = "exp_special_T9<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(exp_special_T9<cr::simd::float2x4>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<cr::simd::float2x4>(exp_special_T9<cr::simd::float2x4>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<cr::simd::float2x4>(exp_special_T9<cr::simd::float2x4>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "float", "simd",  };
 entry.subName = "exp_special_T9_float_simd";
-entry.accuracy_test<float>(exp_special_T9_float_simd, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_T9_float_simd, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_T9_float_simd, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float", "scalar",  };
 entry.subName = "exp_special_fma_T9<float>";
-entry.accuracy_test<float>(exp_special_fma_T9<float>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_fma_T9<float>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_fma_T9<float>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float2x4", "simd",  };
 entry.subName = "exp_special_fma_T9<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T9<cr::simd::float2x4>, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<cr::simd::float2x4>(exp_special_fma_T9<cr::simd::float2x4>, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<cr::simd::float2x4>(exp_special_fma_T9<cr::simd::float2x4>, M, 0.0f, 1.0f);
 }
 {
 auto& entry = testResult.entries.emplace_back();
 entry.tags = { "exp_special", "fma", "float", "simd",  };
 entry.subName = "exp_special_fma_T9_float_simd";
-entry.accuracy_test<float>(exp_special_fma_T9_float_simd, [](float x) { return 8.175798915643707 * std::powf(1.0594630943592953, x * 127); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
+entry.accuracy_test<float>(exp_special_fma_T9_float_simd, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, 0.0f, 1.0f, 0.0f, 1.0f, true);
 entry.time<float>(exp_special_fma_T9_float_simd, M, 0.0f, 1.0f);
 }
 {
