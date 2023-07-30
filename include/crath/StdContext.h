@@ -1,10 +1,10 @@
 #pragma once
 
+#include <algorithm>
 #include <bit>
 #include <concepts>
 #include <cstdint>
 #include <numbers>
-#include <algorithm>
 #include <type_traits>
 
 #include <immintrin.h>
@@ -28,6 +28,11 @@ namespace cr
 		inline static constexpr float four_inv_pi = 4.0f * inv_pi;
 		inline static constexpr float half_sqrt_two = 0.7071067811865476f;
 		inline static constexpr float sqrt_two = 1.4142135623730951f;
+
+		template<class F>
+		inline static constexpr F bitSign(){
+			return std::bit_cast<float>(1U << 31);
+		};
 
 		inline constexpr static float sqrt0(float x) {
 			auto const i0 = std::bit_cast<uint32_t>(x);
@@ -432,6 +437,26 @@ namespace cr
 		}
 
 		template<class F>
+		inline constexpr static F bitwiseOr(in_t(F) f1, in_t(F) f2) {
+			if constexpr (std::same_as<F, float>) {
+				return std::bit_cast<float>(std::bit_cast<uint32_t>(f1) | std::bit_cast<uint32_t>(f2));
+			}
+			else {
+				return f1 | f2;
+			}
+		}
+
+		template<class F>
+		inline constexpr static F flipSign(in_t(F) f) {
+			if constexpr (std::same_as<F, float>) {
+				return std::bit_cast<float>(std::bit_cast<uint32_t>(f) ^ (1U << 31));
+			}
+			else {
+				return f ^ bitSign<F>();
+			}
+		}
+
+		template<class F>
 		inline constexpr static F floor(in_t(F) f) {
 			if constexpr (std::same_as<F, float>) {
 				return std::floor(f);
@@ -463,7 +488,7 @@ namespace cr
 
 		template<class F, class B>
 		inline constexpr static F blend(in_t(F) f1, in_t(F) f2, in_t(B) b) {
-			if constexpr (std::same_as<F, float>) {
+			if constexpr (std::same_as<F, float> || std::same_as<F, bool>) {
 				return b ? f2 : f1;
 			}
 			else {

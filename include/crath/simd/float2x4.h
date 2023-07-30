@@ -197,6 +197,10 @@ namespace cr::simd
 			return { _mm_and_ps(this->f1, m.f1), _mm_and_ps(this->f2, m.f2) };
 		}
 
+		inline float2x4 operator!() const {
+			return *this == 0.0f;
+		}
+
 		// Other
 
 		inline float2x4 signbit() const {
