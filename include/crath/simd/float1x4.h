@@ -7,6 +7,8 @@
 
 namespace cr::simd
 {
+	struct int1x4;
+
 	struct float1x4
 	{
 		__m128 f1{};
@@ -203,5 +205,7 @@ namespace cr::simd
 		inline float1x4 round() const {
 			return { _mm_round_ps(this->f1, _MM_ROUND_NEAREST | _MM_FROUND_NO_EXC) };
 		}
+
+		int1x4 bitCastInt() const;
 	};
 }

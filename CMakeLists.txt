@@ -14,6 +14,8 @@ make_module(
 		simd/float2x4
 		simd/float3x4
 		simd/float1x8
+		simd/int1x4
+		simd/int2x4
 		ParameterTyping
 		Functions
 	CXX_STANDARD 20

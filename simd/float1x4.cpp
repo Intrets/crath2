@@ -1,9 +1,12 @@
-// Crack-Synth - A modular software synth
-// Copyright (C) 2022 intrets
+#include "crath/simd/float1x4.h"
 
-#include "simd/float2x4.h"
+#include "crath/simd/int1x4.h"
 
-namespace crack::simd
+namespace cr::simd
 {
-
+	int1x4 float1x4::bitCastInt() const {
+		return int1x4(
+		    _mm_castps_si128(this->f1)
+		);
+	}
 }

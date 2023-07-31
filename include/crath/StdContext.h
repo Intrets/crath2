@@ -11,7 +11,9 @@
 
 #include <tepp/literal.h>
 
-#include "simd/float1x4.h"
+#include "crath/simd/float1x4.h"
+#include "crath/simd/int1x4.h"
+#include "crath/simd/int2x4.h"
 
 #include "crath/Functions.h"
 
@@ -30,15 +32,26 @@ namespace cr
 		inline static constexpr float sqrt_two = 1.4142135623730951f;
 
 		template<class F>
-		inline static constexpr F bitSign(){
+		inline static constexpr F bitSign() {
 			return std::bit_cast<float>(1U << 31);
 		};
 
-		inline constexpr static float sqrt0(float x) {
-			auto const i0 = std::bit_cast<uint32_t>(x);
-			auto const i1 = (1 << 29) + (i0 >> 1) - (1 << 22) - 0x4B0D2;
+		template<class F>
+		inline constexpr static F sqrt0(in_t(F) x) {
+			auto constexpr c = (1 << 29) - (1 << 22) - 0x4B0D2;
+			if constexpr (std::same_as<F, float>) {
+				auto const i0 = std::bit_cast<uint32_t>(x);
+				auto const i1 = c + (i0 >> 1);
 
-			return std::bit_cast<float>(i1);
+				return std::bit_cast<float>(i1);
+			}
+			else {
+				auto const i0 = x.bitCastInt();
+				using int_type = std::remove_cvref_t<decltype(i0)>;
+				auto const i1 = int_type(c) + (i0 >> 1);
+
+				return i1.bitCastFloat();
+			}
 		}
 
 		template<class F>
