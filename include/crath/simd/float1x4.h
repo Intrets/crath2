@@ -12,6 +12,7 @@ namespace cr::simd
 	struct float1x4
 	{
 		__m128 f1{};
+		static constexpr size_t size = 4;
 
 		inline float1x4() = default;
 		inline float1x4(float s)

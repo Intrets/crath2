@@ -13,6 +13,7 @@ namespace cr::simd
 	{
 		__m128 f1{};
 		__m128 f2{};
+		static constexpr size_t size = 8;
 
 		inline float2x4() = default;
 		inline float2x4(float s)
