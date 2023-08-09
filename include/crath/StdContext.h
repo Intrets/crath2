@@ -511,11 +511,7 @@ namespace cr
 
 		template<class F, class B>
 		inline constexpr static F ifElse(in_t(B) b, in_t(F) f1, in_t(F) f2) {
-			if constexpr (std::same_as<F, float>) {
-				return ifElse(cr::simd::float1x4(b), cr::simd::float1x4(f1), cr::simd::float1x4(f2))[0];
-
-			}
-			else if constexpr (std::same_as<F, float> || std::same_as<F, bool>) {
+			if constexpr (std::same_as<F, float> || std::same_as<F, bool>) {
 				return b ? f1 : f2;
 			}
 			else {
