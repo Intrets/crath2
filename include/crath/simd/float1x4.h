@@ -27,7 +27,11 @@ namespace cr::simd
 		    : f1(_mm_set_ps(a3, a2, a1, a0)) {
 		}
 
-		inline float operator[](size_t i) const {
+		inline float const& operator[](size_t i) const {
+			return const_cast<float1x4*>(this)->operator[](i);
+		}
+
+		inline float& operator[](size_t i) {
 #if defined(COMPILER_MSVC)
 			return this->f1.m128_f32[i];
 #elif defined(COMPILER_CLANGCL)

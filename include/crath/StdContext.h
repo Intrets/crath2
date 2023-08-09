@@ -509,6 +509,20 @@ namespace cr
 			}
 		}
 
+		template<class F, class B>
+		inline constexpr static F ifElse(in_t(B) b, in_t(F) f1, in_t(F) f2) {
+			if constexpr (std::same_as<F, float>) {
+				return ifElse(cr::simd::float1x4(b), cr::simd::float1x4(f1), cr::simd::float1x4(f2))[0];
+
+			}
+			else if constexpr (std::same_as<F, float> || std::same_as<F, bool>) {
+				return b ? f1 : f2;
+			}
+			else {
+				return F::blend(f2, f1, b);
+			}
+		}
+
 		template<class F>
 		inline constexpr static F smoothstep(in_t(F) lower, in_t(F) upper, in_t(F) value) {
 			auto const v = clamp((value - lower) / (upper - lower), 0.0f, 1.0f);
