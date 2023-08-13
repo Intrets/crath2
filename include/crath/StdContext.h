@@ -491,7 +491,7 @@ namespace cr
 
 		template<class F>
 		inline constexpr static F mix(in_t(F) f1, in_t(F) f2, in_t(F) s) {
-			return f1 * (F(1.0f) - s) + f2 * s;
+			return f1 + (f2 - f1) * s;
 		}
 
 		template<class F>
