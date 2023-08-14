@@ -20,6 +20,9 @@ namespace cr::simd
 		inline int1x4(int32_t i)
 		    : i1(_mm_set1_epi32(i)) {
 		}
+		inline int1x4(uint32_t i)
+		    : i1(_mm_set1_epi32(std::bit_cast<int32_t>(i))) {
+		}
 
 		inline int1x4 operator+(in_t(int1x4) a) {
 			return {
@@ -33,10 +36,17 @@ namespace cr::simd
 			};
 		}
 
+		inline int1x4 operator*(in_t(int1x4) a) {
+			return {
+				_mm_mullo_epi32(this->i1, a.i1)
+			};
+		}
+
 		inline int1x4 operator>>(int shift) const {
 			return { _mm_srli_epi32(this->i1, shift) };
 		}
 
 		float1x4 bitCastFloat() const;
+		float1x4 castFloat() const;
 	};
 }
