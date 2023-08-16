@@ -263,13 +263,15 @@ namespace cr
 						return { div, f - m.value * div };
 					}
 					else {
-						auto div = std::floor(f / m.value);
+						auto constexpr recip_m = 1.0f / m.value;
+						auto div = std::floor(f * recip_m);
 
 						return { div, f - m.value * div };
 					}
 				}
 				else {
-					auto div = (f / F(m.value)).floor();
+					auto constexpr recip_m = 1.0f / m.value;
+					auto div = (f * F(recip_m)).floor();
 
 					return { div, f - F(m.value) * div };
 				}
@@ -302,7 +304,8 @@ namespace cr
 					}
 				}
 				else {
-					return f - F(m.value) * (f / F(m.value)).floor();
+					auto constexpr recip_m = 1.0f / m.value;
+					return f - F(m.value) * (f * F(recip_m)).floor();
 				}
 			}
 		}
