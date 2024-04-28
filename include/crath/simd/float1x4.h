@@ -4,6 +4,7 @@
 #include <immintrin.h>
 
 #include "crath/ParameterTyping.h"
+#include "crath/simd/aligned_load_hint.h"
 
 namespace cr::simd
 {
@@ -20,6 +21,9 @@ namespace cr::simd
 		}
 		inline float1x4(float const* ptr)
 		    : f1(_mm_loadu_ps(ptr)) {
+		}
+		inline float1x4(float const* ptr, aligned_hint_t)
+		    : f1(_mm_load_ps(ptr)) {
 		}
 		inline float1x4(__m128 f1_)
 		    : f1(f1_) {
@@ -44,6 +48,10 @@ namespace cr::simd
 
 		inline void write(float& s) const {
 			_mm_storeu_ps(&s, this->f1);
+		}
+
+		inline void write(float& s, aligned_hint_t) const {
+			_mm_store_ps(&s, this->f1);
 		}
 
 		// Comparing functions

@@ -4,6 +4,7 @@
 #include <immintrin.h>
 
 #include "crath/ParameterTyping.h"
+#include "crath/simd/aligned_load_hint.h"
 
 namespace cr::simd
 {
@@ -24,6 +25,11 @@ namespace cr::simd
 		    : f1(_mm_loadu_ps(ptr)),
 		      f2(_mm_loadu_ps(ptr + 4)),
 		      f3(_mm_loadu_ps(ptr + 8)) {
+		}
+		inline float3x4(float const* ptr, aligned_hint_t)
+		    : f1(_mm_load_ps(ptr)),
+		      f2(_mm_load_ps(ptr + 4)),
+		      f3(_mm_load_ps(ptr + 8)) {
 		}
 		inline float3x4(__m128 f1_, __m128 f2_, __m128 f3_)
 		    : f1(f1_),
@@ -72,6 +78,12 @@ namespace cr::simd
 			_mm_storeu_ps(&s + 8, this->f3);
 		}
 
+		inline void write(float& s, aligned_hint_t) const {
+			_mm_store_ps(&s, this->f1);
+			_mm_store_ps(&s + 4, this->f2);
+			_mm_store_ps(&s + 8, this->f3);
+		}
+
 		// Comparing functions
 
 		static inline float3x4 clamp(in_t(float3x4) f, in_t(float3x4) min, in_t(float3x4) max) {
@@ -99,30 +111,30 @@ namespace cr::simd
 		}
 
 		inline float3x4 operator>(in_t(float3x4) a) const {
-			return { _mm_cmpgt_ps(this->f1, a.f1), _mm_cmpgt_ps(this->f2, a.f2) , _mm_cmpgt_ps(this->f3, a.f3) };
+			return { _mm_cmpgt_ps(this->f1, a.f1), _mm_cmpgt_ps(this->f2, a.f2), _mm_cmpgt_ps(this->f3, a.f3) };
 		}
 
 		inline float3x4 operator>=(in_t(float3x4) a) const {
-			return { _mm_cmpnlt_ps(this->f1, a.f1), _mm_cmpnlt_ps(this->f2, a.f2) , _mm_cmpnlt_ps(this->f3, a.f3) };
+			return { _mm_cmpnlt_ps(this->f1, a.f1), _mm_cmpnlt_ps(this->f2, a.f2), _mm_cmpnlt_ps(this->f3, a.f3) };
 		}
 
 		inline float3x4 operator<(in_t(float3x4) a) const {
-			return { _mm_cmplt_ps(this->f1, a.f1), _mm_cmplt_ps(this->f2, a.f2) , _mm_cmplt_ps(this->f3, a.f3) };
+			return { _mm_cmplt_ps(this->f1, a.f1), _mm_cmplt_ps(this->f2, a.f2), _mm_cmplt_ps(this->f3, a.f3) };
 		}
 
 		inline float3x4 operator<=(in_t(float3x4) a) const {
-			return { _mm_cmpngt_ps(this->f1, a.f1), _mm_cmpngt_ps(this->f2, a.f2) , _mm_cmpngt_ps(this->f3, a.f3) };
+			return { _mm_cmpngt_ps(this->f1, a.f1), _mm_cmpngt_ps(this->f2, a.f2), _mm_cmpngt_ps(this->f3, a.f3) };
 		}
 
 		// Boolean
 
 		// a.and_not(b) => a && !b
 		inline float3x4 and_not(in_t(float3x4) other) const {
-			return { _mm_andnot_ps(other.f1, this->f1), _mm_andnot_ps(other.f2, this->f2) , _mm_andnot_ps(other.f3, this->f3) };
+			return { _mm_andnot_ps(other.f1, this->f1), _mm_andnot_ps(other.f2, this->f2), _mm_andnot_ps(other.f3, this->f3) };
 		}
 
 		inline float3x4 operator&&(in_t(float3x4) other) const {
-			return { _mm_and_ps(other.f1, this->f1), _mm_and_ps(other.f2, this->f2) , _mm_and_ps(other.f3, this->f3) };
+			return { _mm_and_ps(other.f1, this->f1), _mm_and_ps(other.f2, this->f2), _mm_and_ps(other.f3, this->f3) };
 		}
 
 		// Arithmetic
@@ -156,19 +168,19 @@ namespace cr::simd
 		}
 
 		inline float3x4 operator*(in_t(float3x4) other) const {
-			return { _mm_mul_ps(this->f1, other.f1), _mm_mul_ps(this->f2, other.f2) , _mm_mul_ps(this->f3, other.f3) };
+			return { _mm_mul_ps(this->f1, other.f1), _mm_mul_ps(this->f2, other.f2), _mm_mul_ps(this->f3, other.f3) };
 		}
 
 		inline float3x4 operator/(in_t(float3x4) other) const {
-			return { _mm_div_ps(this->f1, other.f1), _mm_div_ps(this->f2, other.f2) , _mm_div_ps(this->f3, other.f3) };
+			return { _mm_div_ps(this->f1, other.f1), _mm_div_ps(this->f2, other.f2), _mm_div_ps(this->f3, other.f3) };
 		}
 
 		inline float3x4 operator+(in_t(float3x4) other) const {
-			return { _mm_add_ps(this->f1, other.f1), _mm_add_ps(this->f2, other.f2) , _mm_add_ps(this->f3, other.f3) };
+			return { _mm_add_ps(this->f1, other.f1), _mm_add_ps(this->f2, other.f2), _mm_add_ps(this->f3, other.f3) };
 		}
 
 		inline float3x4 operator-(in_t(float3x4) other) const {
-			return { _mm_sub_ps(this->f1, other.f1), _mm_sub_ps(this->f2, other.f2) , _mm_sub_ps(this->f3, other.f3) };
+			return { _mm_sub_ps(this->f1, other.f1), _mm_sub_ps(this->f2, other.f2), _mm_sub_ps(this->f3, other.f3) };
 		}
 
 		inline float3x4 operator-() const {
@@ -176,7 +188,7 @@ namespace cr::simd
 		}
 
 		static inline float3x4 fmac(in_t(float3x4) a, in_t(float3x4) b, in_t(float3x4) c) {
-			return { _mm_fmadd_ps(a.f1, b.f1, c.f1), _mm_fmadd_ps(a.f2, b.f2, c.f2) , _mm_fmadd_ps(a.f3, b.f3, c.f3) };
+			return { _mm_fmadd_ps(a.f1, b.f1, c.f1), _mm_fmadd_ps(a.f2, b.f2, c.f2), _mm_fmadd_ps(a.f3, b.f3, c.f3) };
 		}
 
 		inline float3x4& fma(in_t(float3x4) mult, in_t(float3x4) add) {
@@ -196,7 +208,7 @@ namespace cr::simd
 		}
 
 		inline float3x4 operator^(in_t(float3x4) m) const {
-			return { _mm_xor_ps(this->f1, m.f1), _mm_xor_ps(this->f2, m.f2) , _mm_xor_ps(this->f3, m.f3) };
+			return { _mm_xor_ps(this->f1, m.f1), _mm_xor_ps(this->f2, m.f2), _mm_xor_ps(this->f3, m.f3) };
 		}
 
 		inline float3x4& operator|=(in_t(float3x4) other) {
@@ -207,7 +219,7 @@ namespace cr::simd
 		}
 
 		inline float3x4 operator|(in_t(float3x4) m) const {
-			return { _mm_or_ps(this->f1, m.f1), _mm_or_ps(this->f2, m.f2) , _mm_or_ps(this->f3, m.f3) };
+			return { _mm_or_ps(this->f1, m.f1), _mm_or_ps(this->f2, m.f2), _mm_or_ps(this->f3, m.f3) };
 		}
 
 		inline float3x4& operator&=(in_t(float3x4) other) {
@@ -218,7 +230,7 @@ namespace cr::simd
 		}
 
 		inline float3x4 operator&(in_t(float3x4) m) const {
-			return { _mm_and_ps(this->f1, m.f1), _mm_and_ps(this->f2, m.f2) , _mm_and_ps(this->f3, m.f3) };
+			return { _mm_and_ps(this->f1, m.f1), _mm_and_ps(this->f2, m.f2), _mm_and_ps(this->f3, m.f3) };
 		}
 
 		// Other
@@ -238,16 +250,15 @@ namespace cr::simd
 		}
 
 		inline float3x4 recip() const {
-			return { _mm_rcp_ps(this->f1), _mm_rcp_ps(this->f2) , _mm_rcp_ps(this->f3) };
+			return { _mm_rcp_ps(this->f1), _mm_rcp_ps(this->f2), _mm_rcp_ps(this->f3) };
 		}
 
 		inline float3x4 floor() const {
-			return { _mm_floor_ps(this->f1), _mm_floor_ps(this->f2) , _mm_floor_ps(this->f3) };
+			return { _mm_floor_ps(this->f1), _mm_floor_ps(this->f2), _mm_floor_ps(this->f3) };
 		}
 
 		inline float3x4 round() const {
-			return { _mm_round_ps(this->f1, _MM_ROUND_NEAREST | _MM_FROUND_NO_EXC), _mm_round_ps(this->f2, _MM_ROUND_NEAREST | _MM_FROUND_NO_EXC) , _mm_round_ps(this->f3, _MM_ROUND_NEAREST | _MM_FROUND_NO_EXC) };
+			return { _mm_round_ps(this->f1, _MM_ROUND_NEAREST | _MM_FROUND_NO_EXC), _mm_round_ps(this->f2, _MM_ROUND_NEAREST | _MM_FROUND_NO_EXC), _mm_round_ps(this->f3, _MM_ROUND_NEAREST | _MM_FROUND_NO_EXC) };
 		}
 	};
-
 }
