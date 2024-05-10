@@ -522,6 +522,16 @@ namespace cr
 			}
 		}
 
+		template<class F, class B>
+		inline constexpr static void setIf(F& s, in_t(B) b, in_t(F) v) {
+			if constexpr (std::same_as<F, float> || std::same_as<F, bool>) {
+				s = b ? v : s;
+			}
+			else {
+				s = F::blend(s, v, b);
+			}
+		}
+
 		template<class F>
 		inline constexpr static F smoothstep(in_t(F) lower, in_t(F) upper, in_t(F) value) {
 			auto const v = clamp((value - lower) / (upper - lower), 0.0f, 1.0f);
