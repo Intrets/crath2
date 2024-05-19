@@ -55,6 +55,18 @@ namespace cr
 		}
 
 		template<class F>
+		inline constexpr static F sqrt1(in_t(F) x) {
+			auto s0 = sqrt0(x);
+			return F(0.5f) * (s0 + x / s0);
+		}
+
+		template<class F>
+		inline constexpr static F sqrt2(in_t(F) x) {
+			auto s0 = sqrt1(x);
+			return F(0.5f) * (s0 + x / s0);
+		}
+
+		template<class F>
 		inline constexpr static F log(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
