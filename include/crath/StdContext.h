@@ -115,7 +115,7 @@ namespace cr
 		inline constexpr static F sin_unit_1(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
-					return sin_unit1_quart_T8(fmod<two_pi>(x));
+					return sin_unit1_quart_T8(fmod<1.0f>(x));
 				}
 				else {
 					return sin_unit1_half_fma_T7_float_simd(x);
@@ -127,10 +127,33 @@ namespace cr
 		}
 
 		template<class F>
+		inline constexpr static F sinc(in_t(F) x) {
+			x *= pi;
+			if constexpr (std::same_as<F, float>) {
+				if (std::is_constant_evaluated()) {
+					if (x > -0.0001f && x < 0.0001f) {
+						return 1.0f;
+					}
+					else {
+						return sin_quart_T8(fmod<two_pi>(x)) / x;
+					}
+				}
+				else {
+					auto value = sin_half_fma_T7_float_simd(fmod<two_pi>(x)) / x;
+					return ifElse(abs(x) < 0.0001f, 1.0f, value);
+				}
+			}
+			else {
+				auto value = sin_half_fma_T7(fmod<two_pi>(x)) / x;
+				return ifElse(abs(x) < F(0.0001f), F(1.0f), value);
+			}
+		}
+
+		template<class F>
 		inline constexpr static F sin_unit_2(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
-					return sin_unit2_quart_T8(fmod<two_pi>(x));
+					return sin_unit2_quart_T8(fmod<2.0f>(x));
 				}
 				else {
 					return sin_unit2_half_fma_T7_float_simd(x);
@@ -145,7 +168,7 @@ namespace cr
 		inline constexpr static F cos_unit_1(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
-					return cos_unit1_half_T8(fmod<two_pi>(x));
+					return cos_unit1_half_T8(fmod<1.0f>(x));
 				}
 				else {
 					return cos_unit1_half_fma_T6_float_simd(x);
