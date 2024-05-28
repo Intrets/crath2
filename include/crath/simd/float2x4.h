@@ -12,8 +12,15 @@ namespace cr::simd
 
 	struct float2x4
 	{
-		__m128 f1{};
-		__m128 f2{};
+		union {
+			__m128 f1{};
+			float g1[4];
+		};
+		union {
+			__m128 f2{};
+			float g2[4];
+		};
+
 		static constexpr size_t size = 8;
 
 		inline float2x4() = default;
@@ -47,7 +54,7 @@ namespace cr::simd
 #if defined(COMPILER_MSVC)
 				return this->f1.m128_f32[i];
 #elif defined(COMPILER_CLANGCL)
-				return this->f1[i];
+				return this->g1[i];
 #else
 #error "unsupported compiler"
 #endif
@@ -56,7 +63,7 @@ namespace cr::simd
 #if defined(COMPILER_MSVC)
 				return this->f2.m128_f32[i - 4];
 #elif defined(COMPILER_CLANGCL)
-				return this->f2[i - 4];
+				return this->g2[i - 4];
 #else
 #error "unsupported compiler"
 #endif
