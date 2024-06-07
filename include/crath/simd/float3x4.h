@@ -13,7 +13,7 @@ namespace cr::simd
 		__m128 f1{};
 		__m128 f2{};
 		__m128 f3{};
-		static constexpr size_t size = 12;
+		static constexpr int64_t size = 12;
 
 		inline float3x4() = default;
 		inline float3x4(float s)
@@ -42,7 +42,7 @@ namespace cr::simd
 		      f3(_mm_set_ps(a11, a10, a9, a8)) {
 		}
 
-		inline float operator[](size_t i) const {
+		inline float operator[](int64_t i) const {
 			if (i < 4) {
 #if defined(COMPILER_MSVC)
 				return this->f1.m128_f32[i];
