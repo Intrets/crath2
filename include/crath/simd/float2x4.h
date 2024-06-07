@@ -21,7 +21,7 @@ namespace cr::simd
 			float g2[4];
 		};
 
-		static constexpr size_t size = 8;
+		static constexpr int64_t size = 8;
 
 		inline float2x4() = default;
 		inline float2x4(float s)

@@ -16,7 +16,7 @@ namespace cr::simd
 			__m128 f1{};
 			float f[4];
 		};
-		static constexpr size_t size = 4;
+		static constexpr int64_t size = 4;
 
 		inline float1x4() = default;
 		inline float1x4(float s)
