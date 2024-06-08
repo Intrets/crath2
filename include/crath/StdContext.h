@@ -410,6 +410,10 @@ namespace cr
 			return std::max(std::min(i_, max_), min_);
 		}
 
+		inline static int64_t clamp(int64_t i_, int64_t min_, int64_t max_) {
+			return std::max(std::min(i_, max_), min_);
+		}
+
 		template<class F>
 		inline constexpr static F clamp(in_t(F) f, in_t(F) min, in_t(F) max) {
 			return F::clamp(f, min, max);
