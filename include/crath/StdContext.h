@@ -522,6 +522,16 @@ namespace cr
 		}
 
 		template<class F>
+		inline constexpr static F ceil(in_t(F) f) {
+			if constexpr (std::same_as<F, float>) {
+				return std::ceil(f);
+			}
+			else {
+				return f.ceil();
+			}
+		}
+
+		template<class F>
 		inline constexpr static F round(in_t(F) f) {
 			if constexpr (std::same_as<F, float>) {
 				return std::round(f);
