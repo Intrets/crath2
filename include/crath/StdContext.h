@@ -572,6 +572,16 @@ namespace cr
 		}
 
 		template<class F, class B>
+		inline constexpr static F boolToFloat(in_t(B) b) {
+			if constexpr (std::same_as<F, float> && std::same_as<B, bool>) {
+				return static_cast<float>(b);
+			}
+			else {
+				return ifElse(b, F(1.0f), F(0.0f));
+			}
+		}
+
+		template<class F, class B>
 		inline constexpr static void setIf(F& s, in_t(B) b, in_t(F) v) {
 			if constexpr (std::same_as<F, float> || std::same_as<F, bool>) {
 				s = b ? v : s;
