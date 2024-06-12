@@ -4,10 +4,12 @@
 
 namespace cr::simd
 {
+#ifdef __x86_64__
 	float2x4 int2x4::bitCastFloat() const {
 		return float2x4(
 		    _mm_castsi128_ps(this->i1),
 		    _mm_castsi128_ps(this->i2)
 		);
 	}
+#endif
 }

@@ -7,13 +7,13 @@
 #include <numbers>
 #include <type_traits>
 
-#include <immintrin.h>
-
 #include <tepp/literal.h>
 
+#if defined(__x86_64__)
 #include "crath/simd/float1x4.h"
 #include "crath/simd/int1x4.h"
 #include "crath/simd/int2x4.h"
+#endif
 
 #include "crath/Functions.h"
 
@@ -246,7 +246,11 @@ namespace cr
 					return 1 / x;
 				}
 				else {
+#ifdef __x86_64__
 					return simd::float1x4(x).recip()[0];
+#else
+                    return 1 / x;
+#endif
 				}
 			}
 			else if constexpr (std::same_as<F, double>) {
@@ -402,7 +406,11 @@ namespace cr
 				return std::clamp(f_, min_, max_);
 			}
 			else {
+#ifdef __x86_64__
 				return simd::float1x4::clamp(f_, min_, max_)[0];
+#else
+                return std::clamp(f_, min_, max_);
+#endif
 			}
 		}
 

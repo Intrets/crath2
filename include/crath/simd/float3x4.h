@@ -1,5 +1,6 @@
 #pragma once
 
+#ifdef __x84_64__
 #include <bit>
 #include <immintrin.h>
 
@@ -262,3 +263,4 @@ namespace cr::simd
 		}
 	};
 }
+#endif

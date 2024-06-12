@@ -4,9 +4,11 @@
 
 namespace cr::simd
 {
+#ifdef __x86_64__
 	int1x4 float1x4::bitCastInt() const {
 		return int1x4(
 		    _mm_castps_si128(this->f1)
 		);
 	}
+#endif
 }

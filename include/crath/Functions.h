@@ -1,8 +1,14 @@
 #pragma once
 
 #include "ParameterTyping.h"
+#ifdef __x86_64__
 #include "crath/simd/float1x4.h"
+#endif
+
+#include <algorithm>
+#include <bit>
 #include <cmath>
+#include <concepts>
 
 namespace cr
 {
@@ -21,7 +27,11 @@ namespace cr
 		template<class F>
 		inline constexpr static F recip(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
+#ifdef __x86_64__
 				return cr::simd::float1x4(x).recip()[0];
+#else
+				return 1 / x;
+#endif
 			}
 			else if constexpr (std::same_as<F, double>) {
 				return 1 / x;
@@ -44,7 +54,11 @@ namespace cr
 				}
 			}
 			else {
+#ifdef __x86_64__
 				return simd::float1x4::clamp(f_, min_, max_)[0];
+#else
+				return std::clamp(f_, min_, max_);
+#endif
 			}
 		}
 

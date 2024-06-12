@@ -13,7 +13,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_T4_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_quart_T4<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_quart_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_half_T4(in_t(F) x) {
@@ -28,7 +32,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit1_half_T4_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_half_T4<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_half_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_quart_fma_T4(in_t(F) x) {
@@ -45,7 +53,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_quart_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_quart_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_half_fma_T4(in_t(F) x) {
@@ -61,7 +73,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit1_half_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_half_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_half_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_quart_T4(in_t(F) x) {
@@ -78,7 +94,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_T4_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_quart_T4<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_quart_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_half_T4(in_t(F) x) {
@@ -93,7 +113,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit2_half_T4_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_half_T4<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_half_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_quart_fma_T4(in_t(F) x) {
@@ -110,7 +134,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_quart_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_quart_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_half_fma_T4(in_t(F) x) {
@@ -126,7 +154,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit2_half_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_half_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_half_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_quart_T4(in_t(F) x) {
@@ -143,7 +175,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_quart_T4_float_simd(float x) {
+#ifdef __x86_64__
 return sin_quart_T4<cr::simd::float1x4>(x)[0];
+#else
+return sin_quart_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_half_T4(in_t(F) x) {
@@ -158,7 +194,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_half_T4_float_simd(float x) {
+#ifdef __x86_64__
 return sin_half_T4<cr::simd::float1x4>(x)[0];
+#else
+return sin_half_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_quart_fma_T4(in_t(F) x) {
@@ -175,7 +215,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_quart_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return sin_quart_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return sin_quart_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_half_fma_T4(in_t(F) x) {
@@ -191,7 +235,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_half_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return sin_half_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return sin_half_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_quart_T5(in_t(F) x) {
@@ -209,7 +257,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_T5_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_quart_T5<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_quart_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_half_T5(in_t(F) x) {
@@ -225,7 +277,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_half_T5_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_half_T5<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_half_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_quart_fma_T5(in_t(F) x) {
@@ -243,7 +299,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_T5_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_quart_fma_T5<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_quart_fma_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_half_fma_T5(in_t(F) x) {
@@ -260,7 +320,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_half_fma_T5_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_half_fma_T5<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_half_fma_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_quart_T5(in_t(F) x) {
@@ -278,7 +342,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_T5_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_quart_T5<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_quart_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_half_T5(in_t(F) x) {
@@ -294,7 +362,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_half_T5_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_half_T5<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_half_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_quart_fma_T5(in_t(F) x) {
@@ -312,7 +384,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_T5_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_quart_fma_T5<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_quart_fma_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_half_fma_T5(in_t(F) x) {
@@ -329,7 +405,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_half_fma_T5_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_half_fma_T5<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_half_fma_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_quart_T5(in_t(F) x) {
@@ -347,7 +427,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_T5_float_simd(float x) {
+#ifdef __x86_64__
 return sin_quart_T5<cr::simd::float1x4>(x)[0];
+#else
+return sin_quart_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_half_T5(in_t(F) x) {
@@ -363,7 +447,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_half_T5_float_simd(float x) {
+#ifdef __x86_64__
 return sin_half_T5<cr::simd::float1x4>(x)[0];
+#else
+return sin_half_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_quart_fma_T5(in_t(F) x) {
@@ -381,7 +469,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_fma_T5_float_simd(float x) {
+#ifdef __x86_64__
 return sin_quart_fma_T5<cr::simd::float1x4>(x)[0];
+#else
+return sin_quart_fma_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_half_fma_T5(in_t(F) x) {
@@ -398,7 +490,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_half_fma_T5_float_simd(float x) {
+#ifdef __x86_64__
 return sin_half_fma_T5<cr::simd::float1x4>(x)[0];
+#else
+return sin_half_fma_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_quart_T6(in_t(F) x) {
@@ -417,7 +513,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_T6_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_quart_T6<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_quart_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_half_T6(in_t(F) x) {
@@ -434,7 +534,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit1_half_T6_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_half_T6<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_half_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_quart_fma_T6(in_t(F) x) {
@@ -453,7 +557,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_quart_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_quart_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_half_fma_T6(in_t(F) x) {
@@ -471,7 +579,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit1_half_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_half_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_half_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_quart_T6(in_t(F) x) {
@@ -490,7 +602,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_T6_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_quart_T6<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_quart_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_half_T6(in_t(F) x) {
@@ -507,7 +623,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit2_half_T6_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_half_T6<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_half_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_quart_fma_T6(in_t(F) x) {
@@ -526,7 +646,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_quart_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_quart_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_half_fma_T6(in_t(F) x) {
@@ -544,7 +668,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit2_half_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_half_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_half_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_quart_T6(in_t(F) x) {
@@ -563,7 +691,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_quart_T6_float_simd(float x) {
+#ifdef __x86_64__
 return sin_quart_T6<cr::simd::float1x4>(x)[0];
+#else
+return sin_quart_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_half_T6(in_t(F) x) {
@@ -580,7 +712,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_half_T6_float_simd(float x) {
+#ifdef __x86_64__
 return sin_half_T6<cr::simd::float1x4>(x)[0];
+#else
+return sin_half_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_quart_fma_T6(in_t(F) x) {
@@ -599,7 +735,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_quart_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return sin_quart_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return sin_quart_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_half_fma_T6(in_t(F) x) {
@@ -617,7 +757,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_half_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return sin_half_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return sin_half_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_quart_T7(in_t(F) x) {
@@ -637,7 +781,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_T7_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_quart_T7<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_quart_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_half_T7(in_t(F) x) {
@@ -655,7 +803,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_half_T7_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_half_T7<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_half_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_quart_fma_T7(in_t(F) x) {
@@ -675,7 +827,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_T7_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_quart_fma_T7<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_quart_fma_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_half_fma_T7(in_t(F) x) {
@@ -694,7 +850,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_half_fma_T7_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_half_fma_T7<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_half_fma_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_quart_T7(in_t(F) x) {
@@ -714,7 +874,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_T7_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_quart_T7<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_quart_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_half_T7(in_t(F) x) {
@@ -732,7 +896,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_half_T7_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_half_T7<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_half_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_quart_fma_T7(in_t(F) x) {
@@ -752,7 +920,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_T7_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_quart_fma_T7<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_quart_fma_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_half_fma_T7(in_t(F) x) {
@@ -771,7 +943,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_half_fma_T7_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_half_fma_T7<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_half_fma_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_quart_T7(in_t(F) x) {
@@ -791,7 +967,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_T7_float_simd(float x) {
+#ifdef __x86_64__
 return sin_quart_T7<cr::simd::float1x4>(x)[0];
+#else
+return sin_quart_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_half_T7(in_t(F) x) {
@@ -809,7 +989,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_half_T7_float_simd(float x) {
+#ifdef __x86_64__
 return sin_half_T7<cr::simd::float1x4>(x)[0];
+#else
+return sin_half_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_quart_fma_T7(in_t(F) x) {
@@ -829,7 +1013,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_fma_T7_float_simd(float x) {
+#ifdef __x86_64__
 return sin_quart_fma_T7<cr::simd::float1x4>(x)[0];
+#else
+return sin_quart_fma_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_half_fma_T7(in_t(F) x) {
@@ -848,7 +1036,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_half_fma_T7_float_simd(float x) {
+#ifdef __x86_64__
 return sin_half_fma_T7<cr::simd::float1x4>(x)[0];
+#else
+return sin_half_fma_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_quart_T8(in_t(F) x) {
@@ -869,7 +1061,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_T8_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_quart_T8<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_quart_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_half_T8(in_t(F) x) {
@@ -888,7 +1084,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit1_half_T8_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_half_T8<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_half_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_quart_fma_T8(in_t(F) x) {
@@ -909,7 +1109,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_quart_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_quart_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit1_half_fma_T8(in_t(F) x) {
@@ -929,7 +1133,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit1_half_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit1_half_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit1_half_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_quart_T8(in_t(F) x) {
@@ -950,7 +1158,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_T8_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_quart_T8<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_quart_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_half_T8(in_t(F) x) {
@@ -969,7 +1181,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit2_half_T8_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_half_T8<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_half_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_quart_fma_T8(in_t(F) x) {
@@ -990,7 +1206,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_quart_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_quart_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_unit2_half_fma_T8(in_t(F) x) {
@@ -1010,7 +1230,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit2_half_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return sin_unit2_half_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return sin_unit2_half_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_quart_T8(in_t(F) x) {
@@ -1031,7 +1255,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_quart_T8_float_simd(float x) {
+#ifdef __x86_64__
 return sin_quart_T8<cr::simd::float1x4>(x)[0];
+#else
+return sin_quart_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_half_T8(in_t(F) x) {
@@ -1050,7 +1278,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_half_T8_float_simd(float x) {
+#ifdef __x86_64__
 return sin_half_T8<cr::simd::float1x4>(x)[0];
+#else
+return sin_half_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_quart_fma_T8(in_t(F) x) {
@@ -1071,7 +1303,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_quart_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return sin_quart_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return sin_quart_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F sin_half_fma_T8(in_t(F) x) {
@@ -1091,7 +1327,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_half_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return sin_half_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return sin_half_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_quart_T4(in_t(F) x) {
@@ -1107,7 +1347,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_T4_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_quart_T4<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_quart_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_half_T4(in_t(F) x) {
@@ -1122,7 +1366,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_half_T4_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_half_T4<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_half_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_quart_fma_T4(in_t(F) x) {
@@ -1138,7 +1386,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_quart_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_quart_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_half_fma_T4(in_t(F) x) {
@@ -1154,7 +1406,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_half_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_half_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_half_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_quart_T4(in_t(F) x) {
@@ -1170,7 +1426,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_T4_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_quart_T4<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_quart_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_half_T4(in_t(F) x) {
@@ -1185,7 +1445,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_half_T4_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_half_T4<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_half_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_quart_fma_T4(in_t(F) x) {
@@ -1201,7 +1465,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_quart_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_quart_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_half_fma_T4(in_t(F) x) {
@@ -1217,7 +1485,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_half_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_half_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_half_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_quart_T4(in_t(F) x) {
@@ -1233,7 +1505,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_quart_T4_float_simd(float x) {
+#ifdef __x86_64__
 return cos_quart_T4<cr::simd::float1x4>(x)[0];
+#else
+return cos_quart_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_half_T4(in_t(F) x) {
@@ -1248,7 +1524,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_half_T4_float_simd(float x) {
+#ifdef __x86_64__
 return cos_half_T4<cr::simd::float1x4>(x)[0];
+#else
+return cos_half_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_quart_fma_T4(in_t(F) x) {
@@ -1264,7 +1544,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_quart_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return cos_quart_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return cos_quart_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_half_fma_T4(in_t(F) x) {
@@ -1280,7 +1564,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_half_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return cos_half_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return cos_half_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_quart_T5(in_t(F) x) {
@@ -1297,7 +1585,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_T5_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_quart_T5<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_quart_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_quart_fma_T5(in_t(F) x) {
@@ -1314,7 +1606,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_T5_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_quart_fma_T5<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_quart_fma_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_quart_T5(in_t(F) x) {
@@ -1331,7 +1627,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_T5_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_quart_T5<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_quart_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_quart_fma_T5(in_t(F) x) {
@@ -1348,7 +1648,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_T5_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_quart_fma_T5<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_quart_fma_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_quart_T5(in_t(F) x) {
@@ -1365,7 +1669,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_T5_float_simd(float x) {
+#ifdef __x86_64__
 return cos_quart_T5<cr::simd::float1x4>(x)[0];
+#else
+return cos_quart_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_quart_fma_T5(in_t(F) x) {
@@ -1382,7 +1690,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_fma_T5_float_simd(float x) {
+#ifdef __x86_64__
 return cos_quart_fma_T5<cr::simd::float1x4>(x)[0];
+#else
+return cos_quart_fma_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_quart_T6(in_t(F) x) {
@@ -1400,7 +1712,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_T6_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_quart_T6<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_quart_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_half_T6(in_t(F) x) {
@@ -1417,7 +1733,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_half_T6_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_half_T6<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_half_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_quart_fma_T6(in_t(F) x) {
@@ -1435,7 +1755,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_quart_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_quart_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_half_fma_T6(in_t(F) x) {
@@ -1453,7 +1777,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_half_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_half_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_half_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_quart_T6(in_t(F) x) {
@@ -1471,7 +1799,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_T6_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_quart_T6<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_quart_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_half_T6(in_t(F) x) {
@@ -1488,7 +1820,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_half_T6_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_half_T6<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_half_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_quart_fma_T6(in_t(F) x) {
@@ -1506,7 +1842,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_quart_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_quart_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_half_fma_T6(in_t(F) x) {
@@ -1524,7 +1864,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_half_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_half_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_half_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_quart_T6(in_t(F) x) {
@@ -1542,7 +1886,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_quart_T6_float_simd(float x) {
+#ifdef __x86_64__
 return cos_quart_T6<cr::simd::float1x4>(x)[0];
+#else
+return cos_quart_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_half_T6(in_t(F) x) {
@@ -1559,7 +1907,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_half_T6_float_simd(float x) {
+#ifdef __x86_64__
 return cos_half_T6<cr::simd::float1x4>(x)[0];
+#else
+return cos_half_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_quart_fma_T6(in_t(F) x) {
@@ -1577,7 +1929,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_quart_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return cos_quart_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return cos_quart_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_half_fma_T6(in_t(F) x) {
@@ -1595,7 +1951,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_half_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return cos_half_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return cos_half_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_quart_T7(in_t(F) x) {
@@ -1614,7 +1974,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_T7_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_quart_T7<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_quart_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_quart_fma_T7(in_t(F) x) {
@@ -1633,7 +1997,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_T7_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_quart_fma_T7<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_quart_fma_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_quart_T7(in_t(F) x) {
@@ -1652,7 +2020,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_T7_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_quart_T7<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_quart_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_quart_fma_T7(in_t(F) x) {
@@ -1671,7 +2043,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_T7_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_quart_fma_T7<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_quart_fma_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_quart_T7(in_t(F) x) {
@@ -1690,7 +2066,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_T7_float_simd(float x) {
+#ifdef __x86_64__
 return cos_quart_T7<cr::simd::float1x4>(x)[0];
+#else
+return cos_quart_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_quart_fma_T7(in_t(F) x) {
@@ -1709,7 +2089,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_fma_T7_float_simd(float x) {
+#ifdef __x86_64__
 return cos_quart_fma_T7<cr::simd::float1x4>(x)[0];
+#else
+return cos_quart_fma_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_quart_T8(in_t(F) x) {
@@ -1729,7 +2113,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_T8_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_quart_T8<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_quart_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_half_T8(in_t(F) x) {
@@ -1748,7 +2136,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_half_T8_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_half_T8<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_half_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_quart_fma_T8(in_t(F) x) {
@@ -1768,7 +2160,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_quart_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_quart_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_half_fma_T8(in_t(F) x) {
@@ -1788,7 +2184,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_half_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_half_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_half_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_quart_T8(in_t(F) x) {
@@ -1808,7 +2208,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_T8_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_quart_T8<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_quart_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_half_T8(in_t(F) x) {
@@ -1827,7 +2231,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_half_T8_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_half_T8<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_half_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_quart_fma_T8(in_t(F) x) {
@@ -1847,7 +2255,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_quart_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_quart_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_half_fma_T8(in_t(F) x) {
@@ -1867,7 +2279,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_half_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_half_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_half_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_quart_T8(in_t(F) x) {
@@ -1887,7 +2303,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_quart_T8_float_simd(float x) {
+#ifdef __x86_64__
 return cos_quart_T8<cr::simd::float1x4>(x)[0];
+#else
+return cos_quart_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_half_T8(in_t(F) x) {
@@ -1906,7 +2326,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_half_T8_float_simd(float x) {
+#ifdef __x86_64__
 return cos_half_T8<cr::simd::float1x4>(x)[0];
+#else
+return cos_half_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_quart_fma_T8(in_t(F) x) {
@@ -1926,7 +2350,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_quart_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return cos_quart_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return cos_quart_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_half_fma_T8(in_t(F) x) {
@@ -1946,7 +2374,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_half_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return cos_half_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return cos_half_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_quart_T9(in_t(F) x) {
@@ -1967,7 +2399,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_T9_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_quart_T9<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_quart_T9<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit1_quart_fma_T9(in_t(F) x) {
@@ -1988,7 +2424,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_T9_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit1_quart_fma_T9<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit1_quart_fma_T9<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_quart_T9(in_t(F) x) {
@@ -2009,7 +2449,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_T9_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_quart_T9<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_quart_T9<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_unit2_quart_fma_T9(in_t(F) x) {
@@ -2030,7 +2474,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_T9_float_simd(float x) {
+#ifdef __x86_64__
 return cos_unit2_quart_fma_T9<cr::simd::float1x4>(x)[0];
+#else
+return cos_unit2_quart_fma_T9<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_quart_T9(in_t(F) x) {
@@ -2051,7 +2499,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_T9_float_simd(float x) {
+#ifdef __x86_64__
 return cos_quart_T9<cr::simd::float1x4>(x)[0];
+#else
+return cos_quart_T9<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F cos_quart_fma_T9(in_t(F) x) {
@@ -2072,7 +2524,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_fma_T9_float_simd(float x) {
+#ifdef __x86_64__
 return cos_quart_fma_T9<cr::simd::float1x4>(x)[0];
+#else
+return cos_quart_fma_T9<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tanh_T4(in_t(F) x) {
@@ -2088,7 +2544,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tanh_T4_float_simd(float x) {
+#ifdef __x86_64__
 return tanh_T4<cr::simd::float1x4>(x)[0];
+#else
+return tanh_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tanh_fma_T4(in_t(F) x) {
@@ -2104,7 +2564,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tanh_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return tanh_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return tanh_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tanh_T5(in_t(F) x) {
@@ -2121,7 +2585,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_T5_float_simd(float x) {
+#ifdef __x86_64__
 return tanh_T5<cr::simd::float1x4>(x)[0];
+#else
+return tanh_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tanh_fma_T5(in_t(F) x) {
@@ -2138,7 +2606,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_fma_T5_float_simd(float x) {
+#ifdef __x86_64__
 return tanh_fma_T5<cr::simd::float1x4>(x)[0];
+#else
+return tanh_fma_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tanh_T6(in_t(F) x) {
@@ -2156,7 +2628,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tanh_T6_float_simd(float x) {
+#ifdef __x86_64__
 return tanh_T6<cr::simd::float1x4>(x)[0];
+#else
+return tanh_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tanh_fma_T6(in_t(F) x) {
@@ -2174,7 +2650,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tanh_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return tanh_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return tanh_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tanh_T7(in_t(F) x) {
@@ -2193,7 +2673,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_T7_float_simd(float x) {
+#ifdef __x86_64__
 return tanh_T7<cr::simd::float1x4>(x)[0];
+#else
+return tanh_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tanh_fma_T7(in_t(F) x) {
@@ -2212,7 +2696,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_fma_T7_float_simd(float x) {
+#ifdef __x86_64__
 return tanh_fma_T7<cr::simd::float1x4>(x)[0];
+#else
+return tanh_fma_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tanh_T8(in_t(F) x) {
@@ -2232,7 +2720,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tanh_T8_float_simd(float x) {
+#ifdef __x86_64__
 return tanh_T8<cr::simd::float1x4>(x)[0];
+#else
+return tanh_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tanh_fma_T8(in_t(F) x) {
@@ -2252,7 +2744,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tanh_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return tanh_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return tanh_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_T3(in_t(F) x) {
@@ -2269,7 +2765,11 @@ v *= v;
 return v;
 }
 inline static float exp_T3_float_simd(float x) {
+#ifdef __x86_64__
 return exp_T3<cr::simd::float1x4>(x)[0];
+#else
+return exp_T3<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_fma_T3(in_t(F) x) {
@@ -2287,7 +2787,11 @@ v *= v;
 return v;
 }
 inline static float exp_fma_T3_float_simd(float x) {
+#ifdef __x86_64__
 return exp_fma_T3<cr::simd::float1x4>(x)[0];
+#else
+return exp_fma_T3<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_T4(in_t(F) x) {
@@ -2305,7 +2809,11 @@ v *= v;
 return v;
 }
 inline static float exp_T4_float_simd(float x) {
+#ifdef __x86_64__
 return exp_T4<cr::simd::float1x4>(x)[0];
+#else
+return exp_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_fma_T4(in_t(F) x) {
@@ -2324,7 +2832,11 @@ v *= v;
 return v;
 }
 inline static float exp_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return exp_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return exp_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_T5(in_t(F) x) {
@@ -2343,7 +2855,11 @@ v *= v;
 return v;
 }
 inline static float exp_T5_float_simd(float x) {
+#ifdef __x86_64__
 return exp_T5<cr::simd::float1x4>(x)[0];
+#else
+return exp_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_fma_T5(in_t(F) x) {
@@ -2363,7 +2879,11 @@ v *= v;
 return v;
 }
 inline static float exp_fma_T5_float_simd(float x) {
+#ifdef __x86_64__
 return exp_fma_T5<cr::simd::float1x4>(x)[0];
+#else
+return exp_fma_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_T6(in_t(F) x) {
@@ -2383,7 +2903,11 @@ v *= v;
 return v;
 }
 inline static float exp_T6_float_simd(float x) {
+#ifdef __x86_64__
 return exp_T6<cr::simd::float1x4>(x)[0];
+#else
+return exp_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_fma_T6(in_t(F) x) {
@@ -2404,7 +2928,11 @@ v *= v;
 return v;
 }
 inline static float exp_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return exp_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return exp_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_T7(in_t(F) x) {
@@ -2425,7 +2953,11 @@ v *= v;
 return v;
 }
 inline static float exp_T7_float_simd(float x) {
+#ifdef __x86_64__
 return exp_T7<cr::simd::float1x4>(x)[0];
+#else
+return exp_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_fma_T7(in_t(F) x) {
@@ -2447,7 +2979,11 @@ v *= v;
 return v;
 }
 inline static float exp_fma_T7_float_simd(float x) {
+#ifdef __x86_64__
 return exp_fma_T7<cr::simd::float1x4>(x)[0];
+#else
+return exp_fma_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_T8(in_t(F) x) {
@@ -2469,7 +3005,11 @@ v *= v;
 return v;
 }
 inline static float exp_T8_float_simd(float x) {
+#ifdef __x86_64__
 return exp_T8<cr::simd::float1x4>(x)[0];
+#else
+return exp_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_fma_T8(in_t(F) x) {
@@ -2492,7 +3032,11 @@ v *= v;
 return v;
 }
 inline static float exp_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return exp_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return exp_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F atan_T3(in_t(F) x) {
@@ -2511,7 +3055,11 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_T3_float_simd(float x) {
+#ifdef __x86_64__
 return atan_T3<cr::simd::float1x4>(x)[0];
+#else
+return atan_T3<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F atan_fma_T3(in_t(F) x) {
@@ -2530,7 +3078,11 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_T3_float_simd(float x) {
+#ifdef __x86_64__
 return atan_fma_T3<cr::simd::float1x4>(x)[0];
+#else
+return atan_fma_T3<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F atan_T4(in_t(F) x) {
@@ -2550,7 +3102,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_T4_float_simd(float x) {
+#ifdef __x86_64__
 return atan_T4<cr::simd::float1x4>(x)[0];
+#else
+return atan_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F atan_fma_T4(in_t(F) x) {
@@ -2570,7 +3126,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return atan_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return atan_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F atan_T5(in_t(F) x) {
@@ -2591,7 +3151,11 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_T5_float_simd(float x) {
+#ifdef __x86_64__
 return atan_T5<cr::simd::float1x4>(x)[0];
+#else
+return atan_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F atan_fma_T5(in_t(F) x) {
@@ -2612,7 +3176,11 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_T5_float_simd(float x) {
+#ifdef __x86_64__
 return atan_fma_T5<cr::simd::float1x4>(x)[0];
+#else
+return atan_fma_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F atan_T6(in_t(F) x) {
@@ -2634,7 +3202,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_T6_float_simd(float x) {
+#ifdef __x86_64__
 return atan_T6<cr::simd::float1x4>(x)[0];
+#else
+return atan_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F atan_fma_T6(in_t(F) x) {
@@ -2656,7 +3228,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return atan_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return atan_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F atan_T7(in_t(F) x) {
@@ -2679,7 +3255,11 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_T7_float_simd(float x) {
+#ifdef __x86_64__
 return atan_T7<cr::simd::float1x4>(x)[0];
+#else
+return atan_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F atan_fma_T7(in_t(F) x) {
@@ -2702,7 +3282,11 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_T7_float_simd(float x) {
+#ifdef __x86_64__
 return atan_fma_T7<cr::simd::float1x4>(x)[0];
+#else
+return atan_fma_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F atan_T8(in_t(F) x) {
@@ -2726,7 +3310,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_T8_float_simd(float x) {
+#ifdef __x86_64__
 return atan_T8<cr::simd::float1x4>(x)[0];
+#else
+return atan_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F atan_fma_T8(in_t(F) x) {
@@ -2750,7 +3338,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return atan_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return atan_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F log_T3(in_t(F) x) {
@@ -2766,7 +3358,11 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_T3_float_simd(float x) {
+#ifdef __x86_64__
 return log_T3<cr::simd::float1x4>(x)[0];
+#else
+return log_T3<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F log_fma_T3(in_t(F) x) {
@@ -2783,7 +3379,11 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_T3_float_simd(float x) {
+#ifdef __x86_64__
 return log_fma_T3<cr::simd::float1x4>(x)[0];
+#else
+return log_fma_T3<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F log_T4(in_t(F) x) {
@@ -2801,7 +3401,11 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_T4_float_simd(float x) {
+#ifdef __x86_64__
 return log_T4<cr::simd::float1x4>(x)[0];
+#else
+return log_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F log_fma_T4(in_t(F) x) {
@@ -2820,7 +3424,11 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return log_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return log_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F log_T5(in_t(F) x) {
@@ -2840,7 +3448,11 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_T5_float_simd(float x) {
+#ifdef __x86_64__
 return log_T5<cr::simd::float1x4>(x)[0];
+#else
+return log_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F log_fma_T5(in_t(F) x) {
@@ -2861,7 +3473,11 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_T5_float_simd(float x) {
+#ifdef __x86_64__
 return log_fma_T5<cr::simd::float1x4>(x)[0];
+#else
+return log_fma_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F log_T6(in_t(F) x) {
@@ -2883,7 +3499,11 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_T6_float_simd(float x) {
+#ifdef __x86_64__
 return log_T6<cr::simd::float1x4>(x)[0];
+#else
+return log_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F log_fma_T6(in_t(F) x) {
@@ -2906,7 +3526,11 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return log_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return log_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F log_T7(in_t(F) x) {
@@ -2930,7 +3554,11 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_T7_float_simd(float x) {
+#ifdef __x86_64__
 return log_T7<cr::simd::float1x4>(x)[0];
+#else
+return log_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F log_fma_T7(in_t(F) x) {
@@ -2955,7 +3583,11 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_T7_float_simd(float x) {
+#ifdef __x86_64__
 return log_fma_T7<cr::simd::float1x4>(x)[0];
+#else
+return log_fma_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F log_T8(in_t(F) x) {
@@ -2981,7 +3613,11 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_T8_float_simd(float x) {
+#ifdef __x86_64__
 return log_T8<cr::simd::float1x4>(x)[0];
+#else
+return log_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F log_fma_T8(in_t(F) x) {
@@ -3008,7 +3644,11 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return log_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return log_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F log_T9(in_t(F) x) {
@@ -3036,7 +3676,11 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_T9_float_simd(float x) {
+#ifdef __x86_64__
 return log_T9<cr::simd::float1x4>(x)[0];
+#else
+return log_T9<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F log_fma_T9(in_t(F) x) {
@@ -3065,7 +3709,11 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_T9_float_simd(float x) {
+#ifdef __x86_64__
 return log_fma_T9<cr::simd::float1x4>(x)[0];
+#else
+return log_fma_T9<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_special_T3(in_t(F) x) {
@@ -3082,7 +3730,11 @@ a *= a;
 return a;
 }
 inline static float exp_special_T3_float_simd(float x) {
+#ifdef __x86_64__
 return exp_special_T3<cr::simd::float1x4>(x)[0];
+#else
+return exp_special_T3<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_special_fma_T3(in_t(F) x) {
@@ -3100,7 +3752,11 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_T3_float_simd(float x) {
+#ifdef __x86_64__
 return exp_special_fma_T3<cr::simd::float1x4>(x)[0];
+#else
+return exp_special_fma_T3<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_special_T4(in_t(F) x) {
@@ -3118,7 +3774,11 @@ a *= a;
 return a;
 }
 inline static float exp_special_T4_float_simd(float x) {
+#ifdef __x86_64__
 return exp_special_T4<cr::simd::float1x4>(x)[0];
+#else
+return exp_special_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_special_fma_T4(in_t(F) x) {
@@ -3137,7 +3797,11 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return exp_special_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return exp_special_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_special_T5(in_t(F) x) {
@@ -3156,7 +3820,11 @@ a *= a;
 return a;
 }
 inline static float exp_special_T5_float_simd(float x) {
+#ifdef __x86_64__
 return exp_special_T5<cr::simd::float1x4>(x)[0];
+#else
+return exp_special_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_special_fma_T5(in_t(F) x) {
@@ -3176,7 +3844,11 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_T5_float_simd(float x) {
+#ifdef __x86_64__
 return exp_special_fma_T5<cr::simd::float1x4>(x)[0];
+#else
+return exp_special_fma_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_special_T6(in_t(F) x) {
@@ -3196,7 +3868,11 @@ a *= a;
 return a;
 }
 inline static float exp_special_T6_float_simd(float x) {
+#ifdef __x86_64__
 return exp_special_T6<cr::simd::float1x4>(x)[0];
+#else
+return exp_special_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_special_fma_T6(in_t(F) x) {
@@ -3217,7 +3893,11 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return exp_special_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return exp_special_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_special_T7(in_t(F) x) {
@@ -3238,7 +3918,11 @@ a *= a;
 return a;
 }
 inline static float exp_special_T7_float_simd(float x) {
+#ifdef __x86_64__
 return exp_special_T7<cr::simd::float1x4>(x)[0];
+#else
+return exp_special_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_special_fma_T7(in_t(F) x) {
@@ -3260,7 +3944,11 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_T7_float_simd(float x) {
+#ifdef __x86_64__
 return exp_special_fma_T7<cr::simd::float1x4>(x)[0];
+#else
+return exp_special_fma_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_special_T8(in_t(F) x) {
@@ -3282,7 +3970,11 @@ a *= a;
 return a;
 }
 inline static float exp_special_T8_float_simd(float x) {
+#ifdef __x86_64__
 return exp_special_T8<cr::simd::float1x4>(x)[0];
+#else
+return exp_special_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_special_fma_T8(in_t(F) x) {
@@ -3305,7 +3997,11 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return exp_special_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return exp_special_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_special_T9(in_t(F) x) {
@@ -3328,7 +4024,11 @@ a *= a;
 return a;
 }
 inline static float exp_special_T9_float_simd(float x) {
+#ifdef __x86_64__
 return exp_special_T9<cr::simd::float1x4>(x)[0];
+#else
+return exp_special_T9<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F exp_special_fma_T9(in_t(F) x) {
@@ -3352,7 +4052,11 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_T9_float_simd(float x) {
+#ifdef __x86_64__
 return exp_special_fma_T9<cr::simd::float1x4>(x)[0];
+#else
+return exp_special_fma_T9<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tan_T3(in_t(F) x) {
@@ -3365,7 +4069,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_T3_float_simd(float x) {
+#ifdef __x86_64__
 return tan_T3<cr::simd::float1x4>(x)[0];
+#else
+return tan_T3<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tan_fma_T3(in_t(F) x) {
@@ -3379,7 +4087,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_fma_T3_float_simd(float x) {
+#ifdef __x86_64__
 return tan_fma_T3<cr::simd::float1x4>(x)[0];
+#else
+return tan_fma_T3<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tan_T4(in_t(F) x) {
@@ -3393,7 +4105,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tan_T4_float_simd(float x) {
+#ifdef __x86_64__
 return tan_T4<cr::simd::float1x4>(x)[0];
+#else
+return tan_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tan_fma_T4(in_t(F) x) {
@@ -3408,7 +4124,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tan_fma_T4_float_simd(float x) {
+#ifdef __x86_64__
 return tan_fma_T4<cr::simd::float1x4>(x)[0];
+#else
+return tan_fma_T4<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tan_T5(in_t(F) x) {
@@ -3423,7 +4143,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_T5_float_simd(float x) {
+#ifdef __x86_64__
 return tan_T5<cr::simd::float1x4>(x)[0];
+#else
+return tan_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tan_fma_T5(in_t(F) x) {
@@ -3439,7 +4163,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_fma_T5_float_simd(float x) {
+#ifdef __x86_64__
 return tan_fma_T5<cr::simd::float1x4>(x)[0];
+#else
+return tan_fma_T5<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tan_T6(in_t(F) x) {
@@ -3455,7 +4183,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tan_T6_float_simd(float x) {
+#ifdef __x86_64__
 return tan_T6<cr::simd::float1x4>(x)[0];
+#else
+return tan_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tan_fma_T6(in_t(F) x) {
@@ -3472,7 +4204,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tan_fma_T6_float_simd(float x) {
+#ifdef __x86_64__
 return tan_fma_T6<cr::simd::float1x4>(x)[0];
+#else
+return tan_fma_T6<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tan_T7(in_t(F) x) {
@@ -3489,7 +4225,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_T7_float_simd(float x) {
+#ifdef __x86_64__
 return tan_T7<cr::simd::float1x4>(x)[0];
+#else
+return tan_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tan_fma_T7(in_t(F) x) {
@@ -3507,7 +4247,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_fma_T7_float_simd(float x) {
+#ifdef __x86_64__
 return tan_fma_T7<cr::simd::float1x4>(x)[0];
+#else
+return tan_fma_T7<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tan_T8(in_t(F) x) {
@@ -3525,7 +4269,11 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tan_T8_float_simd(float x) {
+#ifdef __x86_64__
 return tan_T8<cr::simd::float1x4>(x)[0];
+#else
+return tan_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tan_fma_T8(in_t(F) x) {
@@ -3544,7 +4292,11 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tan_fma_T8_float_simd(float x) {
+#ifdef __x86_64__
 return tan_fma_T8<cr::simd::float1x4>(x)[0];
+#else
+return tan_fma_T8<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tan_T9(in_t(F) x) {
@@ -3563,7 +4315,11 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_T9_float_simd(float x) {
+#ifdef __x86_64__
 return tan_T9<cr::simd::float1x4>(x)[0];
+#else
+return tan_T9<float>(x);
+#endif
 }
 template <class F>
 inline constexpr static F tan_fma_T9(in_t(F) x) {
@@ -3583,5 +4339,9 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_fma_T9_float_simd(float x) {
+#ifdef __x86_64__
 return tan_fma_T9<cr::simd::float1x4>(x)[0];
+#else
+return tan_fma_T9<float>(x);
+#endif
 }

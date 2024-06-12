@@ -1,5 +1,6 @@
 #pragma once
 
+#ifdef __x86_64__
 #include <bit>
 #include <immintrin.h>
 
@@ -229,3 +230,4 @@ namespace cr::simd
 		int1x4 bitCastInt() const;
 	};
 }
+#endif

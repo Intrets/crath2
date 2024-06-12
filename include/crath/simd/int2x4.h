@@ -1,5 +1,6 @@
 #pragma once
 
+#ifdef __x86_64__
 #include <bit>
 #include <immintrin.h>
 
@@ -45,3 +46,4 @@ namespace cr::simd
 		float2x4 bitCastFloat() const;
 	};
 }
+#endif
