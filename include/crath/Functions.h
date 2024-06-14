@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ParameterTyping.h"
-#ifdef __x86_64__
+#ifdef ARCH_x86_64
 #include "crath/simd/float1x4.h"
 #endif
 
@@ -27,7 +27,7 @@ namespace cr
 		template<class F>
 		inline constexpr static F recip(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
-#ifdef __x86_64__
+#ifdef ARCH_x86_64
 				return cr::simd::float1x4(x).recip()[0];
 #else
 				return 1 / x;
@@ -54,7 +54,7 @@ namespace cr
 				}
 			}
 			else {
-#ifdef __x86_64__
+#ifdef ARCH_x86_64
 				return simd::float1x4::clamp(f_, min_, max_)[0];
 #else
 				return std::clamp(f_, min_, max_);

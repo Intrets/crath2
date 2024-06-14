@@ -4,7 +4,7 @@
 
 namespace cr::simd
 {
-#ifdef __x86_64__
+#ifdef ARCH_x86_64
 	int1x4 float1x4::bitCastInt() const {
 		return int1x4(
 		    _mm_castps_si128(this->f1)

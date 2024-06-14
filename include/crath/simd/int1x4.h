@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef __x86_64__
+#ifdef ARCH_x86_64
 #include <bit>
 #include <immintrin.h>
 

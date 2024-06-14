@@ -9,7 +9,7 @@
 
 #include <tepp/literal.h>
 
-#if defined(__x86_64__)
+#if ARCH_x86_64
 #include "crath/simd/float1x4.h"
 #include "crath/simd/int1x4.h"
 #include "crath/simd/int2x4.h"
@@ -246,7 +246,7 @@ namespace cr
 					return 1 / x;
 				}
 				else {
-#ifdef __x86_64__
+#ifdef ARCH_x86_64
 					return simd::float1x4(x).recip()[0];
 #else
                     return 1 / x;
@@ -406,7 +406,7 @@ namespace cr
 				return std::clamp(f_, min_, max_);
 			}
 			else {
-#ifdef __x86_64__
+#ifdef ARCH_x86_64
 				return simd::float1x4::clamp(f_, min_, max_)[0];
 #else
                 return std::clamp(f_, min_, max_);
