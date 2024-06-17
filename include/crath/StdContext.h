@@ -415,10 +415,6 @@ namespace cr
 			}
 		}
 
-		inline static int clamp(int i_, int min_, int max_) {
-			return std::max(std::min(i_, max_), min_);
-		}
-
 		inline static integer_t clamp(integer_t i_, integer_t min_, integer_t max_) {
 			return std::max(std::min(i_, max_), min_);
 		}
