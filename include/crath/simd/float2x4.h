@@ -1,5 +1,7 @@
 #pragma once
 
+#include <tepp/integers.h>
+
 #ifdef ARCH_x86_64
 #include <bit>
 #include <immintrin.h>
@@ -22,7 +24,7 @@ namespace cr::simd
 			float g2[4];
 		};
 
-		static constexpr int64_t size = 8;
+		static constexpr integer_t size = 8;
 
 		inline float2x4() = default;
 		inline float2x4(float s)
@@ -46,11 +48,11 @@ namespace cr::simd
 		      f2(_mm_set_ps(a7, a6, a5, a4)) {
 		}
 
-		inline float const& operator[](int64_t i) const {
+		inline float const& operator[](integer_t i) const {
 			return const_cast<float2x4*>(this)->operator[](i);
 		}
 
-		inline float& operator[](int64_t i) {
+		inline float& operator[](integer_t i) {
 			if (i < 4) {
 #if defined(COMPILER_MSVC)
 				return this->f1.m128_f32[i];

@@ -1,6 +1,8 @@
 #pragma once
 
-#ifdef __x84_64__
+#include <tepp/integers.h>
+
+#ifdef ARCH_x86_64
 #include <bit>
 #include <immintrin.h>
 
@@ -14,7 +16,7 @@ namespace cr::simd
 		__m128 f1{};
 		__m128 f2{};
 		__m128 f3{};
-		static constexpr int64_t size = 12;
+		static constexpr integer_t size = 12;
 
 		inline float3x4() = default;
 		inline float3x4(float s)
@@ -43,7 +45,7 @@ namespace cr::simd
 		      f3(_mm_set_ps(a11, a10, a9, a8)) {
 		}
 
-		inline float operator[](int64_t i) const {
+		inline float operator[](integer_t i) const {
 			if (i < 4) {
 #if defined(COMPILER_MSVC)
 				return this->f1.m128_f32[i];

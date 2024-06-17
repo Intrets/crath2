@@ -7,6 +7,7 @@
 #include <numbers>
 #include <type_traits>
 
+#include <tepp/integers.h>
 #include <tepp/literal.h>
 
 #if ARCH_x86_64
@@ -249,7 +250,7 @@ namespace cr
 #ifdef ARCH_x86_64
 					return simd::float1x4(x).recip()[0];
 #else
-                    return 1 / x;
+					return 1 / x;
 #endif
 				}
 			}
@@ -265,10 +266,10 @@ namespace cr
 		template<class F>
 		inline constexpr static F div_helper(F x, F m) {
 			if (x >= F(0.0)) {
-				return (F)(int64_t)(x / m);
+				return (F)(integer_t)(x / m);
 			}
 			else {
-				return (F)((int64_t)(x / m) - F(1));
+				return (F)((integer_t)(x / m) - F(1));
 			}
 		}
 
@@ -409,7 +410,7 @@ namespace cr
 #ifdef ARCH_x86_64
 				return simd::float1x4::clamp(f_, min_, max_)[0];
 #else
-                return std::clamp(f_, min_, max_);
+				return std::clamp(f_, min_, max_);
 #endif
 			}
 		}
@@ -418,7 +419,7 @@ namespace cr
 			return std::max(std::min(i_, max_), min_);
 		}
 
-		inline static int64_t clamp(int64_t i_, int64_t min_, int64_t max_) {
+		inline static integer_t clamp(integer_t i_, integer_t min_, integer_t max_) {
 			return std::max(std::min(i_, max_), min_);
 		}
 
