@@ -9,6 +9,7 @@ project(${MODULE_NAME} LANGUAGES CXX)
 make_module(
 	MODULE_NAME ${MODULE_NAME}
 	MODULE_FILES
+		simd/Info
 		simd/aligned_load_hint
 		StdContext
 		simd/float1x4
