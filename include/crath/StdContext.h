@@ -318,6 +318,27 @@ namespace cr
 			}
 		}
 
+		template<class F2, class F>
+		inline constexpr static std::pair<F, F> fdivmod(in_t(F) f, in_t(F2) m) {
+			if constexpr (std::same_as<F, float> || std::same_as<F, double>) {
+				if (std::is_constant_evaluated()) {
+					auto div = div_helper(f, m);
+
+					return { div, f - m * div };
+				}
+				else {
+					auto div = std::floor(f / m);
+
+					return { div, f - m * div };
+				}
+			}
+			else {
+				auto div = (f / m).floor();
+
+				return { div, f - F(m) * div };
+			}
+		}
+
 		template<te::literal<float> m, class F>
 		inline constexpr static F fmod(in_t(F) f) {
 			if constexpr (m.value == 1.0f) {
