@@ -31,6 +31,8 @@ namespace cr
 		inline static constexpr float four_inv_pi = 4.0f * inv_pi;
 		inline static constexpr float half_sqrt_two = 0.7071067811865476f;
 		inline static constexpr float sqrt_two = 1.4142135623730951f;
+		inline static constexpr float inv_phi = 1.0f / std::numbers::phi_v<float>;
+		inline static constexpr float phi = 1.0f / std::numbers::phi_v<float>;
 
 		template<class F>
 		inline static constexpr F bitSign() {
