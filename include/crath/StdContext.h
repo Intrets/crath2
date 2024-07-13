@@ -24,6 +24,7 @@ namespace cr
 	{
 		inline static constexpr float pi = std::numbers::pi_v<float>;
 		inline static constexpr float half_pi = 0.5f * std::numbers::pi_v<float>;
+		inline static constexpr float quart_pi = 0.25f * std::numbers::pi_v<float>;
 		inline static constexpr float two_pi = 2.0f * pi;
 		inline static constexpr float inv_pi = std::numbers::inv_pi_v<float>;
 		inline static constexpr float inv_two_pi = 0.5f * std::numbers::inv_pi_v<float>;
