@@ -1,6 +1,7 @@
 from math import factorial
 
 import sympy as sp
+from scipy.interpolate import approximate_taylor_polynomial
 
 
 def sin(scale=1):
@@ -34,6 +35,30 @@ def atan(scale=1):
         tay.append(sp.Rational(scale ** (2 * n + 1) * (-1) ** n, 2 * n + 1))
         tay.append(0)
     return tay
+
+
+def atan_nq(a, scale=1):
+    x = sp.symbols('x')
+    f = sp.atan(x)
+
+    tay = sp.atan(a)
+
+    N = 60
+    der = f
+    for n in range(1, N):
+        c = sp.diff(f, x, n).subs(x, a)
+        tay += c * (x - a) ** n / sp.factorial(n)
+
+    tay = sp.simplify(tay)
+
+    coefficients = []
+    for _ in range(N):
+        c = tay.subs(x, 0)
+        coefficients.append(c)
+
+        tay = sp.simplify((tay - c) / x)
+
+    return coefficients
 
 
 def log(scale=1):

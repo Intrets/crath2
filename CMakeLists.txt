@@ -28,20 +28,22 @@ make_module(
 		function_testing.h
 )
 
-#find_package(OpenGL REQUIRED)
-#find_package(GLFW3 REQUIRED)
+find_package(OpenGL REQUIRED)
+find_package(GLFW3 REQUIRED)
 
-#add_executable(${MODULE_NAME}_glfw_test TestGlfw.cpp)
-#target_link_libraries(${MODULE_NAME}_glfw_test
-#	crath
-#	imgui_glfw
-#	opengl32
-#	font_resources
-#	GLFW3
-#)
+add_executable(${MODULE_NAME}_glfw_test TestGlfw.cpp)
+target_link_libraries(imgui_glfw imgui GLFW3)
+target_link_libraries(${MODULE_NAME}_glfw_test
+	imgui
+	crath
+	imgui_glfw
+	opengl32
+	font_resources
+	GLFW3
+)
 
 target_default_compiler_options(
 	TARGETS 
-		#${MODULE_NAME}_glfw_test
+		${MODULE_NAME}_glfw_test
 		crath
 )

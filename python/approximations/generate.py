@@ -1,17 +1,60 @@
+from mpmath import mp
+
 import rat_pade
 import taylor
 from expression import *
 from math import pi, log
 from typing import NamedTuple, Optional, List
+import numpy as np
+import remez
 
 
 def return_normal(out, a):
     out(f'return {a};')
 
 
-def make(taylor_series, N, fma_type, out=print, return_type=return_normal):
-    p, q = rat_pade.rat_pade(taylor_series, N)
-    make_pq(p, q, fma_type=fma_type, out=out, return_type=return_type)
+def make(taylor_series, N, fma_type, out=print, return_type=return_normal, interval=None, ref_f=None):
+    if interval is not None and ref_f is not None:
+        if N[1] == 0:
+            p = np.poly1d(taylor_series[:N[0]])
+            q = np.poly1d([1])
+        else:
+            p, q = rat_pade.rat_pade(taylor_series, N[0], N[1])
+
+        def eval(x):
+            return p(x) / q(x)
+
+        approx_y0 = eval(interval[0])
+        approx_y1 = eval(interval[1])
+
+        ref_y0 = ref_f(interval[0])
+        ref_y1 = ref_f(interval[1])
+
+        s = (ref_y0 - ref_y1) / (approx_y0 - approx_y1)
+        c = ref_y0 - approx_y0 * s
+
+        p = p * s
+
+        print(f's: {s}, c: {c}')
+        p, q = rat_pade.extract_coeefficients(p, q)
+
+        if abs(c) > 0.00000001:
+            def offset_return(out, a):
+                out(f'auto const offset = {a} + {c};')
+                return_type(out, 'offset')
+
+            make_pq(p, q, fma_type=fma_type, out=out, return_type=offset_return)
+        else:
+            make_pq(p, q, fma_type=fma_type, out=out, return_type=return_type)
+    else:
+        if N[1] == 0:
+            p = np.poly1d(taylor_series[:N[0]])
+            q = np.poly1d([1])
+        else:
+            p, q = rat_pade.rat_pade(taylor_series, N[0], N[1])
+
+        p, q = rat_pade.extract_coeefficients(p, q)
+        make_pq(p, q, fma_type=fma_type, out=out, return_type=return_type)
 
 
 def make_pq(p, q, fma_type, out=print, return_type=return_normal):
@@ -36,32 +79,49 @@ def make_pq(p, q, fma_type, out=print, return_type=return_normal):
         lines = string.split('\n')
         return lines
 
-    p_lines = make0(p, 'a')
-    q_lines = make0(q, 'b')
+    if len(q) == 1 and q[0] == 1:
+        p_lines = make0(p, 'a')
 
-    q_padding = max(0, len(p_lines) - len(q_lines))
-    p_padding = max(0, len(q_lines) - len(p_lines))
+        x2_used = False
+        for a in p_lines:
+            if 'x2' in a:
+                x2_used = True
+                break
 
-    p_lines += [None] * p_padding
-    q_lines += [None] * q_padding
+        if x2_used:
+            out('auto const x2 = x * x;')
+        for a in p_lines:
+            if a:
+                out(a)
+        return_type(out, 'a0')
 
-    x2_used = False
-    for a, b in zip(p_lines, q_lines):
-        if 'x2' in a:
-            x2_used = True
-            break
-        if 'x2' in b:
-            x2_used = True
-            break
+    else:
+        p_lines = make0(p, 'a')
+        q_lines = make0(q, 'b')
 
-    if x2_used:
-        out('auto const x2 = x * x;')
-    for a, b in zip(p_lines, q_lines):
-        if a:
-            out(a)
-        if b:
-            out(b)
-    return_type(out, 'a0 / b0')
+        q_padding = max(0, len(p_lines) - len(q_lines))
+        p_padding = max(0, len(q_lines) - len(p_lines))
+
+        p_lines += [None] * p_padding
+        q_lines += [None] * q_padding
+
+        x2_used = False
+        for a, b in zip(p_lines, q_lines):
+            if 'x2' in a:
+                x2_used = True
+                break
+            if 'x2' in b:
+                x2_used = True
+                break
+
+        if x2_used:
+            out('auto const x2 = x * x;')
+        for a, b in zip(p_lines, q_lines):
+            if a:
+                out(a)
+            if b:
+                out(b)
+        return_type(out, 'a0 / b0')
 
 
 class x_offset:
@@ -169,13 +229,12 @@ class function_info2(NamedTuple):
     max_x: float
     ref_min_x: float
     ref_max_x: float
-    normalize_error: bool
 
 
 function_infos2: list[function_info2] = []
 
 
-def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max_x, name, N, ref, x_type=x_normal, return_type=return_normal, normalize_error=False):
+def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max_x, name, N, M, ref, x_type=x_normal, return_type=return_normal, ref_f=None, interval=None):
     name_full = name
     tags = [name]
     if x_type.name():
@@ -184,16 +243,16 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
     if fma_type == fma:
         name_full += "_fma"
         tags.append("fma")
-    name_full += f"_T{N}"
+    name_full += f"_T{N}_{M}"
 
     out('template <class F>')
     out(f'inline constexpr static F {name_full}(in_t(F) x) {{')
 
-    buffer : List[str] = []
+    buffer: List[str] = []
 
     x_type.run(out=lambda x: buffer.append(x), max_x=max_x)
 
-    make(taylor_series, N, fma_type=fma_type, out=lambda x: buffer.append(x), return_type=return_type)
+    make(taylor_series, N=(N, M), fma_type=fma_type, out=lambda x: buffer.append(x), return_type=return_type, interval=interval, ref_f=ref_f)
 
     for line in buffer:
         if 'math' in line:
@@ -222,7 +281,6 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
         max_x=max_x,
         ref_min_x=ref_min_x,
         ref_max_x=ref_max_x,
-        normalize_error=normalize_error
     )
     function_infos2.append(info)
 
@@ -235,7 +293,6 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
         max_x=max_x,
         ref_min_x=ref_min_x,
         ref_max_x=ref_max_x,
-        normalize_error=normalize_error
     )
     function_infos2.append(info)
 
@@ -248,7 +305,6 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
         max_x=max_x,
         ref_min_x=ref_min_x,
         ref_max_x=ref_max_x,
-        normalize_error=normalize_error
     )
     function_infos2.append(info)
 
@@ -268,6 +324,23 @@ def add_sin(N, out, name, scale):
             max_x=2 * pi / scale,
             ref_min_x=0,
             ref_max_x=2 * pi,
+        )
+
+        add_function2(
+            taylor.sin(scale),
+            out=out,
+            fma_type=fma_type,
+            name=f'{name}_ends_corrected',
+            ref="std::sinf",
+            N=N,
+            x_type=x_double_abs,
+            return_type=return_normal,
+            min_x=0,
+            max_x=2 * pi / scale,
+            ref_min_x=0,
+            ref_max_x=2 * pi,
+            interval=(0, 2 * pi / scale / 4),
+            ref_f=lambda x: np.sin(x * scale)
         )
 
         add_function2(
@@ -360,7 +433,6 @@ def add_exp(N, out):
             max_x=10,
             ref_min_x=-10,
             ref_max_x=10,
-            normalize_error=True
         )
 
 
@@ -381,6 +453,11 @@ def add_atan(N, out):
     def atan_return(out, a):
         out(f'return math::setSign(a - {a}, x0);')
 
+    print("elp")
+    p, e = remez.remez(mp.atan, n_degree=13, lower=0, upper=1)
+    print(p)
+    print(type(p))
+
     for fma_type in [fma_normal, fma]:
         add_function2(
             taylor.atan(),
@@ -389,6 +466,55 @@ def add_atan(N, out):
             name="atan",
             ref="std::atanf",
             N=N,
+            M=N,
+            x_type=x_atan,
+            return_type=atan_return,
+            min_x=-10,
+            max_x=10,
+            ref_min_x=-10,
+            ref_max_x=10,
+        )
+
+        add_function2(
+            taylor.atan(),
+            out=out,
+            fma_type=fma_type,
+            name="atan",
+            ref="std::atanf",
+            N=4 * N,
+            M=0,
+            x_type=x_atan,
+            return_type=atan_return,
+            min_x=-10,
+            max_x=10,
+            ref_min_x=-10,
+            ref_max_x=10,
+        )
+
+        add_function2(
+            p,
+            out=out,
+            fma_type=fma_type,
+            name="atan_remez",
+            ref="std::atanf",
+            N=N,
+            M=0,
+            x_type=x_atan,
+            return_type=atan_return,
+            min_x=-10,
+            max_x=10,
+            ref_min_x=-10,
+            ref_max_x=10,
+        )
+
+        add_function2(
+            p,
+            out=out,
+            fma_type=fma_type,
+            name="atan_remez_pade",
+            ref="std::atanf",
+            N=N,
+            M=N,
             x_type=x_atan,
             return_type=atan_return,
             min_x=-10,
@@ -444,7 +570,6 @@ def add_special_exp(N, out):
             max_x=1,
             ref_min_x=0,
             ref_max_x=1,
-            normalize_error=True
         )
 
 
@@ -472,32 +597,33 @@ def main():
 
     out = lambda x: function_definition_inc.write(x + '\n')
 
-    for N in range(4, 9):
-        add_sin(N, out, scale=2 * pi, name="sin_unit1")
-        add_sin(N, out, scale=1 * pi, name="sin_unit2")
-        add_sin(N, out, scale=1, name="sin")
-    for N in range(4, 10):
-        add_cos(N, out, scale=2 * pi, name="cos_unit1")
-        add_cos(N, out, scale=1 * pi, name="cos_unit2")
-        add_cos(N, out, scale=1, name="cos")
+    # for N in range(4, 9):
+    #     add_sin(N, out, scale=2 * pi, name="sin_unit1")
+    #     add_sin(N, out, scale=1 * pi, name="sin_unit2")
+    #     add_sin(N, out, scale=1, name="sin")
+    #
+    # for N in range(4, 10):
+    #     add_cos(N, out, scale=2 * pi, name="cos_unit1")
+    #     add_cos(N, out, scale=1 * pi, name="cos_unit2")
+    #     add_cos(N, out, scale=1, name="cos")
+    #
+    # for N in range(4, 9):
+    #     add_tanh(N, out)
+    #
+    # for N in range(3, 9):
+    #     add_exp(N, out)
 
-    for N in range(4, 9):
-        add_tanh(N, out)
-
-    for N in range(3, 9):
-        add_exp(N, out)
-
-    for N in range(3, 9):
+    for N in range(3, 4):
         add_atan(N, out)
 
-    for N in range(3, 10):
-        add_log(N, out)
-
-    for N in range(3, 10):
-        add_special_exp(N, out)
-
-    for N in range(3, 10):
-        add_tan(N, out)
+    # for N in range(3, 10):
+    #     add_log(N, out)
+    #
+    # for N in range(3, 10):
+    #     add_special_exp(N, out)
+    #
+    # for N in range(3, 10):
+    #     add_tan(N, out)
 
     out = lambda x: function_testing_inc.write(x + '\n')
 
@@ -510,8 +636,7 @@ def main():
         out(f'entry.tags = {{ {tags} }};')
         out(f'entry.subName = "{test.function_name}";')
         if test.reference_function:
-            normalize_error = 'true' if test.normalize_error else 'false'
-            out(f'entry.accuracy_test<{test.value_type}>({test.function_name}, {test.reference_function}, {float(test.min_x)}f, {float(test.max_x)}f, {float(test.ref_min_x)}f, {float(test.ref_max_x)}f, {normalize_error});')
+            out(f'entry.accuracy_test<{test.value_type}>({test.function_name}, {test.reference_function}, {float(test.min_x)}f, {float(test.max_x)}f, {float(test.ref_min_x)}f, {float(test.ref_max_x)}f);')
         out(f'entry.time<{test.value_type}>({test.function_name}, M, {float(test.min_x)}f, {float(test.max_x)}f);')
         out('}')
 

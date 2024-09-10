@@ -7,11 +7,11 @@
 #include <unordered_map>
 #include <vector>
 
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
+#include <imgui.h>
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
 
-#include "imgui_stdlib.h"
+#include <imgui_stdlib.h>
 
 #include <GLFW/glfw3.h>
 
@@ -34,6 +34,8 @@ struct TestResult
 
 		float error{};
 		float maximumError{};
+		float maximumNormalizedError{};
+		std::tuple<float, float, float> maximumErrorinfo{};
 
 		float range_min{};
 		float range_max{};
@@ -45,8 +47,6 @@ struct TestResult
 		std::function<float(float)> referenceFunction{};
 		float referenceDomanMin{};
 		float referenceDomanMax{};
-
-		bool normalize = false;
 
 		template<class F>
 		void time(auto approximation, int N, float min_x, float max_x) {
@@ -95,7 +95,7 @@ struct TestResult
 		}
 
 		template<class F>
-		void accuracy_test(auto approximation, auto reference, float min_x, float max_x, float ref_min_x, float ref_max_x, bool normalize_) {
+		void accuracy_test(auto approximation, auto reference, float min_x, float max_x, float ref_min_x, float ref_max_x) {
 			if constexpr (std::same_as<F, float>) {
 				this->approximationFunction = approximation;
 			}
@@ -112,15 +112,13 @@ struct TestResult
 			this->referenceDomanMin = ref_min_x;
 			this->referenceDomanMax = ref_max_x;
 
-			this->normalize = normalize_;
-
 			this->calculateAccuracyOnDomain();
 		}
 
-		float calculateError(float approximation_x, float reference_x) {
+		float calculateError(float approximation_x, float reference_x, bool normalize) {
 			auto res = this->approximationFunction(approximation_x);
 			auto ref = this->referenceFunction(reference_x);
-			if (this->normalize) {
+			if (normalize) {
 				return std::abs((res - ref) / ref);
 			}
 			else {
@@ -131,7 +129,7 @@ struct TestResult
 		void calculateAccuracyOnDomain() {
 			auto const N = 10000;
 
-			for (size_t i = 0; i < N - 1; i++) {
+			for (size_t i = 0; i < N + 1; i++) {
 				auto x = this->approximationDomanMin + (this->approximationDomanMax - this->approximationDomanMin) * i / N;
 				auto x_ref = this->referenceDomanMin + (this->referenceDomanMax - this->referenceDomanMin) * i / N;
 
@@ -139,18 +137,20 @@ struct TestResult
 				float ref = this->referenceFunction(x_ref);
 
 				float const e = std::abs(res - ref);
-				if (this->normalize) {
-					this->maximumError = std::max(maximumError, e / std::abs(ref));
+				if (ref != 0.0f) {
+					auto candidate = e / std::abs(ref);
+					if (candidate > this->maximumNormalizedError) {
+						this->maximumNormalizedError = candidate;
+						this->maximumErrorinfo = { x, res, ref };
+					}
 				}
-				else {
-					this->maximumError = std::max(maximumError, e);
-				}
+				this->maximumError = std::max(maximumError, e);
 
 				this->error += e / N;
 			}
 		}
 
-		void calculateDomain(float maximumNormalizedError) {
+		void calculateDomain(float maximumNormalizedError_) {
 			auto approximation_x = (this->approximationDomanMin + this->approximationDomanMax) * 0.5f;
 			auto approximation_dx = (this->approximationDomanMax - this->approximationDomanMin) * 0.001f;
 
@@ -163,7 +163,7 @@ struct TestResult
 					auto approx_x = approximation_x + approximation_dx * i;
 					auto ref_x = reference_x + reference_dx * i;
 
-					if (this->calculateError(approx_x, ref_x) > maximumNormalizedError) {
+					if (this->calculateError(approx_x, ref_x, true) > maximumNormalizedError_) {
 						break;
 					}
 				}
@@ -176,7 +176,7 @@ struct TestResult
 					auto approx_x = approximation_x - approximation_dx * i;
 					auto ref_x = reference_x - reference_dx * i;
 
-					if (this->calculateError(approx_x, ref_x) > maximumNormalizedError) {
+					if (this->calculateError(approx_x, ref_x, true) > maximumNormalizedError_) {
 						break;
 					}
 				}
@@ -242,9 +242,10 @@ struct TestResult
 		}
 
 		ImGui::BeginChild("Child", {}, true);
-		ImGui::BeginTable("Things", 6, ImGuiTableFlags_Sortable | ImGuiTableFlags_RowBg | ImGuiTableFlags_Resizable);
+		ImGui::BeginTable("Things", 8, ImGuiTableFlags_Sortable | ImGuiTableFlags_RowBg | ImGuiTableFlags_Resizable);
 		ImGui::TableSetupColumn("Name");
 		ImGui::TableSetupColumn("Error");
+		ImGui::TableSetupColumn("Maximum Absolute Error");
 		ImGui::TableSetupColumn("Maximum Normalized Error");
 		ImGui::TableSetupColumn("Domain Min");
 		ImGui::TableSetupColumn("Domain Max");
@@ -267,12 +268,15 @@ struct TestResult
 					return entry0.maximumError < entry1.maximumError;
 				}
 				else if (i == 3) {
-					return entry0.range_min < entry1.range_min;
+					return entry0.maximumNormalizedError < entry1.maximumNormalizedError;
 				}
 				else if (i == 4) {
-					return entry0.range_max < entry1.range_max;
+					return entry0.range_min < entry1.range_min;
 				}
 				else if (i == 5) {
+					return entry0.range_max < entry1.range_max;
+				}
+				else if (i == 6) {
 					return entry0.picoseconds < entry1.picoseconds;
 				}
 				else {
@@ -291,12 +295,15 @@ struct TestResult
 					return entry0.maximumError > entry1.maximumError;
 				}
 				else if (i == 3) {
-					return entry0.range_min > entry1.range_min;
+					return entry0.maximumNormalizedError > entry1.maximumNormalizedError;
 				}
 				else if (i == 4) {
-					return entry0.range_max > entry1.range_max;
+					return entry0.range_min > entry1.range_min;
 				}
 				else if (i == 5) {
+					return entry0.range_max > entry1.range_max;
+				}
+				else if (i == 6) {
 					return entry0.picoseconds > entry1.picoseconds;
 				}
 				else {
@@ -371,6 +378,8 @@ struct TestResult
 			ImGui::Text("%10.10f", entry.error);
 			ImGui::TableNextColumn();
 			ImGui::Text("%10.10f", entry.maximumError);
+			ImGui::TableNextColumn();
+			ImGui::Text("%10.10f", entry.maximumNormalizedError);
 
 			if (entry.range_min == entry.range_max) {
 				ImGui::TableNextColumn();
@@ -385,6 +394,10 @@ struct TestResult
 
 			ImGui::TableNextColumn();
 			ImGui::Text("%dps", entry.picoseconds);
+
+			ImGui::TableNextColumn();
+			auto&& [x, ref, res] = entry.maximumErrorinfo;
+			ImGui::Text("%10.10f, %10.10f, %10.10f", x, ref, res);
 		}
 
 		ImGui::EndTable();
@@ -396,9 +409,9 @@ int main() {
 	using namespace cr;
 	TestResult testResult{};
 
-	 auto constexpr M = 6'000'000;
-	// auto constexpr M = 1'000'000;
-	//auto constexpr M = 1'000;
+	// auto constexpr M = 6'000'000;
+	//  auto constexpr M = 1'000'000;
+	auto constexpr M = 1'000;
 
 #include "function_testing.h"
 
@@ -426,7 +439,7 @@ int main() {
 
 	auto fontBuffer = getBuffer(font_resources_enum::Nunito_Medium_ttf);
 
-	if (fontBuffer->getSize<char>() <= static_cast<size_t>(std::numeric_limits<int>::max())) {
+	if (fontBuffer->getSize<char>() <= static_cast<integer_t>(std::numeric_limits<int>::max())) {
 		void* freeBuffer = ImGui::MemAlloc(fontBuffer->getSize<char>());
 
 		std::memcpy(freeBuffer, fontBuffer->getData<void*>(), fontBuffer->getSize<char>());
