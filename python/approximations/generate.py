@@ -7,15 +7,19 @@ from math import pi, log
 from typing import NamedTuple, Optional, List
 import numpy as np
 import remez
+import matplotlib.pyplot as plt
 
 
 def return_normal(out, a):
     out(f'return {a};')
 
 
-def make(taylor_series, N, fma_type, out=print, return_type=return_normal, interval=None, ref_f=None):
+def make(taylor_series, N, fma_type, out=print, return_type=return_normal, interval=None, ref_f=None, q=None):
     if interval is not None and ref_f is not None:
-        if N[1] == 0:
+        if q is not None:
+            p = np.poly1d(taylor_series)
+            q = np.poly1d(q)
+        elif N[1] == 0:
             p = np.poly1d(taylor_series[:N[0]])
             q = np.poly1d([1])
         else:
@@ -40,14 +44,17 @@ def make(taylor_series, N, fma_type, out=print, return_type=return_normal, inter
 
         if abs(c) > 0.00000001:
             def offset_return(out, a):
-                out(f'auto const offset = {a} + {c};')
+                out(f'auto const offset = {a} + F({c}f);')
                 return_type(out, 'offset')
 
             make_pq(p, q, fma_type=fma_type, out=out, return_type=offset_return)
         else:
             make_pq(p, q, fma_type=fma_type, out=out, return_type=return_type)
     else:
-        if N[1] == 0:
+        if q is not None:
+            p = np.poly1d(taylor_series)
+            q = np.poly1d(q)
+        elif N[1] == 0:
             p = np.poly1d(taylor_series[:N[0]])
             q = np.poly1d([1])
         else:
@@ -234,7 +241,7 @@ class function_info2(NamedTuple):
 function_infos2: list[function_info2] = []
 
 
-def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max_x, name, N, M, ref, x_type=x_normal, return_type=return_normal, ref_f=None, interval=None):
+def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max_x, name, N, M, ref, x_type=x_normal, return_type=return_normal, ref_f=None, interval=None, q=None):
     name_full = name
     tags = [name]
     if x_type.name():
@@ -252,7 +259,7 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
 
     x_type.run(out=lambda x: buffer.append(x), max_x=max_x)
 
-    make(taylor_series, N=(N, M), fma_type=fma_type, out=lambda x: buffer.append(x), return_type=return_type, interval=interval, ref_f=ref_f)
+    make(taylor_series, q=q, N=(N, M), fma_type=fma_type, out=lambda x: buffer.append(x), return_type=return_type, interval=interval, ref_f=ref_f)
 
     for line in buffer:
         if 'math' in line:
@@ -448,15 +455,13 @@ def add_atan(N, out):
             out('x = math::abs(x);')
             out('auto m = x > F(1.0f);')
             out(f'auto a = math::blend(F(0.0f), F({pi * 0.5}f), m);')
-            out('x = math::blend(-x, F(1.0f) / x, m);')
+            out('x = math::blend(x, F(1.0f) / x, m);')
 
     def atan_return(out, a):
         out(f'return math::setSign(a - {a}, x0);')
 
-    print("elp")
-    p, e = remez.remez(mp.atan, n_degree=13, lower=0, upper=1)
-    print(p)
-    print(type(p))
+    remez_p = remez.remez(mp.atan, n_degree=N, lower=0, upper=1)
+    remez_pade_p, remez_pade_q = remez.remez_pade(mp.atan, n_degree=N, lower=0, upper=1)
 
     for fma_type in [fma_normal, fma]:
         add_function2(
@@ -475,40 +480,29 @@ def add_atan(N, out):
             ref_max_x=10,
         )
 
+        print(remez_p)
+        print(remez.c_code_gen('float', 'test', poly_coeffs=remez_p))
         add_function2(
-            taylor.atan(),
-            out=out,
-            fma_type=fma_type,
-            name="atan",
-            ref="std::atanf",
-            N=4 * N,
-            M=0,
-            x_type=x_atan,
-            return_type=atan_return,
-            min_x=-10,
-            max_x=10,
-            ref_min_x=-10,
-            ref_max_x=10,
-        )
-
-        add_function2(
-            p,
+            remez_p,
             out=out,
             fma_type=fma_type,
             name="atan_remez",
             ref="std::atanf",
-            N=N,
+            N=N + 7,
             M=0,
             x_type=x_atan,
             return_type=atan_return,
-            min_x=-10,
-            max_x=10,
-            ref_min_x=-10,
-            ref_max_x=10,
+            min_x=0,
+            max_x=1,
+            ref_min_x=0,
+            ref_max_x=1,
+            ref_f=mp.atan,
+            interval=(0, 1)
         )
 
         add_function2(
-            p,
+            remez_pade_p,
+            q=remez_pade_q,
             out=out,
             fma_type=fma_type,
             name="atan_remez_pade",
@@ -613,7 +607,7 @@ def main():
     # for N in range(3, 9):
     #     add_exp(N, out)
 
-    for N in range(3, 4):
+    for N in range(5, 6):
         add_atan(N, out)
 
     # for N in range(3, 10):

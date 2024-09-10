@@ -215,7 +215,7 @@ def remez(func, n_degree: int, lower: float = -1, upper: float = 1, max_iter: in
 
     print(f'iteration count: {iter_count}')
 
-    return [float(i) for i in numpy.polynomial.chebyshev.cheb2poly(coeffs)], float(mean_error)
+    return [float(i) for i in numpy.polynomial.chebyshev.cheb2poly(coeffs)][::-1]
 
 
 def c_code_gen(data_type, name, poly_coeffs, comments=None):
@@ -246,10 +246,10 @@ if __name__ == '__main__2':
 if __name__ == '__main__':
     I = 3
 
-    function = lambda x: mp.sin(x)
-    interval = [0, numpy.pi / 2]
-    # interval = [0, 1]
-    poly_coeffs, max_error = remez(function, I * 2 + 1, interval[0], interval[1])
+    function = lambda x: mp.atan(x)
+    # interval = [0, numpy.pi / 2]
+    interval = [0, 1]
+    poly_coeffs = remez(function, I, interval[0], interval[1])
     print(f'coeffs {poly_coeffs}')
 
     import matplotlib.pyplot as plt
@@ -271,7 +271,7 @@ if __name__ == '__main__':
 
 
     def do_remez_pade(n):
-        c, max_error = remez(function, n, interval[0], interval[1])
+        c = remez(function, n, interval[0], interval[1])
         p2, q2 = rat_pade.rat_pade(c, I, I)
         pade_function2 = lambda x: p2(x) / q2(x)
         y_approx_pade2 = pade_function2(x)

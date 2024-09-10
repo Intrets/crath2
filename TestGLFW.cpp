@@ -321,17 +321,17 @@ struct TestResult
 
 		ImGui::TableHeadersRow();
 		for (auto& entry : this->entries) {
-			if (entry.range_min != entry.range_max) {
-				if (entry.range_min > this->minDomainMin) {
-					continue;
-				}
-				if (entry.range_max < this->maxDomainMax) {
-					continue;
-				}
-			}
-			else {
-				continue;
-			}
+			//if (entry.range_min != entry.range_max) {
+			//	if (entry.range_min > this->minDomainMin) {
+			//		continue;
+			//	}
+			//	if (entry.range_max < this->maxDomainMax) {
+			//		continue;
+			//	}
+			//}
+			//else {
+			//	continue;
+			//}
 
 			bool tagFound = true;
 
