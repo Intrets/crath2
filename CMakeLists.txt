@@ -34,6 +34,7 @@ find_package(GLFW3 REQUIRED)
 add_executable(${MODULE_NAME}_glfw_test TestGlfw.cpp)
 target_link_libraries(imgui_glfw imgui GLFW3)
 target_link_libraries(${MODULE_NAME}_glfw_test
+	implot
 	imgui
 	crath
 	imgui_glfw

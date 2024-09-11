@@ -71,7 +71,7 @@ def chev_points(n: int, lower: float = -1, upper: float = 1):
 
 def remez_pade(func, n_degree: int, lower: float = -1, upper: float = 1, max_iter=None):
     if max_iter is None:
-        max_iter = 10
+        max_iter = 50
     """
     :param func: a function (or lambda) f: X -> R
     :param n_degree: the degree of the polynomial to approximate the function f
@@ -148,7 +148,7 @@ def remez_pade(func, n_degree: int, lower: float = -1, upper: float = 1, max_ite
 
     print(f'iteration count: {iteration_count}')
 
-    return [float(i) for i in numpy.polynomial.chebyshev.cheb2poly(p_coeffs)], [float(i) for i in numpy.polynomial.chebyshev.cheb2poly(q_coeffs)]
+    return [float(i) for i in numpy.polynomial.chebyshev.cheb2poly(p_coeffs)][::-1], [float(i) for i in numpy.polynomial.chebyshev.cheb2poly(q_coeffs)][::-1]
 
 
 def remez(func, n_degree: int, lower: float = -1, upper: float = 1, max_iter: int = 10):
@@ -244,12 +244,12 @@ if __name__ == '__main__2':
     print(q)
 
 if __name__ == '__main__':
-    I = 3
+    I = 4
 
     function = lambda x: mp.atan(x)
-    # interval = [0, numpy.pi / 2]
+    #interval = [0, numpy.pi / 2]
     interval = [0, 1]
-    poly_coeffs = remez(function, I, interval[0], interval[1])
+    poly_coeffs = remez(function, 2 * I + 1, interval[0], interval[1])
     print(f'coeffs {poly_coeffs}')
 
     import matplotlib.pyplot as plt
@@ -268,6 +268,7 @@ if __name__ == '__main__':
 
     def plot_transform(x):
         return numpy.abs(x - y_exact)
+        #return x
 
 
     def do_remez_pade(n):
@@ -290,22 +291,22 @@ if __name__ == '__main__':
         plt.plot(x, plot_transform(y_approx_pade2), '-', label=f'remez {max_iter} pq {n}, cost: {evaluation_tally}')
 
 
-    for i in range(9, 10):
-        if i == 11: continue
-        if i == 10: continue
-
-        do_remez_pade(i)
+    # for i in range(9, 10):
+    #     if i == 11: continue
+    #     if i == 10: continue
+    #
+    #     do_remez_pade(i)
 
     do_remez_2(I, max_iter=20)
     do_remez_2(I, max_iter=19)
 
-    y_approx = numpy.polyval(poly_coeffs[::-1], x)
+    y_approx = numpy.polyval(poly_coeffs, x)
     y_approx_pade = pade_function1(x)
     plt.plot(x, plot_transform(y_exact), label='atan')
     # plt.plot(x, plot_transform(y_stackexchange), label='atan stackexchange')
     ops = len(poly_coeffs) - 1
     evaluation_tally = f'mult: {ops}, add: {ops}, div: {0}, total: {2 * ops}'
     plt.plot(x, plot_transform(y_approx), '-', label=f'remez, cost: {evaluation_tally}')
-    plt.plot(x, plot_transform(y_approx_pade), '-', label='taylor pade')
+    # plt.plot(x, plot_transform(y_approx_pade), '-', label='taylor pade')
     plt.legend()
     plt.show()

@@ -10,6 +10,7 @@
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
+#include <implot.h>
 
 #include <imgui_stdlib.h>
 
@@ -40,6 +41,9 @@ struct TestResult
 		float range_min{};
 		float range_max{};
 
+		float range_Normalizedmin{};
+		float range_Normalizedmax{};
+
 		std::function<float(float)> approximationFunction{};
 		float approximationDomanMin{};
 		float approximationDomanMax{};
@@ -47,6 +51,8 @@ struct TestResult
 		std::function<float(float)> referenceFunction{};
 		float referenceDomanMin{};
 		float referenceDomanMax{};
+
+		bool selected = false;
 
 		template<class F>
 		void time(auto approximation, int N, float min_x, float max_x) {
@@ -150,7 +156,7 @@ struct TestResult
 			}
 		}
 
-		void calculateDomain(float maximumNormalizedError_) {
+		void calculateDomain(float errorLimit, bool normalize) {
 			auto approximation_x = (this->approximationDomanMin + this->approximationDomanMax) * 0.5f;
 			auto approximation_dx = (this->approximationDomanMax - this->approximationDomanMin) * 0.001f;
 
@@ -163,7 +169,7 @@ struct TestResult
 					auto approx_x = approximation_x + approximation_dx * i;
 					auto ref_x = reference_x + reference_dx * i;
 
-					if (this->calculateError(approx_x, ref_x, true) > maximumNormalizedError_) {
+					if (this->calculateError(approx_x, ref_x, normalize) > errorLimit) {
 						break;
 					}
 				}
@@ -176,7 +182,7 @@ struct TestResult
 					auto approx_x = approximation_x - approximation_dx * i;
 					auto ref_x = reference_x - reference_dx * i;
 
-					if (this->calculateError(approx_x, ref_x, true) > maximumNormalizedError_) {
+					if (this->calculateError(approx_x, ref_x, normalize) > errorLimit) {
 						break;
 					}
 				}
@@ -193,10 +199,17 @@ struct TestResult
 	std::vector<std::string_view> searchTags{};
 
 	float maxErrorDecibels = -60.0f;
+	float maxError0 = 0.001f;
 	float maxError = 0.001f;
+	bool domainErrorNormalized = false;
 
-	float minDomainMin = -10.0f;
-	float maxDomainMax = 10.0f;
+	bool multiplyDomainByPi = false;
+	float minDomainMinRaw = 0.0f;
+	float maxDomainMaxRaw = 1.0f;
+	float minDomainMin = 0.0f;
+	float maxDomainMax = 1.0f;
+
+	bool showError = false;
 
 	void show() {
 		ImGui::InputText("OR", &this->filterString0);
@@ -221,24 +234,47 @@ struct TestResult
 			j++;
 		}
 
-		if (ImGui::SliderFloat("max error", &this->maxErrorDecibels, -100.0f, 0.0f, "%.3fdB")) {
-			if (this->maxErrorDecibels == 0.0f) {
-				this->maxError = std::numeric_limits<float>::max();
+		ImGui::Checkbox("normalized error", &this->domainErrorNormalized);
+		ImGui::SameLine();
+		auto changed = std::invoke([&] {
+			if (this->domainErrorNormalized) {
+				auto result = ImGui::SliderFloat("max error", &this->maxErrorDecibels, -100.0f, 0.0f, "%.3fdB");
+				if (this->maxErrorDecibels == 0.0f) {
+					this->maxError = std::numeric_limits<float>::max();
+				}
+				else {
+					this->maxError = std::pow(10.0f, this->maxErrorDecibels / 20.0f);
+				}
+				return result;
 			}
 			else {
-				this->maxError = std::pow(10.0f, this->maxErrorDecibels / 20.0f);
+				auto result = ImGui::SliderFloat("max error", &this->maxError0, 0.0000001f, 10.0f, "%10.10f", ImGuiSliderFlags_Logarithmic);
+				this->maxError = this->maxError0;
+				return result;
 			}
+		});
+
+		if (changed) {
 			for (auto& entry : this->entries) {
-				entry.calculateDomain(this->maxError);
+				entry.calculateDomain(this->maxError, this->domainErrorNormalized);
 			}
 		}
 		ImGui::Text("Maximum error on domain: %f", this->maxError);
-		if (ImGui::SliderFloat("Min Domain", &this->minDomainMin, -10.0f, 10.0f)) {
-			this->maxDomainMax = std::max(this->minDomainMin, this->maxDomainMax);
+
+		if (ImGui::SliderFloat("Min Domain", &this->minDomainMinRaw, -10.0f, 10.0f)) {
+			this->maxDomainMaxRaw = std::max(this->minDomainMinRaw, this->maxDomainMaxRaw);
 		}
 
-		if (ImGui::SliderFloat("Max Domain", &this->maxDomainMax, -10.0f, 10.0f)) {
-			this->minDomainMin = std::min(this->minDomainMin, this->maxDomainMax);
+		if (ImGui::SliderFloat("Max Domain", &this->maxDomainMaxRaw, -10.0f, 10.0f)) {
+			this->minDomainMinRaw = std::min(this->minDomainMinRaw, this->maxDomainMaxRaw);
+		}
+		ImGui::SameLine();
+		ImGui::Checkbox("Multiply domain by pi", &this->multiplyDomainByPi);
+		this->maxDomainMax = this->maxDomainMaxRaw;
+		this->minDomainMin = this->minDomainMinRaw;
+		if (this->multiplyDomainByPi) {
+			this->maxDomainMax *= std::numbers::pi_v<float>;
+			this->minDomainMin *= std::numbers::pi_v<float>;
 		}
 
 		ImGui::BeginChild("Child", {}, true);
@@ -319,19 +355,21 @@ struct TestResult
 			}
 		}
 
+		std::vector<Entry*> plotEntries{};
+
 		ImGui::TableHeadersRow();
 		for (auto& entry : this->entries) {
-			//if (entry.range_min != entry.range_max) {
-			//	if (entry.range_min > this->minDomainMin) {
-			//		continue;
-			//	}
-			//	if (entry.range_max < this->maxDomainMax) {
-			//		continue;
-			//	}
-			//}
-			//else {
-			//	continue;
-			//}
+			if (entry.range_min != entry.range_max) {
+				if (entry.range_min > this->minDomainMin) {
+					continue;
+				}
+				if (entry.range_max < this->maxDomainMax) {
+					continue;
+				}
+			}
+			else {
+				continue;
+			}
 
 			bool tagFound = true;
 
@@ -373,7 +411,7 @@ struct TestResult
 			ImGui::TableNextRow();
 
 			ImGui::TableNextColumn();
-			ImGui::Text(entry.subName.c_str());
+			ImGui::Selectable(entry.subName.c_str(), &entry.selected);
 			ImGui::TableNextColumn();
 			ImGui::Text("%10.10f", entry.error);
 			ImGui::TableNextColumn();
@@ -398,10 +436,81 @@ struct TestResult
 			ImGui::TableNextColumn();
 			auto&& [x, ref, res] = entry.maximumErrorinfo;
 			ImGui::Text("%10.10f, %10.10f, %10.10f", x, ref, res);
+
+			if (entry.selected) {
+				plotEntries.push_back(&entry);
+			}
 		}
 
 		ImGui::EndTable();
 		ImGui::EndChild();
+
+		if (ImGui::Begin("plot test")) {
+			ImGui::Checkbox("Show Error", &this->showError);
+			ImGui::SameLine();
+			if (ImGui::Button("Clear all")) {
+				for (auto& entry : this->entries) {
+					entry.selected = false;
+				}
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("View Active")) {
+				ImGui::OpenPopup("active entries list");
+			}
+			if (ImGui::BeginPopup("active entries list")) {
+				ImGui::Text("Remove:");
+				integer_t count = 0;
+				for (auto& entry : this->entries) {
+					if (entry.selected) {
+						if (ImGui::Button(entry.subName.c_str())) {
+							entry.selected = false;
+						}
+						count++;
+					}
+				}
+
+				if (count == 0) {
+					ImGui::Text("Empty");
+				}
+
+				ImGui::EndPopup();
+			}
+
+			std::vector<float> xs{};
+			std::vector<float> ys{};
+
+			if (ImPlot::BeginPlot("Test", ImVec2(-1, -1))) {
+				for (auto entry : plotEntries) {
+					xs.clear();
+					ys.clear();
+
+					auto N = 500;
+					float begin = entry->approximationDomanMin;
+					float end = entry->approximationDomanMax;
+					float d = end - begin;
+
+					float ref_begin = entry->referenceDomanMin;
+					float ref_end = entry->referenceDomanMax;
+					float ref_d = ref_end - ref_begin;
+					for (integer_t i = 0; i < N; i++) {
+						auto s = (static_cast<float>(i) / (N - 1));
+						auto x = begin + d * s;
+						auto ref_x = ref_begin + ref_d * s;
+						xs.push_back(x);
+						if (this->showError) {
+							ys.push_back(std::abs(entry->referenceFunction(ref_x) - entry->approximationFunction(x)));
+						}
+						else {
+							ys.push_back(entry->approximationFunction(x));
+						}
+					}
+
+					ImPlot::PlotLine(entry->subName.c_str(), xs.data(), ys.data(), static_cast<int>(xs.size()));
+				}
+				ImPlot::EndPlot();
+			}
+		}
+		ImGui::End();
 	}
 };
 
@@ -410,13 +519,14 @@ int main() {
 	TestResult testResult{};
 
 	// auto constexpr M = 6'000'000;
-	//  auto constexpr M = 1'000'000;
-	auto constexpr M = 1'000;
+	//    auto constexpr M = 1'000'000;
+	//   auto constexpr M = 1'000;
+	auto constexpr M = 1;
 
 #include "function_testing.h"
 
 	for (auto& entry : testResult.entries) {
-		entry.calculateDomain(testResult.maxError);
+		entry.calculateDomain(testResult.maxError, testResult.domainErrorNormalized);
 	}
 
 	if (!glfwInit()) {
@@ -435,6 +545,7 @@ int main() {
 	glfwSwapInterval(1);
 
 	ImGui::CreateContext();
+	ImPlot::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
 
 	auto fontBuffer = getBuffer(font_resources_enum::Nunito_Medium_ttf);
@@ -465,6 +576,8 @@ int main() {
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
+
+		ImGui::ShowDemoWindow();
 
 		ImGui::Begin("Result", nullptr);
 		testResult.show();

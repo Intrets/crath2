@@ -15,51 +15,37 @@ def return_normal(out, a):
 
 
 def make(taylor_series, N, fma_type, out=print, return_type=return_normal, interval=None, ref_f=None, q=None):
-    if interval is not None and ref_f is not None:
-        if q is not None:
-            p = np.poly1d(taylor_series)
-            q = np.poly1d(q)
-        elif N[1] == 0:
-            p = np.poly1d(taylor_series[:N[0]])
-            q = np.poly1d([1])
-        else:
-            p, q = rat_pade.rat_pade(taylor_series, N[0], N[1])
+    if q is not None:
+        p = np.poly1d(taylor_series)
+        q = np.poly1d(q)
+    elif N[1] == 0:
+        p = np.poly1d(taylor_series)
+        q = np.poly1d([1])
+    else:
+        p, q = rat_pade.rat_pade(taylor_series, N[0], N[1])
 
-        def eval(x):
+    if interval is not None and ref_f is not None:
+        def eval_f(x):
             return p(x) / q(x)
 
-        approx_y0 = eval(interval[0])
-        approx_y1 = eval(interval[1])
+        approx_y0 = eval_f(interval[0])
+        approx_y1 = eval_f(interval[1])
 
         ref_y0 = ref_f(interval[0])
         ref_y1 = ref_f(interval[1])
 
-        s = (ref_y0 - ref_y1) / (approx_y0 - approx_y1)
-        c = ref_y0 - approx_y0 * s
+        a1 = interval[0]
+        a2 = interval[1]
+        s = (q(a1) * ref_f(a1) - q(a2) * ref_f(a2)) / (p(a1) - p(a2))
+        c = q(a1) * ref_f(a1) / s - p(a1)
 
-        p = p * s
+        p = (p + c) * s
 
         print(f's: {s}, c: {c}')
         p, q = rat_pade.extract_coeefficients(p, q)
 
-        if abs(c) > 0.00000001:
-            def offset_return(out, a):
-                out(f'auto const offset = {a} + F({c}f);')
-                return_type(out, 'offset')
-
-            make_pq(p, q, fma_type=fma_type, out=out, return_type=offset_return)
-        else:
-            make_pq(p, q, fma_type=fma_type, out=out, return_type=return_type)
+        make_pq(p, q, fma_type=fma_type, out=out, return_type=return_type)
     else:
-        if q is not None:
-            p = np.poly1d(taylor_series)
-            q = np.poly1d(q)
-        elif N[1] == 0:
-            p = np.poly1d(taylor_series[:N[0]])
-            q = np.poly1d([1])
-        else:
-            p, q = rat_pade.rat_pade(taylor_series, N[0], N[1])
-
         p, q = rat_pade.extract_coeefficients(p, q)
         make_pq(p, q, fma_type=fma_type, out=out, return_type=return_type)
 
@@ -203,6 +189,17 @@ class x_double_abs:
         out(f'x = math::abs(math::abs(x - quarter) - F({max_x * 0.5}f)) - quarter;')
 
 
+class x_triple_abs:
+    @staticmethod
+    def name():
+        return 'quart_abs'
+
+    @staticmethod
+    def run(out, max_x):
+        out(f'auto const quarter = F({max_x * 0.25}f);')
+        out(f'x = math::abs(math::abs(math::abs(x - quarter) - F({max_x * 0.5}f)) - quarter);')
+
+
 class test_function_info:
     def __init__(self, name, reference_function, min_x, max_x, ref_min_x, ref_max_x):
         self.name = name
@@ -317,7 +314,60 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
 
 
 def add_sin(N, out, name, scale):
-    for fma_type in [fma_normal, fma]:
+    remez_p = remez.remez(mp.sin, n_degree=N, lower=0, upper=pi / 2)
+    remez_pade_p, remez_pade_q = remez.remez_pade(mp.sin, n_degree=N, lower=0, upper=pi / 2)
+
+    class x_remez_sin:
+        @staticmethod
+        def name():
+            return ''
+
+        @staticmethod
+        def run(out, max_x):
+            out('auto x0 = x;')
+            out(f'auto const half = F({max_x * 0.5}f);')
+            out(f'auto const quarter = F({max_x * 0.25}f);')
+            out(f'x = math::abs(math::abs(math::abs(x - quarter) - half) - quarter);')
+
+    global fma_types
+    for fma_type in fma_types:
+        add_function2(
+            remez_p,
+            out=out,
+            fma_type=fma_type,
+            name="sin_remez",
+            ref="std::sinf",
+            N=N,
+            M=0,
+            x_type=x_remez_sin,
+            return_type=lambda out, a: out(f'return math::setSign({a}, half - x0 );'),
+            min_x=0,
+            max_x=2 * pi / scale,
+            ref_min_x=0,
+            ref_max_x=2 * pi,
+            interval=(0, pi / 2),
+            ref_f=np.sin,
+        )
+
+        add_function2(
+            remez_pade_p,
+            q=remez_pade_q,
+            out=out,
+            fma_type=fma_type,
+            name="sin_remez_pade",
+            ref="std::sinf",
+            N=N,
+            M=N,
+            x_type=x_remez_sin,
+            return_type=lambda out, a: out(f'return math::setSign({a}, half - x0 );'),
+            min_x=0,
+            max_x=2 * pi / scale,
+            ref_min_x=0,
+            ref_max_x=2 * pi,
+            interval=(0, pi / 2),
+            ref_f=np.sin,
+        )
+
         add_function2(
             taylor.sin(scale),
             out=out,
@@ -325,6 +375,7 @@ def add_sin(N, out, name, scale):
             name=name,
             ref="std::sinf",
             N=N,
+            M=N,
             x_type=x_double_abs,
             return_type=return_normal,
             min_x=0,
@@ -340,6 +391,7 @@ def add_sin(N, out, name, scale):
             name=f'{name}_ends_corrected',
             ref="std::sinf",
             N=N,
+            M=N,
             x_type=x_double_abs,
             return_type=return_normal,
             min_x=0,
@@ -357,6 +409,7 @@ def add_sin(N, out, name, scale):
             name=name,
             ref="std::sinf",
             N=N,
+            M=N,
             x_type=x_half_offset,
             return_type=return_normal,
             min_x=0,
@@ -367,7 +420,8 @@ def add_sin(N, out, name, scale):
 
 
 def add_cos(N, out, name, scale):
-    for fma_type in [fma_normal, fma]:
+    global fma_types
+    for fma_type in fma_types:
         add_function2(
             taylor.sin(scale),
             out=out,
@@ -401,7 +455,8 @@ def add_cos(N, out, name, scale):
 
 
 def add_tanh(N, out):
-    for fma_type in [fma_normal, fma]:
+    global fma_types
+    for fma_type in fma_types:
         add_function2(
             taylor.tanh(),
             out=out,
@@ -463,7 +518,8 @@ def add_atan(N, out):
     remez_p = remez.remez(mp.atan, n_degree=N, lower=0, upper=1)
     remez_pade_p, remez_pade_q = remez.remez_pade(mp.atan, n_degree=N, lower=0, upper=1)
 
-    for fma_type in [fma_normal, fma]:
+    global fma_types
+    for fma_type in fma_types:
         add_function2(
             taylor.atan(),
             out=out,
@@ -480,24 +536,22 @@ def add_atan(N, out):
             ref_max_x=10,
         )
 
-        print(remez_p)
-        print(remez.c_code_gen('float', 'test', poly_coeffs=remez_p))
         add_function2(
             remez_p,
             out=out,
             fma_type=fma_type,
             name="atan_remez",
             ref="std::atanf",
-            N=N + 7,
+            N=N,
             M=0,
             x_type=x_atan,
             return_type=atan_return,
-            min_x=0,
-            max_x=1,
-            ref_min_x=0,
-            ref_max_x=1,
+            min_x=-10,
+            max_x=10,
+            ref_min_x=-10,
+            ref_max_x=10,
             ref_f=mp.atan,
-            interval=(0, 1)
+            interval=(0, 1),
         )
 
         add_function2(
@@ -519,7 +573,8 @@ def add_atan(N, out):
 
 
 def add_log(N, out):
-    for fma_type in [fma_normal, fma]:
+    global fma_types
+    for fma_type in fma_types:
         add_function2(
             taylor.log(),
             out=out,
@@ -550,7 +605,8 @@ def add_special_exp(N, out):
         out('a *= a;')
         out('return a;')
 
-    for fma_type in [fma_normal, fma]:
+    global fma_types
+    for fma_type in fma_types:
         add_function2(
             taylor.tanh(d, 1 / 2),
             out=out,
@@ -568,7 +624,8 @@ def add_special_exp(N, out):
 
 
 def add_tan(N, out):
-    for fma_type in [fma_normal, fma]:
+    global fma_types
+    for fma_type in fma_types:
         add_function2(
             taylor.tan(),
             out=out,
@@ -585,17 +642,20 @@ def add_tan(N, out):
         )
 
 
+fma_types = [fma]
+
+
 def main():
     function_definition_inc = open('../../function_definitions.h', 'w')
     function_testing_inc = open('../../function_testing.h', 'w')
 
     out = lambda x: function_definition_inc.write(x + '\n')
 
-    # for N in range(4, 9):
-    #     add_sin(N, out, scale=2 * pi, name="sin_unit1")
-    #     add_sin(N, out, scale=1 * pi, name="sin_unit2")
-    #     add_sin(N, out, scale=1, name="sin")
-    #
+    for N in range(3, 9):
+        # add_sin(N, out, scale=2 * pi, name="sin_unit1")
+        # add_sin(N, out, scale=1 * pi, name="sin_unit2")
+        add_sin(N, out, scale=1, name="sin")
+
     # for N in range(4, 10):
     #     add_cos(N, out, scale=2 * pi, name="cos_unit1")
     #     add_cos(N, out, scale=1 * pi, name="cos_unit2")
@@ -607,7 +667,7 @@ def main():
     # for N in range(3, 9):
     #     add_exp(N, out)
 
-    for N in range(5, 6):
+    for N in range(3, 4):
         add_atan(N, out)
 
     # for N in range(3, 10):
@@ -636,4 +696,5 @@ def main():
 
 
 if __name__ == '__main__':
+    mp.prec = 53 * 2
     main()
