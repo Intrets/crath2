@@ -195,8 +195,14 @@ struct TestResult
 	std::string filterString0{};
 	std::string filterString1{};
 	std::vector<Entry> entries{};
-	std::unordered_map<std::string, bool> tags{};
+	struct TagInfo
+	{
+		bool includeTag = false;
+		bool excludeTag = false;
+	};
+	std::unordered_map<std::string, TagInfo> tags{};
 	std::vector<std::string_view> searchTags{};
+	std::vector<std::string_view> filterTags{};
 
 	float maxErrorDecibels = -60.0f;
 	float maxError0 = 0.001f;
@@ -214,7 +220,8 @@ struct TestResult
 	void show() {
 		ImGui::InputText("OR", &this->filterString0);
 		ImGui::InputText("AND", &this->filterString1);
-		searchTags.clear();
+		this->searchTags.clear();
+		this->filterTags.clear();
 
 		for (auto& entry : this->entries) {
 			for (auto& tag : entry.tags) {
@@ -222,16 +229,38 @@ struct TestResult
 			}
 		}
 
-		int j = 0;
-		for (auto& [tag, b] : this->tags) {
-			if (j % 10 != 0) {
-				ImGui::SameLine();
+		int id = 0;
+		ImGui::SeparatorText("Tags");
+		{
+			int j = 0;
+			for (auto& [tag, info] : this->tags) {
+				if (j % 10 != 0) {
+					ImGui::SameLine();
+				}
+				ImGui::PushID(id++);
+				ImGui::Checkbox(tag.c_str(), &info.includeTag);
+				ImGui::PopID();
+				if (info.includeTag) {
+					this->searchTags.push_back(tag);
+				}
+				j++;
 			}
-			ImGui::Checkbox(tag.c_str(), &b);
-			if (b) {
-				this->searchTags.push_back(tag);
+		}
+		ImGui::SeparatorText("Filter");
+		{
+			int j = 0;
+			for (auto& [tag, info] : this->tags) {
+				if (j % 10 != 0) {
+					ImGui::SameLine();
+				}
+				ImGui::PushID(id++);
+				ImGui::Checkbox(tag.c_str(), &info.excludeTag);
+				ImGui::PopID();
+				if (info.excludeTag) {
+					this->filterTags.push_back(tag);
+				}
+				j++;
 			}
-			j++;
 		}
 
 		ImGui::Checkbox("normalized error", &this->domainErrorNormalized);
@@ -373,7 +402,7 @@ struct TestResult
 
 			bool tagFound = true;
 
-			for (auto tag : this->searchTags) {
+			for (auto const& tag : this->searchTags) {
 				if (!std::ranges::contains(entry.tags, tag)) {
 					tagFound = false;
 					break;
@@ -381,6 +410,17 @@ struct TestResult
 			}
 
 			if (!this->searchTags.empty() && !tagFound) {
+				continue;
+			}
+
+			bool breakOut = false;
+			for (auto const& tag : this->filterTags) {
+				if (std::ranges::contains(entry.tags, tag)) {
+					breakOut = true;
+					break;
+				}
+			}
+			if (breakOut) {
 				continue;
 			}
 

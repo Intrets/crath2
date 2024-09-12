@@ -1,5 +1,6 @@
 from mpmath import mp
 
+import itertools
 import rat_pade
 import taylor
 from expression import *
@@ -238,7 +239,7 @@ class function_info2(NamedTuple):
 function_infos2: list[function_info2] = []
 
 
-def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max_x, name, N, M, ref, x_type=x_normal, return_type=return_normal, ref_f=None, interval=None, q=None):
+def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max_x, name, N, M, ref, x_type=x_normal, return_type=return_normal, ref_f=None, interval=None, q=None, name_tag=None):
     name_full = name
     tags = [name]
     if x_type.name():
@@ -247,7 +248,13 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
     if fma_type == fma:
         name_full += "_fma"
         tags.append("fma")
+    if ref_f is not None:
+        name_full += "_ec"
+        tags.append("ends corrected")
     name_full += f"_T{N}_{M}"
+
+    if name_tag is not None:
+        tags.append(name_tag)
 
     out('template <class F>')
     out(f'inline constexpr static F {name_full}(in_t(F) x) {{')
@@ -314,8 +321,9 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
 
 
 def add_sin(N, out, name, scale):
-    remez_p = remez.remez(mp.sin, n_degree=N, lower=0, upper=pi / 2)
-    remez_pade_p, remez_pade_q = remez.remez_pade(mp.sin, n_degree=N, lower=0, upper=pi / 2)
+    function = lambda x : mp.sin(x * scale)
+    remez_p = remez.remez(function, n_degree=N, lower=0, upper=pi / 2)
+    remez_pade_p, remez_pade_q = remez.remez_pade(function, n_degree=N, lower=0, upper=pi / 2)
 
     class x_remez_sin:
         @staticmethod
@@ -330,12 +338,13 @@ def add_sin(N, out, name, scale):
             out(f'x = math::abs(math::abs(math::abs(x - quarter) - half) - quarter);')
 
     global fma_types
-    for fma_type in fma_types:
+    for fma_type, (interval, ref_f) in itertools.product(fma_types, [((0, 2 * pi / scale / 4), function), (None, None)]):
         add_function2(
             remez_p,
             out=out,
             fma_type=fma_type,
-            name="sin_remez",
+            name=f"{name}_remez",
+            name_tag=name,
             ref="std::sinf",
             N=N,
             M=0,
@@ -345,8 +354,8 @@ def add_sin(N, out, name, scale):
             max_x=2 * pi / scale,
             ref_min_x=0,
             ref_max_x=2 * pi,
-            interval=(0, pi / 2),
-            ref_f=np.sin,
+            interval=interval,
+            ref_f=ref_f,
         )
 
         add_function2(
@@ -354,7 +363,8 @@ def add_sin(N, out, name, scale):
             q=remez_pade_q,
             out=out,
             fma_type=fma_type,
-            name="sin_remez_pade",
+            name=f"{name}_remez_pade",
+            name_tag=name,
             ref="std::sinf",
             N=N,
             M=N,
@@ -364,8 +374,8 @@ def add_sin(N, out, name, scale):
             max_x=2 * pi / scale,
             ref_min_x=0,
             ref_max_x=2 * pi,
-            interval=(0, pi / 2),
-            ref_f=np.sin,
+            interval=interval,
+            ref_f=ref_f,
         )
 
         add_function2(
@@ -373,6 +383,7 @@ def add_sin(N, out, name, scale):
             out=out,
             fma_type=fma_type,
             name=name,
+            name_tag=name,
             ref="std::sinf",
             N=N,
             M=N,
@@ -382,40 +393,8 @@ def add_sin(N, out, name, scale):
             max_x=2 * pi / scale,
             ref_min_x=0,
             ref_max_x=2 * pi,
-        )
-
-        add_function2(
-            taylor.sin(scale),
-            out=out,
-            fma_type=fma_type,
-            name=f'{name}_ends_corrected',
-            ref="std::sinf",
-            N=N,
-            M=N,
-            x_type=x_double_abs,
-            return_type=return_normal,
-            min_x=0,
-            max_x=2 * pi / scale,
-            ref_min_x=0,
-            ref_max_x=2 * pi,
-            interval=(0, 2 * pi / scale / 4),
-            ref_f=lambda x: np.sin(x * scale)
-        )
-
-        add_function2(
-            taylor.sin(scale),
-            out=out,
-            fma_type=fma_type,
-            name=name,
-            ref="std::sinf",
-            N=N,
-            M=N,
-            x_type=x_half_offset,
-            return_type=return_normal,
-            min_x=0,
-            max_x=2 * pi / scale,
-            ref_min_x=0,
-            ref_max_x=2 * pi,
+            interval=interval,
+            ref_f=ref_f,
         )
 
 
@@ -651,9 +630,9 @@ def main():
 
     out = lambda x: function_definition_inc.write(x + '\n')
 
-    for N in range(3, 9):
-        # add_sin(N, out, scale=2 * pi, name="sin_unit1")
-        # add_sin(N, out, scale=1 * pi, name="sin_unit2")
+    for N in range(3, 5):
+        add_sin(N, out, scale=2 * pi, name="sin_unit1")
+        add_sin(N, out, scale=1 * pi, name="sin_unit2")
         add_sin(N, out, scale=1, name="sin")
 
     # for N in range(4, 10):
@@ -667,8 +646,8 @@ def main():
     # for N in range(3, 9):
     #     add_exp(N, out)
 
-    for N in range(3, 4):
-        add_atan(N, out)
+        for N in range(3, 5):
+            add_atan(N, out)
 
     # for N in range(3, 10):
     #     add_log(N, out)
