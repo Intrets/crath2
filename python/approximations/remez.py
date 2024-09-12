@@ -71,7 +71,7 @@ def chev_points(n: int, lower: float = -1, upper: float = 1):
 
 def remez_pade(func, n_degree: int, lower: float = -1, upper: float = 1, max_iter=None):
     if max_iter is None:
-        max_iter = 3
+        max_iter = 10
     """
     :param func: a function (or lambda) f: X -> R
     :param n_degree: the degree of the polynomial to approximate the function f

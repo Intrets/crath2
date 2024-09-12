@@ -143,7 +143,7 @@ struct TestResult
 				float ref = this->referenceFunction(x_ref);
 
 				float const e = std::abs(res - ref);
-				if (ref != 0.0f) {
+				if (std::abs(ref) > 0.0000001f) {
 					auto candidate = e / std::abs(ref);
 					if (candidate > this->maximumNormalizedError) {
 						this->maximumNormalizedError = candidate;
@@ -195,6 +195,7 @@ struct TestResult
 	std::string filterString0{};
 	std::string filterString1{};
 	std::vector<Entry> entries{};
+	Entry* hoveredEntry = nullptr;
 	struct TagInfo
 	{
 		bool includeTag = false;
@@ -204,10 +205,10 @@ struct TestResult
 	std::vector<std::string_view> searchTags{};
 	std::vector<std::string_view> filterTags{};
 
-	float maxErrorDecibels = -60.0f;
+	float maxErrorDecibels = 0.0f;
 	float maxError0 = 0.001f;
-	float maxError = 0.001f;
-	bool domainErrorNormalized = false;
+	float maxError = std::numeric_limits<float>::max();
+	bool domainErrorNormalized = true;
 
 	bool multiplyDomainByPi = false;
 	float minDomainMinRaw = 0.0f;
@@ -216,6 +217,9 @@ struct TestResult
 	float maxDomainMax = 1.0f;
 
 	bool showError = false;
+	bool autoFit = true;
+	bool autoFitOnChange = false;
+	bool changedData = false;
 
 	void show() {
 		ImGui::InputText("OR", &this->filterString0);
@@ -307,11 +311,11 @@ struct TestResult
 		}
 
 		ImGui::BeginChild("Child", {}, true);
-		ImGui::BeginTable("Things", 8, ImGuiTableFlags_Sortable | ImGuiTableFlags_RowBg | ImGuiTableFlags_Resizable);
+		ImGui::BeginTable("Things", 8, ImGuiTableFlags_Sortable | ImGuiTableFlags_RowBg | ImGuiTableFlags_SizingFixedFit);
 		ImGui::TableSetupColumn("Name");
 		ImGui::TableSetupColumn("Error");
-		ImGui::TableSetupColumn("Maximum Absolute Error");
-		ImGui::TableSetupColumn("Maximum Normalized Error");
+		ImGui::TableSetupColumn("Absolute Error");
+		ImGui::TableSetupColumn("Normalized Error");
 		ImGui::TableSetupColumn("Domain Min");
 		ImGui::TableSetupColumn("Domain Max");
 		ImGui::TableSetupColumn("Time");
@@ -451,7 +455,14 @@ struct TestResult
 			ImGui::TableNextRow();
 
 			ImGui::TableNextColumn();
+			auto old = entry.selected;
 			ImGui::Selectable(entry.subName.c_str(), &entry.selected);
+			if (!entry.selected && ImGui::IsItemHovered()) {
+				plotEntries.push_back(&entry);
+			}
+			if (old != entry.selected) {
+				this->changedData = true;
+			}
 			ImGui::TableNextColumn();
 			ImGui::Text("%10.10f", entry.error);
 			ImGui::TableNextColumn();
@@ -476,7 +487,9 @@ struct TestResult
 			ImGui::TableNextColumn();
 			auto&& [x, ref, res] = entry.maximumErrorinfo;
 			ImGui::Text("%10.10f, %10.10f, %10.10f", x, ref, res);
+		}
 
+		for (auto& entry : this->entries) {
 			if (entry.selected) {
 				plotEntries.push_back(&entry);
 			}
@@ -491,12 +504,16 @@ struct TestResult
 			if (ImGui::Button("Clear all")) {
 				for (auto& entry : this->entries) {
 					entry.selected = false;
+					if (entry.selected) {
+						this->changedData = true;
+					}
 				}
 			}
 			ImGui::SameLine();
 			if (ImGui::Button("View Active")) {
 				ImGui::OpenPopup("active entries list");
 			}
+			this->hoveredEntry = nullptr;
 			if (ImGui::BeginPopup("active entries list")) {
 				ImGui::Text("Remove:");
 				integer_t count = 0;
@@ -504,6 +521,10 @@ struct TestResult
 					if (entry.selected) {
 						if (ImGui::Button(entry.subName.c_str())) {
 							entry.selected = false;
+							this->changedData = true;
+						}
+						if (ImGui::IsItemHovered()) {
+							this->hoveredEntry = &entry;
 						}
 						count++;
 					}
@@ -515,12 +536,28 @@ struct TestResult
 
 				ImGui::EndPopup();
 			}
+			ImGui::SameLine();
+			ImGui::Checkbox("Auto Fit", &this->autoFit);
+			ImGui::SameLine();
+			ImGui::Checkbox("Auto Fit On Change", &this->autoFitOnChange);
 
 			std::vector<float> xs{};
 			std::vector<float> ys{};
 
 			if (ImPlot::BeginPlot("Test", ImVec2(-1, -1))) {
+				ImPlotAxisFlags xflags{};
+				ImPlotAxisFlags yflags{};
+				if (!this->hoveredEntry && (this->autoFit || (this->autoFitOnChange && this->changedData))) {
+					xflags |= ImPlotAxisFlags_AutoFit;
+					yflags |= ImPlotAxisFlags_AutoFit;
+				}
+				this->changedData = false;
+				ImPlot::SetupAxes("x", "y", xflags, yflags);
+
 				for (auto entry : plotEntries) {
+					if (this->hoveredEntry != nullptr && entry != this->hoveredEntry) {
+						continue;
+					}
 					xs.clear();
 					ys.clear();
 
@@ -558,10 +595,10 @@ int main() {
 	using namespace cr;
 	TestResult testResult{};
 
-	// auto constexpr M = 6'000'000;
+	//auto constexpr M = 6'000'000;
 	//    auto constexpr M = 1'000'000;
 	//   auto constexpr M = 1'000;
-	auto constexpr M = 1;
+	 auto constexpr M = 1;
 
 #include "function_testing.h"
 
@@ -622,6 +659,8 @@ int main() {
 		ImGui::Begin("Result", nullptr);
 		testResult.show();
 		ImGui::End();
+
+		ImPlot::ShowDemoWindow();
 
 		ImGui::Render();
 		int display_w, display_h;

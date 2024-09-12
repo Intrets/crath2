@@ -26,15 +26,6 @@ def make(taylor_series, N, fma_type, out=print, return_type=return_normal, inter
         p, q = rat_pade.rat_pade(taylor_series, N[0], N[1])
 
     if interval is not None and ref_f is not None:
-        def eval_f(x):
-            return p(x) / q(x)
-
-        approx_y0 = eval_f(interval[0])
-        approx_y1 = eval_f(interval[1])
-
-        ref_y0 = ref_f(interval[0])
-        ref_y1 = ref_f(interval[1])
-
         a1 = interval[0]
         a2 = interval[1]
         s = (q(a1) * ref_f(a1) - q(a2) * ref_f(a2)) / (p(a1) - p(a2))
@@ -239,22 +230,20 @@ class function_info2(NamedTuple):
 function_infos2: list[function_info2] = []
 
 
-def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max_x, name, N, M, ref, x_type=x_normal, return_type=return_normal, ref_f=None, interval=None, q=None, name_tag=None):
+def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max_x, name, N, M, ref, x_type=x_normal, return_type=return_normal, ref_f=None, interval=None, q=None, extra_tags=[]):
     name_full = name
-    tags = [name]
+    tags = []
     if x_type.name():
-        name_full += f'_{x_type.name()}'
-        tags.append(x_type.name())
+        name_full = f'{name_full}_{x_type.name()}'
     if fma_type == fma:
-        name_full += "_fma"
+        name_full = f"{name_full}_fma"
         tags.append("fma")
     if ref_f is not None:
-        name_full += "_ec"
+        name_full = f"{name_full}_ec"
         tags.append("ends corrected")
-    name_full += f"_T{N}_{M}"
+    name_full = f"{name_full}_T{N}_{M}"
 
-    if name_tag is not None:
-        tags.append(name_tag)
+    tags.extend(extra_tags)
 
     out('template <class F>')
     out(f'inline constexpr static F {name_full}(in_t(F) x) {{')
@@ -321,9 +310,11 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
 
 
 def add_sin(N, out, name, scale):
-    function = lambda x : mp.sin(x * scale)
-    remez_p = remez.remez(function, n_degree=N, lower=0, upper=pi / 2)
-    remez_pade_p, remez_pade_q = remez.remez_pade(function, n_degree=N, lower=0, upper=pi / 2)
+    def function(x):
+        return mp.sin(x * scale)
+
+    remez_p = remez.remez(function, n_degree=N, lower=0, upper=pi / 2 / scale)
+    remez_pade_p, remez_pade_q = remez.remez_pade(function, n_degree=N, lower=0, upper=pi / 2 / scale)
 
     class x_remez_sin:
         @staticmethod
@@ -344,7 +335,7 @@ def add_sin(N, out, name, scale):
             out=out,
             fma_type=fma_type,
             name=f"{name}_remez",
-            name_tag=name,
+            extra_tags=[name, "remez"],
             ref="std::sinf",
             N=N,
             M=0,
@@ -364,7 +355,7 @@ def add_sin(N, out, name, scale):
             out=out,
             fma_type=fma_type,
             name=f"{name}_remez_pade",
-            name_tag=name,
+            extra_tags=[name, "remez_pade"],
             ref="std::sinf",
             N=N,
             M=N,
@@ -383,7 +374,7 @@ def add_sin(N, out, name, scale):
             out=out,
             fma_type=fma_type,
             name=name,
-            name_tag=name,
+            extra_tags=[name],
             ref="std::sinf",
             N=N,
             M=N,
@@ -399,21 +390,89 @@ def add_sin(N, out, name, scale):
 
 
 def add_cos(N, out, name, scale):
+    def function_cos(x):
+        return mp.cos(x * scale)
+
+    def function_sin(x):
+        return mp.sin(x * scale)
+
+    remez_p = remez.remez(function_cos, n_degree=N, lower=0, upper=pi / 2 / scale)
+    remez_pade_p, remez_pade_q = remez.remez_pade(function_cos, n_degree=N, lower=0, upper=pi / 2 / scale)
+
+    class x_remez_cos:
+        @staticmethod
+        def name():
+            return ''
+
+        @staticmethod
+        def run(out, max_x):
+            # out('auto x0 = x;')
+            out(f'auto const half = F({max_x * 0.5}f);')
+            out(f'auto const quarter = F({max_x * 0.25}f);')
+            out(f'auto const x_sign = math::abs(x - half) - quarter;');
+            out(f'x = quarter - math::abs(x_sign);')
+
+    def return_remez_cos(out, a):
+        out(f'return math::setSign({a}, x_sign);')
+
     global fma_types
-    for fma_type in fma_types:
+    for fma_type, (interval, ref_f_cos, ref_f_sin) in itertools.product(fma_types, [((0, 2 * pi / scale / 4), function_cos, function_sin), (None, None, None)]):
+        add_function2(
+            remez_p,
+            out=out,
+            fma_type=fma_type,
+            name=f'{name}_remez',
+            extra_tags=[name, "remez"],
+            ref="std::cosf",
+            N=N,
+            M=0,
+            x_type=x_remez_cos,
+            return_type=return_remez_cos,
+            min_x=0,
+            max_x=2 * pi / scale,
+            ref_min_x=0,
+            ref_max_x=2 * pi,
+            ref_f=ref_f_cos,
+            interval=interval
+        )
+
+        add_function2(
+            remez_pade_p,
+            q=remez_pade_q,
+            out=out,
+            fma_type=fma_type,
+            name=f'{name}_remez_pade',
+            extra_tags=[name, "remez_pade"],
+            ref="std::cosf",
+            N=N,
+            M=0,
+            x_type=x_remez_cos,
+            return_type=return_remez_cos,
+            min_x=0,
+            max_x=2 * pi / scale,
+            ref_min_x=0,
+            ref_max_x=2 * pi,
+            ref_f=ref_f_cos,
+            interval=interval
+        )
+
         add_function2(
             taylor.sin(scale),
             out=out,
             fma_type=fma_type,
             name=name,
+            extra_tags=[name],
             ref="std::cosf",
             N=N,
+            M=N,
             x_type=x_single_abs,
             return_type=return_normal,
             min_x=0,
             max_x=2 * pi / scale,
             ref_min_x=0,
             ref_max_x=2 * pi,
+            ref_f=ref_f_sin,
+            interval=interval
         )
 
         if N % 2 == 0:
@@ -422,14 +481,18 @@ def add_cos(N, out, name, scale):
                 out=out,
                 fma_type=fma_type,
                 name=name,
+                extra_tags=[name],
                 ref="std::cosf",
                 N=N,
+                M=N,
                 x_type=x_half_offset,
                 return_type=return_normal,
                 min_x=0,
                 max_x=2 * pi / scale,
                 ref_min_x=0,
                 ref_max_x=2 * pi,
+                ref_f=(lambda x: -mp.cos(x * scale)) if ref_f_cos is not None else None,
+                interval=interval
             )
 
 
@@ -498,12 +561,13 @@ def add_atan(N, out):
     remez_pade_p, remez_pade_q = remez.remez_pade(mp.atan, n_degree=N, lower=0, upper=1)
 
     global fma_types
-    for fma_type in fma_types:
+    for fma_type, (interval, ref_f) in itertools.product(fma_types, [((0, 1), mp.atan), (None, None)]):
         add_function2(
             taylor.atan(),
             out=out,
             fma_type=fma_type,
             name="atan",
+            extra_tags=["atan"],
             ref="std::atanf",
             N=N,
             M=N,
@@ -513,6 +577,8 @@ def add_atan(N, out):
             max_x=10,
             ref_min_x=-10,
             ref_max_x=10,
+            interval=interval,
+            ref_f=ref_f,
         )
 
         add_function2(
@@ -520,6 +586,7 @@ def add_atan(N, out):
             out=out,
             fma_type=fma_type,
             name="atan_remez",
+            extra_tags=["atan", "remez"],
             ref="std::atanf",
             N=N,
             M=0,
@@ -529,8 +596,8 @@ def add_atan(N, out):
             max_x=10,
             ref_min_x=-10,
             ref_max_x=10,
-            ref_f=mp.atan,
-            interval=(0, 1),
+            interval=interval,
+            ref_f=ref_f,
         )
 
         add_function2(
@@ -539,6 +606,7 @@ def add_atan(N, out):
             out=out,
             fma_type=fma_type,
             name="atan_remez_pade",
+            extra_tags=["atan", "remez_pade"],
             ref="std::atanf",
             N=N,
             M=N,
@@ -548,6 +616,8 @@ def add_atan(N, out):
             max_x=10,
             ref_min_x=-10,
             ref_max_x=10,
+            interval=interval,
+            ref_f=ref_f,
         )
 
 
@@ -630,24 +700,24 @@ def main():
 
     out = lambda x: function_definition_inc.write(x + '\n')
 
-    for N in range(3, 5):
+    for N in range(2, 7):
         add_sin(N, out, scale=2 * pi, name="sin_unit1")
         add_sin(N, out, scale=1 * pi, name="sin_unit2")
         add_sin(N, out, scale=1, name="sin")
 
-    # for N in range(4, 10):
-    #     add_cos(N, out, scale=2 * pi, name="cos_unit1")
-    #     add_cos(N, out, scale=1 * pi, name="cos_unit2")
-    #     add_cos(N, out, scale=1, name="cos")
-    #
+    for N in range(2, 7):
+        add_cos(N, out, scale=2 * pi, name="cos_unit1")
+        add_cos(N, out, scale=1 * pi, name="cos_unit2")
+        add_cos(N, out, scale=1, name="cos")
+
     # for N in range(4, 9):
     #     add_tanh(N, out)
     #
     # for N in range(3, 9):
     #     add_exp(N, out)
 
-        for N in range(3, 5):
-            add_atan(N, out)
+    # for N in range(3, 5):
+    #     add_atan(N, out)
 
     # for N in range(3, 10):
     #     add_log(N, out)
