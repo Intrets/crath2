@@ -310,192 +310,193 @@ struct TestResult
 			this->minDomainMin *= std::numbers::pi_v<float>;
 		}
 
-		ImGui::BeginChild("Child", {}, true);
-		ImGui::BeginTable("Things", 8, ImGuiTableFlags_Sortable | ImGuiTableFlags_RowBg | ImGuiTableFlags_SizingFixedFit);
-		ImGui::TableSetupColumn("Name");
-		ImGui::TableSetupColumn("Error");
-		ImGui::TableSetupColumn("Absolute Error");
-		ImGui::TableSetupColumn("Normalized Error");
-		ImGui::TableSetupColumn("Domain Min");
-		ImGui::TableSetupColumn("Domain Max");
-		ImGui::TableSetupColumn("Time");
-
-		ImGuiTableSortSpecs* sorts_specs = ImGui::TableGetSortSpecs();
-		if (sorts_specs && sorts_specs->SpecsDirty) {
-			sorts_specs->SpecsDirty = false;
-			auto i = sorts_specs->Specs->ColumnIndex;
-			auto direction = sorts_specs->Specs->SortDirection;
-
-			auto cmpLT = [=](Entry& entry0, Entry& entry1) {
-				if (i == 0) {
-					return entry0.subName < entry1.subName;
-				}
-				else if (i == 1) {
-					return entry0.error < entry1.error;
-				}
-				else if (i == 2) {
-					return entry0.maximumError < entry1.maximumError;
-				}
-				else if (i == 3) {
-					return entry0.maximumNormalizedError < entry1.maximumNormalizedError;
-				}
-				else if (i == 4) {
-					return entry0.range_min < entry1.range_min;
-				}
-				else if (i == 5) {
-					return entry0.range_max < entry1.range_max;
-				}
-				else if (i == 6) {
-					return entry0.picoseconds < entry1.picoseconds;
-				}
-				else {
-					return false;
-				}
-			};
-
-			auto cmpGT = [=](Entry& entry0, Entry& entry1) {
-				if (i == 0) {
-					return entry0.subName > entry1.subName;
-				}
-				else if (i == 1) {
-					return entry0.error > entry1.error;
-				}
-				else if (i == 2) {
-					return entry0.maximumError > entry1.maximumError;
-				}
-				else if (i == 3) {
-					return entry0.maximumNormalizedError > entry1.maximumNormalizedError;
-				}
-				else if (i == 4) {
-					return entry0.range_min > entry1.range_min;
-				}
-				else if (i == 5) {
-					return entry0.range_max > entry1.range_max;
-				}
-				else if (i == 6) {
-					return entry0.picoseconds > entry1.picoseconds;
-				}
-				else {
-					return false;
-				}
-			};
-
-			if (direction == ImGuiSortDirection_Descending) {
-				std::ranges::sort(this->entries, cmpGT);
-			}
-			else {
-				std::ranges::sort(this->entries, cmpLT);
-			}
-		}
-
 		std::vector<Entry*> plotEntries{};
 
-		ImGui::TableHeadersRow();
-		for (auto& entry : this->entries) {
-			if (entry.range_min != entry.range_max) {
-				if (entry.range_min > this->minDomainMin) {
+		ImGui::BeginChild("Child", {}, true);
+		if (ImGui::BeginTable("Things", 8, ImGuiTableFlags_Sortable | ImGuiTableFlags_RowBg | ImGuiTableFlags_SizingFixedFit)) {
+			ImGui::TableSetupColumn("Name");
+			ImGui::TableSetupColumn("Error");
+			ImGui::TableSetupColumn("Absolute Error");
+			ImGui::TableSetupColumn("Normalized Error");
+			ImGui::TableSetupColumn("Domain Min");
+			ImGui::TableSetupColumn("Domain Max");
+			ImGui::TableSetupColumn("Time");
+
+			ImGuiTableSortSpecs* sorts_specs = ImGui::TableGetSortSpecs();
+			if (sorts_specs && sorts_specs->SpecsDirty) {
+				sorts_specs->SpecsDirty = false;
+				auto i = sorts_specs->Specs->ColumnIndex;
+				auto direction = sorts_specs->Specs->SortDirection;
+
+				auto cmpLT = [=](Entry& entry0, Entry& entry1) {
+					if (i == 0) {
+						return entry0.subName < entry1.subName;
+					}
+					else if (i == 1) {
+						return entry0.error < entry1.error;
+					}
+					else if (i == 2) {
+						return entry0.maximumError < entry1.maximumError;
+					}
+					else if (i == 3) {
+						return entry0.maximumNormalizedError < entry1.maximumNormalizedError;
+					}
+					else if (i == 4) {
+						return entry0.range_min < entry1.range_min;
+					}
+					else if (i == 5) {
+						return entry0.range_max < entry1.range_max;
+					}
+					else if (i == 6) {
+						return entry0.picoseconds < entry1.picoseconds;
+					}
+					else {
+						return false;
+					}
+				};
+
+				auto cmpGT = [=](Entry& entry0, Entry& entry1) {
+					if (i == 0) {
+						return entry0.subName > entry1.subName;
+					}
+					else if (i == 1) {
+						return entry0.error > entry1.error;
+					}
+					else if (i == 2) {
+						return entry0.maximumError > entry1.maximumError;
+					}
+					else if (i == 3) {
+						return entry0.maximumNormalizedError > entry1.maximumNormalizedError;
+					}
+					else if (i == 4) {
+						return entry0.range_min > entry1.range_min;
+					}
+					else if (i == 5) {
+						return entry0.range_max > entry1.range_max;
+					}
+					else if (i == 6) {
+						return entry0.picoseconds > entry1.picoseconds;
+					}
+					else {
+						return false;
+					}
+				};
+
+				if (direction == ImGuiSortDirection_Descending) {
+					std::ranges::sort(this->entries, cmpGT);
+				}
+				else {
+					std::ranges::sort(this->entries, cmpLT);
+				}
+			}
+
+			ImGui::TableHeadersRow();
+			for (auto& entry : this->entries) {
+				if (entry.range_min != entry.range_max) {
+					if (entry.range_min > this->minDomainMin) {
+						continue;
+					}
+					if (entry.range_max < this->maxDomainMax) {
+						continue;
+					}
+				}
+				else {
 					continue;
 				}
-				if (entry.range_max < this->maxDomainMax) {
-					continue;
-				}
-			}
-			else {
-				continue;
-			}
 
-			bool tagFound = true;
+				bool tagFound = true;
 
-			for (auto const& tag : this->searchTags) {
-				if (!std::ranges::contains(entry.tags, tag)) {
-					tagFound = false;
-					break;
-				}
-			}
-
-			if (!this->searchTags.empty() && !tagFound) {
-				continue;
-			}
-
-			bool breakOut = false;
-			for (auto const& tag : this->filterTags) {
-				if (std::ranges::contains(entry.tags, tag)) {
-					breakOut = true;
-					break;
-				}
-			}
-			if (breakOut) {
-				continue;
-			}
-
-			auto display0 = this->filterString0.empty();
-			if (!display0) {
-				for (auto word : std::views::split(this->filterString0, ' ')) {
-					if (entry.subName.contains(std::string_view(word.begin(), word.end()))) {
-						display0 = true;
+				for (auto const& tag : this->searchTags) {
+					if (!std::ranges::contains(entry.tags, tag)) {
+						tagFound = false;
 						break;
 					}
 				}
-			}
 
-			auto display1 = this->filterString1.empty();
-			if (!display1) {
-				display1 = true;
-				for (auto word : std::views::split(this->filterString1, ' ')) {
-					if (!entry.subName.contains(std::string_view(word.begin(), word.end()))) {
-						display1 = false;
+				if (!this->searchTags.empty() && !tagFound) {
+					continue;
+				}
+
+				bool breakOut = false;
+				for (auto const& tag : this->filterTags) {
+					if (std::ranges::contains(entry.tags, tag)) {
+						breakOut = true;
 						break;
 					}
 				}
-			}
+				if (breakOut) {
+					continue;
+				}
 
-			if (!display0 || !display1) {
-				continue;
-			}
-			ImGui::TableNextRow();
+				auto display0 = this->filterString0.empty();
+				if (!display0) {
+					for (auto word : std::views::split(this->filterString0, ' ')) {
+						if (entry.subName.contains(std::string_view(word.begin(), word.end()))) {
+							display0 = true;
+							break;
+						}
+					}
+				}
 
-			ImGui::TableNextColumn();
-			auto old = entry.selected;
-			ImGui::Selectable(entry.subName.c_str(), &entry.selected);
-			if (!entry.selected && ImGui::IsItemHovered()) {
-				plotEntries.push_back(&entry);
-			}
-			if (old != entry.selected) {
-				this->changedData = true;
-			}
-			ImGui::TableNextColumn();
-			ImGui::Text("%10.10f", entry.error);
-			ImGui::TableNextColumn();
-			ImGui::Text("%10.10f", entry.maximumError);
-			ImGui::TableNextColumn();
-			ImGui::Text("%10.10f", entry.maximumNormalizedError);
+				auto display1 = this->filterString1.empty();
+				if (!display1) {
+					display1 = true;
+					for (auto word : std::views::split(this->filterString1, ' ')) {
+						if (!entry.subName.contains(std::string_view(word.begin(), word.end()))) {
+							display1 = false;
+							break;
+						}
+					}
+				}
 
-			if (entry.range_min == entry.range_max) {
+				if (!display0 || !display1) {
+					continue;
+				}
+				ImGui::TableNextRow();
+
 				ImGui::TableNextColumn();
+				auto old = entry.selected;
+				ImGui::Selectable(entry.subName.c_str(), &entry.selected);
+				if (!entry.selected && ImGui::IsItemHovered()) {
+					plotEntries.push_back(&entry);
+				}
+				if (old != entry.selected) {
+					this->changedData = true;
+				}
 				ImGui::TableNextColumn();
-			}
-			else {
+				ImGui::Text("%10.10f", entry.error);
 				ImGui::TableNextColumn();
-				ImGui::Text("%f", entry.range_min);
+				ImGui::Text("%10.10f", entry.maximumError);
 				ImGui::TableNextColumn();
-				ImGui::Text("%f", entry.range_max);
+				ImGui::Text("%10.10f", entry.maximumNormalizedError);
+
+				if (entry.range_min == entry.range_max) {
+					ImGui::TableNextColumn();
+					ImGui::TableNextColumn();
+				}
+				else {
+					ImGui::TableNextColumn();
+					ImGui::Text("%f", entry.range_min);
+					ImGui::TableNextColumn();
+					ImGui::Text("%f", entry.range_max);
+				}
+
+				ImGui::TableNextColumn();
+				ImGui::Text("%dps", entry.picoseconds);
+
+				ImGui::TableNextColumn();
+				auto&& [x, ref, res] = entry.maximumErrorinfo;
+				ImGui::Text("%10.10f, %10.10f, %10.10f", x, ref, res);
 			}
 
-			ImGui::TableNextColumn();
-			ImGui::Text("%dps", entry.picoseconds);
+			for (auto& entry : this->entries) {
+				if (entry.selected) {
+					plotEntries.push_back(&entry);
+				}
+			}
 
-			ImGui::TableNextColumn();
-			auto&& [x, ref, res] = entry.maximumErrorinfo;
-			ImGui::Text("%10.10f, %10.10f, %10.10f", x, ref, res);
+			ImGui::EndTable();
 		}
-
-		for (auto& entry : this->entries) {
-			if (entry.selected) {
-				plotEntries.push_back(&entry);
-			}
-		}
-
-		ImGui::EndTable();
 		ImGui::EndChild();
 
 		if (ImGui::Begin("plot test")) {
@@ -595,10 +596,10 @@ int main() {
 	using namespace cr;
 	TestResult testResult{};
 
-	//auto constexpr M = 6'000'000;
-	//    auto constexpr M = 1'000'000;
-	//   auto constexpr M = 1'000;
-	 auto constexpr M = 1;
+	 auto constexpr M = 6'000'000;
+	//     auto constexpr M = 1'000'000;
+	//    auto constexpr M = 1'000;
+	//auto constexpr M = 1;
 
 #include "function_testing.h"
 

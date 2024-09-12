@@ -62,6 +62,29 @@ namespace cr
 			}
 		}
 
+		inline constexpr static float min(float f_, float min_) {
+			if (std::is_constant_evaluated()) {
+				if (f_ < min_) {
+					return min_;
+				}
+				else {
+					return f_;
+				}
+			}
+			else {
+#ifdef ARCH_x86_64
+				return simd::float1x4::min(f_, min_)[0];
+#else
+				return std::clamp(f_, min_);
+#endif
+			}
+		}
+
+		template<class F>
+		inline constexpr static F min(in_t(F) f_, in_t(F) min_) {
+			return F::min(f_, min_);
+		}
+
 		template<class F>
 		inline constexpr static F clamp(in_t(F) f, in_t(F) min, in_t(F) max) {
 			return F::clamp(f, min, max);

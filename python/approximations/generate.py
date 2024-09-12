@@ -157,7 +157,7 @@ class x_clamp:
         return ''
 
     def run(self, out, max_x):
-        out(f'x = math::clamp(x, F({self.min_val}f), F({self.max_val}f));')
+        out(f'x = math::clamp(x, F({self.min_val:.1f}f), F({self.max_val:.1f}f));')
 
 
 class x_single_abs:
@@ -497,21 +497,86 @@ def add_cos(N, out, name, scale):
 
 
 def add_tanh(N, out):
+    end = 6
+
+    def function(x):
+        return mp.tanh(x)
+
+    class x_tanh_remez:
+        def __init__(self, val):
+            self.max_val = val
+
+        def name(self):
+            return ''
+
+        def run(self, out, max_x):
+            out(f'auto const x0 = x;')
+            out(f'x = math::min(math::abs(x), F({float(self.max_val)}f));')
+
+    remez_p = remez.remez(function, n_degree=N, lower=0, upper=end)
+    remez_pade_p, remez_pade_q = remez.remez_pade(function, n_degree=N, lower=0, upper=end)
+
+    def clamped_function(x):
+        return mp.tanh(x)
+
     global fma_types
-    for fma_type in fma_types:
+    for fma_type, (interval, ref_f) in itertools.product(fma_types, [((0, end), clamped_function), (None, None)]):
+        add_function2(
+            remez_p,
+            out=out,
+            fma_type=fma_type,
+            name="tanh_remez",
+            extra_tags=["tanh", "remez"],
+            ref="std::tanhf",
+            N=N,
+            M=0,
+            x_type=x_tanh_remez(end),
+            return_type=lambda out, a: out(f'return math::setSign({a}, x0);'),
+            min_x=-10,
+            max_x=10,
+            ref_min_x=-10,
+            ref_max_x=10,
+            ref_f=ref_f,
+            interval=interval,
+        )
+
+        add_function2(
+            remez_pade_p,
+            q=remez_pade_q,
+            out=out,
+            fma_type=fma_type,
+            name="tanh_remez_pade",
+            extra_tags=["tanh", "remez_pade"],
+            ref="std::tanhf",
+            N=N,
+            M=N,
+            x_type=x_tanh_remez(end),
+            return_type=lambda out, a: out(f'return math::setSign({a}, x0);'),
+            min_x=-10,
+            max_x=10,
+            ref_min_x=-10,
+            ref_max_x=10,
+            ref_f=ref_f,
+            interval=interval,
+        )
+
         add_function2(
             taylor.tanh(),
             out=out,
             fma_type=fma_type,
             name="tanh",
+            extra_tags=["tanh"],
             ref="std::tanhf",
             N=N,
-            x_type=x_clamp(4.9716),
+            M=N,
+            x_type=x_clamp(end),
             return_type=return_normal,
             min_x=-10,
             max_x=10,
             ref_min_x=-10,
             ref_max_x=10,
+            ref_f=ref_f,
+            interval=interval,
         )
 
 
@@ -700,19 +765,19 @@ def main():
 
     out = lambda x: function_definition_inc.write(x + '\n')
 
-    for N in range(2, 7):
-        add_sin(N, out, scale=2 * pi, name="sin_unit1")
-        add_sin(N, out, scale=1 * pi, name="sin_unit2")
-        add_sin(N, out, scale=1, name="sin")
-
-    for N in range(2, 7):
-        add_cos(N, out, scale=2 * pi, name="cos_unit1")
-        add_cos(N, out, scale=1 * pi, name="cos_unit2")
-        add_cos(N, out, scale=1, name="cos")
-
-    # for N in range(4, 9):
-    #     add_tanh(N, out)
+    # for N in range(2, 7):
+    #     add_sin(N, out, scale=2 * pi, name="sin_unit1")
+    #     add_sin(N, out, scale=1 * pi, name="sin_unit2")
+    #     add_sin(N, out, scale=1, name="sin")
     #
+    # for N in range(2, 7):
+    #     add_cos(N, out, scale=2 * pi, name="cos_unit1")
+    #     add_cos(N, out, scale=1 * pi, name="cos_unit2")
+    #     add_cos(N, out, scale=1, name="cos")
+
+    for N in range(3, 12):
+        add_tanh(N, out)
+
     # for N in range(3, 9):
     #     add_exp(N, out)
 

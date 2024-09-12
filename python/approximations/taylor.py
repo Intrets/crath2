@@ -74,3 +74,5 @@ def tan(scale=1):
         tay.append(sp.Rational(scale ** (2 * n - 1) * sp.bernoulli(2 * n) * (-4) ** n * (1 - 4 ** n), factorial(2 * n)))
         tay.append(0)
     return tay
+
+print(f'{float(1)}')

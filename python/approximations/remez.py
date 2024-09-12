@@ -247,7 +247,7 @@ if __name__ == '__main__':
     I = 4
 
     function = lambda x: mp.atan(x)
-    #interval = [0, numpy.pi / 2]
+    # interval = [0, numpy.pi / 2]
     interval = [0, 1]
     poly_coeffs = remez(function, 2 * I + 1, interval[0], interval[1])
     print(f'coeffs {poly_coeffs}')
@@ -268,7 +268,7 @@ if __name__ == '__main__':
 
     def plot_transform(x):
         return numpy.abs(x - y_exact)
-        #return x
+        # return x
 
 
     def do_remez_pade(n):
