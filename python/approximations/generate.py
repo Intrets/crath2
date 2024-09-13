@@ -263,7 +263,7 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
 
     x_type.run(out=lambda x: buffer.append(x), max_x=max_x)
 
-    # make(taylor_series, q=q, N=(N, M), fma_type=fma_type, out=lambda x: buffer.append(x), return_type=return_type, interval=interval, ref_f=ref_f)
+    make(taylor_series, q=q, N=(N, M), fma_type=fma_type, out=lambda x: buffer.append(x), return_type=return_type, interval=interval, ref_f=ref_f)
 
     for line in buffer:
         if 'math' in line:
@@ -316,6 +316,20 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
         max_x=max_x,
         ref_min_x=ref_min_x,
         ref_max_x=ref_max_x,
+    )
+    function_infos2.append(info)
+
+
+def add_ref_info(name, function_name, min_x, max_x):
+    info = function_info2(
+        tags=[name, function_name, "float", "scalar", "reference"],
+        reference_function=function_name,
+        value_type="float",
+        function_name=function_name,
+        min_x=min_x,
+        max_x=max_x,
+        ref_min_x=min_x,
+        ref_max_x=max_x,
     )
     function_infos2.append(info)
 
@@ -1008,37 +1022,43 @@ fma_types = [fma]
 
 
 def main():
-    # function_definition_inc = open('../../function_definitions.h', 'w')
+    function_definition_inc = open('../../function_definitions.h', 'w')
     function_testing_inc = open('../../function_testing.h', 'w')
 
-    # out = lambda x: function_definition_inc.write(x + '\n')
-    out = lambda x: 1
+    out = lambda x: function_definition_inc.write(x + '\n')
 
+    add_ref_info(function_name="std::sinf", name="sin", min_x=0, max_x=2 * pi)
     for N in range(3, 10):
         add_sin(N, out, scale=2 * pi, name="sin_unit1")
         add_sin(N, out, scale=1 * pi, name="sin_unit2")
         add_sin(N, out, scale=1, name="sin")
 
+    add_ref_info(function_name="std::cosf", name="cos", min_x=0, max_x=2 * pi)
     for N in range(3, 10):
         add_cos(N, out, scale=2 * pi, name="cos_unit1")
         add_cos(N, out, scale=1 * pi, name="cos_unit2")
         add_cos(N, out, scale=1, name="cos")
 
+    add_ref_info(function_name="std::tanhf", name="tanh", min_x=-10, max_x=10)
     for N in range(3, 10):
         add_tanh(N, out)
 
+    add_ref_info(function_name="std::expf", name="exp", min_x=-10, max_x=10)
     for N in range(3, 10):
         add_exp(N, out)
 
+    add_ref_info(function_name="std::atanhf", name="atanh", min_x=-10, max_x=10)
     for N in range(3, 10):
         add_atan(N, out)
 
+    add_ref_info(function_name="std::logf", name="log", min_x=0.08, max_x=1 / 0.08)
     for N in range(3, 10):
         add_log(N, out)
 
     for N in range(3, 10):
         add_special_exp(N, out)
 
+    add_ref_info(function_name="std::tanf", name="tan", min_x=-1.5, max_x=1.5)
     for N in range(3, 10):
         add_tan(N, out)
 

@@ -1,5 +1,12 @@
 {
 auto& entry = testResult.make();
+entry.tags = { "sin", "std::sinf", "float", "scalar", "reference",  };
+entry.subName = "std::sinf";
+entry.accuracy_test<float>(std::sinf, std::sinf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+entry.time<float>([](auto&& x){ return std::sinf(x); }, 0.0f, 6.283185307179586f);
+}
+{
+auto& entry = testResult.make();
 entry.tags = { "fma", "ends corrected", "sin_unit1", "remez", "float", "scalar",  };
 entry.subName = "sin_unit1_remez_fma_ec_T3_0<float>";
 entry.accuracy_test<float>(sin_unit1_remez_fma_ec_T3_0<float>, std::sinf, 0.0f, 1.0f, 0.0f, 6.283185307179586f);
@@ -2643,6 +2650,13 @@ entry.tags = { "fma", "sin", "float", "simd",  };
 entry.subName = "sin_quart_fma_T9_9_float_simd";
 entry.accuracy_test<float>(sin_quart_fma_T9_9_float_simd, std::sinf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
 entry.time<float>([](auto&& x){ return sin_quart_fma_T9_9_float_simd(x); }, 0.0f, 6.283185307179586f);
+}
+{
+auto& entry = testResult.make();
+entry.tags = { "cos", "std::cosf", "float", "scalar", "reference",  };
+entry.subName = "std::cosf";
+entry.accuracy_test<float>(std::cosf, std::cosf, 0.0f, 6.283185307179586f, 0.0f, 6.283185307179586f);
+entry.time<float>([](auto&& x){ return std::cosf(x); }, 0.0f, 6.283185307179586f);
 }
 {
 auto& entry = testResult.make();
@@ -5670,6 +5684,13 @@ entry.time<float>([](auto&& x){ return cos_quart_fma_T9_9_float_simd(x); }, 0.0f
 }
 {
 auto& entry = testResult.make();
+entry.tags = { "tanh", "std::tanhf", "float", "scalar", "reference",  };
+entry.subName = "std::tanhf";
+entry.accuracy_test<float>(std::tanhf, std::tanhf, -10.0f, 10.0f, -10.0f, 10.0f);
+entry.time<float>([](auto&& x){ return std::tanhf(x); }, -10.0f, 10.0f);
+}
+{
+auto& entry = testResult.make();
 entry.tags = { "fma", "ends corrected", "tanh", "remez", "float", "scalar",  };
 entry.subName = "tanh_remez_fma_ec_T3_0<float>";
 entry.accuracy_test<float>(tanh_remez_fma_ec_T3_0<float>, std::tanhf, -10.0f, 10.0f, -10.0f, 10.0f);
@@ -6552,6 +6573,13 @@ entry.time<float>([](auto&& x){ return tanh_fma_T9_9_float_simd(x); }, -10.0f, 1
 }
 {
 auto& entry = testResult.make();
+entry.tags = { "exp", "std::expf", "float", "scalar", "reference",  };
+entry.subName = "std::expf";
+entry.accuracy_test<float>(std::expf, std::expf, -10.0f, 10.0f, -10.0f, 10.0f);
+entry.time<float>([](auto&& x){ return std::expf(x); }, -10.0f, 10.0f);
+}
+{
+auto& entry = testResult.make();
 entry.tags = { "fma", "exp", "float", "scalar",  };
 entry.subName = "exp_fma_T3_3<float>";
 entry.accuracy_test<float>(exp_fma_T3_3<float>, std::expf, -10.0f, 10.0f, -10.0f, 10.0f);
@@ -6990,6 +7018,13 @@ entry.tags = { "fma", "exp", "remez_pade", "float", "simd",  };
 entry.subName = "exp_remez_pade_fma_T9_0_float_simd";
 entry.accuracy_test<float>(exp_remez_pade_fma_T9_0_float_simd, std::expf, -10.0f, 10.0f, -10.0f, 10.0f);
 entry.time<float>([](auto&& x){ return exp_remez_pade_fma_T9_0_float_simd(x); }, -10.0f, 10.0f);
+}
+{
+auto& entry = testResult.make();
+entry.tags = { "atanh", "std::atanhf", "float", "scalar", "reference",  };
+entry.subName = "std::atanhf";
+entry.accuracy_test<float>(std::atanhf, std::atanhf, -10.0f, 10.0f, -10.0f, 10.0f);
+entry.time<float>([](auto&& x){ return std::atanhf(x); }, -10.0f, 10.0f);
 }
 {
 auto& entry = testResult.make();
@@ -7872,6 +7907,13 @@ entry.tags = { "fma", "atan", "remez_pade", "float", "simd",  };
 entry.subName = "atan_remez_pade_fma_T9_9_float_simd";
 entry.accuracy_test<float>(atan_remez_pade_fma_T9_9_float_simd, std::atanf, -10.0f, 10.0f, -10.0f, 10.0f);
 entry.time<float>([](auto&& x){ return atan_remez_pade_fma_T9_9_float_simd(x); }, -10.0f, 10.0f);
+}
+{
+auto& entry = testResult.make();
+entry.tags = { "log", "std::logf", "float", "scalar", "reference",  };
+entry.subName = "std::logf";
+entry.accuracy_test<float>(std::logf, std::logf, 0.08f, 12.5f, 0.08f, 12.5f);
+entry.time<float>([](auto&& x){ return std::logf(x); }, 0.08f, 12.5f);
 }
 {
 auto& entry = testResult.make();
@@ -10224,6 +10266,13 @@ entry.tags = { "fma", "exp_special", "remez_pade", "float", "simd",  };
 entry.subName = "exp_special_remez_pade_fma_T9_9_float_simd";
 entry.accuracy_test<float>(exp_special_remez_pade_fma_T9_9_float_simd, [](float x) { return 8.175798915643707f * std::powf(1.0594630943592953f, x * 127.0f); }, -1.0f, 1.2f, -1.0f, 1.2f);
 entry.time<float>([](auto&& x){ return exp_special_remez_pade_fma_T9_9_float_simd(x); }, -1.0f, 1.2f);
+}
+{
+auto& entry = testResult.make();
+entry.tags = { "tan", "std::tanf", "float", "scalar", "reference",  };
+entry.subName = "std::tanf";
+entry.accuracy_test<float>(std::tanf, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.time<float>([](auto&& x){ return std::tanf(x); }, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();

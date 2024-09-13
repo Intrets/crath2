@@ -31,7 +31,8 @@ make_module(
 find_package(OpenGL REQUIRED)
 find_package(GLFW3 REQUIRED)
 
-add_executable(${MODULE_NAME}_glfw_test TestGlfw.cpp)
+add_executable(${MODULE_NAME}_glfw_test TestGlfw.cpp include/crath/TestResult.h TestResult.cpp include/crath/AddTests.h AddTests.cpp)
+target_include_directories(${MODULE_NAME}_glfw_test PUBLIC include)
 target_link_libraries(imgui_glfw imgui GLFW3)
 target_link_libraries(${MODULE_NAME}_glfw_test
 	implot
@@ -41,6 +42,7 @@ target_link_libraries(${MODULE_NAME}_glfw_test
 	opengl32
 	font_resources
 	GLFW3
+	mem
 )
 
 target_default_compiler_options(
