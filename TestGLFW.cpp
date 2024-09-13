@@ -27,6 +27,27 @@ struct TestResult
 {
 	std::string name{};
 
+	struct TimingAuxilery
+	{
+		std::minstd_rand rng{ std::random_device()() };
+		std::vector<float> dataBufferFloat{};
+		std::vector<cr::simd::float1x4> dataBuffer1x4{};
+		std::vector<cr::simd::float2x4> dataBuffer2x4{};
+
+		template<class T>
+		auto& getBuffer() {
+			if constexpr (std::same_as<T, float>) {
+				return this->dataBufferFloat;
+			}
+			else if constexpr (std::same_as<T, cr::simd::float1x4>) {
+				return this->dataBuffer1x4;
+			}
+			else {
+				return this->dataBuffer2x4;
+			}
+		}
+	};
+
 	struct Entry
 	{
 		std::string subName{};
@@ -54,50 +75,33 @@ struct TestResult
 
 		bool selected = false;
 
-		template<class F>
-		void time(auto approximation, int N, float min_x, float max_x) {
-			std::vector<F> data{};
-			data.resize(N);
-			auto rng = std::minstd_rand(std::random_device()());
+		std::function<void(TimingAuxilery&, int)> timeFunction{};
 
-			for (size_t i = 0; i < N; i++) {
-				data[i] = F(std::uniform_real<float>(min_x, max_x)(rng));
-			}
-
-			auto start = std::chrono::steady_clock::now();
-
-			F total{};
-			for (auto x : data) {
-				total += approximation(x);
-			}
-
-			auto duration = std::chrono::duration_cast<std::chrono::duration<uint64_t, std::femto>>(std::chrono::steady_clock::now() - start) / N;
-			this->picoseconds = duration.count() / 1000;
-
-			std::cout << *reinterpret_cast<float*>(&total) << "\n";
-		}
+		std::chrono::steady_clock::duration duration{};
+		int64_t count = 0;
+		std::atomic<uint64_t> picosecondsShared = 0;
 
 		template<class F>
-		void time2(auto approximation, int N, float min_x, float max_x) {
-			std::vector<std::pair<F, F>> data{};
-			data.resize(N);
-			auto rng = std::minstd_rand(std::random_device()());
+		void time(auto approximation, float min_x, float max_x) {
+			this->timeFunction = [this, min_x, max_x, approximation](TimingAuxilery& aux, int N) {
+				auto& buffer = aux.getBuffer<F>();
+				buffer.clear();
+				for (size_t i = 0; i < N; i++) {
+					buffer.push_back(std::uniform_real<float>(min_x, max_x)(aux.rng));
+				}
 
-			for (size_t i = 0; i < N; i++) {
-				data[i] = { F(std::uniform_real<float>(min_x, max_x)(rng)), F(std::uniform_real<float>(min_x, max_x)(rng)) };
-			}
+				auto start = std::chrono::steady_clock::now();
+				F total{};
+				for (auto const& x : buffer) {
+					total += approximation(x);
+				}
 
-			auto start = std::chrono::steady_clock::now();
+				this->duration += std::chrono::steady_clock::now() - start;
+				this->count += N;
 
-			F total{};
-			for (auto [x, y] : data) {
-				total += approximation(x, y);
-			}
-
-			auto duration = std::chrono::duration_cast<std::chrono::duration<uint64_t, std::femto>>(std::chrono::steady_clock::now() - start) / N;
-			this->picoseconds = duration.count() / 1000;
-
-			std::cout << total << "\n";
+				this->picosecondsShared.store(std::chrono::duration_cast<std::chrono::duration<uint64_t, std::pico>>(this->duration).count() / this->count);
+				std::cout << *reinterpret_cast<float*>(&total) << "\n";
+			};
 		}
 
 		template<class F>
@@ -194,7 +198,9 @@ struct TestResult
 
 	std::string filterString0{};
 	std::string filterString1{};
-	std::vector<Entry> entries{};
+	std::vector<std::unique_ptr<Entry>> entries{};
+	Entry& make();
+
 	Entry* hoveredEntry = nullptr;
 	struct TagInfo
 	{
@@ -231,7 +237,8 @@ struct TestResult
 		this->filterTags.clear();
 
 		for (auto& entry : this->entries) {
-			for (auto& tag : entry.tags) {
+			entry->picoseconds = entry->picosecondsShared.load();
+			for (auto& tag : entry->tags) {
 				this->tags[tag];
 			}
 		}
@@ -292,7 +299,7 @@ struct TestResult
 
 		if (changed) {
 			for (auto& entry : this->entries) {
-				entry.calculateDomain(this->maxError, this->domainErrorNormalized);
+				entry->calculateDomain(this->maxError, this->domainErrorNormalized);
 			}
 		}
 		ImGui::Text("Maximum error on domain: %f", this->maxError);
@@ -340,7 +347,10 @@ struct TestResult
 				auto i = sorts_specs->Specs->ColumnIndex;
 				auto direction = sorts_specs->Specs->SortDirection;
 
-				auto cmpLT = [=](Entry& entry0, Entry& entry1) {
+				auto cmpLT = [=](std::unique_ptr<Entry>& entry0_, std::unique_ptr<Entry>& entry1_) {
+					auto& entry0 = *entry0_;
+					auto& entry1 = *entry1_;
+
 					if (i == 0) {
 						return entry0.subName < entry1.subName;
 					}
@@ -367,7 +377,10 @@ struct TestResult
 					}
 				};
 
-				auto cmpGT = [=](Entry& entry0, Entry& entry1) {
+				auto cmpGT = [=](std::unique_ptr<Entry>& entry0_, std::unique_ptr<Entry>& entry1_) {
+					auto& entry0 = *entry0_;
+					auto& entry1 = *entry1_;
+
 					if (i == 0) {
 						return entry0.subName > entry1.subName;
 					}
@@ -403,7 +416,8 @@ struct TestResult
 			}
 
 			ImGui::TableHeadersRow();
-			for (auto& entry : this->entries) {
+			for (auto& entry_ : this->entries) {
+				auto& entry = *entry_;
 				if (this->showSelected) {
 					if (!entry.selected) {
 						continue;
@@ -487,7 +501,7 @@ struct TestResult
 				ImGui::TableNextColumn();
 				auto value = entry.approximationFunction(this->evalValue);
 				auto correct = entry.referenceFunction(this->evalValue);
-				auto error = std::abs(value - correct );
+				auto error = std::abs(value - correct);
 				auto relative = error / std::abs(correct);
 				ImGui::Text("%f", value);
 				ImGui::TableNextColumn();
@@ -517,8 +531,8 @@ struct TestResult
 			}
 
 			for (auto& entry : this->entries) {
-				if (entry.selected) {
-					plotEntries.push_back(&entry);
+				if (entry->selected) {
+					plotEntries.push_back(entry.get());
 				}
 			}
 
@@ -531,8 +545,8 @@ struct TestResult
 			ImGui::SameLine();
 			if (ImGui::Button("Clear all")) {
 				for (auto& entry : this->entries) {
-					entry.selected = false;
-					if (entry.selected) {
+					entry->selected = false;
+					if (entry->selected) {
 						this->changedData = true;
 					}
 				}
@@ -546,13 +560,13 @@ struct TestResult
 				ImGui::Text("Remove:");
 				integer_t count = 0;
 				for (auto& entry : this->entries) {
-					if (entry.selected) {
-						if (ImGui::Button(entry.subName.c_str())) {
-							entry.selected = false;
+					if (entry->selected) {
+						if (ImGui::Button(entry->subName.c_str())) {
+							entry->selected = false;
 							this->changedData = true;
 						}
 						if (ImGui::IsItemHovered()) {
-							this->hoveredEntry = &entry;
+							this->hoveredEntry = entry.get();
 						}
 						count++;
 					}
@@ -623,15 +637,18 @@ int main() {
 	using namespace cr;
 	TestResult testResult{};
 
-	 auto constexpr M = 6'000'000;
+	// auto constexpr M = 6'000'000;
 	//     auto constexpr M = 1'000'000;
-	//    auto constexpr M = 1'000;
-	//auto constexpr M = 1;
+	//auto constexpr M = 1'000;
+	// auto constexpr M = 1;
 
 #include "function_testing.h"
 
+	TestResult::TimingAuxilery aux{};
+
 	for (auto& entry : testResult.entries) {
-		entry.calculateDomain(testResult.maxError, testResult.domainErrorNormalized);
+		entry->calculateDomain(testResult.maxError, testResult.domainErrorNormalized);
+		entry->timeFunction(aux, 1000);
 	}
 
 	if (!glfwInit()) {
@@ -709,4 +726,9 @@ int main() {
 	glfwTerminate();
 
 	return 0;
+}
+
+TestResult::Entry& TestResult::make() {
+	this->entries.push_back(std::make_unique<Entry>());
+	return *this->entries.back();
 }

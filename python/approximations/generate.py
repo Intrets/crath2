@@ -263,7 +263,7 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
 
     x_type.run(out=lambda x: buffer.append(x), max_x=max_x)
 
-    make(taylor_series, q=q, N=(N, M), fma_type=fma_type, out=lambda x: buffer.append(x), return_type=return_type, interval=interval, ref_f=ref_f)
+    # make(taylor_series, q=q, N=(N, M), fma_type=fma_type, out=lambda x: buffer.append(x), return_type=return_type, interval=interval, ref_f=ref_f)
 
     for line in buffer:
         if 'math' in line:
@@ -1008,10 +1008,11 @@ fma_types = [fma]
 
 
 def main():
-    function_definition_inc = open('../../function_definitions.h', 'w')
+    # function_definition_inc = open('../../function_definitions.h', 'w')
     function_testing_inc = open('../../function_testing.h', 'w')
 
-    out = lambda x: function_definition_inc.write(x + '\n')
+    # out = lambda x: function_definition_inc.write(x + '\n')
+    out = lambda x: 1
 
     for N in range(3, 10):
         add_sin(N, out, scale=2 * pi, name="sin_unit1")
@@ -1045,7 +1046,7 @@ def main():
 
     for test in function_infos2:
         out('{')
-        out('auto& entry = testResult.entries.emplace_back();')
+        out('auto& entry = testResult.make();')
         tags = ""
         for tag in test.tags:
             tags += f'"{tag}", '
@@ -1053,9 +1054,10 @@ def main():
         out(f'entry.subName = "{test.function_name}";')
         if test.reference_function:
             out(f'entry.accuracy_test<{test.value_type}>({test.function_name}, {test.reference_function}, {float(test.min_x)}f, {float(test.max_x)}f, {float(test.ref_min_x)}f, {float(test.ref_max_x)}f);')
-        out(f'entry.time<{test.value_type}>({test.function_name}, M, {float(test.min_x)}f, {float(test.max_x)}f);')
+        out(f'entry.time<{test.value_type}>([](auto&& x){{ return {test.function_name}(x); }}, {float(test.min_x)}f, {float(test.max_x)}f);')
         out('}')
 
 
 if __name__ == '__main__':
+    mp.prec = 53 * 2
     main()
