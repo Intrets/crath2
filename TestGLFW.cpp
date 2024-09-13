@@ -211,6 +211,7 @@ struct TestResult
 	bool domainErrorNormalized = true;
 
 	bool multiplyDomainByPi = false;
+	bool doDomainFiltering = true;
 	float minDomainMinRaw = 0.0f;
 	float maxDomainMaxRaw = 1.0f;
 	float minDomainMin = 0.0f;
@@ -220,6 +221,7 @@ struct TestResult
 	bool autoFit = true;
 	bool autoFitOnChange = false;
 	bool changedData = false;
+	bool showSelected = false;
 
 	void show() {
 		ImGui::InputText("OR", &this->filterString0);
@@ -303,12 +305,15 @@ struct TestResult
 		}
 		ImGui::SameLine();
 		ImGui::Checkbox("Multiply domain by pi", &this->multiplyDomainByPi);
+		ImGui::SameLine();
+		ImGui::Checkbox("Do Domain Filtering", &this->doDomainFiltering);
 		this->maxDomainMax = this->maxDomainMaxRaw;
 		this->minDomainMin = this->minDomainMinRaw;
 		if (this->multiplyDomainByPi) {
 			this->maxDomainMax *= std::numbers::pi_v<float>;
 			this->minDomainMin *= std::numbers::pi_v<float>;
 		}
+		ImGui::Checkbox("Show Selected", &this->showSelected);
 
 		std::vector<Entry*> plotEntries{};
 
@@ -392,16 +397,25 @@ struct TestResult
 
 			ImGui::TableHeadersRow();
 			for (auto& entry : this->entries) {
-				if (entry.range_min != entry.range_max) {
-					if (entry.range_min > this->minDomainMin) {
-						continue;
-					}
-					if (entry.range_max < this->maxDomainMax) {
+				if (this->showSelected) {
+					if (!entry.selected) {
 						continue;
 					}
 				}
 				else {
-					continue;
+					if (this->doDomainFiltering) {
+						if (entry.range_min != entry.range_max) {
+							if (entry.range_min > this->minDomainMin) {
+								continue;
+							}
+							if (entry.range_max < this->maxDomainMax) {
+								continue;
+							}
+						}
+						else {
+							continue;
+						}
+					}
 				}
 
 				bool tagFound = true;
@@ -596,10 +610,10 @@ int main() {
 	using namespace cr;
 	TestResult testResult{};
 
-	 auto constexpr M = 6'000'000;
+	// auto constexpr M = 6'000'000;
 	//     auto constexpr M = 1'000'000;
 	//    auto constexpr M = 1'000;
-	//auto constexpr M = 1;
+	auto constexpr M = 1;
 
 #include "function_testing.h"
 
