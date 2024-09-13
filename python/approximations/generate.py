@@ -134,6 +134,17 @@ class x_normal:
         pass
 
 
+class x_abs:
+    @staticmethod
+    def name():
+        return 'abs'
+
+    @staticmethod
+    def run(out, max_x):
+        out(f'auto const x0 = x;')
+        out(f'x = math::abs(x);')
+
+
 class x_half_offset:
     @staticmethod
     def name():
@@ -602,8 +613,6 @@ def add_exp(N, out):
     remez_p = remez.remez(remez_function, n_degree=N, lower=0, upper=end)
     remez_pade_p, remez_pade_q = remez.remez_pade(remez_function, n_degree=N, lower=0, upper=end)
 
-    def function(x): return mp.exp(x)
-
     global fma_types
     for fma_type, (interval, ref_f) in itertools.product(fma_types, [(None, None)]):
         add_function2(
@@ -750,11 +759,37 @@ def add_log(N, out):
     def function(x):
         return mp.log(x)
 
-    remez_p = remez.remez(function, n_degree=N, lower=0.01, upper=10)
-    remez_pade_p, remez_pade_q = remez.remez_pade(function, n_degree=N, lower=0.01, upper=10)
+    start0 = 1
+    start1 = 0.08
+    end = 1 / start1
+
+    remez0_p = remez.remez(function, n_degree=N, lower=start0, upper=end)
+    remez0_pade_p, remez0_pade_q = remez.remez_pade(function, n_degree=N, lower=start0, upper=end)
+
+    remez1_p = remez.remez(function, n_degree=N, lower=start1, upper=end)
+    remez1_pade_p, remez1_pade_q = remez.remez_pade(function, n_degree=N, lower=start1, upper=end)
+
+    class x_recip_log:
+        @staticmethod
+        def name():
+            return 'recip'
+
+        @staticmethod
+        def run(out, max_x):
+            out('auto m = x < F(1.0f);')
+            out('x = math::blend(x,  F(1.0f) / x, m);')
+
+    def return_recip_log(out, a):
+        out(f'auto const r = {a};')
+        out(f'return math::blend(r, -r, m);')
 
     global fma_types
-    for fma_type, (interval, ref_f) in itertools.product(fma_types, [((0.01, 10), function), (None, None)]):
+    for fma_type, ref_f, (x_type, return_type, start, end, remez_p, remez_pade_p, remez_pade_q) in itertools.product(
+            fma_types,
+            [function, None],
+            [(x_normal, return_normal, start0, end, remez0_p, remez0_pade_p, remez0_pade_q),
+             (x_recip_log, return_recip_log, start1, end, remez1_p, remez1_pade_p, remez1_pade_q)]
+    ):
         add_function2(
             remez_p,
             out=out,
@@ -764,14 +799,14 @@ def add_log(N, out):
             ref="std::logf",
             N=N,
             M=0,
-            x_type=x_normal,
-            return_type=return_normal,
-            min_x=0.01,
-            max_x=10,
-            ref_min_x=0.01,
-            ref_max_x=10,
+            x_type=x_type,
+            return_type=return_type,
+            min_x=start1,
+            max_x=end,
+            ref_min_x=start1,
+            ref_max_x=end,
             ref_f=ref_f,
-            interval=interval
+            interval=(start, end)
         )
 
         add_function2(
@@ -784,17 +819,17 @@ def add_log(N, out):
             ref="std::logf",
             N=N,
             M=N,
-            x_type=x_normal,
-            return_type=return_normal,
-            min_x=0.01,
-            max_x=10,
-            ref_min_x=0.01,
-            ref_max_x=10,
+            x_type=x_type,
+            return_type=return_type,
+            min_x=start1,
+            max_x=end,
+            ref_min_x=start1,
+            ref_max_x=end,
             ref_f=ref_f,
-            interval=interval
+            interval=(start, end)
         )
 
-    for fma_type, (interval, ref_f) in itertools.product(fma_types, [((0.01 - 1, 10 - 1), lambda x: mp.log(1 + x)), (None, None)]):
+    for fma_type, (interval, ref_f) in itertools.product(fma_types, [((start - 1, end - 1), lambda x: mp.log(1 + x)), (None, None)]):
         add_function2(
             taylor.log(),
             out=out,
@@ -806,10 +841,10 @@ def add_log(N, out):
             M=N,
             x_type=x_offset(-1.0),
             return_type=return_normal,
-            min_x=0.01,
-            max_x=10,
-            ref_min_x=0.01,
-            ref_max_x=10,
+            min_x=start,
+            max_x=end,
+            ref_min_x=start,
+            ref_max_x=end,
             ref_f=ref_f,
             interval=interval
         )
@@ -829,27 +864,88 @@ def add_special_exp(N, out):
         out('a *= a;')
         out('return a;')
 
+    def remez_function(x): return 0.5 * mp.tanh(x * d)
+
+    start = -1
+    end = 1.2
+    remez_p = remez.remez(remez_function, n_degree=N, lower=start, upper=end)
+    remez_pade_p, remez_pade_q = remez.remez_pade(remez_function, n_degree=N, lower=start, upper=end)
+
     global fma_types
-    for fma_type in fma_types:
+    for fma_type, (interval, ref_f) in itertools.product(fma_types, [((start, end), remez_function), (None, None)]):
         add_function2(
             taylor.tanh(d, 1 / 2),
             out=out,
             fma_type=fma_type,
             name="exp_special",
+            extra_tags=["exp_special"],
             ref=f"[](float x) {{ return {base}f * std::powf({2 ** (1 / 12)}f, x * 127.0f); }}",
             N=N,
+            M=N,
             x_type=x_normal,
             return_type=special_exp_return,
-            min_x=0,
-            max_x=1,
-            ref_min_x=0,
-            ref_max_x=1,
+            min_x=-1,
+            max_x=1.2,
+            ref_min_x=-1,
+            ref_max_x=1.2,
+            ref_f=ref_f,
+            interval=interval
+        )
+
+        add_function2(
+            remez_p,
+            out=out,
+            fma_type=fma_type,
+            name="exp_special_remez",
+            extra_tags=["exp_special", "remez"],
+            ref=f"[](float x) {{ return {base}f * std::powf({2 ** (1 / 12)}f, x * 127.0f); }}",
+            N=N,
+            M=0,
+            x_type=x_normal,
+            return_type=special_exp_return,
+            min_x=-1,
+            max_x=1.2,
+            ref_min_x=-1,
+            ref_max_x=1.2,
+            ref_f=ref_f,
+            interval=interval
+        )
+
+        add_function2(
+            remez_pade_p,
+            q=remez_pade_q,
+            out=out,
+            fma_type=fma_type,
+            name="exp_special_remez_pade",
+            extra_tags=["exp_special", "remez_pade"],
+            ref=f"[](float x) {{ return {base}f * std::powf({2 ** (1 / 12)}f, x * 127.0f); }}",
+            N=N,
+            M=N,
+            x_type=x_normal,
+            return_type=special_exp_return,
+            min_x=-1,
+            max_x=1.2,
+            ref_min_x=-1,
+            ref_max_x=1.2,
+            ref_f=ref_f,
+            interval=interval
         )
 
 
 def add_tan(N, out):
+    start = -1.5
+    end = 1.5
+
+    def remez_function(x): return mp.tan(x)
+
+    remez_p = remez.remez(remez_function, n_degree=N, lower=start, upper=end)
+    remez_pade_p, remez_pade_q = remez.remez_pade(remez_function, n_degree=N, lower=start, upper=end)
+
+    def return_signed(out, a):
+        out(f'return math::setSign({a}, x0);');
+
     global fma_types
-    for fma_type in fma_types:
+    for fma_type, (interval, interval_abs, ref_f) in itertools.product(fma_types, [((start, end), (0, end), remez_function), (None, None, None)]):
         add_function2(
             taylor.tan(),
             out=out,
@@ -857,12 +953,54 @@ def add_tan(N, out):
             name="tan",
             ref="std::tanf",
             N=N,
+            M=N,
             x_type=x_normal,
             return_type=return_normal,
             min_x=-1.5,
             max_x=1.5,
             ref_min_x=-1.5,
             ref_max_x=1.5,
+            ref_f=ref_f,
+            interval=interval
+        )
+
+        add_function2(
+            remez_p,
+            out=out,
+            fma_type=fma_type,
+            name="tan_remez_remez",
+            extra_tags=["tan", "remez_pade"],
+            ref="std::tanf",
+            N=N,
+            M=0,
+            x_type=x_abs,
+            return_type=return_signed,
+            min_x=-1.5,
+            max_x=1.5,
+            ref_min_x=-1.5,
+            ref_max_x=1.5,
+            ref_f=ref_f,
+            interval=interval_abs
+        )
+
+        add_function2(
+            remez_pade_p,
+            q=remez_pade_q,
+            out=out,
+            fma_type=fma_type,
+            name="tan_remez_pade",
+            extra_tags=["tan", "remez_pade"],
+            ref="std::tanf",
+            N=N,
+            M=N,
+            x_type=x_abs,
+            return_type=return_signed,
+            min_x=-1.5,
+            max_x=1.5,
+            ref_min_x=-1.5,
+            ref_max_x=1.5,
+            ref_f=ref_f,
+            interval=interval_abs
         )
 
 
@@ -875,33 +1013,33 @@ def main():
 
     out = lambda x: function_definition_inc.write(x + '\n')
 
-    # for N in range(2, 7):
-    #     add_sin(N, out, scale=2 * pi, name="sin_unit1")
-    #     add_sin(N, out, scale=1 * pi, name="sin_unit2")
-    #     add_sin(N, out, scale=1, name="sin")
-    #
-    # for N in range(2, 7):
-    #     add_cos(N, out, scale=2 * pi, name="cos_unit1")
-    #     add_cos(N, out, scale=1 * pi, name="cos_unit2")
-    #     add_cos(N, out, scale=1, name="cos")
+    for N in range(3, 10):
+        add_sin(N, out, scale=2 * pi, name="sin_unit1")
+        add_sin(N, out, scale=1 * pi, name="sin_unit2")
+        add_sin(N, out, scale=1, name="sin")
 
-    # for N in range(3, 12):
-    #     add_tanh(N, out)
+    for N in range(3, 10):
+        add_cos(N, out, scale=2 * pi, name="cos_unit1")
+        add_cos(N, out, scale=1 * pi, name="cos_unit2")
+        add_cos(N, out, scale=1, name="cos")
 
-    # for N in range(2, 8):
-    #     add_exp(N, out)
+    for N in range(3, 10):
+        add_tanh(N, out)
 
-    # for N in range(3, 5):
-    #     add_atan(N, out)
+    for N in range(3, 10):
+        add_exp(N, out)
+
+    for N in range(3, 10):
+        add_atan(N, out)
 
     for N in range(3, 10):
         add_log(N, out)
-    #
-    # for N in range(3, 10):
-    #     add_special_exp(N, out)
-    #
-    # for N in range(3, 10):
-    #     add_tan(N, out)
+
+    for N in range(3, 10):
+        add_special_exp(N, out)
+
+    for N in range(3, 10):
+        add_tan(N, out)
 
     out = lambda x: function_testing_inc.write(x + '\n')
 
@@ -920,5 +1058,4 @@ def main():
 
 
 if __name__ == '__main__':
-    mp.prec = 53 * 2
     main()

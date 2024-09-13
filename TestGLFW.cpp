@@ -222,6 +222,7 @@ struct TestResult
 	bool autoFitOnChange = false;
 	bool changedData = false;
 	bool showSelected = false;
+	float evalValue = 0.0f;
 
 	void show() {
 		ImGui::InputText("OR", &this->filterString0);
@@ -314,12 +315,18 @@ struct TestResult
 			this->minDomainMin *= std::numbers::pi_v<float>;
 		}
 		ImGui::Checkbox("Show Selected", &this->showSelected);
+		ImGui::SameLine();
+		ImGui::SetNextItemWidth(10.0f * ImGui::GetFontSize());
+		ImGui::InputFloat("Eval", &this->evalValue);
 
 		std::vector<Entry*> plotEntries{};
 
 		ImGui::BeginChild("Child", {}, true);
-		if (ImGui::BeginTable("Things", 8, ImGuiTableFlags_Sortable | ImGuiTableFlags_RowBg | ImGuiTableFlags_SizingFixedFit)) {
+		if (ImGui::BeginTable("Things", 10, ImGuiTableFlags_Sortable | ImGuiTableFlags_RowBg | ImGuiTableFlags_SizingStretchProp | ImGuiTableFlags_BordersInnerV)) {
 			ImGui::TableSetupColumn("Name");
+			ImGui::TableSetupColumn("Eval");
+			ImGui::TableSetupColumn("Eval Error");
+			ImGui::TableSetupColumn("E. Rel. E.");
 			ImGui::TableSetupColumn("Error");
 			ImGui::TableSetupColumn("Absolute Error");
 			ImGui::TableSetupColumn("Normalized Error");
@@ -337,22 +344,22 @@ struct TestResult
 					if (i == 0) {
 						return entry0.subName < entry1.subName;
 					}
-					else if (i == 1) {
+					else if (i == 4) {
 						return entry0.error < entry1.error;
 					}
-					else if (i == 2) {
+					else if (i == 5) {
 						return entry0.maximumError < entry1.maximumError;
 					}
-					else if (i == 3) {
+					else if (i == 6) {
 						return entry0.maximumNormalizedError < entry1.maximumNormalizedError;
 					}
-					else if (i == 4) {
+					else if (i == 7) {
 						return entry0.range_min < entry1.range_min;
 					}
-					else if (i == 5) {
+					else if (i == 8) {
 						return entry0.range_max < entry1.range_max;
 					}
-					else if (i == 6) {
+					else if (i == 9) {
 						return entry0.picoseconds < entry1.picoseconds;
 					}
 					else {
@@ -364,22 +371,22 @@ struct TestResult
 					if (i == 0) {
 						return entry0.subName > entry1.subName;
 					}
-					else if (i == 1) {
+					else if (i == 4) {
 						return entry0.error > entry1.error;
 					}
-					else if (i == 2) {
+					else if (i == 5) {
 						return entry0.maximumError > entry1.maximumError;
 					}
-					else if (i == 3) {
+					else if (i == 6) {
 						return entry0.maximumNormalizedError > entry1.maximumNormalizedError;
 					}
-					else if (i == 4) {
+					else if (i == 7) {
 						return entry0.range_min > entry1.range_min;
 					}
-					else if (i == 5) {
+					else if (i == 8) {
 						return entry0.range_max > entry1.range_max;
 					}
-					else if (i == 6) {
+					else if (i == 9) {
 						return entry0.picoseconds > entry1.picoseconds;
 					}
 					else {
@@ -478,11 +485,21 @@ struct TestResult
 					this->changedData = true;
 				}
 				ImGui::TableNextColumn();
-				ImGui::Text("%10.10f", entry.error);
+				auto value = entry.approximationFunction(this->evalValue);
+				auto correct = entry.referenceFunction(this->evalValue);
+				auto error = std::abs(value - correct );
+				auto relative = error / std::abs(correct);
+				ImGui::Text("%f", value);
 				ImGui::TableNextColumn();
-				ImGui::Text("%10.10f", entry.maximumError);
+				ImGui::Text("%f", error);
 				ImGui::TableNextColumn();
-				ImGui::Text("%10.10f", entry.maximumNormalizedError);
+				ImGui::Text("%f", relative);
+				ImGui::TableNextColumn();
+				ImGui::Text("%f", entry.error);
+				ImGui::TableNextColumn();
+				ImGui::Text("%f", entry.maximumError);
+				ImGui::TableNextColumn();
+				ImGui::Text("%f", entry.maximumNormalizedError);
 
 				if (entry.range_min == entry.range_max) {
 					ImGui::TableNextColumn();
@@ -497,10 +514,6 @@ struct TestResult
 
 				ImGui::TableNextColumn();
 				ImGui::Text("%dps", entry.picoseconds);
-
-				ImGui::TableNextColumn();
-				auto&& [x, ref, res] = entry.maximumErrorinfo;
-				ImGui::Text("%10.10f, %10.10f, %10.10f", x, ref, res);
 			}
 
 			for (auto& entry : this->entries) {
@@ -610,10 +623,10 @@ int main() {
 	using namespace cr;
 	TestResult testResult{};
 
-	// auto constexpr M = 6'000'000;
+	 auto constexpr M = 6'000'000;
 	//     auto constexpr M = 1'000'000;
 	//    auto constexpr M = 1'000;
-	auto constexpr M = 1;
+	//auto constexpr M = 1;
 
 #include "function_testing.h"
 
