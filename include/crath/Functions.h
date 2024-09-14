@@ -75,7 +75,7 @@ namespace cr
 #ifdef ARCH_x86_64
 				return simd::float1x4::min(f_, min_)[0];
 #else
-				return std::clamp(f_, min_);
+				return std::min(f_, min_);
 #endif
 			}
 		}

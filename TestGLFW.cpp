@@ -4,8 +4,8 @@
 #include <random>
 #include <ranges>
 #include <string>
-#include <unordered_map>
 #include <thread>
+#include <unordered_map>
 #include <vector>
 
 #include <imgui.h>
@@ -37,7 +37,6 @@ int main() {
 	for (auto& entry : testResult.entries) {
 		entry->calculateDomain(testResult.maxError, testResult.domainErrorNormalized);
 	}
-
 
 	auto timingWorker = std::jthread([](std::stop_token stop, TestResult* testResult) { testResult->work(stop); }, &testResult);
 

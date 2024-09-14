@@ -1,5 +1,5 @@
 template <class F>
-inline constexpr static F sin_unit1_remez_fma_ec_T3_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_fma_ec_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -11,7 +11,7 @@ auto const a1 = math::fma(a2, x, F(6.441874835732681f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit1_remez_fma_ec_T3_0_float_simd(float x) {
+__forceinline static float sin_unit1_remez_fma_ec_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_fma_ec_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -19,7 +19,7 @@ return sin_unit1_remez_fma_ec_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_pade_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_pade_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -35,7 +35,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.6809613564895377f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit1_remez_pade_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float sin_unit1_remez_pade_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_pade_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -43,7 +43,7 @@ return sin_unit1_remez_pade_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_quart_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_quart_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.25f);
 x = math::abs(math::abs(x - quarter) - F(0.5f)) - quarter;
@@ -55,7 +55,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_unit1_quart_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float sin_unit1_quart_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_quart_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -63,7 +63,7 @@ return sin_unit1_quart_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_fma_T3_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_fma_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -75,7 +75,7 @@ auto const a1 = math::fma(a2, x, F(6.44187483573268f));
 auto const a0 = math::fma(a1, x, F(-0.0013670794478662853f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit1_remez_fma_T3_0_float_simd(float x) {
+__forceinline static float sin_unit1_remez_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -83,7 +83,7 @@ return sin_unit1_remez_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_pade_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_pade_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -99,7 +99,7 @@ auto const a0 = math::fma(a1, x, F(6.053467999631444e-07f));
 auto const b0 = math::fma(b1, x, F(0.6809613564895377f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit1_remez_pade_fma_T3_3_float_simd(float x) {
+__forceinline static float sin_unit1_remez_pade_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_pade_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -107,7 +107,7 @@ return sin_unit1_remez_pade_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_quart_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_quart_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.25f);
 x = math::abs(math::abs(x - quarter) - F(0.5f)) - quarter;
@@ -119,7 +119,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_unit1_quart_fma_T3_3_float_simd(float x) {
+__forceinline static float sin_unit1_quart_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_quart_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -127,7 +127,7 @@ return sin_unit1_quart_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_fma_ec_T3_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_fma_ec_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -139,7 +139,7 @@ auto const a1 = math::fma(a2, x, F(3.2209374178663404f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit2_remez_fma_ec_T3_0_float_simd(float x) {
+__forceinline static float sin_unit2_remez_fma_ec_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_fma_ec_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -147,7 +147,7 @@ return sin_unit2_remez_fma_ec_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_pade_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_pade_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -163,7 +163,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.8951525474174579f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit2_remez_pade_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float sin_unit2_remez_pade_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_pade_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -171,7 +171,7 @@ return sin_unit2_remez_pade_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_quart_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_quart_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.5f);
 x = math::abs(math::abs(x - quarter) - F(1.0f)) - quarter;
@@ -183,7 +183,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_unit2_quart_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float sin_unit2_quart_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_quart_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -191,7 +191,7 @@ return sin_unit2_quart_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_fma_T3_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_fma_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -203,7 +203,7 @@ auto const a1 = math::fma(a2, x, F(3.2209374178663404f));
 auto const a0 = math::fma(a1, x, F(-0.0013670794478662872f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit2_remez_fma_T3_0_float_simd(float x) {
+__forceinline static float sin_unit2_remez_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -211,7 +211,7 @@ return sin_unit2_remez_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_pade_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_pade_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -227,7 +227,7 @@ auto const a0 = math::fma(a1, x, F(1.0460523565436268e-06f));
 auto const b0 = math::fma(b1, x, F(0.8951525474174579f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit2_remez_pade_fma_T3_3_float_simd(float x) {
+__forceinline static float sin_unit2_remez_pade_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_pade_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -235,7 +235,7 @@ return sin_unit2_remez_pade_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_quart_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_quart_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.5f);
 x = math::abs(math::abs(x - quarter) - F(1.0f)) - quarter;
@@ -247,7 +247,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_unit2_quart_fma_T3_3_float_simd(float x) {
+__forceinline static float sin_unit2_quart_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_quart_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -255,7 +255,7 @@ return sin_unit2_quart_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_fma_ec_T3_0(in_t(F) x) {
+__forceinline constexpr static F sin_remez_fma_ec_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -267,7 +267,7 @@ auto const a1 = math::fma(a2, x, F(1.0252562228861473f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_remez_fma_ec_T3_0_float_simd(float x) {
+__forceinline static float sin_remez_fma_ec_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_fma_ec_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -275,7 +275,7 @@ return sin_remez_fma_ec_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_pade_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F sin_remez_pade_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -291,7 +291,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.9882716364998942f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_remez_pade_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float sin_remez_pade_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_pade_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -299,7 +299,7 @@ return sin_remez_pade_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_quart_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F sin_quart_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(1.5707963267948966f);
 x = math::abs(math::abs(x - quarter) - F(3.141592653589793f)) - quarter;
@@ -311,7 +311,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_quart_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float sin_quart_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_quart_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -319,7 +319,7 @@ return sin_quart_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_fma_T3_0(in_t(F) x) {
+__forceinline constexpr static F sin_remez_fma_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -331,7 +331,7 @@ auto const a1 = math::fma(a2, x, F(1.0252562228861475f));
 auto const a0 = math::fma(a1, x, F(-0.0013670794478662879f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_remez_fma_T3_0_float_simd(float x) {
+__forceinline static float sin_remez_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -339,7 +339,7 @@ return sin_remez_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_pade_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F sin_remez_pade_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -355,7 +355,7 @@ auto const a0 = math::fma(a1, x, F(1.2750052928490735e-06f));
 auto const b0 = math::fma(b1, x, F(0.9882716364998942f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_remez_pade_fma_T3_3_float_simd(float x) {
+__forceinline static float sin_remez_pade_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_pade_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -363,7 +363,7 @@ return sin_remez_pade_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_quart_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F sin_quart_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(1.5707963267948966f);
 x = math::abs(math::abs(x - quarter) - F(3.141592653589793f)) - quarter;
@@ -375,7 +375,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_quart_fma_T3_3_float_simd(float x) {
+__forceinline static float sin_quart_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_quart_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -383,7 +383,7 @@ return sin_quart_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_fma_ec_T4_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_fma_ec_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -396,7 +396,7 @@ auto const a1 = math::fma(a2, x, F(6.262049411956025f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit1_remez_fma_ec_T4_0_float_simd(float x) {
+__forceinline static float sin_unit1_remez_fma_ec_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_fma_ec_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -404,7 +404,7 @@ return sin_unit1_remez_fma_ec_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_pade_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_pade_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -422,7 +422,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.3537286411976476f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit1_remez_pade_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float sin_unit1_remez_pade_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_pade_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -430,7 +430,7 @@ return sin_unit1_remez_pade_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_quart_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_quart_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.25f);
 x = math::abs(math::abs(x - quarter) - F(0.5f)) - quarter;
@@ -443,7 +443,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_unit1_quart_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float sin_unit1_quart_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_quart_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -451,7 +451,7 @@ return sin_unit1_quart_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_fma_T4_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_fma_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -464,7 +464,7 @@ auto const a1 = math::fma(a2, x, F(6.260700268690657f));
 auto const a0 = math::fma(a1, x, F(0.00010772377991723675f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit1_remez_fma_T4_0_float_simd(float x) {
+__forceinline static float sin_unit1_remez_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -472,7 +472,7 @@ return sin_unit1_remez_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_pade_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_pade_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -490,7 +490,7 @@ auto const a0 = math::fma(a1, x, F(1.7877606565463105e-10f));
 auto const b0 = math::fma(b1, x, F(0.3537286411976476f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit1_remez_pade_fma_T4_4_float_simd(float x) {
+__forceinline static float sin_unit1_remez_pade_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_pade_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -498,7 +498,7 @@ return sin_unit1_remez_pade_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_quart_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_quart_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.25f);
 x = math::abs(math::abs(x - quarter) - F(0.5f)) - quarter;
@@ -511,7 +511,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_unit1_quart_fma_T4_4_float_simd(float x) {
+__forceinline static float sin_unit1_quart_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_quart_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -519,7 +519,7 @@ return sin_unit1_quart_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_fma_ec_T4_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_fma_ec_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -532,7 +532,7 @@ auto const a1 = math::fma(a2, x, F(3.1310247059780063f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit2_remez_fma_ec_T4_0_float_simd(float x) {
+__forceinline static float sin_unit2_remez_fma_ec_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_fma_ec_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -540,7 +540,7 @@ return sin_unit2_remez_fma_ec_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_pade_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_pade_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -558,7 +558,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.7553729266999168f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit2_remez_pade_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float sin_unit2_remez_pade_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_pade_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -566,7 +566,7 @@ return sin_unit2_remez_pade_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_quart_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_quart_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.5f);
 x = math::abs(math::abs(x - quarter) - F(1.0f)) - quarter;
@@ -579,7 +579,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_unit2_quart_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float sin_unit2_quart_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_quart_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -587,7 +587,7 @@ return sin_unit2_quart_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_fma_T4_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_fma_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -600,7 +600,7 @@ auto const a1 = math::fma(a2, x, F(3.1303501343453224f));
 auto const a0 = math::fma(a1, x, F(0.00010772377991722722f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit2_remez_fma_T4_0_float_simd(float x) {
+__forceinline static float sin_unit2_remez_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -608,7 +608,7 @@ return sin_unit2_remez_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_pade_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_pade_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -626,7 +626,7 @@ auto const a0 = math::fma(a1, x, F(8.152555012597619e-10f));
 auto const b0 = math::fma(b1, x, F(0.7553729266999168f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit2_remez_pade_fma_T4_4_float_simd(float x) {
+__forceinline static float sin_unit2_remez_pade_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_pade_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -634,7 +634,7 @@ return sin_unit2_remez_pade_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_quart_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_quart_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.5f);
 x = math::abs(math::abs(x - quarter) - F(1.0f)) - quarter;
@@ -647,7 +647,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_unit2_quart_fma_T4_4_float_simd(float x) {
+__forceinline static float sin_unit2_quart_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_quart_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -655,7 +655,7 @@ return sin_unit2_quart_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_fma_ec_T4_0(in_t(F) x) {
+__forceinline constexpr static F sin_remez_fma_ec_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -668,7 +668,7 @@ auto const a1 = math::fma(a2, x, F(0.9966361177984959f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_remez_fma_ec_T4_0_float_simd(float x) {
+__forceinline static float sin_remez_fma_ec_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_fma_ec_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -676,7 +676,7 @@ return sin_remez_fma_ec_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_pade_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F sin_remez_pade_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -694,7 +694,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.9720262076080863f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_remez_pade_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float sin_remez_pade_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_pade_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -702,7 +702,7 @@ return sin_remez_pade_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_quart_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F sin_quart_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(1.5707963267948966f);
 x = math::abs(math::abs(x - quarter) - F(3.141592653589793f)) - quarter;
@@ -715,7 +715,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_quart_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float sin_quart_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_quart_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -723,7 +723,7 @@ return sin_quart_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_fma_T4_0(in_t(F) x) {
+__forceinline constexpr static F sin_remez_fma_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -736,7 +736,7 @@ auto const a1 = math::fma(a2, x, F(0.9964213949788734f));
 auto const a0 = math::fma(a1, x, F(0.00010772377991722864f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_remez_fma_T4_0_float_simd(float x) {
+__forceinline static float sin_remez_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -744,7 +744,7 @@ return sin_remez_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_pade_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F sin_remez_pade_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -762,7 +762,7 @@ auto const a0 = math::fma(a1, x, F(1.3499801149662813e-09f));
 auto const b0 = math::fma(b1, x, F(0.9720262076080863f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_remez_pade_fma_T4_4_float_simd(float x) {
+__forceinline static float sin_remez_pade_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_pade_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -770,7 +770,7 @@ return sin_remez_pade_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_quart_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F sin_quart_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(1.5707963267948966f);
 x = math::abs(math::abs(x - quarter) - F(3.141592653589793f)) - quarter;
@@ -783,7 +783,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_quart_fma_T4_4_float_simd(float x) {
+__forceinline static float sin_quart_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_quart_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -791,7 +791,7 @@ return sin_quart_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_fma_ec_T5_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_fma_ec_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -805,7 +805,7 @@ auto const a1 = math::fma(a2, x, F(6.281236667947713f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit1_remez_fma_ec_T5_0_float_simd(float x) {
+__forceinline static float sin_unit1_remez_fma_ec_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_fma_ec_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -813,7 +813,7 @@ return sin_unit1_remez_fma_ec_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_pade_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_pade_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -833,7 +833,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.6107155358023817f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit1_remez_pade_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float sin_unit1_remez_pade_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_pade_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -841,7 +841,7 @@ return sin_unit1_remez_pade_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_quart_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_quart_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.25f);
 x = math::abs(math::abs(x - quarter) - F(0.5f)) - quarter;
@@ -855,7 +855,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_unit1_quart_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float sin_unit1_quart_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_quart_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -863,7 +863,7 @@ return sin_unit1_quart_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_fma_T5_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_fma_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -877,7 +877,7 @@ auto const a1 = math::fma(a2, x, F(6.281236667947713f));
 auto const a0 = math::fma(a1, x, F(7.068518675479387e-06f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit1_remez_fma_T5_0_float_simd(float x) {
+__forceinline static float sin_unit1_remez_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -885,7 +885,7 @@ return sin_unit1_remez_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_pade_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_pade_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -905,7 +905,7 @@ auto const a0 = math::fma(a1, x, F(-5.324453116093476e-13f));
 auto const b0 = math::fma(b1, x, F(0.6107155358023817f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit1_remez_pade_fma_T5_5_float_simd(float x) {
+__forceinline static float sin_unit1_remez_pade_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_pade_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -913,7 +913,7 @@ return sin_unit1_remez_pade_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_quart_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_quart_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.25f);
 x = math::abs(math::abs(x - quarter) - F(0.5f)) - quarter;
@@ -927,7 +927,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_unit1_quart_fma_T5_5_float_simd(float x) {
+__forceinline static float sin_unit1_quart_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_quart_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -935,7 +935,7 @@ return sin_unit1_quart_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_fma_ec_T5_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_fma_ec_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -949,7 +949,7 @@ auto const a1 = math::fma(a2, x, F(3.1406183339738574f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit2_remez_fma_ec_T5_0_float_simd(float x) {
+__forceinline static float sin_unit2_remez_fma_ec_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_fma_ec_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -957,7 +957,7 @@ return sin_unit2_remez_fma_ec_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_pade_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_pade_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -977,7 +977,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.878568939675023f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit2_remez_pade_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float sin_unit2_remez_pade_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_pade_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -985,7 +985,7 @@ return sin_unit2_remez_pade_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_quart_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_quart_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.5f);
 x = math::abs(math::abs(x - quarter) - F(1.0f)) - quarter;
@@ -999,7 +999,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_unit2_quart_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float sin_unit2_quart_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_quart_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -1007,7 +1007,7 @@ return sin_unit2_quart_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_fma_T5_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_fma_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -1021,7 +1021,7 @@ auto const a1 = math::fma(a2, x, F(3.1406183339738574f));
 auto const a0 = math::fma(a1, x, F(7.068518675469178e-06f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit2_remez_fma_T5_0_float_simd(float x) {
+__forceinline static float sin_unit2_remez_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -1029,7 +1029,7 @@ return sin_unit2_remez_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_pade_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_pade_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -1049,7 +1049,7 @@ auto const a0 = math::fma(a1, x, F(-2.4483556833043144e-12f));
 auto const b0 = math::fma(b1, x, F(0.878568939675023f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit2_remez_pade_fma_T5_5_float_simd(float x) {
+__forceinline static float sin_unit2_remez_pade_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_pade_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -1057,7 +1057,7 @@ return sin_unit2_remez_pade_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_quart_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_quart_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.5f);
 x = math::abs(math::abs(x - quarter) - F(1.0f)) - quarter;
@@ -1071,7 +1071,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_unit2_quart_fma_T5_5_float_simd(float x) {
+__forceinline static float sin_unit2_quart_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_quart_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -1079,7 +1079,7 @@ return sin_unit2_quart_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_fma_ec_T5_0(in_t(F) x) {
+__forceinline constexpr static F sin_remez_fma_ec_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -1093,7 +1093,7 @@ auto const a1 = math::fma(a2, x, F(0.9996898644339447f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_remez_fma_ec_T5_0_float_simd(float x) {
+__forceinline static float sin_remez_fma_ec_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_fma_ec_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -1101,7 +1101,7 @@ return sin_remez_fma_ec_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_pade_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F sin_remez_pade_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -1121,7 +1121,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.9866877027456089f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_remez_pade_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float sin_remez_pade_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_pade_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -1129,7 +1129,7 @@ return sin_remez_pade_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_quart_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F sin_quart_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(1.5707963267948966f);
 x = math::abs(math::abs(x - quarter) - F(3.141592653589793f)) - quarter;
@@ -1143,7 +1143,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_quart_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float sin_quart_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_quart_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -1151,7 +1151,7 @@ return sin_quart_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_fma_T5_0(in_t(F) x) {
+__forceinline constexpr static F sin_remez_fma_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -1165,7 +1165,7 @@ auto const a1 = math::fma(a2, x, F(0.9996898644339445f));
 auto const a0 = math::fma(a1, x, F(7.068518675477414e-06f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_remez_fma_T5_0_float_simd(float x) {
+__forceinline static float sin_remez_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -1173,7 +1173,7 @@ return sin_remez_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_pade_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F sin_remez_pade_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -1193,7 +1193,7 @@ auto const a0 = math::fma(a1, x, F(-2.280475720282904e-12f));
 auto const b0 = math::fma(b1, x, F(0.9866877027456089f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_remez_pade_fma_T5_5_float_simd(float x) {
+__forceinline static float sin_remez_pade_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_pade_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -1201,7 +1201,7 @@ return sin_remez_pade_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_quart_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F sin_quart_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(1.5707963267948966f);
 x = math::abs(math::abs(x - quarter) - F(3.141592653589793f)) - quarter;
@@ -1215,7 +1215,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_quart_fma_T5_5_float_simd(float x) {
+__forceinline static float sin_quart_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_quart_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -1223,7 +1223,7 @@ return sin_quart_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_fma_ec_T6_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_fma_ec_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -1238,7 +1238,7 @@ auto const a1 = math::fma(a2, x, F(6.2833398748330955f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit1_remez_fma_ec_T6_0_float_simd(float x) {
+__forceinline static float sin_unit1_remez_fma_ec_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_fma_ec_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -1246,7 +1246,7 @@ return sin_unit1_remez_fma_ec_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_pade_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_pade_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -1268,7 +1268,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.46938198447118495f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit1_remez_pade_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float sin_unit1_remez_pade_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_pade_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -1276,7 +1276,7 @@ return sin_unit1_remez_pade_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_quart_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_quart_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.25f);
 x = math::abs(math::abs(x - quarter) - F(0.5f)) - quarter;
@@ -1291,7 +1291,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_unit1_quart_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float sin_unit1_quart_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_quart_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -1299,7 +1299,7 @@ return sin_unit1_quart_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_fma_T6_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_fma_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -1314,7 +1314,7 @@ auto const a1 = math::fma(a2, x, F(6.283344868165253f));
 auto const a0 = math::fma(a1, x, F(-3.973469728241433e-07f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit1_remez_fma_T6_0_float_simd(float x) {
+__forceinline static float sin_unit1_remez_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -1322,7 +1322,7 @@ return sin_unit1_remez_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_pade_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_pade_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -1344,7 +1344,7 @@ auto const a0 = math::fma(a1, x, F(-1.7939683026081166e-16f));
 auto const b0 = math::fma(b1, x, F(0.46938198447118495f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit1_remez_pade_fma_T6_6_float_simd(float x) {
+__forceinline static float sin_unit1_remez_pade_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_pade_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -1352,7 +1352,7 @@ return sin_unit1_remez_pade_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_quart_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_quart_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.25f);
 x = math::abs(math::abs(x - quarter) - F(0.5f)) - quarter;
@@ -1367,7 +1367,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_unit1_quart_fma_T6_6_float_simd(float x) {
+__forceinline static float sin_unit1_quart_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_quart_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -1375,7 +1375,7 @@ return sin_unit1_quart_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_fma_ec_T6_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_fma_ec_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -1390,7 +1390,7 @@ auto const a1 = math::fma(a2, x, F(3.141669937416589f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit2_remez_fma_ec_T6_0_float_simd(float x) {
+__forceinline static float sin_unit2_remez_fma_ec_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_fma_ec_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -1398,7 +1398,7 @@ return sin_unit2_remez_fma_ec_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_pade_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_pade_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -1420,7 +1420,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.8354208494236425f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit2_remez_pade_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float sin_unit2_remez_pade_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_pade_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -1428,7 +1428,7 @@ return sin_unit2_remez_pade_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_quart_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_quart_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.5f);
 x = math::abs(math::abs(x - quarter) - F(1.0f)) - quarter;
@@ -1443,7 +1443,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_unit2_quart_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float sin_unit2_quart_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_quart_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -1451,7 +1451,7 @@ return sin_unit2_quart_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_fma_T6_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_fma_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -1466,7 +1466,7 @@ auto const a1 = math::fma(a2, x, F(3.141672434082669f));
 auto const a0 = math::fma(a1, x, F(-3.9734697309065627e-07f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit2_remez_fma_T6_0_float_simd(float x) {
+__forceinline static float sin_unit2_remez_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -1474,7 +1474,7 @@ return sin_unit2_remez_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_pade_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_pade_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -1496,7 +1496,7 @@ auto const a0 = math::fma(a1, x, F(-5.470956694196192e-16f));
 auto const b0 = math::fma(b1, x, F(0.8354208494236425f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit2_remez_pade_fma_T6_6_float_simd(float x) {
+__forceinline static float sin_unit2_remez_pade_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_pade_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -1504,7 +1504,7 @@ return sin_unit2_remez_pade_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_quart_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_quart_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.5f);
 x = math::abs(math::abs(x - quarter) - F(1.0f)) - quarter;
@@ -1519,7 +1519,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_unit2_quart_fma_T6_6_float_simd(float x) {
+__forceinline static float sin_unit2_quart_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_quart_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -1527,7 +1527,7 @@ return sin_unit2_quart_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_fma_ec_T6_0(in_t(F) x) {
+__forceinline constexpr static F sin_remez_fma_ec_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -1542,7 +1542,7 @@ auto const a1 = math::fma(a2, x, F(1.000024600206111f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_remez_fma_ec_T6_0_float_simd(float x) {
+__forceinline static float sin_remez_fma_ec_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_fma_ec_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -1550,7 +1550,7 @@ return sin_remez_fma_ec_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_pade_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F sin_remez_pade_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -1572,7 +1572,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.9824901994906282f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_remez_pade_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float sin_remez_pade_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_pade_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -1580,7 +1580,7 @@ return sin_remez_pade_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_quart_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F sin_quart_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(1.5707963267948966f);
 x = math::abs(math::abs(x - quarter) - F(3.141592653589793f)) - quarter;
@@ -1595,7 +1595,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_quart_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float sin_quart_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_quart_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -1603,7 +1603,7 @@ return sin_quart_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_fma_T6_0(in_t(F) x) {
+__forceinline constexpr static F sin_remez_fma_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -1618,7 +1618,7 @@ auto const a1 = math::fma(a2, x, F(1.0000253949196067f));
 auto const a0 = math::fma(a1, x, F(-3.973469730908651e-07f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_remez_fma_T6_0_float_simd(float x) {
+__forceinline static float sin_remez_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -1626,7 +1626,7 @@ return sin_remez_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_pade_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F sin_remez_pade_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -1648,7 +1648,7 @@ auto const a0 = math::fma(a1, x, F(-9.911088348065765e-16f));
 auto const b0 = math::fma(b1, x, F(0.9824901994906282f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_remez_pade_fma_T6_6_float_simd(float x) {
+__forceinline static float sin_remez_pade_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_pade_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -1656,7 +1656,7 @@ return sin_remez_pade_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_quart_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F sin_quart_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(1.5707963267948966f);
 x = math::abs(math::abs(x - quarter) - F(3.141592653589793f)) - quarter;
@@ -1671,7 +1671,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_quart_fma_T6_6_float_simd(float x) {
+__forceinline static float sin_quart_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_quart_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -1679,7 +1679,7 @@ return sin_quart_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_fma_ec_T7_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_fma_ec_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -1695,7 +1695,7 @@ auto const a1 = math::fma(a2, x, F(6.283195066384573f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit1_remez_fma_ec_T7_0_float_simd(float x) {
+__forceinline static float sin_unit1_remez_fma_ec_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_fma_ec_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -1703,7 +1703,7 @@ return sin_unit1_remez_fma_ec_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_pade_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_pade_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -1727,7 +1727,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.6438091680946418f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit1_remez_pade_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float sin_unit1_remez_pade_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_pade_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -1735,7 +1735,7 @@ return sin_unit1_remez_pade_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_quart_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_quart_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.25f);
 x = math::abs(math::abs(x - quarter) - F(0.5f)) - quarter;
@@ -1751,7 +1751,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_unit1_quart_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float sin_unit1_quart_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_quart_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -1759,7 +1759,7 @@ return sin_unit1_quart_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_fma_T7_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_fma_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -1775,7 +1775,7 @@ auto const a1 = math::fma(a2, x, F(6.283195066384572f));
 auto const a0 = math::fma(a1, x, F(-1.9536771296259062e-08f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit1_remez_fma_T7_0_float_simd(float x) {
+__forceinline static float sin_unit1_remez_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -1783,7 +1783,7 @@ return sin_unit1_remez_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_pade_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_pade_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -1807,7 +1807,7 @@ auto const a0 = math::fma(a1, x, F(2.533545094145579e-19f));
 auto const b0 = math::fma(b1, x, F(0.6438091680946418f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit1_remez_pade_fma_T7_7_float_simd(float x) {
+__forceinline static float sin_unit1_remez_pade_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_pade_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -1815,7 +1815,7 @@ return sin_unit1_remez_pade_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_quart_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_quart_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.25f);
 x = math::abs(math::abs(x - quarter) - F(0.5f)) - quarter;
@@ -1831,7 +1831,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_unit1_quart_fma_T7_7_float_simd(float x) {
+__forceinline static float sin_unit1_quart_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_quart_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -1839,7 +1839,7 @@ return sin_unit1_quart_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_fma_ec_T7_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_fma_ec_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -1855,7 +1855,7 @@ auto const a1 = math::fma(a2, x, F(3.1415975331922494f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit2_remez_fma_ec_T7_0_float_simd(float x) {
+__forceinline static float sin_unit2_remez_fma_ec_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_fma_ec_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -1863,7 +1863,7 @@ return sin_unit2_remez_fma_ec_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_pade_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_pade_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -1887,7 +1887,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.898457911939536f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit2_remez_pade_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float sin_unit2_remez_pade_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_pade_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -1895,7 +1895,7 @@ return sin_unit2_remez_pade_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_quart_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_quart_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.5f);
 x = math::abs(math::abs(x - quarter) - F(1.0f)) - quarter;
@@ -1911,7 +1911,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_unit2_quart_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float sin_unit2_quart_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_quart_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -1919,7 +1919,7 @@ return sin_unit2_quart_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_fma_T7_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_fma_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -1935,7 +1935,7 @@ auto const a1 = math::fma(a2, x, F(3.1415975331922494f));
 auto const a0 = math::fma(a1, x, F(-1.9536773078228296e-08f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit2_remez_fma_T7_0_float_simd(float x) {
+__forceinline static float sin_unit2_remez_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -1943,7 +1943,7 @@ return sin_unit2_remez_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_pade_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_pade_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -1967,7 +1967,7 @@ auto const a0 = math::fma(a1, x, F(5.71029535588967e-19f));
 auto const b0 = math::fma(b1, x, F(0.898457911939536f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit2_remez_pade_fma_T7_7_float_simd(float x) {
+__forceinline static float sin_unit2_remez_pade_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_pade_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -1975,7 +1975,7 @@ return sin_unit2_remez_pade_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_quart_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_quart_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.5f);
 x = math::abs(math::abs(x - quarter) - F(1.0f)) - quarter;
@@ -1991,7 +1991,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_unit2_quart_fma_T7_7_float_simd(float x) {
+__forceinline static float sin_unit2_quart_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_quart_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -1999,7 +1999,7 @@ return sin_unit2_quart_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_fma_ec_T7_0(in_t(F) x) {
+__forceinline constexpr static F sin_remez_fma_ec_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -2015,7 +2015,7 @@ auto const a1 = math::fma(a2, x, F(1.000001553225707f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_remez_fma_ec_T7_0_float_simd(float x) {
+__forceinline static float sin_remez_fma_ec_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_fma_ec_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -2023,7 +2023,7 @@ return sin_remez_fma_ec_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_pade_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F sin_remez_pade_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -2047,7 +2047,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.9892711432539792f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_remez_pade_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float sin_remez_pade_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_pade_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -2055,7 +2055,7 @@ return sin_remez_pade_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_quart_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F sin_quart_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(1.5707963267948966f);
 x = math::abs(math::abs(x - quarter) - F(3.141592653589793f)) - quarter;
@@ -2071,7 +2071,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_quart_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float sin_quart_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_quart_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -2079,7 +2079,7 @@ return sin_quart_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_fma_T7_0(in_t(F) x) {
+__forceinline constexpr static F sin_remez_fma_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -2095,7 +2095,7 @@ auto const a1 = math::fma(a2, x, F(1.000001553225707f));
 auto const a0 = math::fma(a1, x, F(-1.9536773145598126e-08f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_remez_fma_T7_0_float_simd(float x) {
+__forceinline static float sin_remez_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -2103,7 +2103,7 @@ return sin_remez_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_pade_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F sin_remez_pade_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -2127,7 +2127,7 @@ auto const a0 = math::fma(a1, x, F(4.029181364762256e-19f));
 auto const b0 = math::fma(b1, x, F(0.9892711432539792f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_remez_pade_fma_T7_7_float_simd(float x) {
+__forceinline static float sin_remez_pade_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_pade_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -2135,7 +2135,7 @@ return sin_remez_pade_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_quart_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F sin_quart_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(1.5707963267948966f);
 x = math::abs(math::abs(x - quarter) - F(3.141592653589793f)) - quarter;
@@ -2151,7 +2151,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_quart_fma_T7_7_float_simd(float x) {
+__forceinline static float sin_quart_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_quart_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -2159,7 +2159,7 @@ return sin_quart_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_fma_ec_T8_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_fma_ec_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -2176,7 +2176,7 @@ auto const a1 = math::fma(a2, x, F(6.283184756164224f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit1_remez_fma_ec_T8_0_float_simd(float x) {
+__forceinline static float sin_unit1_remez_fma_ec_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_fma_ec_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -2184,7 +2184,7 @@ return sin_unit1_remez_fma_ec_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_pade_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_pade_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -2210,7 +2210,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.5746306609490105f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit1_remez_pade_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float sin_unit1_remez_pade_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_pade_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -2218,7 +2218,7 @@ return sin_unit1_remez_pade_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_quart_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_quart_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.25f);
 x = math::abs(math::abs(x - quarter) - F(0.5f)) - quarter;
@@ -2235,7 +2235,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_unit1_quart_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float sin_unit1_quart_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_quart_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -2243,7 +2243,7 @@ return sin_unit1_quart_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_fma_T8_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_fma_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -2260,7 +2260,7 @@ auto const a1 = math::fma(a2, x, F(6.283184745437981f));
 auto const a0 = math::fma(a1, x, F(8.535674292020048e-10f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit1_remez_fma_T8_0_float_simd(float x) {
+__forceinline static float sin_unit1_remez_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -2268,7 +2268,7 @@ return sin_unit1_remez_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_pade_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_pade_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -2294,7 +2294,7 @@ auto const a0 = math::fma(a1, x, F(3.483236463836253e-23f));
 auto const b0 = math::fma(b1, x, F(0.5746306609490105f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit1_remez_pade_fma_T8_8_float_simd(float x) {
+__forceinline static float sin_unit1_remez_pade_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_pade_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -2302,7 +2302,7 @@ return sin_unit1_remez_pade_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_quart_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_quart_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.25f);
 x = math::abs(math::abs(x - quarter) - F(0.5f)) - quarter;
@@ -2319,7 +2319,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_unit1_quart_fma_T8_8_float_simd(float x) {
+__forceinline static float sin_unit1_quart_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_quart_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -2327,7 +2327,7 @@ return sin_unit1_quart_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_fma_ec_T8_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_fma_ec_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -2344,7 +2344,7 @@ auto const a1 = math::fma(a2, x, F(3.1415923780717843f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit2_remez_fma_ec_T8_0_float_simd(float x) {
+__forceinline static float sin_unit2_remez_fma_ec_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_fma_ec_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -2352,7 +2352,7 @@ return sin_unit2_remez_fma_ec_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_pade_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_pade_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -2378,7 +2378,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.8791456403896974f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit2_remez_pade_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float sin_unit2_remez_pade_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_pade_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -2386,7 +2386,7 @@ return sin_unit2_remez_pade_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_quart_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_quart_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.5f);
 x = math::abs(math::abs(x - quarter) - F(1.0f)) - quarter;
@@ -2403,7 +2403,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_unit2_quart_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float sin_unit2_quart_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_quart_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -2411,7 +2411,7 @@ return sin_unit2_quart_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_fma_T8_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_fma_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -2428,7 +2428,7 @@ auto const a1 = math::fma(a2, x, F(3.1415923727084096f));
 auto const a0 = math::fma(a1, x, F(8.536076931784705e-10f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit2_remez_fma_T8_0_float_simd(float x) {
+__forceinline static float sin_unit2_remez_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -2436,7 +2436,7 @@ return sin_unit2_remez_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_pade_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_pade_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -2462,7 +2462,7 @@ auto const a0 = math::fma(a1, x, F(1.548842434996781e-22f));
 auto const b0 = math::fma(b1, x, F(0.8791456403896974f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit2_remez_pade_fma_T8_8_float_simd(float x) {
+__forceinline static float sin_unit2_remez_pade_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_pade_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -2470,7 +2470,7 @@ return sin_unit2_remez_pade_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_quart_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_quart_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.5f);
 x = math::abs(math::abs(x - quarter) - F(1.0f)) - quarter;
@@ -2487,7 +2487,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_unit2_quart_fma_T8_8_float_simd(float x) {
+__forceinline static float sin_unit2_quart_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_quart_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -2495,7 +2495,7 @@ return sin_unit2_quart_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_fma_ec_T8_0(in_t(F) x) {
+__forceinline constexpr static F sin_remez_fma_ec_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -2512,7 +2512,7 @@ auto const a1 = math::fma(a2, x, F(0.9999999122999165f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_remez_fma_ec_T8_0_float_simd(float x) {
+__forceinline static float sin_remez_fma_ec_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_fma_ec_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -2520,7 +2520,7 @@ return sin_remez_fma_ec_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_pade_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F sin_remez_pade_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -2546,7 +2546,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.9873702136034265f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_remez_pade_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float sin_remez_pade_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_pade_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -2554,7 +2554,7 @@ return sin_remez_pade_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_quart_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F sin_quart_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(1.5707963267948966f);
 x = math::abs(math::abs(x - quarter) - F(3.141592653589793f)) - quarter;
@@ -2571,7 +2571,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_quart_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float sin_quart_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_quart_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -2579,7 +2579,7 @@ return sin_quart_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_fma_T8_0(in_t(F) x) {
+__forceinline constexpr static F sin_remez_fma_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -2596,7 +2596,7 @@ auto const a1 = math::fma(a2, x, F(0.9999999105927018f));
 auto const a0 = math::fma(a1, x, F(8.536074624176623e-10f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_remez_fma_T8_0_float_simd(float x) {
+__forceinline static float sin_remez_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -2604,7 +2604,7 @@ return sin_remez_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_pade_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F sin_remez_pade_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -2630,7 +2630,7 @@ auto const a0 = math::fma(a1, x, F(2.898502289229832e-22f));
 auto const b0 = math::fma(b1, x, F(0.9873702136034265f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_remez_pade_fma_T8_8_float_simd(float x) {
+__forceinline static float sin_remez_pade_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_pade_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -2638,7 +2638,7 @@ return sin_remez_pade_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_quart_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F sin_quart_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(1.5707963267948966f);
 x = math::abs(math::abs(x - quarter) - F(3.141592653589793f)) - quarter;
@@ -2655,7 +2655,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float sin_quart_fma_T8_8_float_simd(float x) {
+__forceinline static float sin_quart_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_quart_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -2663,7 +2663,7 @@ return sin_quart_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_fma_ec_T9_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_fma_ec_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -2681,7 +2681,7 @@ auto const a1 = math::fma(a2, x, F(6.283185280701276f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit1_remez_fma_ec_T9_0_float_simd(float x) {
+__forceinline static float sin_unit1_remez_fma_ec_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_fma_ec_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -2689,7 +2689,7 @@ return sin_unit1_remez_fma_ec_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_pade_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_pade_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -2717,7 +2717,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.6921749751658213f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit1_remez_pade_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float sin_unit1_remez_pade_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_pade_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -2725,7 +2725,7 @@ return sin_unit1_remez_pade_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_quart_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_quart_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.25f);
 x = math::abs(math::abs(x - quarter) - F(0.5f)) - quarter;
@@ -2743,7 +2743,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_unit1_quart_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float sin_unit1_quart_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_quart_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -2751,7 +2751,7 @@ return sin_unit1_quart_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_fma_T9_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_fma_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -2769,7 +2769,7 @@ auto const a1 = math::fma(a2, x, F(6.283185280701275f));
 auto const a0 = math::fma(a1, x, F(3.347641592134642e-11f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit1_remez_fma_T9_0_float_simd(float x) {
+__forceinline static float sin_unit1_remez_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -2777,7 +2777,7 @@ return sin_unit1_remez_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_remez_pade_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_remez_pade_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(0.5f);
@@ -2805,7 +2805,7 @@ auto const a0 = math::fma(a1, x, F(-4.176657428074764e-26f));
 auto const b0 = math::fma(b1, x, F(0.6921749751658213f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit1_remez_pade_fma_T9_9_float_simd(float x) {
+__forceinline static float sin_unit1_remez_pade_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_remez_pade_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -2813,7 +2813,7 @@ return sin_unit1_remez_pade_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit1_quart_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F sin_unit1_quart_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.25f);
 x = math::abs(math::abs(x - quarter) - F(0.5f)) - quarter;
@@ -2831,7 +2831,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_unit1_quart_fma_T9_9_float_simd(float x) {
+__forceinline static float sin_unit1_quart_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit1_quart_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -2839,7 +2839,7 @@ return sin_unit1_quart_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_fma_ec_T9_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_fma_ec_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -2857,7 +2857,7 @@ auto const a1 = math::fma(a2, x, F(3.141592640385207f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit2_remez_fma_ec_T9_0_float_simd(float x) {
+__forceinline static float sin_unit2_remez_fma_ec_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_fma_ec_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -2865,7 +2865,7 @@ return sin_unit2_remez_fma_ec_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_pade_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_pade_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -2893,7 +2893,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.9154596610529886f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit2_remez_pade_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float sin_unit2_remez_pade_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_pade_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -2901,7 +2901,7 @@ return sin_unit2_remez_pade_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_quart_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_quart_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.5f);
 x = math::abs(math::abs(x - quarter) - F(1.0f)) - quarter;
@@ -2919,7 +2919,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_unit2_quart_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float sin_unit2_quart_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_quart_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -2927,7 +2927,7 @@ return sin_unit2_quart_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_fma_T9_0(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_fma_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -2945,7 +2945,7 @@ auto const a1 = math::fma(a2, x, F(3.141592640385207f));
 auto const a0 = math::fma(a1, x, F(3.353307031816502e-11f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_unit2_remez_fma_T9_0_float_simd(float x) {
+__forceinline static float sin_unit2_remez_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -2953,7 +2953,7 @@ return sin_unit2_remez_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_remez_pade_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_remez_pade_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(1.0f);
@@ -2981,7 +2981,7 @@ auto const a0 = math::fma(a1, x, F(-1.1809218987695754e-25f));
 auto const b0 = math::fma(b1, x, F(0.9154596610529886f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_unit2_remez_pade_fma_T9_9_float_simd(float x) {
+__forceinline static float sin_unit2_remez_pade_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_remez_pade_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -2989,7 +2989,7 @@ return sin_unit2_remez_pade_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_unit2_quart_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F sin_unit2_quart_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(0.5f);
 x = math::abs(math::abs(x - quarter) - F(1.0f)) - quarter;
@@ -3007,7 +3007,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_unit2_quart_fma_T9_9_float_simd(float x) {
+__forceinline static float sin_unit2_quart_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_unit2_quart_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -3015,7 +3015,7 @@ return sin_unit2_quart_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_fma_ec_T9_0(in_t(F) x) {
+__forceinline constexpr static F sin_remez_fma_ec_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -3033,7 +3033,7 @@ auto const a1 = math::fma(a2, x, F(0.9999999957964943f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_remez_fma_ec_T9_0_float_simd(float x) {
+__forceinline static float sin_remez_fma_ec_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_fma_ec_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3041,7 +3041,7 @@ return sin_remez_fma_ec_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_pade_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F sin_remez_pade_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -3069,7 +3069,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.9912225472762294f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_remez_pade_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float sin_remez_pade_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_pade_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -3077,7 +3077,7 @@ return sin_remez_pade_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_quart_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F sin_quart_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(1.5707963267948966f);
 x = math::abs(math::abs(x - quarter) - F(3.141592653589793f)) - quarter;
@@ -3095,7 +3095,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_quart_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float sin_quart_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_quart_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -3103,7 +3103,7 @@ return sin_quart_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_fma_T9_0(in_t(F) x) {
+__forceinline constexpr static F sin_remez_fma_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -3121,7 +3121,7 @@ auto const a1 = math::fma(a2, x, F(0.9999999957964946f));
 auto const a0 = math::fma(a1, x, F(3.3536408399804717e-11f));
 return math::setSign(a0, half - x0 );
 }
-inline static float sin_remez_fma_T9_0_float_simd(float x) {
+__forceinline static float sin_remez_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3129,7 +3129,7 @@ return sin_remez_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_remez_pade_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F sin_remez_pade_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 auto const half = F(3.141592653589793f);
@@ -3157,7 +3157,7 @@ auto const a0 = math::fma(a1, x, F(-1.3640238475505897e-25f));
 auto const b0 = math::fma(b1, x, F(0.9912225472762294f));
 return math::setSign(a0 / b0, half - x0 );
 }
-inline static float sin_remez_pade_fma_T9_9_float_simd(float x) {
+__forceinline static float sin_remez_pade_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_remez_pade_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -3165,7 +3165,7 @@ return sin_remez_pade_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F sin_quart_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F sin_quart_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const quarter = F(1.5707963267948966f);
 x = math::abs(math::abs(x - quarter) - F(3.141592653589793f)) - quarter;
@@ -3183,7 +3183,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float sin_quart_fma_T9_9_float_simd(float x) {
+__forceinline static float sin_quart_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return sin_quart_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -3191,7 +3191,7 @@ return sin_quart_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_fma_ec_T3_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_fma_ec_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -3203,7 +3203,7 @@ auto const a1 = math::fma(a2, x, F(0.18607051615831596f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit1_remez_fma_ec_T3_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_fma_ec_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_fma_ec_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3211,7 +3211,7 @@ return cos_unit1_remez_fma_ec_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_pade_fma_ec_T3_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_pade_fma_ec_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -3227,7 +3227,7 @@ auto const a0 = math::fma(a1, x, F(0.4047194819777204f));
 auto const b0 = math::fma(b1, x, F(0.4047194819777204f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit1_remez_pade_fma_ec_T3_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_pade_fma_ec_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_pade_fma_ec_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3235,7 +3235,7 @@ return cos_unit1_remez_pade_fma_ec_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_quart_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_quart_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(0.5f)) - F(0.25f);
 auto const x2 = x * x;
@@ -3246,7 +3246,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_unit1_quart_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float cos_unit1_quart_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_quart_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -3254,7 +3254,7 @@ return cos_unit1_quart_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_fma_T3_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_fma_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -3266,7 +3266,7 @@ auto const a1 = math::fma(a2, x, F(0.18607051615831594f));
 auto const a0 = math::fma(a1, x, F(0.9986329205521337f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit1_remez_fma_T3_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3274,7 +3274,7 @@ return cos_unit1_remez_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_pade_fma_T3_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_pade_fma_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -3290,7 +3290,7 @@ auto const a0 = math::fma(a1, x, F(0.4047193196057039f));
 auto const b0 = math::fma(b1, x, F(0.4047194819777204f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit1_remez_pade_fma_T3_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_pade_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_pade_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3298,7 +3298,7 @@ return cos_unit1_remez_pade_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_quart_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_quart_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(0.5f)) - F(0.25f);
 auto const x2 = x * x;
@@ -3309,7 +3309,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_unit1_quart_fma_T3_3_float_simd(float x) {
+__forceinline static float cos_unit1_quart_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_quart_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -3317,7 +3317,7 @@ return cos_unit1_quart_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_fma_ec_T3_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_fma_ec_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -3329,7 +3329,7 @@ auto const a1 = math::fma(a2, x, F(0.09303525807915772f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit2_remez_fma_ec_T3_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_fma_ec_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_fma_ec_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3337,7 +3337,7 @@ return cos_unit2_remez_fma_ec_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_pade_fma_ec_T3_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_pade_fma_ec_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -3353,7 +3353,7 @@ auto const a0 = math::fma(a1, x, F(0.7311481843432746f));
 auto const b0 = math::fma(b1, x, F(0.7311481843432746f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit2_remez_pade_fma_ec_T3_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_pade_fma_ec_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_pade_fma_ec_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3361,7 +3361,7 @@ return cos_unit2_remez_pade_fma_ec_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_quart_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_quart_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(1.0f)) - F(0.5f);
 auto const x2 = x * x;
@@ -3372,7 +3372,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_unit2_quart_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float cos_unit2_quart_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_quart_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -3380,7 +3380,7 @@ return cos_unit2_quart_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_fma_T3_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_fma_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -3392,7 +3392,7 @@ auto const a1 = math::fma(a2, x, F(0.09303525807915772f));
 auto const a0 = math::fma(a1, x, F(0.9986329205521337f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit2_remez_fma_T3_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3400,7 +3400,7 @@ return cos_unit2_remez_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_pade_fma_T3_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_pade_fma_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -3416,7 +3416,7 @@ auto const a0 = math::fma(a1, x, F(0.7311476544190664f));
 auto const b0 = math::fma(b1, x, F(0.7311481843432746f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit2_remez_pade_fma_T3_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_pade_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_pade_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3424,7 +3424,7 @@ return cos_unit2_remez_pade_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_quart_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_quart_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(1.0f)) - F(0.5f);
 auto const x2 = x * x;
@@ -3435,7 +3435,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_unit2_quart_fma_T3_3_float_simd(float x) {
+__forceinline static float cos_unit2_quart_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_quart_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -3443,7 +3443,7 @@ return cos_unit2_quart_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_fma_ec_T3_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_fma_ec_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -3455,7 +3455,7 @@ auto const a1 = math::fma(a2, x, F(0.029614042410256253f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_remez_fma_ec_T3_0_float_simd(float x) {
+__forceinline static float cos_remez_fma_ec_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_fma_ec_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3463,7 +3463,7 @@ return cos_remez_fma_ec_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_pade_fma_ec_T3_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_pade_fma_ec_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -3479,7 +3479,7 @@ auto const a0 = math::fma(a1, x, F(0.9640812305318149f));
 auto const b0 = math::fma(b1, x, F(0.9640812305318149f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_remez_pade_fma_ec_T3_0_float_simd(float x) {
+__forceinline static float cos_remez_pade_fma_ec_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_pade_fma_ec_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3487,7 +3487,7 @@ return cos_remez_pade_fma_ec_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_quart_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F cos_quart_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(3.141592653589793f)) - F(1.5707963267948966f);
 auto const x2 = x * x;
@@ -3498,7 +3498,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_quart_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float cos_quart_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_quart_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -3506,7 +3506,7 @@ return cos_quart_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_fma_T3_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_fma_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -3518,7 +3518,7 @@ auto const a1 = math::fma(a2, x, F(0.029614042410256256f));
 auto const a0 = math::fma(a1, x, F(0.9986329205521337f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_remez_fma_T3_0_float_simd(float x) {
+__forceinline static float cos_remez_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3526,7 +3526,7 @@ return cos_remez_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_pade_fma_T3_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_pade_fma_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -3542,7 +3542,7 @@ auto const a0 = math::fma(a1, x, F(0.9640803091700068f));
 auto const b0 = math::fma(b1, x, F(0.9640812305318149f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_remez_pade_fma_T3_0_float_simd(float x) {
+__forceinline static float cos_remez_pade_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_pade_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3550,7 +3550,7 @@ return cos_remez_pade_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_quart_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F cos_quart_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(3.141592653589793f)) - F(1.5707963267948966f);
 auto const x2 = x * x;
@@ -3561,7 +3561,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_quart_fma_T3_3_float_simd(float x) {
+__forceinline static float cos_quart_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_quart_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -3569,7 +3569,7 @@ return cos_quart_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_fma_ec_T4_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_fma_ec_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -3582,7 +3582,7 @@ auto const a1 = math::fma(a2, x, F(0.020237536101597252f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit1_remez_fma_ec_T4_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_fma_ec_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_fma_ec_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3590,7 +3590,7 @@ return cos_unit1_remez_fma_ec_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_pade_fma_ec_T4_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_pade_fma_ec_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -3608,7 +3608,7 @@ auto const a0 = math::fma(a1, x, F(0.3594220656804006f));
 auto const b0 = math::fma(b1, x, F(0.3594220656804006f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit1_remez_pade_fma_ec_T4_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_pade_fma_ec_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_pade_fma_ec_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3616,7 +3616,7 @@ return cos_unit1_remez_pade_fma_ec_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_quart_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_quart_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(0.5f)) - F(0.25f);
 auto const x2 = x * x;
@@ -3628,7 +3628,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit1_quart_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float cos_unit1_quart_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_quart_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -3636,7 +3636,7 @@ return cos_unit1_quart_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_half_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_half_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 x = F(0.5f) - x;
 auto const x2 = x * x;
@@ -3648,7 +3648,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit1_half_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float cos_unit1_half_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_half_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -3656,7 +3656,7 @@ return cos_unit1_half_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_fma_T4_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_fma_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -3669,7 +3669,7 @@ auto const a1 = math::fma(a2, x, F(0.0202331759738271f));
 auto const a0 = math::fma(a1, x, F(0.9998922762200827f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit1_remez_fma_T4_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3677,7 +3677,7 @@ return cos_unit1_remez_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_pade_fma_T4_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_pade_fma_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -3695,7 +3695,7 @@ auto const a0 = math::fma(a1, x, F(0.35942206547982586f));
 auto const b0 = math::fma(b1, x, F(0.3594220656804006f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit1_remez_pade_fma_T4_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_pade_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_pade_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3703,7 +3703,7 @@ return cos_unit1_remez_pade_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_quart_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_quart_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(0.5f)) - F(0.25f);
 auto const x2 = x * x;
@@ -3715,7 +3715,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit1_quart_fma_T4_4_float_simd(float x) {
+__forceinline static float cos_unit1_quart_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_quart_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -3723,7 +3723,7 @@ return cos_unit1_quart_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_half_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_half_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 x = F(0.5f) - x;
 auto const x2 = x * x;
@@ -3735,7 +3735,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit1_half_fma_T4_4_float_simd(float x) {
+__forceinline static float cos_unit1_half_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_half_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -3743,7 +3743,7 @@ return cos_unit1_half_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_fma_ec_T4_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_fma_ec_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -3756,7 +3756,7 @@ auto const a1 = math::fma(a2, x, F(0.01011876805079744f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit2_remez_fma_ec_T4_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_fma_ec_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_fma_ec_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3764,7 +3764,7 @@ return cos_unit2_remez_fma_ec_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_pade_fma_ec_T4_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_pade_fma_ec_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -3782,7 +3782,7 @@ auto const a0 = math::fma(a1, x, F(0.7685597371775325f));
 auto const b0 = math::fma(b1, x, F(0.7685597371775325f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit2_remez_pade_fma_ec_T4_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_pade_fma_ec_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_pade_fma_ec_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3790,7 +3790,7 @@ return cos_unit2_remez_pade_fma_ec_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_quart_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_quart_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(1.0f)) - F(0.5f);
 auto const x2 = x * x;
@@ -3802,7 +3802,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit2_quart_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float cos_unit2_quart_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_quart_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -3810,7 +3810,7 @@ return cos_unit2_quart_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_half_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_half_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 x = F(1.0f) - x;
 auto const x2 = x * x;
@@ -3822,7 +3822,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit2_half_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float cos_unit2_half_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_half_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -3830,7 +3830,7 @@ return cos_unit2_half_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_fma_T4_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_fma_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -3843,7 +3843,7 @@ auto const a1 = math::fma(a2, x, F(0.010116587986912364f));
 auto const a0 = math::fma(a1, x, F(0.9998922762200828f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit2_remez_fma_T4_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3851,7 +3851,7 @@ return cos_unit2_remez_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_pade_fma_T4_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_pade_fma_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -3869,7 +3869,7 @@ auto const a0 = math::fma(a1, x, F(0.7685597362604168f));
 auto const b0 = math::fma(b1, x, F(0.7685597371775325f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit2_remez_pade_fma_T4_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_pade_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_pade_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3877,7 +3877,7 @@ return cos_unit2_remez_pade_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_quart_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_quart_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(1.0f)) - F(0.5f);
 auto const x2 = x * x;
@@ -3889,7 +3889,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit2_quart_fma_T4_4_float_simd(float x) {
+__forceinline static float cos_unit2_quart_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_quart_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -3897,7 +3897,7 @@ return cos_unit2_quart_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_half_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_half_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 x = F(1.0f) - x;
 auto const x2 = x * x;
@@ -3909,7 +3909,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit2_half_fma_T4_4_float_simd(float x) {
+__forceinline static float cos_unit2_half_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_half_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -3917,7 +3917,7 @@ return cos_unit2_half_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_fma_ec_T4_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_fma_ec_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -3930,7 +3930,7 @@ auto const a1 = math::fma(a2, x, F(0.003220903906569424f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_remez_fma_ec_T4_0_float_simd(float x) {
+__forceinline static float cos_remez_fma_ec_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_fma_ec_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3938,7 +3938,7 @@ return cos_remez_fma_ec_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_pade_fma_ec_T4_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_pade_fma_ec_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -3956,7 +3956,7 @@ auto const a0 = math::fma(a1, x, F(0.9745375040232929f));
 auto const b0 = math::fma(b1, x, F(0.9745375040232929f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_remez_pade_fma_ec_T4_0_float_simd(float x) {
+__forceinline static float cos_remez_pade_fma_ec_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_pade_fma_ec_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -3964,7 +3964,7 @@ return cos_remez_pade_fma_ec_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_quart_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F cos_quart_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(3.141592653589793f)) - F(1.5707963267948966f);
 auto const x2 = x * x;
@@ -3976,7 +3976,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_quart_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float cos_quart_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_quart_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -3984,7 +3984,7 @@ return cos_quart_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_half_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F cos_half_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 x = F(3.141592653589793f) - x;
 auto const x2 = x * x;
@@ -3996,7 +3996,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_half_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float cos_half_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_half_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -4004,7 +4004,7 @@ return cos_half_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_fma_T4_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_fma_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -4017,7 +4017,7 @@ auto const a1 = math::fma(a2, x, F(0.003220209970682292f));
 auto const a0 = math::fma(a1, x, F(0.9998922762200828f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_remez_fma_T4_0_float_simd(float x) {
+__forceinline static float cos_remez_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4025,7 +4025,7 @@ return cos_remez_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_pade_fma_T4_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_pade_fma_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -4043,7 +4043,7 @@ auto const a0 = math::fma(a1, x, F(0.9745375025487232f));
 auto const b0 = math::fma(b1, x, F(0.9745375040232929f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_remez_pade_fma_T4_0_float_simd(float x) {
+__forceinline static float cos_remez_pade_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_pade_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4051,7 +4051,7 @@ return cos_remez_pade_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_quart_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F cos_quart_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(3.141592653589793f)) - F(1.5707963267948966f);
 auto const x2 = x * x;
@@ -4063,7 +4063,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_quart_fma_T4_4_float_simd(float x) {
+__forceinline static float cos_quart_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_quart_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -4071,7 +4071,7 @@ return cos_quart_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_half_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F cos_half_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 x = F(3.141592653589793f) - x;
 auto const x2 = x * x;
@@ -4083,7 +4083,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_half_fma_T4_4_float_simd(float x) {
+__forceinline static float cos_half_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_half_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -4091,7 +4091,7 @@ return cos_half_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_fma_ec_T5_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_fma_ec_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -4105,7 +4105,7 @@ auto const a1 = math::fma(a2, x, F(-0.00210075157768397f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit1_remez_fma_ec_T5_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_fma_ec_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_fma_ec_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4113,7 +4113,7 @@ return cos_unit1_remez_fma_ec_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_pade_fma_ec_T5_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_pade_fma_ec_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -4133,7 +4133,7 @@ auto const a0 = math::fma(a1, x, F(0.44008718467683083f));
 auto const b0 = math::fma(b1, x, F(0.44008718467683083f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit1_remez_pade_fma_ec_T5_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_pade_fma_ec_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_pade_fma_ec_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4141,7 +4141,7 @@ return cos_unit1_remez_pade_fma_ec_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_quart_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_quart_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(0.5f)) - F(0.25f);
 auto const x2 = x * x;
@@ -4154,7 +4154,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_unit1_quart_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float cos_unit1_quart_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_quart_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -4162,7 +4162,7 @@ return cos_unit1_quart_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_fma_T5_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_fma_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -4176,7 +4176,7 @@ auto const a1 = math::fma(a2, x, F(-0.00210075157768397f));
 auto const a0 = math::fma(a1, x, F(1.0000070685186753f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit1_remez_fma_T5_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4184,7 +4184,7 @@ return cos_unit1_remez_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_pade_fma_T5_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_pade_fma_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -4204,7 +4204,7 @@ auto const a0 = math::fma(a1, x, F(0.440087184677575f));
 auto const b0 = math::fma(b1, x, F(0.44008718467683083f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit1_remez_pade_fma_T5_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_pade_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_pade_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4212,7 +4212,7 @@ return cos_unit1_remez_pade_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_quart_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_quart_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(0.5f)) - F(0.25f);
 auto const x2 = x * x;
@@ -4225,7 +4225,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_unit1_quart_fma_T5_5_float_simd(float x) {
+__forceinline static float cos_unit1_quart_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_quart_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -4233,7 +4233,7 @@ return cos_unit1_quart_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_fma_ec_T5_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_fma_ec_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -4247,7 +4247,7 @@ auto const a1 = math::fma(a2, x, F(-0.0010503757888654548f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit2_remez_fma_ec_T5_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_fma_ec_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_fma_ec_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4255,7 +4255,7 @@ return cos_unit2_remez_fma_ec_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_pade_fma_ec_T5_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_pade_fma_ec_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -4275,7 +4275,7 @@ auto const a0 = math::fma(a1, x, F(0.808839913969847f));
 auto const b0 = math::fma(b1, x, F(0.808839913969847f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit2_remez_pade_fma_ec_T5_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_pade_fma_ec_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_pade_fma_ec_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4283,7 +4283,7 @@ return cos_unit2_remez_pade_fma_ec_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_quart_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_quart_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(1.0f)) - F(0.5f);
 auto const x2 = x * x;
@@ -4296,7 +4296,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_unit2_quart_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float cos_unit2_quart_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_quart_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -4304,7 +4304,7 @@ return cos_unit2_quart_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_fma_T5_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_fma_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -4318,7 +4318,7 @@ auto const a1 = math::fma(a2, x, F(-0.0010503757888654548f));
 auto const a0 = math::fma(a1, x, F(1.0000070685186755f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit2_remez_fma_T5_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4326,7 +4326,7 @@ return cos_unit2_remez_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_pade_fma_T5_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_pade_fma_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -4346,7 +4346,7 @@ auto const a0 = math::fma(a1, x, F(0.8088399139706096f));
 auto const b0 = math::fma(b1, x, F(0.808839913969847f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit2_remez_pade_fma_T5_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_pade_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_pade_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4354,7 +4354,7 @@ return cos_unit2_remez_pade_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_quart_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_quart_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(1.0f)) - F(0.5f);
 auto const x2 = x * x;
@@ -4367,7 +4367,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_unit2_quart_fma_T5_5_float_simd(float x) {
+__forceinline static float cos_unit2_quart_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_quart_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -4375,7 +4375,7 @@ return cos_unit2_quart_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_fma_ec_T5_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_fma_ec_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -4389,7 +4389,7 @@ auto const a1 = math::fma(a2, x, F(-0.0003343449978041853f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_remez_fma_ec_T5_0_float_simd(float x) {
+__forceinline static float cos_remez_fma_ec_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_fma_ec_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4397,7 +4397,7 @@ return cos_remez_fma_ec_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_pade_fma_ec_T5_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_pade_fma_ec_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -4417,7 +4417,7 @@ auto const a0 = math::fma(a1, x, F(0.9790603818409398f));
 auto const b0 = math::fma(b1, x, F(0.9790603818409398f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_remez_pade_fma_ec_T5_0_float_simd(float x) {
+__forceinline static float cos_remez_pade_fma_ec_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_pade_fma_ec_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4425,7 +4425,7 @@ return cos_remez_pade_fma_ec_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_quart_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F cos_quart_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(3.141592653589793f)) - F(1.5707963267948966f);
 auto const x2 = x * x;
@@ -4438,7 +4438,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_quart_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float cos_quart_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_quart_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -4446,7 +4446,7 @@ return cos_quart_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_fma_T5_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_fma_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -4460,7 +4460,7 @@ auto const a1 = math::fma(a2, x, F(-0.0003343449978041853f));
 auto const a0 = math::fma(a1, x, F(1.0000070685186755f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_remez_fma_T5_0_float_simd(float x) {
+__forceinline static float cos_remez_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4468,7 +4468,7 @@ return cos_remez_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_pade_fma_T5_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_pade_fma_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -4488,7 +4488,7 @@ auto const a0 = math::fma(a1, x, F(0.9790603818427851f));
 auto const b0 = math::fma(b1, x, F(0.9790603818409398f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_remez_pade_fma_T5_0_float_simd(float x) {
+__forceinline static float cos_remez_pade_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_pade_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4496,7 +4496,7 @@ return cos_remez_pade_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_quart_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F cos_quart_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(3.141592653589793f)) - F(1.5707963267948966f);
 auto const x2 = x * x;
@@ -4509,7 +4509,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_quart_fma_T5_5_float_simd(float x) {
+__forceinline static float cos_quart_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_quart_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -4517,7 +4517,7 @@ return cos_quart_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_fma_ec_T6_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_fma_ec_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -4532,7 +4532,7 @@ auto const a1 = math::fma(a2, x, F(-0.0001508282385920682f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit1_remez_fma_ec_T6_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_fma_ec_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_fma_ec_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4540,7 +4540,7 @@ return cos_unit1_remez_fma_ec_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_pade_fma_ec_T6_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_pade_fma_ec_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -4562,7 +4562,7 @@ auto const a0 = math::fma(a1, x, F(0.4894043108373957f));
 auto const b0 = math::fma(b1, x, F(0.4894043108373957f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit1_remez_pade_fma_ec_T6_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_pade_fma_ec_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_pade_fma_ec_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4570,7 +4570,7 @@ return cos_unit1_remez_pade_fma_ec_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_quart_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_quart_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(0.5f)) - F(0.25f);
 auto const x2 = x * x;
@@ -4584,7 +4584,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit1_quart_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float cos_unit1_quart_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_quart_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -4592,7 +4592,7 @@ return cos_unit1_quart_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_half_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_half_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 x = F(0.5f) - x;
 auto const x2 = x * x;
@@ -4606,7 +4606,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit1_half_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float cos_unit1_half_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_half_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -4614,7 +4614,7 @@ return cos_unit1_half_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_fma_T6_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_fma_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -4629,7 +4629,7 @@ auto const a1 = math::fma(a2, x, F(-0.0001508283584543563f));
 auto const a0 = math::fma(a1, x, F(1.000000397346973f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit1_remez_fma_T6_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4637,7 +4637,7 @@ return cos_unit1_remez_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_pade_fma_T6_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_pade_fma_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -4659,7 +4659,7 @@ auto const a0 = math::fma(a1, x, F(0.48940431083739605f));
 auto const b0 = math::fma(b1, x, F(0.4894043108373957f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit1_remez_pade_fma_T6_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_pade_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_pade_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4667,7 +4667,7 @@ return cos_unit1_remez_pade_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_quart_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_quart_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(0.5f)) - F(0.25f);
 auto const x2 = x * x;
@@ -4681,7 +4681,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit1_quart_fma_T6_6_float_simd(float x) {
+__forceinline static float cos_unit1_quart_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_quart_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -4689,7 +4689,7 @@ return cos_unit1_quart_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_half_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_half_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 x = F(0.5f) - x;
 auto const x2 = x * x;
@@ -4703,7 +4703,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit1_half_fma_T6_6_float_simd(float x) {
+__forceinline static float cos_unit1_half_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_half_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -4711,7 +4711,7 @@ return cos_unit1_half_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_fma_ec_T6_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_fma_ec_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -4726,7 +4726,7 @@ auto const a1 = math::fma(a2, x, F(-7.541411930166803e-05f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit2_remez_fma_ec_T6_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_fma_ec_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_fma_ec_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4734,7 +4734,7 @@ return cos_unit2_remez_fma_ec_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_pade_fma_ec_T6_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_pade_fma_ec_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -4756,7 +4756,7 @@ auto const a0 = math::fma(a1, x, F(0.8481569705326283f));
 auto const b0 = math::fma(b1, x, F(0.8481569705326283f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit2_remez_pade_fma_ec_T6_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_pade_fma_ec_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_pade_fma_ec_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4764,7 +4764,7 @@ return cos_unit2_remez_pade_fma_ec_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_quart_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_quart_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(1.0f)) - F(0.5f);
 auto const x2 = x * x;
@@ -4778,7 +4778,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit2_quart_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float cos_unit2_quart_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_quart_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -4786,7 +4786,7 @@ return cos_unit2_quart_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_half_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_half_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 x = F(1.0f) - x;
 auto const x2 = x * x;
@@ -4800,7 +4800,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit2_half_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float cos_unit2_half_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_half_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -4808,7 +4808,7 @@ return cos_unit2_half_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_fma_T6_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_fma_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -4823,7 +4823,7 @@ auto const a1 = math::fma(a2, x, F(-7.541417923281208e-05f));
 auto const a0 = math::fma(a1, x, F(1.000000397346973f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit2_remez_fma_T6_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4831,7 +4831,7 @@ return cos_unit2_remez_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_pade_fma_T6_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_pade_fma_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -4853,7 +4853,7 @@ auto const a0 = math::fma(a1, x, F(0.8481569705326291f));
 auto const b0 = math::fma(b1, x, F(0.8481569705326283f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit2_remez_pade_fma_T6_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_pade_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_pade_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4861,7 +4861,7 @@ return cos_unit2_remez_pade_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_quart_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_quart_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(1.0f)) - F(0.5f);
 auto const x2 = x * x;
@@ -4875,7 +4875,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit2_quart_fma_T6_6_float_simd(float x) {
+__forceinline static float cos_unit2_quart_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_quart_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -4883,7 +4883,7 @@ return cos_unit2_quart_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_half_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_half_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 x = F(1.0f) - x;
 auto const x2 = x * x;
@@ -4897,7 +4897,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit2_half_fma_T6_6_float_simd(float x) {
+__forceinline static float cos_unit2_half_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_half_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -4905,7 +4905,7 @@ return cos_unit2_half_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_fma_ec_T6_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_fma_ec_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -4920,7 +4920,7 @@ auto const a1 = math::fma(a2, x, F(-2.400505973154057e-05f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_remez_fma_ec_T6_0_float_simd(float x) {
+__forceinline static float cos_remez_fma_ec_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_fma_ec_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4928,7 +4928,7 @@ return cos_remez_fma_ec_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_pade_fma_ec_T6_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_pade_fma_ec_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -4950,7 +4950,7 @@ auto const a0 = math::fma(a1, x, F(0.9839738392331364f));
 auto const b0 = math::fma(b1, x, F(0.9839738392331364f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_remez_pade_fma_ec_T6_0_float_simd(float x) {
+__forceinline static float cos_remez_pade_fma_ec_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_pade_fma_ec_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -4958,7 +4958,7 @@ return cos_remez_pade_fma_ec_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_quart_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F cos_quart_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(3.141592653589793f)) - F(1.5707963267948966f);
 auto const x2 = x * x;
@@ -4972,7 +4972,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_quart_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float cos_quart_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_quart_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -4980,7 +4980,7 @@ return cos_quart_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_half_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F cos_half_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 x = F(3.141592653589793f) - x;
 auto const x2 = x * x;
@@ -4994,7 +4994,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_half_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float cos_half_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_half_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -5002,7 +5002,7 @@ return cos_half_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_fma_T6_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_fma_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -5017,7 +5017,7 @@ auto const a1 = math::fma(a2, x, F(-2.4005078808216214e-05f));
 auto const a0 = math::fma(a1, x, F(1.000000397346973f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_remez_fma_T6_0_float_simd(float x) {
+__forceinline static float cos_remez_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5025,7 +5025,7 @@ return cos_remez_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_pade_fma_T6_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_pade_fma_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -5047,7 +5047,7 @@ auto const a0 = math::fma(a1, x, F(0.983973839233137f));
 auto const b0 = math::fma(b1, x, F(0.9839738392331364f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_remez_pade_fma_T6_0_float_simd(float x) {
+__forceinline static float cos_remez_pade_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_pade_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5055,7 +5055,7 @@ return cos_remez_pade_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_quart_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F cos_quart_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(3.141592653589793f)) - F(1.5707963267948966f);
 auto const x2 = x * x;
@@ -5069,7 +5069,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_quart_fma_T6_6_float_simd(float x) {
+__forceinline static float cos_quart_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_quart_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -5077,7 +5077,7 @@ return cos_quart_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_half_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F cos_half_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 x = F(3.141592653589793f) - x;
 auto const x2 = x * x;
@@ -5091,7 +5091,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_half_fma_T6_6_float_simd(float x) {
+__forceinline static float cos_half_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_half_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -5099,7 +5099,7 @@ return cos_half_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_fma_ec_T7_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_fma_ec_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -5115,7 +5115,7 @@ auto const a1 = math::fma(a2, x, F(1.0195484824114654e-05f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit1_remez_fma_ec_T7_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_fma_ec_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_fma_ec_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5123,7 +5123,7 @@ return cos_unit1_remez_fma_ec_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_pade_fma_ec_T7_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_pade_fma_ec_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -5147,7 +5147,7 @@ auto const a0 = math::fma(a1, x, F(0.5383015765281692f));
 auto const b0 = math::fma(b1, x, F(0.5383015765281692f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit1_remez_pade_fma_ec_T7_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_pade_fma_ec_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_pade_fma_ec_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5155,7 +5155,7 @@ return cos_unit1_remez_pade_fma_ec_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_quart_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_quart_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(0.5f)) - F(0.25f);
 auto const x2 = x * x;
@@ -5170,7 +5170,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_unit1_quart_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float cos_unit1_quart_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_quart_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -5178,7 +5178,7 @@ return cos_unit1_quart_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_fma_T7_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_fma_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -5194,7 +5194,7 @@ auto const a1 = math::fma(a2, x, F(1.0195484824114654e-05f));
 auto const a0 = math::fma(a1, x, F(0.9999999804632368f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit1_remez_fma_T7_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5202,7 +5202,7 @@ return cos_unit1_remez_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_pade_fma_T7_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_pade_fma_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -5226,7 +5226,7 @@ auto const a0 = math::fma(a1, x, F(0.5383015765281692f));
 auto const b0 = math::fma(b1, x, F(0.5383015765281692f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit1_remez_pade_fma_T7_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_pade_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_pade_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5234,7 +5234,7 @@ return cos_unit1_remez_pade_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_quart_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_quart_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(0.5f)) - F(0.25f);
 auto const x2 = x * x;
@@ -5249,7 +5249,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_unit1_quart_fma_T7_7_float_simd(float x) {
+__forceinline static float cos_unit1_quart_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_quart_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -5257,7 +5257,7 @@ return cos_unit1_quart_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_fma_ec_T7_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_fma_ec_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -5273,7 +5273,7 @@ auto const a1 = math::fma(a2, x, F(5.0977433814235555e-06f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit2_remez_fma_ec_T7_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_fma_ec_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_fma_ec_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5281,7 +5281,7 @@ return cos_unit2_remez_fma_ec_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_pade_fma_ec_T7_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_pade_fma_ec_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -5305,7 +5305,7 @@ auto const a0 = math::fma(a1, x, F(0.8637030932768607f));
 auto const b0 = math::fma(b1, x, F(0.8637030932768607f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit2_remez_pade_fma_ec_T7_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_pade_fma_ec_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_pade_fma_ec_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5313,7 +5313,7 @@ return cos_unit2_remez_pade_fma_ec_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_quart_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_quart_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(1.0f)) - F(0.5f);
 auto const x2 = x * x;
@@ -5328,7 +5328,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_unit2_quart_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float cos_unit2_quart_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_quart_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -5336,7 +5336,7 @@ return cos_unit2_quart_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_fma_T7_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_fma_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -5352,7 +5352,7 @@ auto const a1 = math::fma(a2, x, F(5.0977433814235555e-06f));
 auto const a0 = math::fma(a1, x, F(0.9999999804632268f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit2_remez_fma_T7_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5360,7 +5360,7 @@ return cos_unit2_remez_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_pade_fma_T7_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_pade_fma_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -5384,7 +5384,7 @@ auto const a0 = math::fma(a1, x, F(0.8637030932768607f));
 auto const b0 = math::fma(b1, x, F(0.8637030932768607f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit2_remez_pade_fma_T7_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_pade_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_pade_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5392,7 +5392,7 @@ return cos_unit2_remez_pade_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_quart_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_quart_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(1.0f)) - F(0.5f);
 auto const x2 = x * x;
@@ -5407,7 +5407,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_unit2_quart_fma_T7_7_float_simd(float x) {
+__forceinline static float cos_unit2_quart_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_quart_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -5415,7 +5415,7 @@ return cos_unit2_quart_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_fma_ec_T7_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_fma_ec_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -5431,7 +5431,7 @@ auto const a1 = math::fma(a2, x, F(1.6226621137812029e-06f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_remez_fma_ec_T7_0_float_simd(float x) {
+__forceinline static float cos_remez_fma_ec_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_fma_ec_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5439,7 +5439,7 @@ return cos_remez_fma_ec_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_pade_fma_ec_T7_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_pade_fma_ec_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -5463,7 +5463,7 @@ auto const a0 = math::fma(a1, x, F(0.9856322374255826f));
 auto const b0 = math::fma(b1, x, F(0.9856322374255826f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_remez_pade_fma_ec_T7_0_float_simd(float x) {
+__forceinline static float cos_remez_pade_fma_ec_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_pade_fma_ec_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5471,7 +5471,7 @@ return cos_remez_pade_fma_ec_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_quart_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F cos_quart_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(3.141592653589793f)) - F(1.5707963267948966f);
 auto const x2 = x * x;
@@ -5486,7 +5486,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_quart_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float cos_quart_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_quart_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -5494,7 +5494,7 @@ return cos_quart_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_fma_T7_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_fma_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -5510,7 +5510,7 @@ auto const a1 = math::fma(a2, x, F(1.6226621137812029e-06f));
 auto const a0 = math::fma(a1, x, F(0.9999999804632269f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_remez_fma_T7_0_float_simd(float x) {
+__forceinline static float cos_remez_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5518,7 +5518,7 @@ return cos_remez_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_pade_fma_T7_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_pade_fma_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -5542,7 +5542,7 @@ auto const a0 = math::fma(a1, x, F(0.9856322374255826f));
 auto const b0 = math::fma(b1, x, F(0.9856322374255826f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_remez_pade_fma_T7_0_float_simd(float x) {
+__forceinline static float cos_remez_pade_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_pade_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5550,7 +5550,7 @@ return cos_remez_pade_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_quart_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F cos_quart_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(3.141592653589793f)) - F(1.5707963267948966f);
 auto const x2 = x * x;
@@ -5565,7 +5565,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_quart_fma_T7_7_float_simd(float x) {
+__forceinline static float cos_quart_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_quart_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -5573,7 +5573,7 @@ return cos_quart_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_fma_ec_T8_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_fma_ec_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -5590,7 +5590,7 @@ auto const a1 = math::fma(a2, x, F(5.424579944929526e-07f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit1_remez_fma_ec_T8_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_fma_ec_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_fma_ec_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5598,7 +5598,7 @@ return cos_unit1_remez_fma_ec_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_pade_fma_ec_T8_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_pade_fma_ec_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -5624,7 +5624,7 @@ auto const a0 = math::fma(a1, x, F(0.595261463217324f));
 auto const b0 = math::fma(b1, x, F(0.595261463217324f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit1_remez_pade_fma_ec_T8_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_pade_fma_ec_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_pade_fma_ec_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5632,7 +5632,7 @@ return cos_unit1_remez_pade_fma_ec_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_quart_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_quart_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(0.5f)) - F(0.25f);
 auto const x2 = x * x;
@@ -5648,7 +5648,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit1_quart_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float cos_unit1_quart_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_quart_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -5656,7 +5656,7 @@ return cos_unit1_quart_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_half_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_half_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 x = F(0.5f) - x;
 auto const x2 = x * x;
@@ -5672,7 +5672,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit1_half_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float cos_unit1_half_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_half_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -5680,7 +5680,7 @@ return cos_unit1_half_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_fma_T8_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_fma_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -5697,7 +5697,7 @@ auto const a1 = math::fma(a2, x, F(5.424579935668645e-07f));
 auto const a0 = math::fma(a1, x, F(0.9999999991463964f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit1_remez_fma_T8_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5705,7 +5705,7 @@ return cos_unit1_remez_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_pade_fma_T8_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_pade_fma_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -5731,7 +5731,7 @@ auto const a0 = math::fma(a1, x, F(0.595261463217324f));
 auto const b0 = math::fma(b1, x, F(0.595261463217324f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit1_remez_pade_fma_T8_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_pade_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_pade_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5739,7 +5739,7 @@ return cos_unit1_remez_pade_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_quart_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_quart_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(0.5f)) - F(0.25f);
 auto const x2 = x * x;
@@ -5755,7 +5755,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit1_quart_fma_T8_8_float_simd(float x) {
+__forceinline static float cos_unit1_quart_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_quart_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -5763,7 +5763,7 @@ return cos_unit1_quart_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_half_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_half_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 x = F(0.5f) - x;
 auto const x2 = x * x;
@@ -5779,7 +5779,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit1_half_fma_T8_8_float_simd(float x) {
+__forceinline static float cos_unit1_half_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_half_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -5787,7 +5787,7 @@ return cos_unit1_half_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_fma_ec_T8_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_fma_ec_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -5804,7 +5804,7 @@ auto const a1 = math::fma(a2, x, F(2.712300850798081e-07f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit2_remez_fma_ec_T8_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_fma_ec_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_fma_ec_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5812,7 +5812,7 @@ return cos_unit2_remez_fma_ec_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_pade_fma_ec_T8_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_pade_fma_ec_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -5838,7 +5838,7 @@ auto const a0 = math::fma(a1, x, F(0.8871525993171197f));
 auto const b0 = math::fma(b1, x, F(0.8871525993171197f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit2_remez_pade_fma_ec_T8_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_pade_fma_ec_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_pade_fma_ec_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5846,7 +5846,7 @@ return cos_unit2_remez_pade_fma_ec_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_quart_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_quart_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(1.0f)) - F(0.5f);
 auto const x2 = x * x;
@@ -5862,7 +5862,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit2_quart_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float cos_unit2_quart_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_quart_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -5870,7 +5870,7 @@ return cos_unit2_quart_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_half_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_half_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 x = F(1.0f) - x;
 auto const x2 = x * x;
@@ -5886,7 +5886,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit2_half_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float cos_unit2_half_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_half_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -5894,7 +5894,7 @@ return cos_unit2_half_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_fma_T8_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_fma_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -5911,7 +5911,7 @@ auto const a1 = math::fma(a2, x, F(2.7123008461676065e-07f));
 auto const a0 = math::fma(a1, x, F(0.9999999991463936f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit2_remez_fma_T8_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5919,7 +5919,7 @@ return cos_unit2_remez_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_pade_fma_T8_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_pade_fma_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -5945,7 +5945,7 @@ auto const a0 = math::fma(a1, x, F(0.8871525993171197f));
 auto const b0 = math::fma(b1, x, F(0.8871525993171197f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit2_remez_pade_fma_T8_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_pade_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_pade_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -5953,7 +5953,7 @@ return cos_unit2_remez_pade_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_quart_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_quart_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(1.0f)) - F(0.5f);
 auto const x2 = x * x;
@@ -5969,7 +5969,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit2_quart_fma_T8_8_float_simd(float x) {
+__forceinline static float cos_unit2_quart_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_quart_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -5977,7 +5977,7 @@ return cos_unit2_quart_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_half_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_half_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 x = F(1.0f) - x;
 auto const x2 = x * x;
@@ -5993,7 +5993,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_unit2_half_fma_T8_8_float_simd(float x) {
+__forceinline static float cos_unit2_half_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_half_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -6001,7 +6001,7 @@ return cos_unit2_half_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_fma_ec_T8_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_fma_ec_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -6018,7 +6018,7 @@ auto const a1 = math::fma(a2, x, F(8.633520581882825e-08f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_remez_fma_ec_T8_0_float_simd(float x) {
+__forceinline static float cos_remez_fma_ec_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_fma_ec_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6026,7 +6026,7 @@ return cos_remez_fma_ec_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_pade_fma_ec_T8_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_pade_fma_ec_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -6052,7 +6052,7 @@ auto const a0 = math::fma(a1, x, F(0.9882511327624647f));
 auto const b0 = math::fma(b1, x, F(0.9882511327624647f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_remez_pade_fma_ec_T8_0_float_simd(float x) {
+__forceinline static float cos_remez_pade_fma_ec_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_pade_fma_ec_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6060,7 +6060,7 @@ return cos_remez_pade_fma_ec_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_quart_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F cos_quart_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(3.141592653589793f)) - F(1.5707963267948966f);
 auto const x2 = x * x;
@@ -6076,7 +6076,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_quart_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float cos_quart_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_quart_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -6084,7 +6084,7 @@ return cos_quart_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_half_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F cos_half_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 x = F(3.141592653589793f) - x;
 auto const x2 = x * x;
@@ -6100,7 +6100,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_half_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float cos_half_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_half_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -6108,7 +6108,7 @@ return cos_half_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_fma_T8_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_fma_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -6125,7 +6125,7 @@ auto const a1 = math::fma(a2, x, F(8.633520567143541e-08f));
 auto const a0 = math::fma(a1, x, F(0.9999999991463919f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_remez_fma_T8_0_float_simd(float x) {
+__forceinline static float cos_remez_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6133,7 +6133,7 @@ return cos_remez_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_pade_fma_T8_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_pade_fma_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -6159,7 +6159,7 @@ auto const a0 = math::fma(a1, x, F(0.9882511327624647f));
 auto const b0 = math::fma(b1, x, F(0.9882511327624647f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_remez_pade_fma_T8_0_float_simd(float x) {
+__forceinline static float cos_remez_pade_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_pade_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6167,7 +6167,7 @@ return cos_remez_pade_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_quart_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F cos_quart_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(3.141592653589793f)) - F(1.5707963267948966f);
 auto const x2 = x * x;
@@ -6183,7 +6183,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_quart_fma_T8_8_float_simd(float x) {
+__forceinline static float cos_quart_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_quart_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -6191,7 +6191,7 @@ return cos_quart_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_half_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F cos_half_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 x = F(3.141592653589793f) - x;
 auto const x2 = x * x;
@@ -6207,7 +6207,7 @@ auto const a0 = math::fma(a1, x2, F(-1.0f));
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float cos_half_fma_T8_8_float_simd(float x) {
+__forceinline static float cos_half_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_half_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -6215,7 +6215,7 @@ return cos_half_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_fma_ec_T9_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_fma_ec_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -6233,7 +6233,7 @@ auto const a1 = math::fma(a2, x, F(-2.7147938620836067e-08f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit1_remez_fma_ec_T9_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_fma_ec_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_fma_ec_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6241,7 +6241,7 @@ return cos_unit1_remez_fma_ec_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_pade_fma_ec_T9_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_pade_fma_ec_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -6269,7 +6269,7 @@ auto const a0 = math::fma(a1, x, F(0.6240432225922865f));
 auto const b0 = math::fma(b1, x, F(0.6240432225922865f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit1_remez_pade_fma_ec_T9_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_pade_fma_ec_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_pade_fma_ec_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6277,7 +6277,7 @@ return cos_unit1_remez_pade_fma_ec_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_quart_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_quart_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(0.5f)) - F(0.25f);
 auto const x2 = x * x;
@@ -6294,7 +6294,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_unit1_quart_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float cos_unit1_quart_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_quart_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -6302,7 +6302,7 @@ return cos_unit1_quart_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_fma_T9_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_fma_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -6320,7 +6320,7 @@ auto const a1 = math::fma(a2, x, F(-2.7147938620836067e-08f));
 auto const a0 = math::fma(a1, x, F(1.0000000000331344f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit1_remez_fma_T9_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6328,7 +6328,7 @@ return cos_unit1_remez_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_remez_pade_fma_T9_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_remez_pade_fma_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(0.5f);
 auto const quarter = F(0.25f);
@@ -6356,7 +6356,7 @@ auto const a0 = math::fma(a1, x, F(0.6240432225922865f));
 auto const b0 = math::fma(b1, x, F(0.6240432225922865f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit1_remez_pade_fma_T9_0_float_simd(float x) {
+__forceinline static float cos_unit1_remez_pade_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_remez_pade_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6364,7 +6364,7 @@ return cos_unit1_remez_pade_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit1_quart_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F cos_unit1_quart_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(0.5f)) - F(0.25f);
 auto const x2 = x * x;
@@ -6381,7 +6381,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_unit1_quart_fma_T9_9_float_simd(float x) {
+__forceinline static float cos_unit1_quart_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit1_quart_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -6389,7 +6389,7 @@ return cos_unit1_quart_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_fma_ec_T9_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_fma_ec_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -6407,7 +6407,7 @@ auto const a1 = math::fma(a2, x, F(-1.3582903725374418e-08f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit2_remez_fma_ec_T9_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_fma_ec_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_fma_ec_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6415,7 +6415,7 @@ return cos_unit2_remez_fma_ec_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_pade_fma_ec_T9_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_pade_fma_ec_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -6443,7 +6443,7 @@ auto const a0 = math::fma(a1, x, F(0.8953700836409647f));
 auto const b0 = math::fma(b1, x, F(0.8953700836409647f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit2_remez_pade_fma_ec_T9_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_pade_fma_ec_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_pade_fma_ec_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6451,7 +6451,7 @@ return cos_unit2_remez_pade_fma_ec_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_quart_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_quart_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(1.0f)) - F(0.5f);
 auto const x2 = x * x;
@@ -6468,7 +6468,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_unit2_quart_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float cos_unit2_quart_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_quart_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -6476,7 +6476,7 @@ return cos_unit2_quart_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_fma_T9_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_fma_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -6494,7 +6494,7 @@ auto const a1 = math::fma(a2, x, F(-1.358290372537442e-08f));
 auto const a0 = math::fma(a1, x, F(1.0000000000335143f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_unit2_remez_fma_T9_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6502,7 +6502,7 @@ return cos_unit2_remez_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_remez_pade_fma_T9_0(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_remez_pade_fma_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(1.0f);
 auto const quarter = F(0.5f);
@@ -6530,7 +6530,7 @@ auto const a0 = math::fma(a1, x, F(0.8953700836409647f));
 auto const b0 = math::fma(b1, x, F(0.8953700836409647f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_unit2_remez_pade_fma_T9_0_float_simd(float x) {
+__forceinline static float cos_unit2_remez_pade_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_remez_pade_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6538,7 +6538,7 @@ return cos_unit2_remez_pade_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_unit2_quart_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F cos_unit2_quart_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(1.0f)) - F(0.5f);
 auto const x2 = x * x;
@@ -6555,7 +6555,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_unit2_quart_fma_T9_9_float_simd(float x) {
+__forceinline static float cos_unit2_quart_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_unit2_quart_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -6563,7 +6563,7 @@ return cos_unit2_quart_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_fma_ec_T9_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_fma_ec_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -6581,7 +6581,7 @@ auto const a1 = math::fma(a2, x, F(-4.326827761767404e-09f));
 auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_remez_fma_ec_T9_0_float_simd(float x) {
+__forceinline static float cos_remez_fma_ec_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_fma_ec_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6589,7 +6589,7 @@ return cos_remez_fma_ec_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_pade_fma_ec_T9_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_pade_fma_ec_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -6617,7 +6617,7 @@ auto const a0 = math::fma(a1, x, F(0.9891130188481712f));
 auto const b0 = math::fma(b1, x, F(0.9891130188481712f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_remez_pade_fma_ec_T9_0_float_simd(float x) {
+__forceinline static float cos_remez_pade_fma_ec_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_pade_fma_ec_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6625,7 +6625,7 @@ return cos_remez_pade_fma_ec_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_quart_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F cos_quart_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(3.141592653589793f)) - F(1.5707963267948966f);
 auto const x2 = x * x;
@@ -6642,7 +6642,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_quart_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float cos_quart_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_quart_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -6650,7 +6650,7 @@ return cos_quart_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_fma_T9_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_fma_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -6668,7 +6668,7 @@ auto const a1 = math::fma(a2, x, F(-4.326827761767404e-09f));
 auto const a0 = math::fma(a1, x, F(1.0000000000335463f));
 return math::setSign(a0, x_sign);
 }
-inline static float cos_remez_fma_T9_0_float_simd(float x) {
+__forceinline static float cos_remez_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6676,7 +6676,7 @@ return cos_remez_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_remez_pade_fma_T9_0(in_t(F) x) {
+__forceinline constexpr static F cos_remez_pade_fma_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const half = F(3.141592653589793f);
 auto const quarter = F(1.5707963267948966f);
@@ -6704,7 +6704,7 @@ auto const a0 = math::fma(a1, x, F(0.9891130188481712f));
 auto const b0 = math::fma(b1, x, F(0.9891130188481712f));
 return math::setSign(a0 / b0, x_sign);
 }
-inline static float cos_remez_pade_fma_T9_0_float_simd(float x) {
+__forceinline static float cos_remez_pade_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_remez_pade_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6712,7 +6712,7 @@ return cos_remez_pade_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F cos_quart_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F cos_quart_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 x = math::abs(x - F(3.141592653589793f)) - F(1.5707963267948966f);
 auto const x2 = x * x;
@@ -6729,7 +6729,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float cos_quart_fma_T9_9_float_simd(float x) {
+__forceinline static float cos_quart_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return cos_quart_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -6737,7 +6737,7 @@ return cos_quart_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_fma_ec_T3_0(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_fma_ec_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -6747,7 +6747,7 @@ auto const a1 = math::fma(a2, x, F(0.8013106341050321f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tanh_remez_fma_ec_T3_0_float_simd(float x) {
+__forceinline static float tanh_remez_fma_ec_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_fma_ec_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6755,7 +6755,7 @@ return tanh_remez_fma_ec_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_pade_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_pade_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -6769,7 +6769,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.9133744382158635f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tanh_remez_pade_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float tanh_remez_pade_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_pade_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -6777,7 +6777,7 @@ return tanh_remez_pade_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F tanh_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 x = math::clamp(x, F(-7.0f), F(7.0f));
 auto const x2 = x * x;
@@ -6788,7 +6788,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float tanh_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float tanh_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -6796,7 +6796,7 @@ return tanh_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_fma_T3_0(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_fma_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -6806,7 +6806,7 @@ auto const a1 = math::fma(a2, x, F(0.8013106341050312f));
 auto const a0 = math::fma(a1, x, F(0.07438969218603325f));
 return math::setSign(a0, x0);
 }
-inline static float tanh_remez_fma_T3_0_float_simd(float x) {
+__forceinline static float tanh_remez_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6814,7 +6814,7 @@ return tanh_remez_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_pade_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_pade_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -6828,7 +6828,7 @@ auto const a0 = math::fma(a1, x, F(-0.00325224726057609f));
 auto const b0 = math::fma(b1, x, F(0.9133744382158635f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tanh_remez_pade_fma_T3_3_float_simd(float x) {
+__forceinline static float tanh_remez_pade_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_pade_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -6836,7 +6836,7 @@ return tanh_remez_pade_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F tanh_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 x = math::clamp(x, F(-7.0f), F(7.0f));
 auto const x2 = x * x;
@@ -6847,7 +6847,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float tanh_fma_T3_3_float_simd(float x) {
+__forceinline static float tanh_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -6855,7 +6855,7 @@ return tanh_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_fma_ec_T4_0(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_fma_ec_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -6866,7 +6866,7 @@ auto const a1 = math::fma(a2, x, F(1.1135595747240714f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tanh_remez_fma_ec_T4_0_float_simd(float x) {
+__forceinline static float tanh_remez_fma_ec_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_fma_ec_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6874,7 +6874,7 @@ return tanh_remez_fma_ec_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_pade_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_pade_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -6890,7 +6890,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.7578550598318982f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tanh_remez_pade_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float tanh_remez_pade_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_pade_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -6898,7 +6898,7 @@ return tanh_remez_pade_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F tanh_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 x = math::clamp(x, F(-7.0f), F(7.0f));
 auto const x2 = x * x;
@@ -6910,7 +6910,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float tanh_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float tanh_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -6918,7 +6918,7 @@ return tanh_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_fma_T4_0(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_fma_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -6929,7 +6929,7 @@ auto const a1 = math::fma(a2, x, F(1.0647869668731447f));
 auto const a0 = math::fma(a1, x, F(0.021899379182937787f));
 return math::setSign(a0, x0);
 }
-inline static float tanh_remez_fma_T4_0_float_simd(float x) {
+__forceinline static float tanh_remez_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -6937,7 +6937,7 @@ return tanh_remez_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_pade_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_pade_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -6953,7 +6953,7 @@ auto const a0 = math::fma(a1, x, F(0.00010278716213591844f));
 auto const b0 = math::fma(b1, x, F(0.7578550598318982f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tanh_remez_pade_fma_T4_4_float_simd(float x) {
+__forceinline static float tanh_remez_pade_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_pade_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -6961,7 +6961,7 @@ return tanh_remez_pade_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F tanh_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 x = math::clamp(x, F(-7.0f), F(7.0f));
 auto const x2 = x * x;
@@ -6973,7 +6973,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float tanh_fma_T4_4_float_simd(float x) {
+__forceinline static float tanh_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -6981,7 +6981,7 @@ return tanh_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_fma_ec_T5_0(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_fma_ec_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -6993,7 +6993,7 @@ auto const a1 = math::fma(a2, x, F(1.2199806477364452f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tanh_remez_fma_ec_T5_0_float_simd(float x) {
+__forceinline static float tanh_remez_fma_ec_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_fma_ec_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -7001,7 +7001,7 @@ return tanh_remez_fma_ec_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_pade_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_pade_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7019,7 +7019,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.789751052148912f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tanh_remez_pade_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float tanh_remez_pade_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_pade_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -7027,7 +7027,7 @@ return tanh_remez_pade_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F tanh_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 x = math::clamp(x, F(-7.0f), F(7.0f));
 auto const x2 = x * x;
@@ -7040,7 +7040,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float tanh_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float tanh_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -7048,7 +7048,7 @@ return tanh_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_fma_T5_0(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_fma_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7060,7 +7060,7 @@ auto const a1 = math::fma(a2, x, F(1.2199806477364399f));
 auto const a0 = math::fma(a1, x, F(0.004072058101450461f));
 return math::setSign(a0, x0);
 }
-inline static float tanh_remez_fma_T5_0_float_simd(float x) {
+__forceinline static float tanh_remez_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -7068,7 +7068,7 @@ return tanh_remez_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_pade_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_pade_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7086,7 +7086,7 @@ auto const a0 = math::fma(a1, x, F(-3.509656685172091e-06f));
 auto const b0 = math::fma(b1, x, F(0.789751052148912f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tanh_remez_pade_fma_T5_5_float_simd(float x) {
+__forceinline static float tanh_remez_pade_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_pade_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -7094,7 +7094,7 @@ return tanh_remez_pade_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F tanh_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 x = math::clamp(x, F(-7.0f), F(7.0f));
 auto const x2 = x * x;
@@ -7107,7 +7107,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float tanh_fma_T5_5_float_simd(float x) {
+__forceinline static float tanh_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -7115,7 +7115,7 @@ return tanh_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_fma_ec_T6_0(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_fma_ec_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7128,7 +7128,7 @@ auto const a1 = math::fma(a2, x, F(1.1492140195497043f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tanh_remez_fma_ec_T6_0_float_simd(float x) {
+__forceinline static float tanh_remez_fma_ec_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_fma_ec_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -7136,7 +7136,7 @@ return tanh_remez_fma_ec_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_pade_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_pade_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7156,7 +7156,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.7903796209031667f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tanh_remez_pade_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float tanh_remez_pade_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_pade_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -7164,7 +7164,7 @@ return tanh_remez_pade_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F tanh_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 x = math::clamp(x, F(-7.0f), F(7.0f));
 auto const x2 = x * x;
@@ -7178,7 +7178,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float tanh_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float tanh_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -7186,7 +7186,7 @@ return tanh_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_fma_T6_0(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_fma_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7199,7 +7199,7 @@ auto const a1 = math::fma(a2, x, F(1.1708576700269349f));
 auto const a0 = math::fma(a1, x, F(-0.009416703118150137f));
 return math::setSign(a0, x0);
 }
-inline static float tanh_remez_fma_T6_0_float_simd(float x) {
+__forceinline static float tanh_remez_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -7207,7 +7207,7 @@ return tanh_remez_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_pade_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_pade_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7227,7 +7227,7 @@ auto const a0 = math::fma(a1, x, F(6.973554169080272e-08f));
 auto const b0 = math::fma(b1, x, F(0.7903796209031667f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tanh_remez_pade_fma_T6_6_float_simd(float x) {
+__forceinline static float tanh_remez_pade_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_pade_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -7235,7 +7235,7 @@ return tanh_remez_pade_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F tanh_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 x = math::clamp(x, F(-7.0f), F(7.0f));
 auto const x2 = x * x;
@@ -7249,7 +7249,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float tanh_fma_T6_6_float_simd(float x) {
+__forceinline static float tanh_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -7257,7 +7257,7 @@ return tanh_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_fma_ec_T7_0(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_fma_ec_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7271,7 +7271,7 @@ auto const a1 = math::fma(a2, x, F(1.1062330333641983f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tanh_remez_fma_ec_T7_0_float_simd(float x) {
+__forceinline static float tanh_remez_fma_ec_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_fma_ec_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -7279,7 +7279,7 @@ return tanh_remez_fma_ec_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_pade_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_pade_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7301,7 +7301,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.7930122872249624f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tanh_remez_pade_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float tanh_remez_pade_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_pade_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -7309,7 +7309,7 @@ return tanh_remez_pade_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F tanh_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 x = math::clamp(x, F(-7.0f), F(7.0f));
 auto const x2 = x * x;
@@ -7324,7 +7324,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float tanh_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float tanh_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -7332,7 +7332,7 @@ return tanh_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_fma_T7_0(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_fma_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7346,7 +7346,7 @@ auto const a1 = math::fma(a2, x, F(1.1062330333642771f));
 auto const a0 = math::fma(a1, x, F(-0.005543581754291788f));
 return math::setSign(a0, x0);
 }
-inline static float tanh_remez_fma_T7_0_float_simd(float x) {
+__forceinline static float tanh_remez_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -7354,7 +7354,7 @@ return tanh_remez_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_pade_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_pade_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7376,7 +7376,7 @@ auto const a0 = math::fma(a1, x, F(-7.177416288803427e-10f));
 auto const b0 = math::fma(b1, x, F(0.7930122872249624f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tanh_remez_pade_fma_T7_7_float_simd(float x) {
+__forceinline static float tanh_remez_pade_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_pade_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -7384,7 +7384,7 @@ return tanh_remez_pade_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F tanh_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 x = math::clamp(x, F(-7.0f), F(7.0f));
 auto const x2 = x * x;
@@ -7399,7 +7399,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float tanh_fma_T7_7_float_simd(float x) {
+__forceinline static float tanh_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -7407,7 +7407,7 @@ return tanh_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_fma_ec_T8_0(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_fma_ec_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7422,7 +7422,7 @@ auto const a1 = math::fma(a2, x, F(1.0375758433657947f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tanh_remez_fma_ec_T8_0_float_simd(float x) {
+__forceinline static float tanh_remez_fma_ec_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_fma_ec_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -7430,7 +7430,7 @@ return tanh_remez_fma_ec_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_pade_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_pade_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7454,7 +7454,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.7942814686451519f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tanh_remez_pade_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float tanh_remez_pade_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_pade_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -7462,7 +7462,7 @@ return tanh_remez_pade_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F tanh_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 x = math::clamp(x, F(-7.0f), F(7.0f));
 auto const x2 = x * x;
@@ -7478,7 +7478,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float tanh_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float tanh_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -7486,7 +7486,7 @@ return tanh_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_fma_T8_0(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_fma_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7501,7 +7501,7 @@ auto const a1 = math::fma(a2, x, F(1.0424484626523465f));
 auto const a0 = math::fma(a1, x, F(-0.0023480747042252544f));
 return math::setSign(a0, x0);
 }
-inline static float tanh_remez_fma_T8_0_float_simd(float x) {
+__forceinline static float tanh_remez_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -7509,7 +7509,7 @@ return tanh_remez_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_pade_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_pade_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7533,7 +7533,7 @@ auto const a0 = math::fma(a1, x, F(4.6074484898427355e-12f));
 auto const b0 = math::fma(b1, x, F(0.7942814686451519f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tanh_remez_pade_fma_T8_8_float_simd(float x) {
+__forceinline static float tanh_remez_pade_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_pade_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -7541,7 +7541,7 @@ return tanh_remez_pade_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F tanh_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 x = math::clamp(x, F(-7.0f), F(7.0f));
 auto const x2 = x * x;
@@ -7557,7 +7557,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float tanh_fma_T8_8_float_simd(float x) {
+__forceinline static float tanh_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -7565,7 +7565,7 @@ return tanh_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_fma_ec_T9_0(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_fma_ec_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7581,7 +7581,7 @@ auto const a1 = math::fma(a2, x, F(1.0002402405281168f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tanh_remez_fma_ec_T9_0_float_simd(float x) {
+__forceinline static float tanh_remez_fma_ec_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_fma_ec_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -7589,7 +7589,7 @@ return tanh_remez_fma_ec_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_pade_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_pade_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7615,7 +7615,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.7951204780184268f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tanh_remez_pade_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float tanh_remez_pade_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_pade_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -7623,7 +7623,7 @@ return tanh_remez_pade_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F tanh_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 x = math::clamp(x, F(-7.0f), F(7.0f));
 auto const x2 = x * x;
@@ -7640,7 +7640,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float tanh_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float tanh_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -7648,7 +7648,7 @@ return tanh_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_fma_T9_0(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_fma_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7664,7 +7664,7 @@ auto const a1 = math::fma(a2, x, F(1.000240240527706f));
 auto const a0 = math::fma(a1, x, F(-0.000684723622067507f));
 return math::setSign(a0, x0);
 }
-inline static float tanh_remez_fma_T9_0_float_simd(float x) {
+__forceinline static float tanh_remez_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -7672,7 +7672,7 @@ return tanh_remez_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_remez_pade_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F tanh_remez_pade_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7698,7 +7698,7 @@ auto const a0 = math::fma(a1, x, F(-4.2389513495917185e-15f));
 auto const b0 = math::fma(b1, x, F(0.7951204780184268f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tanh_remez_pade_fma_T9_9_float_simd(float x) {
+__forceinline static float tanh_remez_pade_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_remez_pade_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -7706,7 +7706,7 @@ return tanh_remez_pade_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tanh_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F tanh_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 x = math::clamp(x, F(-7.0f), F(7.0f));
 auto const x2 = x * x;
@@ -7723,7 +7723,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float tanh_fma_T9_9_float_simd(float x) {
+__forceinline static float tanh_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tanh_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -7731,7 +7731,7 @@ return tanh_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F exp_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a2 = F(0.00013020833333333333f);
@@ -7745,7 +7745,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_fma_T3_3_float_simd(float x) {
+__forceinline static float exp_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -7753,7 +7753,7 @@ return exp_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_remez_fma_T3_0(in_t(F) x) {
+__forceinline constexpr static F exp_remez_fma_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7767,7 +7767,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_remez_fma_T3_0_float_simd(float x) {
+__forceinline static float exp_remez_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_remez_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -7775,7 +7775,7 @@ return exp_remez_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_remez_pade_fma_T3_0(in_t(F) x) {
+__forceinline constexpr static F exp_remez_pade_fma_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7793,7 +7793,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_remez_pade_fma_T3_0_float_simd(float x) {
+__forceinline static float exp_remez_pade_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_remez_pade_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -7801,7 +7801,7 @@ return exp_remez_pade_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F exp_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a2 = F(0.00018601190476190475f);
@@ -7816,7 +7816,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_fma_T4_4_float_simd(float x) {
+__forceinline static float exp_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -7824,7 +7824,7 @@ return exp_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_remez_fma_T4_0(in_t(F) x) {
+__forceinline constexpr static F exp_remez_fma_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7839,7 +7839,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_remez_fma_T4_0_float_simd(float x) {
+__forceinline static float exp_remez_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_remez_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -7847,7 +7847,7 @@ return exp_remez_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_remez_pade_fma_T4_0(in_t(F) x) {
+__forceinline constexpr static F exp_remez_pade_fma_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7867,7 +7867,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_remez_pade_fma_T4_0_float_simd(float x) {
+__forceinline static float exp_remez_pade_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_remez_pade_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -7875,7 +7875,7 @@ return exp_remez_pade_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F exp_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a3 = F(3.229373346560847e-08f);
@@ -7891,7 +7891,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_fma_T5_5_float_simd(float x) {
+__forceinline static float exp_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -7899,7 +7899,7 @@ return exp_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_remez_fma_T5_0(in_t(F) x) {
+__forceinline constexpr static F exp_remez_fma_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7915,7 +7915,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_remez_fma_T5_0_float_simd(float x) {
+__forceinline static float exp_remez_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_remez_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -7923,7 +7923,7 @@ return exp_remez_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_remez_pade_fma_T5_0(in_t(F) x) {
+__forceinline constexpr static F exp_remez_pade_fma_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7945,7 +7945,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_remez_pade_fma_T5_0_float_simd(float x) {
+__forceinline static float exp_remez_pade_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_remez_pade_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -7953,7 +7953,7 @@ return exp_remez_pade_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F exp_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a3 = F(6.165167297979798e-08f);
@@ -7970,7 +7970,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_fma_T6_6_float_simd(float x) {
+__forceinline static float exp_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -7978,7 +7978,7 @@ return exp_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_remez_fma_T6_0(in_t(F) x) {
+__forceinline constexpr static F exp_remez_fma_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -7995,7 +7995,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_remez_fma_T6_0_float_simd(float x) {
+__forceinline static float exp_remez_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_remez_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -8003,7 +8003,7 @@ return exp_remez_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_remez_pade_fma_T6_0(in_t(F) x) {
+__forceinline constexpr static F exp_remez_pade_fma_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -8027,7 +8027,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_remez_pade_fma_T6_0_float_simd(float x) {
+__forceinline static float exp_remez_pade_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_remez_pade_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -8035,7 +8035,7 @@ return exp_remez_pade_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F exp_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a4 = F(3.528598499301624e-12f);
@@ -8053,7 +8053,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_fma_T7_7_float_simd(float x) {
+__forceinline static float exp_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -8061,7 +8061,7 @@ return exp_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_remez_fma_T7_0(in_t(F) x) {
+__forceinline constexpr static F exp_remez_fma_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -8079,7 +8079,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_remez_fma_T7_0_float_simd(float x) {
+__forceinline static float exp_remez_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_remez_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -8087,7 +8087,7 @@ return exp_remez_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_remez_pade_fma_T7_0(in_t(F) x) {
+__forceinline constexpr static F exp_remez_pade_fma_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -8113,7 +8113,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_remez_pade_fma_T7_0_float_simd(float x) {
+__forceinline static float exp_remez_pade_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_remez_pade_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -8121,7 +8121,7 @@ return exp_remez_pade_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F exp_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a4 = F(8.468636398323898e-12f);
@@ -8140,7 +8140,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_fma_T8_8_float_simd(float x) {
+__forceinline static float exp_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -8148,7 +8148,7 @@ return exp_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_remez_fma_T8_0(in_t(F) x) {
+__forceinline constexpr static F exp_remez_fma_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -8167,7 +8167,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_remez_fma_T8_0_float_simd(float x) {
+__forceinline static float exp_remez_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_remez_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -8175,7 +8175,7 @@ return exp_remez_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_remez_pade_fma_T8_0(in_t(F) x) {
+__forceinline constexpr static F exp_remez_pade_fma_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -8203,7 +8203,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_remez_pade_fma_T8_0_float_simd(float x) {
+__forceinline static float exp_remez_pade_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_remez_pade_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -8211,7 +8211,7 @@ return exp_remez_pade_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F exp_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a5 = F(2.1621314333956032e-16f);
@@ -8231,7 +8231,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_fma_T9_9_float_simd(float x) {
+__forceinline static float exp_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -8239,7 +8239,7 @@ return exp_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_remez_fma_T9_0(in_t(F) x) {
+__forceinline constexpr static F exp_remez_fma_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -8259,7 +8259,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_remez_fma_T9_0_float_simd(float x) {
+__forceinline static float exp_remez_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_remez_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -8267,7 +8267,7 @@ return exp_remez_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_remez_pade_fma_T9_0(in_t(F) x) {
+__forceinline constexpr static F exp_remez_pade_fma_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -8297,7 +8297,7 @@ v *= v;
 v *= v;
 return v;
 }
-inline static float exp_remez_pade_fma_T9_0_float_simd(float x) {
+__forceinline static float exp_remez_pade_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_remez_pade_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -8305,7 +8305,7 @@ return exp_remez_pade_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F atan_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8320,7 +8320,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float atan_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -8328,7 +8328,7 @@ return atan_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_fma_ec_T3_0(in_t(F) x) {
+__forceinline constexpr static F atan_remez_fma_ec_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8341,7 +8341,7 @@ auto const a1 = math::fma(a2, x, F(1.0366429864285915f));
 auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
-inline static float atan_remez_fma_ec_T3_0_float_simd(float x) {
+__forceinline static float atan_remez_fma_ec_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_fma_ec_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -8349,7 +8349,7 @@ return atan_remez_fma_ec_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_pade_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F atan_remez_pade_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8366,7 +8366,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.7060645013337433f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_remez_pade_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float atan_remez_pade_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_pade_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -8374,7 +8374,7 @@ return atan_remez_pade_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F atan_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8389,7 +8389,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_fma_T3_3_float_simd(float x) {
+__forceinline static float atan_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -8397,7 +8397,7 @@ return atan_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_fma_T3_0(in_t(F) x) {
+__forceinline constexpr static F atan_remez_fma_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8410,7 +8410,7 @@ auto const a1 = math::fma(a2, x, F(1.0366429864285913f));
 auto const a0 = math::fma(a1, x, F(-0.001104845772664728f));
 return math::setSign(a - a0, x0);
 }
-inline static float atan_remez_fma_T3_0_float_simd(float x) {
+__forceinline static float atan_remez_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -8418,7 +8418,7 @@ return atan_remez_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_pade_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F atan_remez_pade_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8435,7 +8435,7 @@ auto const a0 = math::fma(a1, x, F(-4.438395251721366e-07f));
 auto const b0 = math::fma(b1, x, F(0.7060645013337433f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_remez_pade_fma_T3_3_float_simd(float x) {
+__forceinline static float atan_remez_pade_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_pade_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -8443,7 +8443,7 @@ return atan_remez_pade_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F atan_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8459,7 +8459,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float atan_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -8467,7 +8467,7 @@ return atan_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_fma_ec_T4_0(in_t(F) x) {
+__forceinline constexpr static F atan_remez_fma_ec_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8481,7 +8481,7 @@ auto const a1 = math::fma(a2, x, F(1.0035631589435272f));
 auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
-inline static float atan_remez_fma_ec_T4_0_float_simd(float x) {
+__forceinline static float atan_remez_fma_ec_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_fma_ec_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -8489,7 +8489,7 @@ return atan_remez_fma_ec_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_pade_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F atan_remez_pade_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8508,7 +8508,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.5842979637068112f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_remez_pade_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float atan_remez_pade_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_pade_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -8516,7 +8516,7 @@ return atan_remez_pade_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F atan_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8532,7 +8532,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_fma_T4_4_float_simd(float x) {
+__forceinline static float atan_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -8540,7 +8540,7 @@ return atan_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_fma_T4_0(in_t(F) x) {
+__forceinline constexpr static F atan_remez_fma_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8554,7 +8554,7 @@ auto const a1 = math::fma(a2, x, F(1.0038345354103406f));
 auto const a0 = math::fma(a1, x, F(-0.0001061909142065518f));
 return math::setSign(a - a0, x0);
 }
-inline static float atan_remez_fma_T4_0_float_simd(float x) {
+__forceinline static float atan_remez_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -8562,7 +8562,7 @@ return atan_remez_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_pade_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F atan_remez_pade_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8581,7 +8581,7 @@ auto const a0 = math::fma(a1, x, F(3.54399549874694e-09f));
 auto const b0 = math::fma(b1, x, F(0.5842979637068112f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_remez_pade_fma_T4_4_float_simd(float x) {
+__forceinline static float atan_remez_pade_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_pade_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -8589,7 +8589,7 @@ return atan_remez_pade_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F atan_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8606,7 +8606,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float atan_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -8614,7 +8614,7 @@ return atan_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_fma_ec_T5_0(in_t(F) x) {
+__forceinline constexpr static F atan_remez_fma_ec_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8629,7 +8629,7 @@ auto const a1 = math::fma(a2, x, F(0.9982532435018099f));
 auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
-inline static float atan_remez_fma_ec_T5_0_float_simd(float x) {
+__forceinline static float atan_remez_fma_ec_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_fma_ec_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -8637,7 +8637,7 @@ return atan_remez_fma_ec_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_pade_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F atan_remez_pade_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8658,7 +8658,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.47840608520146294f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_remez_pade_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float atan_remez_pade_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_pade_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -8666,7 +8666,7 @@ return atan_remez_pade_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F atan_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8683,7 +8683,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_fma_T5_5_float_simd(float x) {
+__forceinline static float atan_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -8691,7 +8691,7 @@ return atan_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_fma_T5_0(in_t(F) x) {
+__forceinline constexpr static F atan_remez_fma_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8706,7 +8706,7 @@ auto const a1 = math::fma(a2, x, F(0.9982532435018099f));
 auto const a0 = math::fma(a1, x, F(2.093960587502647e-05f));
 return math::setSign(a - a0, x0);
 }
-inline static float atan_remez_fma_T5_0_float_simd(float x) {
+__forceinline static float atan_remez_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -8714,7 +8714,7 @@ return atan_remez_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_pade_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F atan_remez_pade_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8735,7 +8735,7 @@ auto const a0 = math::fma(a1, x, F(-2.756069543815621e-11f));
 auto const b0 = math::fma(b1, x, F(0.47840608520146294f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_remez_pade_fma_T5_5_float_simd(float x) {
+__forceinline static float atan_remez_pade_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_pade_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -8743,7 +8743,7 @@ return atan_remez_pade_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F atan_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8761,7 +8761,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float atan_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -8769,7 +8769,7 @@ return atan_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_fma_ec_T6_0(in_t(F) x) {
+__forceinline constexpr static F atan_remez_fma_ec_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8785,7 +8785,7 @@ auto const a1 = math::fma(a2, x, F(0.9993985809533563f));
 auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
-inline static float atan_remez_fma_ec_T6_0_float_simd(float x) {
+__forceinline static float atan_remez_fma_ec_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_fma_ec_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -8793,7 +8793,7 @@ return atan_remez_fma_ec_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_pade_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F atan_remez_pade_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8816,7 +8816,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.38393604536820974f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_remez_pade_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float atan_remez_pade_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_pade_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -8824,7 +8824,7 @@ return atan_remez_pade_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F atan_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8842,7 +8842,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_fma_T6_6_float_simd(float x) {
+__forceinline static float atan_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -8850,7 +8850,7 @@ return atan_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_fma_T6_0(in_t(F) x) {
+__forceinline constexpr static F atan_remez_fma_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8866,7 +8866,7 @@ auto const a1 = math::fma(a2, x, F(0.9993823203948116f));
 auto const a0 = math::fma(a1, x, F(6.389349084684658e-06f));
 return math::setSign(a - a0, x0);
 }
-inline static float atan_remez_fma_T6_0_float_simd(float x) {
+__forceinline static float atan_remez_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -8874,7 +8874,7 @@ return atan_remez_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_pade_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F atan_remez_pade_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8897,7 +8897,7 @@ auto const a0 = math::fma(a1, x, F(1.5138769917825067e-13f));
 auto const b0 = math::fma(b1, x, F(0.38393604536820974f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_remez_pade_fma_T6_6_float_simd(float x) {
+__forceinline static float atan_remez_pade_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_pade_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -8905,7 +8905,7 @@ return atan_remez_pade_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F atan_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8924,7 +8924,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float atan_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -8932,7 +8932,7 @@ return atan_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_fma_ec_T7_0(in_t(F) x) {
+__forceinline constexpr static F atan_remez_fma_ec_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8949,7 +8949,7 @@ auto const a1 = math::fma(a2, x, F(0.9999740448097495f));
 auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
-inline static float atan_remez_fma_ec_T7_0_float_simd(float x) {
+__forceinline static float atan_remez_fma_ec_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_fma_ec_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -8957,7 +8957,7 @@ return atan_remez_fma_ec_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_pade_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F atan_remez_pade_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -8982,7 +8982,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.300687038158839f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_remez_pade_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float atan_remez_pade_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_pade_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -8990,7 +8990,7 @@ return atan_remez_pade_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F atan_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -9009,7 +9009,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_fma_T7_7_float_simd(float x) {
+__forceinline static float atan_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -9017,7 +9017,7 @@ return atan_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_fma_T7_0(in_t(F) x) {
+__forceinline constexpr static F atan_remez_fma_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -9034,7 +9034,7 @@ auto const a1 = math::fma(a2, x, F(0.9999740448097495f));
 auto const a0 = math::fma(a1, x, F(4.0811907897152897e-07f));
 return math::setSign(a - a0, x0);
 }
-inline static float atan_remez_fma_T7_0_float_simd(float x) {
+__forceinline static float atan_remez_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -9042,7 +9042,7 @@ return atan_remez_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_pade_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F atan_remez_pade_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -9067,7 +9067,7 @@ auto const a0 = math::fma(a1, x, F(-2.259068770728858e-15f));
 auto const b0 = math::fma(b1, x, F(0.300687038158839f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_remez_pade_fma_T7_7_float_simd(float x) {
+__forceinline static float atan_remez_pade_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_pade_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -9075,7 +9075,7 @@ return atan_remez_pade_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F atan_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -9095,7 +9095,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float atan_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -9103,7 +9103,7 @@ return atan_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_fma_ec_T8_0(in_t(F) x) {
+__forceinline constexpr static F atan_remez_fma_ec_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -9121,7 +9121,7 @@ auto const a1 = math::fma(a2, x, F(1.0000322368840606f));
 auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
-inline static float atan_remez_fma_ec_T8_0_float_simd(float x) {
+__forceinline static float atan_remez_fma_ec_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_fma_ec_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -9129,7 +9129,7 @@ return atan_remez_fma_ec_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_pade_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F atan_remez_pade_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -9156,7 +9156,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.23059093329120092f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_remez_pade_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float atan_remez_pade_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_pade_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -9164,7 +9164,7 @@ return atan_remez_pade_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F atan_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -9184,7 +9184,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_fma_T8_8_float_simd(float x) {
+__forceinline static float atan_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -9192,7 +9192,7 @@ return atan_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_fma_T8_0(in_t(F) x) {
+__forceinline constexpr static F atan_remez_fma_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -9210,7 +9210,7 @@ auto const a1 = math::fma(a2, x, F(1.0000327182134106f));
 auto const a0 = math::fma(a1, x, F(-1.8901150058855651e-07f));
 return math::setSign(a - a0, x0);
 }
-inline static float atan_remez_fma_T8_0_float_simd(float x) {
+__forceinline static float atan_remez_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -9218,7 +9218,7 @@ return atan_remez_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_pade_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F atan_remez_pade_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -9245,7 +9245,7 @@ auto const a0 = math::fma(a1, x, F(-1.4395226350757337e-18f));
 auto const b0 = math::fma(b1, x, F(0.23059093329120092f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_remez_pade_fma_T8_8_float_simd(float x) {
+__forceinline static float atan_remez_pade_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_pade_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -9253,7 +9253,7 @@ return atan_remez_pade_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F atan_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -9274,7 +9274,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float atan_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -9282,7 +9282,7 @@ return atan_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_fma_ec_T9_0(in_t(F) x) {
+__forceinline constexpr static F atan_remez_fma_ec_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -9301,7 +9301,7 @@ auto const a1 = math::fma(a2, x, F(1.0000079889476323f));
 auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
-inline static float atan_remez_fma_ec_T9_0_float_simd(float x) {
+__forceinline static float atan_remez_fma_ec_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_fma_ec_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -9309,7 +9309,7 @@ return atan_remez_fma_ec_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_pade_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F atan_remez_pade_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -9338,7 +9338,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(0.17760512380297674f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_remez_pade_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float atan_remez_pade_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_pade_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -9346,7 +9346,7 @@ return atan_remez_pade_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F atan_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -9367,7 +9367,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_fma_T9_9_float_simd(float x) {
+__forceinline static float atan_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -9375,7 +9375,7 @@ return atan_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_fma_T9_0(in_t(F) x) {
+__forceinline constexpr static F atan_remez_fma_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -9394,7 +9394,7 @@ auto const a1 = math::fma(a2, x, F(1.0000079889476323f));
 auto const a0 = math::fma(a1, x, F(-4.1632935878660326e-08f));
 return math::setSign(a - a0, x0);
 }
-inline static float atan_remez_fma_T9_0_float_simd(float x) {
+__forceinline static float atan_remez_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -9402,7 +9402,7 @@ return atan_remez_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F atan_remez_pade_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F atan_remez_pade_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto x0 = x;
 x = math::abs(x);
@@ -9431,7 +9431,7 @@ auto const a0 = math::fma(a1, x, F(-1.1353251105251144e-19f));
 auto const b0 = math::fma(b1, x, F(0.17760512380297674f));
 return math::setSign(a - a0 / b0, x0);
 }
-inline static float atan_remez_pade_fma_T9_9_float_simd(float x) {
+__forceinline static float atan_remez_pade_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return atan_remez_pade_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -9439,7 +9439,7 @@ return atan_remez_pade_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_fma_ec_T3_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_fma_ec_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a3 = F(0.003041275276830556f);
 auto const a2 = math::fma(a3, x, F(-0.08052697119622372f));
@@ -9447,7 +9447,7 @@ auto const a1 = math::fma(a2, x, F(0.7904862106729686f));
 auto const a0 = math::fma(a1, x, F(-0.7130005147535754f));
 return a0;
 }
-inline static float log_remez_fma_ec_T3_0_float_simd(float x) {
+__forceinline static float log_remez_fma_ec_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_fma_ec_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -9455,7 +9455,7 @@ return log_remez_fma_ec_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const a3 = F(0.05081717735434702f);
 auto const b3 = F(0.009545166804015643f);
@@ -9467,7 +9467,7 @@ auto const a0 = math::fma(a1, x, F(-1.9015984817501737f));
 auto const b0 = math::fma(b1, x, F(0.786571131152619f));
 return a0 / b0;
 }
-inline static float log_remez_pade_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float log_remez_pade_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -9475,7 +9475,7 @@ return log_remez_pade_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_recip_fma_ec_T3_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_recip_fma_ec_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -9486,7 +9486,7 @@ auto const a0 = math::fma(a1, x, F(-2.6818634810571718f));
 auto const r = a0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_recip_fma_ec_T3_0_float_simd(float x) {
+__forceinline static float log_remez_recip_fma_ec_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_recip_fma_ec_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -9494,7 +9494,7 @@ return log_remez_recip_fma_ec_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_recip_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_recip_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -9509,7 +9509,7 @@ auto const b0 = math::fma(b1, x, F(0.34729319826230975f));
 auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_pade_recip_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float log_remez_pade_recip_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_recip_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -9517,7 +9517,7 @@ return log_remez_pade_recip_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_fma_T3_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_fma_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a3 = F(0.003041275276830554f);
 auto const a2 = math::fma(a3, x, F(-0.08052697119622367f));
@@ -9525,7 +9525,7 @@ auto const a1 = math::fma(a2, x, F(0.7904862106729681f));
 auto const a0 = math::fma(a1, x, F(-0.6514777911845769f));
 return a0;
 }
-inline static float log_remez_fma_T3_0_float_simd(float x) {
+__forceinline static float log_remez_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -9533,7 +9533,7 @@ return log_remez_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const a3 = F(0.050823500890495824f);
 auto const b3 = F(0.009545166804015643f);
@@ -9545,7 +9545,7 @@ auto const a0 = math::fma(a1, x, F(-1.9009440669839792f));
 auto const b0 = math::fma(b1, x, F(0.786571131152619f));
 return a0 / b0;
 }
-inline static float log_remez_pade_fma_T3_3_float_simd(float x) {
+__forceinline static float log_remez_pade_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -9553,7 +9553,7 @@ return log_remez_pade_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_recip_fma_T3_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_recip_fma_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -9564,7 +9564,7 @@ auto const a0 = math::fma(a1, x, F(-2.1373700423159723f));
 auto const r = a0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_recip_fma_T3_0_float_simd(float x) {
+__forceinline static float log_remez_recip_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_recip_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -9572,7 +9572,7 @@ return log_remez_recip_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_recip_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_recip_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -9587,7 +9587,7 @@ auto const b0 = math::fma(b1, x, F(0.34729319826230975f));
 auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_pade_recip_fma_T3_3_float_simd(float x) {
+__forceinline static float log_remez_pade_recip_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_recip_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -9595,7 +9595,7 @@ return log_remez_pade_recip_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F log_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 x = x - F(1.0f);
 auto const a3 = F(0.19027482859955996f);
@@ -9608,7 +9608,7 @@ auto const a0 = math::fma(a1, x, F(7.128941525267033e-17f));
 auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
-inline static float log_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float log_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -9616,7 +9616,7 @@ return log_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F log_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 x = x - F(1.0f);
 auto const a3 = F(0.18333333333333332f);
@@ -9629,7 +9629,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
-inline static float log_fma_T3_3_float_simd(float x) {
+__forceinline static float log_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -9637,7 +9637,7 @@ return log_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_fma_ec_T4_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_fma_ec_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a4 = F(-0.0004648887315712231f);
 auto const a3 = math::fma(a4, x, F(0.015062762991985702f));
@@ -9646,7 +9646,7 @@ auto const a1 = math::fma(a2, x, F(1.105293370752444f));
 auto const a0 = math::fma(a1, x, F(-0.9379899009505013f));
 return a0;
 }
-inline static float log_remez_fma_ec_T4_0_float_simd(float x) {
+__forceinline static float log_remez_fma_ec_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_fma_ec_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -9654,7 +9654,7 @@ return log_remez_fma_ec_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const a4 = F(0.007478883210281326f);
 auto const b4 = F(0.0012852496603447236f);
@@ -9668,7 +9668,7 @@ auto const a0 = math::fma(a1, x, F(-1.349372459144015f));
 auto const b0 = math::fma(b1, x, F(0.46517241715590896f));
 return a0 / b0;
 }
-inline static float log_remez_pade_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float log_remez_pade_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -9676,7 +9676,7 @@ return log_remez_pade_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_recip_fma_ec_T4_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_recip_fma_ec_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -9688,7 +9688,7 @@ auto const a0 = math::fma(a1, x, F(-2.7968319767504872f));
 auto const r = a0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_recip_fma_ec_T4_0_float_simd(float x) {
+__forceinline static float log_remez_recip_fma_ec_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_recip_fma_ec_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -9696,7 +9696,7 @@ return log_remez_recip_fma_ec_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_recip_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_recip_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -9713,7 +9713,7 @@ auto const b0 = math::fma(b1, x, F(0.09058058418180197f));
 auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_pade_recip_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float log_remez_pade_recip_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_recip_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -9721,7 +9721,7 @@ return log_remez_pade_recip_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_fma_T4_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_fma_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a4 = F(-0.0004545539446566179f);
 auto const a3 = math::fma(a4, x, F(0.014727907713086512f));
@@ -9730,7 +9730,7 @@ auto const a1 = math::fma(a2, x, F(1.0807219611029886f));
 auto const a0 = math::fma(a1, x, F(-0.889063442034149f));
 return a0;
 }
-inline static float log_remez_fma_T4_0_float_simd(float x) {
+__forceinline static float log_remez_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -9738,7 +9738,7 @@ return log_remez_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const a4 = F(0.007478923635734456f);
 auto const b4 = F(0.0012852496603447236f);
@@ -9752,7 +9752,7 @@ auto const a0 = math::fma(a1, x, F(-1.3493332816365444f));
 auto const b0 = math::fma(b1, x, F(0.46517241715590896f));
 return a0 / b0;
 }
-inline static float log_remez_pade_fma_T4_4_float_simd(float x) {
+__forceinline static float log_remez_pade_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -9760,7 +9760,7 @@ return log_remez_pade_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_recip_fma_T4_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_recip_fma_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -9772,7 +9772,7 @@ auto const a0 = math::fma(a1, x, F(-2.358948578075374f));
 auto const r = a0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_recip_fma_T4_0_float_simd(float x) {
+__forceinline static float log_remez_recip_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_recip_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -9780,7 +9780,7 @@ return log_remez_recip_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_recip_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_recip_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -9797,7 +9797,7 @@ auto const b0 = math::fma(b1, x, F(0.09058058418180197f));
 auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_pade_recip_fma_T4_4_float_simd(float x) {
+__forceinline static float log_remez_pade_recip_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_recip_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -9805,7 +9805,7 @@ return log_remez_pade_recip_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F log_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 x = x - F(1.0f);
 auto const a4 = F(0.06023594861140813f);
@@ -9820,7 +9820,7 @@ auto const a0 = math::fma(a1, x, F(-2.743296123602291e-16f));
 auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
-inline static float log_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float log_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -9828,7 +9828,7 @@ return log_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F log_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 x = x - F(1.0f);
 auto const a4 = F(0.05952380952380952f);
@@ -9843,7 +9843,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
-inline static float log_fma_T4_4_float_simd(float x) {
+__forceinline static float log_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -9851,7 +9851,7 @@ return log_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_fma_ec_T5_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_fma_ec_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a5 = F(7.198228311501269e-05f);
 auto const a4 = math::fma(a5, x, F(-0.002787347626791701f));
@@ -9861,7 +9861,7 @@ auto const a1 = math::fma(a2, x, F(1.36964385750853f));
 auto const a0 = math::fma(a1, x, F(-1.0931648846109996f));
 return a0;
 }
-inline static float log_remez_fma_ec_T5_0_float_simd(float x) {
+__forceinline static float log_remez_fma_ec_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_fma_ec_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -9869,7 +9869,7 @@ return log_remez_fma_ec_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const a5 = F(0.000954067849363282f);
 auto const b5 = F(0.00015374941617472232f);
@@ -9885,7 +9885,7 @@ auto const a0 = math::fma(a1, x, F(-0.7416230744457386f));
 auto const b0 = math::fma(b1, x, F(0.22386298979764377f));
 return a0 / b0;
 }
-inline static float log_remez_pade_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float log_remez_pade_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -9893,7 +9893,7 @@ return log_remez_pade_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_recip_fma_ec_T5_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_recip_fma_ec_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -9906,7 +9906,7 @@ auto const a0 = math::fma(a1, x, F(-2.828642031966712f));
 auto const r = a0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_recip_fma_ec_T5_0_float_simd(float x) {
+__forceinline static float log_remez_recip_fma_ec_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_recip_fma_ec_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -9914,7 +9914,7 @@ return log_remez_recip_fma_ec_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_recip_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_recip_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -9933,7 +9933,7 @@ auto const b0 = math::fma(b1, x, F(0.02072753550452679f));
 auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_pade_recip_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float log_remez_pade_recip_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_recip_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -9941,7 +9941,7 @@ return log_remez_pade_recip_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_fma_T5_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_fma_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a5 = F(7.198228311501254e-05f);
 auto const a4 = math::fma(a5, x, F(-0.0027873476267916953f));
@@ -9951,7 +9951,7 @@ auto const a1 = math::fma(a2, x, F(1.369643857508527f));
 auto const a0 = math::fma(a1, x, F(-1.0798866237554652f));
 return a0;
 }
-inline static float log_remez_fma_T5_0_float_simd(float x) {
+__forceinline static float log_remez_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -9959,7 +9959,7 @@ return log_remez_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const a5 = F(0.0009540680082314577f);
 auto const b5 = F(0.00015374941617472232f);
@@ -9975,7 +9975,7 @@ auto const a0 = math::fma(a1, x, F(-0.7416216074480124f));
 auto const b0 = math::fma(b1, x, F(0.22386298979764377f));
 return a0 / b0;
 }
-inline static float log_remez_pade_fma_T5_5_float_simd(float x) {
+__forceinline static float log_remez_pade_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -9983,7 +9983,7 @@ return log_remez_pade_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_recip_fma_T5_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_recip_fma_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -9996,7 +9996,7 @@ auto const a0 = math::fma(a1, x, F(-2.5335762069609067f));
 auto const r = a0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_recip_fma_T5_0_float_simd(float x) {
+__forceinline static float log_remez_recip_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_recip_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -10004,7 +10004,7 @@ return log_remez_recip_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_recip_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_recip_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -10023,7 +10023,7 @@ auto const b0 = math::fma(b1, x, F(0.02072753550452679f));
 auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_pade_recip_fma_T5_5_float_simd(float x) {
+__forceinline static float log_remez_pade_recip_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_recip_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -10031,7 +10031,7 @@ return log_remez_pade_recip_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F log_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 x = x - F(1.0f);
 auto const a5 = F(0.018190480170235824f);
@@ -10048,7 +10048,7 @@ auto const a0 = math::fma(a1, x, F(-2.477981217280081e-16f));
 auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
-inline static float log_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float log_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -10056,7 +10056,7 @@ return log_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F log_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 x = x - F(1.0f);
 auto const a5 = F(0.018121693121693122f);
@@ -10073,7 +10073,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
-inline static float log_fma_T5_5_float_simd(float x) {
+__forceinline static float log_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -10081,7 +10081,7 @@ return log_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_fma_ec_T6_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_fma_ec_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a6 = F(-1.188396341399666e-05f);
 auto const a5 = math::fma(a6, x, F(0.0005372563117072868f));
@@ -10092,7 +10092,7 @@ auto const a1 = math::fma(a2, x, F(1.6658344890459194f));
 auto const a0 = math::fma(a1, x, F(-1.2523719952535337f));
 return a0;
 }
-inline static float log_remez_fma_ec_T6_0_float_simd(float x) {
+__forceinline static float log_remez_fma_ec_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_fma_ec_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -10100,7 +10100,7 @@ return log_remez_fma_ec_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const a6 = F(0.0002659195863516294f);
 auto const b6 = F(4.199098037843147e-05f);
@@ -10118,7 +10118,7 @@ auto const a0 = math::fma(a1, x, F(-0.27684864238475815f));
 auto const b0 = math::fma(b1, x, F(0.07196305835396719f));
 return a0 / b0;
 }
-inline static float log_remez_pade_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float log_remez_pade_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -10126,7 +10126,7 @@ return log_remez_pade_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_recip_fma_ec_T6_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_recip_fma_ec_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -10140,7 +10140,7 @@ auto const a0 = math::fma(a1, x, F(-2.939438182963169f));
 auto const r = a0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_recip_fma_ec_T6_0_float_simd(float x) {
+__forceinline static float log_remez_recip_fma_ec_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_recip_fma_ec_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -10148,7 +10148,7 @@ return log_remez_recip_fma_ec_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_recip_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_recip_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -10169,7 +10169,7 @@ auto const b0 = math::fma(b1, x, F(0.006203985786519479f));
 auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_pade_recip_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float log_remez_pade_recip_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_recip_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -10177,7 +10177,7 @@ return log_remez_pade_recip_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_fma_T6_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_fma_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a6 = F(-1.1823378945972158e-05f);
 auto const a5 = math::fma(a6, x, F(0.0005345173780112055f));
@@ -10188,7 +10188,7 @@ auto const a1 = math::fma(a2, x, F(1.6573420616612262f));
 auto const a0 = math::fma(a1, x, F(-1.2395493157368045f));
 return a0;
 }
-inline static float log_remez_fma_T6_0_float_simd(float x) {
+__forceinline static float log_remez_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -10196,7 +10196,7 @@ return log_remez_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const a6 = F(0.0002659195863516037f);
 auto const b6 = F(4.199098037843147e-05f);
@@ -10214,7 +10214,7 @@ auto const a0 = math::fma(a1, x, F(-0.27684864144546306f));
 auto const b0 = math::fma(b1, x, F(0.07196305835396719f));
 return a0 / b0;
 }
-inline static float log_remez_pade_fma_T6_6_float_simd(float x) {
+__forceinline static float log_remez_pade_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -10222,7 +10222,7 @@ return log_remez_pade_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_recip_fma_T6_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_recip_fma_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -10236,7 +10236,7 @@ auto const a0 = math::fma(a1, x, F(-2.678405328616573f));
 auto const r = a0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_recip_fma_T6_0_float_simd(float x) {
+__forceinline static float log_remez_recip_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_recip_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -10244,7 +10244,7 @@ return log_remez_recip_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_recip_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_recip_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -10265,7 +10265,7 @@ auto const b0 = math::fma(b1, x, F(0.006203985786519479f));
 auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_pade_recip_fma_T6_6_float_simd(float x) {
+__forceinline static float log_remez_pade_recip_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_recip_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -10273,7 +10273,7 @@ return log_remez_pade_recip_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F log_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 x = x - F(1.0f);
 auto const a6 = F(0.005309403156978777f);
@@ -10292,7 +10292,7 @@ auto const a0 = math::fma(a1, x, F(-6.031020149912845e-16f));
 auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
-inline static float log_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float log_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -10300,7 +10300,7 @@ return log_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F log_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 x = x - F(1.0f);
 auto const a6 = F(0.005303030303030303f);
@@ -10319,7 +10319,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
-inline static float log_fma_T6_6_float_simd(float x) {
+__forceinline static float log_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -10327,7 +10327,7 @@ return log_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_fma_ec_T7_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_fma_ec_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a7 = F(1.9917732019761096e-06f);
 auto const a6 = math::fma(a7, x, F(-0.00010313059425366141f));
@@ -10339,7 +10339,7 @@ auto const a1 = math::fma(a2, x, F(1.944096216007342f));
 auto const a0 = math::fma(a1, x, F(-1.380072705236613f));
 return a0;
 }
-inline static float log_remez_fma_ec_T7_0_float_simd(float x) {
+__forceinline static float log_remez_fma_ec_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_fma_ec_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -10347,7 +10347,7 @@ return log_remez_fma_ec_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const a7 = F(1.535134528758929e-05f);
 auto const b7 = F(2.2584630983817254e-06f);
@@ -10367,7 +10367,7 @@ auto const a0 = math::fma(a1, x, F(-0.20090115205611367f));
 auto const b0 = math::fma(b1, x, F(0.05084911482351578f));
 return a0 / b0;
 }
-inline static float log_remez_pade_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float log_remez_pade_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -10375,7 +10375,7 @@ return log_remez_pade_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_recip_fma_ec_T7_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_recip_fma_ec_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -10390,7 +10390,7 @@ auto const a0 = math::fma(a1, x, F(-2.975428066513204f));
 auto const r = a0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_recip_fma_ec_T7_0_float_simd(float x) {
+__forceinline static float log_remez_recip_fma_ec_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_recip_fma_ec_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -10398,7 +10398,7 @@ return log_remez_recip_fma_ec_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_recip_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_recip_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -10421,7 +10421,7 @@ auto const b0 = math::fma(b1, x, F(0.0030382740801288425f));
 auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_pade_recip_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float log_remez_pade_recip_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_recip_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -10429,7 +10429,7 @@ return log_remez_pade_recip_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_fma_T7_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_fma_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a7 = F(1.9917732019760655e-06f);
 auto const a6 = math::fma(a7, x, F(-0.00010313059425365914f));
@@ -10441,7 +10441,7 @@ auto const a1 = math::fma(a2, x, F(1.9440962160072992f));
 auto const a0 = math::fma(a1, x, F(-1.3768935544154177f));
 return a0;
 }
-inline static float log_remez_fma_T7_0_float_simd(float x) {
+__forceinline static float log_remez_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -10449,7 +10449,7 @@ return log_remez_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const a7 = F(1.5351345288430056e-05f);
 auto const b7 = F(2.2584630983817254e-06f);
@@ -10469,7 +10469,7 @@ auto const a0 = math::fma(a1, x, F(-0.20090115099299682f));
 auto const b0 = math::fma(b1, x, F(0.05084911482351578f));
 return a0 / b0;
 }
-inline static float log_remez_pade_fma_T7_7_float_simd(float x) {
+__forceinline static float log_remez_pade_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -10477,7 +10477,7 @@ return log_remez_pade_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_recip_fma_T7_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_recip_fma_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -10492,7 +10492,7 @@ auto const a0 = math::fma(a1, x, F(-2.802592880301978f));
 auto const r = a0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_recip_fma_T7_0_float_simd(float x) {
+__forceinline static float log_remez_recip_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_recip_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -10500,7 +10500,7 @@ return log_remez_recip_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_recip_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_recip_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -10523,7 +10523,7 @@ auto const b0 = math::fma(b1, x, F(0.0030382740801288425f));
 auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_pade_recip_fma_T7_7_float_simd(float x) {
+__forceinline static float log_remez_pade_recip_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_recip_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -10531,7 +10531,7 @@ return log_remez_pade_recip_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F log_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 x = x - F(1.0f);
 auto const a7 = F(0.0015115622874082512f);
@@ -10552,7 +10552,7 @@ auto const a0 = math::fma(a1, x, F(4.966844503191319e-16f));
 auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
-inline static float log_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float log_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -10560,7 +10560,7 @@ return log_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F log_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 x = x - F(1.0f);
 auto const a7 = F(0.001510989010989011f);
@@ -10581,7 +10581,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
-inline static float log_fma_T7_7_float_simd(float x) {
+__forceinline static float log_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -10589,7 +10589,7 @@ return log_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_fma_ec_T8_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_fma_ec_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a8 = F(-3.422579202394614e-07f);
 auto const a7 = math::fma(a8, x, F(1.9986852327037112e-05f));
@@ -10602,7 +10602,7 @@ auto const a1 = math::fma(a2, x, F(2.2329585658085973f));
 auto const a0 = math::fma(a1, x, F(-1.5009253727499972f));
 return a0;
 }
-inline static float log_remez_fma_ec_T8_0_float_simd(float x) {
+__forceinline static float log_remez_fma_ec_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_fma_ec_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -10610,7 +10610,7 @@ return log_remez_fma_ec_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const a8 = F(1.6621199411867534e-06f);
 auto const b8 = F(2.347189675619232e-07f);
@@ -10632,7 +10632,7 @@ auto const a0 = math::fma(a1, x, F(-0.10595536965923338f));
 auto const b0 = math::fma(b1, x, F(0.025163179981830083f));
 return a0 / b0;
 }
-inline static float log_remez_pade_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float log_remez_pade_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -10640,7 +10640,7 @@ return log_remez_pade_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_recip_fma_ec_T8_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_recip_fma_ec_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -10656,7 +10656,7 @@ auto const a0 = math::fma(a1, x, F(-3.075466249971794f));
 auto const r = a0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_recip_fma_ec_T8_0_float_simd(float x) {
+__forceinline static float log_remez_recip_fma_ec_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_recip_fma_ec_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -10664,7 +10664,7 @@ return log_remez_recip_fma_ec_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_recip_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_recip_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -10689,7 +10689,7 @@ auto const b0 = math::fma(b1, x, F(0.0011768344401066405f));
 auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_pade_recip_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float log_remez_pade_recip_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_recip_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -10697,7 +10697,7 @@ return log_remez_pade_recip_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_fma_T8_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_fma_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a8 = F(-3.4182643812854507e-07f);
 auto const a7 = math::fma(a8, x, F(1.9961655045330353e-05f));
@@ -10710,7 +10710,7 @@ auto const a1 = math::fma(a2, x, F(2.230143490923289f));
 auto const a0 = math::fma(a1, x, F(-1.4974410828587126f));
 return a0;
 }
-inline static float log_remez_fma_T8_0_float_simd(float x) {
+__forceinline static float log_remez_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -10718,7 +10718,7 @@ return log_remez_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const a8 = F(1.662119941198657e-06f);
 auto const b8 = F(2.347189675619232e-07f);
@@ -10740,7 +10740,7 @@ auto const a0 = math::fma(a1, x, F(-0.1059553695926034f));
 auto const b0 = math::fma(b1, x, F(0.025163179981830083f));
 return a0 / b0;
 }
-inline static float log_remez_pade_fma_T8_8_float_simd(float x) {
+__forceinline static float log_remez_pade_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -10748,7 +10748,7 @@ return log_remez_pade_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_recip_fma_T8_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_recip_fma_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -10764,7 +10764,7 @@ auto const a0 = math::fma(a1, x, F(-2.9115866913516366f));
 auto const r = a0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_recip_fma_T8_0_float_simd(float x) {
+__forceinline static float log_remez_recip_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_recip_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -10772,7 +10772,7 @@ return log_remez_recip_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_recip_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_recip_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -10797,7 +10797,7 @@ auto const b0 = math::fma(b1, x, F(0.0011768344401066405f));
 auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_pade_recip_fma_T8_8_float_simd(float x) {
+__forceinline static float log_remez_pade_recip_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_recip_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -10805,7 +10805,7 @@ return log_remez_pade_recip_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F log_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 x = x - F(1.0f);
 auto const a8 = F(0.0004224058990164251f);
@@ -10828,7 +10828,7 @@ auto const a0 = math::fma(a1, x, F(-6.47996564362974e-16f));
 auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
-inline static float log_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float log_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -10836,7 +10836,7 @@ return log_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F log_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 x = x - F(1.0f);
 auto const a8 = F(0.00042235542235542236f);
@@ -10859,7 +10859,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
-inline static float log_fma_T8_8_float_simd(float x) {
+__forceinline static float log_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -10867,7 +10867,7 @@ return log_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_fma_ec_T9_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_fma_ec_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a9 = F(5.9505635621045036e-08f);
 auto const a8 = math::fma(a9, x, F(-3.870664052954929e-06f));
@@ -10881,7 +10881,7 @@ auto const a1 = math::fma(a2, x, F(2.5156568825879377f));
 auto const a0 = math::fma(a1, x, F(-1.6056858059777708f));
 return a0;
 }
-inline static float log_remez_fma_ec_T9_0_float_simd(float x) {
+__forceinline static float log_remez_fma_ec_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_fma_ec_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -10889,7 +10889,7 @@ return log_remez_fma_ec_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const a9 = F(2.937673637208641e-07f);
 auto const b9 = F(4.0614194281263244e-08f);
@@ -10913,7 +10913,7 @@ auto const a0 = math::fma(a1, x, F(-0.04873972402662848f));
 auto const b0 = math::fma(b1, x, F(0.010919293395678766f));
 return a0 / b0;
 }
-inline static float log_remez_pade_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float log_remez_pade_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -10921,7 +10921,7 @@ return log_remez_pade_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_recip_fma_ec_T9_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_recip_fma_ec_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -10938,7 +10938,7 @@ auto const a0 = math::fma(a1, x, F(-3.114571205092937f));
 auto const r = a0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_recip_fma_ec_T9_0_float_simd(float x) {
+__forceinline static float log_remez_recip_fma_ec_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_recip_fma_ec_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -10946,7 +10946,7 @@ return log_remez_recip_fma_ec_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_recip_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_recip_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -10973,7 +10973,7 @@ auto const b0 = math::fma(b1, x, F(0.00013141114316558164f));
 auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_pade_recip_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float log_remez_pade_recip_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_recip_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -10981,7 +10981,7 @@ return log_remez_pade_recip_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_fma_T9_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_fma_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a9 = F(5.9505635621052216e-08f);
 auto const a8 = math::fma(a9, x, F(-3.870664052955396e-06f));
@@ -10995,7 +10995,7 @@ auto const a1 = math::fma(a2, x, F(2.5156568825882415f));
 auto const a0 = math::fma(a1, x, F(-1.6048795712766586f));
 return a0;
 }
-inline static float log_remez_fma_T9_0_float_simd(float x) {
+__forceinline static float log_remez_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -11003,7 +11003,7 @@ return log_remez_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const a9 = F(2.9376736372086965e-07f);
 auto const b9 = F(4.0614194281263244e-08f);
@@ -11027,7 +11027,7 @@ auto const a0 = math::fma(a1, x, F(-0.048739724026167414f));
 auto const b0 = math::fma(b1, x, F(0.010919293395678766f));
 return a0 / b0;
 }
-inline static float log_remez_pade_fma_T9_9_float_simd(float x) {
+__forceinline static float log_remez_pade_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -11035,7 +11035,7 @@ return log_remez_pade_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_recip_fma_T9_0(in_t(F) x) {
+__forceinline constexpr static F log_remez_recip_fma_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -11052,7 +11052,7 @@ auto const a0 = math::fma(a1, x, F(-3.0088900529396336f));
 auto const r = a0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_recip_fma_T9_0_float_simd(float x) {
+__forceinline static float log_remez_recip_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_recip_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -11060,7 +11060,7 @@ return log_remez_recip_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_remez_pade_recip_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F log_remez_pade_recip_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto m = x < F(1.0f);
 x = math::blend(x,  F(1.0f) / x, m);
@@ -11087,7 +11087,7 @@ auto const b0 = math::fma(b1, x, F(0.00013141114316558164f));
 auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
-inline static float log_remez_pade_recip_fma_T9_9_float_simd(float x) {
+__forceinline static float log_remez_pade_recip_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_remez_pade_recip_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -11095,7 +11095,7 @@ return log_remez_pade_recip_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F log_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 x = x - F(1.0f);
 auto const a9 = F(0.00011637493114605042f);
@@ -11120,7 +11120,7 @@ auto const a0 = math::fma(a1, x, F(-3.4820908102524237e-15f));
 auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
-inline static float log_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float log_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -11128,7 +11128,7 @@ return log_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F log_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F log_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 x = x - F(1.0f);
 auto const a9 = F(0.00011637055754702813f);
@@ -11153,7 +11153,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
-inline static float log_fma_T9_9_float_simd(float x) {
+__forceinline static float log_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return log_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -11161,7 +11161,7 @@ return log_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F exp_special_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a2 = F(0.025688711116697058f);
@@ -11175,7 +11175,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float exp_special_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -11183,7 +11183,7 @@ return exp_special_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_fma_ec_T3_0(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_fma_ec_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a3 = F(-0.07815580645110079f);
 auto const a2 = math::fma(a3, x, F(-0.00013837286527879078f));
@@ -11195,7 +11195,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_fma_ec_T3_0_float_simd(float x) {
+__forceinline static float exp_special_remez_fma_ec_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_fma_ec_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -11203,7 +11203,7 @@ return exp_special_remez_fma_ec_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_pade_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_pade_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const a3 = F(0.02105630982657341f);
 auto const b3 = F(0.003623809412367456f);
@@ -11219,7 +11219,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_pade_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float exp_special_remez_pade_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_pade_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -11227,7 +11227,7 @@ return exp_special_remez_pade_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F exp_special_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a2 = F(0.02570115212202806f);
@@ -11241,7 +11241,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_fma_T3_3_float_simd(float x) {
+__forceinline static float exp_special_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -11249,7 +11249,7 @@ return exp_special_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_fma_T3_0(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_fma_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a3 = F(-0.07815580645110079f);
 auto const a2 = math::fma(a3, x, F(-0.00013837286527879078f));
@@ -11261,7 +11261,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_fma_T3_0_float_simd(float x) {
+__forceinline static float exp_special_remez_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -11269,7 +11269,7 @@ return exp_special_remez_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_pade_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_pade_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const a3 = F(0.02105645237385702f);
 auto const b3 = F(0.003623809412367456f);
@@ -11285,7 +11285,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_pade_fma_T3_3_float_simd(float x) {
+__forceinline static float exp_special_remez_pade_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_pade_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -11293,7 +11293,7 @@ return exp_special_remez_pade_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F exp_special_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a2 = F(0.03671623613558836f);
@@ -11308,7 +11308,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float exp_special_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -11316,7 +11316,7 @@ return exp_special_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_fma_ec_T4_0(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_fma_ec_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a4 = F(0.009225772129941376f);
 auto const a3 = math::fma(a4, x, F(-0.08618024449314111f));
@@ -11329,7 +11329,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_fma_ec_T4_0_float_simd(float x) {
+__forceinline static float exp_special_remez_fma_ec_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_fma_ec_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -11337,7 +11337,7 @@ return exp_special_remez_fma_ec_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_pade_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_pade_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const a4 = F(0.00024088266815839131f);
 auto const b4 = F(0.005520756631051496f);
@@ -11355,7 +11355,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_pade_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float exp_special_remez_pade_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_pade_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -11363,7 +11363,7 @@ return exp_special_remez_pade_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F exp_special_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a2 = F(0.0367159316028971f);
@@ -11378,7 +11378,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_fma_T4_4_float_simd(float x) {
+__forceinline static float exp_special_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -11386,7 +11386,7 @@ return exp_special_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_fma_T4_0(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_fma_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a4 = F(0.009170966777003495f);
 auto const a3 = math::fma(a4, x, F(-0.08566829398653898f));
@@ -11399,7 +11399,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_fma_T4_0_float_simd(float x) {
+__forceinline static float exp_special_remez_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -11407,7 +11407,7 @@ return exp_special_remez_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_pade_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_pade_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const a4 = F(0.00024088266168613477f);
 auto const b4 = F(0.005520756631051496f);
@@ -11425,7 +11425,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_pade_fma_T4_4_float_simd(float x) {
+__forceinline static float exp_special_remez_pade_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_pade_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -11433,7 +11433,7 @@ return exp_special_remez_pade_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F exp_special_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a3 = F(0.0003430266799891166f);
@@ -11449,7 +11449,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float exp_special_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -11457,7 +11457,7 @@ return exp_special_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_fma_ec_T5_0(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_fma_ec_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a5 = F(0.021129830116006863f);
 auto const a4 = math::fma(a5, x, F(0.00010476298149550568f));
@@ -11471,7 +11471,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_fma_ec_T5_0_float_simd(float x) {
+__forceinline static float exp_special_remez_fma_ec_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_fma_ec_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -11479,7 +11479,7 @@ return exp_special_remez_fma_ec_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_pade_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_pade_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const a5 = F(0.0002813818338019763f);
 auto const b5 = F(4.953668026790214e-05f);
@@ -11499,7 +11499,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_pade_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float exp_special_remez_pade_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_pade_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -11507,7 +11507,7 @@ return exp_special_remez_pade_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F exp_special_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a3 = F(0.00034302671209318625f);
@@ -11523,7 +11523,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_fma_T5_5_float_simd(float x) {
+__forceinline static float exp_special_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -11531,7 +11531,7 @@ return exp_special_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_fma_T5_0(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_fma_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a5 = F(0.021129830116006863f);
 auto const a4 = math::fma(a5, x, F(0.00010476298149550568f));
@@ -11545,7 +11545,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_fma_T5_0_float_simd(float x) {
+__forceinline static float exp_special_remez_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -11553,7 +11553,7 @@ return exp_special_remez_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_pade_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_pade_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const a5 = F(0.0002813818338212173f);
 auto const b5 = F(4.953668026790214e-05f);
@@ -11573,7 +11573,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_pade_fma_T5_5_float_simd(float x) {
+__forceinline static float exp_special_remez_pade_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_pade_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -11581,7 +11581,7 @@ return exp_special_remez_pade_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F exp_special_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a3 = F(0.0006548691781180881f);
@@ -11598,7 +11598,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float exp_special_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -11606,7 +11606,7 @@ return exp_special_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_fma_ec_T6_0(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_fma_ec_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a6 = F(-0.0036734612595722433f);
 auto const a5 = math::fma(a6, x, F(0.024513524785943822f));
@@ -11621,7 +11621,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_fma_ec_T6_0_float_simd(float x) {
+__forceinline static float exp_special_remez_fma_ec_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_fma_ec_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -11629,7 +11629,7 @@ return exp_special_remez_fma_ec_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_pade_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_pade_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const a6 = F(2.047489348478626e-06f);
 auto const b6 = F(4.6797863505762384e-05f);
@@ -11651,7 +11651,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_pade_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float exp_special_remez_pade_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_pade_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -11659,7 +11659,7 @@ return exp_special_remez_pade_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F exp_special_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a3 = F(0.0006548691776282478f);
@@ -11676,7 +11676,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_fma_T6_6_float_simd(float x) {
+__forceinline static float exp_special_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -11684,7 +11684,7 @@ return exp_special_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_fma_T6_0(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_fma_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a6 = F(-0.0036752810650293325f);
 auto const a5 = math::fma(a6, x, F(0.024525668604273663f));
@@ -11699,7 +11699,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_fma_T6_0_float_simd(float x) {
+__forceinline static float exp_special_remez_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -11707,7 +11707,7 @@ return exp_special_remez_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_pade_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_pade_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const a6 = F(2.0474893484786018e-06f);
 auto const b6 = F(4.6797863505762384e-05f);
@@ -11729,7 +11729,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_pade_fma_T6_6_float_simd(float x) {
+__forceinline static float exp_special_remez_pade_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_pade_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -11737,7 +11737,7 @@ return exp_special_remez_pade_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F exp_special_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a4 = F(2.0170088422720124e-06f);
@@ -11755,7 +11755,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float exp_special_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -11763,7 +11763,7 @@ return exp_special_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_fma_ec_T7_0(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_fma_ec_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a7 = F(-0.005749311646907733f);
 auto const a6 = math::fma(a7, x, F(-0.00015307403746652273f));
@@ -11779,7 +11779,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_fma_ec_T7_0_float_simd(float x) {
+__forceinline static float exp_special_remez_fma_ec_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_fma_ec_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -11787,7 +11787,7 @@ return exp_special_remez_fma_ec_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_pade_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_pade_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const a7 = F(1.6524533142134001e-06f);
 auto const b7 = F(2.3123023144118206e-07f);
@@ -11811,7 +11811,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_pade_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float exp_special_remez_pade_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_pade_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -11819,7 +11819,7 @@ return exp_special_remez_pade_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F exp_special_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a4 = F(2.0170088422897386e-06f);
@@ -11837,7 +11837,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_fma_T7_7_float_simd(float x) {
+__forceinline static float exp_special_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -11845,7 +11845,7 @@ return exp_special_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_fma_T7_0(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_fma_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a7 = F(-0.005749311646907734f);
 auto const a6 = math::fma(a7, x, F(-0.00015307403746652276f));
@@ -11861,7 +11861,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_fma_T7_0_float_simd(float x) {
+__forceinline static float exp_special_remez_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -11869,7 +11869,7 @@ return exp_special_remez_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_pade_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_pade_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const a7 = F(1.6524533142134e-06f);
 auto const b7 = F(2.3123023144118206e-07f);
@@ -11893,7 +11893,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_pade_fma_T7_7_float_simd(float x) {
+__forceinline static float exp_special_remez_pade_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_pade_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -11901,7 +11901,7 @@ return exp_special_remez_pade_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F exp_special_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a4 = F(4.8408205648749e-06f);
@@ -11920,7 +11920,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float exp_special_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -11928,7 +11928,7 @@ return exp_special_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_fma_ec_T8_0(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_fma_ec_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a8 = F(0.0013399985335680411f);
 auto const a7 = math::fma(a8, x, F(-0.007188004272479266f));
@@ -11945,7 +11945,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_fma_ec_T8_0_float_simd(float x) {
+__forceinline static float exp_special_remez_fma_ec_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_fma_ec_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -11953,7 +11953,7 @@ return exp_special_remez_fma_ec_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_pade_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_pade_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const a8 = F(9.193831898388582e-09f);
 auto const b8 = F(2.0242801629874293e-07f);
@@ -11979,7 +11979,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_pade_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float exp_special_remez_pade_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_pade_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -11987,7 +11987,7 @@ return exp_special_remez_pade_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F exp_special_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a4 = F(4.840820565732429e-06f);
@@ -12006,7 +12006,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_fma_T8_8_float_simd(float x) {
+__forceinline static float exp_special_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -12014,7 +12014,7 @@ return exp_special_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_fma_T8_0(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_fma_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a8 = F(0.001339943554230543f);
 auto const a7 = math::fma(a8, x, F(-0.007187709352967839f));
@@ -12031,7 +12031,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_fma_T8_0_float_simd(float x) {
+__forceinline static float exp_special_remez_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -12039,7 +12039,7 @@ return exp_special_remez_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_pade_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_pade_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const a8 = F(9.193831898388582e-09f);
 auto const b8 = F(2.0242801629874293e-07f);
@@ -12065,7 +12065,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_pade_fma_T8_8_float_simd(float x) {
+__forceinline static float exp_special_remez_pade_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_pade_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -12073,7 +12073,7 @@ return exp_special_remez_pade_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F exp_special_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a5 = F(6.651191384264798e-09f);
@@ -12093,7 +12093,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float exp_special_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -12101,7 +12101,7 @@ return exp_special_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_fma_ec_T9_0(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_fma_ec_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a9 = F(0.0015532202878710882f);
 auto const a8 = math::fma(a9, x, F(0.00010424695593965971f));
@@ -12119,7 +12119,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_fma_ec_T9_0_float_simd(float x) {
+__forceinline static float exp_special_remez_fma_ec_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_fma_ec_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -12127,7 +12127,7 @@ return exp_special_remez_fma_ec_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_pade_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_pade_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const a9 = F(5.469667459208664e-09f);
 auto const b9 = F(1.1285995645061046e-09f);
@@ -12155,7 +12155,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_pade_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float exp_special_remez_pade_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_pade_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -12163,7 +12163,7 @@ return exp_special_remez_pade_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F exp_special_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a5 = F(6.651191597484285e-09f);
@@ -12183,7 +12183,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_fma_T9_9_float_simd(float x) {
+__forceinline static float exp_special_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -12191,7 +12191,7 @@ return exp_special_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_fma_T9_0(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_fma_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const a9 = F(0.0015532202878710882f);
 auto const a8 = math::fma(a9, x, F(0.00010424695593965971f));
@@ -12209,7 +12209,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_fma_T9_0_float_simd(float x) {
+__forceinline static float exp_special_remez_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -12217,7 +12217,7 @@ return exp_special_remez_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F exp_special_remez_pade_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F exp_special_remez_pade_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const a9 = F(5.469667459208664e-09f);
 auto const b9 = F(1.1285995645061046e-09f);
@@ -12245,7 +12245,7 @@ a *= a;
 a *= a;
 return a;
 }
-inline static float exp_special_remez_pade_fma_T9_9_float_simd(float x) {
+__forceinline static float exp_special_remez_pade_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return exp_special_remez_pade_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -12253,7 +12253,7 @@ return exp_special_remez_pade_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F tan_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a2 = F(-0.07373291475645334f);
@@ -12263,7 +12263,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float tan_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float tan_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -12271,7 +12271,7 @@ return tan_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_ec_T3_0(in_t(F) x) {
+__forceinline constexpr static F tan_remez_remez_abs_fma_ec_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12281,7 +12281,7 @@ auto const a1 = math::fma(a2, x, F(-6.879281817848549f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_ec_T3_0_float_simd(float x) {
+__forceinline static float tan_remez_remez_abs_fma_ec_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_remez_abs_fma_ec_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -12289,7 +12289,7 @@ return tan_remez_remez_abs_fma_ec_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_pade_abs_fma_ec_T3_3(in_t(F) x) {
+__forceinline constexpr static F tan_remez_pade_abs_fma_ec_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12303,7 +12303,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(1.2540230636812253f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tan_remez_pade_abs_fma_ec_T3_3_float_simd(float x) {
+__forceinline static float tan_remez_pade_abs_fma_ec_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_pade_abs_fma_ec_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -12311,7 +12311,7 @@ return tan_remez_pade_abs_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F tan_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a2 = F(-0.06666666666666667f);
@@ -12321,7 +12321,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float tan_fma_T3_3_float_simd(float x) {
+__forceinline static float tan_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -12329,7 +12329,7 @@ return tan_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_T3_0(in_t(F) x) {
+__forceinline constexpr static F tan_remez_remez_abs_fma_T3_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12339,7 +12339,7 @@ auto const a1 = math::fma(a2, x, F(-5.397944808680969f));
 auto const a0 = math::fma(a1, x, F(0.47337233813210294f));
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_T3_0_float_simd(float x) {
+__forceinline static float tan_remez_remez_abs_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_remez_abs_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
@@ -12347,7 +12347,7 @@ return tan_remez_remez_abs_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_pade_abs_fma_T3_3(in_t(F) x) {
+__forceinline constexpr static F tan_remez_pade_abs_fma_T3_3(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12361,7 +12361,7 @@ auto const a0 = math::fma(a1, x, F(0.00015995615198299002f));
 auto const b0 = math::fma(b1, x, F(1.2540230636812253f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tan_remez_pade_abs_fma_T3_3_float_simd(float x) {
+__forceinline static float tan_remez_pade_abs_fma_T3_3_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_pade_abs_fma_T3_3<cr::simd::float1x4>(x)[0];
 #else
@@ -12369,7 +12369,7 @@ return tan_remez_pade_abs_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F tan_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a2 = F(-0.09563733586104908f);
@@ -12380,7 +12380,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float tan_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float tan_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -12388,7 +12388,7 @@ return tan_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_ec_T4_0(in_t(F) x) {
+__forceinline constexpr static F tan_remez_remez_abs_fma_ec_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12399,7 +12399,7 @@ auto const a1 = math::fma(a2, x, F(-6.518957355343527f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_ec_T4_0_float_simd(float x) {
+__forceinline static float tan_remez_remez_abs_fma_ec_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_remez_abs_fma_ec_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -12407,7 +12407,7 @@ return tan_remez_remez_abs_fma_ec_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_pade_abs_fma_ec_T4_4(in_t(F) x) {
+__forceinline constexpr static F tan_remez_pade_abs_fma_ec_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12423,7 +12423,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(1.2683743067387852f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tan_remez_pade_abs_fma_ec_T4_4_float_simd(float x) {
+__forceinline static float tan_remez_pade_abs_fma_ec_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_pade_abs_fma_ec_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -12431,7 +12431,7 @@ return tan_remez_pade_abs_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F tan_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a2 = F(-0.09523809523809523f);
@@ -12442,7 +12442,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float tan_fma_T4_4_float_simd(float x) {
+__forceinline static float tan_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -12450,7 +12450,7 @@ return tan_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_T4_0(in_t(F) x) {
+__forceinline constexpr static F tan_remez_remez_abs_fma_T4_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12461,7 +12461,7 @@ auto const a1 = math::fma(a2, x, F(-5.302793448172829f));
 auto const a0 = math::fma(a1, x, F(-6.99297652010507e-15f));
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_T4_0_float_simd(float x) {
+__forceinline static float tan_remez_remez_abs_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_remez_abs_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
@@ -12469,7 +12469,7 @@ return tan_remez_remez_abs_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_pade_abs_fma_T4_4(in_t(F) x) {
+__forceinline constexpr static F tan_remez_pade_abs_fma_T4_4(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12485,7 +12485,7 @@ auto const a0 = math::fma(a1, x, F(1.4364329389538882e-06f));
 auto const b0 = math::fma(b1, x, F(1.2683743067387852f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tan_remez_pade_abs_fma_T4_4_float_simd(float x) {
+__forceinline static float tan_remez_pade_abs_fma_T4_4_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_pade_abs_fma_T4_4<cr::simd::float1x4>(x)[0];
 #else
@@ -12493,7 +12493,7 @@ return tan_remez_pade_abs_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F tan_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a3 = F(0.0010583076248393342f);
@@ -12505,7 +12505,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float tan_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float tan_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -12513,7 +12513,7 @@ return tan_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_ec_T5_0(in_t(F) x) {
+__forceinline constexpr static F tan_remez_remez_abs_fma_ec_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12525,7 +12525,7 @@ auto const a1 = math::fma(a2, x, F(5.792727067468619f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_ec_T5_0_float_simd(float x) {
+__forceinline static float tan_remez_remez_abs_fma_ec_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_remez_abs_fma_ec_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -12533,7 +12533,7 @@ return tan_remez_remez_abs_fma_ec_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_pade_abs_fma_ec_T5_5(in_t(F) x) {
+__forceinline constexpr static F tan_remez_pade_abs_fma_ec_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12551,7 +12551,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(1.2765480175068256f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tan_remez_pade_abs_fma_ec_T5_5_float_simd(float x) {
+__forceinline static float tan_remez_pade_abs_fma_ec_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_pade_abs_fma_ec_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -12559,7 +12559,7 @@ return tan_remez_pade_abs_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F tan_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a3 = F(0.0010582010582010583f);
@@ -12571,7 +12571,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float tan_fma_T5_5_float_simd(float x) {
+__forceinline static float tan_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -12579,7 +12579,7 @@ return tan_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_T5_0(in_t(F) x) {
+__forceinline constexpr static F tan_remez_remez_abs_fma_T5_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12591,7 +12591,7 @@ auto const a1 = math::fma(a2, x, F(6.322554950617045f));
 auto const a0 = math::fma(a1, x, F(0.11925021509573677f));
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_T5_0_float_simd(float x) {
+__forceinline static float tan_remez_remez_abs_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_remez_abs_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
@@ -12599,7 +12599,7 @@ return tan_remez_remez_abs_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_pade_abs_fma_T5_5(in_t(F) x) {
+__forceinline constexpr static F tan_remez_pade_abs_fma_T5_5(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12617,7 +12617,7 @@ auto const a0 = math::fma(a1, x, F(8.460936839136726e-09f));
 auto const b0 = math::fma(b1, x, F(1.2765480175068256f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tan_remez_pade_abs_fma_T5_5_float_simd(float x) {
+__forceinline static float tan_remez_pade_abs_fma_T5_5_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_pade_abs_fma_T5_5<cr::simd::float1x4>(x)[0];
 #else
@@ -12625,7 +12625,7 @@ return tan_remez_pade_abs_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F tan_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a3 = F(0.002020205337392043f);
@@ -12638,7 +12638,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float tan_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float tan_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -12646,7 +12646,7 @@ return tan_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_ec_T6_0(in_t(F) x) {
+__forceinline constexpr static F tan_remez_remez_abs_fma_ec_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12659,7 +12659,7 @@ auto const a1 = math::fma(a2, x, F(7.030317631834436f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_ec_T6_0_float_simd(float x) {
+__forceinline static float tan_remez_remez_abs_fma_ec_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_remez_abs_fma_ec_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -12667,7 +12667,7 @@ return tan_remez_remez_abs_fma_ec_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_pade_abs_fma_ec_T6_6(in_t(F) x) {
+__forceinline constexpr static F tan_remez_pade_abs_fma_ec_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12687,7 +12687,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(1.2819116400826853f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tan_remez_pade_abs_fma_ec_T6_6_float_simd(float x) {
+__forceinline static float tan_remez_pade_abs_fma_ec_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_pade_abs_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -12695,7 +12695,7 @@ return tan_remez_pade_abs_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F tan_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a3 = F(0.00202020202020202f);
@@ -12708,7 +12708,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float tan_fma_T6_6_float_simd(float x) {
+__forceinline static float tan_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -12716,7 +12716,7 @@ return tan_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_T6_0(in_t(F) x) {
+__forceinline constexpr static F tan_remez_remez_abs_fma_T6_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12729,7 +12729,7 @@ auto const a1 = math::fma(a2, x, F(6.319183368533636f));
 auto const a0 = math::fma(a1, x, F(-4.030582117717073e-16f));
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_T6_0_float_simd(float x) {
+__forceinline static float tan_remez_remez_abs_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_remez_abs_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
@@ -12737,7 +12737,7 @@ return tan_remez_remez_abs_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_pade_abs_fma_T6_6(in_t(F) x) {
+__forceinline constexpr static F tan_remez_pade_abs_fma_T6_6(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12757,7 +12757,7 @@ auto const a0 = math::fma(a1, x, F(3.3922555432661975e-11f));
 auto const b0 = math::fma(b1, x, F(1.2819116400826853f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tan_remez_pade_abs_fma_T6_6_float_simd(float x) {
+__forceinline static float tan_remez_pade_abs_fma_T6_6_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_pade_abs_fma_T6_6<cr::simd::float1x4>(x)[0];
 #else
@@ -12765,7 +12765,7 @@ return tan_remez_pade_abs_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F tan_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a4 = F(-7.400007543783827e-06f);
@@ -12779,7 +12779,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float tan_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float tan_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -12787,7 +12787,7 @@ return tan_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_ec_T7_0(in_t(F) x) {
+__forceinline constexpr static F tan_remez_remez_abs_fma_ec_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12801,7 +12801,7 @@ auto const a1 = math::fma(a2, x, F(-2.752793579185818f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_ec_T7_0_float_simd(float x) {
+__forceinline static float tan_remez_remez_abs_fma_ec_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_remez_abs_fma_ec_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -12809,7 +12809,7 @@ return tan_remez_remez_abs_fma_ec_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_pade_abs_fma_ec_T7_7(in_t(F) x) {
+__forceinline constexpr static F tan_remez_pade_abs_fma_ec_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12831,7 +12831,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(1.2856669145693667f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tan_remez_pade_abs_fma_ec_T7_7_float_simd(float x) {
+__forceinline static float tan_remez_pade_abs_fma_ec_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_pade_abs_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -12839,7 +12839,7 @@ return tan_remez_pade_abs_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F tan_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a4 = F(-7.4000074000074e-06f);
@@ -12853,7 +12853,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float tan_fma_T7_7_float_simd(float x) {
+__forceinline static float tan_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -12861,7 +12861,7 @@ return tan_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_T7_0(in_t(F) x) {
+__forceinline constexpr static F tan_remez_remez_abs_fma_T7_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12875,7 +12875,7 @@ auto const a1 = math::fma(a2, x, F(-2.909929037621959f));
 auto const a0 = math::fma(a1, x, F(-0.03693893530573159f));
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_T7_0_float_simd(float x) {
+__forceinline static float tan_remez_remez_abs_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_remez_abs_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
@@ -12883,7 +12883,7 @@ return tan_remez_remez_abs_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_pade_abs_fma_T7_7(in_t(F) x) {
+__forceinline constexpr static F tan_remez_pade_abs_fma_T7_7(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12905,7 +12905,7 @@ auto const a0 = math::fma(a1, x, F(1.5922780805748197e-14f));
 auto const b0 = math::fma(b1, x, F(1.2856669145693667f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tan_remez_pade_abs_fma_T7_7_float_simd(float x) {
+__forceinline static float tan_remez_pade_abs_fma_T7_7_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_pade_abs_fma_T7_7<cr::simd::float1x4>(x)[0];
 #else
@@ -12913,7 +12913,7 @@ return tan_remez_pade_abs_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F tan_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a4 = F(-1.7760017763120303e-05f);
@@ -12928,7 +12928,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float tan_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float tan_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -12936,7 +12936,7 @@ return tan_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_ec_T8_0(in_t(F) x) {
+__forceinline constexpr static F tan_remez_remez_abs_fma_ec_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12951,7 +12951,7 @@ auto const a1 = math::fma(a2, x, F(-3.084561376195897f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_ec_T8_0_float_simd(float x) {
+__forceinline static float tan_remez_remez_abs_fma_ec_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_remez_abs_fma_ec_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -12959,7 +12959,7 @@ return tan_remez_remez_abs_fma_ec_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_pade_abs_fma_ec_T8_8(in_t(F) x) {
+__forceinline constexpr static F tan_remez_pade_abs_fma_ec_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -12983,7 +12983,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(1.288469011478627f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tan_remez_pade_abs_fma_ec_T8_8_float_simd(float x) {
+__forceinline static float tan_remez_pade_abs_fma_ec_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_pade_abs_fma_ec_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -12991,7 +12991,7 @@ return tan_remez_pade_abs_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F tan_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a4 = F(-1.776001776001776e-05f);
@@ -13006,7 +13006,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
-inline static float tan_fma_T8_8_float_simd(float x) {
+__forceinline static float tan_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -13014,7 +13014,7 @@ return tan_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_T8_0(in_t(F) x) {
+__forceinline constexpr static F tan_remez_remez_abs_fma_T8_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -13029,7 +13029,7 @@ auto const a1 = math::fma(a2, x, F(-2.9153831094030753f));
 auto const a0 = math::fma(a1, x, F(4.515987303590891e-14f));
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_T8_0_float_simd(float x) {
+__forceinline static float tan_remez_remez_abs_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_remez_abs_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
@@ -13037,7 +13037,7 @@ return tan_remez_remez_abs_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_pade_abs_fma_T8_8(in_t(F) x) {
+__forceinline constexpr static F tan_remez_pade_abs_fma_T8_8(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -13061,7 +13061,7 @@ auto const a0 = math::fma(a1, x, F(-6.621370993079893e-16f));
 auto const b0 = math::fma(b1, x, F(1.288469011478627f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tan_remez_pade_abs_fma_T8_8_float_simd(float x) {
+__forceinline static float tan_remez_pade_abs_fma_T8_8_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_pade_abs_fma_T8_8<cr::simd::float1x4>(x)[0];
 #else
@@ -13069,7 +13069,7 @@ return tan_remez_pade_abs_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F tan_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a5 = F(2.9019636862809966e-08f);
@@ -13085,7 +13085,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float tan_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float tan_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -13093,7 +13093,7 @@ return tan_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_ec_T9_0(in_t(F) x) {
+__forceinline constexpr static F tan_remez_remez_abs_fma_ec_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -13109,7 +13109,7 @@ auto const a1 = math::fma(a2, x, F(3.5753399866000954f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_ec_T9_0_float_simd(float x) {
+__forceinline static float tan_remez_remez_abs_fma_ec_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_remez_abs_fma_ec_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -13117,7 +13117,7 @@ return tan_remez_remez_abs_fma_ec_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_pade_abs_fma_ec_T9_9(in_t(F) x) {
+__forceinline constexpr static F tan_remez_pade_abs_fma_ec_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -13143,7 +13143,7 @@ auto const a0 = (a1 * x);
 auto const b0 = math::fma(b1, x, F(1.2906079850700078f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tan_remez_pade_abs_fma_ec_T9_9_float_simd(float x) {
+__forceinline static float tan_remez_pade_abs_fma_ec_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_pade_abs_fma_ec_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -13151,7 +13151,7 @@ return tan_remez_pade_abs_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F tan_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const x2 = x * x;
 auto const a5 = F(2.901963686277412e-08f);
@@ -13167,7 +13167,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 auto const a0 = (a1 * x);
 return a0 / b0;
 }
-inline static float tan_fma_T9_9_float_simd(float x) {
+__forceinline static float tan_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else
@@ -13175,7 +13175,7 @@ return tan_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_T9_0(in_t(F) x) {
+__forceinline constexpr static F tan_remez_remez_abs_fma_T9_0(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -13191,7 +13191,7 @@ auto const a1 = math::fma(a2, x, F(3.6779631117277627f));
 auto const a0 = math::fma(a1, x, F(0.012734635136421913f));
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_T9_0_float_simd(float x) {
+__forceinline static float tan_remez_remez_abs_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_remez_abs_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
@@ -13199,7 +13199,7 @@ return tan_remez_remez_abs_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_pade_abs_fma_T9_9(in_t(F) x) {
+__forceinline constexpr static F tan_remez_pade_abs_fma_T9_9(in_t(F) x) {
 using math = ApproxContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -13225,7 +13225,7 @@ auto const a0 = math::fma(a1, x, F(4.2786669648562884e-18f));
 auto const b0 = math::fma(b1, x, F(1.2906079850700078f));
 return math::setSign(a0 / b0, x0);
 }
-inline static float tan_remez_pade_abs_fma_T9_9_float_simd(float x) {
+__forceinline static float tan_remez_pade_abs_fma_T9_9_float_simd(float x) {
 #ifdef ARCH_x86_64
 return tan_remez_pade_abs_fma_T9_9<cr::simd::float1x4>(x)[0];
 #else

@@ -20,6 +20,7 @@
 
 #include "crath/StdContext.h"
 #include "crath/simd/float2x4.h"
+#include "crath/simd/float1x4.h"
 
 #include <mem/MutexedObject.h>
 
@@ -91,11 +92,7 @@ struct TestResult
 				}
 
 				auto start = std::chrono::steady_clock::now();
-				F total{};
-				for (auto const& x : buffer) {
-					total += approximation(x);
-				}
-
+				F total = approximation(buffer);
 				this->duration += std::chrono::steady_clock::now() - start;
 				this->count += N;
 
@@ -569,7 +566,8 @@ struct TestResult
 				}
 
 				ImGui::TableNextColumn();
-				ImGui::Text("%dps", entry.picoseconds);
+				auto text = std::format("{}ps", entry.picoseconds);
+				ImGui::Text("%s", text.c_str());
 			}
 
 			{

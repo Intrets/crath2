@@ -1074,7 +1074,7 @@ def main():
         out(f'entry.subName = "{test.function_name}";')
         if test.reference_function:
             out(f'entry.accuracy_test<{test.value_type}>({test.function_name}, {test.reference_function}, {float(test.min_x)}f, {float(test.max_x)}f, {float(test.ref_min_x)}f, {float(test.ref_max_x)}f);')
-        out(f'entry.time<{test.value_type}>([](auto&& x){{ return {test.function_name}(x); }}, {float(test.min_x)}f, {float(test.max_x)}f);')
+        out(f'entry.time<{test.value_type}>([](auto& buffer){{ {test.value_type} value{{}}; for (auto const& x : buffer) {{ value += {test.function_name}(x); }} return value; }}, {float(test.min_x)}f, {float(test.max_x)}f);')
         out('}')
 
 
