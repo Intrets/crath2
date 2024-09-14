@@ -16,8 +16,6 @@
 #include "crath/simd/int2x4.h"
 #endif
 
-#include "crath/Functions.h"
-
 namespace cr
 {
 	struct StdContext
@@ -635,7 +633,7 @@ namespace cr
 		template<class F>
 		inline constexpr static F fma(in_t(F) a, in_t(F) b, in_t(F) c) {
 			if constexpr (std::same_as<F, float>) {
-				return a * b + c;
+				return cr::simd::float1x4::fmaf(a, b, c);
 			}
 			else {
 				return F::fmac(a, b, c);

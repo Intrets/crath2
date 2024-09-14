@@ -19,7 +19,6 @@ make_module(
 		simd/int1x4
 		simd/int2x4
 		ParameterTyping
-		Functions
 	CXX_STANDARD 20
 	REQUIRED_LIBS
 		tepp

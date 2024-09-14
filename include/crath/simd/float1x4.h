@@ -159,6 +159,10 @@ namespace cr::simd
 			return { _mm_fmadd_ps(a.f1, b.f1, c.f1) };
 		}
 
+		static inline float fmaf(in_t(float) a, in_t(float) b, in_t(float) c) {
+			return float1x4(_mm_fmadd_ss(_mm_load_ss(&a), _mm_load_ss(&b), _mm_load_ss(&c)))[0];
+		}
+
 		inline float1x4& fma(in_t(float1x4) mult, in_t(float1x4) add) {
 			this->f1 = _mm_fmadd_ps(this->f1, mult.f1, add.f1);
 			return *this;

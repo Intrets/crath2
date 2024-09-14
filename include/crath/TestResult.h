@@ -252,11 +252,11 @@ struct TestResult
 			});
 
 			if (target != nullptr) {
-				if (count > 10000000) {
+				if (count > 500'000'000) {
 					std::this_thread::sleep_for(std::chrono::milliseconds(100));
 				}
 				else {
-					target->timeFunction(aux, 10000);
+					target->timeFunction(aux, 1'000'000);
 				}
 			}
 			else {
