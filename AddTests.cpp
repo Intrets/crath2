@@ -1,8 +1,12 @@
 #include "crath/AddTests.h"
 
 #include "crath/TestResult.h"
+#include "crath/StdContext.h"
+using ApproxContext = cr::StdContext;
+#include "function_definitions.h"
+#include "function_testing.h"
 
 void addTests(TestResult& testResult) {
 	using namespace cr;
-#include "function_testing.h"
+	addAll(testResult);
 }

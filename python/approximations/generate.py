@@ -241,7 +241,7 @@ class function_info2(NamedTuple):
 function_infos2: list[function_info2] = []
 
 
-def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max_x, name, N, M, ref, x_type=x_normal, return_type=return_normal, ref_f=None, interval=None, q=None, extra_tags=[]):
+def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max_x, name, N, M, ref, x_type=x_normal, return_type=return_normal, ref_f=None, interval=None, q=None, extra_tags=[], modes=[]):
     name_full = name
     tags = []
     if x_type.name():
@@ -256,32 +256,33 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
 
     tags.extend(extra_tags)
 
-    out('template <class F>')
-    out(f'inline constexpr static F {name_full}(in_t(F) x) {{')
-
     buffer: List[str] = []
 
-    x_type.run(out=lambda x: buffer.append(x), max_x=max_x)
+    if 'definition' in modes:
+        out('template <class F>')
+        out(f'inline constexpr static F {name_full}(in_t(F) x) {{')
 
-    make(taylor_series, q=q, N=(N, M), fma_type=fma_type, out=lambda x: buffer.append(x), return_type=return_type, interval=interval, ref_f=ref_f)
+        x_type.run(out=lambda x: buffer.append(x), max_x=max_x)
 
-    for line in buffer:
-        if 'math' in line:
-            out('using math = ApproxContext;')
-            break
+        make(taylor_series, q=q, N=(N, M), fma_type=fma_type, out=lambda x: buffer.append(x), return_type=return_type, interval=interval, ref_f=ref_f)
 
-    for line in buffer:
-        out(line)
+        for line in buffer:
+            if 'math' in line:
+                out('using math = ApproxContext;')
+                break
 
-    out('}')
+        for line in buffer:
+            out(line)
 
-    out(f'inline static float {name_full}_float_simd(float x) {{')
-    out(f'#ifdef ARCH_x86_64')
-    out(f'return {name_full}<cr::simd::float1x4>(x)[0];')
-    out(f'#else')
-    out(f'return {name_full}<float>(x);')
-    out(f'#endif')
-    out(f'}}')
+        out('}')
+
+        out(f'inline static float {name_full}_float_simd(float x) {{')
+        out(f'#ifdef ARCH_x86_64')
+        out(f'return {name_full}<cr::simd::float1x4>(x)[0];')
+        out(f'#else')
+        out(f'return {name_full}<float>(x);')
+        out(f'#endif')
+        out(f'}}')
 
     info = function_info2(
         tags=tags + ["float", "scalar"],
@@ -320,7 +321,7 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
     function_infos2.append(info)
 
 
-def add_ref_info(name, function_name, min_x, max_x):
+def add_ref_info(name, function_name, min_x, max_x, modes):
     info = function_info2(
         tags=[name, function_name, "float", "scalar", "reference"],
         reference_function=function_name,
@@ -334,12 +335,16 @@ def add_ref_info(name, function_name, min_x, max_x):
     function_infos2.append(info)
 
 
-def add_sin(N, out, name, scale):
+def add_sin(N, out, name, scale, modes):
     def function(x):
         return mp.sin(x * scale)
 
-    remez_p = remez.remez(function, n_degree=N, lower=0, upper=pi / 2 / scale)
-    remez_pade_p, remez_pade_q = remez.remez_pade(function, n_degree=N, lower=0, upper=pi / 2 / scale)
+    if 'definition' in modes:
+        remez_p = remez.remez(function, n_degree=N, lower=0, upper=pi / 2 / scale)
+        remez_pade_p, remez_pade_q = remez.remez_pade(function, n_degree=N, lower=0, upper=pi / 2 / scale)
+    else:
+        remez_p = None
+        remez_pade_p, remez_pade_q = None, None
 
     class x_remez_sin:
         @staticmethod
@@ -372,6 +377,7 @@ def add_sin(N, out, name, scale):
             ref_max_x=2 * pi,
             interval=interval,
             ref_f=ref_f,
+            modes=modes
         )
 
         add_function2(
@@ -392,6 +398,7 @@ def add_sin(N, out, name, scale):
             ref_max_x=2 * pi,
             interval=interval,
             ref_f=ref_f,
+            modes=modes
         )
 
         add_function2(
@@ -411,18 +418,23 @@ def add_sin(N, out, name, scale):
             ref_max_x=2 * pi,
             interval=interval,
             ref_f=ref_f,
+            modes=modes
         )
 
 
-def add_cos(N, out, name, scale):
+def add_cos(N, out, name, scale, modes):
     def function_cos(x):
         return mp.cos(x * scale)
 
     def function_sin(x):
         return mp.sin(x * scale)
 
-    remez_p = remez.remez(function_cos, n_degree=N, lower=0, upper=pi / 2 / scale)
-    remez_pade_p, remez_pade_q = remez.remez_pade(function_cos, n_degree=N, lower=0, upper=pi / 2 / scale)
+    if 'definition' in modes:
+        remez_p = remez.remez(function_cos, n_degree=N, lower=0, upper=pi / 2 / scale)
+        remez_pade_p, remez_pade_q = remez.remez_pade(function_cos, n_degree=N, lower=0, upper=pi / 2 / scale)
+    else:
+        remez_p = None
+        remez_pade_p, remez_pade_q = None, None
 
     class x_remez_cos:
         @staticmethod
@@ -458,7 +470,8 @@ def add_cos(N, out, name, scale):
             ref_min_x=0,
             ref_max_x=2 * pi,
             ref_f=ref_f_cos,
-            interval=interval
+            interval=interval,
+            modes=modes
         )
 
         add_function2(
@@ -478,7 +491,8 @@ def add_cos(N, out, name, scale):
             ref_min_x=0,
             ref_max_x=2 * pi,
             ref_f=ref_f_cos,
-            interval=interval
+            interval=interval,
+            modes=modes
         )
 
         add_function2(
@@ -497,7 +511,8 @@ def add_cos(N, out, name, scale):
             ref_min_x=0,
             ref_max_x=2 * pi,
             ref_f=ref_f_sin,
-            interval=interval
+            interval=interval,
+            modes=modes
         )
 
         if N % 2 == 0:
@@ -517,7 +532,8 @@ def add_cos(N, out, name, scale):
                 ref_min_x=0,
                 ref_max_x=2 * pi,
                 ref_f=(lambda x: -mp.cos(x * scale)) if ref_f_cos is not None else None,
-                interval=interval
+                interval=interval,
+                modes=modes
             )
 
 
@@ -533,14 +549,18 @@ class x_tanh_remez:
         out(f'x = math::abs(x);')
 
 
-def add_tanh(N, out):
+def add_tanh(N, out, modes):
     end = 7
 
     def function(x):
         return mp.tanh(x)
 
-    remez_p = remez.remez(function, n_degree=N, lower=0, upper=end)
-    remez_pade_p, remez_pade_q = remez.remez_pade(function, n_degree=N, lower=0, upper=end)
+    if 'definition' in modes:
+        remez_p = remez.remez(function, n_degree=N, lower=0, upper=end)
+        remez_pade_p, remez_pade_q = remez.remez_pade(function, n_degree=N, lower=0, upper=end)
+    else:
+        remez_p = None
+        remez_pade_p, remez_pade_q = None, None
 
     def clamped_function(x):
         return mp.tanh(x)
@@ -564,6 +584,7 @@ def add_tanh(N, out):
             ref_max_x=10,
             ref_f=ref_f,
             interval=interval,
+            modes=modes
         )
 
         add_function2(
@@ -584,6 +605,7 @@ def add_tanh(N, out):
             ref_max_x=10,
             ref_f=ref_f,
             interval=interval,
+            modes=modes
         )
 
         add_function2(
@@ -603,10 +625,11 @@ def add_tanh(N, out):
             ref_max_x=10,
             ref_f=ref_f,
             interval=interval,
+            modes=modes
         )
 
 
-def add_exp(N, out):
+def add_exp(N, out, modes):
     def exp_return(out, a):
         out(f'auto const w = {a};')
         out('auto v = F(2.0f) / (F(1.0f) - w) - F(1.0f);')
@@ -621,11 +644,16 @@ def add_exp(N, out):
         out('v *= v;')
         out('return v;')
 
-    def remez_function(x): return mp.tanh(x / 8)
+    def remez_function(x):
+        return mp.tanh(x / 8)
 
     end = 7 * 8
-    remez_p = remez.remez(remez_function, n_degree=N, lower=0, upper=end)
-    remez_pade_p, remez_pade_q = remez.remez_pade(remez_function, n_degree=N, lower=0, upper=end)
+    if 'definition' in modes:
+        remez_p = remez.remez(remez_function, n_degree=N, lower=0, upper=end)
+        remez_pade_p, remez_pade_q = remez.remez_pade(remez_function, n_degree=N, lower=0, upper=end)
+    else:
+        remez_p = None
+        remez_pade_p, remez_pade_q = None, None
 
     global fma_types
     for fma_type, (interval, ref_f) in itertools.product(fma_types, [(None, None)]):
@@ -646,6 +674,7 @@ def add_exp(N, out):
             ref_max_x=10,
             ref_f=ref_f,
             interval=interval,
+            modes=modes
         )
 
         add_function2(
@@ -665,6 +694,7 @@ def add_exp(N, out):
             ref_max_x=10,
             ref_f=ref_f,
             interval=interval,
+            modes=modes
         )
 
         add_function2(
@@ -685,10 +715,11 @@ def add_exp(N, out):
             ref_max_x=10,
             ref_f=ref_f,
             interval=interval,
+            modes=modes
         )
 
 
-def add_atan(N, out):
+def add_atan(N, out, modes):
     class x_atan:
         @staticmethod
         def name():
@@ -705,8 +736,12 @@ def add_atan(N, out):
     def atan_return(out, a):
         out(f'return math::setSign(a - {a}, x0);')
 
-    remez_p = remez.remez(mp.atan, n_degree=N, lower=0, upper=1)
-    remez_pade_p, remez_pade_q = remez.remez_pade(mp.atan, n_degree=N, lower=0, upper=1)
+    if 'definition' in modes:
+        remez_p = remez.remez(mp.atan, n_degree=N, lower=0, upper=1)
+        remez_pade_p, remez_pade_q = remez.remez_pade(mp.atan, n_degree=N, lower=0, upper=1)
+    else:
+        remez_p = None
+        remez_pade_p, remez_pade_q = None, None
 
     global fma_types
     for fma_type, (interval, ref_f) in itertools.product(fma_types, [((0, 1), mp.atan), (None, None)]):
@@ -727,6 +762,7 @@ def add_atan(N, out):
             ref_max_x=10,
             interval=interval,
             ref_f=ref_f,
+            modes=modes
         )
 
         add_function2(
@@ -746,6 +782,7 @@ def add_atan(N, out):
             ref_max_x=10,
             interval=interval,
             ref_f=ref_f,
+            modes=modes
         )
 
         add_function2(
@@ -766,10 +803,11 @@ def add_atan(N, out):
             ref_max_x=10,
             interval=interval,
             ref_f=ref_f,
+            modes=modes
         )
 
 
-def add_log(N, out):
+def add_log(N, out, modes):
     def function(x):
         return mp.log(x)
 
@@ -777,11 +815,16 @@ def add_log(N, out):
     start1 = 0.08
     end = 1 / start1
 
-    remez0_p = remez.remez(function, n_degree=N, lower=start0, upper=end)
-    remez0_pade_p, remez0_pade_q = remez.remez_pade(function, n_degree=N, lower=start0, upper=end)
-
-    remez1_p = remez.remez(function, n_degree=N, lower=start1, upper=end)
-    remez1_pade_p, remez1_pade_q = remez.remez_pade(function, n_degree=N, lower=start1, upper=end)
+    if 'definition' in modes:
+        remez0_p = remez.remez(function, n_degree=N, lower=start0, upper=end)
+        remez0_pade_p, remez0_pade_q = remez.remez_pade(function, n_degree=N, lower=start0, upper=end)
+        remez1_p = remez.remez(function, n_degree=N, lower=start1, upper=end)
+        remez1_pade_p, remez1_pade_q = remez.remez_pade(function, n_degree=N, lower=start1, upper=end)
+    else:
+        remez0_p = None
+        remez0_pade_p, remez0_pade_q = None, None
+        remez1_p = None
+        remez1_pade_p, remez1_pade_q = None, None
 
     class x_recip_log:
         @staticmethod
@@ -820,7 +863,8 @@ def add_log(N, out):
             ref_min_x=start1,
             ref_max_x=end,
             ref_f=ref_f,
-            interval=(start, end)
+            interval=(start, end),
+            modes=modes
         )
 
         add_function2(
@@ -840,7 +884,8 @@ def add_log(N, out):
             ref_min_x=start1,
             ref_max_x=end,
             ref_f=ref_f,
-            interval=(start, end)
+            interval=(start, end),
+            modes=modes
         )
 
     for fma_type, (interval, ref_f) in itertools.product(fma_types, [((start - 1, end - 1), lambda x: mp.log(1 + x)), (None, None)]):
@@ -860,11 +905,12 @@ def add_log(N, out):
             ref_min_x=start,
             ref_max_x=end,
             ref_f=ref_f,
-            interval=interval
+            interval=interval,
+            modes=modes
         )
 
 
-def add_special_exp(N, out):
+def add_special_exp(N, out, modes):
     base = 8.175798915643707
     b4 = base ** (1 / 4)
     halfSteps = 127
@@ -878,12 +924,17 @@ def add_special_exp(N, out):
         out('a *= a;')
         out('return a;')
 
-    def remez_function(x): return 0.5 * mp.tanh(x * d)
+    def remez_function(x):
+        return 0.5 * mp.tanh(x * d)
 
     start = -1
     end = 1.2
-    remez_p = remez.remez(remez_function, n_degree=N, lower=start, upper=end)
-    remez_pade_p, remez_pade_q = remez.remez_pade(remez_function, n_degree=N, lower=start, upper=end)
+    if 'definition' in modes:
+        remez_p = remez.remez(remez_function, n_degree=N, lower=start, upper=end)
+        remez_pade_p, remez_pade_q = remez.remez_pade(remez_function, n_degree=N, lower=start, upper=end)
+    else:
+        remez_p = None
+        remez_pade_p, remez_pade_q = None, None
 
     global fma_types
     for fma_type, (interval, ref_f) in itertools.product(fma_types, [((start, end), remez_function), (None, None)]):
@@ -903,7 +954,8 @@ def add_special_exp(N, out):
             ref_min_x=-1,
             ref_max_x=1.2,
             ref_f=ref_f,
-            interval=interval
+            interval=interval,
+            modes=modes
         )
 
         add_function2(
@@ -922,7 +974,8 @@ def add_special_exp(N, out):
             ref_min_x=-1,
             ref_max_x=1.2,
             ref_f=ref_f,
-            interval=interval
+            interval=interval,
+            modes=modes
         )
 
         add_function2(
@@ -942,18 +995,24 @@ def add_special_exp(N, out):
             ref_min_x=-1,
             ref_max_x=1.2,
             ref_f=ref_f,
-            interval=interval
+            interval=interval,
+            modes=modes
         )
 
 
-def add_tan(N, out):
+def add_tan(N, out, modes):
     start = -1.5
     end = 1.5
 
-    def remez_function(x): return mp.tan(x)
+    def remez_function(x):
+        return mp.tan(x)
 
-    remez_p = remez.remez(remez_function, n_degree=N, lower=start, upper=end)
-    remez_pade_p, remez_pade_q = remez.remez_pade(remez_function, n_degree=N, lower=start, upper=end)
+    if "definition" in modes:
+        remez_p = remez.remez(remez_function, n_degree=N, lower=start, upper=end)
+        remez_pade_p, remez_pade_q = remez.remez_pade(remez_function, n_degree=N, lower=start, upper=end)
+    else:
+        remez_p = None
+        remez_pade_p, remez_pade_q = None, None
 
     def return_signed(out, a):
         out(f'return math::setSign({a}, x0);');
@@ -975,7 +1034,8 @@ def add_tan(N, out):
             ref_min_x=-1.5,
             ref_max_x=1.5,
             ref_f=ref_f,
-            interval=interval
+            interval=interval,
+            modes=modes
         )
 
         add_function2(
@@ -994,7 +1054,8 @@ def add_tan(N, out):
             ref_min_x=-1.5,
             ref_max_x=1.5,
             ref_f=ref_f,
-            interval=interval_abs
+            interval=interval_abs,
+            modes=modes
         )
 
         add_function2(
@@ -1014,7 +1075,8 @@ def add_tan(N, out):
             ref_min_x=-1.5,
             ref_max_x=1.5,
             ref_f=ref_f,
-            interval=interval_abs
+            interval=interval_abs,
+            modes=modes
         )
 
 
@@ -1022,59 +1084,111 @@ fma_types = [fma]
 
 
 def main():
-    function_definition_inc = open('../../function_definitions.h', 'w')
-    function_testing_inc = open('../../function_testing.h', 'w')
+    modes = [
+        # "definition",
+        "test",
+    ]
 
-    out = lambda x: function_definition_inc.write(x + '\n')
+    if "definition" in modes:
+        function_definition_inc = open('../../function_definitions.h', 'w')
+        out = lambda x: function_definition_inc.write(x + '\n')
+    else:
+        out = lambda x: 1
 
-    add_ref_info(function_name="std::sinf", name="sin", min_x=0, max_x=2 * pi)
-    for N in range(3, 10):
-        add_sin(N, out, scale=2 * pi, name="sin_unit1")
-        add_sin(N, out, scale=1 * pi, name="sin_unit2")
-        add_sin(N, out, scale=1, name="sin")
+    M = 10
 
-    add_ref_info(function_name="std::cosf", name="cos", min_x=0, max_x=2 * pi)
-    for N in range(3, 10):
-        add_cos(N, out, scale=2 * pi, name="cos_unit1")
-        add_cos(N, out, scale=1 * pi, name="cos_unit2")
-        add_cos(N, out, scale=1, name="cos")
+    add_ref_info(function_name="std::sinf", name="sin", min_x=0, max_x=2 * pi, modes=modes)
+    for N in range(3, M):
+        add_sin(N, out, scale=2 * pi, name="sin_unit1", modes=modes)
+        add_sin(N, out, scale=1 * pi, name="sin_unit2", modes=modes)
+        add_sin(N, out, scale=1, name="sin", modes=modes)
 
-    add_ref_info(function_name="std::tanhf", name="tanh", min_x=-10, max_x=10)
-    for N in range(3, 10):
-        add_tanh(N, out)
+    add_ref_info(function_name="std::cosf", name="cos", min_x=0, max_x=2 * pi, modes=modes)
+    for N in range(3, M):
+        add_cos(N, out, scale=2 * pi, name="cos_unit1", modes=modes)
+        add_cos(N, out, scale=1 * pi, name="cos_unit2", modes=modes)
+        add_cos(N, out, scale=1, name="cos", modes=modes)
 
-    add_ref_info(function_name="std::expf", name="exp", min_x=-10, max_x=10)
-    for N in range(3, 10):
-        add_exp(N, out)
+    add_ref_info(function_name="std::tanhf", name="tanh", min_x=-10, max_x=10, modes=modes)
+    for N in range(3, M):
+        add_tanh(N, out, modes=modes)
 
-    add_ref_info(function_name="std::atanhf", name="atanh", min_x=-10, max_x=10)
-    for N in range(3, 10):
-        add_atan(N, out)
+    add_ref_info(function_name="std::expf", name="exp", min_x=-10, max_x=10, modes=modes)
+    for N in range(3, M):
+        add_exp(N, out, modes=modes)
 
-    add_ref_info(function_name="std::logf", name="log", min_x=0.08, max_x=1 / 0.08)
-    for N in range(3, 10):
-        add_log(N, out)
+    add_ref_info(function_name="std::atanhf", name="atanh", min_x=-10, max_x=10, modes=modes)
+    for N in range(3, M):
+        add_atan(N, out, modes=modes)
 
-    for N in range(3, 10):
-        add_special_exp(N, out)
+    add_ref_info(function_name="std::logf", name="log", min_x=0.08, max_x=1 / 0.08, modes=modes)
+    for N in range(3, M):
+        add_log(N, out, modes=modes)
 
-    add_ref_info(function_name="std::tanf", name="tan", min_x=-1.5, max_x=1.5)
-    for N in range(3, 10):
-        add_tan(N, out)
+    for N in range(3, M):
+        add_special_exp(N, out, modes=modes)
 
-    out = lambda x: function_testing_inc.write(x + '\n')
+    add_ref_info(function_name="std::tanf", name="tan", min_x=-1.5, max_x=1.5, modes=modes)
+    add_ref_info(function_name="noop", name="noop", min_x=-1.5, max_x=1.5, modes=modes)
+    for N in range(3, M):
+        add_tan(N, out, modes=modes)
 
-    for test in function_infos2:
-        out('{')
-        out('auto& entry = testResult.make();')
-        tags = ""
-        for tag in test.tags:
-            tags += f'"{tag}", '
-        out(f'entry.tags = {{ {tags} }};')
-        out(f'entry.subName = "{test.function_name}";')
-        if test.reference_function:
-            out(f'entry.accuracy_test<{test.value_type}>({test.function_name}, {test.reference_function}, {float(test.min_x)}f, {float(test.max_x)}f, {float(test.ref_min_x)}f, {float(test.ref_max_x)}f);')
-        out(f'entry.time<{test.value_type}>([](auto& buffer){{ {test.value_type} value{{}}; for (auto const& x : buffer) {{ value += {test.function_name}(x); }} return value; }}, {float(test.min_x)}f, {float(test.max_x)}f);')
+    counter = 0
+    if "test" in modes:
+        function_testing_inc = open('../../function_testing.h', 'w')
+        out = lambda x: function_testing_inc.write(x + '\n')
+
+        for test in function_infos2:
+            counter += 1
+            if test.function_name == "noop":
+                reference_function = "[](auto const& x) { return x; }"
+                test_function = reference_function
+                function = ""
+            else:
+                reference_function = test.reference_function
+                test_function = test.function_name
+                function = test.function_name
+
+            out(f'''{test.value_type} msvc_bug_workaround_{counter}(std::vector<{test.value_type}> const& buffer) {{
+    {test.value_type} value{{}};
+    #if defined(COMPILER_CLANGCL) || defined(COMPILER_CLANG)
+    #pragma clang loop vectorize(disable)
+    #elif defined(COMPILER_MSVC)
+    #pragma loop(no_vector)
+    #else
+    #error "TODO: disable vectorization for loop"
+    #endif
+    for (size_t i = 0; i < buffer.size(); i++ ) {{
+        value += {function}(buffer[i]);
+    }}
+    return value;
+}}
+''')
+
+        out('void addAll(TestResult& testResult) {')
+
+        counter = 0
+        for test in function_infos2:
+            counter += 1
+            if test.function_name == "noop":
+                reference_function = "[](auto const& x) { return x; }"
+                test_function = reference_function
+                function = ""
+            else:
+                reference_function = test.reference_function
+                test_function = test.function_name
+                function = test.function_name
+
+            out('{')
+            out('auto& entry = testResult.make();')
+            tags = ""
+            for tag in test.tags:
+                tags += f'"{tag}", '
+            out(f'entry.tags = {{ {tags} }};')
+            out(f'entry.subName = "{test.function_name}";')
+            out(f'entry.accuracy_test<{test.value_type}>({test_function}, {reference_function}, {float(test.min_x)}f, {float(test.max_x)}f, {float(test.ref_min_x)}f, {float(test.ref_max_x)}f);')
+            out(f'''entry.time<{test.value_type}>(msvc_bug_workaround_{counter}, {float(test.min_x)}f, {float(test.max_x)}f);''')
+            out('}')
         out('}')
 
 
