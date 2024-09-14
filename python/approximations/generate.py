@@ -268,7 +268,7 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
 
         for line in buffer:
             if 'math' in line:
-                out('using math = ApproxContext;')
+                out('using math = cr::StdContext;')
                 break
 
         for line in buffer:
@@ -552,7 +552,7 @@ class x_tanh_remez:
 
     def run(self, out, max_x):
         out(f'auto const x0 = x;')
-        out(f'x = math::abs(x);')
+        out(f'x = math::min(math::abs(x), F({float(max_x)}f));')
 
 
 def add_tanh(N, out, modes):
@@ -1122,46 +1122,50 @@ def main():
     else:
         out = lambda x: 1
 
-    M = 10
+    M0 = 1
+    if small_test_mode:
+        M = 5
+    else:
+        M = 10
 
     add_ref_info(function_name="noop", name="noop", min_x=-1.5, max_x=1.5, modes=modes)
 
     add_ref_info(function_name="std::sinf", name="sin", min_x=0, max_x=2 * pi, modes=modes)
-    for N in range(3, M):
+    for N in range(M0, M):
         add_sin(N, out, scale=1, name="sin", modes=modes)
 
     if not small_test_mode:
-        for N in range(3, M):
+        for N in range(M0, M):
             add_sin(N, out, scale=2 * pi, name="sin_unit1", modes=modes)
             add_sin(N, out, scale=1 * pi, name="sin_unit2", modes=modes)
 
         add_ref_info(function_name="std::cosf", name="cos", min_x=0, max_x=2 * pi, modes=modes)
-        for N in range(3, M):
+        for N in range(M0, M):
             add_cos(N, out, scale=2 * pi, name="cos_unit1", modes=modes)
             add_cos(N, out, scale=1 * pi, name="cos_unit2", modes=modes)
             add_cos(N, out, scale=1, name="cos", modes=modes)
 
         add_ref_info(function_name="std::tanhf", name="tanh", min_x=-10, max_x=10, modes=modes)
-        for N in range(3, M):
+        for N in range(M0, M):
             add_tanh(N, out, modes=modes)
 
         add_ref_info(function_name="std::expf", name="exp", min_x=-10, max_x=10, modes=modes)
-        for N in range(3, M):
+        for N in range(M0, M):
             add_exp(N, out, modes=modes)
 
         add_ref_info(function_name="std::atanhf", name="atanh", min_x=-10, max_x=10, modes=modes)
-        for N in range(3, M):
+        for N in range(M0, M):
             add_atan(N, out, modes=modes)
 
         add_ref_info(function_name="std::logf", name="log", min_x=0.08, max_x=1 / 0.08, modes=modes)
-        for N in range(3, M):
+        for N in range(M0, M):
             add_log(N, out, modes=modes)
 
-        for N in range(3, M):
+        for N in range(M0, M):
             add_special_exp(N, out, modes=modes)
 
         add_ref_info(function_name="std::tanf", name="tan", min_x=-1.5, max_x=1.5, modes=modes)
-        for N in range(3, M):
+        for N in range(M0, M):
             add_tan(N, out, modes=modes)
 
     counter = 0

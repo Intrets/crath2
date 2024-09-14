@@ -252,6 +252,10 @@ namespace cr::simd
 			return { _mm_floor_ps(this->f1), _mm_floor_ps(this->f2) };
 		}
 
+		inline float2x4 sin() const {
+			return { _mm_sin_ps(this->f1), _mm_sin_ps(this->f2) };
+		}
+
 		inline float2x4 ceil() const {
 			return { _mm_ceil_ps(this->f1), _mm_ceil_ps(this->f2) };
 		}

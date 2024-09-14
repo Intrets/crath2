@@ -2,7 +2,6 @@
 
 #include "crath/TestResult.h"
 #include "crath/StdContext.h"
-using ApproxContext = cr::StdContext;
 #include "function_definitions.h"
 #include "function_testing.h"
 

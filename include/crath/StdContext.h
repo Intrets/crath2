@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <bit>
+#include <cmath>
 #include <concepts>
 #include <cstdint>
 #include <numbers>
@@ -454,7 +455,12 @@ namespace cr
 		template<class F>
 		inline constexpr static F abs(in_t(F) f) {
 			if constexpr (std::same_as<F, float> || std::same_as<F, double>) {
-				return std::abs(f);
+				if (std::is_constant_evaluated()) {
+					return f > 0.0f ? f : -f;
+				}
+				else {
+					return std::fabs(f);
+				}
 			}
 			else {
 				return f.abs();

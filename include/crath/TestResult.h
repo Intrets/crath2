@@ -19,8 +19,8 @@
 #include <imgui_stdlib.h>
 
 #include "crath/StdContext.h"
-#include "crath/simd/float2x4.h"
 #include "crath/simd/float1x4.h"
+#include "crath/simd/float2x4.h"
 
 #include <mem/MutexedObject.h>
 
@@ -62,9 +62,8 @@ struct TestResult
 
 		float range_min{};
 		float range_max{};
-
-		float range_Normalizedmin{};
-		float range_Normalizedmax{};
+		float range_error{};
+		bool range_normalizedError{};
 
 		std::function<float(float)> approximationFunction{};
 		float approximationDomanMin{};
@@ -125,11 +124,16 @@ struct TestResult
 		float calculateError(float approximation_x, float reference_x, bool normalize) {
 			auto res = this->approximationFunction(approximation_x);
 			auto ref = this->referenceFunction(reference_x);
-			if (normalize) {
-				return std::abs((res - ref) / ref);
+			if (std::abs(ref) > 0.00001f) {
+				if (normalize) {
+					return std::abs((res - ref) / ref);
+				}
+				else {
+					return std::abs((res - ref));
+				}
 			}
 			else {
-				return std::abs((res - ref));
+				return 0.0f;
 			}
 		}
 
@@ -144,7 +148,7 @@ struct TestResult
 				float ref = this->referenceFunction(x_ref);
 
 				float const e = std::abs(res - ref);
-				if (std::abs(ref) > 0.0000001f) {
+				if (std::abs(ref) > 0.00001f) {
 					auto candidate = e / std::abs(ref);
 					if (candidate > this->maximumNormalizedError) {
 						this->maximumNormalizedError = candidate;
@@ -163,6 +167,9 @@ struct TestResult
 
 			auto reference_x = (this->referenceDomanMin + this->referenceDomanMax) * 0.5f;
 			auto reference_dx = (this->referenceDomanMax - this->referenceDomanMin) * 0.001f;
+
+			this->range_error = errorLimit;
+			this->range_normalizedError = normalize;
 
 			{
 				size_t i = 0;
@@ -222,10 +229,10 @@ struct TestResult
 	float minDomainMin = 0.0f;
 	float maxDomainMax = 1.0f;
 
-	bool showError = false;
 	bool autoFit = true;
 	bool autoFitOnChange = false;
 	bool changedData = false;
+	bool plotRelativeError = false;
 	bool showSelected = false;
 	float evalValue = 0.0f;
 
@@ -534,6 +541,11 @@ struct TestResult
 				if (!entry.selected && ImGui::IsItemHovered()) {
 					plotEntries.push_back(&entry);
 				}
+				if (ImGui::IsItemClicked(ImGuiMouseButton_Right)) {
+					auto accuracyInfo = std::format("domain: ({}, {})\nmaximum absolute error: {}\nmaximum relative error:{}", entry.approximationDomanMin, entry.approximationDomanMax, entry.maximumError, entry.maximumNormalizedError);
+					auto info = std::format("{}\n{}", accuracyInfo, entry.subName);
+					ImGui::SetClipboardText(info.c_str());
+				}
 				if (old != entry.selected) {
 					this->changedData = true;
 				}
@@ -586,7 +598,7 @@ struct TestResult
 		ImGui::EndChild();
 
 		if (ImGui::Begin("plot test")) {
-			ImGui::Checkbox("Show Error", &this->showError);
+			ImGui::Checkbox("Relative Error", &this->plotRelativeError);
 			ImGui::SameLine();
 			if (ImGui::Button("Clear all")) {
 				for (auto& entry : this->entries) {
@@ -602,6 +614,7 @@ struct TestResult
 			}
 			this->hoveredEntry = nullptr;
 			if (ImGui::BeginPopup("active entries list")) {
+				ImGui::SameLine();
 				ImGui::Text("Remove:");
 				integer_t count = 0;
 				for (auto& entry : this->entries) {
@@ -631,48 +644,64 @@ struct TestResult
 			std::vector<float> xs{};
 			std::vector<float> ys{};
 
-			if (ImPlot::BeginPlot("Test", ImVec2(-1, -1))) {
-				ImPlotAxisFlags xflags{};
-				ImPlotAxisFlags yflags{};
-				if (!this->hoveredEntry && (this->autoFit || (this->autoFitOnChange && this->changedData))) {
-					xflags |= ImPlotAxisFlags_AutoFit;
-					yflags |= ImPlotAxisFlags_AutoFit;
-				}
-				this->changedData = false;
-				ImPlot::SetupAxes("x", "y", xflags, yflags);
+			auto size = ImGui::GetContentRegionAvail().y * 0.5f;
 
-				for (auto entry : plotEntries) {
-					if (this->hoveredEntry != nullptr && entry != this->hoveredEntry) {
-						continue;
+			auto doPlot = [&](bool showError) {
+				if (ImPlot::BeginPlot(showError ? "Error" : "Value", ImVec2(-1, size), showError ? ImPlotFlags_NoLegend : ImPlotFlags_None)) {
+					ImPlotAxisFlags xflags = ImPlotAxisFlags_NoLabel;
+					ImPlotAxisFlags yflags = ImPlotAxisFlags_NoLabel;
+					if (!this->hoveredEntry && (this->autoFit || (this->autoFitOnChange && this->changedData))) {
+						xflags |= ImPlotAxisFlags_AutoFit;
+						yflags |= ImPlotAxisFlags_AutoFit;
 					}
-					xs.clear();
-					ys.clear();
+					this->changedData = false;
+					ImPlot::SetupAxes("x", "y", xflags, yflags);
 
-					auto N = 500;
-					float begin = entry->approximationDomanMin;
-					float end = entry->approximationDomanMax;
-					float d = end - begin;
+					for (auto entry : plotEntries) {
+						if (this->hoveredEntry != nullptr && entry != this->hoveredEntry) {
+							continue;
+						}
+						xs.clear();
+						ys.clear();
 
-					float ref_begin = entry->referenceDomanMin;
-					float ref_end = entry->referenceDomanMax;
-					float ref_d = ref_end - ref_begin;
-					for (integer_t i = 0; i < N; i++) {
-						auto s = (static_cast<float>(i) / (N - 1));
-						auto x = begin + d * s;
-						auto ref_x = ref_begin + ref_d * s;
-						xs.push_back(x);
-						if (this->showError) {
-							ys.push_back(std::abs(entry->referenceFunction(ref_x) - entry->approximationFunction(x)));
+						auto N = 500;
+						float begin = entry->approximationDomanMin;
+						float end = entry->approximationDomanMax;
+						float d = end - begin;
+
+						float ref_begin = entry->referenceDomanMin;
+						float ref_end = entry->referenceDomanMax;
+						float ref_d = ref_end - ref_begin;
+						for (integer_t i = 0; i < N; i++) {
+							auto s = (static_cast<float>(i) / (N - 1));
+							auto x = begin + d * s;
+							auto ref_x = ref_begin + ref_d * s;
+							xs.push_back(x);
+							if (showError) {
+								auto ref = entry->referenceFunction(ref_x);
+								auto res = entry->approximationFunction(ref_x);
+								auto e = std::abs(ref - res);
+								if (this->plotRelativeError) {
+									if (std::abs(ref) > 0.00001f) {
+										ys.push_back(e / std::abs(ref));
+									}
+								}
+								else {
+									ys.push_back(e);
+								}
+							}
+							else {
+								ys.push_back(entry->approximationFunction(x));
+							}
 						}
-						else {
-							ys.push_back(entry->approximationFunction(x));
-						}
+
+						ImPlot::PlotLine(entry->subName.c_str(), xs.data(), ys.data(), static_cast<int>(xs.size()));
 					}
-
-					ImPlot::PlotLine(entry->subName.c_str(), xs.data(), ys.data(), static_cast<int>(xs.size()));
+					ImPlot::EndPlot();
 				}
-				ImPlot::EndPlot();
-			}
+			};
+			doPlot(false);
+			doPlot(true);
 		}
 		ImGui::End();
 	}
