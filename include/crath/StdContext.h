@@ -17,6 +17,299 @@
 #include "crath/simd/int2x4.h"
 #endif
 
+#include "crath/StdContext.h"
+
+namespace cr
+{
+	struct StdContext;
+}
+
+namespace
+{
+	namespace fun
+	{
+		template<class F>
+		inline constexpr static F cos_quart_fma_ec_T6_6(in_t(F) x) {
+			using math = cr::StdContext;
+			x = math::abs(x - F(3.141592653589793f)) - F(1.5707963267948966f);
+			auto const x2 = x * x;
+			auto const a3 = F(0.002903581834064588f);
+			auto const b3 = F(7.261928768280855e-06f);
+			auto const a2 = math::fma(a3, x2, F(-0.12995654089927464f));
+			auto const b2 = math::fma(b3, x2, F(0.0006886010742635062f));
+			auto const a1 = math::fma(a2, x2, F(0.9999999082401654f));
+			auto const b1 = math::fma(b2, x2, F(0.03671011384260023f));
+			auto const a0 = (a1 * x);
+			auto const b0 = math::fma(b1, x2, F(1.0f));
+			return a0 / b0;
+		}
+		inline static float cos_quart_fma_ec_T6_6_float_simd(float x) {
+#ifdef ARCH_x86_64
+			return cos_quart_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
+#else
+			return cos_quart_fma_ec_T6_6<float>(x);
+#endif
+		}
+		template<class F>
+		inline constexpr static F cos_unit1_quart_fma_ec_T6_6(in_t(F) x) {
+			using math = cr::StdContext;
+			x = math::abs(x - F(0.5f)) - F(0.25f);
+			auto const x2 = x * x;
+			auto const a3 = F(28.43370232347889f);
+			auto const b3 = F(0.4468185499096844f);
+			auto const a2 = math::fma(a3, x2, F(-32.23574770830088f));
+			auto const b2 = math::fma(b3, x2, F(1.0732160756647304f));
+			auto const a1 = math::fma(a2, x2, F(6.283184730635542f));
+			auto const b1 = math::fma(b2, x2, F(1.4492572045816738f));
+			auto const a0 = (a1 * x);
+			auto const b0 = math::fma(b1, x2, F(1.0f));
+			return a0 / b0;
+		}
+		inline static float cos_unit1_quart_fma_ec_T6_6_float_simd(float x) {
+#ifdef ARCH_x86_64
+			return cos_unit1_quart_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
+#else
+			return cos_unit1_quart_fma_ec_T6_6<float>(x);
+#endif
+		}
+		template<class F>
+		inline constexpr static F sin_unit2_quart_fma_ec_T6_6(in_t(F) x) {
+			using math = cr::StdContext;
+			auto const quarter = F(0.5f);
+			x = math::abs(math::abs(x - quarter) - F(1.0f)) - quarter;
+			auto const x2 = x * x;
+			auto const a3 = F(0.8885531976087148f);
+			auto const b3 = F(0.006981539842338819f);
+			auto const a2 = math::fma(a3, x2, F(-4.029468463537608f));
+			auto const b2 = math::fma(b3, x2, F(0.06707600472904571f));
+			auto const a1 = math::fma(a2, x2, F(3.1415923653177704f));
+			auto const b1 = math::fma(b2, x2, F(0.3623143011454184f));
+			auto const a0 = (a1 * x);
+			auto const b0 = math::fma(b1, x2, F(1.0f));
+			return a0 / b0;
+		}
+		inline static float sin_unit2_quart_fma_ec_T6_6_float_simd(float x) {
+#ifdef ARCH_x86_64
+			return sin_unit2_quart_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
+#else
+			return sin_unit2_quart_fma_ec_T6_6<float>(x);
+#endif
+		}
+		template<class F>
+		inline constexpr static F sin_unit1_quart_fma_ec_T6_6(in_t(F) x) {
+			using math = cr::StdContext;
+			auto const quarter = F(0.25f);
+			x = math::abs(math::abs(x - quarter) - F(0.5f)) - quarter;
+			auto const x2 = x * x;
+			auto const a3 = F(28.43370232347889f);
+			auto const b3 = F(0.4468185499096844f);
+			auto const a2 = math::fma(a3, x2, F(-32.23574770830088f));
+			auto const b2 = math::fma(b3, x2, F(1.0732160756647304f));
+			auto const a1 = math::fma(a2, x2, F(6.283184730635542f));
+			auto const b1 = math::fma(b2, x2, F(1.4492572045816738f));
+			auto const a0 = (a1 * x);
+			auto const b0 = math::fma(b1, x2, F(1.0f));
+			return a0 / b0;
+		}
+		inline static float sin_unit1_quart_fma_ec_T6_6_float_simd(float x) {
+#ifdef ARCH_x86_64
+			return sin_unit1_quart_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
+#else
+			return sin_unit1_quart_fma_ec_T6_6<float>(x);
+#endif
+		}
+		template<class F>
+		inline constexpr static F tanh_remez_pade_fma_T6_6(in_t(F) x) {
+			using math = cr::StdContext;
+			auto const x0 = x;
+			x = math::min(math::abs(x), F(7.0f));
+			auto const a6 = F(0.000936634282122674f);
+			auto const b6 = F(0.000940805755508484f);
+			auto const a5 = math::fma(a6, x, F(0.005276300306824047f));
+			auto const b5 = math::fma(b6, x, F(0.0050993041018936374f));
+			auto const a4 = math::fma(a5, x, F(0.029067578323695734f));
+			auto const b4 = math::fma(b5, x, F(0.03227263073487728f));
+			auto const a3 = math::fma(a4, x, F(0.1306632022968818f));
+			auto const b3 = math::fma(b4, x, F(0.09886602020794436f));
+			auto const a2 = math::fma(a3, x, F(0.21165707154815022f));
+			auto const b2 = math::fma(b3, x, F(0.3944482815453158f));
+			auto const a1 = math::fma(a2, x, F(0.7903734105736433f));
+			auto const b1 = math::fma(b2, x, F(0.21158458514561868f));
+			auto const a0 = math::fma(a1, x, F(6.973554169080272e-08f));
+			auto const b0 = math::fma(b1, x, F(0.7903796209031667f));
+			return math::setSign(a0 / b0, x0);
+		}
+
+		template<class F>
+		inline constexpr static F tanh_fma_ec_T7_7(in_t(F) x) {
+			using math = cr::StdContext;
+			x = math::clamp(x, F(-7.0f), F(7.0f));
+			auto const x2 = x * x;
+			auto const a4 = F(7.3913550193196496e-06f);
+			auto const b3 = F(0.0002072002072002072f);
+			auto const a3 = math::fma(a4, x2, F(0.0027939321973028276f));
+			auto const b2 = math::fma(b3, x2, F(0.023310023310023312f));
+			auto const a2 = math::fma(a3, x2, F(0.12805522570971292f));
+			auto const b1 = math::fma(b2, x2, F(0.46153846153846156f));
+			auto const a1 = math::fma(a2, x2, F(0.9988307605357608f));
+			auto const b0 = math::fma(b1, x2, F(1.0f));
+			auto const a0 = (a1 * x);
+			return a0 / b0;
+		}
+		inline static float tanh_fma_ec_T7_7_float_simd(float x) {
+#ifdef ARCH_x86_64
+			return tanh_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
+#else
+			return tanh_fma_ec_T7_7<float>(x);
+#endif
+		}
+
+		template<class F>
+		inline constexpr static F log_fma_ec_T8_8(in_t(F) x) {
+			using math = cr::StdContext;
+			x = x - F(1.0f);
+			auto const a8 = F(0.0004224058990164251f);
+			auto const b8 = F(7.77000777000777e-05f);
+			auto const a7 = math::fma(a8, x, F(0.01922307633999584f));
+			auto const b7 = math::fma(b8, x, F(0.005594405594405594f));
+			auto const a6 = math::fma(a7, x, F(0.23849003754454298f));
+			auto const b6 = math::fma(b7, x, F(0.0979020979020979f));
+			auto const a5 = math::fma(a6, x, F(1.2702372609003256f));
+			auto const b5 = math::fma(b6, x, F(0.717948717948718f));
+			auto const a4 = math::fma(a5, x, F(3.4170750003021886f));
+			auto const b4 = math::fma(b5, x, F(2.6923076923076925f));
+			auto const a3 = math::fma(a4, x, F(4.867248293113361f));
+			auto const b3 = math::fma(b4, x, F(5.6f));
+			auto const a2 = math::fma(a3, x, F(3.5004182929924856f));
+			auto const b2 = math::fma(b3, x, F(6.533333333333333f));
+			auto const a1 = math::fma(a2, x, F(1.0001195122835673f));
+			auto const b1 = math::fma(b2, x, F(4.0f));
+			auto const a0 = math::fma(a1, x, F(-6.47996564362974e-16f));
+			auto const b0 = math::fma(b1, x, F(1.0f));
+			return a0 / b0;
+		}
+
+		template<class F>
+		inline constexpr static F log_remez_pade_recip_fma_T9_9(in_t(F) x) {
+			using math = cr::StdContext;
+			auto m = x < F(1.0f);
+			x = math::blend(x, F(1.0f) / x, m);
+			auto const a9 = F(1.724793120623996e-05f);
+			auto const b9 = F(2.5430188394234507e-06f);
+			auto const a8 = math::fma(a9, x, F(0.002663321948678853f));
+			auto const b8 = math::fma(b9, x, F(0.0005992450757627369f));
+			auto const a7 = math::fma(a8, x, F(0.07552030201162915f));
+			auto const b7 = math::fma(b8, x, F(0.024654320740162102f));
+			auto const a6 = math::fma(a7, x, F(0.5892895008581321f));
+			auto const b6 = math::fma(b7, x, F(0.3002080525963518f));
+			auto const a5 = math::fma(a6, x, F(1.247302396060179f));
+			auto const b5 = math::fma(b6, x, F(1.2922644634030724f));
+			auto const a4 = math::fma(a5, x, F(-0.029368062300959858f));
+			auto const b4 = math::fma(b5, x, F(2.081455650785514f));
+			auto const a3 = math::fma(a4, x, F(-1.2849918677232943f));
+			auto const b3 = math::fma(b4, x, F(1.237985610749445f));
+			auto const a2 = math::fma(a3, x, F(-0.5480727596301121f));
+			auto const b2 = math::fma(b3, x, F(0.25068769460100565f));
+			auto const a1 = math::fma(a2, x, F(-0.051566582025269446f));
+			auto const b1 = math::fma(b2, x, F(0.014203865415567327f));
+			auto const a0 = math::fma(a1, x, F(-0.0007934920746564964f));
+			auto const b0 = math::fma(b1, x, F(0.00013141114316558164f));
+			auto const r = a0 / b0;
+			return math::blend(r, -r, m);
+		}
+
+		template<class F>
+		inline constexpr static F exp_special_fma_T5_5(in_t(F) x) {
+			using math = cr::StdContext;
+			auto const x2 = x * x;
+			auto const a3 = F(0.00034302671209318625f);
+			auto const b2 = F(0.01122254218044283f);
+			auto const a2 = math::fma(a3, x2, F(0.04283525353671358f));
+			auto const b1 = math::fma(b2, x2, F(0.3737088474868244f));
+			auto const a1 = math::fma(a2, x2, F(0.4584879788078804f));
+			auto const b0 = math::fma(b1, x2, F(1.0f));
+			auto const a0 = (a1 * x);
+			constexpr float c1 = 1.6909569472766688f;
+			auto a = F(c1) / (F(0.5f) - (a0 / b0)) - F(c1);
+			a *= a;
+			a *= a;
+			return a;
+		}
+
+		template<class F>
+		inline constexpr static F tan_ec_T6_6(in_t(F) x) {
+			auto const x2 = x * x;
+			auto const a3 = F(0.002020205337392043f);
+			auto const b3 = F(-9.62000962000962e-05f);
+			auto const a2 = a3 * x2 + F(-0.12121232024352258f);
+			auto const b2 = b3 * x2 + F(0.020202020202020204f);
+			auto const a1 = a2 * x2 + F(1.0000016420090612f);
+			auto const b1 = b2 * x2 + F(-0.45454545454545453f);
+			auto const a0 = (a1 * x);
+			auto const b0 = b1 * x2 + F(1.0f);
+			return a0 / b0;
+		}
+
+		template<class F>
+		inline constexpr static F sin_quart_fma_ec_T6_6(in_t(F) x) {
+			using math = cr::StdContext;
+			auto const quarter = F(1.5707963267948966f);
+			x = math::abs(math::abs(x - quarter) - F(3.141592653589793f)) - quarter;
+			auto const x2 = x * x;
+			auto const a3 = F(0.002903581834064588f);
+			auto const b3 = F(7.261928768280855e-06f);
+			auto const a2 = math::fma(a3, x2, F(-0.12995654089927464f));
+			auto const b2 = math::fma(b3, x2, F(0.0006886010742635062f));
+			auto const a1 = math::fma(a2, x2, F(0.9999999082401654f));
+			auto const b1 = math::fma(b2, x2, F(0.03671011384260023f));
+			auto const a0 = (a1 * x);
+			auto const b0 = math::fma(b1, x2, F(1.0f));
+			return a0 / b0;
+		}
+		inline static float sin_quart_fma_ec_T6_6_float_simd(float x) {
+#ifdef ARCH_x86_64
+			return sin_quart_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
+#else
+			return sin_quart_fma_ec_T6_6<float>(x);
+#endif
+		}
+		template<class F>
+		inline constexpr static F exp_T6_6(in_t(F) x) {
+			auto const x2 = x * x;
+			auto const a3 = F(6.165167297979798e-08f);
+			auto const b3 = F(3.669742439273689e-10f);
+			auto const a2 = a3 * x2 + F(0.00023674242424242425f);
+			auto const b2 = b3 * x2 + F(4.932133838383839e-06f);
+			auto const a1 = a2 * x2 + F(0.125f);
+			auto const b1 = b2 * x2 + F(0.007102272727272727f);
+			auto const a0 = (a1 * x);
+			auto const b0 = b1 * x2 + F(1.0f);
+			auto const w = a0 / b0;
+			auto v = F(2.0f) / (F(1.0f) - w) - F(1.0f);
+			v *= v;
+			v *= v;
+			return v;
+		}
+		template<class F>
+		inline constexpr static F exp_fma_T5_5(in_t(F) x) {
+			using math = cr::StdContext;
+			auto const x2 = x * x;
+			auto const a3 = F(3.229373346560847e-08f);
+			auto const b2 = F(3.875248015873016e-06f);
+			auto const a2 = math::fma(a3, x2, F(0.00021701388888888888f));
+			auto const b1 = math::fma(b2, x2, F(0.006944444444444444f));
+			auto const a1 = math::fma(a2, x2, F(0.125f));
+			auto const b0 = math::fma(b1, x2, F(1.0f));
+			auto const a0 = (a1 * x);
+			auto const w = a0 / b0;
+			auto v = F(2.0f) / (F(1.0f) - w) - F(1.0f);
+			v *= v;
+			v *= v;
+			return v;
+		}
+	}
+}
+
 namespace cr
 {
 	struct StdContext
@@ -69,66 +362,81 @@ namespace cr
 			return F(0.5f) * (s0 + x / s0);
 		}
 
+		// domain: (0.08, 12.5)
+		// maximum absolute error: 0.0003786087
+		// maximum relative error:0.00018447939
 		template<class F>
 		inline constexpr static F log(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
-					return log_T9(x);
+					return fun::log_remez_pade_recip_fma_T9_9(x);
 				}
 				else {
-					return log_fma_T9_float_simd(x);
+					return std::logf(x);
 				}
 			}
 			else {
-				return log_fma_T9(x);
+				return fun::log_fma_ec_T8_8(x);
 			}
 		}
 
+		// domain: (-inf, inf)
+		// maximum absolute error: 0.0011637807
+		// maximum relative error:0.0011694467
 		template<class F>
 		inline constexpr static F tanh(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
-					return tanh_T8(x);
+					return fun::tanh_remez_pade_fma_T6_6(x);
 				}
 				else {
-					return tanh_fma_T7_float_simd(x);
+					return fun::tanh_fma_ec_T7_7_float_simd(x);
 				}
 			}
 			else {
-				return tanh_fma_T7(x);
+				return fun::tanh_fma_ec_T7_7(x);
 			}
 		}
 
+		// domain: (0, 6.2831855)
+		// maximum absolute error: 2.9802322e-07
+		// maximum relative error:0.00046794294
 		template<class F>
 		inline constexpr static F sin(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
-					return sin_quart_T8(fmod<two_pi>(x));
+					return fun::sin_quart_fma_ec_T6_6<float>(fmod<two_pi>(x));
 				}
 				else {
-					return sin_half_fma_T7_float_simd(x);
+					return fun::sin_quart_fma_ec_T6_6_float_simd(x);
 				}
 			}
 			else {
-				return sin_half_fma_T7(x);
+				return fun::sin_quart_fma_ec_T6_6(x);
 			}
 		}
 
+		// domain: (0, 1)
+		// maximum absolute error: 7.301569e-07
+		// maximum relative error:0.00025519286
 		template<class F>
 		inline constexpr static F sin_unit_1(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
-					return sin_unit1_quart_T8(fmod<1.0f>(x));
+					return fun::sin_unit1_quart_fma_ec_T6_6<float>(fmod<1.0f>(x));
 				}
 				else {
-					return sin_unit1_half_fma_T7_float_simd(x);
+					return fun::sin_unit1_quart_fma_ec_T6_6_float_simd(x);
 				}
 			}
 			else {
-				return sin_unit1_half_fma_T7(x);
+				return fun::sin_unit1_quart_fma_ec_T6_6(x);
 			}
 		}
 
+		// domain: (0, 6.2831855)
+		// maximum absolute error: 2.9802322e-07
+		// maximum relative error:0.00046794294
 		template<class F>
 		inline constexpr static F sinc(in_t(F) x) {
 			x *= pi;
@@ -138,108 +446,107 @@ namespace cr
 						return 1.0f;
 					}
 					else {
-						return sin_quart_T8(fmod<two_pi>(x)) / x;
+						return fun::sin_quart_fma_ec_T6_6<float>(fmod<two_pi>(x)) / x;
 					}
 				}
 				else {
-					auto value = sin_half_fma_T7_float_simd(fmod<two_pi>(x)) / x;
+					auto value = fun::sin_quart_fma_ec_T6_6_float_simd(fmod<two_pi>(x)) / x;
 					return ifElse(abs(x) < 0.0001f, 1.0f, value);
 				}
 			}
 			else {
-				auto value = sin_half_fma_T7(fmod<two_pi>(x)) / x;
+				auto value = fun::sin_quart_fma_ec_T6_6(fmod<two_pi>(x)) / x;
 				return ifElse(abs(x) < F(0.0001f), F(1.0f), value);
 			}
 		}
 
+		// domain: (0, 2)
+		// maximum absolute error: 7.301569e-07
+		// maximum relative error:0.00025519286
 		template<class F>
 		inline constexpr static F sin_unit_2(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
-					return sin_unit2_quart_T8(fmod<2.0f>(x));
+					return fun::sin_unit2_quart_fma_ec_T6_6<float>(fmod<2.0f>(x));
 				}
 				else {
-					return sin_unit2_half_fma_T7_float_simd(x);
+					return fun::sin_unit2_quart_fma_ec_T6_6_float_simd(x);
 				}
 			}
 			else {
-				return sin_unit2_half_fma_T7(x);
+				return fun::sin_unit2_quart_fma_ec_T6_6(x);
 			}
 		}
 
+		// domain: (0, 1)
+		// maximum absolute error: 6.854534e-07
+		// maximum relative error:0.0007008286
 		template<class F>
 		inline constexpr static F cos_unit_1(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
-					return cos_unit1_half_T8(fmod<1.0f>(x));
+					return fun::cos_unit1_quart_fma_ec_T6_6(fmod<1.0f>(x));
 				}
 				else {
-					return cos_unit1_half_fma_T6_float_simd(x);
+					return fun::cos_unit1_quart_fma_ec_T6_6_float_simd(x);
 				}
 			}
 			else {
-				return cos_unit1_half_fma_T6(x);
+				return fun::cos_unit1_quart_fma_ec_T6_6(x);
 			}
 		}
 
+		// domain: (0, 6.2831855)
+		// maximum absolute error: 2.3841858e-07
+		// maximum relative error:0.00020883042
 		template<class F>
 		inline constexpr static F cos(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
-					return cos_half_T6(fmod<two_pi>(x));
+					return fun::cos_quart_fma_ec_T6_6(fmod<two_pi>(x));
 				}
 				else {
-					return cos_half_fma_T6_float_simd(x);
+					return fun::cos_quart_fma_ec_T6_6_float_simd(x);
 				}
 			}
 			else {
-				return cos_half_fma_T6(x);
+				return fun::cos_quart_fma_ec_T6_6(x);
 			}
 		}
 
+		// domain: (-1.5, 1.5)
+		// maximum absolute error: 1.8119812e-05
+		// maximum relative error:2.007825e-06
+		// tan_ec_T6_6<float>
 		template<class F>
 		inline constexpr static F tan(in_t(F) x) {
-			if constexpr (std::same_as<F, float>) {
-				if (std::is_constant_evaluated()) {
-					return tan_T9(fmod<two_pi>(x));
-				}
-				else {
-					return tan_fma_T6_float_simd(x);
-				}
-			}
-			else {
-				return tan_fma_T6(x);
-			}
+			return fun::tan_ec_T6_6(x);
 		}
 
+		// domain: (-10, 10)
+		// maximum absolute error: 0.060546875
+		// maximum relative error:5.2667096e-06
 		template<class F>
 		inline constexpr static F exp(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
-					return exp_T8(x);
+					return fun::exp_T6_6<float>(x);
 				}
 				else {
-					return exp_fma_T4_float_simd(x);
+					return std::expf(x);
 				}
 			}
 			else {
-				return exp_fma_T4(x);
+				return fun::exp_fma_T5_5(x);
 			}
 		}
 
+		// domain: (-1, 1.2)
+		// maximum absolute error: 0.34375
+		// maximum relative error:8.022459e-06
 		template<class F>
 		inline constexpr static F specialized_frequency_exp(in_t(F) x) {
-			if constexpr (std::same_as<F, float>) {
-				if (std::is_constant_evaluated()) {
-					return exp_special_T8(x);
-				}
-				else {
-					return exp_special_fma_T4_float_simd(x);
-				}
-			}
-			else {
-				return exp_special_fma_T4(x);
-			}
+			return fun::exp_special_fma_T5_5(x);
 		}
 
 		template<class F>
@@ -639,7 +946,12 @@ namespace cr
 		template<class F>
 		inline constexpr static F fma(in_t(F) a, in_t(F) b, in_t(F) c) {
 			if constexpr (std::same_as<F, float>) {
-				return cr::simd::float1x4::fmaf(a, b, c);
+				if (std::is_constant_evaluated()) {
+					return a * b + c;
+				}
+				else {
+					return cr::simd::float1x4::fmaf(a, b, c);
+				}
 			}
 			else {
 				return F::fmac(a, b, c);

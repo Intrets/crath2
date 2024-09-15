@@ -542,8 +542,8 @@ struct TestResult
 					plotEntries.push_back(&entry);
 				}
 				if (ImGui::IsItemClicked(ImGuiMouseButton_Right)) {
-					auto accuracyInfo = std::format("domain: ({}, {})\nmaximum absolute error: {}\nmaximum relative error:{}", entry.approximationDomanMin, entry.approximationDomanMax, entry.maximumError, entry.maximumNormalizedError);
-					auto info = std::format("{}\n{}", accuracyInfo, entry.subName);
+					auto accuracyInfo = std::format("// domain: ({}, {})\n// maximum absolute error: {}\n// maximum relative error:{}", entry.approximationDomanMin, entry.approximationDomanMax, entry.maximumError, entry.maximumNormalizedError);
+					auto info = std::format("{}\n// {}", accuracyInfo, entry.subName);
 					ImGui::SetClipboardText(info.c_str());
 				}
 				if (old != entry.selected) {

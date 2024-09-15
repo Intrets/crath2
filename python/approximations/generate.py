@@ -552,7 +552,7 @@ class x_tanh_remez:
 
     def run(self, out, max_x):
         out(f'auto const x0 = x;')
-        out(f'x = math::min(math::abs(x), F({float(max_x)}f));')
+        out(f'x = math::min(math::abs(x), F({float(self.max_val)}f));')
 
 
 def add_tanh(N, out, modes):
@@ -1048,8 +1048,8 @@ def add_tan(N, out, modes):
                 remez_p,
                 out=out,
                 fma_type=fma_type,
-                name="tan_remez_remez",
-                extra_tags=["tan", "remez_pade"],
+                name="tan_remez",
+                extra_tags=["tan", "remez"],
                 ref="std::tanf",
                 N=N,
                 M=0,
@@ -1090,6 +1090,7 @@ def add_tan(N, out, modes):
             out=out,
             fma_type=fma_type,
             name="tan",
+            extra_tags=["tan"],
             ref="std::tanf",
             N=N,
             M=N,

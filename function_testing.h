@@ -56558,7 +56558,7 @@ float msvc_bug_workaround_3771(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T1_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T1_0<float>(buffer[i]);
     }
     return value;
 }
@@ -56573,7 +56573,7 @@ cr::simd::float2x4 msvc_bug_workaround_3772(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T1_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T1_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -56588,7 +56588,7 @@ float msvc_bug_workaround_3773(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T1_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_ec_T1_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -56693,7 +56693,7 @@ float msvc_bug_workaround_3780(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T1_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_T1_0<float>(buffer[i]);
     }
     return value;
 }
@@ -56708,7 +56708,7 @@ cr::simd::float2x4 msvc_bug_workaround_3781(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T1_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_T1_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -56723,7 +56723,7 @@ float msvc_bug_workaround_3782(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T1_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_T1_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -56828,7 +56828,7 @@ float msvc_bug_workaround_3789(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T1_0<float>(buffer[i]);
+        value += tan_remez_abs_ec_T1_0<float>(buffer[i]);
     }
     return value;
 }
@@ -56843,7 +56843,7 @@ cr::simd::float2x4 msvc_bug_workaround_3790(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T1_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_ec_T1_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -56858,7 +56858,7 @@ float msvc_bug_workaround_3791(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T1_0_float_simd(buffer[i]);
+        value += tan_remez_abs_ec_T1_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -56963,7 +56963,7 @@ float msvc_bug_workaround_3798(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T1_0<float>(buffer[i]);
+        value += tan_remez_abs_T1_0<float>(buffer[i]);
     }
     return value;
 }
@@ -56978,7 +56978,7 @@ cr::simd::float2x4 msvc_bug_workaround_3799(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T1_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_T1_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -56993,7 +56993,7 @@ float msvc_bug_workaround_3800(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T1_0_float_simd(buffer[i]);
+        value += tan_remez_abs_T1_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -57098,7 +57098,7 @@ float msvc_bug_workaround_3807(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T2_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T2_0<float>(buffer[i]);
     }
     return value;
 }
@@ -57113,7 +57113,7 @@ cr::simd::float2x4 msvc_bug_workaround_3808(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T2_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T2_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -57128,7 +57128,7 @@ float msvc_bug_workaround_3809(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T2_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_ec_T2_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -57233,7 +57233,7 @@ float msvc_bug_workaround_3816(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T2_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_T2_0<float>(buffer[i]);
     }
     return value;
 }
@@ -57248,7 +57248,7 @@ cr::simd::float2x4 msvc_bug_workaround_3817(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T2_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_T2_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -57263,7 +57263,7 @@ float msvc_bug_workaround_3818(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T2_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_T2_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -57368,7 +57368,7 @@ float msvc_bug_workaround_3825(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T2_0<float>(buffer[i]);
+        value += tan_remez_abs_ec_T2_0<float>(buffer[i]);
     }
     return value;
 }
@@ -57383,7 +57383,7 @@ cr::simd::float2x4 msvc_bug_workaround_3826(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T2_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_ec_T2_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -57398,7 +57398,7 @@ float msvc_bug_workaround_3827(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T2_0_float_simd(buffer[i]);
+        value += tan_remez_abs_ec_T2_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -57503,7 +57503,7 @@ float msvc_bug_workaround_3834(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T2_0<float>(buffer[i]);
+        value += tan_remez_abs_T2_0<float>(buffer[i]);
     }
     return value;
 }
@@ -57518,7 +57518,7 @@ cr::simd::float2x4 msvc_bug_workaround_3835(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T2_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_T2_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -57533,7 +57533,7 @@ float msvc_bug_workaround_3836(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T2_0_float_simd(buffer[i]);
+        value += tan_remez_abs_T2_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -57638,7 +57638,7 @@ float msvc_bug_workaround_3843(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T3_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T3_0<float>(buffer[i]);
     }
     return value;
 }
@@ -57653,7 +57653,7 @@ cr::simd::float2x4 msvc_bug_workaround_3844(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T3_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T3_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -57668,7 +57668,7 @@ float msvc_bug_workaround_3845(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T3_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_ec_T3_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -57773,7 +57773,7 @@ float msvc_bug_workaround_3852(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T3_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_T3_0<float>(buffer[i]);
     }
     return value;
 }
@@ -57788,7 +57788,7 @@ cr::simd::float2x4 msvc_bug_workaround_3853(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T3_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_T3_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -57803,7 +57803,7 @@ float msvc_bug_workaround_3854(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T3_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_T3_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -57908,7 +57908,7 @@ float msvc_bug_workaround_3861(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T3_0<float>(buffer[i]);
+        value += tan_remez_abs_ec_T3_0<float>(buffer[i]);
     }
     return value;
 }
@@ -57923,7 +57923,7 @@ cr::simd::float2x4 msvc_bug_workaround_3862(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T3_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_ec_T3_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -57938,7 +57938,7 @@ float msvc_bug_workaround_3863(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T3_0_float_simd(buffer[i]);
+        value += tan_remez_abs_ec_T3_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -58043,7 +58043,7 @@ float msvc_bug_workaround_3870(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T3_0<float>(buffer[i]);
+        value += tan_remez_abs_T3_0<float>(buffer[i]);
     }
     return value;
 }
@@ -58058,7 +58058,7 @@ cr::simd::float2x4 msvc_bug_workaround_3871(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T3_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_T3_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -58073,7 +58073,7 @@ float msvc_bug_workaround_3872(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T3_0_float_simd(buffer[i]);
+        value += tan_remez_abs_T3_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -58178,7 +58178,7 @@ float msvc_bug_workaround_3879(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T4_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T4_0<float>(buffer[i]);
     }
     return value;
 }
@@ -58193,7 +58193,7 @@ cr::simd::float2x4 msvc_bug_workaround_3880(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T4_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T4_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -58208,7 +58208,7 @@ float msvc_bug_workaround_3881(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T4_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_ec_T4_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -58313,7 +58313,7 @@ float msvc_bug_workaround_3888(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T4_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_T4_0<float>(buffer[i]);
     }
     return value;
 }
@@ -58328,7 +58328,7 @@ cr::simd::float2x4 msvc_bug_workaround_3889(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T4_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_T4_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -58343,7 +58343,7 @@ float msvc_bug_workaround_3890(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T4_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_T4_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -58448,7 +58448,7 @@ float msvc_bug_workaround_3897(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T4_0<float>(buffer[i]);
+        value += tan_remez_abs_ec_T4_0<float>(buffer[i]);
     }
     return value;
 }
@@ -58463,7 +58463,7 @@ cr::simd::float2x4 msvc_bug_workaround_3898(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T4_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_ec_T4_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -58478,7 +58478,7 @@ float msvc_bug_workaround_3899(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T4_0_float_simd(buffer[i]);
+        value += tan_remez_abs_ec_T4_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -58583,7 +58583,7 @@ float msvc_bug_workaround_3906(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T4_0<float>(buffer[i]);
+        value += tan_remez_abs_T4_0<float>(buffer[i]);
     }
     return value;
 }
@@ -58598,7 +58598,7 @@ cr::simd::float2x4 msvc_bug_workaround_3907(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T4_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_T4_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -58613,7 +58613,7 @@ float msvc_bug_workaround_3908(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T4_0_float_simd(buffer[i]);
+        value += tan_remez_abs_T4_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -58718,7 +58718,7 @@ float msvc_bug_workaround_3915(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T5_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T5_0<float>(buffer[i]);
     }
     return value;
 }
@@ -58733,7 +58733,7 @@ cr::simd::float2x4 msvc_bug_workaround_3916(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T5_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T5_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -58748,7 +58748,7 @@ float msvc_bug_workaround_3917(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T5_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_ec_T5_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -58853,7 +58853,7 @@ float msvc_bug_workaround_3924(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T5_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_T5_0<float>(buffer[i]);
     }
     return value;
 }
@@ -58868,7 +58868,7 @@ cr::simd::float2x4 msvc_bug_workaround_3925(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T5_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_T5_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -58883,7 +58883,7 @@ float msvc_bug_workaround_3926(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T5_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_T5_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -58988,7 +58988,7 @@ float msvc_bug_workaround_3933(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T5_0<float>(buffer[i]);
+        value += tan_remez_abs_ec_T5_0<float>(buffer[i]);
     }
     return value;
 }
@@ -59003,7 +59003,7 @@ cr::simd::float2x4 msvc_bug_workaround_3934(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T5_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_ec_T5_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -59018,7 +59018,7 @@ float msvc_bug_workaround_3935(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T5_0_float_simd(buffer[i]);
+        value += tan_remez_abs_ec_T5_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -59123,7 +59123,7 @@ float msvc_bug_workaround_3942(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T5_0<float>(buffer[i]);
+        value += tan_remez_abs_T5_0<float>(buffer[i]);
     }
     return value;
 }
@@ -59138,7 +59138,7 @@ cr::simd::float2x4 msvc_bug_workaround_3943(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T5_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_T5_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -59153,7 +59153,7 @@ float msvc_bug_workaround_3944(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T5_0_float_simd(buffer[i]);
+        value += tan_remez_abs_T5_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -59258,7 +59258,7 @@ float msvc_bug_workaround_3951(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T6_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T6_0<float>(buffer[i]);
     }
     return value;
 }
@@ -59273,7 +59273,7 @@ cr::simd::float2x4 msvc_bug_workaround_3952(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T6_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T6_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -59288,7 +59288,7 @@ float msvc_bug_workaround_3953(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T6_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_ec_T6_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -59393,7 +59393,7 @@ float msvc_bug_workaround_3960(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T6_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_T6_0<float>(buffer[i]);
     }
     return value;
 }
@@ -59408,7 +59408,7 @@ cr::simd::float2x4 msvc_bug_workaround_3961(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T6_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_T6_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -59423,7 +59423,7 @@ float msvc_bug_workaround_3962(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T6_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_T6_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -59528,7 +59528,7 @@ float msvc_bug_workaround_3969(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T6_0<float>(buffer[i]);
+        value += tan_remez_abs_ec_T6_0<float>(buffer[i]);
     }
     return value;
 }
@@ -59543,7 +59543,7 @@ cr::simd::float2x4 msvc_bug_workaround_3970(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T6_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_ec_T6_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -59558,7 +59558,7 @@ float msvc_bug_workaround_3971(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T6_0_float_simd(buffer[i]);
+        value += tan_remez_abs_ec_T6_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -59663,7 +59663,7 @@ float msvc_bug_workaround_3978(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T6_0<float>(buffer[i]);
+        value += tan_remez_abs_T6_0<float>(buffer[i]);
     }
     return value;
 }
@@ -59678,7 +59678,7 @@ cr::simd::float2x4 msvc_bug_workaround_3979(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T6_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_T6_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -59693,7 +59693,7 @@ float msvc_bug_workaround_3980(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T6_0_float_simd(buffer[i]);
+        value += tan_remez_abs_T6_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -59798,7 +59798,7 @@ float msvc_bug_workaround_3987(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T7_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T7_0<float>(buffer[i]);
     }
     return value;
 }
@@ -59813,7 +59813,7 @@ cr::simd::float2x4 msvc_bug_workaround_3988(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T7_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T7_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -59828,7 +59828,7 @@ float msvc_bug_workaround_3989(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T7_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_ec_T7_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -59933,7 +59933,7 @@ float msvc_bug_workaround_3996(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T7_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_T7_0<float>(buffer[i]);
     }
     return value;
 }
@@ -59948,7 +59948,7 @@ cr::simd::float2x4 msvc_bug_workaround_3997(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T7_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_T7_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -59963,7 +59963,7 @@ float msvc_bug_workaround_3998(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T7_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_T7_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -60068,7 +60068,7 @@ float msvc_bug_workaround_4005(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T7_0<float>(buffer[i]);
+        value += tan_remez_abs_ec_T7_0<float>(buffer[i]);
     }
     return value;
 }
@@ -60083,7 +60083,7 @@ cr::simd::float2x4 msvc_bug_workaround_4006(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T7_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_ec_T7_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -60098,7 +60098,7 @@ float msvc_bug_workaround_4007(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T7_0_float_simd(buffer[i]);
+        value += tan_remez_abs_ec_T7_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -60203,7 +60203,7 @@ float msvc_bug_workaround_4014(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T7_0<float>(buffer[i]);
+        value += tan_remez_abs_T7_0<float>(buffer[i]);
     }
     return value;
 }
@@ -60218,7 +60218,7 @@ cr::simd::float2x4 msvc_bug_workaround_4015(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T7_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_T7_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -60233,7 +60233,7 @@ float msvc_bug_workaround_4016(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T7_0_float_simd(buffer[i]);
+        value += tan_remez_abs_T7_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -60338,7 +60338,7 @@ float msvc_bug_workaround_4023(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T8_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T8_0<float>(buffer[i]);
     }
     return value;
 }
@@ -60353,7 +60353,7 @@ cr::simd::float2x4 msvc_bug_workaround_4024(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T8_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T8_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -60368,7 +60368,7 @@ float msvc_bug_workaround_4025(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T8_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_ec_T8_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -60473,7 +60473,7 @@ float msvc_bug_workaround_4032(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T8_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_T8_0<float>(buffer[i]);
     }
     return value;
 }
@@ -60488,7 +60488,7 @@ cr::simd::float2x4 msvc_bug_workaround_4033(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T8_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_T8_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -60503,7 +60503,7 @@ float msvc_bug_workaround_4034(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T8_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_T8_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -60608,7 +60608,7 @@ float msvc_bug_workaround_4041(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T8_0<float>(buffer[i]);
+        value += tan_remez_abs_ec_T8_0<float>(buffer[i]);
     }
     return value;
 }
@@ -60623,7 +60623,7 @@ cr::simd::float2x4 msvc_bug_workaround_4042(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T8_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_ec_T8_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -60638,7 +60638,7 @@ float msvc_bug_workaround_4043(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T8_0_float_simd(buffer[i]);
+        value += tan_remez_abs_ec_T8_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -60743,7 +60743,7 @@ float msvc_bug_workaround_4050(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T8_0<float>(buffer[i]);
+        value += tan_remez_abs_T8_0<float>(buffer[i]);
     }
     return value;
 }
@@ -60758,7 +60758,7 @@ cr::simd::float2x4 msvc_bug_workaround_4051(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T8_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_T8_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -60773,7 +60773,7 @@ float msvc_bug_workaround_4052(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T8_0_float_simd(buffer[i]);
+        value += tan_remez_abs_T8_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -60878,7 +60878,7 @@ float msvc_bug_workaround_4059(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T9_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T9_0<float>(buffer[i]);
     }
     return value;
 }
@@ -60893,7 +60893,7 @@ cr::simd::float2x4 msvc_bug_workaround_4060(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T9_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_ec_T9_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -60908,7 +60908,7 @@ float msvc_bug_workaround_4061(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_ec_T9_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_ec_T9_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -61013,7 +61013,7 @@ float msvc_bug_workaround_4068(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T9_0<float>(buffer[i]);
+        value += tan_remez_abs_fma_T9_0<float>(buffer[i]);
     }
     return value;
 }
@@ -61028,7 +61028,7 @@ cr::simd::float2x4 msvc_bug_workaround_4069(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T9_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_fma_T9_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -61043,7 +61043,7 @@ float msvc_bug_workaround_4070(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_fma_T9_0_float_simd(buffer[i]);
+        value += tan_remez_abs_fma_T9_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -61148,7 +61148,7 @@ float msvc_bug_workaround_4077(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T9_0<float>(buffer[i]);
+        value += tan_remez_abs_ec_T9_0<float>(buffer[i]);
     }
     return value;
 }
@@ -61163,7 +61163,7 @@ cr::simd::float2x4 msvc_bug_workaround_4078(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T9_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_ec_T9_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -61178,7 +61178,7 @@ float msvc_bug_workaround_4079(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_ec_T9_0_float_simd(buffer[i]);
+        value += tan_remez_abs_ec_T9_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -61283,7 +61283,7 @@ float msvc_bug_workaround_4086(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T9_0<float>(buffer[i]);
+        value += tan_remez_abs_T9_0<float>(buffer[i]);
     }
     return value;
 }
@@ -61298,7 +61298,7 @@ cr::simd::float2x4 msvc_bug_workaround_4087(std::vector<cr::simd::float2x4> cons
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T9_0<cr::simd::float2x4>(buffer[i]);
+        value += tan_remez_abs_T9_0<cr::simd::float2x4>(buffer[i]);
     }
     return value;
 }
@@ -61313,7 +61313,7 @@ float msvc_bug_workaround_4088(std::vector<float> const& buffer) {
     #error "TODO: disable vectorization for loop"
     #endif
     for (size_t i = 0; i < buffer.size(); i++ ) {
-        value += tan_remez_remez_abs_T9_0_float_simd(buffer[i]);
+        value += tan_remez_abs_T9_0_float_simd(buffer[i]);
     }
     return value;
 }
@@ -87801,23 +87801,23 @@ entry.time<float>(msvc_bug_workaround_3770, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T1_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T1_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_ec_T1_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T1_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3771, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T1_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_ec_T1_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T1_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_ec_T1_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3772, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T1_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T1_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T1_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T1_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3773, -1.5f, 1.5f);
 }
 {
@@ -87843,44 +87843,44 @@ entry.time<float>(msvc_bug_workaround_3776, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "scalar",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_ec_T1_1<float>";
 entry.accuracy_test<float>(tan_fma_ec_T1_1<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3777, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float2x4", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_ec_T1_1<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_ec_T1_1<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3778, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_fma_ec_T1_1_float_simd";
 entry.accuracy_test<float>(tan_fma_ec_T1_1_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3779, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_T1_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T1_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_T1_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_T1_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3780, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T1_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_T1_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_T1_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_T1_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3781, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T1_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T1_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_T1_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_T1_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3782, -1.5f, 1.5f);
 }
 {
@@ -87906,44 +87906,44 @@ entry.time<float>(msvc_bug_workaround_3785, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "scalar",  };
+entry.tags = { "fma", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_T1_1<float>";
 entry.accuracy_test<float>(tan_fma_T1_1<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3786, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float2x4", "simd",  };
+entry.tags = { "fma", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_T1_1<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_T1_1<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3787, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "simd",  };
+entry.tags = { "fma", "tan", "float", "simd",  };
 entry.subName = "tan_fma_T1_1_float_simd";
 entry.accuracy_test<float>(tan_fma_T1_1_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3788, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_ec_T1_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T1_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_ec_T1_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_ec_T1_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3789, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T1_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_ec_T1_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_ec_T1_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_ec_T1_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3790, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T1_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T1_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_ec_T1_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_ec_T1_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3791, -1.5f, 1.5f);
 }
 {
@@ -87969,44 +87969,44 @@ entry.time<float>(msvc_bug_workaround_3794, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "scalar",  };
+entry.tags = { "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_ec_T1_1<float>";
 entry.accuracy_test<float>(tan_ec_T1_1<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3795, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float2x4", "simd",  };
+entry.tags = { "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_ec_T1_1<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_ec_T1_1<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3796, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "simd",  };
+entry.tags = { "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_ec_T1_1_float_simd";
 entry.accuracy_test<float>(tan_ec_T1_1_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3797, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_T1_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_T1_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_T1_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_T1_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3798, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_T1_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_T1_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_T1_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_T1_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3799, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_T1_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_T1_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_T1_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_T1_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3800, -1.5f, 1.5f);
 }
 {
@@ -88032,44 +88032,44 @@ entry.time<float>(msvc_bug_workaround_3803, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "scalar",  };
+entry.tags = { "tan", "float", "scalar",  };
 entry.subName = "tan_T1_1<float>";
 entry.accuracy_test<float>(tan_T1_1<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3804, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float2x4", "simd",  };
+entry.tags = { "tan", "float2x4", "simd",  };
 entry.subName = "tan_T1_1<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_T1_1<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3805, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "simd",  };
+entry.tags = { "tan", "float", "simd",  };
 entry.subName = "tan_T1_1_float_simd";
 entry.accuracy_test<float>(tan_T1_1_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3806, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T2_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T2_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_ec_T2_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T2_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3807, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T2_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_ec_T2_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T2_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_ec_T2_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3808, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T2_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T2_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T2_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T2_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3809, -1.5f, 1.5f);
 }
 {
@@ -88095,44 +88095,44 @@ entry.time<float>(msvc_bug_workaround_3812, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "scalar",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_ec_T2_2<float>";
 entry.accuracy_test<float>(tan_fma_ec_T2_2<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3813, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float2x4", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_ec_T2_2<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_ec_T2_2<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3814, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_fma_ec_T2_2_float_simd";
 entry.accuracy_test<float>(tan_fma_ec_T2_2_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3815, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_T2_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T2_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_T2_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_T2_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3816, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T2_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_T2_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_T2_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_T2_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3817, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T2_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T2_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_T2_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_T2_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3818, -1.5f, 1.5f);
 }
 {
@@ -88158,44 +88158,44 @@ entry.time<float>(msvc_bug_workaround_3821, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "scalar",  };
+entry.tags = { "fma", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_T2_2<float>";
 entry.accuracy_test<float>(tan_fma_T2_2<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3822, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float2x4", "simd",  };
+entry.tags = { "fma", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_T2_2<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_T2_2<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3823, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "simd",  };
+entry.tags = { "fma", "tan", "float", "simd",  };
 entry.subName = "tan_fma_T2_2_float_simd";
 entry.accuracy_test<float>(tan_fma_T2_2_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3824, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_ec_T2_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T2_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_ec_T2_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_ec_T2_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3825, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T2_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_ec_T2_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_ec_T2_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_ec_T2_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3826, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T2_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T2_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_ec_T2_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_ec_T2_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3827, -1.5f, 1.5f);
 }
 {
@@ -88221,44 +88221,44 @@ entry.time<float>(msvc_bug_workaround_3830, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "scalar",  };
+entry.tags = { "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_ec_T2_2<float>";
 entry.accuracy_test<float>(tan_ec_T2_2<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3831, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float2x4", "simd",  };
+entry.tags = { "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_ec_T2_2<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_ec_T2_2<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3832, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "simd",  };
+entry.tags = { "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_ec_T2_2_float_simd";
 entry.accuracy_test<float>(tan_ec_T2_2_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3833, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_T2_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_T2_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_T2_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_T2_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3834, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_T2_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_T2_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_T2_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_T2_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3835, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_T2_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_T2_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_T2_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_T2_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3836, -1.5f, 1.5f);
 }
 {
@@ -88284,44 +88284,44 @@ entry.time<float>(msvc_bug_workaround_3839, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "scalar",  };
+entry.tags = { "tan", "float", "scalar",  };
 entry.subName = "tan_T2_2<float>";
 entry.accuracy_test<float>(tan_T2_2<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3840, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float2x4", "simd",  };
+entry.tags = { "tan", "float2x4", "simd",  };
 entry.subName = "tan_T2_2<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_T2_2<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3841, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "simd",  };
+entry.tags = { "tan", "float", "simd",  };
 entry.subName = "tan_T2_2_float_simd";
 entry.accuracy_test<float>(tan_T2_2_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3842, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T3_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T3_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_ec_T3_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T3_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3843, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T3_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_ec_T3_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T3_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_ec_T3_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3844, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T3_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T3_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T3_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T3_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3845, -1.5f, 1.5f);
 }
 {
@@ -88347,44 +88347,44 @@ entry.time<float>(msvc_bug_workaround_3848, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "scalar",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_ec_T3_3<float>";
 entry.accuracy_test<float>(tan_fma_ec_T3_3<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3849, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float2x4", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_ec_T3_3<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_ec_T3_3<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3850, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_fma_ec_T3_3_float_simd";
 entry.accuracy_test<float>(tan_fma_ec_T3_3_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3851, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_T3_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T3_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_T3_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_T3_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3852, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T3_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_T3_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_T3_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_T3_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3853, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T3_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T3_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_T3_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_T3_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3854, -1.5f, 1.5f);
 }
 {
@@ -88410,44 +88410,44 @@ entry.time<float>(msvc_bug_workaround_3857, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "scalar",  };
+entry.tags = { "fma", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_T3_3<float>";
 entry.accuracy_test<float>(tan_fma_T3_3<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3858, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float2x4", "simd",  };
+entry.tags = { "fma", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_T3_3<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_T3_3<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3859, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "simd",  };
+entry.tags = { "fma", "tan", "float", "simd",  };
 entry.subName = "tan_fma_T3_3_float_simd";
 entry.accuracy_test<float>(tan_fma_T3_3_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3860, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_ec_T3_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T3_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_ec_T3_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_ec_T3_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3861, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T3_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_ec_T3_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_ec_T3_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_ec_T3_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3862, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T3_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T3_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_ec_T3_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_ec_T3_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3863, -1.5f, 1.5f);
 }
 {
@@ -88473,44 +88473,44 @@ entry.time<float>(msvc_bug_workaround_3866, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "scalar",  };
+entry.tags = { "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_ec_T3_3<float>";
 entry.accuracy_test<float>(tan_ec_T3_3<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3867, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float2x4", "simd",  };
+entry.tags = { "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_ec_T3_3<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_ec_T3_3<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3868, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "simd",  };
+entry.tags = { "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_ec_T3_3_float_simd";
 entry.accuracy_test<float>(tan_ec_T3_3_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3869, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_T3_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_T3_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_T3_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_T3_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3870, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_T3_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_T3_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_T3_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_T3_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3871, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_T3_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_T3_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_T3_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_T3_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3872, -1.5f, 1.5f);
 }
 {
@@ -88536,44 +88536,44 @@ entry.time<float>(msvc_bug_workaround_3875, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "scalar",  };
+entry.tags = { "tan", "float", "scalar",  };
 entry.subName = "tan_T3_3<float>";
 entry.accuracy_test<float>(tan_T3_3<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3876, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float2x4", "simd",  };
+entry.tags = { "tan", "float2x4", "simd",  };
 entry.subName = "tan_T3_3<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_T3_3<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3877, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "simd",  };
+entry.tags = { "tan", "float", "simd",  };
 entry.subName = "tan_T3_3_float_simd";
 entry.accuracy_test<float>(tan_T3_3_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3878, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T4_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T4_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_ec_T4_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T4_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3879, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T4_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_ec_T4_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T4_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_ec_T4_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3880, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T4_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T4_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T4_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T4_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3881, -1.5f, 1.5f);
 }
 {
@@ -88599,44 +88599,44 @@ entry.time<float>(msvc_bug_workaround_3884, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "scalar",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_ec_T4_4<float>";
 entry.accuracy_test<float>(tan_fma_ec_T4_4<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3885, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float2x4", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_ec_T4_4<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_ec_T4_4<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3886, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_fma_ec_T4_4_float_simd";
 entry.accuracy_test<float>(tan_fma_ec_T4_4_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3887, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_T4_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T4_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_T4_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_T4_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3888, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T4_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_T4_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_T4_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_T4_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3889, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T4_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T4_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_T4_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_T4_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3890, -1.5f, 1.5f);
 }
 {
@@ -88662,44 +88662,44 @@ entry.time<float>(msvc_bug_workaround_3893, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "scalar",  };
+entry.tags = { "fma", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_T4_4<float>";
 entry.accuracy_test<float>(tan_fma_T4_4<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3894, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float2x4", "simd",  };
+entry.tags = { "fma", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_T4_4<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_T4_4<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3895, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "simd",  };
+entry.tags = { "fma", "tan", "float", "simd",  };
 entry.subName = "tan_fma_T4_4_float_simd";
 entry.accuracy_test<float>(tan_fma_T4_4_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3896, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_ec_T4_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T4_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_ec_T4_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_ec_T4_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3897, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T4_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_ec_T4_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_ec_T4_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_ec_T4_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3898, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T4_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T4_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_ec_T4_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_ec_T4_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3899, -1.5f, 1.5f);
 }
 {
@@ -88725,44 +88725,44 @@ entry.time<float>(msvc_bug_workaround_3902, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "scalar",  };
+entry.tags = { "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_ec_T4_4<float>";
 entry.accuracy_test<float>(tan_ec_T4_4<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3903, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float2x4", "simd",  };
+entry.tags = { "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_ec_T4_4<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_ec_T4_4<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3904, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "simd",  };
+entry.tags = { "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_ec_T4_4_float_simd";
 entry.accuracy_test<float>(tan_ec_T4_4_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3905, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_T4_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_T4_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_T4_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_T4_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3906, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_T4_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_T4_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_T4_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_T4_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3907, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_T4_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_T4_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_T4_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_T4_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3908, -1.5f, 1.5f);
 }
 {
@@ -88788,44 +88788,44 @@ entry.time<float>(msvc_bug_workaround_3911, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "scalar",  };
+entry.tags = { "tan", "float", "scalar",  };
 entry.subName = "tan_T4_4<float>";
 entry.accuracy_test<float>(tan_T4_4<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3912, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float2x4", "simd",  };
+entry.tags = { "tan", "float2x4", "simd",  };
 entry.subName = "tan_T4_4<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_T4_4<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3913, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "simd",  };
+entry.tags = { "tan", "float", "simd",  };
 entry.subName = "tan_T4_4_float_simd";
 entry.accuracy_test<float>(tan_T4_4_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3914, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T5_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T5_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_ec_T5_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T5_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3915, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T5_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_ec_T5_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T5_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_ec_T5_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3916, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T5_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T5_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T5_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T5_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3917, -1.5f, 1.5f);
 }
 {
@@ -88851,44 +88851,44 @@ entry.time<float>(msvc_bug_workaround_3920, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "scalar",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_ec_T5_5<float>";
 entry.accuracy_test<float>(tan_fma_ec_T5_5<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3921, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float2x4", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_ec_T5_5<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_ec_T5_5<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3922, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_fma_ec_T5_5_float_simd";
 entry.accuracy_test<float>(tan_fma_ec_T5_5_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3923, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_T5_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T5_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_T5_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_T5_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3924, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T5_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_T5_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_T5_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_T5_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3925, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T5_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T5_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_T5_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_T5_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3926, -1.5f, 1.5f);
 }
 {
@@ -88914,44 +88914,44 @@ entry.time<float>(msvc_bug_workaround_3929, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "scalar",  };
+entry.tags = { "fma", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_T5_5<float>";
 entry.accuracy_test<float>(tan_fma_T5_5<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3930, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float2x4", "simd",  };
+entry.tags = { "fma", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_T5_5<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_T5_5<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3931, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "simd",  };
+entry.tags = { "fma", "tan", "float", "simd",  };
 entry.subName = "tan_fma_T5_5_float_simd";
 entry.accuracy_test<float>(tan_fma_T5_5_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3932, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_ec_T5_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T5_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_ec_T5_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_ec_T5_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3933, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T5_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_ec_T5_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_ec_T5_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_ec_T5_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3934, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T5_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T5_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_ec_T5_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_ec_T5_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3935, -1.5f, 1.5f);
 }
 {
@@ -88977,44 +88977,44 @@ entry.time<float>(msvc_bug_workaround_3938, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "scalar",  };
+entry.tags = { "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_ec_T5_5<float>";
 entry.accuracy_test<float>(tan_ec_T5_5<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3939, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float2x4", "simd",  };
+entry.tags = { "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_ec_T5_5<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_ec_T5_5<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3940, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "simd",  };
+entry.tags = { "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_ec_T5_5_float_simd";
 entry.accuracy_test<float>(tan_ec_T5_5_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3941, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_T5_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_T5_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_T5_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_T5_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3942, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_T5_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_T5_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_T5_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_T5_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3943, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_T5_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_T5_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_T5_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_T5_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3944, -1.5f, 1.5f);
 }
 {
@@ -89040,44 +89040,44 @@ entry.time<float>(msvc_bug_workaround_3947, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "scalar",  };
+entry.tags = { "tan", "float", "scalar",  };
 entry.subName = "tan_T5_5<float>";
 entry.accuracy_test<float>(tan_T5_5<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3948, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float2x4", "simd",  };
+entry.tags = { "tan", "float2x4", "simd",  };
 entry.subName = "tan_T5_5<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_T5_5<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3949, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "simd",  };
+entry.tags = { "tan", "float", "simd",  };
 entry.subName = "tan_T5_5_float_simd";
 entry.accuracy_test<float>(tan_T5_5_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3950, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T6_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T6_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_ec_T6_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T6_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3951, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T6_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_ec_T6_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T6_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_ec_T6_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3952, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T6_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T6_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T6_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T6_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3953, -1.5f, 1.5f);
 }
 {
@@ -89103,44 +89103,44 @@ entry.time<float>(msvc_bug_workaround_3956, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "scalar",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_ec_T6_6<float>";
 entry.accuracy_test<float>(tan_fma_ec_T6_6<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3957, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float2x4", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_ec_T6_6<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_ec_T6_6<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3958, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_fma_ec_T6_6_float_simd";
 entry.accuracy_test<float>(tan_fma_ec_T6_6_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3959, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_T6_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T6_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_T6_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_T6_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3960, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T6_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_T6_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_T6_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_T6_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3961, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T6_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T6_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_T6_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_T6_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3962, -1.5f, 1.5f);
 }
 {
@@ -89166,44 +89166,44 @@ entry.time<float>(msvc_bug_workaround_3965, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "scalar",  };
+entry.tags = { "fma", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_T6_6<float>";
 entry.accuracy_test<float>(tan_fma_T6_6<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3966, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float2x4", "simd",  };
+entry.tags = { "fma", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_T6_6<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_T6_6<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3967, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "simd",  };
+entry.tags = { "fma", "tan", "float", "simd",  };
 entry.subName = "tan_fma_T6_6_float_simd";
 entry.accuracy_test<float>(tan_fma_T6_6_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3968, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_ec_T6_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T6_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_ec_T6_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_ec_T6_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3969, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T6_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_ec_T6_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_ec_T6_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_ec_T6_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3970, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T6_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T6_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_ec_T6_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_ec_T6_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3971, -1.5f, 1.5f);
 }
 {
@@ -89229,44 +89229,44 @@ entry.time<float>(msvc_bug_workaround_3974, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "scalar",  };
+entry.tags = { "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_ec_T6_6<float>";
 entry.accuracy_test<float>(tan_ec_T6_6<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3975, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float2x4", "simd",  };
+entry.tags = { "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_ec_T6_6<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_ec_T6_6<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3976, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "simd",  };
+entry.tags = { "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_ec_T6_6_float_simd";
 entry.accuracy_test<float>(tan_ec_T6_6_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3977, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_T6_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_T6_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_T6_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_T6_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3978, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_T6_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_T6_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_T6_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_T6_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3979, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_T6_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_T6_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_T6_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_T6_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3980, -1.5f, 1.5f);
 }
 {
@@ -89292,44 +89292,44 @@ entry.time<float>(msvc_bug_workaround_3983, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "scalar",  };
+entry.tags = { "tan", "float", "scalar",  };
 entry.subName = "tan_T6_6<float>";
 entry.accuracy_test<float>(tan_T6_6<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3984, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float2x4", "simd",  };
+entry.tags = { "tan", "float2x4", "simd",  };
 entry.subName = "tan_T6_6<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_T6_6<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3985, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "simd",  };
+entry.tags = { "tan", "float", "simd",  };
 entry.subName = "tan_T6_6_float_simd";
 entry.accuracy_test<float>(tan_T6_6_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3986, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T7_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T7_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_ec_T7_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T7_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3987, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T7_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_ec_T7_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T7_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_ec_T7_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3988, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T7_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T7_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T7_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T7_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3989, -1.5f, 1.5f);
 }
 {
@@ -89355,44 +89355,44 @@ entry.time<float>(msvc_bug_workaround_3992, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "scalar",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_ec_T7_7<float>";
 entry.accuracy_test<float>(tan_fma_ec_T7_7<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3993, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float2x4", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_ec_T7_7<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_ec_T7_7<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3994, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_fma_ec_T7_7_float_simd";
 entry.accuracy_test<float>(tan_fma_ec_T7_7_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3995, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_T7_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T7_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_T7_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_T7_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3996, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T7_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_T7_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_T7_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_T7_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_3997, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T7_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T7_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_T7_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_T7_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_3998, -1.5f, 1.5f);
 }
 {
@@ -89418,44 +89418,44 @@ entry.time<float>(msvc_bug_workaround_4001, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "scalar",  };
+entry.tags = { "fma", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_T7_7<float>";
 entry.accuracy_test<float>(tan_fma_T7_7<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4002, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float2x4", "simd",  };
+entry.tags = { "fma", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_T7_7<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_T7_7<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4003, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "simd",  };
+entry.tags = { "fma", "tan", "float", "simd",  };
 entry.subName = "tan_fma_T7_7_float_simd";
 entry.accuracy_test<float>(tan_fma_T7_7_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4004, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_ec_T7_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T7_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_ec_T7_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_ec_T7_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4005, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T7_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_ec_T7_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_ec_T7_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_ec_T7_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4006, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T7_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T7_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_ec_T7_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_ec_T7_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4007, -1.5f, 1.5f);
 }
 {
@@ -89481,44 +89481,44 @@ entry.time<float>(msvc_bug_workaround_4010, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "scalar",  };
+entry.tags = { "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_ec_T7_7<float>";
 entry.accuracy_test<float>(tan_ec_T7_7<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4011, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float2x4", "simd",  };
+entry.tags = { "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_ec_T7_7<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_ec_T7_7<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4012, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "simd",  };
+entry.tags = { "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_ec_T7_7_float_simd";
 entry.accuracy_test<float>(tan_ec_T7_7_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4013, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_T7_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_T7_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_T7_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_T7_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4014, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_T7_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_T7_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_T7_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_T7_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4015, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_T7_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_T7_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_T7_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_T7_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4016, -1.5f, 1.5f);
 }
 {
@@ -89544,44 +89544,44 @@ entry.time<float>(msvc_bug_workaround_4019, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "scalar",  };
+entry.tags = { "tan", "float", "scalar",  };
 entry.subName = "tan_T7_7<float>";
 entry.accuracy_test<float>(tan_T7_7<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4020, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float2x4", "simd",  };
+entry.tags = { "tan", "float2x4", "simd",  };
 entry.subName = "tan_T7_7<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_T7_7<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4021, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "simd",  };
+entry.tags = { "tan", "float", "simd",  };
 entry.subName = "tan_T7_7_float_simd";
 entry.accuracy_test<float>(tan_T7_7_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4022, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T8_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T8_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_ec_T8_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T8_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4023, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T8_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_ec_T8_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T8_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_ec_T8_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4024, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T8_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T8_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T8_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T8_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4025, -1.5f, 1.5f);
 }
 {
@@ -89607,44 +89607,44 @@ entry.time<float>(msvc_bug_workaround_4028, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "scalar",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_ec_T8_8<float>";
 entry.accuracy_test<float>(tan_fma_ec_T8_8<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4029, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float2x4", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_ec_T8_8<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_ec_T8_8<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4030, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_fma_ec_T8_8_float_simd";
 entry.accuracy_test<float>(tan_fma_ec_T8_8_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4031, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_T8_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T8_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_T8_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_T8_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4032, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T8_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_T8_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_T8_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_T8_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4033, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T8_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T8_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_T8_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_T8_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4034, -1.5f, 1.5f);
 }
 {
@@ -89670,44 +89670,44 @@ entry.time<float>(msvc_bug_workaround_4037, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "scalar",  };
+entry.tags = { "fma", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_T8_8<float>";
 entry.accuracy_test<float>(tan_fma_T8_8<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4038, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float2x4", "simd",  };
+entry.tags = { "fma", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_T8_8<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_T8_8<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4039, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "simd",  };
+entry.tags = { "fma", "tan", "float", "simd",  };
 entry.subName = "tan_fma_T8_8_float_simd";
 entry.accuracy_test<float>(tan_fma_T8_8_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4040, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_ec_T8_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T8_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_ec_T8_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_ec_T8_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4041, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T8_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_ec_T8_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_ec_T8_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_ec_T8_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4042, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T8_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T8_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_ec_T8_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_ec_T8_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4043, -1.5f, 1.5f);
 }
 {
@@ -89733,44 +89733,44 @@ entry.time<float>(msvc_bug_workaround_4046, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "scalar",  };
+entry.tags = { "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_ec_T8_8<float>";
 entry.accuracy_test<float>(tan_ec_T8_8<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4047, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float2x4", "simd",  };
+entry.tags = { "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_ec_T8_8<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_ec_T8_8<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4048, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "simd",  };
+entry.tags = { "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_ec_T8_8_float_simd";
 entry.accuracy_test<float>(tan_ec_T8_8_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4049, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_T8_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_T8_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_T8_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_T8_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4050, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_T8_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_T8_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_T8_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_T8_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4051, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_T8_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_T8_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_T8_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_T8_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4052, -1.5f, 1.5f);
 }
 {
@@ -89796,44 +89796,44 @@ entry.time<float>(msvc_bug_workaround_4055, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "scalar",  };
+entry.tags = { "tan", "float", "scalar",  };
 entry.subName = "tan_T8_8<float>";
 entry.accuracy_test<float>(tan_T8_8<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4056, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float2x4", "simd",  };
+entry.tags = { "tan", "float2x4", "simd",  };
 entry.subName = "tan_T8_8<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_T8_8<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4057, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "simd",  };
+entry.tags = { "tan", "float", "simd",  };
 entry.subName = "tan_T8_8_float_simd";
 entry.accuracy_test<float>(tan_T8_8_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4058, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T9_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T9_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_ec_T9_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T9_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4059, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T9_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_ec_T9_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T9_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_ec_T9_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4060, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_ec_T9_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_ec_T9_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_ec_T9_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_ec_T9_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4061, -1.5f, 1.5f);
 }
 {
@@ -89859,44 +89859,44 @@ entry.time<float>(msvc_bug_workaround_4064, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "scalar",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_ec_T9_9<float>";
 entry.accuracy_test<float>(tan_fma_ec_T9_9<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4065, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float2x4", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_ec_T9_9<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_ec_T9_9<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4066, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "ends corrected", "float", "simd",  };
+entry.tags = { "fma", "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_fma_ec_T9_9_float_simd";
 entry.accuracy_test<float>(tan_fma_ec_T9_9_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4067, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_fma_T9_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T9_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_fma_T9_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_fma_T9_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4068, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T9_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_fma_T9_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_fma_T9_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_fma_T9_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4069, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_fma_T9_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_fma_T9_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "fma", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_fma_T9_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_fma_T9_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4070, -1.5f, 1.5f);
 }
 {
@@ -89922,44 +89922,44 @@ entry.time<float>(msvc_bug_workaround_4073, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "scalar",  };
+entry.tags = { "fma", "tan", "float", "scalar",  };
 entry.subName = "tan_fma_T9_9<float>";
 entry.accuracy_test<float>(tan_fma_T9_9<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4074, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float2x4", "simd",  };
+entry.tags = { "fma", "tan", "float2x4", "simd",  };
 entry.subName = "tan_fma_T9_9<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_fma_T9_9<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4075, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "fma", "float", "simd",  };
+entry.tags = { "fma", "tan", "float", "simd",  };
 entry.subName = "tan_fma_T9_9_float_simd";
 entry.accuracy_test<float>(tan_fma_T9_9_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4076, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_ec_T9_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T9_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_ec_T9_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_ec_T9_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4077, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T9_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_ec_T9_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_ec_T9_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_ec_T9_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4078, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_ec_T9_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_ec_T9_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "ends corrected", "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_ec_T9_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_ec_T9_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4079, -1.5f, 1.5f);
 }
 {
@@ -89985,44 +89985,44 @@ entry.time<float>(msvc_bug_workaround_4082, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "scalar",  };
+entry.tags = { "ends corrected", "tan", "float", "scalar",  };
 entry.subName = "tan_ec_T9_9<float>";
 entry.accuracy_test<float>(tan_ec_T9_9<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4083, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float2x4", "simd",  };
+entry.tags = { "ends corrected", "tan", "float2x4", "simd",  };
 entry.subName = "tan_ec_T9_9<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_ec_T9_9<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4084, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "ends corrected", "float", "simd",  };
+entry.tags = { "ends corrected", "tan", "float", "simd",  };
 entry.subName = "tan_ec_T9_9_float_simd";
 entry.accuracy_test<float>(tan_ec_T9_9_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4085, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "scalar",  };
-entry.subName = "tan_remez_remez_abs_T9_0<float>";
-entry.accuracy_test<float>(tan_remez_remez_abs_T9_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "scalar",  };
+entry.subName = "tan_remez_abs_T9_0<float>";
+entry.accuracy_test<float>(tan_remez_abs_T9_0<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4086, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float2x4", "simd",  };
-entry.subName = "tan_remez_remez_abs_T9_0<cr::simd::float2x4>";
-entry.accuracy_test<cr::simd::float2x4>(tan_remez_remez_abs_T9_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float2x4", "simd",  };
+entry.subName = "tan_remez_abs_T9_0<cr::simd::float2x4>";
+entry.accuracy_test<cr::simd::float2x4>(tan_remez_abs_T9_0<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4087, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "tan", "remez_pade", "float", "simd",  };
-entry.subName = "tan_remez_remez_abs_T9_0_float_simd";
-entry.accuracy_test<float>(tan_remez_remez_abs_T9_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
+entry.tags = { "tan", "remez", "float", "simd",  };
+entry.subName = "tan_remez_abs_T9_0_float_simd";
+entry.accuracy_test<float>(tan_remez_abs_T9_0_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4088, -1.5f, 1.5f);
 }
 {
@@ -90048,21 +90048,21 @@ entry.time<float>(msvc_bug_workaround_4091, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "scalar",  };
+entry.tags = { "tan", "float", "scalar",  };
 entry.subName = "tan_T9_9<float>";
 entry.accuracy_test<float>(tan_T9_9<float>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4092, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float2x4", "simd",  };
+entry.tags = { "tan", "float2x4", "simd",  };
 entry.subName = "tan_T9_9<cr::simd::float2x4>";
 entry.accuracy_test<cr::simd::float2x4>(tan_T9_9<cr::simd::float2x4>, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<cr::simd::float2x4>(msvc_bug_workaround_4093, -1.5f, 1.5f);
 }
 {
 auto& entry = testResult.make();
-entry.tags = { "float", "simd",  };
+entry.tags = { "tan", "float", "simd",  };
 entry.subName = "tan_T9_9_float_simd";
 entry.accuracy_test<float>(tan_T9_9_float_simd, std::tanf, -1.5f, 1.5f, -1.5f, 1.5f);
 entry.time<float>(msvc_bug_workaround_4094, -1.5f, 1.5f);

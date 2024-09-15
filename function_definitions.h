@@ -16382,7 +16382,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_ec_T1_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a1 = F(0.1428569052777064f);
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
@@ -16398,7 +16398,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_ec_T1_1(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a1 = F(5.9823669402836215f);
 auto const b1 = F(5.83951974645459f);
 auto const a0 = (a1 * x);
@@ -16431,7 +16431,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_T1_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a1 = F(0.1428569052777064f);
 auto const a0 = math::fma(a1, x, F(0.3466026020695971f));
 return math::setSign(a0, x0);
@@ -16447,7 +16447,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_T1_1(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a1 = F(2.604127138191103f);
 auto const b1 = F(5.83951974645459f);
 auto const a0 = math::fma(a1, x, F(-0.6082747813140389f));
@@ -16480,7 +16480,7 @@ template <class F>
 inline constexpr static F tanh_remez_ec_T1_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a1 = F(0.1428569052777064f);
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
@@ -16496,7 +16496,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_ec_T1_1(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a1 = F(5.9823669402836215f);
 auto const b1 = F(5.83951974645459f);
 auto const a0 = (a1 * x);
@@ -16529,7 +16529,7 @@ template <class F>
 inline constexpr static F tanh_remez_T1_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a1 = F(0.1428569052777064f);
 auto const a0 = a1 * x + F(0.3466026020695971f);
 return math::setSign(a0, x0);
@@ -16545,7 +16545,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_T1_1(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a1 = F(2.604127138191103f);
 auto const b1 = F(5.83951974645459f);
 auto const a0 = a1 * x + F(-0.6082747813140389f);
@@ -16578,7 +16578,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_ec_T2_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a2 = F(-0.08182981863445163f);
 auto const a1 = math::fma(a2, x, F(0.7156656357188679f));
 auto const a0 = (a1 * x);
@@ -16595,7 +16595,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_ec_T2_2(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a2 = F(0.9837832548423737f);
 auto const b2 = F(0.9997469317895966f);
 auto const a1 = math::fma(a2, x, F(0.063620755422029f));
@@ -16633,7 +16633,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_T2_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a2 = F(-0.05227857835646668f);
 auto const a1 = math::fma(a2, x, F(0.45721697344942547f));
 auto const a0 = math::fma(a1, x, F(0.18056493113241695f));
@@ -16650,7 +16650,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_T2_2(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a2 = F(1.0080219486341333f);
 auto const b2 = F(0.9997469317895966f);
 auto const a1 = math::fma(a2, x, F(0.06518825924147759f));
@@ -16688,7 +16688,7 @@ template <class F>
 inline constexpr static F tanh_remez_ec_T2_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a2 = F(-0.08182981863445163f);
 auto const a1 = a2 * x + F(0.7156656357188679f);
 auto const a0 = (a1 * x);
@@ -16705,7 +16705,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_ec_T2_2(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a2 = F(0.9837832548423737f);
 auto const b2 = F(0.9997469317895966f);
 auto const a1 = a2 * x + F(0.063620755422029f);
@@ -16743,7 +16743,7 @@ template <class F>
 inline constexpr static F tanh_remez_T2_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a2 = F(-0.05227857835646668f);
 auto const a1 = a2 * x + F(0.45721697344942547f);
 auto const a0 = a1 * x + F(0.18056493113241695f);
@@ -16760,7 +16760,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_T2_2(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a2 = F(1.0080219486341333f);
 auto const b2 = F(0.9997469317895966f);
 auto const a1 = a2 * x + F(0.06518825924147759f);
@@ -16798,7 +16798,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_ec_T3_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a3 = F(0.015626247604571805f);
 auto const a2 = math::fma(a3, x, F(-0.2034485516359063f));
 auto const a1 = math::fma(a2, x, F(0.8013106341050321f));
@@ -16816,7 +16816,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_ec_T3_3(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a3 = F(0.5418869195479372f);
 auto const b3 = F(0.5368886258702692f);
 auto const a2 = math::fma(a3, x, F(0.08721364496293016f));
@@ -16857,7 +16857,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_T3_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a3 = F(0.015626247604571788f);
 auto const a2 = math::fma(a3, x, F(-0.20344855163590608f));
 auto const a1 = math::fma(a2, x, F(0.8013106341050312f));
@@ -16875,7 +16875,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_T3_3(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a3 = F(0.5399859227284641f);
 auto const b3 = F(0.5368886258702692f);
 auto const a2 = math::fma(a3, x, F(0.08690769024118213f));
@@ -16916,7 +16916,7 @@ template <class F>
 inline constexpr static F tanh_remez_ec_T3_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a3 = F(0.015626247604571805f);
 auto const a2 = a3 * x + F(-0.2034485516359063f);
 auto const a1 = a2 * x + F(0.8013106341050321f);
@@ -16934,7 +16934,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_ec_T3_3(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a3 = F(0.5418869195479372f);
 auto const b3 = F(0.5368886258702692f);
 auto const a2 = a3 * x + F(0.08721364496293016f);
@@ -16975,7 +16975,7 @@ template <class F>
 inline constexpr static F tanh_remez_T3_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a3 = F(0.015626247604571788f);
 auto const a2 = a3 * x + F(-0.20344855163590608f);
 auto const a1 = a2 * x + F(0.8013106341050312f);
@@ -16993,7 +16993,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_T3_3(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a3 = F(0.5399859227284641f);
 auto const b3 = F(0.5368886258702692f);
 auto const a2 = a3 * x + F(0.08690769024118213f);
@@ -17034,7 +17034,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_ec_T4_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a4 = F(-0.0038777957708673217f);
 auto const a3 = math::fma(a4, x, F(0.06834887504392527f));
 auto const a2 = math::fma(a3, x, F(-0.42710194245588745f));
@@ -17053,7 +17053,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_ec_T4_4(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a4 = F(0.07445287010173439f);
 auto const b4 = F(0.07494413941546002f);
 auto const a3 = math::fma(a4, x, F(0.09319003539890718f));
@@ -17097,7 +17097,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_T4_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a4 = F(-0.0037079528484485922f);
 auto const a3 = math::fma(a4, x, F(0.06535527420277101f));
 auto const a2 = math::fma(a3, x, F(-0.4083953765705986f));
@@ -17116,7 +17116,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_T4_4(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a4 = F(0.07446284777870818f);
 auto const b4 = F(0.07494413941546002f);
 auto const a3 = math::fma(a4, x, F(0.09320252410577792f));
@@ -17160,7 +17160,7 @@ template <class F>
 inline constexpr static F tanh_remez_ec_T4_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a4 = F(-0.0038777957708673217f);
 auto const a3 = a4 * x + F(0.06834887504392527f);
 auto const a2 = a3 * x + F(-0.42710194245588745f);
@@ -17179,7 +17179,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_ec_T4_4(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a4 = F(0.07445287010173439f);
 auto const b4 = F(0.07494413941546002f);
 auto const a3 = a4 * x + F(0.09319003539890718f);
@@ -17223,7 +17223,7 @@ template <class F>
 inline constexpr static F tanh_remez_T4_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a4 = F(-0.0037079528484485922f);
 auto const a3 = a4 * x + F(0.06535527420277101f);
 auto const a2 = a3 * x + F(-0.4083953765705986f);
@@ -17242,7 +17242,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_T4_4(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a4 = F(0.07446284777870818f);
 auto const b4 = F(0.07494413941546002f);
 auto const a3 = a4 * x + F(0.09320252410577792f);
@@ -17286,7 +17286,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_ec_T5_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a5 = F(0.0006804811522430889f);
 auto const a4 = math::fma(a5, x, F(-0.015519411463101599f));
 auto const a3 = math::fma(a4, x, F(0.1371333503192465f));
@@ -17306,7 +17306,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_ec_T5_5(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a5 = F(0.009592102372462441f);
 auto const b5 = F(0.00954146426309816f);
 auto const a4 = math::fma(a5, x, F(0.02683152887329638f));
@@ -17353,7 +17353,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_T5_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a5 = F(0.000680481152243086f);
 auto const a4 = math::fma(a5, x, F(-0.015519411463101531f));
 auto const a3 = math::fma(a4, x, F(0.13713335031924592f));
@@ -17373,7 +17373,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_T5_5(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a5 = F(0.009592060152077338f);
 auto const b5 = F(0.00954146426309816f);
 auto const a4 = math::fma(a5, x, F(0.026831410772233864f));
@@ -17420,7 +17420,7 @@ template <class F>
 inline constexpr static F tanh_remez_ec_T5_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a5 = F(0.0006804811522430889f);
 auto const a4 = a5 * x + F(-0.015519411463101599f);
 auto const a3 = a4 * x + F(0.1371333503192465f);
@@ -17440,7 +17440,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_ec_T5_5(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a5 = F(0.009592102372462441f);
 auto const b5 = F(0.00954146426309816f);
 auto const a4 = a5 * x + F(0.02683152887329638f);
@@ -17487,7 +17487,7 @@ template <class F>
 inline constexpr static F tanh_remez_T5_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a5 = F(0.000680481152243086f);
 auto const a4 = a5 * x + F(-0.015519411463101531f);
 auto const a3 = a4 * x + F(0.13713335031924592f);
@@ -17507,7 +17507,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_T5_5(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a5 = F(0.009592060152077338f);
 auto const b5 = F(0.00954146426309816f);
 auto const a4 = a5 * x + F(0.026831410772233864f);
@@ -17554,7 +17554,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_ec_T6_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a6 = F(0.0001038510119055495f);
 auto const a5 = math::fma(a6, x, F(-0.0015396991713896573f));
 auto const a4 = math::fma(a5, x, F(0.0023702299820542653f));
@@ -17575,7 +17575,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_ec_T6_6(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a6 = F(0.0009366342001830144f);
 auto const b6 = F(0.000940805755508484f);
 auto const a5 = math::fma(a6, x, F(0.005276299845237002f));
@@ -17625,7 +17625,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_T6_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a6 = F(0.00010580688345354117f);
 auto const a5 = math::fma(a6, x, F(-0.0015686969995911413f));
 auto const a4 = math::fma(a5, x, F(0.0024148695604178636f));
@@ -17646,7 +17646,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_T6_6(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a6 = F(0.000936634282122674f);
 auto const b6 = F(0.000940805755508484f);
 auto const a5 = math::fma(a6, x, F(0.005276300306824047f));
@@ -17696,7 +17696,7 @@ template <class F>
 inline constexpr static F tanh_remez_ec_T6_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a6 = F(0.0001038510119055495f);
 auto const a5 = a6 * x + F(-0.0015396991713896573f);
 auto const a4 = a5 * x + F(0.0023702299820542653f);
@@ -17717,7 +17717,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_ec_T6_6(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a6 = F(0.0009366342001830144f);
 auto const b6 = F(0.000940805755508484f);
 auto const a5 = a6 * x + F(0.005276299845237002f);
@@ -17767,7 +17767,7 @@ template <class F>
 inline constexpr static F tanh_remez_T6_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a6 = F(0.00010580688345354117f);
 auto const a5 = a6 * x + F(-0.0015686969995911413f);
 auto const a4 = a5 * x + F(0.0024148695604178636f);
@@ -17788,7 +17788,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_T6_6(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a6 = F(0.000936634282122674f);
 auto const b6 = F(0.000940805755508484f);
 auto const a5 = a6 * x + F(0.005276300306824047f);
@@ -17838,7 +17838,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_ec_T7_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a7 = F(-8.0233470005022e-05f);
 auto const a6 = math::fma(a7, x, F(0.0019721758564982673f));
 auto const a5 = math::fma(a6, x, F(-0.01844338058730904f));
@@ -17860,7 +17860,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_ec_T7_7(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a7 = F(7.162618057066394e-05f);
 auto const b7 = F(7.131263103803758e-05f);
 auto const a6 = math::fma(a7, x, F(0.0006655032178772329f));
@@ -17913,7 +17913,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_T7_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a7 = F(-8.023347000502771e-05f);
 auto const a6 = math::fma(a7, x, F(0.001972175856498408f));
 auto const a5 = math::fma(a6, x, F(-0.018443380587310352f));
@@ -17935,7 +17935,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_T7_7(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a7 = F(7.162618047455847e-05f);
 auto const b7 = F(7.131263103803758e-05f);
 auto const a6 = math::fma(a7, x, F(0.0006655032169842843f));
@@ -17988,7 +17988,7 @@ template <class F>
 inline constexpr static F tanh_remez_ec_T7_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a7 = F(-8.0233470005022e-05f);
 auto const a6 = a7 * x + F(0.0019721758564982673f);
 auto const a5 = a6 * x + F(-0.01844338058730904f);
@@ -18010,7 +18010,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_ec_T7_7(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a7 = F(7.162618057066394e-05f);
 auto const b7 = F(7.131263103803758e-05f);
 auto const a6 = a7 * x + F(0.0006655032178772329f);
@@ -18063,7 +18063,7 @@ template <class F>
 inline constexpr static F tanh_remez_T7_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a7 = F(-8.023347000502771e-05f);
 auto const a6 = a7 * x + F(0.001972175856498408f);
 auto const a5 = a6 * x + F(-0.018443380587310352f);
@@ -18085,7 +18085,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_T7_7(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a7 = F(7.162618047455847e-05f);
 auto const b7 = F(7.131263103803758e-05f);
 auto const a6 = a7 * x + F(0.0006655032169842843f);
@@ -18138,7 +18138,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_ec_T8_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a8 = F(2.8729907510459896e-05f);
 auto const a7 = math::fma(a8, x, F(-0.0008597642506471121f));
 auto const a6 = math::fma(a7, x, F(0.010520031453970829f));
@@ -18161,7 +18161,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_ec_T8_8(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a8 = F(4.659353165245609e-06f);
 auto const b8 = F(4.680113856075708e-06f);
 auto const a7 = math::fma(a8, x, F(6.78211759464869e-05f));
@@ -18217,7 +18217,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_T8_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a8 = F(2.8864827673001655e-05f);
 auto const a7 = math::fma(a8, x, F(-0.0008638018387389871f));
 auto const a6 = math::fma(a7, x, F(0.010569435175622123f));
@@ -18240,7 +18240,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_T8_8(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a8 = F(4.6593531652469695e-06f);
 auto const b8 = F(4.680113856075708e-06f);
 auto const a7 = math::fma(a8, x, F(6.78211759465067e-05f));
@@ -18296,7 +18296,7 @@ template <class F>
 inline constexpr static F tanh_remez_ec_T8_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a8 = F(2.8729907510459896e-05f);
 auto const a7 = a8 * x + F(-0.0008597642506471121f);
 auto const a6 = a7 * x + F(0.010520031453970829f);
@@ -18319,7 +18319,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_ec_T8_8(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a8 = F(4.659353165245609e-06f);
 auto const b8 = F(4.680113856075708e-06f);
 auto const a7 = a8 * x + F(6.78211759464869e-05f);
@@ -18375,7 +18375,7 @@ template <class F>
 inline constexpr static F tanh_remez_T8_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a8 = F(2.8864827673001655e-05f);
 auto const a7 = a8 * x + F(-0.0008638018387389871f);
 auto const a6 = a7 * x + F(0.010569435175622123f);
@@ -18398,7 +18398,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_T8_8(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a8 = F(4.6593531652469695e-06f);
 auto const b8 = F(4.680113856075708e-06f);
 auto const a7 = a8 * x + F(6.78211759465067e-05f);
@@ -18454,7 +18454,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_ec_T9_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a9 = F(-7.220076569145174e-06f);
 auto const a8 = math::fma(a9, x, F(0.0002524377170342731f));
 auto const a7 = math::fma(a8, x, F(-0.003742630763960484f));
@@ -18478,7 +18478,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_ec_T9_9(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a9 = F(2.543356436366536e-07f);
 auto const b9 = F(2.5308957192831876e-07f);
 auto const a8 = math::fma(a9, x, F(5.258018543413981e-06f));
@@ -18537,7 +18537,7 @@ template <class F>
 inline constexpr static F tanh_remez_fma_T9_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a9 = F(-7.22007656914221e-06f);
 auto const a8 = math::fma(a9, x, F(0.00025243771703416945f));
 auto const a7 = math::fma(a8, x, F(-0.003742630763958947f));
@@ -18561,7 +18561,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_fma_T9_9(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a9 = F(2.5433564363665274e-07f);
 auto const b9 = F(2.5308957192831876e-07f);
 auto const a8 = math::fma(a9, x, F(5.258018543413964e-06f));
@@ -18620,7 +18620,7 @@ template <class F>
 inline constexpr static F tanh_remez_ec_T9_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a9 = F(-7.220076569145174e-06f);
 auto const a8 = a9 * x + F(0.0002524377170342731f);
 auto const a7 = a8 * x + F(-0.003742630763960484f);
@@ -18644,7 +18644,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_ec_T9_9(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a9 = F(2.543356436366536e-07f);
 auto const b9 = F(2.5308957192831876e-07f);
 auto const a8 = a9 * x + F(5.258018543413981e-06f);
@@ -18703,7 +18703,7 @@ template <class F>
 inline constexpr static F tanh_remez_T9_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a9 = F(-7.22007656914221e-06f);
 auto const a8 = a9 * x + F(0.00025243771703416945f);
 auto const a7 = a8 * x + F(-0.003742630763958947f);
@@ -18727,7 +18727,7 @@ template <class F>
 inline constexpr static F tanh_remez_pade_T9_9(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a9 = F(2.5433564363665274e-07f);
 auto const b9 = F(2.5308957192831876e-07f);
 auto const a8 = a9 * x + F(5.258018543413964e-06f);
@@ -18786,7 +18786,7 @@ template <class F>
 inline constexpr static F exp_remez_fma_T1_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a1 = F(0.0178571131597133f);
 auto const a0 = math::fma(a1, x, F(0.3466026020695971f));
 auto const w = math::setSign(a0, x0);
@@ -18806,7 +18806,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_fma_T1_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a1 = F(0.3255158922734669f);
 auto const b1 = F(0.7299399683061573f);
 auto const a0 = math::fma(a1, x, F(-0.6082747813142694f));
@@ -18845,7 +18845,7 @@ template <class F>
 inline constexpr static F exp_remez_T1_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a1 = F(0.0178571131597133f);
 auto const a0 = a1 * x + F(0.3466026020695971f);
 auto const w = math::setSign(a0, x0);
@@ -18865,7 +18865,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_T1_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a1 = F(0.3255158922734669f);
 auto const b1 = F(0.7299399683061573f);
 auto const a0 = a1 * x + F(-0.6082747813142694f);
@@ -18904,7 +18904,7 @@ template <class F>
 inline constexpr static F exp_remez_fma_T2_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a2 = F(-0.0008168527868197919f);
 auto const a1 = math::fma(a2, x, F(0.057152121681178183f));
 auto const a0 = math::fma(a1, x, F(0.18056493113241695f));
@@ -18925,7 +18925,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_fma_T2_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a2 = F(0.03087100683667714f);
 auto const b2 = F(0.03001382421058604f);
 auto const a1 = math::fma(a2, x, F(0.023725148007409696f));
@@ -18970,7 +18970,7 @@ template <class F>
 inline constexpr static F exp_remez_T2_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a2 = F(-0.0008168527868197919f);
 auto const a1 = a2 * x + F(0.057152121681178183f);
 auto const a0 = a1 * x + F(0.18056493113241695f);
@@ -18991,7 +18991,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_T2_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a2 = F(0.03087100683667714f);
 auto const b2 = F(0.03001382421058604f);
 auto const a1 = a2 * x + F(0.023725148007409696f);
@@ -19035,7 +19035,7 @@ template <class F>
 inline constexpr static F exp_remez_fma_T3_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a3 = F(3.052001485267927e-05f);
 auto const a2 = math::fma(a3, x, F(-0.0031788836193110325f));
 auto const a1 = math::fma(a2, x, F(0.1001638292631289f));
@@ -19057,7 +19057,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_fma_T3_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a3 = F(0.0011133143951696388f);
 auto const b3 = F(0.0011070158853124787f);
 auto const a2 = math::fma(a3, x, F(0.0015231129612193665f));
@@ -19105,7 +19105,7 @@ template <class F>
 inline constexpr static F exp_remez_T3_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a3 = F(3.052001485267927e-05f);
 auto const a2 = a3 * x + F(-0.0031788836193110325f);
 auto const a1 = a2 * x + F(0.1001638292631289f);
@@ -19127,7 +19127,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_T3_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a3 = F(0.0011133143951696388f);
 auto const b3 = F(0.0011070158853124787f);
 auto const a2 = a3 * x + F(0.0015231129612193665f);
@@ -19174,7 +19174,7 @@ template <class F>
 inline constexpr static F exp_remez_fma_T4_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a4 = F(-9.052619258907688e-07f);
 auto const a3 = math::fma(a4, x, F(0.00012764701992728708f));
 auto const a2 = math::fma(a3, x, F(-0.006381177758915601f));
@@ -19197,7 +19197,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_fma_T4_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a4 = F(2.4243292875339847e-05f);
 auto const b4 = F(2.439627972412699e-05f);
 auto const a3 = math::fma(a4, x, F(0.00023637252208230896f));
@@ -19248,7 +19248,7 @@ template <class F>
 inline constexpr static F exp_remez_T4_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a4 = F(-9.052619258907688e-07f);
 auto const a3 = a4 * x + F(0.00012764701992728708f);
 auto const a2 = a3 * x + F(-0.006381177758915601f);
@@ -19271,7 +19271,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_T4_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a4 = F(2.4243292875339847e-05f);
 auto const b4 = F(2.439627972412699e-05f);
 auto const a3 = a4 * x + F(0.00023637252208230896f);
@@ -19321,7 +19321,7 @@ template <class F>
 inline constexpr static F exp_remez_fma_T5_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a5 = F(2.0766636726168135e-08f);
 auto const a4 = math::fma(a5, x, F(-3.788918814233715e-06f));
 auto const a3 = math::fma(a4, x, F(0.0002678385748422734f));
@@ -19345,7 +19345,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_fma_T5_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a5 = F(3.6919780933049314e-07f);
 auto const b5 = F(3.672508077696814e-07f);
 auto const a4 = math::fma(a5, x, F(8.261910191268283e-06f));
@@ -19399,7 +19399,7 @@ template <class F>
 inline constexpr static F exp_remez_T5_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a5 = F(2.0766636726168135e-08f);
 auto const a4 = a5 * x + F(-3.788918814233715e-06f);
 auto const a3 = a4 * x + F(0.0002678385748422734f);
@@ -19423,7 +19423,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_T5_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a5 = F(3.6919780933049314e-07f);
 auto const b5 = F(3.672508077696814e-07f);
 auto const a4 = a5 * x + F(8.261910191268283e-06f);
@@ -19476,7 +19476,7 @@ template <class F>
 inline constexpr static F exp_remez_fma_T6_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a6 = F(4.0362122899453673e-10f);
 auto const a5 = math::fma(a6, x, F(-4.787283323947722e-08f));
 auto const a4 = math::fma(a5, x, F(5.895677637739642e-07f));
@@ -19501,7 +19501,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_fma_T6_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a6 = F(4.50246369275268e-09f);
 auto const b6 = F(4.522518784087993e-09f);
 auto const a5 = math::fma(a6, x, F(2.0293390041075107e-07f));
@@ -19558,7 +19558,7 @@ template <class F>
 inline constexpr static F exp_remez_T6_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a6 = F(4.0362122899453673e-10f);
 auto const a5 = a6 * x + F(-4.787283323947722e-08f);
 auto const a4 = a5 * x + F(5.895677637739642e-07f);
@@ -19583,7 +19583,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_T6_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a6 = F(4.50246369275268e-09f);
 auto const b6 = F(4.522518784087993e-09f);
 auto const a5 = a6 * x + F(2.0293390041075107e-07f);
@@ -19639,7 +19639,7 @@ template <class F>
 inline constexpr static F exp_remez_fma_T7_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a7 = F(-3.825829982995222e-11f);
 auto const a6 = math::fma(a7, x, F(7.523253847112401e-09f));
 auto const a5 = math::fma(a6, x, F(-5.62847307962097e-07f));
@@ -19665,7 +19665,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_fma_T7_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a7 = F(3.0634939416245604e-11f);
 auto const b7 = F(3.040205294468978e-11f);
 auto const a6 = math::fma(a7, x, F(2.7020724568592462e-09f));
@@ -19725,7 +19725,7 @@ template <class F>
 inline constexpr static F exp_remez_T7_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a7 = F(-3.825829982995222e-11f);
 auto const a6 = a7 * x + F(7.523253847112401e-09f);
 auto const a5 = a6 * x + F(-5.62847307962097e-07f);
@@ -19751,7 +19751,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_T7_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a7 = F(3.0634939416245604e-11f);
 auto const b7 = F(3.040205294468978e-11f);
 auto const a6 = a7 * x + F(2.7020724568592462e-09f);
@@ -19810,7 +19810,7 @@ template <class F>
 inline constexpr static F exp_remez_fma_T8_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a8 = F(1.7204777999521866e-12f);
 auto const a7 = math::fma(a8, x, F(-4.1189281403494755e-10f));
 auto const a6 = math::fma(a7, x, F(4.031919546364791e-08f));
@@ -19837,7 +19837,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_fma_T8_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a8 = F(3.32981149628426e-13f);
 auto const b8 = F(3.3453447114572467e-13f);
 auto const a7 = math::fma(a8, x, F(3.992229955692245e-11f));
@@ -19900,7 +19900,7 @@ template <class F>
 inline constexpr static F exp_remez_T8_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a8 = F(1.7204777999521866e-12f);
 auto const a7 = a8 * x + F(-4.1189281403494755e-10f);
 auto const a6 = a7 * x + F(4.031919546364791e-08f);
@@ -19927,7 +19927,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_T8_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a8 = F(3.32981149628426e-13f);
 auto const b8 = F(3.3453447114572467e-13f);
 auto const a7 = a8 * x + F(3.992229955692245e-11f);
@@ -19989,7 +19989,7 @@ template <class F>
 inline constexpr static F exp_remez_fma_T9_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a9 = F(-5.379376239406091e-14f);
 auto const a8 = math::fma(a9, x, F(1.5046460451657744e-11f));
 auto const a7 = math::fma(a8, x, F(-1.7846254176820374e-09f));
@@ -20017,7 +20017,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_fma_T9_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a9 = F(2.2563501463143638e-15f);
 auto const b9 = F(2.2442081943146354e-15f);
 auto const a8 = math::fma(a9, x, F(3.7910730308592253e-13f));
@@ -20083,7 +20083,7 @@ template <class F>
 inline constexpr static F exp_remez_T9_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a9 = F(-5.379376239406091e-14f);
 auto const a8 = a9 * x + F(1.5046460451657744e-11f);
 auto const a7 = a8 * x + F(-1.7846254176820374e-09f);
@@ -20111,7 +20111,7 @@ template <class F>
 inline constexpr static F exp_remez_pade_T9_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
-x = math::min(math::abs(x), F(10.0f));
+x = math::min(math::abs(x), F(7.0f));
 auto const a9 = F(2.2563501463143638e-15f);
 auto const b9 = F(2.2442081943146354e-15f);
 auto const a8 = a9 * x + F(3.7910730308592253e-13f);
@@ -29624,7 +29624,7 @@ return exp_special_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_ec_T1_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_ec_T1_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -29632,11 +29632,11 @@ auto const a1 = F(9.400946631447813f);
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_ec_T1_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_ec_T1_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_ec_T1_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_ec_T1_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_ec_T1_0<float>(x);
+return tan_remez_abs_fma_ec_T1_0<float>(x);
 #endif
 }
 template <class F>
@@ -29671,7 +29671,7 @@ return tan_fma_ec_T1_1<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_T1_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_T1_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -29679,11 +29679,11 @@ auto const a1 = F(9.400946631447813f);
 auto const a0 = math::fma(a1, x, F(4.372649927747547f));
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_T1_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_T1_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_T1_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_T1_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_T1_0<float>(x);
+return tan_remez_abs_fma_T1_0<float>(x);
 #endif
 }
 template <class F>
@@ -29718,7 +29718,7 @@ return tan_fma_T1_1<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_ec_T1_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_ec_T1_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -29726,11 +29726,11 @@ auto const a1 = F(9.400946631447813f);
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_ec_T1_0_float_simd(float x) {
+inline static float tan_remez_abs_ec_T1_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_ec_T1_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_ec_T1_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_ec_T1_0<float>(x);
+return tan_remez_abs_ec_T1_0<float>(x);
 #endif
 }
 template <class F>
@@ -29765,7 +29765,7 @@ return tan_ec_T1_1<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_T1_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_T1_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -29773,11 +29773,11 @@ auto const a1 = F(9.400946631447813f);
 auto const a0 = a1 * x + F(4.372649927747547f);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_T1_0_float_simd(float x) {
+inline static float tan_remez_abs_T1_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_T1_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_T1_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_T1_0<float>(x);
+return tan_remez_abs_T1_0<float>(x);
 #endif
 }
 template <class F>
@@ -29812,7 +29812,7 @@ return tan_T1_1<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_ec_T2_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_ec_T2_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -29821,11 +29821,11 @@ auto const a1 = math::fma(a2, x, F(9.400946631447813f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_ec_T2_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_ec_T2_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_ec_T2_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_ec_T2_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_ec_T2_0<float>(x);
+return tan_remez_abs_fma_ec_T2_0<float>(x);
 #endif
 }
 template <class F>
@@ -29866,7 +29866,7 @@ return tan_fma_ec_T2_2<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_T2_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_T2_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -29875,11 +29875,11 @@ auto const a1 = math::fma(a2, x, F(6.16429327343175f));
 auto const a0 = math::fma(a1, x, F(6.564692262588139e-17f));
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_T2_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_T2_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_T2_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_T2_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_T2_0<float>(x);
+return tan_remez_abs_fma_T2_0<float>(x);
 #endif
 }
 template <class F>
@@ -29920,7 +29920,7 @@ return tan_fma_T2_2<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_ec_T2_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_ec_T2_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -29929,11 +29929,11 @@ auto const a1 = a2 * x + F(9.400946631447813f);
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_ec_T2_0_float_simd(float x) {
+inline static float tan_remez_abs_ec_T2_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_ec_T2_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_ec_T2_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_ec_T2_0<float>(x);
+return tan_remez_abs_ec_T2_0<float>(x);
 #endif
 }
 template <class F>
@@ -29973,7 +29973,7 @@ return tan_ec_T2_2<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_T2_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_T2_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -29982,11 +29982,11 @@ auto const a1 = a2 * x + F(6.16429327343175f);
 auto const a0 = a1 * x + F(6.564692262588139e-17f);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_T2_0_float_simd(float x) {
+inline static float tan_remez_abs_T2_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_T2_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_T2_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_T2_0<float>(x);
+return tan_remez_abs_T2_0<float>(x);
 #endif
 }
 template <class F>
@@ -30026,7 +30026,7 @@ return tan_T2_2<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_ec_T3_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_ec_T3_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -30036,11 +30036,11 @@ auto const a1 = math::fma(a2, x, F(-6.879281817848549f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_ec_T3_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_ec_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_ec_T3_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_ec_T3_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_ec_T3_0<float>(x);
+return tan_remez_abs_fma_ec_T3_0<float>(x);
 #endif
 }
 template <class F>
@@ -30084,7 +30084,7 @@ return tan_fma_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_T3_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_T3_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -30094,11 +30094,11 @@ auto const a1 = math::fma(a2, x, F(-5.397944808680969f));
 auto const a0 = math::fma(a1, x, F(0.47337233813210294f));
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_T3_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_T3_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_T3_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_T3_0<float>(x);
+return tan_remez_abs_fma_T3_0<float>(x);
 #endif
 }
 template <class F>
@@ -30142,7 +30142,7 @@ return tan_fma_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_ec_T3_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_ec_T3_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -30152,11 +30152,11 @@ auto const a1 = a2 * x + F(-6.879281817848549f);
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_ec_T3_0_float_simd(float x) {
+inline static float tan_remez_abs_ec_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_ec_T3_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_ec_T3_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_ec_T3_0<float>(x);
+return tan_remez_abs_ec_T3_0<float>(x);
 #endif
 }
 template <class F>
@@ -30199,7 +30199,7 @@ return tan_ec_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_T3_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_T3_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -30209,11 +30209,11 @@ auto const a1 = a2 * x + F(-5.397944808680969f);
 auto const a0 = a1 * x + F(0.47337233813210294f);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_T3_0_float_simd(float x) {
+inline static float tan_remez_abs_T3_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_T3_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_T3_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_T3_0<float>(x);
+return tan_remez_abs_T3_0<float>(x);
 #endif
 }
 template <class F>
@@ -30256,7 +30256,7 @@ return tan_T3_3<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_ec_T4_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_ec_T4_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -30267,11 +30267,11 @@ auto const a1 = math::fma(a2, x, F(-6.518957355343527f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_ec_T4_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_ec_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_ec_T4_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_ec_T4_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_ec_T4_0<float>(x);
+return tan_remez_abs_fma_ec_T4_0<float>(x);
 #endif
 }
 template <class F>
@@ -30318,7 +30318,7 @@ return tan_fma_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_T4_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_T4_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -30329,11 +30329,11 @@ auto const a1 = math::fma(a2, x, F(-5.302793448172829f));
 auto const a0 = math::fma(a1, x, F(-6.99297652010507e-15f));
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_T4_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_T4_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_T4_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_T4_0<float>(x);
+return tan_remez_abs_fma_T4_0<float>(x);
 #endif
 }
 template <class F>
@@ -30380,7 +30380,7 @@ return tan_fma_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_ec_T4_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_ec_T4_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -30391,11 +30391,11 @@ auto const a1 = a2 * x + F(-6.518957355343527f);
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_ec_T4_0_float_simd(float x) {
+inline static float tan_remez_abs_ec_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_ec_T4_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_ec_T4_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_ec_T4_0<float>(x);
+return tan_remez_abs_ec_T4_0<float>(x);
 #endif
 }
 template <class F>
@@ -30441,7 +30441,7 @@ return tan_ec_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_T4_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_T4_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -30452,11 +30452,11 @@ auto const a1 = a2 * x + F(-5.302793448172829f);
 auto const a0 = a1 * x + F(-6.99297652010507e-15f);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_T4_0_float_simd(float x) {
+inline static float tan_remez_abs_T4_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_T4_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_T4_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_T4_0<float>(x);
+return tan_remez_abs_T4_0<float>(x);
 #endif
 }
 template <class F>
@@ -30502,7 +30502,7 @@ return tan_T4_4<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_ec_T5_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_ec_T5_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -30514,11 +30514,11 @@ auto const a1 = math::fma(a2, x, F(5.792727067468619f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_ec_T5_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_ec_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_ec_T5_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_ec_T5_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_ec_T5_0<float>(x);
+return tan_remez_abs_fma_ec_T5_0<float>(x);
 #endif
 }
 template <class F>
@@ -30568,7 +30568,7 @@ return tan_fma_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_T5_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_T5_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -30580,11 +30580,11 @@ auto const a1 = math::fma(a2, x, F(6.322554950617045f));
 auto const a0 = math::fma(a1, x, F(0.11925021509573677f));
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_T5_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_T5_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_T5_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_T5_0<float>(x);
+return tan_remez_abs_fma_T5_0<float>(x);
 #endif
 }
 template <class F>
@@ -30634,7 +30634,7 @@ return tan_fma_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_ec_T5_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_ec_T5_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -30646,11 +30646,11 @@ auto const a1 = a2 * x + F(5.792727067468619f);
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_ec_T5_0_float_simd(float x) {
+inline static float tan_remez_abs_ec_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_ec_T5_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_ec_T5_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_ec_T5_0<float>(x);
+return tan_remez_abs_ec_T5_0<float>(x);
 #endif
 }
 template <class F>
@@ -30699,7 +30699,7 @@ return tan_ec_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_T5_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_T5_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -30711,11 +30711,11 @@ auto const a1 = a2 * x + F(6.322554950617045f);
 auto const a0 = a1 * x + F(0.11925021509573677f);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_T5_0_float_simd(float x) {
+inline static float tan_remez_abs_T5_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_T5_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_T5_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_T5_0<float>(x);
+return tan_remez_abs_T5_0<float>(x);
 #endif
 }
 template <class F>
@@ -30764,7 +30764,7 @@ return tan_T5_5<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_ec_T6_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_ec_T6_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -30777,11 +30777,11 @@ auto const a1 = math::fma(a2, x, F(7.030317631834436f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_ec_T6_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_ec_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_ec_T6_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_ec_T6_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_ec_T6_0<float>(x);
+return tan_remez_abs_fma_ec_T6_0<float>(x);
 #endif
 }
 template <class F>
@@ -30834,7 +30834,7 @@ return tan_fma_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_T6_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_T6_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -30847,11 +30847,11 @@ auto const a1 = math::fma(a2, x, F(6.319183368533636f));
 auto const a0 = math::fma(a1, x, F(-4.030582117717073e-16f));
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_T6_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_T6_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_T6_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_T6_0<float>(x);
+return tan_remez_abs_fma_T6_0<float>(x);
 #endif
 }
 template <class F>
@@ -30904,7 +30904,7 @@ return tan_fma_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_ec_T6_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_ec_T6_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -30917,11 +30917,11 @@ auto const a1 = a2 * x + F(7.030317631834436f);
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_ec_T6_0_float_simd(float x) {
+inline static float tan_remez_abs_ec_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_ec_T6_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_ec_T6_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_ec_T6_0<float>(x);
+return tan_remez_abs_ec_T6_0<float>(x);
 #endif
 }
 template <class F>
@@ -30973,7 +30973,7 @@ return tan_ec_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_T6_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_T6_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -30986,11 +30986,11 @@ auto const a1 = a2 * x + F(6.319183368533636f);
 auto const a0 = a1 * x + F(-4.030582117717073e-16f);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_T6_0_float_simd(float x) {
+inline static float tan_remez_abs_T6_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_T6_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_T6_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_T6_0<float>(x);
+return tan_remez_abs_T6_0<float>(x);
 #endif
 }
 template <class F>
@@ -31042,7 +31042,7 @@ return tan_T6_6<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_ec_T7_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_ec_T7_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -31056,11 +31056,11 @@ auto const a1 = math::fma(a2, x, F(-2.752793579185818f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_ec_T7_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_ec_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_ec_T7_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_ec_T7_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_ec_T7_0<float>(x);
+return tan_remez_abs_fma_ec_T7_0<float>(x);
 #endif
 }
 template <class F>
@@ -31116,7 +31116,7 @@ return tan_fma_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_T7_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_T7_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -31130,11 +31130,11 @@ auto const a1 = math::fma(a2, x, F(-2.909929037621959f));
 auto const a0 = math::fma(a1, x, F(-0.03693893530573159f));
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_T7_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_T7_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_T7_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_T7_0<float>(x);
+return tan_remez_abs_fma_T7_0<float>(x);
 #endif
 }
 template <class F>
@@ -31190,7 +31190,7 @@ return tan_fma_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_ec_T7_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_ec_T7_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -31204,11 +31204,11 @@ auto const a1 = a2 * x + F(-2.752793579185818f);
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_ec_T7_0_float_simd(float x) {
+inline static float tan_remez_abs_ec_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_ec_T7_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_ec_T7_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_ec_T7_0<float>(x);
+return tan_remez_abs_ec_T7_0<float>(x);
 #endif
 }
 template <class F>
@@ -31263,7 +31263,7 @@ return tan_ec_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_T7_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_T7_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -31277,11 +31277,11 @@ auto const a1 = a2 * x + F(-2.909929037621959f);
 auto const a0 = a1 * x + F(-0.03693893530573159f);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_T7_0_float_simd(float x) {
+inline static float tan_remez_abs_T7_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_T7_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_T7_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_T7_0<float>(x);
+return tan_remez_abs_T7_0<float>(x);
 #endif
 }
 template <class F>
@@ -31336,7 +31336,7 @@ return tan_T7_7<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_ec_T8_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_ec_T8_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -31351,11 +31351,11 @@ auto const a1 = math::fma(a2, x, F(-3.084561376195897f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_ec_T8_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_ec_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_ec_T8_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_ec_T8_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_ec_T8_0<float>(x);
+return tan_remez_abs_fma_ec_T8_0<float>(x);
 #endif
 }
 template <class F>
@@ -31414,7 +31414,7 @@ return tan_fma_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_T8_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_T8_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -31429,11 +31429,11 @@ auto const a1 = math::fma(a2, x, F(-2.9153831094030753f));
 auto const a0 = math::fma(a1, x, F(4.515987303590891e-14f));
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_T8_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_T8_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_T8_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_T8_0<float>(x);
+return tan_remez_abs_fma_T8_0<float>(x);
 #endif
 }
 template <class F>
@@ -31492,7 +31492,7 @@ return tan_fma_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_ec_T8_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_ec_T8_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -31507,11 +31507,11 @@ auto const a1 = a2 * x + F(-3.084561376195897f);
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_ec_T8_0_float_simd(float x) {
+inline static float tan_remez_abs_ec_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_ec_T8_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_ec_T8_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_ec_T8_0<float>(x);
+return tan_remez_abs_ec_T8_0<float>(x);
 #endif
 }
 template <class F>
@@ -31569,7 +31569,7 @@ return tan_ec_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_T8_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_T8_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -31584,11 +31584,11 @@ auto const a1 = a2 * x + F(-2.9153831094030753f);
 auto const a0 = a1 * x + F(4.515987303590891e-14f);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_T8_0_float_simd(float x) {
+inline static float tan_remez_abs_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_T8_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_T8_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_T8_0<float>(x);
+return tan_remez_abs_T8_0<float>(x);
 #endif
 }
 template <class F>
@@ -31646,7 +31646,7 @@ return tan_T8_8<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_ec_T9_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_ec_T9_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -31662,11 +31662,11 @@ auto const a1 = math::fma(a2, x, F(3.5753399866000954f));
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_ec_T9_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_ec_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_ec_T9_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_ec_T9_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_ec_T9_0<float>(x);
+return tan_remez_abs_fma_ec_T9_0<float>(x);
 #endif
 }
 template <class F>
@@ -31728,7 +31728,7 @@ return tan_fma_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_fma_T9_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_fma_T9_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -31744,11 +31744,11 @@ auto const a1 = math::fma(a2, x, F(3.6779631117277627f));
 auto const a0 = math::fma(a1, x, F(0.012734635136421913f));
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_fma_T9_0_float_simd(float x) {
+inline static float tan_remez_abs_fma_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_fma_T9_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_fma_T9_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_fma_T9_0<float>(x);
+return tan_remez_abs_fma_T9_0<float>(x);
 #endif
 }
 template <class F>
@@ -31810,7 +31810,7 @@ return tan_fma_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_ec_T9_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_ec_T9_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -31826,11 +31826,11 @@ auto const a1 = a2 * x + F(3.5753399866000954f);
 auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_ec_T9_0_float_simd(float x) {
+inline static float tan_remez_abs_ec_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_ec_T9_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_ec_T9_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_ec_T9_0<float>(x);
+return tan_remez_abs_ec_T9_0<float>(x);
 #endif
 }
 template <class F>
@@ -31891,7 +31891,7 @@ return tan_ec_T9_9<float>(x);
 #endif
 }
 template <class F>
-inline constexpr static F tan_remez_remez_abs_T9_0(in_t(F) x) {
+inline constexpr static F tan_remez_abs_T9_0(in_t(F) x) {
 using math = cr::StdContext;
 auto const x0 = x;
 x = math::abs(x);
@@ -31907,11 +31907,11 @@ auto const a1 = a2 * x + F(3.6779631117277627f);
 auto const a0 = a1 * x + F(0.012734635136421913f);
 return math::setSign(a0, x0);
 }
-inline static float tan_remez_remez_abs_T9_0_float_simd(float x) {
+inline static float tan_remez_abs_T9_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-return tan_remez_remez_abs_T9_0<cr::simd::float1x4>(x)[0];
+return tan_remez_abs_T9_0<cr::simd::float1x4>(x)[0];
 #else
-return tan_remez_remez_abs_T9_0<float>(x);
+return tan_remez_abs_T9_0<float>(x);
 #endif
 }
 template <class F>
