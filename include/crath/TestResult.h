@@ -233,6 +233,7 @@ struct TestResult
 	bool autoFitOnChange = false;
 	bool changedData = false;
 	bool plotRelativeError = false;
+	bool logScaleError = false;
 	bool showSelected = false;
 	float evalValue = 0.0f;
 
@@ -600,6 +601,8 @@ struct TestResult
 		if (ImGui::Begin("plot test")) {
 			ImGui::Checkbox("Relative Error", &this->plotRelativeError);
 			ImGui::SameLine();
+			ImGui::Checkbox("Logscale Error", &this->logScaleError);
+			ImGui::SameLine();
 			if (ImGui::Button("Clear all")) {
 				for (auto& entry : this->entries) {
 					entry->selected = false;
@@ -644,7 +647,7 @@ struct TestResult
 			std::vector<float> xs{};
 			std::vector<float> ys{};
 
-			auto size = ImGui::GetContentRegionAvail().y * 0.5f;
+			auto size = ImGui::GetContentRegionAvail().y * 0.49f;
 
 			auto doPlot = [&](bool showError) {
 				if (ImPlot::BeginPlot(showError ? "Error" : "Value", ImVec2(-1, size), showError ? ImPlotFlags_NoLegend : ImPlotFlags_None)) {
@@ -656,6 +659,9 @@ struct TestResult
 					}
 					this->changedData = false;
 					ImPlot::SetupAxes("x", "y", xflags, yflags);
+					if (showError && this->logScaleError) {
+						ImPlot::SetupAxisScale(ImAxis_Y1, ImPlotScale_Log10);
+					}
 
 					for (auto entry : plotEntries) {
 						if (this->hoveredEntry != nullptr && entry != this->hoveredEntry) {

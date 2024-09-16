@@ -203,32 +203,9 @@ class x_triple_abs:
         out(f'x = math::abs(math::abs(math::abs(x - quarter) - F({max_x * 0.5}f)) - quarter);')
 
 
-class test_function_info:
-    def __init__(self, name, reference_function, min_x, max_x, ref_min_x, ref_max_x):
-        self.name = name
-        self.reference_function = reference_function
-        self.test_functions = []
-        self.min_x = min_x
-        self.max_x = max_x
-        self.ref_min_x = ref_min_x
-        self.ref_max_x = ref_max_x
-
-    def add(self, name):
-        self.test_functions.append(name)
-
-    def show_accuracy_test(self, out=print):
-        for f in self.test_functions:
-            out(f'''{{
-auto& sinEntry = testResult.entries.emplace_back();
-sinEntry.subName = "{f}<float>";
-sinEntry.accuracy_test<float>({f}<float>, {self.reference_function}, {float(self.min_x)}f, {float(self.max_x)}f, {float(self.ref_min_x)}f, {float(self.ref_max_x)}f);
-sinEntry.time<float>({f}<float>, M, {float(self.min_x)}f, {float(self.max_x)}f);
-}}
-''')
-
-
 class function_info2(NamedTuple):
     function_name: str
+    display_name: Optional[str]
     value_type: str
     reference_function: Optional[str]
     tags: list[str]
@@ -236,6 +213,30 @@ class function_info2(NamedTuple):
     max_x: float
     ref_min_x: float
     ref_max_x: float
+
+
+def make_function_info2(
+        function_name: str,
+        value_type: str,
+        reference_function: Optional[str],
+        tags: list[str],
+        min_x: float,
+        max_x: float,
+        ref_min_x: float,
+        ref_max_x: float,
+        display_name: Optional[str] = None,
+):
+    return function_info2(
+        function_name=function_name,
+        value_type=value_type,
+        reference_function=reference_function,
+        tags=tags,
+        min_x=min_x,
+        max_x=max_x,
+        ref_min_x=ref_min_x,
+        ref_max_x=ref_max_x,
+        display_name=display_name
+    )
 
 
 function_infos2: list[function_info2] = []
@@ -284,7 +285,7 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
         out(f'#endif')
         out(f'}}')
 
-    info = function_info2(
+    info = make_function_info2(
         tags=tags + ["float", "scalar"],
         reference_function=ref,
         value_type="float",
@@ -296,7 +297,7 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
     )
     function_infos2.append(info)
 
-    info = function_info2(
+    info = make_function_info2(
         tags=tags + ["float2x4", "simd"],
         reference_function=ref,
         value_type="cr::simd::float2x4",
@@ -308,7 +309,7 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
     )
     function_infos2.append(info)
 
-    info = function_info2(
+    info = make_function_info2(
         tags=tags + ["float", "simd"],
         reference_function=ref,
         value_type="float",
@@ -321,18 +322,28 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
     function_infos2.append(info)
 
 
-def add_ref_info(name, function_name, min_x, max_x, modes):
-    info = function_info2(
-        tags=[name, function_name, "float", "scalar", "reference"],
-        reference_function=function_name,
-        value_type="float",
-        function_name=function_name,
-        min_x=min_x,
-        max_x=max_x,
-        ref_min_x=min_x,
-        ref_max_x=max_x,
-    )
-    function_infos2.append(info)
+def add_ref_info(name, min_x, max_x, modes):
+    reference_function = f'std::{name}f'
+
+    def add(function_name, value_type, tags, display_name=None):
+        if display_name is None:
+            display_name = function_name
+        info = make_function_info2(
+            tags=[name, "reference"] + tags,
+            reference_function=reference_function,
+            value_type=value_type,
+            function_name=function_name,
+            display_name=display_name,
+            min_x=min_x,
+            max_x=max_x,
+            ref_min_x=min_x,
+            ref_max_x=max_x,
+        )
+        function_infos2.append(info)
+
+    add(f'std::{name}f', value_type='float', tags=["float", "scalar"])
+    add(f'[](float x) {{ return cr::simd::float1x4(x).{name}()[0]; }}', display_name=f"{name}_float_simd", value_type='float', tags=["float_simd"])
+    add(f'[](cr::simd::float2x4 const& x) {{ return x.{name}(); }}', display_name=f'{name}<float2x4>', value_type='cr::simd::float2x4', tags=["float2x4"])
 
 
 def add_sin(N, out, name, scale, modes):
@@ -1129,9 +1140,61 @@ def main():
     else:
         M = 10
 
-    add_ref_info(function_name="noop", name="noop", min_x=-1.5, max_x=1.5, modes=modes)
+    info = make_function_info2(
+        tags=["noop", "reference"],
+        reference_function='[](auto const& x) { return x; }',
+        value_type='float',
+        function_name='[](auto const& x) { return x; }',
+        display_name='noop',
+        min_x=0,
+        max_x=1,
+        ref_min_x=0,
+        ref_max_x=1,
+    )
+    function_infos2.append(info)
 
-    add_ref_info(function_name="std::sinf", name="sin", min_x=0, max_x=2 * pi, modes=modes)
+    info = make_function_info2(
+        tags=["sqrt"],
+        reference_function='std::sqrtf',
+        value_type='float',
+        function_name='[](auto const& x) { return cr::StdContext::sqrt0(x); }',
+        display_name='sqrt0',
+        min_x=0,
+        max_x=1000,
+        ref_min_x=0,
+        ref_max_x=1000,
+    )
+    function_infos2.append(info)
+
+    info = make_function_info2(
+        tags=["sqrt"],
+        reference_function='std::sqrtf',
+        value_type='float',
+        function_name='[](auto const& x) { return cr::StdContext::sqrt1(x); }',
+        display_name='sqrt1',
+        min_x=0,
+        max_x=1000,
+        ref_min_x=0,
+        ref_max_x=1000,
+    )
+    function_infos2.append(info)
+
+    info = make_function_info2(
+        tags=["sqrt"],
+        reference_function='std::sqrtf',
+        value_type='float',
+        function_name='[](auto const& x) { return cr::StdContext::sqrt2(x); }',
+        display_name='sqrt2',
+        min_x=0,
+        max_x=1000,
+        ref_min_x=0,
+        ref_max_x=1000,
+    )
+    function_infos2.append(info)
+
+    add_ref_info(name="sqrt", min_x=0, max_x=1000, modes=modes)
+
+    add_ref_info(name="sin", min_x=0, max_x=2 * pi, modes=modes)
     for N in range(M0, M):
         add_sin(N, out, scale=1, name="sin", modes=modes)
 
@@ -1140,32 +1203,32 @@ def main():
             add_sin(N, out, scale=2 * pi, name="sin_unit1", modes=modes)
             add_sin(N, out, scale=1 * pi, name="sin_unit2", modes=modes)
 
-        add_ref_info(function_name="std::cosf", name="cos", min_x=0, max_x=2 * pi, modes=modes)
+        add_ref_info(name="cos", min_x=0, max_x=2 * pi, modes=modes)
         for N in range(M0, M):
             add_cos(N, out, scale=2 * pi, name="cos_unit1", modes=modes)
             add_cos(N, out, scale=1 * pi, name="cos_unit2", modes=modes)
             add_cos(N, out, scale=1, name="cos", modes=modes)
 
-        add_ref_info(function_name="std::tanhf", name="tanh", min_x=-10, max_x=10, modes=modes)
+        add_ref_info(name="tanh", min_x=-10, max_x=10, modes=modes)
         for N in range(M0, M):
             add_tanh(N, out, modes=modes)
 
-        add_ref_info(function_name="std::expf", name="exp", min_x=-10, max_x=10, modes=modes)
+        add_ref_info(name="exp", min_x=-10, max_x=10, modes=modes)
         for N in range(M0, M):
             add_exp(N, out, modes=modes)
 
-        add_ref_info(function_name="std::atanhf", name="atanh", min_x=-10, max_x=10, modes=modes)
+        add_ref_info(name="atanh", min_x=-10, max_x=10, modes=modes)
         for N in range(M0, M):
             add_atan(N, out, modes=modes)
 
-        add_ref_info(function_name="std::logf", name="log", min_x=0.08, max_x=1 / 0.08, modes=modes)
+        add_ref_info(name="log", min_x=0.08, max_x=1 / 0.08, modes=modes)
         for N in range(M0, M):
             add_log(N, out, modes=modes)
 
         for N in range(M0, M):
             add_special_exp(N, out, modes=modes)
 
-        add_ref_info(function_name="std::tanf", name="tan", min_x=-1.5, max_x=1.5, modes=modes)
+        add_ref_info(name="tan", min_x=-1.5, max_x=1.5, modes=modes)
         for N in range(M0, M):
             add_tan(N, out, modes=modes)
 
@@ -1215,13 +1278,18 @@ def main():
                 test_function = test.function_name
                 function = test.function_name
 
+            if test.display_name is not None:
+                display_name = test.display_name
+            else:
+                display_name = test.function_name
+
             out('{')
             out('auto& entry = testResult.make();')
             tags = ""
             for tag in test.tags:
                 tags += f'"{tag}", '
             out(f'entry.tags = {{ {tags} }};')
-            out(f'entry.subName = "{test.function_name}";')
+            out(f'entry.subName = "{display_name}";')
             out(f'entry.accuracy_test<{test.value_type}>({test_function}, {reference_function}, {float(test.min_x)}f, {float(test.max_x)}f, {float(test.ref_min_x)}f, {float(test.ref_max_x)}f);')
             out(f'''entry.time<{test.value_type}>(msvc_bug_workaround_{counter}, {float(test.min_x)}f, {float(test.max_x)}f);''')
             out('}')

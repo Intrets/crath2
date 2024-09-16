@@ -233,6 +233,38 @@ namespace cr::simd
 			return { _mm_round_ps(this->f1, _MM_ROUND_NEAREST | _MM_FROUND_NO_EXC) };
 		}
 
+		inline float1x4 sqrt() const {
+			return { _mm_sqrt_ps(this->f1) };
+		}
+
+		inline float1x4 sin() const {
+			return { _mm_sin_ps(this->f1) };
+		}
+
+		inline float1x4 cos() const {
+			return { _mm_cos_ps(this->f1) };
+		}
+
+		inline float1x4 tan() const {
+			return { _mm_tan_ps(this->f1) };
+		}
+
+		inline float1x4 tanh() const {
+			return { _mm_tanh_ps(this->f1) };
+		}
+
+		inline float1x4 log() const {
+			return { _mm_log_ps(this->f1) };
+		}
+
+		inline float1x4 exp() const {
+			return { _mm_exp_ps(this->f1) };
+		}
+
+		inline float1x4 atanh() const {
+			return { _mm_atanh_ps(this->f1) };
+		}
+
 		int1x4 bitCastInt() const;
 	};
 }
