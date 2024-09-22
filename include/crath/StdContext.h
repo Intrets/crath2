@@ -237,17 +237,18 @@ namespace
 		}
 
 		template<class F>
-		inline constexpr static F tan_ec_T6_6(in_t(F) x) {
+		inline constexpr static F tan_fma_T6_6(in_t(F) x) {
+			using math = cr::StdContext;
 			auto const x2 = x * x;
-			auto const a3 = F(0.002020205337392043f);
+			auto const a3 = F(0.00202020202020202f);
 			auto const b3 = F(-9.62000962000962e-05f);
-			auto const a2 = a3 * x2 + F(-0.12121232024352258f);
-			auto const b2 = b3 * x2 + F(0.020202020202020204f);
-			auto const a1 = a2 * x2 + F(1.0000016420090612f);
-			auto const b1 = b2 * x2 + F(-0.45454545454545453f);
+			auto const a2 = math::fma(a3, x2, F(-0.12121212121212122f));
+			auto const b2 = math::fma(b3, x2, F(0.020202020202020204f));
+			auto const a1 = math::fma(a2, x2, F(1.0f));
+			auto const b1 = math::fma(b2, x2, F(-0.45454545454545453f));
 			auto const a0 = (a1 * x);
-			auto const b0 = b1 * x2 + F(1.0f);
-			return a0 / b0;
+			auto const b0 = math::fma(b1, x2, F(1.0f));
+			return math::setSign(a0 / b0, x);
 		}
 
 		template<class F>
@@ -520,7 +521,7 @@ namespace cr
 		// tan_ec_T6_6<float>
 		template<class F>
 		inline constexpr static F tan(in_t(F) x) {
-			return fun::tan_ec_T6_6(x);
+			return fun::tan_fma_T6_6(x);
 		}
 
 		// domain: (-10, 10)
@@ -551,24 +552,7 @@ namespace cr
 
 		template<class F>
 		inline constexpr static F recip(in_t(F) x) {
-			if constexpr (std::same_as<F, float>) {
-				if (std::is_constant_evaluated()) {
-					return 1 / x;
-				}
-				else {
-#ifdef ARCH_x86_64
-					return simd::float1x4(x).recip()[0];
-#else
-					return 1 / x;
-#endif
-				}
-			}
-			else if constexpr (std::same_as<F, double>) {
-				return 1 / x;
-			}
-			else {
-				return x.recip();
-			}
+			return F(1) / x;
 		}
 
 	private:
