@@ -329,6 +329,9 @@ namespace cr
 		inline static constexpr float phi = 1.0f / std::numbers::phi_v<float>;
 
 		template<class F>
+		using BoolType = std::conditional_t<std::same_as<F, float>, bool, F>;
+
+		template<class F>
 		inline static constexpr F bitSign() {
 			return std::bit_cast<float>(1U << 31);
 		};
@@ -699,7 +702,7 @@ namespace cr
 				return std::min(f1, f2);
 			}
 			else {
-				return F::min(f1, f2);
+				return f1.min(f2);
 			}
 		}
 
@@ -712,7 +715,7 @@ namespace cr
 				return std::max(f1, f2);
 			}
 			else {
-				return F::max(f1, f2);
+				return f1.max(f2);
 			}
 		}
 
@@ -722,7 +725,7 @@ namespace cr
 			}
 			else {
 #ifdef ARCH_x86_64
-				return simd::float1x4::clamp(f_, min_, max_)[0];
+				return simd::float1x4(f_).clamp(min_, max_)[0];
 #else
 				return std::clamp(f_, min_, max_);
 #endif
@@ -735,7 +738,7 @@ namespace cr
 
 		template<class F>
 		inline constexpr static F clamp(in_t(F) f, in_t(F) min, in_t(F) max) {
-			return F::clamp(f, min, max);
+			return f.clamp(min, max);
 		}
 
 		template<class F>
@@ -881,7 +884,7 @@ namespace cr
 				return b ? f2 : f1;
 			}
 			else {
-				return F::blend(f1, f2, b);
+				return f1.blend(f2, b);
 			}
 		}
 
@@ -891,7 +894,7 @@ namespace cr
 				return b ? f1 : f2;
 			}
 			else {
-				return F::blend(f2, f1, b);
+				return f2.blend(f1, b);
 			}
 		}
 
@@ -911,7 +914,7 @@ namespace cr
 				s = b ? v : s;
 			}
 			else {
-				s = F::blend(s, v, b);
+				s = s.blend(v, b);
 			}
 		}
 
@@ -934,11 +937,11 @@ namespace cr
 					return a * b + c;
 				}
 				else {
-					return cr::simd::float1x4::fmaf(a, b, c);
+					return cr::simd::float1x4(a).fma(b, c)[0];
 				}
 			}
 			else {
-				return F::fmac(a, b, c);
+				return a.fma(b, c);
 			}
 		}
 	};

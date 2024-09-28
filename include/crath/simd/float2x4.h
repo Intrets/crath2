@@ -8,6 +8,16 @@
 
 #include "crath/ParameterTyping.h"
 #include "crath/simd/aligned_load_hint.h"
+#include "crath/simd/simd_definitions.h"
+
+#define APPLY1(OP, X, ONE) OP(X, ONE, 1) OP(X, ONE, 2)
+#define APPLY2(OP, X, ONE, TWO) OP(X, ONE, TWO, 1) OP(X, ONE, TWO, 2)
+#define APPLY3(OP, X, ONE, TWO, THREE) OP(X, ONE, TWO, THREE, 1) OP(X, ONE, TWO, THREE, 2)
+#define APPLY4(OP, X, ONE, TWO, THREE, FOUR) OP(X, ONE, TWO, THREE, FOUR, 1) OP(X, ONE, TWO, THREE, FOUR, 2)
+
+#define CR_MACRO_DATA_TYPE float2x4
+#define CR_INLINE inline
+#define SUFFIX(X) X##_ps
 
 namespace cr::simd
 {
@@ -83,217 +93,54 @@ namespace cr::simd
 			_mm_store_ps(&s + 4, this->f2);
 		}
 
-		// Comparing functions
-
-		static inline float2x4 clamp(in_t(float2x4) f, in_t(float2x4) min, in_t(float2x4) max) {
-			return { _mm_min_ps(_mm_max_ps(f.f1, min.f1), max.f1), _mm_min_ps(_mm_max_ps(f.f2, min.f2), max.f2) };
-		}
-
-		static inline float2x4 max(in_t(float2x4) m1, in_t(float2x4) m2) {
-			return { _mm_max_ps(m1.f1, m2.f1), _mm_max_ps(m1.f2, m2.f2) };
-		}
-
-		static inline float2x4 min(in_t(float2x4) m1, in_t(float2x4) m2) {
-			return { _mm_min_ps(m1.f1, m2.f1), _mm_min_ps(m1.f2, m2.f2) };
-		}
-
-		static inline float2x4 blend(in_t(float2x4) a, in_t(float2x4) b, in_t(float2x4) mask) {
-			return { _mm_blendv_ps(a.f1, b.f1, mask.f1), _mm_blendv_ps(a.f2, b.f2, mask.f2) };
-		}
-
-		inline float2x4 operator==(in_t(float2x4) a) const {
-			return { _mm_cmpeq_ps(this->f1, a.f1), _mm_cmpeq_ps(this->f2, a.f2) };
-		}
-
-		inline float2x4 operator!=(in_t(float2x4) a) const {
-			return { _mm_cmpneq_ps(this->f1, a.f1), _mm_cmpneq_ps(this->f2, a.f2) };
-		}
-
-		inline float2x4 operator>(in_t(float2x4) a) const {
-			return { _mm_cmpgt_ps(this->f1, a.f1), _mm_cmpgt_ps(this->f2, a.f2) };
-		}
-
-		inline float2x4 operator>=(in_t(float2x4) a) const {
-			return { _mm_cmpnlt_ps(this->f1, a.f1), _mm_cmpnlt_ps(this->f2, a.f2) };
-		}
-
-		inline float2x4 operator<(in_t(float2x4) a) const {
-			return { _mm_cmplt_ps(this->f1, a.f1), _mm_cmplt_ps(this->f2, a.f2) };
-		}
-
-		inline float2x4 operator<=(in_t(float2x4) a) const {
-			return { _mm_cmpngt_ps(this->f1, a.f1), _mm_cmpngt_ps(this->f2, a.f2) };
-		}
-
-		// Boolean
-
-		// a.and_not(b) => a && !b
-		inline float2x4 and_not(in_t(float2x4) other) const {
-			return { _mm_andnot_ps(other.f1, this->f1), _mm_andnot_ps(other.f2, this->f2) };
-		}
-
-		inline float2x4 operator&&(in_t(float2x4) other) const {
-			return { _mm_and_ps(other.f1, this->f1), _mm_and_ps(other.f2, this->f2) };
-		}
-
-		// Arithmetic
-
-		inline float2x4& operator-=(in_t(float2x4) other) {
-			this->f1 = _mm_sub_ps(this->f1, other.f1);
-			this->f2 = _mm_sub_ps(this->f2, other.f2);
-			return *this;
-		}
-
-		inline float2x4& operator+=(in_t(float2x4) other) {
-			this->f1 = _mm_add_ps(this->f1, other.f1);
-			this->f2 = _mm_add_ps(this->f2, other.f2);
-			return *this;
-		}
-
-		inline float2x4& operator*=(in_t(float2x4) other) {
-			this->f1 = _mm_mul_ps(this->f1, other.f1);
-			this->f2 = _mm_mul_ps(this->f2, other.f2);
-			return *this;
-		}
-
-		inline float2x4& operator/=(in_t(float2x4) other) {
-			this->f1 = _mm_div_ps(this->f1, other.f1);
-			this->f2 = _mm_div_ps(this->f2, other.f2);
-			return *this;
-		}
-
-		inline float2x4 operator*(in_t(float2x4) other) const {
-			return { _mm_mul_ps(this->f1, other.f1), _mm_mul_ps(this->f2, other.f2) };
-		}
-
-		inline float2x4 operator/(in_t(float2x4) other) const {
-			return { _mm_div_ps(this->f1, other.f1), _mm_div_ps(this->f2, other.f2) };
-		}
-
-		inline float2x4 operator+(in_t(float2x4) other) const {
-			return { _mm_add_ps(this->f1, other.f1), _mm_add_ps(this->f2, other.f2) };
-		}
-
-		inline float2x4 operator-(in_t(float2x4) other) const {
-			return { _mm_sub_ps(this->f1, other.f1), _mm_sub_ps(this->f2, other.f2) };
-		}
-
-		inline float2x4 operator-() const {
-			return float2x4(0.0f) - *this;
-		}
-
-		static inline float2x4 fmac(in_t(float2x4) a, in_t(float2x4) b, in_t(float2x4) c) {
-			return { _mm_fmadd_ps(a.f1, b.f1, c.f1), _mm_fmadd_ps(a.f2, b.f2, c.f2) };
-		}
-
-		inline float2x4& fma(in_t(float2x4) mult, in_t(float2x4) add) {
-			this->f1 = _mm_fmadd_ps(this->f1, mult.f1, add.f1);
-			this->f2 = _mm_fmadd_ps(this->f2, mult.f2, add.f2);
-			return *this;
-		}
-
-		// Bit manipulation
-
-		inline float2x4& operator^=(in_t(float2x4) other) {
-			this->f1 = _mm_xor_ps(this->f1, other.f1);
-			this->f2 = _mm_xor_ps(this->f2, other.f2);
-			return *this;
-		}
-
-		inline float2x4 operator^(in_t(float2x4) m) const {
-			return { _mm_xor_ps(this->f1, m.f1), _mm_xor_ps(this->f2, m.f2) };
-		}
-
-		inline float2x4& operator|=(in_t(float2x4) other) {
-			this->f1 = _mm_or_ps(this->f1, other.f1);
-			this->f2 = _mm_or_ps(this->f2, other.f2);
-			return *this;
-		}
-
-		inline float2x4 operator|(in_t(float2x4) m) const {
-			return { _mm_or_ps(this->f1, m.f1), _mm_or_ps(this->f2, m.f2) };
-		}
-
-		inline float2x4& operator&=(in_t(float2x4) other) {
-			this->f1 = _mm_and_ps(this->f1, other.f1);
-			this->f2 = _mm_and_ps(this->f2, other.f2);
-			return *this;
-		}
-
-		inline float2x4 operator&(in_t(float2x4) m) const {
-			return { _mm_and_ps(this->f1, m.f1), _mm_and_ps(this->f2, m.f2) };
-		}
-
-		inline float2x4 operator!() const {
-			return *this == 0.0f;
-		}
-
-		// Other
-
-		inline float2x4 signbit() const {
-			constexpr float mask = std::bit_cast<float>(1U << 31);
-			return *this & mask;
-		}
-
-		inline float2x4 sign() const {
-			return this->signbit() | 1.0f;
-		}
-
-		inline float2x4 abs() const {
-			constexpr float mask = std::bit_cast<float>(~(1U << 31));
-			return *this & mask;
-		}
-
-		inline float2x4 recip() const {
-			return { _mm_rcp_ps(this->f1), _mm_rcp_ps(this->f2) };
-		}
-
-		inline float2x4 floor() const {
-			return { _mm_floor_ps(this->f1), _mm_floor_ps(this->f2) };
-		}
-
-		inline float2x4 ceil() const {
-			return { _mm_ceil_ps(this->f1), _mm_ceil_ps(this->f2) };
-		}
-
-		inline float2x4 round() const {
-			return { _mm_round_ps(this->f1, _MM_ROUND_NEAREST | _MM_FROUND_NO_EXC), _mm_round_ps(this->f2, _MM_ROUND_NEAREST | _MM_FROUND_NO_EXC) };
-		}
-
-		inline float2x4 sin() const {
-			return { _mm_sin_ps(this->f1), _mm_sin_ps(this->f2) };
-		}
-
-		inline float2x4 cos() const {
-			return { _mm_cos_ps(this->f1), _mm_cos_ps(this->f2) };
-		}
-
-		inline float2x4 tan() const {
-			return { _mm_tan_ps(this->f1), _mm_tan_ps(this->f2) };
-		}
-
-		inline float2x4 tanh() const {
-			return { _mm_tanh_ps(this->f1), _mm_tanh_ps(this->f2) };
-		}
-
-		inline float2x4 log() const {
-			return { _mm_log_ps(this->f1), _mm_log_ps(this->f2) };
-		}
-
-		inline float2x4 exp() const {
-			return { _mm_exp_ps(this->f1), _mm_exp_ps(this->f2) };
-		}
-
-		inline float2x4 atanh() const {
-			return { _mm_atanh_ps(this->f1), _mm_atanh_ps(this->f2) };
-		}
-
-		inline float2x4 sqrt() const {
-			return { _mm_sqrt_ps(this->f1), _mm_sqrt_ps(this->f2) };
-		}
-
+		DEFINE1S(max)
+		DEFINE1S(min)
+		DEFINE_CLAMP()
+		DEFINE2(blend, blendv)
+		DEFINE2(fma, fmadd)
+		DEFINE1(operator!=, cmpneq)
+		DEFINE1(operator==, cmpeq)
+		DEFINE1(operator>, cmpgt)
+		DEFINE1(operator>=, cmpnlt)
+		DEFINE1(operator<, cmplt)
+		DEFINE1(operator<=, cmpngt)
+		DEFINE1(and_not, andnot)
+		DEFINE1(operator&&, and)
+		DEFINE1(operator||, or)
+		DEFINE_ARITHMETIC(+, add)
+		DEFINE_ARITHMETIC(-, sub)
+		DEFINE_ARITHMETIC(/, div)
+		DEFINE_ARITHMETIC(*, mul)
+		DEFINE_NEGATION()
+		DEFINE_ARITHMETIC(^, xor)
+		DEFINE_ARITHMETIC(|, or)
+		DEFINE_ARITHMETIC(&, and)
+		DEFINE_NEGATION_LOGIC()
+		DEFINE_SIGN_BIT()
+		DEFINE_SIGN()
+		DEFINE_ABS()
+		DEFINE0S(floor)
+		DEFINE0S(ceil)
+		DEFINE_ROUND()
+		DEFINE0S(sqrt)
+		DEFINE0S(sin)
+		DEFINE0S(cos)
+		DEFINE0S(tan)
+		DEFINE0S(tanh)
+		DEFINE0S(log)
+		DEFINE0S(exp)
+		DEFINE0S(atanh)
 
 		int2x4 bitCastInt() const;
 	};
 }
 #endif
+
+#undef APPLY1
+#undef APPLY2
+#undef APPLY3
+#undef APPLY4
+
+#undef CR_MACRO_DATA_TYPE
+#undef CR_INLINE
+#undef SUFFIX
