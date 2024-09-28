@@ -16,7 +16,6 @@
 #define APPLY4(OP, X, ONE, TWO, THREE, FOUR) OP(X, ONE, TWO, THREE, FOUR, 1) OP(X, ONE, TWO, THREE, FOUR, 2)
 
 #define CR_MACRO_DATA_TYPE float2x4
-#define CR_INLINE inline
 #define SUFFIX(X) X##_ps
 
 namespace cr::simd
@@ -26,11 +25,11 @@ namespace cr::simd
 	struct float2x4
 	{
 		union {
-			__m128 f1{};
+			__m128 f1;
 			float g1[4];
 		};
 		union {
-			__m128 f2{};
+			__m128 f2;
 			float g2[4];
 		};
 
@@ -142,5 +141,4 @@ namespace cr::simd
 #undef APPLY4
 
 #undef CR_MACRO_DATA_TYPE
-#undef CR_INLINE
 #undef SUFFIX

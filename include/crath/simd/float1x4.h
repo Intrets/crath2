@@ -16,7 +16,6 @@
 #define APPLY4(OP, X, ONE, TWO, THREE, FOUR) OP(X, ONE, TWO, THREE, FOUR, 1)
 
 #define CR_MACRO_DATA_TYPE float1x4
-#define CR_INLINE inline
 #define SUFFIX(X) X##_ps
 
 namespace cr::simd
@@ -83,5 +82,4 @@ namespace cr::simd
 #undef APPLY4
 
 #undef CR_MACRO_DATA_TYPE
-#undef CR_INLINE
 #undef SUFFIX
