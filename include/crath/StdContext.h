@@ -15,6 +15,7 @@
 #include "crath/simd/float1x4.h"
 #include "crath/simd/int1x4.h"
 #include "crath/simd/int2x4.h"
+#include "crath/simd/int2x8.h"
 #endif
 
 #include "crath/StdContext.h"
