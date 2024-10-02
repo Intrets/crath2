@@ -945,5 +945,13 @@ namespace cr
 				return a.fma(b, c);
 			}
 		}
+
+		inline constexpr static integer_t toInt(float a) {
+			return static_cast<integer_t>(a + 0.5f);
+		}
+
+		inline constexpr static integer_t toIntFloor(float a) {
+			return static_cast<integer_t>(a);
+		}
 	};
 }
