@@ -7,7 +7,7 @@
 #endif
 
 #define DO1(X, ONE, I) X(ONE f##I),
-#define DO2(X, ONE, TWO, I) X(ONE f##1, TWO f##I),
+#define DO2(X, ONE, TWO, I) X(ONE f##I, TWO f##I),
 #define DO3(X, ONE, TWO, THREE, I) X(ONE f##I, TWO f##I, THREE f##I),
 
 #define DO_1_CONSTANT(X, ONE, CONSTANT, I) X(ONE f##I, CONSTANT),
