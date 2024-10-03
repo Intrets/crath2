@@ -951,7 +951,7 @@ namespace cr
 		}
 
 		inline constexpr static integer_t toIntFloor(float a) {
-			return static_cast<integer_t>(a);
+			return static_cast<integer_t>(floor(a));
 		}
 	};
 }
