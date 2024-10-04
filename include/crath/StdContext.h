@@ -581,7 +581,7 @@ namespace cr
 						return { div, f - div };
 					}
 					else {
-						auto div = std::floor(f);
+						auto div = floor(f);
 
 						return { div, f - div };
 					}
@@ -601,7 +601,7 @@ namespace cr
 					}
 					else {
 						auto constexpr recip_m = 1.0f / m.value;
-						auto div = std::floor(f * recip_m);
+						auto div = floor(f * recip_m);
 
 						return { div, f - m.value * div };
 					}
@@ -624,7 +624,7 @@ namespace cr
 					return { div, f - m * div };
 				}
 				else {
-					auto div = std::floor(f / m);
+					auto div = floor(f / m);
 
 					return { div, f - m * div };
 				}
@@ -644,7 +644,7 @@ namespace cr
 						return f - div_helper(f, 1.0f);
 					}
 					else {
-						return f - std::floorf(f);
+						return f - floor(f);
 					}
 				}
 				else {
@@ -658,7 +658,7 @@ namespace cr
 					}
 					else {
 						auto constexpr recip_m = 1.0f / m.value;
-						return f - m.value * std::floorf(f * recip_m);
+						return f - m.value * floor(f * recip_m);
 					}
 				}
 				else {
@@ -671,11 +671,11 @@ namespace cr
 		template<te::literal<double> m>
 		inline constexpr static double fmod(double f) {
 			if constexpr (m.value == 1.0) {
-				return f - std::floor(f);
+				return f - floor(f);
 			}
 			else {
 				auto constexpr recip_m = 1.0 / m.value;
-				return f - m.value * std::floor(f * recip_m);
+				return f - m.value * floor(f * recip_m);
 			}
 		}
 
@@ -686,7 +686,7 @@ namespace cr
 					return f - m * div_helper(f, m);
 				}
 				else {
-					return f - m * std::floorf(f / m);
+					return f - m * floor(f / m);
 				}
 			}
 			else {
@@ -842,7 +842,12 @@ namespace cr
 		template<class F>
 		inline constexpr static F floor(in_t(F) f) {
 			if constexpr (std::same_as<F, float>) {
-				return std::floor(f);
+				if (std::is_constant_evaluated()) {
+					return std::floor(f);
+				}
+				else {
+					return cr::simd::float1x4(f).floor()[0];
+				}
 			}
 			else {
 				return f.floor();
@@ -852,7 +857,12 @@ namespace cr
 		template<class F>
 		inline constexpr static F ceil(in_t(F) f) {
 			if constexpr (std::same_as<F, float>) {
-				return std::ceil(f);
+				if (std::is_constant_evaluated()) {
+					return std::ceil(f);
+				}
+				else {
+					return cr::simd::float1x4(f).ceil()[0];
+				}
 			}
 			else {
 				return f.ceil();
@@ -862,7 +872,12 @@ namespace cr
 		template<class F>
 		inline constexpr static F round(in_t(F) f) {
 			if constexpr (std::same_as<F, float>) {
-				return std::round(f);
+				if (std::is_constant_evaluated()) {
+					return std::round(f);
+				}
+				else {
+					return cr::simd::float1x4(f).round()[0];
+				}
 			}
 			else {
 				return f.round();
