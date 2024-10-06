@@ -694,6 +694,16 @@ namespace cr
 			}
 		}
 
+		template<std::integral I>
+		inline constexpr static I imod(in_t(I) i, in_t(I) m) {
+			return i - m * (i / m + (i < 0 ? -1 : 0));
+		}
+
+		template<std::integral auto m, std::integral I>
+		inline constexpr static I imod(in_t(I) i) {
+			return i - m * (i / m + (i < 0 ? -1 : 0));
+		}
+
 		template<class F>
 		inline constexpr static F min(in_t(F) f1, in_t(F) f2) {
 			if constexpr (std::is_integral_v<F>) {
@@ -926,7 +936,7 @@ namespace cr
 
 		template<class F, class B>
 		inline constexpr static void setIf(F& s, in_t(B) b, in_t(F) v) {
-			if constexpr (std::same_as<F, float> || std::same_as<F, bool>) {
+			if constexpr (std::same_as<F, float> || std::same_as<F, bool> || std::same_as<F, integer_t>) {
 				s = b ? v : s;
 			}
 			else {

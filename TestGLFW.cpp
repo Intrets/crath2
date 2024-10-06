@@ -63,6 +63,9 @@ int main() {
 
 	if (fontBuffer->getSize<char>() <= static_cast<integer_t>(std::numeric_limits<int>::max())) {
 		void* freeBuffer = ImGui::MemAlloc(fontBuffer->getSize<char>());
+		if (freeBuffer == nullptr) {
+			std::abort();
+		}
 
 		std::memcpy(freeBuffer, fontBuffer->getData<void*>(), fontBuffer->getSize<char>());
 
