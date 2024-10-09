@@ -701,7 +701,7 @@ struct TestResult
 							}
 						}
 
-						ImPlot::PlotLine(entry->subName.c_str(), xs.data(), ys.data(), static_cast<int>(xs.size()));
+						ImPlot::PlotLine(entry->subName.c_str(), xs.data(), ys.data(), te::safety_cast<int>(xs.size()));
 					}
 					ImPlot::EndPlot();
 				}

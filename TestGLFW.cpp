@@ -19,6 +19,8 @@
 
 #include <font_resources.h>
 
+#include <tepp/safety_cast.h>
+
 #include "crath/StdContext.h"
 #include "crath/simd/float2x4.h"
 
@@ -69,7 +71,7 @@ int main() {
 
 		std::memcpy(freeBuffer, fontBuffer->getData<void*>(), fontBuffer->getSize<char>());
 
-		auto size = static_cast<int>(fontBuffer->getSize<char>());
+		auto size = te::safety_cast<int>(fontBuffer->getSize<char>());
 		io.Fonts->AddFontFromMemoryTTF(freeBuffer, size, 17.0f);
 	}
 
