@@ -982,5 +982,15 @@ namespace cr
 		inline constexpr static integer_t toIntRound(float a) {
 			return static_cast<integer_t>(round(a));
 		}
+
+		template<class F>
+		inline static float toScalar(in_t(F) a) {
+			if constexpr (std::same_as<F, float>) {
+				return a;
+			}
+			else {
+				return a[0];
+			}
+		}
 	};
 }
