@@ -27,6 +27,10 @@ namespace cr
 
 namespace
 {
+
+	template<class F>
+	concept has_clamp = requires(F f) {{ f.clamp(f, f) } -> std::same_as<F>; };
+
 	namespace fun
 	{
 		template<class F>
@@ -743,13 +747,19 @@ namespace cr
 			}
 		}
 
-		inline static integer_t clamp(integer_t i_, integer_t min_, integer_t max_) {
+		template<std::integral I>
+		inline static I clamp(I i_, I min_, I max_) {
 			return std::max(std::min(i_, max_), min_);
 		}
 
 		template<class F>
 		inline constexpr static F clamp(in_t(F) f, in_t(F) min, in_t(F) max) {
-			return f.clamp(min, max);
+			if constexpr (has_clamp<F>) {
+				return f.clamp(min, max);
+			}
+			else {
+				return std::max(std::min(f, max), min);
+			}
 		}
 
 		template<class F>
