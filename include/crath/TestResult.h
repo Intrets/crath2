@@ -155,7 +155,7 @@ struct TestResult
 						this->maximumErrorinfo = { x, res, ref };
 					}
 				}
-				this->maximumError = std::max(maximumError, e);
+				this->maximumError = math::max(maximumError, e);
 
 				this->error += e / N;
 			}
@@ -348,11 +348,11 @@ struct TestResult
 		ImGui::Text("Maximum error on domain: %f", this->maxError);
 
 		if (ImGui::SliderFloat("Min Domain", &this->minDomainMinRaw, -10.0f, 10.0f)) {
-			this->maxDomainMaxRaw = std::max(this->minDomainMinRaw, this->maxDomainMaxRaw);
+			this->maxDomainMaxRaw = math::max(this->minDomainMinRaw, this->maxDomainMaxRaw);
 		}
 
 		if (ImGui::SliderFloat("Max Domain", &this->maxDomainMaxRaw, -10.0f, 10.0f)) {
-			this->minDomainMinRaw = std::min(this->minDomainMinRaw, this->maxDomainMaxRaw);
+			this->minDomainMinRaw = math::min(this->minDomainMinRaw, this->maxDomainMaxRaw);
 		}
 		ImGui::SameLine();
 		ImGui::Checkbox("Multiply domain by pi", &this->multiplyDomainByPi);
