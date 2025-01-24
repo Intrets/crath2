@@ -24,6 +24,8 @@
 
 #include <mem/MutexedObject.h>
 
+using math = cr::StdContext;
+
 struct TestResult
 {
 	std::string name{};
@@ -87,7 +89,7 @@ struct TestResult
 				auto& buffer = aux.getBuffer<F>();
 				buffer.clear();
 				for (size_t i = 0; i < N; i++) {
-					buffer.push_back(std::uniform_real<float>(min_x, max_x)(aux.rng));
+					buffer.push_back(std::uniform_real_distribution<float>(min_x, max_x)(aux.rng));
 				}
 
 				auto start = std::chrono::steady_clock::now();
