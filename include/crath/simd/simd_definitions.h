@@ -100,7 +100,7 @@
 #define DEFINE_SIGN(X) \
 	CR_INLINE CR_MACRO_DATA_TYPE sign() const { \
 		constexpr X mask = std::bit_cast<X>(1U << 31); \
-		return *this & mask; \
+		return (*this & mask) | CR_MACRO_DATA_TYPE(X(1)) ; \
 	}
 
 #define DEFINE_ABS(X) \
