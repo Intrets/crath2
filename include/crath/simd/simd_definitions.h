@@ -2,6 +2,8 @@
 
 #ifdef COMPILER_MSVC
 #define CR_INLINE __forceinline
+#elifdef COMPILER_CLANG
+#define CR_INLINE static inline __attribute__((always_inline))
 #else
 #error force inline not defined for compiler
 #endif
@@ -100,7 +102,7 @@
 #define DEFINE_SIGN(X) \
 	CR_INLINE CR_MACRO_DATA_TYPE sign() const { \
 		constexpr X mask = std::bit_cast<X>(1U << 31); \
-		return (*this & mask) | CR_MACRO_DATA_TYPE(X(1)) ; \
+		return (*this & mask) | CR_MACRO_DATA_TYPE(X(1)); \
 	}
 
 #define DEFINE_ABS(X) \

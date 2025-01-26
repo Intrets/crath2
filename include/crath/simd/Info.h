@@ -14,7 +14,6 @@ namespace cr
 #ifdef ANDROID
 #define CR_CACHE_LINE 64
 #define CR_ALIGN_UNIT
-#define CR_ALIGN_CACHE_LINE
 #define CR_ALIGN_CACHE_LINE alignas(CR_CACHE_LINE)
 #else
 #define CR_CACHE_LINE std::hardware_destructive_interference_size

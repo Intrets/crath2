@@ -20,6 +20,8 @@
 
 #include "crath/StdContext.h"
 
+#define in_t(X) X
+
 namespace cr
 {
 	struct StdContext;
@@ -27,15 +29,122 @@ namespace cr
 
 namespace
 {
-
 	template<class F>
 	concept has_clamp = requires(F f) {{ f.clamp(f, f) } -> std::same_as<F>; };
+
+	struct forward_definitions
+	{
+		template<class F>
+		inline constexpr static F min(in_t(F) f1, in_t(F) f2) {
+			if constexpr (std::is_integral_v<F>) {
+				return std::min(f1, f2);
+			}
+			else if constexpr (std::same_as<F, float> || std::same_as<F, double>) {
+				return std::min(f1, f2);
+			}
+			else {
+				return f1.min(f2);
+			}
+		}
+
+		template<class F, class B>
+		inline constexpr static F blend(in_t(F) f1, in_t(F) f2, in_t(B) b) {
+			if constexpr (std::same_as<F, float> || std::same_as<F, bool>) {
+				return b ? f2 : f1;
+			}
+			else {
+				return f1.blend(f2, b);
+			}
+		}
+
+		inline static constexpr float clamp(float f_, float min_, float max_) {
+			if (std::is_constant_evaluated()) {
+				return std::clamp(f_, min_, max_);
+			}
+			else {
+#ifdef ARCH_x86_64
+				return simd::float1x4(f_).clamp(min_, max_)[0];
+#else
+				return std::clamp(f_, min_, max_);
+#endif
+			}
+		}
+
+		template<std::integral I>
+		inline static I clamp(I i_, I min_, I max_) {
+			return std::max(std::min(i_, max_), min_);
+		}
+
+		template<class F>
+		inline constexpr static F clamp(in_t(F) f, in_t(F) min, in_t(F) max) {
+			if constexpr (has_clamp<F>) {
+				return f.clamp(min, max);
+			}
+			else {
+				return std::max(std::min(f, max), min);
+			}
+		}
+
+		template<class F>
+		inline constexpr static F clamp(in_t(F) f, float min, float max) {
+			return clamp(f, F(min), F(max));
+		}
+		template<class F>
+		inline constexpr static F setSign(in_t(F) f, in_t(F) s) {
+			if constexpr (std::same_as<F, float>) {
+				auto const signbit = std::bit_cast<uint32_t>(s) & (1U << 31);
+				auto const maskedF = std::bit_cast<uint32_t>(f) & ~(1U << 31);
+
+				return std::bit_cast<float>(maskedF | signbit);
+			}
+			else {
+				auto const signbit = s & F(std::bit_cast<float>(1U << 31));
+				auto const mask = F(std::bit_cast<float>(~(1U << 31)));
+
+				return (f & mask) | signbit;
+			}
+		}
+
+		template<class F>
+		inline constexpr static F abs(in_t(F) f) {
+			if constexpr (std::same_as<F, float> || std::same_as<F, double>) {
+				if (std::is_constant_evaluated()) {
+					return f > 0.0f ? f : -f;
+				}
+				else {
+					return std::fabs(f);
+				}
+			}
+			else {
+				return f.abs();
+			}
+		}
+
+		template<class F>
+		inline constexpr static F fma(in_t(F) a, in_t(F) b, in_t(F) c) {
+			if constexpr (std::same_as<F, float>) {
+				if (std::is_constant_evaluated()) {
+					return a * b + c;
+				}
+				else {
+#ifdef CR_HAS_SIMD_TYPES
+					return cr::simd::float1x4(a).fma(b, c)[0];
+#else
+					return a * b + c;
+#endif
+				}
+			}
+			else {
+				return a.fma(b, c);
+			}
+		}
+	};
 
 	namespace fun
 	{
 		template<class F>
 		inline constexpr static F cos_quart_fma_ec_T6_6(in_t(F) x) {
-			using math = cr::StdContext;
+			using math = forward_definitions;
 			x = math::abs(x - F(3.141592653589793f)) - F(1.5707963267948966f);
 			auto const x2 = x * x;
 			auto const a3 = F(0.002903581834064588f);
@@ -57,7 +166,7 @@ namespace
 		}
 		template<class F>
 		inline constexpr static F cos_unit1_quart_fma_ec_T6_6(in_t(F) x) {
-			using math = cr::StdContext;
+			using math = forward_definitions;
 			x = math::abs(x - F(0.5f)) - F(0.25f);
 			auto const x2 = x * x;
 			auto const a3 = F(28.43370232347889f);
@@ -79,7 +188,7 @@ namespace
 		}
 		template<class F>
 		inline constexpr static F sin_unit2_quart_fma_ec_T6_6(in_t(F) x) {
-			using math = cr::StdContext;
+			using math = forward_definitions;
 			auto const quarter = F(0.5f);
 			x = math::abs(math::abs(x - quarter) - F(1.0f)) - quarter;
 			auto const x2 = x * x;
@@ -102,7 +211,7 @@ namespace
 		}
 		template<class F>
 		inline constexpr static F sin_unit1_quart_fma_ec_T6_6(in_t(F) x) {
-			using math = cr::StdContext;
+			using math = forward_definitions;
 			auto const quarter = F(0.25f);
 			x = math::abs(math::abs(x - quarter) - F(0.5f)) - quarter;
 			auto const x2 = x * x;
@@ -125,7 +234,7 @@ namespace
 		}
 		template<class F>
 		inline constexpr static F tanh_remez_pade_fma_T6_6(in_t(F) x) {
-			using math = cr::StdContext;
+			using math = forward_definitions;
 			auto const x0 = x;
 			x = math::min(math::abs(x), F(7.0f));
 			auto const a6 = F(0.000936634282122674f);
@@ -147,7 +256,7 @@ namespace
 
 		template<class F>
 		inline constexpr static F tanh_fma_ec_T7_7(in_t(F) x) {
-			using math = cr::StdContext;
+			using math = forward_definitions;
 			x = math::clamp(x, F(-7.0f), F(7.0f));
 			auto const x2 = x * x;
 			auto const a4 = F(7.3913550193196496e-06f);
@@ -171,7 +280,7 @@ namespace
 
 		template<class F>
 		inline constexpr static F log_fma_ec_T8_8(in_t(F) x) {
-			using math = cr::StdContext;
+			using math = forward_definitions;
 			x = x - F(1.0f);
 			auto const a8 = F(0.0004224058990164251f);
 			auto const b8 = F(7.77000777000777e-05f);
@@ -196,7 +305,7 @@ namespace
 
 		template<class F>
 		inline constexpr static F log_remez_pade_recip_fma_T9_9(in_t(F) x) {
-			using math = cr::StdContext;
+			using math = forward_definitions;
 			auto m = x < F(1.0f);
 			x = math::blend(x, F(1.0f) / x, m);
 			auto const a9 = F(1.724793120623996e-05f);
@@ -225,7 +334,7 @@ namespace
 
 		template<class F>
 		inline constexpr static F exp_special_fma_T5_5(in_t(F) x) {
-			using math = cr::StdContext;
+			using math = forward_definitions;
 			auto const x2 = x * x;
 			auto const a3 = F(0.00034302671209318625f);
 			auto const b2 = F(0.01122254218044283f);
@@ -243,7 +352,7 @@ namespace
 
 		template<class F>
 		inline constexpr static F tan_fma_T6_6(in_t(F) x) {
-			using math = cr::StdContext;
+			using math = forward_definitions;
 			auto const x2 = x * x;
 			auto const a3 = F(0.00202020202020202f);
 			auto const b3 = F(-9.62000962000962e-05f);
@@ -258,7 +367,7 @@ namespace
 
 		template<class F>
 		inline constexpr static F sin_quart_fma_ec_T6_6(in_t(F) x) {
-			using math = cr::StdContext;
+			using math = forward_definitions;
 			auto const quarter = F(1.5707963267948966f);
 			x = math::abs(math::abs(x - quarter) - F(3.141592653589793f)) - quarter;
 			auto const x2 = x * x;
@@ -298,7 +407,7 @@ namespace
 		}
 		template<class F>
 		inline constexpr static F exp_fma_T5_5(in_t(F) x) {
-			using math = cr::StdContext;
+			using math = forward_definitions;
 			auto const x2 = x * x;
 			auto const a3 = F(3.229373346560847e-08f);
 			auto const b2 = F(3.875248015873016e-06f);
@@ -318,7 +427,7 @@ namespace
 
 namespace cr
 {
-	struct StdContext
+	struct StdContext : forward_definitions
 	{
 		inline static constexpr float pi = std::numbers::pi_v<float>;
 		inline static constexpr float half_pi = 0.5f * std::numbers::pi_v<float>;
@@ -709,19 +818,6 @@ namespace cr
 		}
 
 		template<class F>
-		inline constexpr static F min(in_t(F) f1, in_t(F) f2) {
-			if constexpr (std::is_integral_v<F>) {
-				return std::min(f1, f2);
-			}
-			else if constexpr (std::same_as<F, float> || std::same_as<F, double>) {
-				return std::min(f1, f2);
-			}
-			else {
-				return f1.min(f2);
-			}
-		}
-
-		template<class F>
 		inline constexpr static F max(in_t(F) f1, in_t(F) f2) {
 			if constexpr (std::is_integral_v<F>) {
 				return std::max(f1, f2);
@@ -731,54 +827,6 @@ namespace cr
 			}
 			else {
 				return f1.max(f2);
-			}
-		}
-
-		inline static constexpr float clamp(float f_, float min_, float max_) {
-			if (std::is_constant_evaluated()) {
-				return std::clamp(f_, min_, max_);
-			}
-			else {
-#ifdef ARCH_x86_64
-				return simd::float1x4(f_).clamp(min_, max_)[0];
-#else
-				return std::clamp(f_, min_, max_);
-#endif
-			}
-		}
-
-		template<std::integral I>
-		inline static I clamp(I i_, I min_, I max_) {
-			return std::max(std::min(i_, max_), min_);
-		}
-
-		template<class F>
-		inline constexpr static F clamp(in_t(F) f, in_t(F) min, in_t(F) max) {
-			if constexpr (has_clamp<F>) {
-				return f.clamp(min, max);
-			}
-			else {
-				return std::max(std::min(f, max), min);
-			}
-		}
-
-		template<class F>
-		inline constexpr static F clamp(in_t(F) f, float min, float max) {
-			return clamp(f, F(min), F(max));
-		}
-
-		template<class F>
-		inline constexpr static F abs(in_t(F) f) {
-			if constexpr (std::same_as<F, float> || std::same_as<F, double>) {
-				if (std::is_constant_evaluated()) {
-					return f > 0.0f ? f : -f;
-				}
-				else {
-					return std::fabs(f);
-				}
-			}
-			else {
-				return f.abs();
 			}
 		}
 
@@ -807,22 +855,6 @@ namespace cr
 
 		inline constexpr static uint32_t signBit(float f) {
 			return std::bit_cast<uint32_t>(f) & (1U << 31);
-		}
-
-		template<class F>
-		inline constexpr static F setSign(in_t(F) f, in_t(F) s) {
-			if constexpr (std::same_as<F, float>) {
-				auto const signbit = std::bit_cast<uint32_t>(s) & (1U << 31);
-				auto const maskedF = std::bit_cast<uint32_t>(f) & ~(1U << 31);
-
-				return std::bit_cast<float>(maskedF | signbit);
-			}
-			else {
-				auto const signbit = s & F(std::bit_cast<float>(1U << 31));
-				auto const mask = F(std::bit_cast<float>(~(1U << 31)));
-
-				return (f & mask) | signbit;
-			}
 		}
 
 		template<class F>
@@ -861,12 +893,19 @@ namespace cr
 
 		template<class F>
 		inline constexpr static F floor(in_t(F) f) {
-			if constexpr (std::same_as<F, float>) {
+			if constexpr (std::same_as<F, double>) {
+				return std::floor(f);
+			}
+			else if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
 					return std::floor(f);
 				}
 				else {
+#ifdef HAS_CR_SIMD_TYPES
 					return cr::simd::float1x4(f).floor()[0];
+#else
+					return std::floor(f);
+#endif
 				}
 			}
 			else {
@@ -881,7 +920,11 @@ namespace cr
 					return std::ceil(f);
 				}
 				else {
+#ifdef HAS_CR_SIMD_TYPES
 					return cr::simd::float1x4(f).ceil()[0];
+#else
+					return std::ceil(f);
+#endif
 				}
 			}
 			else {
@@ -896,7 +939,11 @@ namespace cr
 					return std::round(f);
 				}
 				else {
+#ifdef HAS_CR_SIMD_TYPES
 					return cr::simd::float1x4(f).round()[0];
+#else
+					return std::round(f);
+#endif
 				}
 			}
 			else {
@@ -912,16 +959,6 @@ namespace cr
 		template<class F>
 		inline constexpr static F unmix(in_t(F) f1, in_t(F) f2, in_t(F) x) {
 			return (x - f1) / (f2 - f1);
-		}
-
-		template<class F, class B>
-		inline constexpr static F blend(in_t(F) f1, in_t(F) f2, in_t(B) b) {
-			if constexpr (std::same_as<F, float> || std::same_as<F, bool>) {
-				return b ? f2 : f1;
-			}
-			else {
-				return f1.blend(f2, b);
-			}
 		}
 
 		template<class F, class B>
@@ -964,21 +1001,6 @@ namespace cr
 		inline constexpr static F smoothstep(in_t(F) value) {
 			auto const v = value;
 			return v * v * (F(3.0f) - F(2.0f) * v);
-		}
-
-		template<class F>
-		inline constexpr static F fma(in_t(F) a, in_t(F) b, in_t(F) c) {
-			if constexpr (std::same_as<F, float>) {
-				if (std::is_constant_evaluated()) {
-					return a * b + c;
-				}
-				else {
-					return cr::simd::float1x4(a).fma(b, c)[0];
-				}
-			}
-			else {
-				return a.fma(b, c);
-			}
 		}
 
 		inline constexpr static integer_t toInt(float a) {
