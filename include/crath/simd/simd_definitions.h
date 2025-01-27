@@ -2,8 +2,10 @@
 
 #ifdef COMPILER_MSVC
 #define CR_INLINE __forceinline
-#elifdef COMPILER_CLANG
+#define CR_HAS_SIMD_TYPES
+#elif defined(COMPILER_CLANG)
 #define CR_INLINE static inline __attribute__((always_inline))
+#define CR_HAS_SIMD_TYPES
 #else
 #error force inline not defined for compiler
 #endif
