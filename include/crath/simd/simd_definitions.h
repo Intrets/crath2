@@ -4,7 +4,7 @@
 #define CR_INLINE __forceinline
 #define CR_HAS_SIMD_TYPES
 #elif defined(COMPILER_CLANG)
-#define CR_INLINE static inline __attribute__((always_inline))
+#define CR_INLINE inline __attribute__((always_inline))
 #define CR_HAS_SIMD_TYPES
 #else
 #error force inline not defined for compiler
@@ -70,6 +70,8 @@
 	}
 
 #define DEFINE_ARITHMETIC(name, op) DEFINE1(operator##name, op) DEFINE_COMPOUND(operator##name##=, op)
+
+#define DEFINE_ARITHMETIC2(name, op) DEFINE1(name, op) DEFINE_COMPOUND(name##=, op)
 
 #define DEFINE_NEGATION(X) \
 	CR_INLINE CR_MACRO_DATA_TYPE operator-() const { \
@@ -188,3 +190,43 @@
 	DEFINE0S(log) \
 	DEFINE0S(exp) \
 	DEFINE0S(atanh)
+
+// DEFINE2(blend, blendv) \
+	//DEFINE1(operator!=, cneq, _CMP_NEQ_OQ) \
+	//DEFINE1(operator&&, and) \
+	//DEFINE1(operator||, or) \
+	//DEFINE_ARITHMETIC(/, div) \
+	//DEFINE_ARITHMETIC(^, xor) \
+	//DEFINE_ARITHMETIC(|, or) \
+	//DEFINE_ARITHMETIC(&, and) \
+	//DEFINE0S(floor) \
+	//DEFINE0S(ceil) \
+	//DEFINE_ROUND() \
+
+#define ARM_FMA_TYPE mla
+
+#define DEFINE_FIF(name, op) \
+	CR_INLINE CR_MACRO_DATA_TYPE name(in_t(CR_MACRO_DATA_TYPE) a) const { \
+		return { \
+			APPLY2(DO2, SURROUND(op), this->, a.) \
+		}; \
+	}
+
+#define CR_ALL_ARM_DEFINITIONS \
+	DEFINE1S(max) \
+	DEFINE1S(min) \
+	DEFINE_CLAMP() \
+	DEFINE2(fma, ARM_FMA_TYPE) \
+	DEFINE1(operator==, ceq) \
+	DEFINE1(operator>, cgt) \
+	DEFINE1(operator>=, cge) \
+	DEFINE1(operator<, clt) \
+	DEFINE1(operator<=, cle) \
+	DEFINE_ARITHMETIC(+, add) \
+	DEFINE_ARITHMETIC(-, sub) \
+	DEFINE_ARITHMETIC(*, mul) \
+	DEFINE_NEGATION(0.0f) \
+	DEFINE_NEGATION_LOGIC(0.0f) \
+	DEFINE_SIGN_BIT(float) \
+	DEFINE_SIGN(float) \
+	DEFINE1S(abs)

@@ -447,11 +447,12 @@ namespace cr
 				return std::bit_cast<float>(i1);
 			}
 			else {
-				auto const i0 = x.bitCastInt();
-				using int_type = std::remove_cvref_t<decltype(i0)>;
-				auto const i1 = int_type(c) + (i0 >> 1);
-
-				return i1.bitCastFloat();
+//				auto const i0 = x.bitCastInt();
+//				using int_type = std::remove_cvref_t<decltype(i0)>;
+//				auto const i1 = int_type(c) + (i0 >> 1);
+//
+//				return i1.bitCastFloat();
+				return x;
 			}
 		}
 
