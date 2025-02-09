@@ -121,6 +121,8 @@
 #define APPLY4(OP, X, ONE, TWO, THREE, FOUR) OP(X, ONE, TWO, THREE, FOUR, 1) OP(X, ONE, TWO, THREE, FOUR, 2)
 #define APPLY5(OP, X, ONE, TWO, THREE, FOUR, FIVE) OP(X, ONE, TWO, THREE, FOUR, FIVE, 1) OP(X, ONE, TWO, THREE, FOUR, FIVE, 2)
 
+#define DO3_FMA_ORDER(X, ONE, TWO, THREE, I) X(THREE f##I, TWO f##I, ONE f##I),
+
 #define CR_MACRO_DATA_TYPE float2x4
 #undef PREFIX
 #undef SUFFIX
@@ -144,7 +146,6 @@ namespace cr::simd
 		float2x4()
 		    : f1(),
 		      f2() {
-			this->floor();
 		}
 
 		float2x4(float32x4_t f1_, float32x4_t f2_)
@@ -255,7 +256,7 @@ namespace cr::simd
 		DEFINE1S(max)
 		DEFINE1S(min)
 		DEFINE_CLAMP()
-		DEFINE2(fma, ARM_FMA_TYPE)
+		DEFINE2_D(DO3_FMA_ORDER, fma, ARM_FMA_TYPE)
 		DEFINE1(operator+, add)
 		DEFINE_COMPOUND(operator+=, add)
 		DEFINE_ARITHMETIC2(operator-, sub)

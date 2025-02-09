@@ -67,12 +67,14 @@
 		}; \
 	}
 
-#define DEFINE2(name, op) \
+#define DEFINE2_D(do, name, op) \
 	CR_INLINE CR_MACRO_DATA_TYPE name(in_t(CR_MACRO_DATA_TYPE) a, in_t(CR_MACRO_DATA_TYPE) b) const { \
 		return { \
-			APPLY3(DO3, SURROUND(op), this->, a., b.) \
+			APPLY3(do, SURROUND(op), this->, a., b.) \
 		}; \
 	}
+
+#define DEFINE2(name, op) DEFINE2_D(DO3, name, op)
 
 #define DEFINE2S(name) DEFINE2(name, name)
 
@@ -268,8 +270,15 @@ namespace detail
 	struct CRTP_ARM_simd
 	{
 		template<class Self>
+		CR_INLINE auto badfloor(this Self&& self) {
+			return (self + static_cast<float>(1 << 15)).trunc() - static_cast<float>(1 << 15);
+		}
+
+		template<class Self>
 		CR_INLINE auto floor(this Self&& self) {
-			return (self + static_cast<float>(1 << 21)).trunc() - static_cast<float>(1 << 21);
+			auto f = self.trunc();
+			auto good = (self == f) | (self > 0.0f);
+			return (f - 1.0f).blend(f, good);
 		}
 
 		template<class Self>
@@ -279,13 +288,15 @@ namespace detail
 
 		template<class Self>
 		CR_INLINE auto ceil(this Self&& self) {
-			return (self - static_cast<float>(1 << 21)).trunc() + static_cast<float>(1 << 21);
+			auto f = self.trunc();
+			auto good = (self == f) | (self < 0.0f);
+			return (f + 1.0f).blend(f, good);
 		}
 
-//		template<class Self>
-//		CR_INLINE auto operator!=(this Self&& self, in_t(T) other) {
-//			return !(*self == other);
-//		}
+		//		template<class Self>
+		//		CR_INLINE auto operator!=(this Self&& self, in_t(T) other) {
+		//			return !(*self == other);
+		//		}
 	};
 
 }
