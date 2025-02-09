@@ -75,8 +75,6 @@ namespace cr::simd
 		int1x4 bitCastInt() const;
 	};
 }
-#endif
-
 #undef APPLY1
 #undef APPLY2
 #undef APPLY3
@@ -85,3 +83,165 @@ namespace cr::simd
 #undef CR_MACRO_DATA_TYPE
 #undef PREFIX
 #undef SUFFIX
+#else
+
+#include <arm_neon.h>
+
+#include "crath/ParameterTyping.h"
+#include "crath/simd/aligned_load_hint.h"
+#include "crath/simd/simd_definitions.h"
+
+#define APPLY1(OP, X, ONE) OP(X, ONE, 1)
+#define APPLY2(OP, X, ONE, TWO) OP(X, ONE, TWO, 1)
+#define APPLY3(OP, X, ONE, TWO, THREE) OP(X, ONE, TWO, THREE, 1)
+#define APPLY4(OP, X, ONE, TWO, THREE, FOUR) OP(X, ONE, TWO, THREE, FOUR, 1)
+#define APPLY5(OP, X, ONE, TWO, THREE, FOUR, FIVE) OP(X, ONE, TWO, THREE, FOUR, FIVE, 1)
+
+#define CR_MACRO_DATA_TYPE float1x4
+#undef PREFIX
+#undef SUFFIX
+#undef SURROUND
+#undef SURROUND_I
+#define SURROUND(X) v##X##q_f32
+#define SURROUND_I(X) v##X##q_s32
+
+namespace cr::simd
+{
+	struct float1x4
+	{
+		static constexpr integer_t size = 4;
+
+		float32x4_t f1;
+
+		float1x4()
+		    : f1() {
+		}
+
+		float1x4(float32x4_t f1_)
+		    : f1(f1_) {
+		}
+
+	private:
+		float32x4_t helperLoad(float a0, float a1, float a2, float a3) {
+			std::array<float, 4> a{ a0, a1, a2, a3 };
+			return vld1q_f32(a.data());
+		}
+
+	public:
+		float1x4(float a0, float a1, float a2, float a3)
+		    : f1(helperLoad(a0, a1, a2, a3)) {
+		}
+
+		float1x4(float* ptr)
+		    : f1(vld1q_f32(ptr)) {
+		}
+
+		float1x4(float f)
+		    : f1(vdupq_n_f32(f)) {
+		}
+
+		void write(float& ptr) const {
+			vst1q_f32(&ptr, this->f1);
+		}
+
+		template<int I>
+		void write(float v) {
+			static_assert(I >= 0 && I < 8);
+			vsetq_lane_f32(v, this->f1, I);
+		}
+
+		float1x4 blend(float1x4 a, float1x4 b) const {
+			return {
+				vbslq_f32(vcgeq_f32(b.f1, vdupq_n_f32(0.0f)), this->f1, a.f1),
+			};
+		}
+
+		float1x4 floor() const {
+			return {
+				vreinterpretq_s32_f32(vreinterpretq_f32_s32(this->f1)),
+			};
+		}
+
+		float1x4 round() const {
+			//			return {
+			//				vreinterpretq_s32_f32(vreinterpretq_f32_s32(vaddq_f32(this->f1, vdupq_n_f32(0.5f)))),
+			//				vreinterpretq_s32_f32(vreinterpretq_f32_s32(vaddq_f32(this->f2, vdupq_n_f32(0.5f)))),
+			//			};
+			return *this;
+		}
+
+		float1x4 ceil() const {
+			return *this;
+		}
+
+		float1x4 operator!=(float1x4 a) const {
+			return *this;
+		}
+
+		float operator[](size_t i) const {
+			switch (i) {
+				case 0:
+					return vgetq_lane_f32(this->f1, 0);
+				case 1:
+					return vgetq_lane_f32(this->f1, 1);
+				case 2:
+					return vgetq_lane_f32(this->f1, 2);
+				case 3:
+					return vgetq_lane_f32(this->f1, 3);
+			}
+
+			tassert(0);
+			return 0;
+		}
+
+		float1x4 operator/(float1x4 a) const {
+			float32x4_t reciprocal = vrecpeq_f32(a.f1);
+			reciprocal = vmulq_f32(vrecpsq_f32(a.f1, reciprocal), reciprocal);
+			reciprocal = vmulq_f32(vrecpsq_f32(a.f1, reciprocal), reciprocal);
+			auto f1_ = vmulq_f32(this->f1, reciprocal);
+
+			return { f1_ };
+		}
+
+#define f_to_s(X) vreinterpretq_s32_f32(X)
+#define s_to_f(X) vreinterpretq_f32_s32(X)
+
+		DEFINE1_T(operator==, ceq, s_to_f, f_to_s);
+		DEFINE1_T(operator>, cgt, s_to_f, f_to_s);
+		DEFINE1_T(operator>=, cge, s_to_f, f_to_s);
+		DEFINE1_T(operator<, clt, s_to_f, f_to_s);
+		DEFINE1_T(operator<=, cle, s_to_f, f_to_s);
+
+		B_DEFINE1_T(operator&&, SURROUND_I(and), s_to_f, f_to_s);
+		B_DEFINE_ARITHMETIC2_T(operator&, SURROUND_I(and), s_to_f, f_to_s);
+		B_DEFINE_ARITHMETIC2_T(operator|, SURROUND_I(orr), s_to_f, f_to_s);
+		B_DEFINE_ARITHMETIC2_T(operator^, SURROUND_I(eor), s_to_f, f_to_s);
+
+		DEFINE1S(max)
+		DEFINE1S(min)
+		DEFINE_CLAMP()
+		DEFINE2(fma, ARM_FMA_TYPE)
+		DEFINE1(operator+, add)
+		DEFINE_COMPOUND(operator+=, add)
+		DEFINE_ARITHMETIC2(operator-, sub)
+		DEFINE_ARITHMETIC2(operator*, mul)
+		DEFINE_NEGATION(0.0f)
+		DEFINE_NEGATION_LOGIC(0.0f)
+		DEFINE_SIGN_BIT(float)
+		DEFINE_SIGN(float)
+		DEFINE0S(abs)
+	};
+}
+
+#undef APPLY1
+#undef APPLY2
+#undef APPLY3
+#undef APPLY4
+#undef APPLY5
+
+#undef CR_MACRO_DATA_TYPE
+#undef PREFIX
+#undef SUFFIX
+#endif
+
+#undef CR_HAS_SIMD_TYPES

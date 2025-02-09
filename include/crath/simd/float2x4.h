@@ -119,16 +119,22 @@
 #define APPLY2(OP, X, ONE, TWO) OP(X, ONE, TWO, 1) OP(X, ONE, TWO, 2)
 #define APPLY3(OP, X, ONE, TWO, THREE) OP(X, ONE, TWO, THREE, 1) OP(X, ONE, TWO, THREE, 2)
 #define APPLY4(OP, X, ONE, TWO, THREE, FOUR) OP(X, ONE, TWO, THREE, FOUR, 1) OP(X, ONE, TWO, THREE, FOUR, 2)
+#define APPLY5(OP, X, ONE, TWO, THREE, FOUR, FIVE) OP(X, ONE, TWO, THREE, FOUR, FIVE, 1) OP(X, ONE, TWO, THREE, FOUR, FIVE, 2)
 
 #define CR_MACRO_DATA_TYPE float2x4
 #undef PREFIX
 #undef SUFFIX
 #undef SURROUND
+#undef SURROUND_I
 #define SURROUND(X) v##X##q_f32
+#define SURROUND_I(X) v##X##q_s32
+
+#define f_to_s(X) vreinterpretq_s32_f32(X)
+#define s_to_f(X) vreinterpretq_f32_s32(X)
 
 namespace cr::simd
 {
-	struct float2x4
+	struct float2x4 : ::detail::CRTP_ARM_simd<float2x4>
 	{
 		static constexpr integer_t size = 8;
 
@@ -138,11 +144,24 @@ namespace cr::simd
 		float2x4()
 		    : f1(),
 		      f2() {
+			this->floor();
 		}
 
 		float2x4(float32x4_t f1_, float32x4_t f2_)
 		    : f1(f1_),
 		      f2(f2_) {
+		}
+
+	private:
+		float32x4_t helperLoad(float a0, float a1, float a2, float a3) {
+			std::array<float, 4> a{ a0, a1, a2, a3 };
+			return vld1q_f32(a.data());
+		}
+
+	public:
+		float2x4(float a0, float a1, float a2, float a3, float a4, float a5, float a6, float a7)
+		    : f1(helperLoad(a0, a1, a2, a3)),
+		      f2(helperLoad(a4, a5, a6, a7)) {
 		}
 
 		float2x4(float* ptr)
@@ -167,32 +186,15 @@ namespace cr::simd
 				vsetq_lane_f32(v, this->f1, I);
 			}
 			else {
-				vsetq_lane_f32(v, this->f1, I - 4);
+				vsetq_lane_f32(v, this->f2, I - 4);
 			}
 		}
 
 		float2x4 blend(float2x4 a, float2x4 b) const {
-			return *this;
-		}
-
-		float2x4 operator^(float2x4 a) const {
-			return *this;
-		}
-
-		float2x4 floor() const {
-			return *this;
-		}
-
-		float2x4 round() const {
-			return *this;
-		}
-
-		float2x4 ceil() const {
-			return *this;
-		}
-
-		float2x4 operator!=(float2x4 a) const {
-			return *this;
+			return {
+				vbslq_f32(vcgeq_f32(b.f1, vdupq_n_f32(0.0f)), this->f1, a.f1),
+				vbslq_f32(vcgeq_f32(b.f2, vdupq_n_f32(0.0f)), this->f2, a.f2),
+			};
 		}
 
 		float operator[](size_t i) const {
@@ -222,51 +224,38 @@ namespace cr::simd
 		float2x4 operator/(float2x4 a) const {
 			float32x4_t reciprocal = vrecpeq_f32(a.f1);
 			reciprocal = vmulq_f32(vrecpsq_f32(a.f1, reciprocal), reciprocal);
+			reciprocal = vmulq_f32(vrecpsq_f32(a.f1, reciprocal), reciprocal);
 			auto f1_ = vmulq_f32(this->f1, reciprocal);
 
 			float32x4_t reciprocal2 = vrecpeq_f32(a.f2);
+			reciprocal2 = vmulq_f32(vrecpsq_f32(a.f2, reciprocal2), reciprocal2);
 			reciprocal2 = vmulq_f32(vrecpsq_f32(a.f2, reciprocal2), reciprocal2);
 			auto f2_ = vmulq_f32(this->f2, reciprocal2);
 
 			return { f1_, f2_ };
 		}
 
-		float2x4 operator&(float2x4 a) const {
-			return {
-				vcvtq_s32_f32(vandq_s32(vcvtq_f32_s32(this->f1), vcvtq_f32_s32(a.f1))),
-				vcvtq_s32_f32(vandq_s32(vcvtq_f32_s32(this->f2), vcvtq_f32_s32(a.f2))),
-			};
+		DEFINE1_T(operator==, ceq, s_to_f, f_to_s);
+		float2x4 operator!=(float2x4 other) const {
+			return !(*this == other);
 		}
 
-		float2x4 operator|(float2x4 a) const {
-			return {
-				vcvtq_s32_f32(vorrq_s32(vcvtq_f32_s32(this->f1), vcvtq_f32_s32(a.f1))),
-				vcvtq_s32_f32(vorrq_s32(vcvtq_f32_s32(this->f2), vcvtq_f32_s32(a.f2))),
-			};
-		}
+		DEFINE1_T(operator>, cgt, s_to_f, f_to_s);
+		DEFINE1_T(operator>=, cge, s_to_f, f_to_s);
+		DEFINE1_T(operator<, clt, s_to_f, f_to_s);
+		DEFINE1_T(operator<=, cle, s_to_f, f_to_s);
 
-		float2x4 operator&&(float2x4 a) const {
-			return {
-				vcvtq_s32_f32(vandq_s32(vcvtq_f32_s32(this->f1), vcvtq_f32_s32(a.f1))),
-				vcvtq_s32_f32(vandq_s32(vcvtq_f32_s32(this->f2), vcvtq_f32_s32(a.f2))),
-			};
-		}
+		B_DEFINE0_T(trunc, vcvtq_s32_f32, vcvtq_f32_s32, ID)
 
-		float2x4& operator|=(float2x4 a) {
-			this->f1 = vcvtq_s32_f32(vorrq_s32(vcvtq_f32_s32(this->f1), vcvtq_f32_s32(a.f1)));
-			this->f2 = vcvtq_s32_f32(vorrq_s32(vcvtq_f32_s32(this->f2), vcvtq_f32_s32(a.f2)));
-			return *this;
-		}
+		B_DEFINE1_T(operator&&, SURROUND_I(and), s_to_f, f_to_s);
+		B_DEFINE_ARITHMETIC2_T(operator&, SURROUND_I(and), s_to_f, f_to_s);
+		B_DEFINE_ARITHMETIC2_T(operator|, SURROUND_I(orr), s_to_f, f_to_s);
+		B_DEFINE_ARITHMETIC2_T(operator^, SURROUND_I(eor), s_to_f, f_to_s);
 
 		DEFINE1S(max)
 		DEFINE1S(min)
 		DEFINE_CLAMP()
 		DEFINE2(fma, ARM_FMA_TYPE)
-		DEFINE1(operator==, ceq)
-		DEFINE1(operator>, cgt)
-		DEFINE1(operator>=, cge)
-		DEFINE1(operator<, clt)
-		DEFINE1(operator<=, cle)
 		DEFINE1(operator+, add)
 		DEFINE_COMPOUND(operator+=, add)
 		DEFINE_ARITHMETIC2(operator-, sub)
@@ -283,6 +272,7 @@ namespace cr::simd
 #undef APPLY2
 #undef APPLY3
 #undef APPLY4
+#undef APPLY5
 
 #undef CR_MACRO_DATA_TYPE
 #undef PREFIX

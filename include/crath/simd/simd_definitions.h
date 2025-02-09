@@ -10,9 +10,14 @@
 #error force inline not defined for compiler
 #endif
 
+#define in_t(X) X
+
 #define DO1(X, ONE, I) X(ONE f##I),
 #define DO2(X, ONE, TWO, I) X(ONE f##I, TWO f##I),
 #define DO3(X, ONE, TWO, THREE, I) X(ONE f##I, TWO f##I, THREE f##I),
+
+#define DO1_T(X, ONE, R_T, ONE_T, I) R_T(X(ONE_T(ONE f##I))),
+#define DO2_T(X, ONE, TWO, R_T, ONE_T, TWO_T, I) R_T(X(ONE_T(ONE f##I), TWO_T(TWO f##I))),
 
 #define DO_1_CONSTANT(X, ONE, CONSTANT, I) X(ONE f##I, CONSTANT),
 
@@ -21,15 +26,21 @@
 #define DO_1_2(X, Y, ONE, TWO, THREE, I) X(Y(ONE f##I, TWO f##I), THREE f##I),
 
 #define DO_COMPOUND(X, ONE, TWO, I) ONE f##I = X(ONE f##I, TWO f##I);
+#define DO_COMPOUND_T(X, ONE, TWO, R_T, ONE_T, TWO_T, I) ONE f##I = R_T(X(ONE_T(ONE f##I), TWO_T(TWO f##I)));
 
 #define SURROUND(X) SUFFIX(PREFIX(X))
 
-#define DEFINE0(name, op) \
+#define ID(X) X
+
+#define B_DEFINE0_T(name, op, return_transform, argument_transform) \
 	CR_INLINE CR_MACRO_DATA_TYPE name() const { \
 		return { \
-			APPLY1(DO1, SURROUND(op), this->) \
+			APPLY3(DO1_T, op, this->, return_transform, argument_transform) \
 		}; \
 	}
+
+#define DEFINE0_T(name, op, return_transform, argument_transform) B_DEFINE0_T(name, SURROUND(op), return_transform, argument_transform)
+#define DEFINE0(name, op) DEFINE0_T(name, op, ID, ID)
 #define DEFINE0S(name) DEFINE0(name, name)
 
 #define DEFINE1(name, op) \
@@ -39,6 +50,15 @@
 		}; \
 	}
 #define DEFINE1S(name) DEFINE1(name, name)
+
+#define DEFINE1_T(name, op, return_transform, argument_transform) B_DEFINE1_T(name, SURROUND(op), return_transform, argument_transform)
+
+#define B_DEFINE1_T(name, op, return_transform, argument_transform) \
+	CR_INLINE CR_MACRO_DATA_TYPE name(in_t(CR_MACRO_DATA_TYPE) a) const { \
+		return { \
+			APPLY5(DO2_T, op, this->, a., return_transform, argument_transform, argument_transform) \
+		}; \
+	}
 
 #define DEFINE1_CONSTANT(name, op, constant) \
 	CR_INLINE CR_MACRO_DATA_TYPE name(in_t(CR_MACRO_DATA_TYPE) a) const { \
@@ -56,11 +76,21 @@
 
 #define DEFINE2S(name) DEFINE2(name, name)
 
-#define DEFINE_COMPOUND(name, op) \
+#define B_DEFINE_COMPOUND(name, op) \
 	CR_INLINE CR_MACRO_DATA_TYPE& name(in_t(CR_MACRO_DATA_TYPE) a) { \
-		APPLY2(DO_COMPOUND, SURROUND(op), this->, a.) \
+		APPLY2(DO_COMPOUND, op, this->, a.) \
 		return *this; \
 	}
+
+#define DEFINE_COMPOUND(name, op) B_DEFINE_COMPOUND(name, SURROUND(op))
+
+#define B_DEFINE_COMPOUND_T(name, op, return_transform, argument_transform) \
+	CR_INLINE CR_MACRO_DATA_TYPE& name(in_t(CR_MACRO_DATA_TYPE) a) { \
+		APPLY5(DO_COMPOUND_T, op, this->, a., return_transform, argument_transform, argument_transform) \
+		return *this; \
+	}
+
+#define DEFINE_COMPOUND_T(name, op, return_transform, argument_transform) B_DEFINE_COMPOUND_T(name, SURROUND(op), return_transform, argument_transform)
 
 #define DEFINE_CLAMP() \
 	CR_INLINE CR_MACRO_DATA_TYPE clamp(in_t(CR_MACRO_DATA_TYPE) a, in_t(CR_MACRO_DATA_TYPE) b) const { \
@@ -71,7 +101,8 @@
 
 #define DEFINE_ARITHMETIC(name, op) DEFINE1(operator##name, op) DEFINE_COMPOUND(operator##name##=, op)
 
-#define DEFINE_ARITHMETIC2(name, op) DEFINE1(name, op) DEFINE_COMPOUND(name##=, op)
+#define DEFINE_ARITHMETIC2(name, op) DEFINE1(name, op) DEFINE_COMPOUND(name## =, op)
+#define B_DEFINE_ARITHMETIC2_T(name, op, return_transform, argument_transform) B_DEFINE1_T(name, op, return_transform, argument_transform) B_DEFINE_COMPOUND_T(name## =, op, return_transform, argument_transform)
 
 #define DEFINE_NEGATION(X) \
 	CR_INLINE CR_MACRO_DATA_TYPE operator-() const { \
@@ -230,3 +261,31 @@
 	DEFINE_SIGN_BIT(float) \
 	DEFINE_SIGN(float) \
 	DEFINE1S(abs)
+
+namespace detail
+{
+	template<class T>
+	struct CRTP_ARM_simd
+	{
+		template<class Self>
+		CR_INLINE auto floor(this Self&& self) {
+			return (self + static_cast<float>(1 << 21)).trunc() - static_cast<float>(1 << 21);
+		}
+
+		template<class Self>
+		CR_INLINE auto round(this Self&& self) {
+			return (self + 0.5f).floor();
+		}
+
+		template<class Self>
+		CR_INLINE auto ceil(this Self&& self) {
+			return (self - static_cast<float>(1 << 21)).trunc() + static_cast<float>(1 << 21);
+		}
+
+//		template<class Self>
+//		CR_INLINE auto operator!=(this Self&& self, in_t(T) other) {
+//			return !(*self == other);
+//		}
+	};
+
+}
