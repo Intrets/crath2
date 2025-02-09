@@ -10,6 +10,7 @@
 #error force inline not defined for compiler
 #endif
 
+#define ID(X) X
 #define in_t(X) X
 
 #define DO1(X, ONE, I) X(ONE f##I),
@@ -29,8 +30,6 @@
 #define DO_COMPOUND_T(X, ONE, TWO, R_T, ONE_T, TWO_T, I) ONE f##I = R_T(X(ONE_T(ONE f##I), TWO_T(TWO f##I)));
 
 #define SURROUND(X) SUFFIX(PREFIX(X))
-
-#define ID(X) X
 
 #define B_DEFINE0_T(name, op, return_transform, argument_transform) \
 	CR_INLINE CR_MACRO_DATA_TYPE name() const { \

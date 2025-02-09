@@ -3,6 +3,9 @@
 #include <tepp/integers.h>
 
 #ifdef ARCH_x86_64
+
+#define CR_HAS_FLOAT_2x8
+
 #include <bit>
 #include <immintrin.h>
 

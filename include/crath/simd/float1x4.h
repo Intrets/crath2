@@ -62,6 +62,11 @@ namespace cr::simd
 #endif
 		}
 
+		template<integer_t I>
+		inline void write(float s) {
+			(*this)[I] = s;
+		}
+
 		inline void write(float& s) const {
 			_mm_storeu_ps(&s, this->f1);
 		}
@@ -83,7 +88,8 @@ namespace cr::simd
 #undef CR_MACRO_DATA_TYPE
 #undef PREFIX
 #undef SUFFIX
-#else
+
+#elif defined(__ARM_NEON__)
 
 #include <arm_neon.h>
 
@@ -97,6 +103,8 @@ namespace cr::simd
 #define APPLY4(OP, X, ONE, TWO, THREE, FOUR) OP(X, ONE, TWO, THREE, FOUR, 1)
 #define APPLY5(OP, X, ONE, TWO, THREE, FOUR, FIVE) OP(X, ONE, TWO, THREE, FOUR, FIVE, 1)
 
+#define DO3_FMA_ORDER(X, ONE, TWO, THREE, I) X(THREE f##I, TWO f##I, ONE f##I),
+
 #define CR_MACRO_DATA_TYPE float1x4
 #undef PREFIX
 #undef SUFFIX
@@ -105,9 +113,12 @@ namespace cr::simd
 #define SURROUND(X) v##X##q_f32
 #define SURROUND_I(X) v##X##q_s32
 
+#define f_to_s(X) vreinterpretq_s32_f32(X)
+#define s_to_f(X) vreinterpretq_f32_s32(X)
+
 namespace cr::simd
 {
-	struct float1x4
+	struct float1x4 : ::detail::CRTP_ARM_simd<float1x4>
 	{
 		static constexpr integer_t size = 4;
 
@@ -156,28 +167,6 @@ namespace cr::simd
 			};
 		}
 
-		float1x4 floor() const {
-			return {
-				vreinterpretq_s32_f32(vreinterpretq_f32_s32(this->f1)),
-			};
-		}
-
-		float1x4 round() const {
-			//			return {
-			//				vreinterpretq_s32_f32(vreinterpretq_f32_s32(vaddq_f32(this->f1, vdupq_n_f32(0.5f)))),
-			//				vreinterpretq_s32_f32(vreinterpretq_f32_s32(vaddq_f32(this->f2, vdupq_n_f32(0.5f)))),
-			//			};
-			return *this;
-		}
-
-		float1x4 ceil() const {
-			return *this;
-		}
-
-		float1x4 operator!=(float1x4 a) const {
-			return *this;
-		}
-
 		float operator[](size_t i) const {
 			switch (i) {
 				case 0:
@@ -203,14 +192,17 @@ namespace cr::simd
 			return { f1_ };
 		}
 
-#define f_to_s(X) vreinterpretq_s32_f32(X)
-#define s_to_f(X) vreinterpretq_f32_s32(X)
-
 		DEFINE1_T(operator==, ceq, s_to_f, f_to_s);
+		float1x4 operator!=(float1x4 other) const {
+			return !(*this == other);
+		}
+
 		DEFINE1_T(operator>, cgt, s_to_f, f_to_s);
 		DEFINE1_T(operator>=, cge, s_to_f, f_to_s);
 		DEFINE1_T(operator<, clt, s_to_f, f_to_s);
 		DEFINE1_T(operator<=, cle, s_to_f, f_to_s);
+
+		B_DEFINE0_T(trunc, vcvtq_s32_f32, vcvtq_f32_s32, ID)
 
 		B_DEFINE1_T(operator&&, SURROUND_I(and), s_to_f, f_to_s);
 		B_DEFINE_ARITHMETIC2_T(operator&, SURROUND_I(and), s_to_f, f_to_s);
@@ -220,7 +212,7 @@ namespace cr::simd
 		DEFINE1S(max)
 		DEFINE1S(min)
 		DEFINE_CLAMP()
-		DEFINE2(fma, ARM_FMA_TYPE)
+		DEFINE2_D(DO3_FMA_ORDER, fma, ARM_FMA_TYPE)
 		DEFINE1(operator+, add)
 		DEFINE_COMPOUND(operator+=, add)
 		DEFINE_ARITHMETIC2(operator-, sub)
