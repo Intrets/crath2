@@ -112,6 +112,16 @@ namespace cr::simd
 			};
 		}
 
+		CR_INLINE int1x4 operator<<(in_t(int1x4) a) const {
+			return {
+				vshlq_s32(this->i1, a.i1)
+			};
+		}
+
+		CR_INLINE int1x4 operator>>(int a) const {
+			return (*this) << int1x4(-a);
+		}
+
 		float1x4 bitCastFloat() const;
 		float1x4 castFloat() const;
 	};
