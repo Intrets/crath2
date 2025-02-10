@@ -10,5 +10,11 @@ namespace cr::simd
 		    _mm_castps_si128(this->f1)
 		);
 	}
+#elif defined(__ARM_NEON__)
+	int1x4 float1x4::bitCastInt() const {
+		return int1x4(
+		    vreinterpretq_s32_f32(this->f1)
+		);
+	}
 #endif
 }

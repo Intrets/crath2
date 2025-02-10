@@ -118,6 +118,8 @@ namespace cr::simd
 
 namespace cr::simd
 {
+	struct int1x4;
+
 	struct float1x4 : ::detail::CRTP_ARM_simd<float1x4>
 	{
 		static constexpr integer_t size = 4;
@@ -223,6 +225,8 @@ namespace cr::simd
 		DEFINE_SIGN_BIT(float)
 		DEFINE_SIGN(float)
 		DEFINE0S(abs)
+
+		int1x4 bitCastInt() const;
 	};
 }
 
