@@ -148,7 +148,8 @@ namespace cr::simd
 		}
 
 		float1x4(float f)
-		    : f1(vdupq_n_f32(f)) {
+		    : f1() {
+			this->f1 = vsetq_lane_f32(f, this->f1, 0);
 		}
 
 		void write(float& ptr) const {
@@ -157,8 +158,8 @@ namespace cr::simd
 
 		template<int I>
 		void write(float v) {
-			static_assert(I >= 0 && I < 8);
-			vsetq_lane_f32(v, this->f1, I);
+			static_assert(I >= 0 && I < 4);
+			this->f1 = vsetq_lane_f32(v, this->f1, I);
 		}
 
 		float1x4 blend(float1x4 a, float1x4 b) const {

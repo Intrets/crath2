@@ -207,15 +207,15 @@ namespace cr::simd
 
 		template<int I>
 		void write(float v) {
-			static_assert(I >= 0 && I < 8);
+			static_assert(I >= 0 && I < 12);
 			if constexpr (I < 4) {
-				vsetq_lane_f32(v, this->f1, I);
+				this->f1 = vsetq_lane_f32(v, this->f1, I);
 			}
 			else if constexpr (I < 8) {
-				vsetq_lane_f32(v, this->f2, I - 4);
+				this->f2 = vsetq_lane_f32(v, this->f2, I - 4);
 			}
 			else {
-				vsetq_lane_f32(v, this->f3, I - 8);
+				this->f3 = vsetq_lane_f32(v, this->f3, I - 8);
 			}
 		}
 
