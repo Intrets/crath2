@@ -9,9 +9,9 @@
 #include <iostream>
 
 #ifdef CR_HAS_FLOAT_2x8
-#define PART2x8 inline static int name##4 = [] { if constexpr (CR_HAS_FLOAT_2x8_BOOL){ simd_tests < cr::simd::float2x8> ::globalTestsContainer[#name] = simd_tests < cr::simd::float2x8> ::test{ #name, [&](){ return name##test < cr::simd::float2x8>(); } }; } return 1; }();
+#define PART2x8(name) inline static int name##4 = [] { simd_tests < cr::simd::float2x8> ::globalTestsContainer[#name] = simd_tests < cr::simd::float2x8> ::test{ #name, [&](){ return name##test < cr::simd::float2x8>(); } }; return 1; }();
 #else
-#define PART2x8
+#define PART2x8(name)
 #endif
 
 #define DEFINE_TEST(name) \
@@ -23,7 +23,7 @@
 		simd_tests<cr::simd::float1x4>::globalTestsContainer[#name] = simd_tests<cr::simd::float1x4>::test{ #name, [&]() { return name##test<cr::simd::float1x4>(); } }; return 1; }(); \
 	inline static int name##3 = [] { \
 		simd_tests<cr::simd::float3x4>::globalTestsContainer[#name] = simd_tests<cr::simd::float3x4>::test{ #name, [&]() { return name##test<cr::simd::float3x4>(); } }; return 1; }(); \
-	PART2x8 template<class F> \
+	PART2x8(name) template<class F> \
 	static bool name##test()
 
 namespace cr::simd

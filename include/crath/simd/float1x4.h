@@ -150,8 +150,7 @@ namespace cr::simd
 		}
 
 		float1x4(float f)
-		    : f1() {
-			this->f1 = vsetq_lane_f32(f, this->f1, 0);
+		    : f1(vdupq_n_f32(f)) {
 		}
 
 		void write(float& ptr) const {
