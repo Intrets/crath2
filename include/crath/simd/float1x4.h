@@ -31,28 +31,28 @@ namespace cr::simd
 		};
 		static constexpr integer_t size = 4;
 
-		inline float1x4() = default;
-		inline float1x4(float s)
+		CR_INLINE float1x4() = default;
+		CR_INLINE float1x4(float s)
 		    : f1(_mm_load1_ps(&s)) {
 		}
-		inline float1x4(float const* ptr)
+		CR_INLINE float1x4(float const* ptr)
 		    : f1(_mm_loadu_ps(ptr)) {
 		}
-		inline float1x4(float const* ptr, aligned_hint_t)
+		CR_INLINE float1x4(float const* ptr, aligned_hint_t)
 		    : f1(_mm_load_ps(ptr)) {
 		}
-		inline float1x4(__m128 f1_)
+		CR_INLINE float1x4(__m128 f1_)
 		    : f1(f1_) {
 		}
-		inline float1x4(float a0, float a1, float a2, float a3)
+		CR_INLINE float1x4(float a0, float a1, float a2, float a3)
 		    : f1(_mm_set_ps(a3, a2, a1, a0)) {
 		}
 
-		inline float const& operator[](integer_t i) const {
+		CR_INLINE float const& operator[](integer_t i) const {
 			return const_cast<float1x4*>(this)->operator[](i);
 		}
 
-		inline float& operator[](integer_t i) {
+		CR_INLINE float& operator[](integer_t i) {
 #if defined(COMPILER_MSVC)
 			return this->f1.m128_f32[i];
 #elif defined(COMPILER_CLANGCL)
@@ -63,15 +63,15 @@ namespace cr::simd
 		}
 
 		template<integer_t I>
-		inline void write(float s) {
+		CR_INLINE void write(float s) {
 			(*this)[I] = s;
 		}
 
-		inline void write(float& s) const {
+		CR_INLINE void write(float& s) const {
 			_mm_storeu_ps(&s, this->f1);
 		}
 
-		inline void write(float& s, aligned_hint_t) const {
+		CR_INLINE void write(float& s, aligned_hint_t) const {
 			_mm_store_ps(&s, this->f1);
 		}
 
@@ -126,50 +126,50 @@ namespace cr::simd
 
 		float32x4_t f1;
 
-		float1x4()
+		CR_INLINE float1x4()
 		    : f1() {
 		}
 
-		float1x4(float32x4_t f1_)
+		CR_INLINE float1x4(float32x4_t f1_)
 		    : f1(f1_) {
 		}
 
 	private:
-		float32x4_t helperLoad(float a0, float a1, float a2, float a3) {
+		CR_INLINE float32x4_t helperLoad(float a0, float a1, float a2, float a3) {
 			std::array<float, 4> a{ a0, a1, a2, a3 };
 			return vld1q_f32(a.data());
 		}
 
 	public:
-		float1x4(float a0, float a1, float a2, float a3)
+		CR_INLINE float1x4(float a0, float a1, float a2, float a3)
 		    : f1(helperLoad(a0, a1, a2, a3)) {
 		}
 
-		float1x4(float* ptr)
+		CR_INLINE float1x4(float* ptr)
 		    : f1(vld1q_f32(ptr)) {
 		}
 
-		float1x4(float f)
+		CR_INLINE float1x4(float f)
 		    : f1(vdupq_n_f32(f)) {
 		}
 
-		void write(float& ptr) const {
+		CR_INLINE void write(float& ptr) const {
 			vst1q_f32(&ptr, this->f1);
 		}
 
 		template<int I>
-		void write(float v) {
+		CR_INLINE void write(float v) {
 			static_assert(I >= 0 && I < 4);
 			this->f1 = vsetq_lane_f32(v, this->f1, I);
 		}
 
-		float1x4 blend(float1x4 a, float1x4 b) const {
+		CR_INLINE float1x4 blend(float1x4 a, float1x4 b) const {
 			return {
 				vbslq_f32(vcgeq_f32(b.f1, vdupq_n_f32(0.0f)), this->f1, a.f1),
 			};
 		}
 
-		float operator[](size_t i) const {
+		CR_INLINE float operator[](size_t i) const {
 			switch (i) {
 				case 0:
 					return vgetq_lane_f32(this->f1, 0);
@@ -185,7 +185,7 @@ namespace cr::simd
 			return 0;
 		}
 
-		float1x4 operator/(float1x4 a) const {
+		CR_INLINE float1x4 operator/(float1x4 a) const {
 			float32x4_t reciprocal = vrecpeq_f32(a.f1);
 			reciprocal = vmulq_f32(vrecpsq_f32(a.f1, reciprocal), reciprocal);
 			reciprocal = vmulq_f32(vrecpsq_f32(a.f1, reciprocal), reciprocal);
@@ -195,7 +195,7 @@ namespace cr::simd
 		}
 
 		DEFINE1_T(operator==, ceq, s_to_f, f_to_s);
-		float1x4 operator!=(float1x4 other) const {
+		CR_INLINE float1x4 operator!=(float1x4 other) const {
 			return !(*this == other);
 		}
 

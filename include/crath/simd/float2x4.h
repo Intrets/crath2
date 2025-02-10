@@ -37,33 +37,33 @@ namespace cr::simd
 
 		static constexpr integer_t size = 8;
 
-		inline float2x4() = default;
-		inline float2x4(float s)
+		CR_INLINE float2x4() = default;
+		CR_INLINE float2x4(float s)
 		    : f1(_mm_load1_ps(&s)),
 		      f2(_mm_load1_ps(&s)) {
 		}
-		inline float2x4(float const* ptr)
+		CR_INLINE float2x4(float const* ptr)
 		    : f1(_mm_loadu_ps(ptr)),
 		      f2(_mm_loadu_ps(ptr + 4)) {
 		}
-		inline float2x4(float const* ptr, aligned_hint_t)
+		CR_INLINE float2x4(float const* ptr, aligned_hint_t)
 		    : f1(_mm_load_ps(ptr)),
 		      f2(_mm_load_ps(ptr + 4)) {
 		}
-		inline float2x4(__m128 f1_, __m128 f2_)
+		CR_INLINE float2x4(__m128 f1_, __m128 f2_)
 		    : f1(f1_),
 		      f2(f2_) {
 		}
-		inline float2x4(float a0, float a1, float a2, float a3, float a4, float a5, float a6, float a7)
+		CR_INLINE float2x4(float a0, float a1, float a2, float a3, float a4, float a5, float a6, float a7)
 		    : f1(_mm_set_ps(a3, a2, a1, a0)),
 		      f2(_mm_set_ps(a7, a6, a5, a4)) {
 		}
 
-		inline float const& operator[](integer_t i) const {
+		CR_INLINE float const& operator[](integer_t i) const {
 			return const_cast<float2x4*>(this)->operator[](i);
 		}
 
-		inline float& operator[](integer_t i) {
+		CR_INLINE float& operator[](integer_t i) {
 			if (i < 4) {
 #if defined(COMPILER_MSVC)
 				return this->f1.m128_f32[i];
@@ -85,16 +85,16 @@ namespace cr::simd
 		}
 
 		template<integer_t I>
-		inline void write(float s) {
+		CR_INLINE void write(float s) {
 			(*this)[I] = s;
 		}
 
-		inline void write(float& s) const {
+		CR_INLINE void write(float& s) const {
 			_mm_storeu_ps(&s, this->f1);
 			_mm_storeu_ps(&s + 4, this->f2);
 		}
 
-		inline void write(float& s, aligned_hint_t) const {
+		CR_INLINE void write(float& s, aligned_hint_t) const {
 			_mm_store_ps(&s, this->f1);
 			_mm_store_ps(&s + 4, this->f2);
 		}
@@ -150,45 +150,45 @@ namespace cr::simd
 		float32x4_t f1;
 		float32x4_t f2;
 
-		float2x4()
+		CR_INLINE float2x4()
 		    : f1(),
 		      f2() {
 		}
 
-		float2x4(float32x4_t f1_, float32x4_t f2_)
+		CR_INLINE float2x4(float32x4_t f1_, float32x4_t f2_)
 		    : f1(f1_),
 		      f2(f2_) {
 		}
 
 	private:
-		float32x4_t helperLoad(float a0, float a1, float a2, float a3) {
+		CR_INLINE float32x4_t helperLoad(float a0, float a1, float a2, float a3) {
 			std::array<float, 4> a{ a0, a1, a2, a3 };
 			return vld1q_f32(a.data());
 		}
 
 	public:
-		float2x4(float a0, float a1, float a2, float a3, float a4, float a5, float a6, float a7)
+		CR_INLINE float2x4(float a0, float a1, float a2, float a3, float a4, float a5, float a6, float a7)
 		    : f1(helperLoad(a0, a1, a2, a3)),
 		      f2(helperLoad(a4, a5, a6, a7)) {
 		}
 
-		float2x4(float* ptr)
+		CR_INLINE float2x4(float* ptr)
 		    : f1(vld1q_f32(ptr)),
 		      f2(vld1q_f32(ptr + 4)) {
 		}
 
-		float2x4(float f)
+		CR_INLINE float2x4(float f)
 		    : f1(vdupq_n_f32(f)),
 		      f2(vdupq_n_f32(f)) {
 		}
 
-		void write(float& ptr) const {
+		CR_INLINE void write(float& ptr) const {
 			vst1q_f32(&ptr, this->f1);
 			vst1q_f32(&ptr + 4, this->f2);
 		}
 
 		template<int I>
-		void write(float v) {
+		CR_INLINE void write(float v) {
 			static_assert(I >= 0 && I < 8);
 			if constexpr (I < 4) {
 				this->f1 = vsetq_lane_f32(v, this->f1, I);
@@ -198,14 +198,14 @@ namespace cr::simd
 			}
 		}
 
-		float2x4 blend(float2x4 a, float2x4 b) const {
+		CR_INLINE float2x4 blend(float2x4 a, float2x4 b) const {
 			return {
 				vbslq_f32(vcgeq_f32(b.f1, vdupq_n_f32(0.0f)), this->f1, a.f1),
 				vbslq_f32(vcgeq_f32(b.f2, vdupq_n_f32(0.0f)), this->f2, a.f2),
 			};
 		}
 
-		float operator[](size_t i) const {
+		CR_INLINE float operator[](size_t i) const {
 			switch (i) {
 				case 0:
 					return vgetq_lane_f32(this->f1, 0);
@@ -229,7 +229,7 @@ namespace cr::simd
 			return 0;
 		}
 
-		float2x4 operator/(float2x4 a) const {
+		CR_INLINE float2x4 operator/(float2x4 a) const {
 			float32x4_t reciprocal = vrecpeq_f32(a.f1);
 			float32x4_t reciprocal2 = vrecpeq_f32(a.f2);
 
@@ -246,7 +246,7 @@ namespace cr::simd
 		}
 
 		DEFINE1_T(operator==, ceq, s_to_f, f_to_s);
-		float2x4 operator!=(float2x4 other) const {
+		CR_INLINE float2x4 operator!=(float2x4 other) const {
 			return !(*this == other);
 		}
 

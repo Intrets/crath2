@@ -13,6 +13,8 @@
 
 #include "crath/simd/Info.h"
 #include "crath/simd/float1x4.h"
+#include "crath/simd/int1x4.h"
+#include "crath/simd/int2x4.h"
 
 #define in_t(X) X
 
@@ -443,12 +445,11 @@ namespace cr
 				return std::bit_cast<float>(i1);
 			}
 			else {
-				//				auto const i0 = x.bitCastInt();
-				//				using int_type = std::remove_cvref_t<decltype(i0)>;
-				//				auto const i1 = int_type(c) + (i0 >> 1);
-				//
-				//				return i1.bitCastFloat();
-				return x;
+				auto const i0 = x.bitCastInt();
+				using int_type = std::remove_cvref_t<decltype(i0)>;
+				auto const i1 = int_type(c) + (i0 >> 1);
+
+				return i1.bitCastFloat();
 			}
 		}
 

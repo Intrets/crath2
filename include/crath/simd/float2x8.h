@@ -39,33 +39,33 @@ namespace cr::simd
 
 		static constexpr integer_t size = 16;
 
-		inline float2x8() = default;
-		inline float2x8(float s)
+		CR_INLINE float2x8() = default;
+		CR_INLINE float2x8(float s)
 		    : f1(_mm256_set1_ps(s)),
 		      f2(_mm256_set1_ps(s)) {
 		}
-		inline float2x8(float const* ptr)
+		CR_INLINE float2x8(float const* ptr)
 		    : f1(_mm256_loadu_ps(ptr)),
 		      f2(_mm256_loadu_ps(ptr + 8)) {
 		}
-		inline float2x8(float const* ptr, aligned_hint_t)
+		CR_INLINE float2x8(float const* ptr, aligned_hint_t)
 		    : f1(_mm256_load_ps(ptr)),
 		      f2(_mm256_load_ps(ptr + 8)) {
 		}
-		inline float2x8(__m256 f1_, __m256 f2_)
+		CR_INLINE float2x8(__m256 f1_, __m256 f2_)
 		    : f1(f1_),
 		      f2(f2_) {
 		}
-		inline float2x8(float a0, float a1, float a2, float a3, float a4, float a5, float a6, float a7, float a8, float a9, float a10, float a11, float a12, float a13, float a14, float a15)
+		CR_INLINE float2x8(float a0, float a1, float a2, float a3, float a4, float a5, float a6, float a7, float a8, float a9, float a10, float a11, float a12, float a13, float a14, float a15)
 		    : f1(_mm256_set_ps(a7, a6, a5, a4, a3, a2, a1, a0)),
 		      f2(_mm256_set_ps(a15, a14, a13, a12, a11, a10, a9, a8)) {
 		}
 
-		inline float const& operator[](integer_t i) const {
+		CR_INLINE float const& operator[](integer_t i) const {
 			return const_cast<float2x8*>(this)->operator[](i);
 		}
 
-		inline float& operator[](integer_t i) {
+		CR_INLINE float& operator[](integer_t i) {
 			if (i < 8) {
 #if defined(COMPILER_MSVC)
 				return this->f1.m256_f32[i];
@@ -86,12 +86,12 @@ namespace cr::simd
 			}
 		}
 
-		inline void write(float& s) const {
+		CR_INLINE void write(float& s) const {
 			_mm256_storeu_ps(&s, this->f1);
 			_mm256_storeu_ps(&s + 8, this->f2);
 		}
 
-		inline void write(float& s, aligned_hint_t) const {
+		CR_INLINE void write(float& s, aligned_hint_t) const {
 			_mm256_store_ps(&s, this->f1);
 			_mm256_store_ps(&s + 8, this->f2);
 		}
