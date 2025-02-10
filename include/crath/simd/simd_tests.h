@@ -1,15 +1,30 @@
 #pragma once
 
+#include "float1x4.h"
 #include "float2x4.h"
+#include "float2x8.h"
+#include "float3x4.h"
 
 #include <cmath>
 #include <iostream>
 
+#ifdef CR_HAS_FLOAT_2x8
+#define CR_HAS_FLOAT_2x8_BOOL true
+#else
+#define CR_HAS_FLOAT_2x8_BOOL true
+#endif
+
 #define DEFINE_TEST(name) \
 	template<class F> \
 	static bool name##test(); \
-	inline static int name = [] { \
+	inline static int name##1 = [] { \
 		simd_tests<cr::simd::float2x4>::globalTestsContainer[#name] = simd_tests<cr::simd::float2x4>::test{ #name, [&]() { return name##test<cr::simd::float2x4>(); } }; return 1; }(); \
+	inline static int name##2 = [] { \
+		simd_tests<cr::simd::float1x4>::globalTestsContainer[#name] = simd_tests<cr::simd::float1x4>::test{ #name, [&]() { return name##test<cr::simd::float1x4>(); } }; return 1; }(); \
+	inline static int name##3 = [] { \
+		simd_tests<cr::simd::float3x4>::globalTestsContainer[#name] = simd_tests<cr::simd::float3x4>::test{ #name, [&]() { return name##test<cr::simd::float3x4>(); } }; return 1; }(); \
+	inline static int name##4 = [] { \
+		if constexpr (CR_HAS_FLOAT_2x8_BOOL) { simd_tests<cr::simd::float2x8>::globalTestsContainer[#name] = simd_tests<cr::simd::float2x8>::test{ #name, [&]() { return name##test<cr::simd::float2x8>(); } };} return 1; }(); \
 	template<class F> \
 	static bool name##test()
 
@@ -54,12 +69,8 @@ namespace cr::simd
 			std::vector<std::string> failedTests{};
 			for (auto&& [name, test] : globalTestsContainer) {
 				if (!test.function()) {
-					std::cout << "Failed  test: " << name << std::endl;
 					failedTests.push_back(name);
 					fail++;
-				}
-				else {
-					std::cout << "Success test: " << name << std::endl;
 				}
 			}
 
