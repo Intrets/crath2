@@ -466,8 +466,6 @@ namespace cr::simd
 			auto m0 = fmod(pf);
 			auto m = fmodf(p);
 			if (!allEqual(m0, m)) {
-				auto m02 = fmod(pf);
-				auto m2 = fmodf(p);
 				return false;
 			}
 
