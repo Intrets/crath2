@@ -11,6 +11,7 @@
 #include <tepp/integers.h>
 #include <tepp/literal.h>
 
+#include "crath/simd/Info.h"
 #include "crath/simd/float1x4.h"
 
 #define in_t(X) X

@@ -236,5 +236,3 @@ namespace cr::simd
 #undef PREFIX
 #undef SUFFIX
 #endif
-
-#undef CR_HAS_SIMD_TYPES
