@@ -11,7 +11,7 @@
 #ifdef CR_HAS_FLOAT_2x8
 #define CR_HAS_FLOAT_2x8_BOOL true
 #else
-#define CR_HAS_FLOAT_2x8_BOOL true
+#define CR_HAS_FLOAT_2x8_BOOL false
 #endif
 
 #define DEFINE_TEST(name) \
