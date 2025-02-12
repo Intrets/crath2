@@ -14,6 +14,7 @@
 #define PART2x8(name)
 #endif
 
+#ifndef COMPILER_CLANGCL
 #define DEFINE_TEST(name) \
 	template<class F> \
 	static bool name##test(); \
@@ -25,6 +26,9 @@
 		simd_tests<cr::simd::float3x4>::globalTestsContainer[#name] = simd_tests<cr::simd::float3x4>::test{ #name, [&]() { return name##test<cr::simd::float3x4>(); } }; return 1; }(); \
 	PART2x8(name) template<class F> \
 	static bool name##test()
+#else
+#define DEFINE_TEST(name) template<class F> static bool name##test()
+#endif
 
 namespace cr::simd
 {

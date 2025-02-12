@@ -6,6 +6,9 @@
 #elif defined(COMPILER_CLANG)
 #define CR_INLINE inline __attribute__((always_inline))
 #define CR_HAS_SIMD_TYPES
+#elif defined(COMPILER_CLANGCL)
+#define CR_INLINE inline __attribute__((always_inline))
+#define CR_HAS_SIMD_TYPES
 #else
 #error force inline not defined for compiler
 #endif
@@ -28,8 +31,6 @@
 
 #define DO_COMPOUND(X, ONE, TWO, I) ONE f##I = X(ONE f##I, TWO f##I);
 #define DO_COMPOUND_T(X, ONE, TWO, R_T, ONE_T, TWO_T, I) ONE f##I = R_T(X(ONE_T(ONE f##I), TWO_T(TWO f##I)));
-
-#define SURROUND(X) SUFFIX(PREFIX(X))
 
 #define B_DEFINE0_T(name, op, return_transform, argument_transform) \
 	CR_INLINE CR_MACRO_DATA_TYPE name() const { \
@@ -184,6 +185,19 @@
 	DEFINE_SIGN(int) \
 	DEFINE_ABS(int)
 
+#ifdef COMPILER_MSVC
+#define TRIG_FUNCTIONS \
+	DEFINE0S(sin) \
+	DEFINE0S(cos) \
+	DEFINE0S(tan) \
+	DEFINE0S(tanh) \
+	DEFINE0S(log) \
+	DEFINE0S(exp) \
+	DEFINE0S(atanh)
+#else
+#define TRIG_FUNCTIONS
+#endif
+
 #define CR_ALL_DEFINITIONS \
 	DEFINE1S(max) \
 	DEFINE1S(min) \
@@ -215,25 +229,7 @@
 	DEFINE0S(ceil) \
 	DEFINE_ROUND() \
 	DEFINE0S(sqrt) \
-	DEFINE0S(sin) \
-	DEFINE0S(cos) \
-	DEFINE0S(tan) \
-	DEFINE0S(tanh) \
-	DEFINE0S(log) \
-	DEFINE0S(exp) \
-	DEFINE0S(atanh)
-
-// DEFINE2(blend, blendv) \
-	//DEFINE1(operator!=, cneq, _CMP_NEQ_OQ) \
-	//DEFINE1(operator&&, and) \
-	//DEFINE1(operator||, or) \
-	//DEFINE_ARITHMETIC(/, div) \
-	//DEFINE_ARITHMETIC(^, xor) \
-	//DEFINE_ARITHMETIC(|, or) \
-	//DEFINE_ARITHMETIC(&, and) \
-	//DEFINE0S(floor) \
-	//DEFINE0S(ceil) \
-	//DEFINE_ROUND() \
+	TRIG_FUNCTIONS
 
 #define ARM_FMA_TYPE mla
 

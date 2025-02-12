@@ -17,8 +17,7 @@
 #define APPLY4(OP, X, ONE, TWO, THREE, FOUR) OP(X, ONE, TWO, THREE, FOUR, 1) OP(X, ONE, TWO, THREE, FOUR, 2)
 
 #define CR_MACRO_DATA_TYPE float2x4
-#define PREFIX(X) _mm_##X
-#define SUFFIX(X) X##_ps
+#define SURROUND(X) _mm_##X##_ps
 
 namespace cr::simd
 {
@@ -111,8 +110,7 @@ namespace cr::simd
 #undef APPLY4
 
 #undef CR_MACRO_DATA_TYPE
-#undef PREFIX
-#undef SUFFIX
+#undef SURROUND
 
 #elif defined(__ARM_NEON__)
 
@@ -131,8 +129,6 @@ namespace cr::simd
 #define DO3_FMA_ORDER(X, ONE, TWO, THREE, I) X(THREE f##I, TWO f##I, ONE f##I),
 
 #define CR_MACRO_DATA_TYPE float2x4
-#undef PREFIX
-#undef SUFFIX
 #undef SURROUND
 #undef SURROUND_I
 #define SURROUND(X) v##X##q_f32
@@ -290,7 +286,6 @@ namespace cr::simd
 #undef APPLY5
 
 #undef CR_MACRO_DATA_TYPE
-#undef PREFIX
-#undef SUFFIX
+#undef SURROUND
 
 #endif

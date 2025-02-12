@@ -19,13 +19,10 @@
 #define APPLY4(OP, X, ONE, TWO, THREE, FOUR) OP(X, ONE, TWO, THREE, FOUR, 1) OP(X, ONE, TWO, THREE, FOUR, 2)
 
 #define CR_MACRO_DATA_TYPE float2x8
-#define PREFIX(X) _mm256_##X
-#define SUFFIX(X) X##_ps
+#define SURROUND(X) _mm256_##X##_ps
 
 namespace cr::simd
 {
-	struct int2x8;
-
 	struct float2x8
 	{
 		union {
@@ -97,8 +94,6 @@ namespace cr::simd
 		}
 
 		CR_ALL_DEFINITIONS
-
-		int2x8 bitCastInt() const;
 	};
 }
 #endif
@@ -109,5 +104,4 @@ namespace cr::simd
 #undef APPLY4
 
 #undef CR_MACRO_DATA_TYPE
-#undef PREFIX
-#undef SUFFIX
+#undef SURROUND
