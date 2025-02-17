@@ -216,7 +216,7 @@ namespace fun
 		auto const b1 = forward_definitions::fma(b2, x2, F(1.4492572045816738f));
 		auto const a0 = (a1 * x);
 		auto const b0 = forward_definitions::fma(b1, x2, F(1.0f));
-		return a0 * b0;
+		return a0 / b0;
 	}
 	inline static float sin_unit1_quart_fma_ec_T6_6_float_simd(float x) {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
