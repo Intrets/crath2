@@ -816,6 +816,11 @@ namespace cr
 		}
 
 		template<class F>
+		inline constexpr static F maxAbs(in_t(F) f1, in_t(F) f2) {
+			return ifElse(abs(f1) > abs(f2), f1, f2);
+		}
+
+		template<class F>
 		inline constexpr static F sign(in_t(F) f) {
 			if constexpr (std::same_as<F, float>) {
 				auto signbit = std::bit_cast<uint32_t>(f) & (1U << 31);
