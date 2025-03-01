@@ -203,6 +203,7 @@ namespace cr::simd
 		B_DEFINE0_T(trunc, vcvtq_s32_f32, vcvtq_f32_s32, ID)
 
 		B_DEFINE1_T(operator&&, SURROUND_I(and), s_to_f, f_to_s);
+		B_DEFINE1_T(operator||, SURROUND_I(and), s_to_f, f_to_s);
 		B_DEFINE_ARITHMETIC2_T(operator&, SURROUND_I(and), s_to_f, f_to_s);
 		B_DEFINE_ARITHMETIC2_T(operator|, SURROUND_I(orr), s_to_f, f_to_s);
 		B_DEFINE_ARITHMETIC2_T(operator^, SURROUND_I(eor), s_to_f, f_to_s);
