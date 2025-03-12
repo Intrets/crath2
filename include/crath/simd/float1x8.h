@@ -29,10 +29,10 @@ namespace cr::simd
 	{
 		union {
 			__m256 f1;
-			float g1[4];
+			float g1[8];
 		};
 
-		static constexpr integer_t size = 16;
+		static constexpr integer_t size = 8;
 
 		CR_INLINE float1x8() = default;
 		CR_INLINE float1x8(float s)

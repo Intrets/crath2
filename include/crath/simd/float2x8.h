@@ -29,11 +29,11 @@ namespace cr::simd
 	{
 		union {
 			__m256 f1;
-			float g1[4];
+			float g1[8];
 		};
 		union {
 			__m256 f2;
-			float g2[4];
+			float g2[8];
 		};
 
 		static constexpr integer_t size = 16;
