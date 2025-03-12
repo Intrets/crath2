@@ -9,6 +9,9 @@ project(${MODULE_NAME} LANGUAGES CXX)
 make_module(
 	MODULE_NAME ${MODULE_NAME}
 	MODULE_FILES
+		simd/int3x4
+		simd/int2x8
+		simd/int1x8
 		simd/simd_tests
 		simd/float2x8
 		simd/simd_definitions

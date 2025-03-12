@@ -14,7 +14,10 @@
 #include "crath/simd/Info.h"
 #include "crath/simd/float1x4.h"
 #include "crath/simd/int1x4.h"
+#include "crath/simd/int1x8.h"
 #include "crath/simd/int2x4.h"
+#include "crath/simd/int2x8.h"
+#include "crath/simd/int3x4.h"
 
 #define in_t(X) X
 

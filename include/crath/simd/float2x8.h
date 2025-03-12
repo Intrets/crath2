@@ -23,6 +23,8 @@
 
 namespace cr::simd
 {
+	struct int2x8;
+
 	struct float2x8
 	{
 		union {
@@ -94,6 +96,8 @@ namespace cr::simd
 		}
 
 		CR_ALL_DEFINITIONS
+
+		int2x8 bitCastInt() const;
 	};
 }
 #endif

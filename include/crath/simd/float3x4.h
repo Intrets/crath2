@@ -20,6 +20,8 @@
 
 namespace cr::simd
 {
+	struct int3x4;
+
 	struct float3x4
 	{
 		union {
@@ -115,6 +117,8 @@ namespace cr::simd
 		}
 
 		CR_ALL_DEFINITIONS
+
+		int3x4 bitCastInt() const;
 	};
 }
 
