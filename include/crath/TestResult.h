@@ -21,6 +21,8 @@
 #include "crath/StdContext.h"
 #include "crath/simd/float1x4.h"
 #include "crath/simd/float2x4.h"
+#include "crath/simd/float2x8.h"
+#include "crath/simd/float1x8.h"
 
 #include <mem/MutexedObject.h>
 
@@ -35,7 +37,9 @@ struct TestResult
 		std::minstd_rand rng{ std::random_device()() };
 		std::vector<float> dataBufferFloat{};
 		std::vector<cr::simd::float1x4> dataBuffer1x4{};
+		std::vector<cr::simd::float1x8> dataBuffer1x8{};
 		std::vector<cr::simd::float2x4> dataBuffer2x4{};
+		std::vector<cr::simd::float2x8> dataBuffer2x8{};
 
 		template<class T>
 		auto& getBuffer() {
@@ -45,8 +49,14 @@ struct TestResult
 			else if constexpr (std::same_as<T, cr::simd::float1x4>) {
 				return this->dataBuffer1x4;
 			}
-			else {
+			else if constexpr (std::same_as<T, cr::simd::float2x4>) {
 				return this->dataBuffer2x4;
+			}
+			else if constexpr (std::same_as<T, cr::simd::float1x8>) {
+				return this->dataBuffer1x8;
+			}
+			else {
+				return this->dataBuffer2x8;
 			}
 		}
 	};

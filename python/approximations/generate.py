@@ -310,6 +310,30 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
     function_infos2.append(info)
 
     info = make_function_info2(
+        tags=tags + ["float2x8", "simd"],
+        reference_function=ref,
+        value_type="cr::simd::float2x8",
+        function_name=f'{name_full}<{"cr::simd::float2x8"}>',
+        min_x=min_x,
+        max_x=max_x,
+        ref_min_x=ref_min_x,
+        ref_max_x=ref_max_x,
+    )
+    function_infos2.append(info)
+
+    info = make_function_info2(
+        tags=tags + ["float1x8", "simd"],
+        reference_function=ref,
+        value_type="cr::simd::float1x8",
+        function_name=f'{name_full}<{"cr::simd::float1x8"}>',
+        min_x=min_x,
+        max_x=max_x,
+        ref_min_x=ref_min_x,
+        ref_max_x=ref_max_x,
+    )
+    function_infos2.append(info)
+
+    info = make_function_info2(
         tags=tags + ["float", "simd"],
         reference_function=ref,
         value_type="float",
