@@ -1,0 +1,152 @@
+#pragma once
+
+#include <array>
+
+#include <tepp/integers.h>
+#include <tepp/misc.h>
+#include <tepp/tepp.h>
+
+#include "crath/simd/aligned_load_hint.h"
+
+namespace cr::simd
+{
+	namespace detail
+	{
+		template<class F>
+		constexpr integer_t get_simd_array_size() {
+			if constexpr (std::same_as<F, float>) {
+				return 1;
+			}
+			else {
+				return F::size;
+			}
+		}
+	}
+
+	template<integer_t N, integer_t alignment, class F>
+	struct array_simd_processing;
+
+	template<integer_t N, integer_t alignment, class F>
+	struct array_simd
+	{
+		using access_type = array_simd_processing<N, alignment, F>;
+		alignas(alignment) std::array<float, N> data;
+
+		operator F() const {
+			return this->get();
+		}
+
+		array_simd& operator=(F const& value) {
+			this->write(value);
+
+			return *this;
+		}
+
+		F get() const {
+			if constexpr (std::same_as<float, F>) {
+				return this->data[0];
+			}
+			else {
+				return F(this->data.data(), aligned_hint);
+			}
+		}
+
+		void write(F value) {
+			if constexpr (std::same_as<float, F>) {
+				this->data[0] = value;
+			}
+			else {
+				value.write(this->data[0], aligned_hint);
+			}
+		}
+
+		access_type access();
+	};
+
+	namespace detail
+	{
+		template<class T>
+		struct is_array_simd_type;
+
+		template<integer_t N, integer_t alignment, class F>
+		struct is_array_simd_type<array_simd<N, alignment, F>> : std::true_type
+		{
+		};
+
+		template<class T>
+		struct is_array_simd_type : std::false_type
+		{
+		};
+	}
+
+	template<class T>
+	concept is_array_simd_type = detail::is_array_simd_type<T>::value;
+
+	namespace detail
+	{
+		template<class T>
+		struct return_type_get_simd_type;
+
+		template<class T>
+		struct return_type_get_simd_type;
+
+		constexpr auto return_type_get_simd_type = []<class T>(te::Type_t<T>) {
+			if constexpr (cr::simd::is_array_simd_type<T>) {
+				return te::Type<typename T::access_type>;
+			}
+			else {
+				return te::Type<T&>;
+			}
+		};
+	}
+
+	template<class T>
+	using return_type = Gettype(detail::return_type_get_simd_type(te::Type<T>));
+
+	template<class T>
+	return_type<T> use(T& value) {
+		if constexpr (is_array_simd_type<T>) {
+			return value.access();
+		}
+		else {
+			return value;
+		}
+	}
+
+	template<integer_t N, integer_t alignment, class F>
+	struct array_simd_processing
+	{
+		array_simd<N, alignment, F>& array;
+		F data;
+
+		NO_COPY_MOVE(array_simd_processing);
+
+		operator F&() {
+			return this->data;
+		}
+
+		array_simd_processing& operator=(F const& other) {
+			this->data = other;
+
+			return *this;
+		}
+
+		array_simd_processing() = delete;
+		array_simd_processing(array_simd<N, alignment, F>& array_)
+		    : array(array_),
+		      data(array.get()) {
+		}
+
+		~array_simd_processing() {
+			this->array.write(this->data);
+		}
+	};
+
+	template<integer_t N, integer_t alignment, class F>
+	inline array_simd_processing<N, alignment, F> array_simd<N, alignment, F>::access() {
+		return array_simd_processing<N, alignment, F>(*this);
+	}
+
+	template<class F>
+	using array_simd_type = std::conditional_t<std::same_as<F, float>, float, array_simd<detail::get_simd_array_size<F>(), alignof(F), F>>;
+}

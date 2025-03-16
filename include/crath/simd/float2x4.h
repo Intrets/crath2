@@ -7,6 +7,8 @@
 #include <bit>
 #include <immintrin.h>
 
+#include <tepp/misc.h>
+
 #include "crath/ParameterTyping.h"
 #include "crath/simd/aligned_load_hint.h"
 #include "crath/simd/simd_definitions.h"

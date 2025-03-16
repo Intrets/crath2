@@ -12,6 +12,7 @@
 #include <tepp/literal.h>
 
 #include "crath/simd/Info.h"
+#include "crath/simd/array_simd.h"
 #include "crath/simd/float1x4.h"
 #include "crath/simd/int1x4.h"
 #include "crath/simd/int1x8.h"
@@ -28,6 +29,33 @@ namespace cr
 
 namespace
 {
+	struct scalar_array_processing;
+
+	struct scalar_array
+	{
+		std::array<float, 1> data;
+
+		scalar_array_processing access();
+	};
+
+	struct scalar_array_processing
+	{
+		scalar_array& array;
+		float data;
+
+		NO_COPY_MOVE(scalar_array_processing);
+
+		scalar_array_processing() = delete;
+		scalar_array_processing(scalar_array array_)
+		    : array(array_),
+		      data(*array.data.data()) {
+		}
+
+		~scalar_array_processing() {
+			this->array.data[0] = this->data;
+		}
+	};
+
 	template<class F>
 	concept has_clamp = requires(F f) {{ f.clamp(f, f) } -> std::same_as<F>; };
 
@@ -1009,13 +1037,18 @@ namespace cr
 		}
 
 		template<class F>
-		inline static float toScalar(in_t(F) a) {
+		inline static float& get(in_t(F) a, integer_t i) {
 			if constexpr (std::same_as<F, float>) {
 				return a;
 			}
 			else {
-				return a[0];
+				return a[i];
 			}
+		}
+
+		template<class F>
+		inline static float toScalar(in_t(F) a) {
+			return get(a, 0);
 		}
 	};
 }
