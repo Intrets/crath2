@@ -47,25 +47,6 @@ namespace cr::simd
 		    : f1(_mm_set_ps(a3, a2, a1, a0)) {
 		}
 
-		CR_INLINE float const& operator[](integer_t i) const {
-			return const_cast<float1x4*>(this)->operator[](i);
-		}
-
-		CR_INLINE float& operator[](integer_t i) {
-#if defined(COMPILER_MSVC)
-			return this->f1.m128_f32[i];
-#elif defined(COMPILER_CLANGCL)
-			return this->f[i];
-#else
-#error "unsupported compiler"
-#endif
-		}
-
-		template<integer_t I>
-		CR_INLINE void write(float s) {
-			(*this)[I] = s;
-		}
-
 		CR_INLINE void write(float& s) const {
 			_mm_storeu_ps(&s, this->f1);
 		}
@@ -163,22 +144,6 @@ namespace cr::simd
 			return {
 				vbslq_f32(vcgeq_f32(b.f1, vdupq_n_f32(0.0f)), this->f1, a.f1),
 			};
-		}
-
-		CR_INLINE float operator[](size_t i) const {
-			switch (i) {
-				case 0:
-					return vgetq_lane_f32(this->f1, 0);
-				case 1:
-					return vgetq_lane_f32(this->f1, 1);
-				case 2:
-					return vgetq_lane_f32(this->f1, 2);
-				case 3:
-					return vgetq_lane_f32(this->f1, 3);
-			}
-
-			tassert(0);
-			return 0;
 		}
 
 		CR_INLINE float1x4 operator/(float1x4 a) const {

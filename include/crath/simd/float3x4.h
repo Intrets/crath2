@@ -66,44 +66,6 @@ namespace cr::simd
 		      f3(_mm_set_ps(a11, a10, a9, a8)) {
 		}
 
-		CR_INLINE float operator[](integer_t i) const {
-			if (i < 4) {
-#if defined(COMPILER_MSVC)
-				return this->f1.m128_f32[i];
-#elif defined(COMPILER_CLANGCL)
-				return this->g1[i];
-#else
-#error "unsupported compiler"
-#endif
-			}
-			else if (i < 8) {
-#if defined(COMPILER_MSVC)
-				return this->f2.m128_f32[i - 4];
-#elif defined(COMPILER_CLANGCL)
-				return this->g2[i - 4];
-#else
-#error "unsupported compiler"
-#endif
-			}
-			else {
-#if defined(COMPILER_MSVC)
-				return this->f3.m128_f32[i - 8];
-#elif defined(COMPILER_CLANGCL)
-				return this->g3[i - 8];
-#else
-#error "unsupported compiler"
-#endif
-			}
-		}
-
-		template<integer_t I>
-		CR_INLINE void write(float s) {
-#ifdef COMPILER_MSVC
-			(*this)[I] = s;
-#else
-#endif
-		}
-
 		CR_INLINE void write(float& s) const {
 			_mm_storeu_ps(&s, this->f1);
 			_mm_storeu_ps(&s + 4, this->f2);
@@ -208,58 +170,12 @@ namespace cr::simd
 			vst1q_f32(&ptr + 8, this->f3);
 		}
 
-		template<int I>
-		CR_INLINE void write(float v) {
-			static_assert(I >= 0 && I < 12);
-			if constexpr (I < 4) {
-				this->f1 = vsetq_lane_f32(v, this->f1, I);
-			}
-			else if constexpr (I < 8) {
-				this->f2 = vsetq_lane_f32(v, this->f2, I - 4);
-			}
-			else {
-				this->f3 = vsetq_lane_f32(v, this->f3, I - 8);
-			}
-		}
-
 		CR_INLINE float3x4 blend(float3x4 a, float3x4 b) const {
 			return {
 				vbslq_f32(vcgeq_f32(b.f1, vdupq_n_f32(0.0f)), this->f1, a.f1),
 				vbslq_f32(vcgeq_f32(b.f2, vdupq_n_f32(0.0f)), this->f2, a.f2),
 				vbslq_f32(vcgeq_f32(b.f3, vdupq_n_f32(0.0f)), this->f3, a.f3),
 			};
-		}
-
-		CR_INLINE float operator[](size_t i) const {
-			switch (i) {
-				case 0:
-					return vgetq_lane_f32(this->f1, 0);
-				case 1:
-					return vgetq_lane_f32(this->f1, 1);
-				case 2:
-					return vgetq_lane_f32(this->f1, 2);
-				case 3:
-					return vgetq_lane_f32(this->f1, 3);
-				case 4:
-					return vgetq_lane_f32(this->f2, 0);
-				case 5:
-					return vgetq_lane_f32(this->f2, 1);
-				case 6:
-					return vgetq_lane_f32(this->f2, 2);
-				case 7:
-					return vgetq_lane_f32(this->f2, 3);
-				case 8:
-					return vgetq_lane_f32(this->f3, 0);
-				case 9:
-					return vgetq_lane_f32(this->f3, 1);
-				case 10:
-					return vgetq_lane_f32(this->f3, 2);
-				case 11:
-					return vgetq_lane_f32(this->f3, 3);
-			}
-
-			tassert(0);
-			return 0;
 		}
 
 		CR_INLINE float3x4 operator/(float3x4 a) const {

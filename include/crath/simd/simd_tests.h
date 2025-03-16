@@ -1,5 +1,6 @@
 #pragma once
 
+#include "crath/StdContext.h"
 #include "float1x4.h"
 #include "float2x4.h"
 #include "float2x8.h"
@@ -27,7 +28,8 @@
 	PART2x8(name) template<class F> \
 	static bool name##test()
 #else
-#define DEFINE_TEST(name) template<class F> static bool name##test()
+#define DEFINE_TEST(name) template<class F> \
+static bool name##test()
 #endif
 
 namespace cr::simd
@@ -36,7 +38,7 @@ namespace cr::simd
 		using F = decltype(f);
 
 		for (int i = 0; i < F::size; ++i) {
-			if (std::abs(f[i] - value) > epsilon) {
+			if (std::abs(cr::StdContext::get(f, i) - value) > epsilon) {
 				return false;
 			}
 		}
@@ -48,7 +50,7 @@ namespace cr::simd
 		using F = decltype(f);
 
 		for (int i = 0; i < F::size; ++i) {
-			if (std::bit_cast<uint32_t>(f[i]) != std::bit_cast<uint32_t>(value)) {
+			if (std::bit_cast<uint32_t>(cr::StdContext::get(f, i)) != std::bit_cast<uint32_t>(value)) {
 				return false;
 			}
 		}

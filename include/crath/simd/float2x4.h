@@ -60,36 +60,6 @@ namespace cr::simd
 		      f2(_mm_set_ps(a7, a6, a5, a4)) {
 		}
 
-		CR_INLINE float const& operator[](integer_t i) const {
-			return const_cast<float2x4*>(this)->operator[](i);
-		}
-
-		CR_INLINE float& operator[](integer_t i) {
-			if (i < 4) {
-#if defined(COMPILER_MSVC)
-				return this->f1.m128_f32[i];
-#elif defined(COMPILER_CLANGCL)
-				return this->g1[i];
-#else
-#error "unsupported compiler"
-#endif
-			}
-			else {
-#if defined(COMPILER_MSVC)
-				return this->f2.m128_f32[i - 4];
-#elif defined(COMPILER_CLANGCL)
-				return this->g2[i - 4];
-#else
-#error "unsupported compiler"
-#endif
-			}
-		}
-
-		template<integer_t I>
-		CR_INLINE void write(float s) {
-			(*this)[I] = s;
-		}
-
 		CR_INLINE void write(float& s) const {
 			_mm_storeu_ps(&s, this->f1);
 			_mm_storeu_ps(&s + 4, this->f2);
@@ -187,46 +157,11 @@ namespace cr::simd
 			vst1q_f32(&ptr + 4, this->f2);
 		}
 
-		template<int I>
-		CR_INLINE void write(float v) {
-			static_assert(I >= 0 && I < 8);
-			if constexpr (I < 4) {
-				this->f1 = vsetq_lane_f32(v, this->f1, I);
-			}
-			else {
-				this->f2 = vsetq_lane_f32(v, this->f2, I - 4);
-			}
-		}
-
 		CR_INLINE float2x4 blend(float2x4 a, float2x4 b) const {
 			return {
 				vbslq_f32(vcgeq_f32(b.f1, vdupq_n_f32(0.0f)), this->f1, a.f1),
 				vbslq_f32(vcgeq_f32(b.f2, vdupq_n_f32(0.0f)), this->f2, a.f2),
 			};
-		}
-
-		CR_INLINE float operator[](size_t i) const {
-			switch (i) {
-				case 0:
-					return vgetq_lane_f32(this->f1, 0);
-				case 1:
-					return vgetq_lane_f32(this->f1, 1);
-				case 2:
-					return vgetq_lane_f32(this->f1, 2);
-				case 3:
-					return vgetq_lane_f32(this->f1, 3);
-				case 4:
-					return vgetq_lane_f32(this->f2, 0);
-				case 5:
-					return vgetq_lane_f32(this->f2, 1);
-				case 6:
-					return vgetq_lane_f32(this->f2, 2);
-				case 7:
-					return vgetq_lane_f32(this->f2, 3);
-			}
-
-			tassert(0);
-			return 0;
 		}
 
 		CR_INLINE float2x4 operator/(float2x4 a) const {

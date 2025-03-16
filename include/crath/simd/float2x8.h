@@ -60,31 +60,6 @@ namespace cr::simd
 		      f2(_mm256_set_ps(a15, a14, a13, a12, a11, a10, a9, a8)) {
 		}
 
-		CR_INLINE float const& operator[](integer_t i) const {
-			return const_cast<float2x8*>(this)->operator[](i);
-		}
-
-		CR_INLINE float& operator[](integer_t i) {
-			if (i < 8) {
-#if defined(COMPILER_MSVC)
-				return this->f1.m256_f32[i];
-#elif defined(COMPILER_CLANGCL)
-				return this->g1[i];
-#else
-#error "unsupported compiler"
-#endif
-			}
-			else {
-#if defined(COMPILER_MSVC)
-				return this->f2.m256_f32[i - 8];
-#elif defined(COMPILER_CLANGCL)
-				return this->g2[i - 8];
-#else
-#error "unsupported compiler"
-#endif
-			}
-		}
-
 		CR_INLINE void write(float& s) const {
 			_mm256_storeu_ps(&s, this->f1);
 			_mm256_storeu_ps(&s + 8, this->f2);

@@ -35,6 +35,22 @@ namespace
 	struct forward_definitions
 	{
 		template<class F>
+		CR_INLINE static auto get(F const& value, integer_t i) {
+			if constexpr (std::same_as<F, float>) {
+				tassert(i == 0);
+				return value;
+			}
+			else {
+				return cr::simd::to_array(value)[i];
+			}
+		}
+
+		template<class F>
+		CR_INLINE static auto get0(F const& value) {
+			return get(value, 0);
+		}
+
+		template<class F>
 		inline constexpr static F min(in_t(F) f1, in_t(F) f2) {
 			if constexpr (std::is_integral_v<F>) {
 				return std::min(f1, f2);
@@ -63,7 +79,7 @@ namespace
 			}
 			else {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
-				return cr::simd::float1x4(f_).clamp(min_, max_)[0];
+				return get0(cr::simd::float1x4(f_).clamp(min_, max_));
 #else
 				return std::clamp(f_, min_, max_);
 #endif
@@ -128,7 +144,7 @@ namespace
 				}
 				else {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
-					return cr::simd::float1x4(a).fma(b, c)[0];
+					return get0(cr::simd::float1x4(a).fma(b, c));
 #else
 					return a * b + c;
 #endif
@@ -159,7 +175,7 @@ namespace fun
 	}
 	inline static float cos_quart_fma_ec_T6_6_float_simd(float x) {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
-		return cos_quart_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
+		return forward_definitions::get0(cos_quart_fma_ec_T6_6<cr::simd::float1x4>(x));
 #else
 		return cos_quart_fma_ec_T6_6<float>(x);
 #endif
@@ -180,7 +196,7 @@ namespace fun
 	}
 	inline static float cos_unit1_quart_fma_ec_T6_6_float_simd(float x) {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
-		return cos_unit1_quart_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
+		return forward_definitions::get0(cos_unit1_quart_fma_ec_T6_6<cr::simd::float1x4>(x));
 #else
 		return cos_unit1_quart_fma_ec_T6_6<float>(x);
 #endif
@@ -202,7 +218,7 @@ namespace fun
 	}
 	inline static float sin_unit2_quart_fma_ec_T6_6_float_simd(float x) {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
-		return sin_unit2_quart_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
+		return forward_definitions::get0(sin_unit2_quart_fma_ec_T6_6<cr::simd::float1x4>(x));
 #else
 		return sin_unit2_quart_fma_ec_T6_6<float>(x);
 #endif
@@ -224,7 +240,7 @@ namespace fun
 	}
 	inline static float sin_unit1_quart_fma_ec_T6_6_float_simd(float x) {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
-		return sin_unit1_quart_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
+		return forward_definitions::get0(sin_unit1_quart_fma_ec_T6_6<cr::simd::float1x4>(x));
 #else
 		return sin_unit1_quart_fma_ec_T6_6<float>(x);
 #endif
@@ -267,7 +283,7 @@ namespace fun
 	}
 	inline static float tanh_fma_ec_T7_7_float_simd(float x) {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
-		return tanh_fma_ec_T7_7<cr::simd::float1x4>(x)[0];
+		return forward_definitions::get0(tanh_fma_ec_T7_7<cr::simd::float1x4>(x));
 #else
 		return tanh_fma_ec_T7_7<float>(x);
 #endif
@@ -374,7 +390,7 @@ namespace fun
 	}
 	inline static float sin_quart_fma_ec_T6_6_float_simd(float x) {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
-		return sin_quart_fma_ec_T6_6<cr::simd::float1x4>(x)[0];
+		return forward_definitions::get0(sin_quart_fma_ec_T6_6<cr::simd::float1x4>(x));
 #else
 		return sin_quart_fma_ec_T6_6<float>(x);
 #endif
@@ -896,7 +912,7 @@ namespace cr
 				}
 				else {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
-					return cr::simd::float1x4(f).floor()[0];
+					return get0(cr::simd::float1x4(f).floor());
 #else
 					return std::floor(f);
 #endif
@@ -915,7 +931,7 @@ namespace cr
 				}
 				else {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
-					return cr::simd::float1x4(f).ceil()[0];
+					return get0(cr::simd::float1x4(f).ceil());
 #else
 					return std::ceil(f);
 #endif
@@ -934,7 +950,7 @@ namespace cr
 				}
 				else {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
-					return cr::simd::float1x4(f).round()[0];
+					return get0(cr::simd::float1x4(f).round());
 #else
 					return std::round(f);
 #endif

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <array>
-
 #include <tepp/integers.h>
 #include <tepp/misc.h>
 #include <tepp/tepp.h>
@@ -30,7 +28,13 @@ namespace cr::simd
 	struct array_simd
 	{
 		using access_type = array_simd_processing<N, alignment, F>;
-		alignas(alignment) std::array<float, N> data;
+		alignas(alignment) float data[N];
+
+		array_simd() = default;
+		array_simd(F const& a) {
+			this->write(a);
+		}
+		~array_simd() = default;
 
 		operator F() const {
 			return this->get();
@@ -55,7 +59,7 @@ namespace cr::simd
 				return this->data[0];
 			}
 			else {
-				return F(this->data.data(), aligned_hint);
+				return F(this->data, aligned_hint);
 			}
 		}
 
@@ -157,4 +161,9 @@ namespace cr::simd
 
 	template<class F>
 	using array_simd_type = array_simd<detail::get_simd_array_size<F>(), alignof(F), F>;
+
+	template<class F>
+	auto to_array(F const& a) {
+		return cr::simd::array_simd_type<F>(a);
+	}
 }
