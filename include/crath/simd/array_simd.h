@@ -36,6 +36,14 @@ namespace cr::simd
 			return this->get();
 		}
 
+		float& operator[](integer_t i) {
+			return this->data[i];
+		}
+
+		float const& operator[](integer_t i) const {
+			return this->data[i];
+		}
+
 		array_simd& operator=(F const& value) {
 			this->write(value);
 
@@ -148,5 +156,5 @@ namespace cr::simd
 	}
 
 	template<class F>
-	using array_simd_type = std::conditional_t<std::same_as<F, float>, float, array_simd<detail::get_simd_array_size<F>(), alignof(F), F>>;
+	using array_simd_type = array_simd<detail::get_simd_array_size<F>(), alignof(F), F>;
 }

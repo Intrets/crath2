@@ -29,33 +29,6 @@ namespace cr
 
 namespace
 {
-	struct scalar_array_processing;
-
-	struct scalar_array
-	{
-		std::array<float, 1> data;
-
-		scalar_array_processing access();
-	};
-
-	struct scalar_array_processing
-	{
-		scalar_array& array;
-		float data;
-
-		NO_COPY_MOVE(scalar_array_processing);
-
-		scalar_array_processing() = delete;
-		scalar_array_processing(scalar_array array_)
-		    : array(array_),
-		      data(*array.data.data()) {
-		}
-
-		~scalar_array_processing() {
-			this->array.data[0] = this->data;
-		}
-	};
-
 	template<class F>
 	concept has_clamp = requires(F f) {{ f.clamp(f, f) } -> std::same_as<F>; };
 
@@ -1034,16 +1007,6 @@ namespace cr
 
 		inline constexpr static integer_t toIntRound(float a) {
 			return static_cast<integer_t>(round(a));
-		}
-
-		template<class F>
-		inline static float& get(in_t(F) a, integer_t i) {
-			if constexpr (std::same_as<F, float>) {
-				return a;
-			}
-			else {
-				return a[i];
-			}
 		}
 
 		template<class F>
