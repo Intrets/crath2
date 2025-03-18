@@ -24,10 +24,9 @@ namespace cr::simd
 
 	struct float1x4
 	{
-		union {
-			__m128 f1{};
-			float f[4];
-		};
+		__m128 f1{};
+
+		using scalar_type = float;
 		static constexpr integer_t size = 4;
 
 		CR_INLINE float1x4() = default;

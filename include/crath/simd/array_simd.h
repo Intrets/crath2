@@ -24,11 +24,31 @@ namespace cr::simd
 	template<integer_t N, integer_t alignment, class F>
 	struct array_simd_processing;
 
+	namespace detail
+	{
+		template<class F, class T>
+		concept can_construct = requires(T t) { F(t); };
+
+		constexpr auto get_scalar_type_f = []<class F>(te::Type_t<F>) {
+			if constexpr (std::same_as<F, float> || std::same_as<F, int32_t>) {
+				return te::Type<F>;
+			}
+			else {
+				return te::Type<typename F::scalar_type>;
+			}
+		};
+
+		template<class F>
+		using get_scalar_type = Gettype(get_scalar_type_f(te::Type<F>));
+	}
+
 	template<integer_t N, integer_t alignment, class F>
 	struct array_simd
 	{
 		using access_type = array_simd_processing<N, alignment, F>;
-		alignas(alignment) float data[N];
+		using S = detail::get_scalar_type<F>;
+
+		alignas(alignment) S data[N];
 
 		array_simd() = default;
 		array_simd(F const& a) {
@@ -40,11 +60,11 @@ namespace cr::simd
 			return this->get();
 		}
 
-		float& operator[](integer_t i) {
+		S& operator[](integer_t i) {
 			return this->data[i];
 		}
 
-		float const& operator[](integer_t i) const {
+		S const& operator[](integer_t i) const {
 			return this->data[i];
 		}
 
@@ -54,8 +74,24 @@ namespace cr::simd
 			return *this;
 		}
 
+		S* begin() {
+			return this->data;
+		}
+
+		S* end() {
+			return this->data + N;
+		}
+
+		S const* begin() const {
+			return this->data;
+		}
+
+		S const* end() const {
+			return this->data + N;
+		}
+
 		F get() const {
-			if constexpr (std::same_as<float, F>) {
+			if constexpr (std::same_as<S, F>) {
 				return this->data[0];
 			}
 			else {
@@ -64,7 +100,7 @@ namespace cr::simd
 		}
 
 		void write(F value) {
-			if constexpr (std::same_as<float, F>) {
+			if constexpr (std::same_as<S, F>) {
 				this->data[0] = value;
 			}
 			else {

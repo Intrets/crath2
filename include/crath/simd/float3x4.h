@@ -24,19 +24,11 @@ namespace cr::simd
 
 	struct float3x4
 	{
-		union {
-			__m128 f1;
-			float g1[4];
-		};
-		union {
-			__m128 f2;
-			float g2[4];
-		};
-		union {
-			__m128 f3;
-			float g3[4];
-		};
+		__m128 f1;
+		__m128 f2;
+		__m128 f3;
 
+		using scalar_type = float;
 		static constexpr integer_t size = 12;
 
 		CR_INLINE float3x4() = default;

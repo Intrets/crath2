@@ -27,15 +27,10 @@ namespace cr::simd
 
 	struct float2x4
 	{
-		union {
-			__m128 f1;
-			float g1[4];
-		};
-		union {
-			__m128 f2;
-			float g2[4];
-		};
+		__m128 f1;
+		__m128 f2;
 
+		using scalar_type = float;
 		static constexpr integer_t size = 8;
 
 		CR_INLINE float2x4() = default;

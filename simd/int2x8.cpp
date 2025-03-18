@@ -10,4 +10,11 @@ namespace cr::simd
 		    _mm256_castsi256_ps(this->i2)
 		);
 	}
+
+	float2x8 int2x8::castFloat() const {
+		return float2x8(
+		    _mm256_cvtepi32_ps(this->i1),
+		    _mm256_cvtepi32_ps(this->i2)
+		);
+	}
 }

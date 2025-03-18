@@ -1,10 +1,13 @@
 #pragma once
 
+#include <tepp/integers.h>
+
 #ifdef ARCH_x86_64
 #include <bit>
 #include <immintrin.h>
 
 #include "crath/ParameterTyping.h"
+#include "crath/simd/aligned_load_hint.h"
 #include "crath/simd/simd_definitions.h"
 
 namespace cr::simd
@@ -14,6 +17,9 @@ namespace cr::simd
 	struct int1x4
 	{
 		__m128i i1{};
+
+		using scalar_type = int32_t;
+		static constexpr integer_t size = 4;
 
 		CR_INLINE int1x4() = default;
 		CR_INLINE int1x4(__m128i i1_)
@@ -27,6 +33,12 @@ namespace cr::simd
 		}
 		CR_INLINE int1x4(uint32_t i)
 		    : i1(_mm_set1_epi32(std::bit_cast<int32_t>(i))) {
+		}
+		CR_INLINE int1x4(int32_t const* ptr, aligned_hint_t)
+		    : i1(_mm_load_si128(reinterpret_cast<__m128i const*>(ptr))) {
+		}
+		CR_INLINE int1x4(int32_t const* ptr)
+		    : i1(_mm_loadu_si128(reinterpret_cast<__m128i const*>(ptr))) {
 		}
 
 		CR_INLINE int1x4 operator+(in_t(int1x4) a) const {

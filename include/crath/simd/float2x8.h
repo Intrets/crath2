@@ -27,15 +27,10 @@ namespace cr::simd
 
 	struct float2x8
 	{
-		union {
-			__m256 f1;
-			float g1[8];
-		};
-		union {
-			__m256 f2;
-			float g2[8];
-		};
+		__m256 f1;
+		__m256 f2;
 
+		using scalar_type = float;
 		static constexpr integer_t size = 16;
 
 		CR_INLINE float2x8() = default;

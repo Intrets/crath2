@@ -11,6 +11,14 @@ namespace cr::simd
 		    _mm_castsi128_ps(this->i2)
 		);
 	}
+
+	float2x4 int2x4::castFloat() const {
+		return float2x4(
+		    _mm_cvtepi32_ps(this->i1),
+		    _mm_cvtepi32_ps(this->i2)
+		);
+	}
+
 #elif defined(__ARM_NEON__)
 	float2x4 int2x4::bitCastFloat() const {
 		return float2x4(

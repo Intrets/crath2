@@ -27,11 +27,9 @@ namespace cr::simd
 
 	struct float1x8
 	{
-		union {
-			__m256 f1;
-			float g1[8];
-		};
+		__m256 f1;
 
+		using scalar_type = float;
 		static constexpr integer_t size = 8;
 
 		CR_INLINE float1x8() = default;
@@ -49,28 +47,6 @@ namespace cr::simd
 		}
 		CR_INLINE float1x8(float a0, float a1, float a2, float a3, float a4, float a5, float a6, float a7)
 		    : f1(_mm256_set_ps(a7, a6, a5, a4, a3, a2, a1, a0)) {
-		}
-
-		CR_INLINE float const& operator[](integer_t i) const {
-			return const_cast<float1x8*>(this)->operator[](i);
-		}
-
-		CR_INLINE float& operator[](integer_t i) {
-#if defined(COMPILER_MSVC)
-			return this->f1.m256_f32[i];
-#elif defined(COMPILER_CLANGCL)
-			return this->g1[i];
-#else
-#error "unsupported compiler"
-#endif
-		}
-
-		CR_INLINE void write(float& s) const {
-			_mm256_storeu_ps(&s, this->f1);
-		}
-
-		CR_INLINE void write(float& s, aligned_hint_t) const {
-			_mm256_store_ps(&s, this->f1);
 		}
 
 		CR_ALL_DEFINITIONS
