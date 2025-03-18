@@ -105,6 +105,7 @@ namespace
 		inline constexpr static F clamp(in_t(F) f, float min, float max) {
 			return clamp(f, F(min), F(max));
 		}
+
 		template<class F>
 		inline constexpr static F setSign(in_t(F) f, in_t(F) s) {
 			if constexpr (std::same_as<F, float>) {
