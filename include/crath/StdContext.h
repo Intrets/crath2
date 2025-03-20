@@ -1022,8 +1022,9 @@ namespace cr
 			return static_cast<integer_t>(floor(a));
 		}
 
-		inline constexpr static integer_t toIntRound(float a) {
-			return static_cast<integer_t>(round(a));
+		template<class I = integer_t>
+		inline constexpr static I toIntRound(float a) {
+			return static_cast<I>(round(a));
 		}
 
 		template<class F>
