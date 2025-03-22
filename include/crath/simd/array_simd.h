@@ -132,12 +132,6 @@ namespace cr::simd
 
 	namespace detail
 	{
-		template<class T>
-		struct return_type_get_simd_type;
-
-		template<class T>
-		struct return_type_get_simd_type;
-
 		constexpr auto return_type_get_simd_type = []<class T>(te::Type_t<T>) {
 			if constexpr (cr::simd::is_array_simd_type<T>) {
 				return te::Type<typename T::access_type>;
