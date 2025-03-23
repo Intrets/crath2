@@ -12,6 +12,7 @@
 #include "crath/ParameterTyping.h"
 #include "crath/simd/aligned_load_hint.h"
 #include "crath/simd/simd_definitions.h"
+#include "crath/simd/array_simd.h"
 
 #define APPLY1(OP, X, ONE) OP(X, ONE, 1) OP(X, ONE, 2)
 #define APPLY2(OP, X, ONE, TWO) OP(X, ONE, TWO, 1) OP(X, ONE, TWO, 2)
@@ -63,6 +64,15 @@ namespace cr::simd
 		CR_INLINE void write(float& s, aligned_hint_t) const {
 			_mm256_store_ps(&s, this->f1);
 			_mm256_store_ps(&s + 8, this->f2);
+		}
+
+		CR_INLINE float sum() const {
+			auto arr = to_array(*this);
+			float result = 0.0f;
+			for (auto f : arr) {
+				result += f;
+			}
+			return result;
 		}
 
 		CR_ALL_DEFINITIONS

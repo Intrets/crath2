@@ -9,6 +9,8 @@ project(${MODULE_NAME} LANGUAGES CXX)
 make_module(
 	MODULE_NAME ${MODULE_NAME}
 	MODULE_FILES
+		simd/int3x8
+		simd/float3x8
 		simd/array_simd
 		simd/int3x4
 		simd/int2x8

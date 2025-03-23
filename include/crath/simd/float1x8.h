@@ -49,6 +49,14 @@ namespace cr::simd
 		    : f1(_mm256_set_ps(a7, a6, a5, a4, a3, a2, a1, a0)) {
 		}
 
+		CR_INLINE void write(float& s) const {
+			_mm256_storeu_ps(&s, this->f1);
+		}
+
+		CR_INLINE void write(float& s, aligned_hint_t) const {
+			_mm256_store_ps(&s, this->f1);
+		}
+
 		CR_ALL_DEFINITIONS
 
 		int1x8 bitCastInt() const;
