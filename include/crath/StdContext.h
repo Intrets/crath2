@@ -815,12 +815,14 @@ namespace cr
 
 		template<std::integral I>
 		inline constexpr static I imod(in_t(I) i, in_t(I) m) {
-			return i - m * (i / m + (i < 0 ? -1 : 0));
+			auto i2 = i % m;
+			return i2 >= 0 ? i2 : m + i2;
 		}
 
 		template<std::integral auto m, std::integral I>
 		inline constexpr static I imod(in_t(I) i) {
-			return i - m * (i / m + (i < 0 ? -1 : 0));
+			auto i2 = i % m;
+			return i2 >= 0 ? i2 : m + i2;
 		}
 
 		template<class F>
