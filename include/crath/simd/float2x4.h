@@ -65,6 +65,10 @@ namespace cr::simd
 			_mm_store_ps(&s + 4, this->f2);
 		}
 
+		CR_INLINE float first() const {
+			return _mm_cvtss_f32(this->f1);
+		}
+
 #define ID(X) X
 		CR_ALL_DEFINITIONS
 

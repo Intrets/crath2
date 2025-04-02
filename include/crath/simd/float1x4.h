@@ -54,6 +54,10 @@ namespace cr::simd
 			_mm_store_ps(&s, this->f1);
 		}
 
+		CR_INLINE float first() const {
+			return _mm_cvtss_f32(this->f1);
+		}
+
 		CR_ALL_DEFINITIONS
 
 		int1x4 bitCastInt() const;

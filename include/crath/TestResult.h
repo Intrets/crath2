@@ -119,7 +119,7 @@ struct TestResult
 			}
 			else {
 				this->approximationFunction = [=](float x) {
-					return approximation(x)[0];
+					return approximation(x).first();
 				};
 			}
 			this->referenceFunction = reference;

@@ -11,8 +11,8 @@
 
 #include "crath/ParameterTyping.h"
 #include "crath/simd/aligned_load_hint.h"
-#include "crath/simd/simd_definitions.h"
 #include "crath/simd/array_simd.h"
+#include "crath/simd/simd_definitions.h"
 
 #define APPLY1(OP, X, ONE) OP(X, ONE, 1) OP(X, ONE, 2)
 #define APPLY2(OP, X, ONE, TWO) OP(X, ONE, TWO, 1) OP(X, ONE, TWO, 2)
@@ -66,6 +66,14 @@ namespace cr::simd
 			_mm256_store_ps(&s + 8, this->f2);
 		}
 
+		CR_INLINE float2x8 reverse() const {
+			auto a1 = _mm256_shuffle_ps(this->f1, this->f1, _MM_SHUFFLE(0, 1, 2, 3));
+			auto a2 = _mm256_shuffle_ps(this->f2, this->f2, _MM_SHUFFLE(0, 1, 2, 3));
+			a1 = _mm256_permute2f128_ps(a1, a1, 0x01);
+			a2 = _mm256_permute2f128_ps(a2, a2, 0x01);
+			return { a2, a1 };
+		}
+
 		CR_INLINE float sum() const {
 			auto arr = to_array(*this);
 			float result = 0.0f;
@@ -73,6 +81,11 @@ namespace cr::simd
 				result += f;
 			}
 			return result;
+		}
+
+		CR_INLINE float first() const {
+			auto lower = _mm256_castps256_ps128(this->f1);
+			return _mm_cvtss_f32(lower);
 		}
 
 		CR_ALL_DEFINITIONS

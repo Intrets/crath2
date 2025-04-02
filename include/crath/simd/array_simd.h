@@ -47,6 +47,7 @@ namespace cr::simd
 	{
 		using access_type = array_simd_processing<N, alignment, F>;
 		using S = detail::get_scalar_type<F>;
+		using simd_type = F;
 
 		alignas(alignment) S data[N];
 
