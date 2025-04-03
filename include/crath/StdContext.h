@@ -1029,6 +1029,11 @@ namespace cr
 			return static_cast<I>(round(a));
 		}
 
+		template<class I = integer_t>
+		inline constexpr static I toIntCeil(float a) {
+			return static_cast<I>(ceil(a));
+		}
+
 		template<class F>
 		inline static float toScalar(in_t(F) a) {
 			return get(a, 0);
