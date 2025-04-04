@@ -928,7 +928,10 @@ namespace cr
 
 		template<class F>
 		inline constexpr static F ceil(in_t(F) f) {
-			if constexpr (std::same_as<F, float>) {
+			if constexpr (std::same_as<F, double>) {
+				return std::ceil(f);
+			}
+			else if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
 					return std::ceil(f);
 				}
@@ -947,6 +950,9 @@ namespace cr
 
 		template<class F>
 		inline constexpr static F round(in_t(F) f) {
+			if constexpr (std::same_as<F, double>) {
+				return std::round(f);
+			}
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
 					return std::round(f);
@@ -1020,17 +1026,17 @@ namespace cr
 			return static_cast<integer_t>(a + 0.5f);
 		}
 
-		inline constexpr static integer_t toIntFloor(float a) {
+		inline constexpr static integer_t toIntFloor(std::floating_point auto a) {
 			return static_cast<integer_t>(floor(a));
 		}
 
 		template<class I = integer_t>
-		inline constexpr static I toIntRound(float a) {
+		inline constexpr static I toIntRound(std::floating_point auto a) {
 			return static_cast<I>(round(a));
 		}
 
 		template<class I = integer_t>
-		inline constexpr static I toIntCeil(float a) {
+		inline constexpr static I toIntCeil(std::floating_point auto a) {
 			return static_cast<I>(ceil(a));
 		}
 
