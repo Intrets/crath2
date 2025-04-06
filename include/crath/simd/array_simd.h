@@ -49,7 +49,7 @@ namespace cr::simd
 		using S = detail::get_scalar_type<F>;
 		using simd_type = F;
 
-		alignas(alignment) S data[N];
+		alignas(alignment) S data[N]{};
 
 		array_simd() = default;
 		array_simd(F const& a) {
