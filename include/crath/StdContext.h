@@ -429,6 +429,30 @@ namespace fun
 		v *= v;
 		return v;
 	}
+
+	template<class F>
+	inline constexpr static F slepian25_remez_abs_fma_ec_T8_0(in_t(F) x) {
+		[[maybe_unused]]
+		auto const x0 = x;
+		x = forward_definitions::abs(x);
+		auto const a8 = F(-1.8758717875609545f);
+		auto const a7 = forward_definitions::fma(a8, x, F(8.100115851936284f));
+		auto const a6 = forward_definitions::fma(a7, x, F(-11.450593401278049f));
+		auto const a5 = forward_definitions::fma(a6, x, F(3.040239297481198f));
+		auto const a4 = forward_definitions::fma(a5, x, F(4.6032387910636166f));
+		auto const a3 = forward_definitions::fma(a4, x, F(0.11795952381759532f));
+		auto const a2 = forward_definitions::fma(a3, x, F(-3.5313434346400245f));
+		auto const a1 = forward_definitions::fma(a2, x, F(0.0001810391052549116f));
+		auto const a0 = forward_definitions::fma(a1, x, F(1.0000041494263372f));
+		return a0;
+	}
+	inline static float slepian25_remez_abs_fma_ec_T8_0_float_simd(float x) {
+#ifdef ARCH_x86_64
+		return slepian25_remez_abs_fma_ec_T8_0<cr::simd::float1x4>(x).first();
+#else
+		return slepian25_remez_abs_fma_ec_T8_0<float>(x);
+#endif
+	}
 }
 
 namespace cr
@@ -1043,6 +1067,21 @@ namespace cr
 		template<class F>
 		inline static float toScalar(in_t(F) a) {
 			return get(a, 0);
+		}
+
+		template<class F>
+		inline static F slepian25(in_t(F) x) {
+			if constexpr (std::same_as<F, float>) {
+				if (std::is_constant_evaluated()) {
+					return fun::slepian25_remez_abs_fma_ec_T8_0<float>(fmod<two_pi>(x));
+				}
+				else {
+					return fun::slepian25_remez_abs_fma_ec_T8_0_float_simd(x);
+				}
+			}
+			else {
+				return fun::slepian25_remez_abs_fma_ec_T8_0(x);
+			}
 		}
 	};
 }
