@@ -139,7 +139,10 @@ namespace
 
 		template<class F>
 		inline constexpr static F fma(in_t(F) a, in_t(F) b, in_t(F) c) {
-			if constexpr (std::same_as<F, float>) {
+			if constexpr (std::same_as<F, double>) {
+				return a * b + c;
+			}
+			else if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
 					return a * b + c;
 				}
@@ -587,24 +590,35 @@ namespace cr
 		// maximum relative error:0.00046794294
 		template<class F>
 		inline constexpr static F sinc(in_t(F) x) {
-			x *= pi;
-			if constexpr (std::same_as<F, float>) {
-				if (std::is_constant_evaluated()) {
-					if (x > -0.0001f && x < 0.0001f) {
-						return 1.0f;
-					}
-					else {
-						return fun::sin_quart_fma_ec_T6_6<float>(fmod<two_pi>(x)) / x;
-					}
+			if constexpr (std::same_as<F, double>) {
+				x *= std::numbers::pi_v<double>;
+				if (std::abs(x) < 0.000000001) {
+					return 1.0;
 				}
 				else {
-					auto value = fun::sin_quart_fma_ec_T6_6_float_simd(fmod<two_pi>(x)) / x;
-					return ifElse(abs(x) < 0.0001f, 1.0f, value);
+					return std::sin(x) / x;
 				}
 			}
 			else {
-				auto value = fun::sin_quart_fma_ec_T6_6(fmod<two_pi>(x)) / x;
-				return ifElse(abs(x) < F(0.0001f), F(1.0f), value);
+				x *= pi;
+				if constexpr (std::same_as<F, float>) {
+					if (std::is_constant_evaluated()) {
+						if (x > -0.0001f && x < 0.0001f) {
+							return 1.0f;
+						}
+						else {
+							return fun::sin_quart_fma_ec_T6_6<float>(fmod<two_pi>(x)) / x;
+						}
+					}
+					else {
+						auto value = fun::sin_quart_fma_ec_T6_6_float_simd(fmod<two_pi>(x)) / x;
+						return ifElse(abs(x) < 0.0001f, 1.0f, value);
+					}
+				}
+				else {
+					auto value = fun::sin_quart_fma_ec_T6_6(fmod<two_pi>(x)) / x;
+					return ifElse(abs(x) < F(0.0001f), F(1.0f), value);
+				}
 			}
 		}
 
@@ -1073,7 +1087,7 @@ namespace cr
 		inline static F slepian25(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
-					return fun::slepian25_remez_abs_fma_ec_T8_0<float>(fmod<two_pi>(x));
+					return fun::slepian25_remez_abs_fma_ec_T8_0<float>(x);
 				}
 				else {
 					return fun::slepian25_remez_abs_fma_ec_T8_0_float_simd(x);
