@@ -438,15 +438,15 @@ namespace fun
 		[[maybe_unused]]
 		auto const x0 = x;
 		x = forward_definitions::abs(x);
-		auto const a8 = F(-1.8758717875609545f);
-		auto const a7 = forward_definitions::fma(a8, x, F(8.100115851936284f));
-		auto const a6 = forward_definitions::fma(a7, x, F(-11.450593401278049f));
-		auto const a5 = forward_definitions::fma(a6, x, F(3.040239297481198f));
-		auto const a4 = forward_definitions::fma(a5, x, F(4.6032387910636166f));
-		auto const a3 = forward_definitions::fma(a4, x, F(0.11795952381759532f));
-		auto const a2 = forward_definitions::fma(a3, x, F(-3.5313434346400245f));
-		auto const a1 = forward_definitions::fma(a2, x, F(0.0001810391052549116f));
-		auto const a0 = forward_definitions::fma(a1, x, F(1.0000041494263372f));
+		auto const a8 = F(-1.8758717875609545);
+		auto const a7 = forward_definitions::fma(a8, x, F(8.100115851936284));
+		auto const a6 = forward_definitions::fma(a7, x, F(-11.450593401278049));
+		auto const a5 = forward_definitions::fma(a6, x, F(3.040239297481198));
+		auto const a4 = forward_definitions::fma(a5, x, F(4.6032387910636166));
+		auto const a3 = forward_definitions::fma(a4, x, F(0.11795952381759532));
+		auto const a2 = forward_definitions::fma(a3, x, F(-3.5313434346400245));
+		auto const a1 = forward_definitions::fma(a2, x, F(0.0001810391052549116));
+		auto const a0 = forward_definitions::fma(a1, x, F(1.0));
 		return a0;
 	}
 	inline static float slepian25_remez_abs_fma_ec_T8_0_float_simd(float x) {
@@ -838,7 +838,7 @@ namespace cr
 
 		template<class F>
 		inline constexpr static F fmod(in_t(F) f, in_t(F) m) {
-			if constexpr (std::same_as<F, float>) {
+			if constexpr (std::same_as<F, float> || std::same_as<F, double>) {
 				if (std::is_constant_evaluated()) {
 					return f - m * div_helper(f, m);
 				}
@@ -1084,7 +1084,7 @@ namespace cr
 		}
 
 		template<class F>
-		inline static F slepian25(in_t(F) x) {
+		constexpr inline static F slepian25(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
 					return fun::slepian25_remez_abs_fma_ec_T8_0<float>(x);
