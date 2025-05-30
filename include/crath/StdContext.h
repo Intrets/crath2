@@ -65,7 +65,7 @@ namespace
 
 		template<class F, class B>
 		inline constexpr static F blend(in_t(F) f1, in_t(F) f2, in_t(B) b) {
-			if constexpr (std::same_as<F, float> || std::same_as<F, bool>) {
+			if constexpr (std::same_as<F, float> || std::same_as<F, double> || std::same_as<F, bool>) {
 				return b ? f2 : f1;
 			}
 			else {
@@ -109,14 +109,20 @@ namespace
 		template<class F>
 		inline constexpr static F setSign(in_t(F) f, in_t(F) s) {
 			if constexpr (std::same_as<F, float>) {
-				auto const signbit = std::bit_cast<uint32_t>(s) & (1U << 31);
-				auto const maskedF = std::bit_cast<uint32_t>(f) & ~(1U << 31);
+				auto const signbit = std::bit_cast<uint32_t>(s) & (uint32_t(1) << 31);
+				auto const maskedF = std::bit_cast<uint32_t>(f) & ~(uint32_t(1) << 31);
 
 				return std::bit_cast<float>(maskedF | signbit);
 			}
+			else if constexpr (std::same_as<F, double>) {
+				auto const signbit = std::bit_cast<uint64_t>(s) & (uint64_t(1) << 63);
+				auto const maskedF = std::bit_cast<uint64_t>(f) & ~(uint64_t(1) << 63);
+
+				return std::bit_cast<double>(maskedF | signbit);
+			}
 			else {
-				auto const signbit = s & F(std::bit_cast<float>(1U << 31));
-				auto const mask = F(std::bit_cast<float>(~(1U << 31)));
+				auto const signbit = s & F(std::bit_cast<float>(uint32_t(1) << 31));
+				auto const mask = F(std::bit_cast<float>(~(uint32_t(1) << 31)));
 
 				return (f & mask) | signbit;
 			}
