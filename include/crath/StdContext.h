@@ -1046,7 +1046,7 @@ namespace cr
 
 		template<class F, class B>
 		inline constexpr static void setIf(F& s, in_t(B) b, in_t(F) v) {
-			if constexpr (std::same_as<F, float> || std::same_as<F, bool> || std::same_as<F, integer_t>) {
+			if constexpr (te::contains_v<te::list_type<float, double, bool, integer_t>, F>) {
 				s = b ? v : s;
 			}
 			else {
