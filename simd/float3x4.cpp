@@ -11,4 +11,12 @@ namespace cr::simd
 		    _mm_castps_si128(this->f3)
 		);
 	}
+
+	int3x4 float3x4::convertInt() const {
+		return int3x4(
+		    _mm_cvtps_epi32(this->f1),
+		    _mm_cvtps_epi32(this->f2),
+		    _mm_cvtps_epi32(this->f3)
+		);
+	}
 }

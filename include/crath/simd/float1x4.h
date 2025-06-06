@@ -10,7 +10,9 @@
 #include "crath/simd/aligned_load_hint.h"
 #include "crath/simd/array_simd.h"
 #include "crath/simd/simd_definitions.h"
+#include "crath/simd/simd_types.h"
 
+#define ACCESSOR(I) f##I
 #define APPLY1(OP, X, ONE) OP(X, ONE, 1)
 #define APPLY2(OP, X, ONE, TWO) OP(X, ONE, TWO, 1)
 #define APPLY3(OP, X, ONE, TWO, THREE) OP(X, ONE, TWO, THREE, 1)
@@ -71,8 +73,10 @@ namespace cr::simd
 		CR_ALL_DEFINITIONS
 
 		int1x4 bitCastInt() const;
+		int1x4 convertInt() const;
 	};
 }
+#undef ACCESSOR
 #undef APPLY1
 #undef APPLY2
 #undef APPLY3

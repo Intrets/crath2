@@ -10,6 +10,15 @@
 #include "crath/simd/aligned_load_hint.h"
 #include "crath/simd/simd_definitions.h"
 
+#define ACCESSOR(I) i##I
+#define APPLY1(OP, X, ONE) OP(X, ONE, 1)
+#define APPLY2(OP, X, ONE, TWO) OP(X, ONE, TWO, 1)
+#define APPLY3(OP, X, ONE, TWO, THREE) OP(X, ONE, TWO, THREE, 1)
+#define APPLY4(OP, X, ONE, TWO, THREE, FOUR) OP(X, ONE, TWO, THREE, FOUR, 1)
+
+#define CR_MACRO_DATA_TYPE int1x4
+#define SURROUND(X) _mm_##X##_epi32
+
 namespace cr::simd
 {
 	struct float1x4;
@@ -41,22 +50,12 @@ namespace cr::simd
 		    : i1(_mm_loadu_si128(reinterpret_cast<__m128i const*>(ptr))) {
 		}
 
-		CR_INLINE int1x4 operator+(in_t(int1x4) a) const {
-			return {
-				_mm_add_epi32(this->i1, a.i1)
-			};
+		CR_INLINE void write(int32_t& s) const {
+			_mm_storeu_epi32(&s, this->i1);
 		}
 
-		CR_INLINE int1x4 operator-(in_t(int1x4) a) const {
-			return {
-				_mm_sub_epi32(this->i1, a.i1)
-			};
-		}
-
-		CR_INLINE int1x4 operator*(in_t(int1x4) a) const {
-			return {
-				_mm_mullo_epi32(this->i1, a.i1)
-			};
+		CR_INLINE void write(int32_t& s, aligned_hint_t) const {
+			_mm_storeu_epi32(&s, this->i1);
 		}
 
 		CR_INLINE int1x4 operator>>(int shift) const {
@@ -65,10 +64,21 @@ namespace cr::simd
 			};
 		}
 
+		CR_ALL_INT_DEFINITIONS
+
 		float1x4 bitCastFloat() const;
 		float1x4 castFloat() const;
 	};
 }
+
+#undef ACCESSOR
+#undef APPLY1
+#undef APPLY2
+#undef APPLY3
+#undef APPLY4
+
+#undef CR_MACRO_DATA_TYPE
+#undef SURROUND
 
 #elif defined(__ARM_NEON__)
 

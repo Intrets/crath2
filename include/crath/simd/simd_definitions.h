@@ -16,21 +16,21 @@
 #define ID(X) X
 #define in_t(X) X
 
-#define DO1(X, ONE, I) X(ONE f##I),
-#define DO2(X, ONE, TWO, I) X(ONE f##I, TWO f##I),
-#define DO3(X, ONE, TWO, THREE, I) X(ONE f##I, TWO f##I, THREE f##I),
+#define DO1(X, ONE, I) X(ONE ACCESSOR(I)),
+#define DO2(X, ONE, TWO, I) X(ONE ACCESSOR(I), TWO ACCESSOR(I)),
+#define DO3(X, ONE, TWO, THREE, I) X(ONE ACCESSOR(I), TWO ACCESSOR(I), THREE ACCESSOR(I)),
 
-#define DO1_T(X, ONE, R_T, ONE_T, I) R_T(X(ONE_T(ONE f##I))),
-#define DO2_T(X, ONE, TWO, R_T, ONE_T, TWO_T, I) R_T(X(ONE_T(ONE f##I), TWO_T(TWO f##I))),
+#define DO1_T(X, ONE, R_T, ONE_T, I) R_T(X(ONE_T(ONE ACCESSOR(I)))),
+#define DO2_T(X, ONE, TWO, R_T, ONE_T, TWO_T, I) R_T(X(ONE_T(ONE ACCESSOR(I)), TWO_T(TWO ACCESSOR(I)))),
 
-#define DO_1_CONSTANT(X, ONE, CONSTANT, I) X(ONE f##I, CONSTANT),
+#define DO_1_CONSTANT(X, ONE, CONSTANT, I) X(ONE ACCESSOR(I), CONSTANT),
 
-#define DO_2_CONSTANT(X, ONE, TWO, CONSTANT, I) X(ONE f##I, TWO f##I, CONSTANT),
+#define DO_2_CONSTANT(X, ONE, TWO, CONSTANT, I) X(ONE ACCESSOR(I), TWO ACCESSOR(I), CONSTANT),
 
-#define DO_1_2(X, Y, ONE, TWO, THREE, I) X(Y(ONE f##I, TWO f##I), THREE f##I),
+#define DO_1_2(X, Y, ONE, TWO, THREE, I) X(Y(ONE ACCESSOR(I), TWO ACCESSOR(I)), THREE ACCESSOR(I)),
 
-#define DO_COMPOUND(X, ONE, TWO, I) ONE f##I = X(ONE f##I, TWO f##I);
-#define DO_COMPOUND_T(X, ONE, TWO, R_T, ONE_T, TWO_T, I) ONE f##I = R_T(X(ONE_T(ONE f##I), TWO_T(TWO f##I)));
+#define DO_COMPOUND(X, ONE, TWO, I) ONE ACCESSOR(I) = X(ONE ACCESSOR(I), TWO ACCESSOR(I));
+#define DO_COMPOUND_T(X, ONE, TWO, R_T, ONE_T, TWO_T, I) ONE ACCESSOR(I) = R_T(X(ONE_T(ONE ACCESSOR(I)), TWO_T(TWO ACCESSOR(I))));
 
 #define B_DEFINE0_T(name, op, return_transform, argument_transform) \
 	CR_INLINE CR_MACRO_DATA_TYPE name() const { \

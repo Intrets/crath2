@@ -12,7 +12,7 @@ namespace cr::simd
 	{
 		template<class F>
 		constexpr integer_t get_simd_array_size() {
-			if constexpr (std::same_as<F, float>) {
+			if constexpr (std::integral<F> || std::floating_point<F>) {
 				return 1;
 			}
 			else {
@@ -30,7 +30,7 @@ namespace cr::simd
 		concept can_construct = requires(T t) { F(t); };
 
 		constexpr auto get_scalar_type_f = []<class F>(te::Type_t<F>) {
-			if constexpr (std::same_as<F, float> || std::same_as<F, int32_t>) {
+			if constexpr (std::integral<F> || std::floating_point<F>) {
 				return te::Type<F>;
 			}
 			else {

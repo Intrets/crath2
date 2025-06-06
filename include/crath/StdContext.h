@@ -1079,9 +1079,14 @@ namespace cr
 			return static_cast<I>(round(a));
 		}
 
-		template<class I = integer_t>
-		inline constexpr static I toIntCeil(std::floating_point auto a) {
-			return static_cast<I>(ceil(a));
+		template<class F>
+		inline constexpr static auto toIntCeil(in_t(F) a) {
+			if constexpr (std::floating_point<F>) {
+				return static_cast<integer_t>(ceil(a));
+			}
+			else {
+				return ceil(a).convertInt();
+			}
 		}
 
 		template<class F>
