@@ -8,6 +8,7 @@
 #include <numbers>
 #include <type_traits>
 
+#include <tepp/assert.h>
 #include <tepp/integers.h>
 #include <tepp/literal.h>
 
