@@ -55,15 +55,15 @@ namespace cr::simd
 		}
 
 		CR_INLINE void write(int32_t& s) const {
-			_mm_storeu_epi32(&s, this->i1);
-			_mm_storeu_epi32(&s + 4, this->i2);
-			_mm_storeu_epi32(&s + 8, this->i3);
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(&s), this->i1);
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(&s + 4), this->i2);
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(&s + 8), this->i3);
 		}
 
 		CR_INLINE void write(int32_t& s, aligned_hint_t) const {
-			_mm_storeu_epi32(&s, this->i1);
-			_mm_storeu_epi32(&s + 4, this->i2);
-			_mm_storeu_epi32(&s + 8, this->i3);
+			_mm_store_si128(reinterpret_cast<__m128i*>(&s), this->i1);
+			_mm_store_si128(reinterpret_cast<__m128i*>(&s + 4), this->i2);
+			_mm_store_si128(reinterpret_cast<__m128i*>(&s + 8), this->i3);
 		}
 
 		CR_INLINE int3x4 operator>>(int shift) const {
