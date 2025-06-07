@@ -36,7 +36,7 @@ namespace
 	{
 		template<class F>
 		CR_INLINE static auto get(F const& value, integer_t i) {
-			if constexpr (std::same_as<F, float>) {
+			if constexpr (std::integral<F> || std::floating_point<F>) {
 				tassert(i == 0);
 				return value;
 			}

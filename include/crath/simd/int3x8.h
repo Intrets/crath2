@@ -55,15 +55,15 @@ namespace cr::simd
 		}
 
 		CR_INLINE void write(int32_t& s) const {
-			_mm256_storeu_epi32(&s, this->i1);
-			_mm256_storeu_epi32(&s + 8, this->i2);
-			_mm256_storeu_epi32(&s + 16, this->i3);
+			_mm256_storeu_si256(reinterpret_cast<__m256i*>(&s), this->i1);
+			_mm256_storeu_si256(reinterpret_cast<__m256i*>(&s + 8), this->i2);
+			_mm256_storeu_si256(reinterpret_cast<__m256i*>(&s + 16), this->i3);
 		}
 
 		CR_INLINE void write(int32_t& s, aligned_hint_t) const {
-			_mm256_storeu_epi32(&s, this->i1);
-			_mm256_storeu_epi32(&s + 8, this->i2);
-			_mm256_storeu_epi32(&s + 16, this->i3);
+			_mm256_store_si256(reinterpret_cast<__m256i*>(&s), this->i1);
+			_mm256_store_si256(reinterpret_cast<__m256i*>(&s + 8), this->i2);
+			_mm256_store_si256(reinterpret_cast<__m256i*>(&s + 16), this->i3);
 		}
 
 		CR_INLINE int3x8 operator>>(int shift) const {
