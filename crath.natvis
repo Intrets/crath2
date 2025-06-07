@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+	<Type Name="cr::simd::float1x4">
+		<DisplayString>{f1.m128_f32[0]}, {f1.m128_f32[1]}, {f1.m128_f32[2]}, {f1.m128_f32[3]}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>4</Size>
+				<ValuePointer>(float*)this</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="cr::simd::float2x4">
+		<DisplayString>{f1.m128_f32[0]}, {f1.m128_f32[1]}, {f1.m128_f32[2]}, {f1.m128_f32[3]}, {f2.m128_f32[0]}, {f2.m128_f32[1]}, {f2.m128_f32[2]}, {f2.m128_f32[3]}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>8</Size>
+				<ValuePointer>(float*)this</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="cr::simd::float3x4">
+		<DisplayString>{f1.m128_f32[0]}, {f1.m128_f32[1]}, {f1.m128_f32[2]}, {f1.m128_f32[3]}, {f2.m128_f32[0]}, {f2.m128_f32[1]}, {f2.m128_f32[2]}, {f2.m128_f32[3]}, {f3.m128_f32[0]}, {f3.m128_f32[1]}, {f3.m128_f32[2]}, {f3.m128_f32[3]}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>12</Size>
+				<ValuePointer>(float*)this</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="cr::simd::int1x4">
+		<DisplayString>{i1.m128i_i32[0]}, {i1.m128i_i32[1]}, {i1.m128i_i32[2]}, {i1.m128i_i32[3]}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>4</Size>
+				<ValuePointer>(int32_t*)this</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="cr::simd::int2x4">
+		<DisplayString>{i1.m128i_i32[0]}, {i1.m128i_i32[1]}, {i1.m128i_i32[2]}, {i1.m128i_i32[3]}, {i2.m128i_i32[0]}, {i2.m128i_i32[1]}, {i2.m128i_i32[2]}, {i2.m128i_i32[3]}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>8</Size>
+				<ValuePointer>(int32_t*)this</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="cr::simd::int3x4">
+		<DisplayString>{i1.m128i_i32[0]}, {i1.m128i_i32[1]}, {i1.m128i_i32[2]}, {i1.m128i_i32[3]}, {i2.m128i_i32[0]}, {i2.m128i_i32[1]}, {i2.m128i_i32[2]}, {i2.m128i_i32[3]}, {i3.m128i_i32[0]}, {i3.m128i_i32[1]}, {i3.m128i_i32[2]}, {i3.m128i_i32[3]}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>12</Size>
+				<ValuePointer>(int32_t*)this</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="cr::simd::float1x8">
+		<DisplayString>{f1.m256_f32[0]}, {f1.m256_f32[1]}, {f1.m256_f32[2]}, {f1.m256_f32[3]}, {f1.m256_f32[4]}, {f1.m256_f32[5]}, {f1.m256_f32[6]}, {f1.m256_f32[7]}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>8</Size>
+				<ValuePointer>(float*)this</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="cr::simd::float2x8">
+		<DisplayString>{f1.m256_f32[0]}, {f1.m256_f32[1]}, {f1.m256_f32[2]}, {f1.m256_f32[3]}, {f1.m256_f32[4]}, {f1.m256_f32[5]}, {f1.m256_f32[6]}, {f1.m256_f32[7]}, {f2.m256_f32[0]}, {f2.m256_f32[1]}, {f2.m256_f32[2]}, {f2.m256_f32[3]}, {f2.m256_f32[4]}, {f2.m256_f32[5]}, {f2.m256_f32[6]}, {f2.m256_f32[7]}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>16</Size>
+				<ValuePointer>(float*)this</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="cr::simd::float3x8">
+		<DisplayString>{f1.m256_f32[0]}, {f1.m256_f32[1]}, {f1.m256_f32[2]}, {f1.m256_f32[3]}, {f1.m256_f32[4]}, {f1.m256_f32[5]}, {f1.m256_f32[6]}, {f1.m256_f32[7]}, {f2.m256_f32[0]}, {f2.m256_f32[1]}, {f2.m256_f32[2]}, {f2.m256_f32[3]}, {f2.m256_f32[4]}, {f2.m256_f32[5]}, {f2.m256_f32[6]}, {f2.m256_f32[7]}, {f3.m256_f32[0]}, {f3.m256_f32[1]}, {f3.m256_f32[2]}, {f3.m256_f32[3]}, {f3.m256_f32[4]}, {f3.m256_f32[5]}, {f3.m256_f32[6]}, {f3.m256_f32[7]}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>24</Size>
+				<ValuePointer>(float*)this</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="cr::simd::int1x8">
+		<DisplayString>{i1.m256i_i32[0]}, {i1.m256i_i32[1]}, {i1.m256i_i32[2]}, {i1.m256i_i32[3]}, {i1.m256i_i32[4]}, {i1.m256i_i32[5]}, {i1.m256i_i32[6]}, {i1.m256i_i32[7]}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>8</Size>
+				<ValuePointer>(int32_t*)this</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="cr::simd::int2x8">
+		<DisplayString>{i1.m256i_i32[0]}, {i1.m256i_i32[1]}, {i1.m256i_i32[2]}, {i1.m256i_i32[3]}, {i1.m256i_i32[4]}, {i1.m256i_i32[5]}, {i1.m256i_i32[6]}, {i1.m256i_i32[7]}, {i2.m256i_i32[0]}, {i2.m256i_i32[1]}, {i2.m256i_i32[2]}, {i2.m256i_i32[3]}, {i2.m256i_i32[4]}, {i2.m256i_i32[5]}, {i2.m256i_i32[6]}, {i2.m256i_i32[7]}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>16</Size>
+				<ValuePointer>(int32_t*)this</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="cr::simd::int3x8">
+		<DisplayString>{i1.m256i_i32[0]}, {i1.m256i_i32[1]}, {i1.m256i_i32[2]}, {i1.m256i_i32[3]}, {i1.m256i_i32[4]}, {i1.m256i_i32[5]}, {i1.m256i_i32[6]}, {i1.m256i_i32[7]}, {i2.m256i_i32[0]}, {i2.m256i_i32[1]}, {i2.m256i_i32[2]}, {i2.m256i_i32[3]}, {i2.m256i_i32[4]}, {i2.m256i_i32[5]}, {i2.m256i_i32[6]}, {i2.m256i_i32[7]}, {i3.m256i_i32[0]}, {i3.m256i_i32[1]}, {i3.m256i_i32[2]}, {i3.m256i_i32[3]}, {i3.m256i_i32[4]}, {i3.m256i_i32[5]}, {i3.m256i_i32[6]}, {i3.m256i_i32[7]}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>24</Size>
+				<ValuePointer>(int32_t*)this</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+
+	<Type Name="UniqueReference&lt;*,*&gt;">
+		<DisplayString Condition="ptr == nullptr">nullptr</DisplayString>
+		<Expand>
+			<ExpandedItem Condition="ptr != nullptr">($T2*) ptr</ExpandedItem>
+		</Expand>
+	</Type>
+
+	<Type Name ="mop::mop">
+		<DisplayString>mop {data}</DisplayString>
+		<Expand>
+			<ExpandedItem>data</ExpandedItem>
+		</Expand>
+	</Type>
+
+	<Type Name ="mop::list">
+		<DisplayString>list {data}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>data.size()</Size>
+				<ValuePointer>data._Mypair._Myval2._Myfirst</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name ="mop::mop_view">
+		<DisplayString>view {*m}</DisplayString>
+		<Expand>
+			<ExpandedItem>*m</ExpandedItem>
+		</Expand>
+	</Type>
+
+	<Type Name ="mop::list_view">
+		<DisplayString>view {l}</DisplayString>
+		<Expand>
+			<ExpandedItem>l</ExpandedItem>
+		</Expand>
+	</Type>
+
+	<Type Name ="mop::heap_value&lt;*&gt;">
+		<DisplayString>heap {*data}</DisplayString>
+		<Expand>
+			<ExpandedItem>*data</ExpandedItem>
+		</Expand>
+	</Type>
+
+	<Type Name ="std::pair&lt;*, mop::heap_value&lt;mop::value&gt;&gt;" Priority="High">
+		<DisplayString>{*(second.data)}</DisplayString>
+		<Expand>
+			<ExpandedItem>*(second.data)</ExpandedItem>
+		</Expand>
+	</Type>
+
+	<Type Name="std::unordered_map&lt;*&gt;">
+		<DisplayString>{_List,view(simple)}</DisplayString>
+		<Expand>
+			<CustomListItems MaxItemsPerView="5000" ExcludeView="Test">
+				<Variable Name="it" InitialValue="_List._Mypair._Myval2._Myhead->_Next"/>
+				<Variable Name="end" InitialValue="_List._Mypair._Myval2._Myhead"/>
+				<Loop>
+					<Break Condition="it == end" />
+					<Item Name="{it->_Myval.first}">it->_Myval</Item>
+					<Exec>it = it->_Next</Exec>
+				</Loop>
+			</CustomListItems>
+		</Expand>
+	</Type>
+
+	<Type Name="te::polyant&lt;*,*&gt;">
+		<DisplayString>{($T1*)this}</DisplayString>
+		<Expand>
+			<ExpandedItem>($T1*)this</ExpandedItem>
+		</Expand>
+	</Type>
+
+	<Type Name="mop::value">
+		<Intrinsic Name="index" Expression="(int)data._Which"/>
+		<DisplayString Condition="index() &lt; 0">[valueless_by_exception]</DisplayString>
+		<DisplayString Condition="index() ==  0" Optional="true">{data._Head}</DisplayString>
+		<DisplayString Condition="index() ==  1" Optional="true">{data._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() ==  2" Optional="true">{data._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() ==  3" Optional="true">{data._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() ==  4" Optional="true">{data._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() ==  5" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() ==  6" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() ==  7" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() ==  8" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() ==  9" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 10" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 11" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 12" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 13" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 14" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 15" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 16" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 17" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 18" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 19" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 20" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 21" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 22" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 23" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 24" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 25" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 26" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 27" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 28" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 29" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 30" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<DisplayString Condition="index() == 31" Optional="true">{data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head}</DisplayString>
+		<Expand>
+			<ExpandedItem Condition="index() ==  0" Optional="true">data._Head</ExpandedItem>
+			<ExpandedItem Condition="index() ==  1" Optional="true">data._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() ==  2" Optional="true">data._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() ==  3" Optional="true">data._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() ==  4" Optional="true">data._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() ==  5" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() ==  6" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() ==  7" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() ==  8" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() ==  9" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 10" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 11" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 12" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 13" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 14" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 15" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 16" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 17" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 18" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 19" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 20" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 21" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 22" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 23" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 24" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 25" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 26" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 27" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 28" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 29" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 30" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+			<ExpandedItem Condition="index() == 31" Optional="true">data._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Tail._Head</ExpandedItem>
+		</Expand>
+	</Type>
+</AutoVisualizer>
