@@ -1095,6 +1095,26 @@ namespace cr
 			return get(a, 0);
 		}
 
+		template<class D, class F>
+		inline static auto convert(in_t(F) a) {
+			static_assert(!std::same_as<F, double>);
+			if constexpr (std::same_as<F, D>) {
+				return a;
+			}
+			else if constexpr (std::same_as<F, bool>) {
+				return a;
+			}
+			else if constexpr (std::same_as<F, float>) {
+				return static_cast<D>(a);
+			}
+			else if constexpr (std::same_as<typename D::scalar_type, double>) {
+				return a.convertDouble();
+			}
+			else if constexpr (std::same_as<typename D::scalar_type, float>) {
+				return a.convertFloat();
+			}
+		}
+
 		template<class F>
 		constexpr inline static F slepian25(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {

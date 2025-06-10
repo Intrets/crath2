@@ -22,8 +22,26 @@ namespace cr::simd
 		{
 			using type = decltype(std::declval<F>().convertInt());
 		};
+
+		template<class F>
+		struct double_type;
+
+		template<std::floating_point F>
+		struct double_type<F>
+		{
+			using type = double;
+		};
+
+		template<class F>
+		struct double_type
+		{
+			using type = decltype(std::declval<F>().convertDouble());
+		};
 	}
 
 	template<class F>
 	using int_type = detail::int_type<F>::type;
+
+	template<class F>
+	using double_type = detail::double_type<F>::type;
 }

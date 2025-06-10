@@ -27,6 +27,7 @@
 namespace cr::simd
 {
 	struct int2x8;
+	struct double4x4;
 
 	struct float2x8
 	{
@@ -94,6 +95,7 @@ namespace cr::simd
 
 		int2x8 bitCastInt() const;
 		int2x8 convertInt() const;
+		double4x4 convertDouble() const;
 	};
 }
 #endif

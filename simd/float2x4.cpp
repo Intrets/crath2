@@ -1,5 +1,6 @@
 #include "crath/simd/float2x4.h"
 
+#include "crath/simd/double2x4.h"
 #include "crath/simd/int2x4.h"
 
 namespace cr::simd
@@ -16,6 +17,13 @@ namespace cr::simd
 		return int2x4(
 		    _mm_cvtps_epi32(this->f1),
 		    _mm_cvtps_epi32(this->f2)
+		);
+	}
+
+	double2x4 float2x4::convertDouble() const {
+		return double2x4(
+		    _mm256_cvtps_pd(this->f1),
+		    _mm256_cvtps_pd(this->f2)
 		);
 	}
 

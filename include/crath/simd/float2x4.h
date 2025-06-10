@@ -26,6 +26,7 @@
 namespace cr::simd
 {
 	struct int2x4;
+	struct double2x4;
 
 	struct float2x4
 	{
@@ -76,6 +77,7 @@ namespace cr::simd
 
 		int2x4 bitCastInt() const;
 		int2x4 convertInt() const;
+		double2x4 convertDouble() const;
 	};
 }
 #undef ACCESSOR
