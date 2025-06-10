@@ -20,11 +20,13 @@
 
 #include "crath/StdContext.h"
 #include "crath/simd/float1x4.h"
+#include "crath/simd/float1x8.h"
 #include "crath/simd/float2x4.h"
 #include "crath/simd/float2x8.h"
-#include "crath/simd/float1x8.h"
 
 #include <mem/MutexedObject.h>
+
+#include <tepp/safety_cast.h>
 
 using math = cr::StdContext;
 

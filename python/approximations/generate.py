@@ -279,7 +279,7 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
 
         out(f'inline static float {name_full}_float_simd(float x) {{')
         out(f'#ifdef ARCH_x86_64')
-        out(f'return {name_full}<cr::simd::float1x4>(x)[0];')
+        out(f'return {name_full}<cr::simd::float1x4>(x).first();')
         out(f'#else')
         out(f'return {name_full}<float>(x);')
         out(f'#endif')
@@ -366,7 +366,7 @@ def add_ref_info(name, min_x, max_x, modes):
         function_infos2.append(info)
 
     add(f'std::{name}f', value_type='float', tags=["float", "scalar"])
-    add(f'[](float x) {{ return cr::simd::float1x4(x).{name}()[0]; }}', display_name=f"{name}_float_simd", value_type='float', tags=["float_simd"])
+    add(f'[](float x) {{ return cr::simd::float1x4(x).{name}().first(); }}', display_name=f"{name}_float_simd", value_type='float', tags=["float_simd"])
     add(f'[](cr::simd::float2x4 const& x) {{ return x.{name}(); }}', display_name=f'{name}<float2x4>', value_type='cr::simd::float2x4', tags=["float2x4"])
 
 
