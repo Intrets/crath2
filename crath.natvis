@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+	<Type Name="cr::simd::double1x4">
+		<DisplayString>{f1.m256d_f64[0]}, {f1.m256d_f64[1]}, {f1.m256d_f64[2]}, {f1.m256d_f64[3]}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>4</Size>
+				<ValuePointer>(double*)this</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="cr::simd::double2x4">
+		<DisplayString>{f1.m256d_f64[0]}, {f1.m256d_f64[1]}, {f1.m256d_f64[2]}, {f1.m256d_f64[3]}, {f2.m256d_f64[0]}, {f2.m256d_f64[1]}, {f2.m256d_f64[2]}, {f2.m256d_f64[3]}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>8</Size>
+				<ValuePointer>(double*)this</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="cr::simd::double4x4">
+		<DisplayString>{f1.m256d_f64[0]}, {f1.m256d_f64[1]}, {f1.m256d_f64[2]}, {f1.m256d_f64[3]}, {f2.m256d_f64[0]}, {f2.m256d_f64[1]}, {f2.m256d_f64[2]}, {f2.m256d_f64[3]}, {f3.m256d_f64[0]}, {f3.m256d_f64[1]}, {f3.m256d_f64[2]}, {f3.m256d_f64[3]}, {f4.m256d_f64[0]}, {f4.m256d_f64[1]}, {f4.m256d_f64[2]}, {f4.m256d_f64[3]}</DisplayString>
+		<Expand>
+			<ArrayItems>
+				<Size>12</Size>
+				<ValuePointer>(double*)this</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
 	<Type Name="cr::simd::float1x4">
 		<DisplayString>{f1.m128_f32[0]}, {f1.m128_f32[1]}, {f1.m128_f32[2]}, {f1.m128_f32[3]}</DisplayString>
 		<Expand>
