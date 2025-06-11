@@ -441,26 +441,24 @@ namespace fun
 	}
 
 	template<class F>
-	inline constexpr static F slepian25_remez_abs_fma_ec_T8_0(in_t(F) x) {
-		[[maybe_unused]]
-		auto const x0 = x;
+	inline constexpr static F slepian25_remez_abs_fma_T8_0(in_t(F) x) {
 		x = forward_definitions::abs(x);
-		auto const a8 = F(-1.8758717875609545);
-		auto const a7 = forward_definitions::fma(a8, x, F(8.100115851936284));
-		auto const a6 = forward_definitions::fma(a7, x, F(-11.450593401278049));
-		auto const a5 = forward_definitions::fma(a6, x, F(3.040239297481198));
-		auto const a4 = forward_definitions::fma(a5, x, F(4.6032387910636166));
-		auto const a3 = forward_definitions::fma(a4, x, F(0.11795952381759532));
-		auto const a2 = forward_definitions::fma(a3, x, F(-3.5313434346400245));
-		auto const a1 = forward_definitions::fma(a2, x, F(0.0001810391052549116));
-		auto const a0 = forward_definitions::fma(a1, x, F(1.0));
+		auto const a8 = F(-1.9024349733838222f);
+		auto const a7 = forward_definitions::fma(a8, x, F(8.200531999200326f));
+		auto const a6 = forward_definitions::fma(a7, x, F(-11.572321581377318f));
+		auto const a5 = forward_definitions::fma(a6, x, F(3.0672763260362497f));
+		auto const a4 = forward_definitions::fma(a5, x, F(4.635728158821223f));
+		auto const a3 = forward_definitions::fma(a4, x, F(0.11859615513036838f));
+		auto const a2 = forward_definitions::fma(a3, x, F(-3.5438096889704678f));
+		auto const a1 = forward_definitions::fma(a2, x, F(0.00018125837744360006f));
+		auto const a0 = forward_definitions::fma(a1, x, F(1.0000000625217975f));
 		return a0;
 	}
-	inline static float slepian25_remez_abs_fma_ec_T8_0_float_simd(float x) {
+	inline static float slepian25_remez_abs_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86_64
-		return slepian25_remez_abs_fma_ec_T8_0<cr::simd::float1x4>(x).first();
+		return slepian25_remez_abs_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
-		return slepian25_remez_abs_fma_ec_T8_0<float>(x);
+		return slepian25_remez_abs_fma_T8_0<float>(x);
 #endif
 	}
 }
@@ -1119,14 +1117,14 @@ namespace cr
 		constexpr inline static F slepian25(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
-					return fun::slepian25_remez_abs_fma_ec_T8_0<float>(x);
+					return fun::slepian25_remez_abs_fma_T8_0<float>(x);
 				}
 				else {
-					return fun::slepian25_remez_abs_fma_ec_T8_0_float_simd(x);
+					return fun::slepian25_remez_abs_fma_T8_0_float_simd(x);
 				}
 			}
 			else {
-				return fun::slepian25_remez_abs_fma_ec_T8_0(x);
+				return fun::slepian25_remez_abs_fma_T8_0(x);
 			}
 		}
 	};
