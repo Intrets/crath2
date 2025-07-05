@@ -70,37 +70,28 @@ namespace cr::simd
 	template<class F>
 	using double_type = detail::double_type<F>::type;
 
-	template<class From>
-	struct convert
-	{
-		From&& from;
+	template<class To_, class From_>
+	auto convert(From_&& from) {
+		using To = std::remove_cvref_t<To_>;
+		using From = std::remove_cvref_t<From_>;
 
-		convert() = delete;
-		~convert() = default;
-		convert(From&& from_)
-		    : from(from_) {
+		if constexpr (std::same_as<From, bool>) {
+			return std::forward<From_>(from);
 		}
-
-		template<class To>
-		operator To() const {
-			if constexpr (std::same_as<To, std::remove_cvref_t<From>>) {
-				return this->from;
-			}
-			else if constexpr (std::integral<From> && std::integral<To>) {
-				return static_cast<To>(this->from);
-			}
-			else if constexpr (std::integral<From>) {
-				return To(this->from);
-			}
-			else if constexpr (detail::is_double_type<To> && detail::can_convert_to_double<From>) {
-				return this->from.convertDouble();
-			}
-			else if constexpr (detail::is_float_type<To> && detail::can_convert_to_float<From>) {
-				return this->from.convertFloat();
-			}
+		else if constexpr (std::same_as<To, From>) {
+			return std::forward<From_>(from);
 		}
-	};
-
-	template<class From>
-	convert(From&&) -> convert<From>;
+		else if constexpr (std::floating_point<From> && std::floating_point<To>) {
+			return static_cast<To>(from);
+		}
+		else if constexpr (std::integral<From>) {
+			return To(std::forward<From_>(from));
+		}
+		else if constexpr (detail::is_double_type<To> && detail::can_convert_to_double<From>) {
+			return from.convertDouble();
+		}
+		else if constexpr (detail::is_float_type<To> && detail::can_convert_to_float<From>) {
+			return from.convertFloat();
+		}
+	}
 }

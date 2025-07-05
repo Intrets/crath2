@@ -23,6 +23,8 @@
 
 namespace cr::simd
 {
+	struct float1x4;
+
 	struct double1x4
 	{
 		__m256d f1{};
@@ -70,6 +72,8 @@ namespace cr::simd
 		}
 
 		CR_ALL_DEFINITIONS
+
+		float1x4 convertFloat() const;
 	};
 }
 #undef ACCESSOR
