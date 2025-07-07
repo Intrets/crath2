@@ -8,6 +8,8 @@ from math import pi, log
 from typing import NamedTuple, Optional, List
 import numpy as np
 import remez
+from scipy.signal.windows import dpss
+from scipy.interpolate import CubicSpline
 import matplotlib.pyplot as plt
 
 
@@ -141,6 +143,7 @@ class x_abs:
 
     @staticmethod
     def run(out, max_x):
+        out(f'[[maybe_unused]]')
         out(f'auto const x0 = x;')
         out(f'x = math::abs(x);')
 
@@ -368,6 +371,173 @@ def add_ref_info(name, min_x, max_x, modes):
     add(f'std::{name}f', value_type='float', tags=["float", "scalar"])
     add(f'[](float x) {{ return cr::simd::float1x4(x).{name}().first(); }}', display_name=f"{name}_float_simd", value_type='float', tags=["float_simd"])
     add(f'[](cr::simd::float2x4 const& x) {{ return x.{name}(); }}', display_name=f'{name}<float2x4>', value_type='cr::simd::float2x4', tags=["float2x4"])
+
+
+slepian_reference_functions_added = set()
+
+
+def add_slepianwindow(N, s, out, name, scale, modes):
+    slepian_window = dpss(4000, s)
+
+    x_domain = np.linspace(0, 1, 4000)
+    f = CubicSpline(x_domain, slepian_window)
+
+    if name not in slepian_reference_functions_added:
+        slepian_reference_functions_added.add(name)
+        lut_size = 4000
+        lut_values = f(np.linspace(0.5, 1, lut_size))
+
+        lut = ""
+        i = 0
+        for v in lut_values:
+            lut += f'{v},'
+            i += 1
+            if i % 50 == 0:
+                lut += '\n'
+
+        out(f"""\
+inline constexpr static float {name}(float x) {{
+x = math::clamp(x, 0.0f, 1.0f);
+x = x * {lut_size - 1};
+auto i0 = math::clamp(static_cast<integer_t>(x), 0_i, {lut_size - 1}_i);
+auto i1 = math::clamp(i0 + 1, 0_i, {lut_size - 1}_i);
+auto s = x - i0;
+constexpr std::array<float, {lut_size}> lut{{{lut}}};
+
+return lut[i0] * (1.0f - s) + lut[i1] * s;
+}}""")
+
+    def function(x):
+        x = x * 0.5 + 0.5
+        r = f(x)
+        return r.item()
+
+    if 'definition' in modes:
+        remez_p = remez.remez(function, n_degree=N, lower=0, upper=1 / scale)
+        remez_pade_p, remez_pade_q = remez.remez_pade(function, n_degree=N, lower=0, upper=1 / scale)
+    else:
+        remez_p = None
+        remez_pade_p, remez_pade_q = None, None
+
+    global fma_types
+    for fma_type, (interval, ref_f) in itertools.product(fma_types, [((0, 1 / scale), function), (None, None)]):
+        add_function2(
+            remez_p,
+            out=out,
+            fma_type=fma_type,
+            name=f"{name}_remez",
+            extra_tags=[name, "remez"],
+            ref=name,
+            N=N,
+            M=0,
+            x_type=x_abs,
+            return_type=return_normal,
+            min_x=0,
+            max_x=1 / scale,
+            ref_min_x=0,
+            ref_max_x=1,
+            interval=interval,
+            ref_f=ref_f,
+            modes=modes
+        )
+
+        add_function2(
+            remez_pade_p,
+            q=remez_pade_q,
+            out=out,
+            fma_type=fma_type,
+            name=f"{name}_remez_pade",
+            extra_tags=[name, "remez_pade"],
+            ref=name,
+            N=N,
+            M=N,
+            x_type=x_abs,
+            return_type=return_normal,
+            min_x=0,
+            max_x=1 / scale,
+            ref_min_x=0,
+            ref_max_x=1,
+            interval=interval,
+            ref_f=ref_f,
+            modes=modes
+        )
+
+
+def add_nuttallwindow(N, out, name, scale, modes):
+    a0 = 0.355768
+    a1 = 0.487396
+    a2 = 0.144232
+    a3 = 0.012604
+
+    # x <- [-1, 1]
+    def function(x):
+        return a0 + a1 * mp.cos(np.pi * x) + a2 * mp.cos(2 * np.pi * x) + a3 * mp.cos(3 * np.pi * x)
+
+    if 'definition' in modes:
+        remez_p = remez.remez(function, n_degree=N, lower=0, upper=1 / scale)
+        remez_pade_p, remez_pade_q = remez.remez_pade(function, n_degree=N, lower=0, upper=1 / scale)
+    else:
+        remez_p = None
+        remez_pade_p, remez_pade_q = None, None
+
+    ref = f"[](float x){{float a0 = 0.355768; float a1 = 0.487396; float a2 = 0.144232; float a3 = 0.012604; float pi = {pi};  " \
+          f"return a0 + a1 * std::cos(x * pi) + a2 * std::cos(x*2.0f*pi) + a3*std::cos(x*3.0f*pi);}}"
+
+    info = make_function_info2(
+        tags=[name, "reference"],
+        reference_function=ref,
+        value_type='float',
+        function_name=ref,
+        display_name='nuttall',
+        min_x=0,
+        max_x=1,
+        ref_min_x=0,
+        ref_max_x=1,
+    )
+    function_infos2.append(info)
+
+    global fma_types
+    for fma_type, (interval, ref_f) in itertools.product(fma_types, [((0, 1 / scale), function), (None, None)]):
+        add_function2(
+            remez_p,
+            out=out,
+            fma_type=fma_type,
+            name=f"{name}_remez",
+            extra_tags=[name, "remez"],
+            ref=ref,
+            N=N,
+            M=0,
+            x_type=x_abs,
+            return_type=return_normal,
+            min_x=0,
+            max_x=1 / scale,
+            ref_min_x=0,
+            ref_max_x=1,
+            interval=interval,
+            ref_f=ref_f,
+            modes=modes
+        )
+
+        add_function2(
+            remez_pade_p,
+            q=remez_pade_q,
+            out=out,
+            fma_type=fma_type,
+            name=f"{name}_remez_pade",
+            extra_tags=[name, "remez_pade"],
+            ref=ref,
+            N=N,
+            M=N,
+            x_type=x_abs,
+            return_type=return_normal,
+            min_x=0,
+            max_x=1 / scale,
+            ref_min_x=0,
+            ref_max_x=1,
+            interval=interval,
+            ref_f=ref_f,
+            modes=modes
+        )
 
 
 def add_sin(N, out, name, scale, modes):
@@ -1222,7 +1392,35 @@ def main():
     for N in range(M0, M):
         add_sin(N, out, scale=1, name="sin", modes=modes)
 
+    def add_slepian_ref(name):
+        info = make_function_info2(
+            tags=[name, "reference"],
+            reference_function=name,
+            value_type='float',
+            function_name=name,
+            display_name=name,
+            min_x=0,
+            max_x=1,
+            ref_min_x=0,
+            ref_max_x=1,
+        )
+        function_infos2.append(info)
+
+    add_slepian_ref('slepian15')
+    add_slepian_ref('slepian25')
+    add_slepian_ref('slepian35')
+    add_slepian_ref('slepian45')
+    add_slepian_ref('slepian55')
+
     if not small_test_mode:
+        for N in range(M0, M):
+            add_slepianwindow(N, 1.5, out, scale=1, name="slepian15", modes=modes)
+            add_slepianwindow(N, 2.5, out, scale=1, name="slepian25", modes=modes)
+            add_slepianwindow(N, 3.5, out, scale=1, name="slepian35", modes=modes)
+            add_slepianwindow(N, 4.5, out, scale=1, name="slepian45", modes=modes)
+            add_slepianwindow(N, 5.5, out, scale=1, name="slepian55", modes=modes)
+            add_nuttallwindow(N, out, scale=1, name="nuttall", modes=modes)
+
         for N in range(M0, M):
             add_sin(N, out, scale=2 * pi, name="sin_unit1", modes=modes)
             add_sin(N, out, scale=1 * pi, name="sin_unit2", modes=modes)
@@ -1288,11 +1486,22 @@ def main():
 }}
 ''')
 
-        out('void addAll(TestResult& testResult) {')
+        all_all_function_names = []
 
         counter = 0
+        entries_in_chunk = 0
         for test in function_infos2:
             counter += 1
+
+            if entries_in_chunk == 100:
+                entries_in_chunk = 0
+                out('}')
+            if entries_in_chunk == 0:
+                chunk_name = f'addChunk{counter}'
+                out(f'void {chunk_name}(TestResult& testResult) {{')
+                all_all_function_names.append(chunk_name)
+
+            entries_in_chunk += 1
             if test.function_name == "noop":
                 reference_function = "[](auto const& x) { return x; }"
                 test_function = reference_function
@@ -1317,6 +1526,12 @@ def main():
             out(f'entry.accuracy_test<{test.value_type}>({test_function}, {reference_function}, {float(test.min_x)}f, {float(test.max_x)}f, {float(test.ref_min_x)}f, {float(test.ref_max_x)}f);')
             out(f'''entry.time<{test.value_type}>(msvc_bug_workaround_{counter}, {float(test.min_x)}f, {float(test.max_x)}f);''')
             out('}')
+
+        if entries_in_chunk != 0:
+            out('}')
+        out('void addAll(TestResult& testResult) {')
+        for name in all_all_function_names:
+            out(f'{name}(testResult);')
         out('}')
 
 

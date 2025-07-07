@@ -88,7 +88,7 @@ namespace
 		}
 
 		template<std::integral I>
-		inline static I clamp(I i_, I min_, I max_) {
+		inline constexpr static I clamp(I i_, I min_, I max_) {
 			return std::max(std::min(i_, max_), min_);
 		}
 
@@ -532,7 +532,7 @@ namespace cr
 				}
 			}
 			else {
-				return fun::log_fma_ec_T8_8(x);
+				return x.log();
 			}
 		}
 
