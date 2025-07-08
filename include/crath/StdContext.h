@@ -996,7 +996,7 @@ namespace cr
 			if constexpr (std::same_as<F, double>) {
 				return std::round(f);
 			}
-			if constexpr (std::same_as<F, float>) {
+			else if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
 					return std::round(f);
 				}
