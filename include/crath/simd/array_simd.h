@@ -109,6 +109,10 @@ namespace cr::simd
 			}
 		}
 
+		static integer_t size() {
+			return N;
+		}
+
 		access_type access();
 	};
 

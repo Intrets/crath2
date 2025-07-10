@@ -479,6 +479,7 @@ namespace cr
 		inline static constexpr float sqrt_two = 1.4142135623730951f;
 		inline static constexpr float inv_phi = 1.0f / std::numbers::phi_v<float>;
 		inline static constexpr float phi = 1.0f / std::numbers::phi_v<float>;
+		inline static constexpr float e = std::numbers::e_v<float>;
 
 		template<class F>
 		using BoolType = std::conditional_t<std::same_as<F, float>, bool, F>;
@@ -525,7 +526,16 @@ namespace cr
 		inline constexpr static F log(in_t(F) x) {
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
-					return fun::log_remez_pade_recip_fma_T9_9(x);
+					F result = 0.0f;
+					while (x > F(12.5f)) {
+						x /= F(e);
+						result += F(1.0f);
+					}
+					while (x < F(0.01f)) {
+						x *= F(e);
+						result -= F(1.0f);
+					}
+					return result + fun::log_remez_pade_recip_fma_T9_9(x);
 				}
 				else {
 					return std::logf(x);
@@ -1074,8 +1084,18 @@ namespace cr
 		}
 
 		template<class I = integer_t>
-		inline constexpr static I toIntRound(std::floating_point auto a) {
+		inline constexpr static I toIntRound2(std::floating_point auto a) {
 			return static_cast<I>(round(a));
+		}
+
+		template<class F>
+		inline constexpr static auto toIntRound(in_t(F) a) {
+			if constexpr (std::floating_point<F>) {
+				return static_cast<integer_t>(round(a));
+			}
+			else {
+				return round(a).convertInt();
+			}
 		}
 
 		template<class F>
