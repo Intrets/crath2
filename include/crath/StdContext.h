@@ -1079,8 +1079,14 @@ namespace cr
 			return static_cast<integer_t>(a + 0.5f);
 		}
 
-		inline constexpr static integer_t toIntFloor(std::floating_point auto a) {
-			return static_cast<integer_t>(floor(a));
+		template<class F>
+		inline constexpr static auto toIntFloor(in_t(F) a) {
+			if constexpr (std::floating_point<F>) {
+				return static_cast<integer_t>(floor(a));
+			}
+			else {
+				return floor(a).convertInt();
+			}
 		}
 
 		template<class I = integer_t>
