@@ -48,6 +48,8 @@ namespace cr::simd
 		using access_type = array_simd_processing<N, alignment, F>;
 		using S = detail::get_scalar_type<F>;
 		using simd_type = F;
+		using value_type = F;
+		using scalar_type = S;
 
 		alignas(alignment) S data[N]{};
 
@@ -163,12 +165,18 @@ namespace cr::simd
 	template<integer_t N, integer_t alignment, class F>
 	struct array_simd_processing
 	{
+		using value_type = F;
+
 		array_simd<N, alignment, F>& array;
 		F data;
 
 		NO_COPY_MOVE(array_simd_processing);
 
 		operator F&() {
+			return this->data;
+		}
+
+		F& get() {
 			return this->data;
 		}
 
@@ -196,6 +204,33 @@ namespace cr::simd
 
 	template<class F>
 	using array_simd_type = array_simd<detail::get_simd_array_size<F>(), alignof(F), F>;
+
+	namespace detail
+	{
+		template<class F>
+		struct simd_value_type;
+
+		template<>
+		struct simd_value_type<float>
+		{
+			using type = float;
+		};
+
+		template<>
+		struct simd_value_type<double>
+		{
+			using type = double;
+		};
+
+		template<class F>
+		struct simd_value_type
+		{
+			using type = F::value_type;
+		};
+	}
+
+	template<class F>
+	using simd_value_type = detail::simd_value_type<F>::type;
 
 	template<class F>
 	auto to_array(F const& a) {
