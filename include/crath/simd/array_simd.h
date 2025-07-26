@@ -8,16 +8,13 @@
 
 namespace cr::simd
 {
-	namespace detail
-	{
-		template<class F>
-		constexpr integer_t get_simd_array_size() {
-			if constexpr (std::integral<F> || std::floating_point<F>) {
-				return 1;
-			}
-			else {
-				return F::size;
-			}
+	template<class F>
+	constexpr integer_t get_simd_array_size() {
+		if constexpr (std::integral<F> || std::floating_point<F>) {
+			return 1;
+		}
+		else {
+			return F::size;
 		}
 	}
 
@@ -203,7 +200,10 @@ namespace cr::simd
 	}
 
 	template<class F>
-	using array_simd_type = array_simd<detail::get_simd_array_size<F>(), alignof(F), F>;
+	using array_simd_type = array_simd<get_simd_array_size<F>(), alignof(F), F>;
+
+	template<class T>
+	concept has_value_type = requires(T t) { typename T::value_type; };
 
 	namespace detail
 	{
@@ -222,10 +222,16 @@ namespace cr::simd
 			using type = double;
 		};
 
+		template<has_value_type F>
+		struct simd_value_type<F>
+		{
+			using type = typename F::value_type;
+		};
+
 		template<class F>
 		struct simd_value_type
 		{
-			using type = F::value_type;
+			using type = F;
 		};
 	}
 
