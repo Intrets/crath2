@@ -175,7 +175,6 @@
 	DEFINE1(operator||, or) \
 	DEFINE_ARITHMETIC(+, add) \
 	DEFINE_ARITHMETIC(-, sub) \
-	DEFINE_ARITHMETIC(/, div) \
 	DEFINE_ARITHMETIC(*, mullo) \
 	DEFINE_NEGATION(0) \
 	DEFINE_ARITHMETIC(^, xor) \

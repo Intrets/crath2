@@ -465,6 +465,11 @@ namespace fun
 
 namespace cr
 {
+	template<class F>
+	concept has_log = requires(F f) {
+		{ f.log() } -> std::same_as<F>;
+	};
+
 	struct StdContext : forward_definitions
 	{
 		inline static constexpr float pi = std::numbers::pi_v<float>;
@@ -542,7 +547,12 @@ namespace cr
 				}
 			}
 			else {
-				return x.log();
+				if constexpr (has_log<F>) {
+					return x.log();
+				}
+				else {
+					return fun::log_remez_pade_recip_fma_T9_9(x);
+				}
 			}
 		}
 
