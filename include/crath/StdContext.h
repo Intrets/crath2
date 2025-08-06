@@ -21,8 +21,6 @@
 #include "crath/simd/int2x8.h"
 #include "crath/simd/int3x4.h"
 
-#define in_t(X) X
-
 namespace cr
 {
 	struct StdContext;
@@ -87,9 +85,9 @@ namespace
 			}
 		}
 
-		template<std::integral I>
-		CR_INLINE constexpr static I clamp(I i_, I min_, I max_) {
-			return std::max(std::min(i_, max_), min_);
+		template<class F>
+		CR_INLINE constexpr static F clamp(in_t(F) f, float min, float max) {
+			return clamp(f, F(min), F(max));
 		}
 
 		template<class F>
@@ -100,11 +98,6 @@ namespace
 			else {
 				return std::max(std::min(f, max), min);
 			}
-		}
-
-		template<class F>
-		CR_INLINE constexpr static F clamp(in_t(F) f, float min, float max) {
-			return clamp(f, F(min), F(max));
 		}
 
 		template<class F>
@@ -171,8 +164,8 @@ namespace
 namespace fun
 {
 	template<class F>
-	CR_INLINE constexpr static F cos_quart_fma_ec_T6_6(in_t(F) x) {
-		x = forward_definitions::abs(x - F(3.141592653589793f)) - F(1.5707963267948966f);
+	CR_INLINE constexpr static F cos_quart_fma_ec_T6_6(in_t(F) x_) {
+		auto x = forward_definitions::abs(x_ - F(3.141592653589793f)) - F(1.5707963267948966f);
 		auto const x2 = x * x;
 		auto const a3 = F(0.002903581834064588f);
 		auto const b3 = F(7.261928768280855e-06f);
@@ -192,8 +185,8 @@ namespace fun
 #endif
 	}
 	template<class F>
-	CR_INLINE constexpr static F cos_unit1_quart_fma_ec_T6_6(in_t(F) x) {
-		x = forward_definitions::abs(x - F(0.5f)) - F(0.25f);
+	CR_INLINE constexpr static F cos_unit1_quart_fma_ec_T6_6(in_t(F) x_) {
+		auto const x = forward_definitions::abs(x_ - F(0.5f)) - F(0.25f);
 		auto const x2 = x * x;
 		auto const a3 = F(28.43370232347889f);
 		auto const b3 = F(0.4468185499096844f);
@@ -213,9 +206,9 @@ namespace fun
 #endif
 	}
 	template<class F>
-	CR_INLINE constexpr static F sin_unit2_quart_fma_ec_T6_6(in_t(F) x) {
+	CR_INLINE constexpr static F sin_unit2_quart_fma_ec_T6_6(in_t(F) x_) {
 		auto const quarter = F(0.5f);
-		x = forward_definitions::abs(forward_definitions::abs(x - quarter) - F(1.0f)) - quarter;
+		auto const x = forward_definitions::abs(forward_definitions::abs(x_ - quarter) - F(1.0f)) - quarter;
 		auto const x2 = x * x;
 		auto const a3 = F(0.8885531976087148f);
 		auto const b3 = F(0.006981539842338819f);
@@ -235,9 +228,9 @@ namespace fun
 #endif
 	}
 	template<class F>
-	CR_INLINE constexpr static F sin_unit1_quart_fma_ec_T6_6(in_t(F) x) {
+	CR_INLINE constexpr static F sin_unit1_quart_fma_ec_T6_6(in_t(F) x_) {
 		auto const quarter = F(0.25f);
-		x = forward_definitions::abs(forward_definitions::abs(x - quarter) - F(0.5f)) - quarter;
+		auto const x = forward_definitions::abs(forward_definitions::abs(x_ - quarter) - F(0.5f)) - quarter;
 		auto const x2 = x * x;
 		auto const a3 = F(28.43370232347889f);
 		auto const b3 = F(0.4468185499096844f);
@@ -257,9 +250,9 @@ namespace fun
 #endif
 	}
 	template<class F>
-	CR_INLINE constexpr static F tanh_remez_pade_fma_T6_6(in_t(F) x) {
-		auto const x0 = x;
-		x = forward_definitions::min(forward_definitions::abs(x), F(7.0f));
+	CR_INLINE constexpr static F tanh_remez_pade_fma_T6_6(in_t(F) x_) {
+		auto const x0 = x_;
+		auto const x = forward_definitions::min(forward_definitions::abs(x_), F(7.0f));
 		auto const a6 = F(0.000936634282122674f);
 		auto const b6 = F(0.000940805755508484f);
 		auto const a5 = forward_definitions::fma(a6, x, F(0.005276300306824047f));
@@ -278,8 +271,8 @@ namespace fun
 	}
 
 	template<class F>
-	CR_INLINE constexpr static F tanh_fma_ec_T7_7(in_t(F) x) {
-		x = forward_definitions::clamp(x, F(-7.0f), F(7.0f));
+	CR_INLINE constexpr static F tanh_fma_ec_T7_7(in_t(F) x_) {
+		auto const x = forward_definitions::clamp(x_, F(-7.0f), F(7.0f));
 		auto const x2 = x * x;
 		auto const a4 = F(7.3913550193196496e-06f);
 		auto const b3 = F(0.0002072002072002072f);
@@ -301,8 +294,8 @@ namespace fun
 	}
 
 	template<class F>
-	CR_INLINE constexpr static F log_fma_ec_T8_8(in_t(F) x) {
-		x = x - F(1.0f);
+	CR_INLINE constexpr static F log_fma_ec_T8_8(in_t(F) x_) {
+		auto const x = x_ - F(1.0f);
 		auto const a8 = F(0.0004224058990164251f);
 		auto const b8 = F(7.77000777000777e-05f);
 		auto const a7 = forward_definitions::fma(a8, x, F(0.01922307633999584f));
@@ -325,9 +318,9 @@ namespace fun
 	}
 
 	template<class F>
-	CR_INLINE constexpr static F log_remez_pade_recip_fma_T9_9(in_t(F) x) {
-		auto m = x < F(1.0f);
-		x = forward_definitions::blend(x, F(1.0f) / x, m);
+	CR_INLINE constexpr static F log_remez_pade_recip_fma_T9_9(in_t(F) x_) {
+		auto const m = x_ < F(1.0f);
+		auto const x = forward_definitions::blend(x_, F(1.0f) / x_, m);
 		auto const a9 = F(1.724793120623996e-05f);
 		auto const b9 = F(2.5430188394234507e-06f);
 		auto const a8 = forward_definitions::fma(a9, x, F(0.002663321948678853f));
@@ -385,9 +378,9 @@ namespace fun
 	}
 
 	template<class F>
-	CR_INLINE constexpr static F sin_quart_fma_ec_T6_6(in_t(F) x) {
+	CR_INLINE constexpr static F sin_quart_fma_ec_T6_6(in_t(F) x_) {
 		auto const quarter = F(1.5707963267948966f);
-		x = forward_definitions::abs(forward_definitions::abs(x - quarter) - F(3.141592653589793f)) - quarter;
+		auto const x = forward_definitions::abs(forward_definitions::abs(x_ - quarter) - F(3.141592653589793f)) - quarter;
 		auto const x2 = x * x;
 		auto const a3 = F(0.002903581834064588f);
 		auto const b3 = F(7.261928768280855e-06f);
@@ -441,8 +434,8 @@ namespace fun
 	}
 
 	template<class F>
-	CR_INLINE constexpr static F slepian25_remez_abs_fma_T8_0(in_t(F) x) {
-		x = forward_definitions::abs(x);
+	CR_INLINE constexpr static F slepian25_remez_abs_fma_T8_0(in_t(F) x_) {
+		auto const x = forward_definitions::abs(x_);
 		auto const a8 = F(-1.9024349733838222f);
 		auto const a7 = forward_definitions::fma(a8, x, F(8.200531999200326f));
 		auto const a6 = forward_definitions::fma(a7, x, F(-11.572321581377318f));
@@ -528,7 +521,9 @@ namespace cr
 		// maximum absolute error: 0.0003786087
 		// maximum relative error:0.00018447939
 		template<class F>
-		CR_INLINE constexpr static F log(in_t(F) x) {
+		CR_INLINE constexpr static F log(in_t(F) x_) {
+			auto x = x_;
+
 			if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
 					F result = 0.0f;
@@ -614,9 +609,9 @@ namespace cr
 		// maximum absolute error: 2.9802322e-07
 		// maximum relative error:0.00046794294
 		template<class F>
-		CR_INLINE constexpr static F sinc(in_t(F) x) {
+		CR_INLINE constexpr static F sinc(in_t(F) x_) {
 			if constexpr (std::same_as<F, double>) {
-				x *= std::numbers::pi_v<double>;
+				auto const x = x_ * std::numbers::pi_v<double>;
 				if (std::abs(x) < 0.000000001) {
 					return 1.0;
 				}
@@ -625,7 +620,7 @@ namespace cr
 				}
 			}
 			else {
-				x *= pi;
+				auto const x = x_ * pi;
 				if constexpr (std::same_as<F, float>) {
 					if (std::is_constant_evaluated()) {
 						if (x > -0.0001f && x < 0.0001f) {

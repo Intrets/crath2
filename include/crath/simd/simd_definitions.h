@@ -1,7 +1,9 @@
 #pragma once
 
+#include "crath/ParameterTyping.h"
+
 #ifdef COMPILER_MSVC
-#define CR_INLINE __forceinline
+#define CR_INLINE inline
 #define CR_HAS_SIMD_TYPES
 #elif defined(COMPILER_CLANG)
 #define CR_INLINE inline __attribute__((always_inline))
@@ -14,7 +16,6 @@
 #endif
 
 #define ID(X) X
-#define in_t(X) X
 
 #define DO1(X, ONE, I) X(ONE ACCESSOR(I)),
 #define DO2(X, ONE, TWO, I) X(ONE ACCESSOR(I), TWO ACCESSOR(I)),
