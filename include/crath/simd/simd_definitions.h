@@ -3,7 +3,7 @@
 #include "crath/ParameterTyping.h"
 
 #ifdef COMPILER_MSVC
-#define CR_INLINE inline
+#define CR_INLINE __forceinline
 #define CR_HAS_SIMD_TYPES
 #elif defined(COMPILER_CLANG)
 #define CR_INLINE inline __attribute__((always_inline))

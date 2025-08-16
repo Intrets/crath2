@@ -5,6 +5,7 @@
 #include <tepp/tepp.h>
 
 #include "crath/simd/aligned_load_hint.h"
+#include "crath/simd/simd_definitions.h"
 
 namespace cr::simd
 {
@@ -239,7 +240,7 @@ namespace cr::simd
 	using simd_value_type = detail::simd_value_type<F>::type;
 
 	template<class F>
-	auto to_array(F const& a) {
+	CR_INLINE auto to_array(F const& a) {
 		return cr::simd::array_simd_type<F>(a);
 	}
 }
