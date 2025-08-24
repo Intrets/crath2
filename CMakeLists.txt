@@ -9,6 +9,7 @@ project(${MODULE_NAME} LANGUAGES CXX)
 make_module(
 	MODULE_NAME ${MODULE_NAME}
 	MODULE_FILES
+		simd/simd
 		simd/double4x4
 		simd/double1x4
 		simd/double2x4
