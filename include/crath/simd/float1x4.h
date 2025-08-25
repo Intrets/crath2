@@ -50,6 +50,10 @@ namespace cr::simd
 		    : f1(_mm_set_ps(a3, a2, a1, a0)) {
 		}
 
+		static CR_INLINE float1x4 iota() {
+			return float1x4(0, 1, 2, 3);
+		}
+
 		CR_INLINE void write(float& s) const {
 			_mm_storeu_ps(&s, this->f1);
 		}

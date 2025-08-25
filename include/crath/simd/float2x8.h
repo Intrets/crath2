@@ -59,6 +59,10 @@ namespace cr::simd
 		      f2(_mm256_set_ps(a15, a14, a13, a12, a11, a10, a9, a8)) {
 		}
 
+		static CR_INLINE float2x8 iota() {
+			return float2x8(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
+		}
+
 		CR_INLINE void write(float& s) const {
 			_mm256_storeu_ps(&s, this->f1);
 			_mm256_storeu_ps(&s + 8, this->f2);

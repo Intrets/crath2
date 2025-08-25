@@ -58,6 +58,10 @@ namespace cr::simd
 		      f2(_mm_set_ps(a7, a6, a5, a4)) {
 		}
 
+		static CR_INLINE float2x4 iota() {
+			return float2x4(0, 1, 2, 3, 4, 5, 6, 7);
+		}
+
 		CR_INLINE void write(float& s) const {
 			_mm_storeu_ps(&s, this->f1);
 			_mm_storeu_ps(&s + 4, this->f2);
