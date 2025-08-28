@@ -13,6 +13,7 @@ namespace cr
 	constexpr integer_t unit_size = 4;
 	constexpr integer_t unit_size_2 = unit_size * 2;
 #else
+#undef CR_HAS_SIMD_TYPES
 	constexpr integer_t unit_size = 1;
 #endif
 	constexpr integer_t align_unit_size = unit_size * sizeof(float);

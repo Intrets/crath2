@@ -332,7 +332,7 @@ namespace cr::simd
 
 			BEGIN_TEST(fma1)
 			auto f = F(123.7f).fma(345.5f, 678.3f);
-			result = allEqual(f, 123.7 * 345.5f + 678.3f);
+			result = allEqual(f, 123.7f * 345.5f + 678.3f);
 			END_TEST
 
 			BEGIN_TEST(add1)

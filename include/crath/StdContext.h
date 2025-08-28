@@ -1146,7 +1146,10 @@ namespace cr
 
 		template<class F>
 		constexpr CR_INLINE static F slepian25(in_t(F) x) {
-			if constexpr (std::same_as<F, float>) {
+			if constexpr (std::same_as<F, double>) {
+				return fun::slepian25_remez_abs_fma_T8_0<double>(x);
+			}
+			else if constexpr (std::same_as<F, float>) {
 				if (std::is_constant_evaluated()) {
 					return fun::slepian25_remez_abs_fma_T8_0<float>(x);
 				}

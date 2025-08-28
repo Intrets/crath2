@@ -11,6 +11,7 @@
 
 #include "crath/ParameterTyping.h"
 #include "crath/simd/aligned_load_hint.h"
+#include "crath/simd/array_simd.h"
 #include "crath/simd/simd_definitions.h"
 #include "crath/simd/simd_types.h"
 
@@ -70,6 +71,15 @@ namespace cr::simd
 		CR_INLINE void write(float& s, aligned_hint_t) const {
 			_mm_store_ps(&s, this->f1);
 			_mm_store_ps(&s + 4, this->f2);
+		}
+
+		CR_INLINE float sum() const {
+			auto arr = to_array(*this);
+			float result = 0.0f;
+			for (auto f : arr) {
+				result += f;
+			}
+			return result;
 		}
 
 		CR_INLINE float first() const {
