@@ -99,7 +99,7 @@
 		}; \
 	}
 
-#define DEFINE_ARITHMETIC(name, op) DEFINE1(operator##name, op) DEFINE_COMPOUND(operator##name##=, op)
+#define DEFINE_ARITHMETIC(name1, name2, op) DEFINE1(name1, op) DEFINE_COMPOUND(name2, op)
 
 #define DEFINE_ARITHMETIC2(name, op) DEFINE1(name, op) DEFINE_COMPOUND(name## =, op)
 #define B_DEFINE_ARITHMETIC2_T(name, op, return_transform, argument_transform) B_DEFINE1_T(name, op, return_transform, argument_transform) B_DEFINE_COMPOUND_T(name## =, op, return_transform, argument_transform)
@@ -171,13 +171,13 @@
 	DEFINE1(and_not, andnot) \
 	DEFINE1(operator&&, and) \
 	DEFINE1(operator||, or) \
-	DEFINE_ARITHMETIC(+, add) \
-	DEFINE_ARITHMETIC(-, sub) \
-	DEFINE_ARITHMETIC(*, mullo) \
+	DEFINE_ARITHMETIC(operator+, operator+=, add) \
+	DEFINE_ARITHMETIC(operator-, operator-=, sub) \
+	DEFINE_ARITHMETIC(operator*, operator*=, mullo) \
 	DEFINE_NEGATION(0) \
-	DEFINE_ARITHMETIC(^, xor) \
-	DEFINE_ARITHMETIC(|, or) \
-	DEFINE_ARITHMETIC(&, and) \
+	DEFINE_ARITHMETIC(operator^, operator^=, xor) \
+	DEFINE_ARITHMETIC(operator|, operator|=, or) \
+	DEFINE_ARITHMETIC(operator&, operator&=, and) \
 	DEFINE_SIGN_BIT(int) \
 	DEFINE_SIGN(int) \
 	DEFINE_ABS(int)
@@ -210,14 +210,14 @@
 	DEFINE1(and_not, andnot) \
 	DEFINE1(operator&&, and) \
 	DEFINE1(operator||, or) \
-	DEFINE_ARITHMETIC(+, add) \
-	DEFINE_ARITHMETIC(-, sub) \
-	DEFINE_ARITHMETIC(/, div) \
-	DEFINE_ARITHMETIC(*, mul) \
+	DEFINE_ARITHMETIC(operator+, operator+=, add) \
+	DEFINE_ARITHMETIC(operator-, operator-=, sub) \
+	DEFINE_ARITHMETIC(operator/, operator/=, div) \
+	DEFINE_ARITHMETIC(operator*, operator*=, mul) \
 	DEFINE_NEGATION(0.0f) \
-	DEFINE_ARITHMETIC(^, xor) \
-	DEFINE_ARITHMETIC(|, or) \
-	DEFINE_ARITHMETIC(&, and) \
+	DEFINE_ARITHMETIC(operator^, operator^=, xor) \
+	DEFINE_ARITHMETIC(operator|, operator|=, or) \
+	DEFINE_ARITHMETIC(operator&, operator&=, and) \
 	DEFINE_NEGATION_LOGIC(0.0f) \
 	DEFINE_SIGN_BIT(float) \
 	DEFINE_SIGN(float) \
@@ -247,9 +247,9 @@
 	DEFINE1(operator>=, cge) \
 	DEFINE1(operator<, clt) \
 	DEFINE1(operator<=, cle) \
-	DEFINE_ARITHMETIC(+, add) \
-	DEFINE_ARITHMETIC(-, sub) \
-	DEFINE_ARITHMETIC(*, mul) \
+	DEFINE_ARITHMETIC(operator+, operator+=, add) \
+	DEFINE_ARITHMETIC(operator-, operator-=, sub) \
+	DEFINE_ARITHMETIC(operator*, operator*=, mul) \
 	DEFINE_NEGATION(0.0f) \
 	DEFINE_NEGATION_LOGIC(0.0f) \
 	DEFINE_SIGN_BIT(float) \
