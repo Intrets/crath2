@@ -45,8 +45,8 @@ find_package(OpenGL)
 if (OpenGL_FOUND)
   find_package(GLFW3 REQUIRED)
 
-  add_executable(${MODULE_NAME}_glfw_test TestGlfw.cpp include/crath/TestResult.h TestResult.cpp include/crath/AddTests.h AddTests.cpp)
-  target_include_directories(${MODULE_NAME}_glfw_test PUBLIC include)
+  add_executable(${MODULE_NAME}_glfw_test TestGlfw.cpp TestResult.h TestResult.cpp AddTests.h AddTests.cpp)
+  target_include_directories(${MODULE_NAME}_glfw_test PUBLIC ..)
   target_link_libraries(imgui_glfw imgui GLFW3)
   target_link_libraries(${MODULE_NAME}_glfw_test
     implot
