@@ -29,9 +29,11 @@ make_module(
 		simd/float1x4
 		simd/float2x4
 		simd/float3x4
+		simd/float4x4
 		simd/float1x8
 		simd/int1x4
 		simd/int2x4
+		simd/int4x4
 		ParameterTyping
 	CXX_STANDARD 20
 	REQUIRED_LIBS
