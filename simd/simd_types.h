@@ -43,6 +43,11 @@ namespace cr::simd
 			f.convertFloat();
 		};
 
+		template<class F, class Target>
+		concept can_convert_to_float_target = requires(F f, Target target) {
+			f.convertFloat(target);
+		};
+
 		template<class F>
 		concept can_convert_to_double = requires(F f) {
 			f.convertDouble();
@@ -92,6 +97,11 @@ namespace cr::simd
 		}
 		else if constexpr (detail::is_float_type<To> && detail::can_convert_to_float<From>) {
 			return from.convertFloat();
+		}
+		else if constexpr (detail::is_float_type<To> && detail::can_convert_to_float_target<From, To>) {
+			To target{};
+			from.convertFloat(target);
+			return target;
 		}
 	}
 }

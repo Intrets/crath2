@@ -1,5 +1,6 @@
 #pragma once
 
+#include <concepts>
 #include <tepp/integers.h>
 
 #ifdef ARCH_x86_64
@@ -23,6 +24,7 @@
 
 namespace cr::simd
 {
+	struct float1x8;
 	struct float2x4;
 
 	struct double2x4
@@ -81,7 +83,8 @@ namespace cr::simd
 
 		CR_ALL_DEFINITIONS
 
-		float2x4 convertFloat() const;
+		void convertFloat(float2x4& target) const;
+		void convertFloat(float1x8& target) const;
 	};
 }
 #undef ACCESSOR
