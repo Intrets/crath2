@@ -1,9 +1,20 @@
 #pragma once
 
+#include <concepts>
 #include <tepp/integers.h>
 
 namespace cr
 {
+	template<class F>
+	constexpr integer_t get_size() {
+		if constexpr (std::same_as<F, float>) {
+			return 1;
+		}
+		else {
+			return F::size;
+		}
+	}
+
 #ifdef SIMD_8
 #define CR_HAS_SIMD_TYPES
 	constexpr integer_t unit_size = 8;
