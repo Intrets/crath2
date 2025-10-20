@@ -1040,7 +1040,7 @@ namespace cr
 
 		template<class F, class B>
 		CR_INLINE constexpr static F ifElse(in_t(B) b, in_t(F) f1, in_t(F) f2) {
-			if constexpr (std::same_as<F, float> || std::same_as<F, bool>) {
+			if constexpr (std::same_as<F, float> || std::same_as<F, bool> || std::integral<F>) {
 				return b ? f1 : f2;
 			}
 			else {
