@@ -1,5 +1,6 @@
 #include "crath/simd/float3x8.h"
 
+#ifdef ARCH_x86_64
 #include "crath/simd/int3x8.h"
 
 namespace cr::simd
@@ -20,3 +21,4 @@ namespace cr::simd
 		);
 	}
 }
+#endif

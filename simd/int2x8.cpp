@@ -1,5 +1,6 @@
 #include "crath/simd/int2x8.h"
 
+#ifdef ARCH_x86_64
 #include "crath/simd/float2x8.h"
 
 namespace cr::simd
@@ -18,3 +19,4 @@ namespace cr::simd
 		);
 	}
 }
+#endif

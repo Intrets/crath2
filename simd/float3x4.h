@@ -96,6 +96,7 @@ namespace cr::simd
 #include "crath/simd/aligned_load_hint.h"
 #include "crath/simd/simd_definitions.h"
 
+#define ACCESSOR(I) f##I
 #define APPLY1(OP, X, ONE) OP(X, ONE, 1) OP(X, ONE, 2) OP(X, ONE, 3)
 #define APPLY2(OP, X, ONE, TWO) OP(X, ONE, TWO, 1) OP(X, ONE, TWO, 2) OP(X, ONE, TWO, 3)
 #define APPLY3(OP, X, ONE, TWO, THREE) OP(X, ONE, TWO, THREE, 1) OP(X, ONE, TWO, THREE, 2) OP(X, ONE, TWO, THREE, 3)

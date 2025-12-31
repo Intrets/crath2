@@ -1,5 +1,6 @@
 #include "crath/simd/double2x4.h"
 
+#ifdef ARCH_x86_64
 #include "crath/simd/float1x8.h"
 #include "crath/simd/float2x4.h"
 #include <immintrin.h>
@@ -24,3 +25,4 @@ namespace cr::simd
 		};
 	}
 }
+#endif
