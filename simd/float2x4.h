@@ -2,6 +2,10 @@
 
 #include <tepp/integers.h>
 
+#include <array>
+
+#include "crath/simd/array_simd.h"
+
 #ifdef ARCH_x86_64
 
 #include <bit>
@@ -11,7 +15,6 @@
 
 #include "crath/ParameterTyping.h"
 #include "crath/simd/aligned_load_hint.h"
-#include "crath/simd/array_simd.h"
 #include "crath/simd/simd_definitions.h"
 #include "crath/simd/simd_types.h"
 
@@ -135,6 +138,7 @@ namespace cr::simd
 
 	struct float2x4 : ::detail::CRTP_ARM_simd<float2x4>
 	{
+		using scalar_type = float;
 		static constexpr integer_t size = 8;
 
 		float32x4_t f1;
@@ -162,7 +166,16 @@ namespace cr::simd
 		      f2(helperLoad(a4, a5, a6, a7)) {
 		}
 
-		CR_INLINE float2x4(float* ptr)
+		static CR_INLINE float2x4 iota() {
+			return float2x4(0, 1, 2, 3, 4, 5, 6, 7);
+		}
+
+		CR_INLINE float2x4(float const* ptr)
+		    : f1(vld1q_f32(ptr)),
+		      f2(vld1q_f32(ptr + 4)) {
+		}
+
+		CR_INLINE float2x4(float const* ptr, aligned_hint_t)
 		    : f1(vld1q_f32(ptr)),
 		      f2(vld1q_f32(ptr + 4)) {
 		}
@@ -173,6 +186,11 @@ namespace cr::simd
 		}
 
 		CR_INLINE void write(float& ptr) const {
+			vst1q_f32(&ptr, this->f1);
+			vst1q_f32(&ptr + 4, this->f2);
+		}
+
+		CR_INLINE void write(float& ptr, aligned_hint_t) const {
 			vst1q_f32(&ptr, this->f1);
 			vst1q_f32(&ptr + 4, this->f2);
 		}
@@ -198,6 +216,15 @@ namespace cr::simd
 			auto f2_ = vmulq_f32(this->f2, reciprocal2);
 
 			return { f1_, f2_ };
+		}
+
+		CR_INLINE float sum() const {
+			auto arr = to_array(*this);
+			float result = 0.0f;
+			for (auto f : arr) {
+				result += f;
+			}
+			return result;
 		}
 
 		DEFINE1_T(operator==, ceq, s_to_f, f_to_s);

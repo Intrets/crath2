@@ -1,6 +1,8 @@
 #pragma once
 
+#include <array>
 #include <concepts>
+
 #include <tepp/integers.h>
 
 #ifdef ARCH_x86_64

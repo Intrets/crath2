@@ -2,6 +2,8 @@
 
 #include <tepp/integers.h>
 
+#include <array>
+
 #ifdef ARCH_x86_64
 #include <bit>
 #include <immintrin.h>

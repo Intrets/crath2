@@ -13,7 +13,6 @@ namespace cr::simd
 		    _mm_castsi128_ps(this->i4)
 		);
 	}
-}
 #elif defined(__ARM_NEON__)
 	float4x4 int4x4::bitCastFloat() const {
 		return float4x4{

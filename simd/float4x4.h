@@ -2,13 +2,16 @@
 
 #include <tepp/integers.h>
 
+#include <array>
+
+#include "crath/simd/array_simd.h"
+
 #ifdef ARCH_x86_64
 #include <bit>
 #include <immintrin.h>
 
 #include "crath/ParameterTyping.h"
 #include "crath/simd/aligned_load_hint.h"
-#include "crath/simd/array_simd.h"
 #include "crath/simd/simd_definitions.h"
 #include "crath/simd/simd_types.h"
 
@@ -138,7 +141,8 @@ namespace cr::simd
 
 	struct float4x4 : ::detail::CRTP_ARM_simd<float4x4>
 	{
-		static constexpr integer_t size = 8;
+		using scalar_type = float;
+		static constexpr integer_t size = 16;
 
 		float32x4_t f1;
 		float32x4_t f2;
@@ -180,6 +184,13 @@ namespace cr::simd
 		      f4(vld1q_f32(ptr + 12)) {
 		}
 
+		CR_INLINE float4x4(float* ptr, aligned_hint_t)
+		    : f1(vld1q_f32(ptr)),
+		      f2(vld1q_f32(ptr + 4)),
+		      f3(vld1q_f32(ptr + 8)),
+		      f4(vld1q_f32(ptr + 12)) {
+		}
+
 		CR_INLINE float4x4(float f)
 		    : f1(vdupq_n_f32(f)),
 		      f2(vdupq_n_f32(f)),
@@ -192,6 +203,22 @@ namespace cr::simd
 			vst1q_f32(&ptr + 4, this->f2);
 			vst1q_f32(&ptr + 8, this->f3);
 			vst1q_f32(&ptr + 12, this->f4);
+		}
+
+		CR_INLINE void write(float& ptr, aligned_hint_t) const {
+			vst1q_f32(&ptr, this->f1);
+			vst1q_f32(&ptr + 4, this->f2);
+			vst1q_f32(&ptr + 8, this->f3);
+			vst1q_f32(&ptr + 12, this->f4);
+		}
+
+		CR_INLINE float sum() const {
+			auto arr = to_array(*this);
+			float result = 0.0f;
+			for (auto f : arr) {
+				result += f;
+			}
+			return result;
 		}
 
 		CR_INLINE float4x4 blend(float4x4 a, float4x4 b) const {

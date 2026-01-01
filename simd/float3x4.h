@@ -2,6 +2,8 @@
 
 #include <tepp/integers.h>
 
+#include <array>
+
 #ifdef ARCH_x86_64
 #include <bit>
 #include <immintrin.h>
@@ -118,6 +120,7 @@ namespace cr::simd
 {
 	struct float3x4 : ::detail::CRTP_ARM_simd<float3x4>
 	{
+		using scalar_type = float;
 		static constexpr integer_t size = 12;
 
 		float32x4_t f1;

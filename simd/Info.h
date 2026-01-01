@@ -57,3 +57,9 @@ namespace cr
 #define CR_ALIGN_UNIT alignas(cr::align_unit_size)
 #define CR_ALIGN_CACHE_LINE alignas(CR_CACHE_LINE)
 #endif
+
+namespace cr
+{
+	float* allocate_aligned(integer_t alignment, integer_t size);
+	void free_aligned(void* data);
+}
