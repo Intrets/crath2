@@ -202,6 +202,11 @@ namespace cr::simd
 			};
 		}
 
+		CR_INLINE float2x4& operator/=(float2x4 a) {
+			(*this) = (*this) / a;
+            return *this;
+		}
+
 		CR_INLINE float2x4 operator/(float2x4 a) const {
 			float32x4_t reciprocal = vrecpeq_f32(a.f1);
 			float32x4_t reciprocal2 = vrecpeq_f32(a.f2);
@@ -260,7 +265,10 @@ namespace cr::simd
 		DEFINE_SIGN(float)
 		DEFINE0S(abs)
 
+		int2x4 convertInt() const;
 		int2x4 bitCastInt() const;
+		float2x4 convertDouble() const;
+		float2x4 convertFloat() const;
 	};
 }
 

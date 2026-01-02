@@ -30,5 +30,19 @@ namespace cr::simd
 		    vreinterpretq_s32_f32(this->f1)
 		);
 	}
+
+	int1x4 float1x4::convertInt() const {
+		return int1x4(
+		    vcvtq_s32_f32(this->f1)
+		);
+	}
+
+	float1x4 float1x4::convertDouble() const {
+		return *this;
+	}
+
+	float1x4 float1x4::convertFloat() const {
+		return *this;
+	}
 #endif
 }

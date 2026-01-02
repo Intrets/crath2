@@ -2,6 +2,8 @@
 
 #include <tepp/integers.h>
 
+#include "crath/simd/aligned_load_hint.h"
+
 #include <array>
 
 #ifdef ARCH_x86_64
@@ -9,7 +11,6 @@
 #include <immintrin.h>
 
 #include "crath/ParameterTyping.h"
-#include "crath/simd/aligned_load_hint.h"
 #include "crath/simd/simd_definitions.h"
 
 #define ACCESSOR(I) i##I
@@ -97,6 +98,7 @@ namespace cr::simd
 
 	struct int1x4
 	{
+		using scalar_type = int32_t;
 		static constexpr integer_t size = 4;
 
 		int32x4_t i1;
@@ -109,8 +111,16 @@ namespace cr::simd
 		    : i1(i1_) {
 		}
 
+		CR_INLINE int1x4(int32_t const* ptr, aligned_hint_t)
+		    : i1(vld1q_s32(ptr)) {
+		}
+
+		CR_INLINE int1x4(int32_t const* ptr)
+		    : i1(vld1q_s32(ptr)) {
+		}
+
 	private:
-		CR_INLINE int32x4_t helperLoad(int32_t i0, int32_t i1, int32_t i2, int32_t i3) {
+		static CR_INLINE int32x4_t helperLoad(int32_t i0, int32_t i1, int32_t i2, int32_t i3) {
 			std::array<int32_t, 4> a{ i0, i1, i2, i3 };
 			return vld1q_s32(a.data());
 		}
@@ -130,6 +140,12 @@ namespace cr::simd
 			};
 		}
 
+        CR_INLINE int1x4 operator-(in_t(int1x4) a) const {
+            return {
+                    vsubq_s32(this->i1, a.i1),
+            };
+        }
+
 		CR_INLINE int1x4 operator*(in_t(int1x4) a) const {
 			return {
 				vmulq_s32(this->i1, a.i1)
@@ -144,6 +160,20 @@ namespace cr::simd
 
 		CR_INLINE int1x4 operator>>(int a) const {
 			return (*this) << int1x4(-a);
+		}
+
+		CR_INLINE int1x4 clamp(in_t(int1x4) a, in_t(int1x4) b) const {
+			return {
+				vminq_s32(vmaxq_s32(this->i1, a.i1), b.i1),
+			};
+		}
+
+		CR_INLINE void write(int32_t& s) const {
+			vst1q_s32(&s, this->i1);
+		}
+
+		CR_INLINE void write(int32_t& s, aligned_hint_t) const {
+			vst1q_s32(&s, this->i1);
 		}
 
 		float1x4 bitCastFloat() const;
