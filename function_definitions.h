@@ -10,7 +10,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_ec_T1_0<float>(x);
@@ -30,7 +30,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_ec_T1_1<float>(x);
@@ -46,7 +46,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float sin_quart_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_ec_T1_1<float>(x);
@@ -64,7 +64,7 @@ auto const a0 = math::fma(a1, x, F(0.10525683117650933f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_T1_0<float>(x);
@@ -84,7 +84,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_T1_1<float>(x);
@@ -100,7 +100,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float sin_quart_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_T1_1<float>(x);
@@ -118,7 +118,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_ec_T1_0<float>(x);
@@ -138,7 +138,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_ec_T1_1<float>(x);
@@ -154,7 +154,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float sin_quart_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_ec_T1_1<float>(x);
@@ -172,7 +172,7 @@ auto const a0 = a1 * x + F(0.10525683117650933f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_T1_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_T1_0<float>(x);
@@ -192,7 +192,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_T1_1<float>(x);
@@ -208,7 +208,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float sin_quart_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_T1_1<float>(x);
@@ -227,7 +227,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_ec_T2_0<float>(x);
@@ -249,7 +249,7 @@ auto const b0 = math::fma(b1, x, F(0.9488135790443456f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_ec_T2_2<float>(x);
@@ -268,7 +268,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_quart_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_ec_T2_2<float>(x);
@@ -287,7 +287,7 @@ auto const a0 = math::fma(a1, x, F(-0.013864950803149768f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_T2_0<float>(x);
@@ -309,7 +309,7 @@ auto const b0 = math::fma(b1, x, F(0.9488135790443456f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_T2_2<float>(x);
@@ -328,7 +328,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_quart_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_T2_2<float>(x);
@@ -347,7 +347,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_ec_T2_0<float>(x);
@@ -369,7 +369,7 @@ auto const b0 = b1 * x + F(0.9488135790443456f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_ec_T2_2<float>(x);
@@ -388,7 +388,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_quart_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_ec_T2_2<float>(x);
@@ -407,7 +407,7 @@ auto const a0 = a1 * x + F(-0.013864950803149768f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_T2_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_T2_0<float>(x);
@@ -429,7 +429,7 @@ auto const b0 = b1 * x + F(0.9488135790443456f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_T2_2<float>(x);
@@ -448,7 +448,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_quart_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_T2_2<float>(x);
@@ -468,7 +468,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_ec_T3_0<float>(x);
@@ -492,7 +492,7 @@ auto const b0 = math::fma(b1, x, F(0.9882716364998942f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_ec_T3_3<float>(x);
@@ -512,7 +512,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_ec_T3_3<float>(x);
@@ -532,7 +532,7 @@ auto const a0 = math::fma(a1, x, F(-0.0013670794478662879f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_T3_0<float>(x);
@@ -556,7 +556,7 @@ auto const b0 = math::fma(b1, x, F(0.9882716364998942f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_T3_3<float>(x);
@@ -576,7 +576,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_T3_3<float>(x);
@@ -596,7 +596,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_ec_T3_0<float>(x);
@@ -620,7 +620,7 @@ auto const b0 = b1 * x + F(0.9882716364998942f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_ec_T3_3<float>(x);
@@ -640,7 +640,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_ec_T3_3<float>(x);
@@ -660,7 +660,7 @@ auto const a0 = a1 * x + F(-0.0013670794478662879f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_T3_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_T3_0<float>(x);
@@ -684,7 +684,7 @@ auto const b0 = b1 * x + F(0.9882716364998942f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_T3_3<float>(x);
@@ -704,7 +704,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_T3_3<float>(x);
@@ -725,7 +725,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_ec_T4_0<float>(x);
@@ -751,7 +751,7 @@ auto const b0 = math::fma(b1, x, F(0.9720262076080863f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_ec_T4_4<float>(x);
@@ -772,7 +772,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_quart_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_ec_T4_4<float>(x);
@@ -793,7 +793,7 @@ auto const a0 = math::fma(a1, x, F(0.00010772377991722864f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_T4_0<float>(x);
@@ -819,7 +819,7 @@ auto const b0 = math::fma(b1, x, F(0.9720262076080863f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_T4_4<float>(x);
@@ -840,7 +840,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_quart_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_T4_4<float>(x);
@@ -861,7 +861,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_ec_T4_0<float>(x);
@@ -887,7 +887,7 @@ auto const b0 = b1 * x + F(0.9720262076080863f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_ec_T4_4<float>(x);
@@ -908,7 +908,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_quart_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_ec_T4_4<float>(x);
@@ -929,7 +929,7 @@ auto const a0 = a1 * x + F(0.00010772377991722864f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_T4_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_T4_0<float>(x);
@@ -955,7 +955,7 @@ auto const b0 = b1 * x + F(0.9720262076080863f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_T4_4<float>(x);
@@ -976,7 +976,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_quart_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_T4_4<float>(x);
@@ -998,7 +998,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_ec_T5_0<float>(x);
@@ -1026,7 +1026,7 @@ auto const b0 = math::fma(b1, x, F(0.9866877027456089f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_ec_T5_5<float>(x);
@@ -1048,7 +1048,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_ec_T5_5<float>(x);
@@ -1070,7 +1070,7 @@ auto const a0 = math::fma(a1, x, F(7.068518675477414e-06f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_T5_0<float>(x);
@@ -1098,7 +1098,7 @@ auto const b0 = math::fma(b1, x, F(0.9866877027456089f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_T5_5<float>(x);
@@ -1120,7 +1120,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_T5_5<float>(x);
@@ -1142,7 +1142,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_ec_T5_0<float>(x);
@@ -1170,7 +1170,7 @@ auto const b0 = b1 * x + F(0.9866877027456089f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_ec_T5_5<float>(x);
@@ -1192,7 +1192,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_ec_T5_5<float>(x);
@@ -1214,7 +1214,7 @@ auto const a0 = a1 * x + F(7.068518675477414e-06f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_T5_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_T5_0<float>(x);
@@ -1242,7 +1242,7 @@ auto const b0 = b1 * x + F(0.9866877027456089f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_T5_5<float>(x);
@@ -1264,7 +1264,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_T5_5<float>(x);
@@ -1287,7 +1287,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_ec_T6_0<float>(x);
@@ -1317,7 +1317,7 @@ auto const b0 = math::fma(b1, x, F(0.9824901994906282f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_ec_T6_6<float>(x);
@@ -1340,7 +1340,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_quart_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_ec_T6_6<float>(x);
@@ -1363,7 +1363,7 @@ auto const a0 = math::fma(a1, x, F(-3.973469730908651e-07f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_T6_0<float>(x);
@@ -1393,7 +1393,7 @@ auto const b0 = math::fma(b1, x, F(0.9824901994906282f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_T6_6<float>(x);
@@ -1416,7 +1416,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_quart_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_T6_6<float>(x);
@@ -1439,7 +1439,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_ec_T6_0<float>(x);
@@ -1469,7 +1469,7 @@ auto const b0 = b1 * x + F(0.9824901994906282f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_ec_T6_6<float>(x);
@@ -1492,7 +1492,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_quart_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_ec_T6_6<float>(x);
@@ -1515,7 +1515,7 @@ auto const a0 = a1 * x + F(-3.973469730908651e-07f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_T6_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_T6_0<float>(x);
@@ -1545,7 +1545,7 @@ auto const b0 = b1 * x + F(0.9824901994906282f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_T6_6<float>(x);
@@ -1568,7 +1568,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_quart_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_T6_6<float>(x);
@@ -1592,7 +1592,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_ec_T7_0<float>(x);
@@ -1624,7 +1624,7 @@ auto const b0 = math::fma(b1, x, F(0.9892711432539792f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_ec_T7_7<float>(x);
@@ -1648,7 +1648,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_ec_T7_7<float>(x);
@@ -1672,7 +1672,7 @@ auto const a0 = math::fma(a1, x, F(-1.9536773145598126e-08f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_T7_0<float>(x);
@@ -1704,7 +1704,7 @@ auto const b0 = math::fma(b1, x, F(0.9892711432539792f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_T7_7<float>(x);
@@ -1728,7 +1728,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_T7_7<float>(x);
@@ -1752,7 +1752,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_ec_T7_0<float>(x);
@@ -1784,7 +1784,7 @@ auto const b0 = b1 * x + F(0.9892711432539792f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_ec_T7_7<float>(x);
@@ -1808,7 +1808,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_ec_T7_7<float>(x);
@@ -1832,7 +1832,7 @@ auto const a0 = a1 * x + F(-1.9536773145598126e-08f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_T7_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_T7_0<float>(x);
@@ -1864,7 +1864,7 @@ auto const b0 = b1 * x + F(0.9892711432539792f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_T7_7<float>(x);
@@ -1888,7 +1888,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_T7_7<float>(x);
@@ -1913,7 +1913,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_ec_T8_0<float>(x);
@@ -1947,7 +1947,7 @@ auto const b0 = math::fma(b1, x, F(0.9873702136034265f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_ec_T8_8<float>(x);
@@ -1972,7 +1972,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_quart_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_ec_T8_8<float>(x);
@@ -1997,7 +1997,7 @@ auto const a0 = math::fma(a1, x, F(8.536074624176623e-10f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_T8_0<float>(x);
@@ -2031,7 +2031,7 @@ auto const b0 = math::fma(b1, x, F(0.9873702136034265f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_T8_8<float>(x);
@@ -2056,7 +2056,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_quart_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_T8_8<float>(x);
@@ -2081,7 +2081,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_ec_T8_0<float>(x);
@@ -2115,7 +2115,7 @@ auto const b0 = b1 * x + F(0.9873702136034265f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_ec_T8_8<float>(x);
@@ -2140,7 +2140,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_quart_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_ec_T8_8<float>(x);
@@ -2165,7 +2165,7 @@ auto const a0 = a1 * x + F(8.536074624176623e-10f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_T8_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_T8_0<float>(x);
@@ -2199,7 +2199,7 @@ auto const b0 = b1 * x + F(0.9873702136034265f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_T8_8<float>(x);
@@ -2224,7 +2224,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_quart_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_T8_8<float>(x);
@@ -2250,7 +2250,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_ec_T9_0<float>(x);
@@ -2286,7 +2286,7 @@ auto const b0 = math::fma(b1, x, F(0.9912225472762294f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_ec_T9_9<float>(x);
@@ -2312,7 +2312,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_ec_T9_9<float>(x);
@@ -2338,7 +2338,7 @@ auto const a0 = math::fma(a1, x, F(3.3536408399804717e-11f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_fma_T9_0<float>(x);
@@ -2374,7 +2374,7 @@ auto const b0 = math::fma(b1, x, F(0.9912225472762294f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_fma_T9_9<float>(x);
@@ -2400,7 +2400,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_fma_T9_9<float>(x);
@@ -2426,7 +2426,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_ec_T9_0<float>(x);
@@ -2462,7 +2462,7 @@ auto const b0 = b1 * x + F(0.9912225472762294f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_ec_T9_9<float>(x);
@@ -2488,7 +2488,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_ec_T9_9<float>(x);
@@ -2514,7 +2514,7 @@ auto const a0 = a1 * x + F(3.3536408399804717e-11f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_remez_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_T9_0<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_T9_0<float>(x);
@@ -2550,7 +2550,7 @@ auto const b0 = b1 * x + F(0.9912225472762294f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_remez_pade_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_remez_pade_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_remez_pade_T9_9<float>(x);
@@ -2576,7 +2576,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_quart_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_quart_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_quart_T9_9<float>(x);
@@ -2683,7 +2683,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000281925814f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_ec_T1_0<float>(x);
@@ -2702,7 +2702,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_ec_T1_1<float>(x);
@@ -2719,7 +2719,7 @@ auto const a0 = math::fma(a1, x, F(1.0000682247474393f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_T1_0<float>(x);
@@ -2738,7 +2738,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_T1_1<float>(x);
@@ -2755,7 +2755,7 @@ auto const a0 = a1 * x + F(1.0000000281925814f);
 return a0;
 }
 inline static float slepian15_remez_abs_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_ec_T1_0<float>(x);
@@ -2774,7 +2774,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_ec_T1_1<float>(x);
@@ -2791,7 +2791,7 @@ auto const a0 = a1 * x + F(1.0000682247474393f);
 return a0;
 }
 inline static float slepian15_remez_abs_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_T1_0<float>(x);
@@ -2810,7 +2810,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_T1_1<float>(x);
@@ -2917,7 +2917,7 @@ auto const a0 = math::fma(a1, x, F(1.000000064840385f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_ec_T1_0<float>(x);
@@ -2936,7 +2936,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_ec_T1_1<float>(x);
@@ -2953,7 +2953,7 @@ auto const a0 = math::fma(a1, x, F(0.9999132464673243f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_T1_0<float>(x);
@@ -2972,7 +2972,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_T1_1<float>(x);
@@ -2989,7 +2989,7 @@ auto const a0 = a1 * x + F(1.000000064840385f);
 return a0;
 }
 inline static float slepian25_remez_abs_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_ec_T1_0<float>(x);
@@ -3008,7 +3008,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_ec_T1_1<float>(x);
@@ -3025,7 +3025,7 @@ auto const a0 = a1 * x + F(0.9999132464673243f);
 return a0;
 }
 inline static float slepian25_remez_abs_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_T1_0<float>(x);
@@ -3044,7 +3044,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_T1_1<float>(x);
@@ -3151,7 +3151,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001008167627f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_ec_T1_0<float>(x);
@@ -3170,7 +3170,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_ec_T1_1<float>(x);
@@ -3187,7 +3187,7 @@ auto const a0 = math::fma(a1, x, F(0.9996726615829937f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_T1_0<float>(x);
@@ -3206,7 +3206,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_T1_1<float>(x);
@@ -3223,7 +3223,7 @@ auto const a0 = a1 * x + F(1.0000001008167627f);
 return a0;
 }
 inline static float slepian35_remez_abs_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_ec_T1_0<float>(x);
@@ -3242,7 +3242,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_ec_T1_1<float>(x);
@@ -3259,7 +3259,7 @@ auto const a0 = a1 * x + F(0.9996726615829937f);
 return a0;
 }
 inline static float slepian35_remez_abs_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_T1_0<float>(x);
@@ -3278,7 +3278,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_T1_1<float>(x);
@@ -3385,7 +3385,7 @@ auto const a0 = math::fma(a1, x, F(1.000000136641168f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_ec_T1_0<float>(x);
@@ -3404,7 +3404,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_ec_T1_1<float>(x);
@@ -3421,7 +3421,7 @@ auto const a0 = math::fma(a1, x, F(0.999594383124543f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_T1_0<float>(x);
@@ -3440,7 +3440,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_T1_1<float>(x);
@@ -3457,7 +3457,7 @@ auto const a0 = a1 * x + F(1.000000136641168f);
 return a0;
 }
 inline static float slepian45_remez_abs_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_ec_T1_0<float>(x);
@@ -3476,7 +3476,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_ec_T1_1<float>(x);
@@ -3493,7 +3493,7 @@ auto const a0 = a1 * x + F(0.999594383124543f);
 return a0;
 }
 inline static float slepian45_remez_abs_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_T1_0<float>(x);
@@ -3512,7 +3512,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_T1_1<float>(x);
@@ -3619,7 +3619,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001724056327f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_ec_T1_0<float>(x);
@@ -3638,7 +3638,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_ec_T1_1<float>(x);
@@ -3655,7 +3655,7 @@ auto const a0 = math::fma(a1, x, F(0.999543839416748f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_T1_0<float>(x);
@@ -3674,7 +3674,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_T1_1<float>(x);
@@ -3691,7 +3691,7 @@ auto const a0 = a1 * x + F(1.0000001724056327f);
 return a0;
 }
 inline static float slepian55_remez_abs_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_ec_T1_0<float>(x);
@@ -3710,7 +3710,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_ec_T1_1<float>(x);
@@ -3727,7 +3727,7 @@ auto const a0 = a1 * x + F(0.999543839416748f);
 return a0;
 }
 inline static float slepian55_remez_abs_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_T1_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_T1_0<float>(x);
@@ -3746,7 +3746,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_T1_1<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_T1_1<float>(x);
@@ -3763,7 +3763,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_ec_T1_0<float>(x);
@@ -3782,7 +3782,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_ec_T1_1<float>(x);
@@ -3799,7 +3799,7 @@ auto const a0 = math::fma(a1, x, F(0.8483232791020408f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_T1_0<float>(x);
@@ -3818,7 +3818,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_T1_1<float>(x);
@@ -3835,7 +3835,7 @@ auto const a0 = a1 * x + F(1.0f);
 return a0;
 }
 inline static float nuttall_remez_abs_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_ec_T1_0<float>(x);
@@ -3854,7 +3854,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_ec_T1_1<float>(x);
@@ -3871,7 +3871,7 @@ auto const a0 = a1 * x + F(0.8483232791020408f);
 return a0;
 }
 inline static float nuttall_remez_abs_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_T1_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_T1_0<float>(x);
@@ -3890,7 +3890,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_T1_1<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_T1_1<float>(x);
@@ -3908,7 +3908,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000281925814f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_ec_T2_0<float>(x);
@@ -3929,7 +3929,7 @@ auto const b0 = math::fma(b1, x, F(0.666666656138664f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_ec_T2_2<float>(x);
@@ -3947,7 +3947,7 @@ auto const a0 = math::fma(a1, x, F(1.0000685767351123f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_T2_0<float>(x);
@@ -3968,7 +3968,7 @@ auto const b0 = math::fma(b1, x, F(0.666666656138664f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_T2_2<float>(x);
@@ -3986,7 +3986,7 @@ auto const a0 = a1 * x + F(1.0000000281925814f);
 return a0;
 }
 inline static float slepian15_remez_abs_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_ec_T2_0<float>(x);
@@ -4007,7 +4007,7 @@ auto const b0 = b1 * x + F(0.666666656138664f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_ec_T2_2<float>(x);
@@ -4025,7 +4025,7 @@ auto const a0 = a1 * x + F(1.0000685767351123f);
 return a0;
 }
 inline static float slepian15_remez_abs_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_T2_0<float>(x);
@@ -4046,7 +4046,7 @@ auto const b0 = b1 * x + F(0.666666656138664f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_T2_2<float>(x);
@@ -4064,7 +4064,7 @@ auto const a0 = math::fma(a1, x, F(1.000000064840385f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_ec_T2_0<float>(x);
@@ -4085,7 +4085,7 @@ auto const b0 = math::fma(b1, x, F(0.24464286061865853f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_ec_T2_2<float>(x);
@@ -4103,7 +4103,7 @@ auto const a0 = math::fma(a1, x, F(1.0000794422570582f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_T2_0<float>(x);
@@ -4124,7 +4124,7 @@ auto const b0 = math::fma(b1, x, F(0.24464286061865853f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_T2_2<float>(x);
@@ -4142,7 +4142,7 @@ auto const a0 = a1 * x + F(1.000000064840385f);
 return a0;
 }
 inline static float slepian25_remez_abs_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_ec_T2_0<float>(x);
@@ -4163,7 +4163,7 @@ auto const b0 = b1 * x + F(0.24464286061865853f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_ec_T2_2<float>(x);
@@ -4181,7 +4181,7 @@ auto const a0 = a1 * x + F(1.0000794422570582f);
 return a0;
 }
 inline static float slepian25_remez_abs_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_T2_0<float>(x);
@@ -4202,7 +4202,7 @@ auto const b0 = b1 * x + F(0.24464286061865853f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_T2_2<float>(x);
@@ -4220,7 +4220,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001008167627f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_ec_T2_0<float>(x);
@@ -4241,7 +4241,7 @@ auto const b0 = math::fma(b1, x, F(0.34730793800603954f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_ec_T2_2<float>(x);
@@ -4259,7 +4259,7 @@ auto const a0 = math::fma(a1, x, F(1.0000527284173026f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_T2_0<float>(x);
@@ -4280,7 +4280,7 @@ auto const b0 = math::fma(b1, x, F(0.34730793800603954f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_T2_2<float>(x);
@@ -4298,7 +4298,7 @@ auto const a0 = a1 * x + F(1.0000001008167627f);
 return a0;
 }
 inline static float slepian35_remez_abs_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_ec_T2_0<float>(x);
@@ -4319,7 +4319,7 @@ auto const b0 = b1 * x + F(0.34730793800603954f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_ec_T2_2<float>(x);
@@ -4337,7 +4337,7 @@ auto const a0 = a1 * x + F(1.0000527284173026f);
 return a0;
 }
 inline static float slepian35_remez_abs_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_T2_0<float>(x);
@@ -4358,7 +4358,7 @@ auto const b0 = b1 * x + F(0.34730793800603954f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_T2_2<float>(x);
@@ -4376,7 +4376,7 @@ auto const a0 = math::fma(a1, x, F(1.000000136641168f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_ec_T2_0<float>(x);
@@ -4397,7 +4397,7 @@ auto const b0 = math::fma(b1, x, F(0.2458143852467264f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_ec_T2_2<float>(x);
@@ -4415,7 +4415,7 @@ auto const a0 = math::fma(a1, x, F(1.0000070073843723f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_T2_0<float>(x);
@@ -4436,7 +4436,7 @@ auto const b0 = math::fma(b1, x, F(0.2458143852467264f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_T2_2<float>(x);
@@ -4454,7 +4454,7 @@ auto const a0 = a1 * x + F(1.000000136641168f);
 return a0;
 }
 inline static float slepian45_remez_abs_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_ec_T2_0<float>(x);
@@ -4475,7 +4475,7 @@ auto const b0 = b1 * x + F(0.2458143852467264f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_ec_T2_2<float>(x);
@@ -4493,7 +4493,7 @@ auto const a0 = a1 * x + F(1.0000070073843723f);
 return a0;
 }
 inline static float slepian45_remez_abs_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_T2_0<float>(x);
@@ -4514,7 +4514,7 @@ auto const b0 = b1 * x + F(0.2458143852467264f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_T2_2<float>(x);
@@ -4532,7 +4532,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001724056327f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_ec_T2_0<float>(x);
@@ -4553,7 +4553,7 @@ auto const b0 = math::fma(b1, x, F(0.19239991425502453f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_ec_T2_2<float>(x);
@@ -4571,7 +4571,7 @@ auto const a0 = math::fma(a1, x, F(1.0000010638478214f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_T2_0<float>(x);
@@ -4592,7 +4592,7 @@ auto const b0 = math::fma(b1, x, F(0.19239991425502453f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_T2_2<float>(x);
@@ -4610,7 +4610,7 @@ auto const a0 = a1 * x + F(1.0000001724056327f);
 return a0;
 }
 inline static float slepian55_remez_abs_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_ec_T2_0<float>(x);
@@ -4631,7 +4631,7 @@ auto const b0 = b1 * x + F(0.19239991425502453f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_ec_T2_2<float>(x);
@@ -4649,7 +4649,7 @@ auto const a0 = a1 * x + F(1.0000010638478214f);
 return a0;
 }
 inline static float slepian55_remez_abs_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_T2_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_T2_0<float>(x);
@@ -4670,7 +4670,7 @@ auto const b0 = b1 * x + F(0.19239991425502453f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_T2_2<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_T2_2<float>(x);
@@ -4688,7 +4688,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_ec_T2_0<float>(x);
@@ -4709,7 +4709,7 @@ auto const b0 = math::fma(b1, x, F(0.33642886660552135f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_ec_T2_2<float>(x);
@@ -4727,7 +4727,7 @@ auto const a0 = math::fma(a1, x, F(1.0816598337976886f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_T2_0<float>(x);
@@ -4748,7 +4748,7 @@ auto const b0 = math::fma(b1, x, F(0.33642886660552135f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_T2_2<float>(x);
@@ -4766,7 +4766,7 @@ auto const a0 = a1 * x + F(1.0f);
 return a0;
 }
 inline static float nuttall_remez_abs_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_ec_T2_0<float>(x);
@@ -4787,7 +4787,7 @@ auto const b0 = b1 * x + F(0.33642886660552135f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_ec_T2_2<float>(x);
@@ -4805,7 +4805,7 @@ auto const a0 = a1 * x + F(1.0816598337976886f);
 return a0;
 }
 inline static float nuttall_remez_abs_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_T2_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_T2_0<float>(x);
@@ -4826,7 +4826,7 @@ auto const b0 = b1 * x + F(0.33642886660552135f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_T2_2<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_T2_2<float>(x);
@@ -4845,7 +4845,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000281925814f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_ec_T3_0<float>(x);
@@ -4868,7 +4868,7 @@ auto const b0 = math::fma(b1, x, F(0.7571345335045385f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_ec_T3_3<float>(x);
@@ -4887,7 +4887,7 @@ auto const a0 = math::fma(a1, x, F(1.0000037968164326f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_T3_0<float>(x);
@@ -4910,7 +4910,7 @@ auto const b0 = math::fma(b1, x, F(0.7571345335045385f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_T3_3<float>(x);
@@ -4929,7 +4929,7 @@ auto const a0 = a1 * x + F(1.0000000281925814f);
 return a0;
 }
 inline static float slepian15_remez_abs_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_ec_T3_0<float>(x);
@@ -4952,7 +4952,7 @@ auto const b0 = b1 * x + F(0.7571345335045385f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_ec_T3_3<float>(x);
@@ -4971,7 +4971,7 @@ auto const a0 = a1 * x + F(1.0000037968164326f);
 return a0;
 }
 inline static float slepian15_remez_abs_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_T3_0<float>(x);
@@ -4994,7 +4994,7 @@ auto const b0 = b1 * x + F(0.7571345335045385f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_T3_3<float>(x);
@@ -5013,7 +5013,7 @@ auto const a0 = math::fma(a1, x, F(1.000000064840385f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_ec_T3_0<float>(x);
@@ -5036,7 +5036,7 @@ auto const b0 = math::fma(b1, x, F(0.008707744934347896f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_ec_T3_3<float>(x);
@@ -5055,7 +5055,7 @@ auto const a0 = math::fma(a1, x, F(1.0001278177775994f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_T3_0<float>(x);
@@ -5078,7 +5078,7 @@ auto const b0 = math::fma(b1, x, F(0.008707744934347896f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_T3_3<float>(x);
@@ -5097,7 +5097,7 @@ auto const a0 = a1 * x + F(1.000000064840385f);
 return a0;
 }
 inline static float slepian25_remez_abs_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_ec_T3_0<float>(x);
@@ -5120,7 +5120,7 @@ auto const b0 = b1 * x + F(0.008707744934347896f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_ec_T3_3<float>(x);
@@ -5139,7 +5139,7 @@ auto const a0 = a1 * x + F(1.0001278177775994f);
 return a0;
 }
 inline static float slepian25_remez_abs_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_T3_0<float>(x);
@@ -5162,7 +5162,7 @@ auto const b0 = b1 * x + F(0.008707744934347896f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_T3_3<float>(x);
@@ -5181,7 +5181,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001008167627f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_ec_T3_0<float>(x);
@@ -5204,7 +5204,7 @@ auto const b0 = math::fma(b1, x, F(0.22645011119200725f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_ec_T3_3<float>(x);
@@ -5223,7 +5223,7 @@ auto const a0 = math::fma(a1, x, F(1.0007512226995172f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_T3_0<float>(x);
@@ -5246,7 +5246,7 @@ auto const b0 = math::fma(b1, x, F(0.22645011119200725f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_T3_3<float>(x);
@@ -5265,7 +5265,7 @@ auto const a0 = a1 * x + F(1.0000001008167627f);
 return a0;
 }
 inline static float slepian35_remez_abs_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_ec_T3_0<float>(x);
@@ -5288,7 +5288,7 @@ auto const b0 = b1 * x + F(0.22645011119200725f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_ec_T3_3<float>(x);
@@ -5307,7 +5307,7 @@ auto const a0 = a1 * x + F(1.0007512226995172f);
 return a0;
 }
 inline static float slepian35_remez_abs_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_T3_0<float>(x);
@@ -5330,7 +5330,7 @@ auto const b0 = b1 * x + F(0.22645011119200725f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_T3_3<float>(x);
@@ -5349,7 +5349,7 @@ auto const a0 = math::fma(a1, x, F(1.000000136641168f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_ec_T3_0<float>(x);
@@ -5372,7 +5372,7 @@ auto const b0 = math::fma(b1, x, F(0.20044967772423203f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_ec_T3_3<float>(x);
@@ -5391,7 +5391,7 @@ auto const a0 = math::fma(a1, x, F(1.0010825145828934f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_T3_0<float>(x);
@@ -5414,7 +5414,7 @@ auto const b0 = math::fma(b1, x, F(0.20044967772423203f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_T3_3<float>(x);
@@ -5433,7 +5433,7 @@ auto const a0 = a1 * x + F(1.000000136641168f);
 return a0;
 }
 inline static float slepian45_remez_abs_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_ec_T3_0<float>(x);
@@ -5456,7 +5456,7 @@ auto const b0 = b1 * x + F(0.20044967772423203f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_ec_T3_3<float>(x);
@@ -5475,7 +5475,7 @@ auto const a0 = a1 * x + F(1.0010825145828934f);
 return a0;
 }
 inline static float slepian45_remez_abs_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_T3_0<float>(x);
@@ -5498,7 +5498,7 @@ auto const b0 = b1 * x + F(0.20044967772423203f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_T3_3<float>(x);
@@ -5517,7 +5517,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001724056327f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_ec_T3_0<float>(x);
@@ -5540,7 +5540,7 @@ auto const b0 = math::fma(b1, x, F(-0.27008507526522985f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_ec_T3_3<float>(x);
@@ -5559,7 +5559,7 @@ auto const a0 = math::fma(a1, x, F(1.000735752665476f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_T3_0<float>(x);
@@ -5582,7 +5582,7 @@ auto const b0 = math::fma(b1, x, F(-0.27008507526522985f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_T3_3<float>(x);
@@ -5601,7 +5601,7 @@ auto const a0 = a1 * x + F(1.0000001724056327f);
 return a0;
 }
 inline static float slepian55_remez_abs_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_ec_T3_0<float>(x);
@@ -5624,7 +5624,7 @@ auto const b0 = b1 * x + F(-0.27008507526522985f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_ec_T3_3<float>(x);
@@ -5643,7 +5643,7 @@ auto const a0 = a1 * x + F(1.000735752665476f);
 return a0;
 }
 inline static float slepian55_remez_abs_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_T3_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_T3_0<float>(x);
@@ -5666,7 +5666,7 @@ auto const b0 = b1 * x + F(-0.27008507526522985f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_T3_3<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_T3_3<float>(x);
@@ -5685,7 +5685,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_ec_T3_0<float>(x);
@@ -5708,7 +5708,7 @@ auto const b0 = math::fma(b1, x, F(0.19122034538529678f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_ec_T3_3<float>(x);
@@ -5727,7 +5727,7 @@ auto const a0 = math::fma(a1, x, F(1.044355452544879f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_T3_0<float>(x);
@@ -5750,7 +5750,7 @@ auto const b0 = math::fma(b1, x, F(0.19122034538529678f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_T3_3<float>(x);
@@ -5769,7 +5769,7 @@ auto const a0 = a1 * x + F(1.0f);
 return a0;
 }
 inline static float nuttall_remez_abs_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_ec_T3_0<float>(x);
@@ -5792,7 +5792,7 @@ auto const b0 = b1 * x + F(0.19122034538529678f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_ec_T3_3<float>(x);
@@ -5811,7 +5811,7 @@ auto const a0 = a1 * x + F(1.044355452544879f);
 return a0;
 }
 inline static float nuttall_remez_abs_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_T3_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_T3_0<float>(x);
@@ -5834,7 +5834,7 @@ auto const b0 = b1 * x + F(0.19122034538529678f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_T3_3<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_T3_3<float>(x);
@@ -5854,7 +5854,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000281925814f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_ec_T4_0<float>(x);
@@ -5879,7 +5879,7 @@ auto const b0 = math::fma(b1, x, F(0.5021501620794556f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_ec_T4_4<float>(x);
@@ -5899,7 +5899,7 @@ auto const a0 = math::fma(a1, x, F(0.9999848931924777f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_T4_0<float>(x);
@@ -5924,7 +5924,7 @@ auto const b0 = math::fma(b1, x, F(0.5021501620794556f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_T4_4<float>(x);
@@ -5944,7 +5944,7 @@ auto const a0 = a1 * x + F(1.0000000281925814f);
 return a0;
 }
 inline static float slepian15_remez_abs_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_ec_T4_0<float>(x);
@@ -5969,7 +5969,7 @@ auto const b0 = b1 * x + F(0.5021501620794556f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_ec_T4_4<float>(x);
@@ -5989,7 +5989,7 @@ auto const a0 = a1 * x + F(0.9999848931924777f);
 return a0;
 }
 inline static float slepian15_remez_abs_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_T4_0<float>(x);
@@ -6014,7 +6014,7 @@ auto const b0 = b1 * x + F(0.5021501620794556f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_T4_4<float>(x);
@@ -6034,7 +6034,7 @@ auto const a0 = math::fma(a1, x, F(1.000000064840385f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_ec_T4_0<float>(x);
@@ -6059,7 +6059,7 @@ auto const b0 = math::fma(b1, x, F(0.4375198470205978f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_ec_T4_4<float>(x);
@@ -6079,7 +6079,7 @@ auto const a0 = math::fma(a1, x, F(0.9997161401384127f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_T4_0<float>(x);
@@ -6104,7 +6104,7 @@ auto const b0 = math::fma(b1, x, F(0.4375198470205978f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_T4_4<float>(x);
@@ -6124,7 +6124,7 @@ auto const a0 = a1 * x + F(1.000000064840385f);
 return a0;
 }
 inline static float slepian25_remez_abs_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_ec_T4_0<float>(x);
@@ -6149,7 +6149,7 @@ auto const b0 = b1 * x + F(0.4375198470205978f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_ec_T4_4<float>(x);
@@ -6169,7 +6169,7 @@ auto const a0 = a1 * x + F(0.9997161401384127f);
 return a0;
 }
 inline static float slepian25_remez_abs_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_T4_0<float>(x);
@@ -6194,7 +6194,7 @@ auto const b0 = b1 * x + F(0.4375198470205978f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_T4_4<float>(x);
@@ -6214,7 +6214,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001008167627f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_ec_T4_0<float>(x);
@@ -6239,7 +6239,7 @@ auto const b0 = math::fma(b1, x, F(-3.7237617591950106e-08f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_ec_T4_4<float>(x);
@@ -6259,7 +6259,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001008167627f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_T4_0<float>(x);
@@ -6284,7 +6284,7 @@ auto const b0 = math::fma(b1, x, F(-3.7237617591950106e-08f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_T4_4<float>(x);
@@ -6304,7 +6304,7 @@ auto const a0 = a1 * x + F(1.0000001008167627f);
 return a0;
 }
 inline static float slepian35_remez_abs_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_ec_T4_0<float>(x);
@@ -6329,7 +6329,7 @@ auto const b0 = b1 * x + F(-3.7237617591950106e-08f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_ec_T4_4<float>(x);
@@ -6349,7 +6349,7 @@ auto const a0 = a1 * x + F(1.0000001008167627f);
 return a0;
 }
 inline static float slepian35_remez_abs_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_T4_0<float>(x);
@@ -6374,7 +6374,7 @@ auto const b0 = b1 * x + F(-3.7237617591950106e-08f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_T4_4<float>(x);
@@ -6394,7 +6394,7 @@ auto const a0 = math::fma(a1, x, F(1.000000136641168f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_ec_T4_0<float>(x);
@@ -6419,7 +6419,7 @@ auto const b0 = math::fma(b1, x, F(-0.31248373118736605f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_ec_T4_4<float>(x);
@@ -6439,7 +6439,7 @@ auto const a0 = math::fma(a1, x, F(1.0005603243078032f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_T4_0<float>(x);
@@ -6464,7 +6464,7 @@ auto const b0 = math::fma(b1, x, F(-0.31248373118736605f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_T4_4<float>(x);
@@ -6484,7 +6484,7 @@ auto const a0 = a1 * x + F(1.000000136641168f);
 return a0;
 }
 inline static float slepian45_remez_abs_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_ec_T4_0<float>(x);
@@ -6509,7 +6509,7 @@ auto const b0 = b1 * x + F(-0.31248373118736605f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_ec_T4_4<float>(x);
@@ -6529,7 +6529,7 @@ auto const a0 = a1 * x + F(1.0005603243078032f);
 return a0;
 }
 inline static float slepian45_remez_abs_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_T4_0<float>(x);
@@ -6554,7 +6554,7 @@ auto const b0 = b1 * x + F(-0.31248373118736605f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_T4_4<float>(x);
@@ -6574,7 +6574,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001724056327f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_ec_T4_0<float>(x);
@@ -6599,7 +6599,7 @@ auto const b0 = math::fma(b1, x, F(-4.280151177424213e-05f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_ec_T4_4<float>(x);
@@ -6619,7 +6619,7 @@ auto const a0 = math::fma(a1, x, F(1.0008298769482076f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_T4_0<float>(x);
@@ -6644,7 +6644,7 @@ auto const b0 = math::fma(b1, x, F(-4.280151177424213e-05f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_T4_4<float>(x);
@@ -6664,7 +6664,7 @@ auto const a0 = a1 * x + F(1.0000001724056327f);
 return a0;
 }
 inline static float slepian55_remez_abs_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_ec_T4_0<float>(x);
@@ -6689,7 +6689,7 @@ auto const b0 = b1 * x + F(-4.280151177424213e-05f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_ec_T4_4<float>(x);
@@ -6709,7 +6709,7 @@ auto const a0 = a1 * x + F(1.0008298769482076f);
 return a0;
 }
 inline static float slepian55_remez_abs_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_T4_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_T4_0<float>(x);
@@ -6734,7 +6734,7 @@ auto const b0 = b1 * x + F(-4.280151177424213e-05f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_T4_4<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_T4_4<float>(x);
@@ -6754,7 +6754,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_ec_T4_0<float>(x);
@@ -6779,7 +6779,7 @@ auto const b0 = math::fma(b1, x, F(0.17223726756270388f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_ec_T4_4<float>(x);
@@ -6799,7 +6799,7 @@ auto const a0 = math::fma(a1, x, F(1.0060710830747779f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_T4_0<float>(x);
@@ -6824,7 +6824,7 @@ auto const b0 = math::fma(b1, x, F(0.17223726756270388f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_T4_4<float>(x);
@@ -6844,7 +6844,7 @@ auto const a0 = a1 * x + F(1.0f);
 return a0;
 }
 inline static float nuttall_remez_abs_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_ec_T4_0<float>(x);
@@ -6869,7 +6869,7 @@ auto const b0 = b1 * x + F(0.17223726756270388f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_ec_T4_4<float>(x);
@@ -6889,7 +6889,7 @@ auto const a0 = a1 * x + F(1.0060710830747779f);
 return a0;
 }
 inline static float nuttall_remez_abs_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_T4_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_T4_0<float>(x);
@@ -6914,7 +6914,7 @@ auto const b0 = b1 * x + F(0.17223726756270388f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_T4_4<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_T4_4<float>(x);
@@ -6935,7 +6935,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000281925814f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_ec_T5_0<float>(x);
@@ -6962,7 +6962,7 @@ auto const b0 = math::fma(b1, x, F(0.8276487416143601f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_ec_T5_5<float>(x);
@@ -6983,7 +6983,7 @@ auto const a0 = math::fma(a1, x, F(0.9999998765574319f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_T5_0<float>(x);
@@ -7010,7 +7010,7 @@ auto const b0 = math::fma(b1, x, F(0.8276487416143601f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_T5_5<float>(x);
@@ -7031,7 +7031,7 @@ auto const a0 = a1 * x + F(1.0000000281925814f);
 return a0;
 }
 inline static float slepian15_remez_abs_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_ec_T5_0<float>(x);
@@ -7058,7 +7058,7 @@ auto const b0 = b1 * x + F(0.8276487416143601f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_ec_T5_5<float>(x);
@@ -7079,7 +7079,7 @@ auto const a0 = a1 * x + F(0.9999998765574319f);
 return a0;
 }
 inline static float slepian15_remez_abs_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_T5_0<float>(x);
@@ -7106,7 +7106,7 @@ auto const b0 = b1 * x + F(0.8276487416143601f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_T5_5<float>(x);
@@ -7127,7 +7127,7 @@ auto const a0 = math::fma(a1, x, F(1.000000064840385f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_ec_T5_0<float>(x);
@@ -7154,7 +7154,7 @@ auto const b0 = math::fma(b1, x, F(9.910023315585844e-08f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_ec_T5_5<float>(x);
@@ -7175,7 +7175,7 @@ auto const a0 = math::fma(a1, x, F(0.9999957405706551f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_T5_0<float>(x);
@@ -7202,7 +7202,7 @@ auto const b0 = math::fma(b1, x, F(9.910023315585844e-08f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_T5_5<float>(x);
@@ -7223,7 +7223,7 @@ auto const a0 = a1 * x + F(1.000000064840385f);
 return a0;
 }
 inline static float slepian25_remez_abs_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_ec_T5_0<float>(x);
@@ -7250,7 +7250,7 @@ auto const b0 = b1 * x + F(9.910023315585844e-08f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_ec_T5_5<float>(x);
@@ -7271,7 +7271,7 @@ auto const a0 = a1 * x + F(0.9999957405706551f);
 return a0;
 }
 inline static float slepian25_remez_abs_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_T5_0<float>(x);
@@ -7298,7 +7298,7 @@ auto const b0 = b1 * x + F(9.910023315585844e-08f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_T5_5<float>(x);
@@ -7319,7 +7319,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001008167627f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_ec_T5_0<float>(x);
@@ -7346,7 +7346,7 @@ auto const b0 = math::fma(b1, x, F(-4.442812848411985e-06f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_ec_T5_5<float>(x);
@@ -7367,7 +7367,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001008167625f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_T5_0<float>(x);
@@ -7394,7 +7394,7 @@ auto const b0 = math::fma(b1, x, F(-4.442812848411985e-06f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_T5_5<float>(x);
@@ -7415,7 +7415,7 @@ auto const a0 = a1 * x + F(1.0000001008167627f);
 return a0;
 }
 inline static float slepian35_remez_abs_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_ec_T5_0<float>(x);
@@ -7442,7 +7442,7 @@ auto const b0 = b1 * x + F(-4.442812848411985e-06f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_ec_T5_5<float>(x);
@@ -7463,7 +7463,7 @@ auto const a0 = a1 * x + F(1.0000001008167625f);
 return a0;
 }
 inline static float slepian35_remez_abs_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_T5_0<float>(x);
@@ -7490,7 +7490,7 @@ auto const b0 = b1 * x + F(-4.442812848411985e-06f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_T5_5<float>(x);
@@ -7511,7 +7511,7 @@ auto const a0 = math::fma(a1, x, F(1.000000136641168f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_ec_T5_0<float>(x);
@@ -7538,7 +7538,7 @@ auto const b0 = math::fma(b1, x, F(1.7538201017427918e-06f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_ec_T5_5<float>(x);
@@ -7559,7 +7559,7 @@ auto const a0 = math::fma(a1, x, F(0.9995173462213914f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_T5_0<float>(x);
@@ -7586,7 +7586,7 @@ auto const b0 = math::fma(b1, x, F(1.7538201017427918e-06f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_T5_5<float>(x);
@@ -7607,7 +7607,7 @@ auto const a0 = a1 * x + F(1.000000136641168f);
 return a0;
 }
 inline static float slepian45_remez_abs_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_ec_T5_0<float>(x);
@@ -7634,7 +7634,7 @@ auto const b0 = b1 * x + F(1.7538201017427918e-06f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_ec_T5_5<float>(x);
@@ -7655,7 +7655,7 @@ auto const a0 = a1 * x + F(0.9995173462213914f);
 return a0;
 }
 inline static float slepian45_remez_abs_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_T5_0<float>(x);
@@ -7682,7 +7682,7 @@ auto const b0 = b1 * x + F(1.7538201017427918e-06f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_T5_5<float>(x);
@@ -7703,7 +7703,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001724056327f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_ec_T5_0<float>(x);
@@ -7730,7 +7730,7 @@ auto const b0 = math::fma(b1, x, F(-9.673288117009778e-06f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_ec_T5_5<float>(x);
@@ -7751,7 +7751,7 @@ auto const a0 = math::fma(a1, x, F(0.9995401889452131f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_T5_0<float>(x);
@@ -7778,7 +7778,7 @@ auto const b0 = math::fma(b1, x, F(-9.673288117009778e-06f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_T5_5<float>(x);
@@ -7799,7 +7799,7 @@ auto const a0 = a1 * x + F(1.0000001724056327f);
 return a0;
 }
 inline static float slepian55_remez_abs_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_ec_T5_0<float>(x);
@@ -7826,7 +7826,7 @@ auto const b0 = b1 * x + F(-9.673288117009778e-06f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_ec_T5_5<float>(x);
@@ -7847,7 +7847,7 @@ auto const a0 = a1 * x + F(0.9995401889452131f);
 return a0;
 }
 inline static float slepian55_remez_abs_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_T5_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_T5_0<float>(x);
@@ -7874,7 +7874,7 @@ auto const b0 = b1 * x + F(-9.673288117009778e-06f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_T5_5<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_T5_5<float>(x);
@@ -7895,7 +7895,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_ec_T5_0<float>(x);
@@ -7922,7 +7922,7 @@ auto const b0 = math::fma(b1, x, F(0.20878201367076082f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_ec_T5_5<float>(x);
@@ -7943,7 +7943,7 @@ auto const a0 = math::fma(a1, x, F(0.9955973861673445f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_T5_0<float>(x);
@@ -7970,7 +7970,7 @@ auto const b0 = math::fma(b1, x, F(0.20878201367076082f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_T5_5<float>(x);
@@ -7991,7 +7991,7 @@ auto const a0 = a1 * x + F(1.0f);
 return a0;
 }
 inline static float nuttall_remez_abs_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_ec_T5_0<float>(x);
@@ -8018,7 +8018,7 @@ auto const b0 = b1 * x + F(0.20878201367076082f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_ec_T5_5<float>(x);
@@ -8039,7 +8039,7 @@ auto const a0 = a1 * x + F(0.9955973861673445f);
 return a0;
 }
 inline static float nuttall_remez_abs_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_T5_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_T5_0<float>(x);
@@ -8066,7 +8066,7 @@ auto const b0 = b1 * x + F(0.20878201367076082f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_T5_5<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_T5_5<float>(x);
@@ -8088,7 +8088,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000281925814f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_ec_T6_0<float>(x);
@@ -8117,7 +8117,7 @@ auto const b0 = math::fma(b1, x, F(-1.6641602649863277e-06f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_ec_T6_6<float>(x);
@@ -8139,7 +8139,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000747666598f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_T6_0<float>(x);
@@ -8168,7 +8168,7 @@ auto const b0 = math::fma(b1, x, F(-1.6641602649863277e-06f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_T6_6<float>(x);
@@ -8190,7 +8190,7 @@ auto const a0 = a1 * x + F(1.0000000281925814f);
 return a0;
 }
 inline static float slepian15_remez_abs_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_ec_T6_0<float>(x);
@@ -8219,7 +8219,7 @@ auto const b0 = b1 * x + F(-1.6641602649863277e-06f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_ec_T6_6<float>(x);
@@ -8241,7 +8241,7 @@ auto const a0 = a1 * x + F(1.0000000747666598f);
 return a0;
 }
 inline static float slepian15_remez_abs_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_T6_0<float>(x);
@@ -8270,7 +8270,7 @@ auto const b0 = b1 * x + F(-1.6641602649863277e-06f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_T6_6<float>(x);
@@ -8292,7 +8292,7 @@ auto const a0 = math::fma(a1, x, F(1.000000064840385f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_ec_T6_0<float>(x);
@@ -8321,7 +8321,7 @@ auto const b0 = math::fma(b1, x, F(4.966782251962257e-07f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_ec_T6_6<float>(x);
@@ -8343,7 +8343,7 @@ auto const a0 = math::fma(a1, x, F(1.0000002032018578f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_T6_0<float>(x);
@@ -8372,7 +8372,7 @@ auto const b0 = math::fma(b1, x, F(4.966782251962257e-07f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_T6_6<float>(x);
@@ -8394,7 +8394,7 @@ auto const a0 = a1 * x + F(1.000000064840385f);
 return a0;
 }
 inline static float slepian25_remez_abs_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_ec_T6_0<float>(x);
@@ -8423,7 +8423,7 @@ auto const b0 = b1 * x + F(4.966782251962257e-07f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_ec_T6_6<float>(x);
@@ -8445,7 +8445,7 @@ auto const a0 = a1 * x + F(1.0000002032018578f);
 return a0;
 }
 inline static float slepian25_remez_abs_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_T6_0<float>(x);
@@ -8474,7 +8474,7 @@ auto const b0 = b1 * x + F(4.966782251962257e-07f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_T6_6<float>(x);
@@ -8496,7 +8496,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001008167627f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_ec_T6_0<float>(x);
@@ -8525,7 +8525,7 @@ auto const b0 = math::fma(b1, x, F(7.361657751874421e-06f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_ec_T6_6<float>(x);
@@ -8547,7 +8547,7 @@ auto const a0 = math::fma(a1, x, F(0.9999884621427134f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_T6_0<float>(x);
@@ -8576,7 +8576,7 @@ auto const b0 = math::fma(b1, x, F(7.361657751874421e-06f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_T6_6<float>(x);
@@ -8598,7 +8598,7 @@ auto const a0 = a1 * x + F(1.0000001008167627f);
 return a0;
 }
 inline static float slepian35_remez_abs_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_ec_T6_0<float>(x);
@@ -8627,7 +8627,7 @@ auto const b0 = b1 * x + F(7.361657751874421e-06f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_ec_T6_6<float>(x);
@@ -8649,7 +8649,7 @@ auto const a0 = a1 * x + F(0.9999884621427134f);
 return a0;
 }
 inline static float slepian35_remez_abs_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_T6_0<float>(x);
@@ -8678,7 +8678,7 @@ auto const b0 = b1 * x + F(7.361657751874421e-06f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_T6_6<float>(x);
@@ -8700,7 +8700,7 @@ auto const a0 = math::fma(a1, x, F(1.000000136641168f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_ec_T6_0<float>(x);
@@ -8729,7 +8729,7 @@ auto const b0 = math::fma(b1, x, F(2.392842987313705e-06f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_ec_T6_6<float>(x);
@@ -8751,7 +8751,7 @@ auto const a0 = math::fma(a1, x, F(0.999955597719024f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_T6_0<float>(x);
@@ -8780,7 +8780,7 @@ auto const b0 = math::fma(b1, x, F(2.392842987313705e-06f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_T6_6<float>(x);
@@ -8802,7 +8802,7 @@ auto const a0 = a1 * x + F(1.000000136641168f);
 return a0;
 }
 inline static float slepian45_remez_abs_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_ec_T6_0<float>(x);
@@ -8831,7 +8831,7 @@ auto const b0 = b1 * x + F(2.392842987313705e-06f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_ec_T6_6<float>(x);
@@ -8853,7 +8853,7 @@ auto const a0 = a1 * x + F(0.999955597719024f);
 return a0;
 }
 inline static float slepian45_remez_abs_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_T6_0<float>(x);
@@ -8882,7 +8882,7 @@ auto const b0 = b1 * x + F(2.392842987313705e-06f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_T6_6<float>(x);
@@ -8904,7 +8904,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001724056327f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_ec_T6_0<float>(x);
@@ -8933,7 +8933,7 @@ auto const b0 = math::fma(b1, x, F(0.01224407816871782f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_ec_T6_6<float>(x);
@@ -8955,7 +8955,7 @@ auto const a0 = math::fma(a1, x, F(0.9999774525363382f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_T6_0<float>(x);
@@ -8984,7 +8984,7 @@ auto const b0 = math::fma(b1, x, F(0.01224407816871782f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_T6_6<float>(x);
@@ -9006,7 +9006,7 @@ auto const a0 = a1 * x + F(1.0000001724056327f);
 return a0;
 }
 inline static float slepian55_remez_abs_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_ec_T6_0<float>(x);
@@ -9035,7 +9035,7 @@ auto const b0 = b1 * x + F(0.01224407816871782f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_ec_T6_6<float>(x);
@@ -9057,7 +9057,7 @@ auto const a0 = a1 * x + F(0.9999774525363382f);
 return a0;
 }
 inline static float slepian55_remez_abs_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_T6_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_T6_0<float>(x);
@@ -9086,7 +9086,7 @@ auto const b0 = b1 * x + F(0.01224407816871782f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_T6_6<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_T6_6<float>(x);
@@ -9108,7 +9108,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_ec_T6_0<float>(x);
@@ -9137,7 +9137,7 @@ auto const b0 = math::fma(b1, x, F(0.02816674560330533f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_ec_T6_6<float>(x);
@@ -9159,7 +9159,7 @@ auto const a0 = math::fma(a1, x, F(0.9990095165599157f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_T6_0<float>(x);
@@ -9188,7 +9188,7 @@ auto const b0 = math::fma(b1, x, F(0.02816674560330533f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_T6_6<float>(x);
@@ -9210,7 +9210,7 @@ auto const a0 = a1 * x + F(1.0f);
 return a0;
 }
 inline static float nuttall_remez_abs_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_ec_T6_0<float>(x);
@@ -9239,7 +9239,7 @@ auto const b0 = b1 * x + F(0.02816674560330533f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_ec_T6_6<float>(x);
@@ -9261,7 +9261,7 @@ auto const a0 = a1 * x + F(0.9990095165599157f);
 return a0;
 }
 inline static float nuttall_remez_abs_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_T6_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_T6_0<float>(x);
@@ -9290,7 +9290,7 @@ auto const b0 = b1 * x + F(0.02816674560330533f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_T6_6<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_T6_6<float>(x);
@@ -9313,7 +9313,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000281925814f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_ec_T7_0<float>(x);
@@ -9344,7 +9344,7 @@ auto const b0 = math::fma(b1, x, F(0.8377532223738328f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_ec_T7_7<float>(x);
@@ -9367,7 +9367,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000305632188f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_T7_0<float>(x);
@@ -9398,7 +9398,7 @@ auto const b0 = math::fma(b1, x, F(0.8377532223738328f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_T7_7<float>(x);
@@ -9421,7 +9421,7 @@ auto const a0 = a1 * x + F(1.0000000281925814f);
 return a0;
 }
 inline static float slepian15_remez_abs_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_ec_T7_0<float>(x);
@@ -9452,7 +9452,7 @@ auto const b0 = b1 * x + F(0.8377532223738328f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_ec_T7_7<float>(x);
@@ -9475,7 +9475,7 @@ auto const a0 = a1 * x + F(1.0000000305632188f);
 return a0;
 }
 inline static float slepian15_remez_abs_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_T7_0<float>(x);
@@ -9506,7 +9506,7 @@ auto const b0 = b1 * x + F(0.8377532223738328f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_T7_7<float>(x);
@@ -9529,7 +9529,7 @@ auto const a0 = math::fma(a1, x, F(1.000000064840385f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_ec_T7_0<float>(x);
@@ -9560,7 +9560,7 @@ auto const b0 = math::fma(b1, x, F(-6.799094306338158e-05f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_ec_T7_7<float>(x);
@@ -9583,7 +9583,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001421920188f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_T7_0<float>(x);
@@ -9614,7 +9614,7 @@ auto const b0 = math::fma(b1, x, F(-6.799094306338158e-05f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_T7_7<float>(x);
@@ -9637,7 +9637,7 @@ auto const a0 = a1 * x + F(1.000000064840385f);
 return a0;
 }
 inline static float slepian25_remez_abs_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_ec_T7_0<float>(x);
@@ -9668,7 +9668,7 @@ auto const b0 = b1 * x + F(-6.799094306338158e-05f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_ec_T7_7<float>(x);
@@ -9691,7 +9691,7 @@ auto const a0 = a1 * x + F(1.0000001421920188f);
 return a0;
 }
 inline static float slepian25_remez_abs_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_T7_0<float>(x);
@@ -9722,7 +9722,7 @@ auto const b0 = b1 * x + F(-6.799094306338158e-05f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_T7_7<float>(x);
@@ -9745,7 +9745,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001008167627f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_ec_T7_0<float>(x);
@@ -9776,7 +9776,7 @@ auto const b0 = math::fma(b1, x, F(2.3203693601444303e-05f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_ec_T7_7<float>(x);
@@ -9799,7 +9799,7 @@ auto const a0 = math::fma(a1, x, F(1.000000344899596f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_T7_0<float>(x);
@@ -9830,7 +9830,7 @@ auto const b0 = math::fma(b1, x, F(2.3203693601444303e-05f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_T7_7<float>(x);
@@ -9853,7 +9853,7 @@ auto const a0 = a1 * x + F(1.0000001008167627f);
 return a0;
 }
 inline static float slepian35_remez_abs_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_ec_T7_0<float>(x);
@@ -9884,7 +9884,7 @@ auto const b0 = b1 * x + F(2.3203693601444303e-05f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_ec_T7_7<float>(x);
@@ -9907,7 +9907,7 @@ auto const a0 = a1 * x + F(1.000000344899596f);
 return a0;
 }
 inline static float slepian35_remez_abs_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_T7_0<float>(x);
@@ -9938,7 +9938,7 @@ auto const b0 = b1 * x + F(2.3203693601444303e-05f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_T7_7<float>(x);
@@ -9961,7 +9961,7 @@ auto const a0 = math::fma(a1, x, F(1.000000136641168f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_ec_T7_0<float>(x);
@@ -9992,7 +9992,7 @@ auto const b0 = math::fma(b1, x, F(-1.0201233677301163e-05f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_ec_T7_7<float>(x);
@@ -10015,7 +10015,7 @@ auto const a0 = math::fma(a1, x, F(1.000000446522482f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_T7_0<float>(x);
@@ -10046,7 +10046,7 @@ auto const b0 = math::fma(b1, x, F(-1.0201233677301163e-05f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_T7_7<float>(x);
@@ -10069,7 +10069,7 @@ auto const a0 = a1 * x + F(1.000000136641168f);
 return a0;
 }
 inline static float slepian45_remez_abs_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_ec_T7_0<float>(x);
@@ -10100,7 +10100,7 @@ auto const b0 = b1 * x + F(-1.0201233677301163e-05f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_ec_T7_7<float>(x);
@@ -10123,7 +10123,7 @@ auto const a0 = a1 * x + F(1.000000446522482f);
 return a0;
 }
 inline static float slepian45_remez_abs_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_T7_0<float>(x);
@@ -10154,7 +10154,7 @@ auto const b0 = b1 * x + F(-1.0201233677301163e-05f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_T7_7<float>(x);
@@ -10177,7 +10177,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001724056327f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_ec_T7_0<float>(x);
@@ -10208,7 +10208,7 @@ auto const b0 = math::fma(b1, x, F(0.005490557824454377f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_ec_T7_7<float>(x);
@@ -10231,7 +10231,7 @@ auto const a0 = math::fma(a1, x, F(0.9999775362685397f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_T7_0<float>(x);
@@ -10262,7 +10262,7 @@ auto const b0 = math::fma(b1, x, F(0.005490557824454377f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_T7_7<float>(x);
@@ -10285,7 +10285,7 @@ auto const a0 = a1 * x + F(1.0000001724056327f);
 return a0;
 }
 inline static float slepian55_remez_abs_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_ec_T7_0<float>(x);
@@ -10316,7 +10316,7 @@ auto const b0 = b1 * x + F(0.005490557824454377f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_ec_T7_7<float>(x);
@@ -10339,7 +10339,7 @@ auto const a0 = a1 * x + F(0.9999775362685397f);
 return a0;
 }
 inline static float slepian55_remez_abs_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_T7_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_T7_0<float>(x);
@@ -10370,7 +10370,7 @@ auto const b0 = b1 * x + F(0.005490557824454377f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_T7_7<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_T7_7<float>(x);
@@ -10393,7 +10393,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_ec_T7_0<float>(x);
@@ -10424,7 +10424,7 @@ auto const b0 = math::fma(b1, x, F(0.023865749283021476f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_ec_T7_7<float>(x);
@@ -10447,7 +10447,7 @@ auto const a0 = math::fma(a1, x, F(1.0002332756018468f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_T7_0<float>(x);
@@ -10478,7 +10478,7 @@ auto const b0 = math::fma(b1, x, F(0.023865749283021476f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_T7_7<float>(x);
@@ -10501,7 +10501,7 @@ auto const a0 = a1 * x + F(1.0f);
 return a0;
 }
 inline static float nuttall_remez_abs_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_ec_T7_0<float>(x);
@@ -10532,7 +10532,7 @@ auto const b0 = b1 * x + F(0.023865749283021476f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_ec_T7_7<float>(x);
@@ -10555,7 +10555,7 @@ auto const a0 = a1 * x + F(1.0002332756018468f);
 return a0;
 }
 inline static float nuttall_remez_abs_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_T7_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_T7_0<float>(x);
@@ -10586,7 +10586,7 @@ auto const b0 = b1 * x + F(0.023865749283021476f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_T7_7<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_T7_7<float>(x);
@@ -10610,7 +10610,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000281925814f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_ec_T8_0<float>(x);
@@ -10643,7 +10643,7 @@ auto const b0 = math::fma(b1, x, F(0.014408357947047954f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_ec_T8_8<float>(x);
@@ -10667,7 +10667,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000276276426f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_T8_0<float>(x);
@@ -10700,7 +10700,7 @@ auto const b0 = math::fma(b1, x, F(0.014408357947047954f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_T8_8<float>(x);
@@ -10724,7 +10724,7 @@ auto const a0 = a1 * x + F(1.0000000281925814f);
 return a0;
 }
 inline static float slepian15_remez_abs_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_ec_T8_0<float>(x);
@@ -10757,7 +10757,7 @@ auto const b0 = b1 * x + F(0.014408357947047954f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_ec_T8_8<float>(x);
@@ -10781,7 +10781,7 @@ auto const a0 = a1 * x + F(1.0000000276276426f);
 return a0;
 }
 inline static float slepian15_remez_abs_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_T8_0<float>(x);
@@ -10814,7 +10814,7 @@ auto const b0 = b1 * x + F(0.014408357947047954f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_T8_8<float>(x);
@@ -10838,7 +10838,7 @@ auto const a0 = math::fma(a1, x, F(1.000000064840385f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_ec_T8_0<float>(x);
@@ -10871,7 +10871,7 @@ auto const b0 = math::fma(b1, x, F(0.0009874096387281085f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_ec_T8_8<float>(x);
@@ -10895,7 +10895,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000625217975f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_T8_0<float>(x);
@@ -10928,7 +10928,7 @@ auto const b0 = math::fma(b1, x, F(0.0009874096387281085f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_T8_8<float>(x);
@@ -10952,7 +10952,7 @@ auto const a0 = a1 * x + F(1.000000064840385f);
 return a0;
 }
 inline static float slepian25_remez_abs_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_ec_T8_0<float>(x);
@@ -10985,7 +10985,7 @@ auto const b0 = b1 * x + F(0.0009874096387281085f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_ec_T8_8<float>(x);
@@ -11009,7 +11009,7 @@ auto const a0 = a1 * x + F(1.0000000625217975f);
 return a0;
 }
 inline static float slepian25_remez_abs_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_T8_0<float>(x);
@@ -11042,7 +11042,7 @@ auto const b0 = b1 * x + F(0.0009874096387281085f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_T8_8<float>(x);
@@ -11066,7 +11066,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001008167627f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_ec_T8_0<float>(x);
@@ -11099,7 +11099,7 @@ auto const b0 = math::fma(b1, x, F(0.003499366277713417f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_ec_T8_8<float>(x);
@@ -11123,7 +11123,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001510928072f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_T8_0<float>(x);
@@ -11156,7 +11156,7 @@ auto const b0 = math::fma(b1, x, F(0.003499366277713417f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_T8_8<float>(x);
@@ -11180,7 +11180,7 @@ auto const a0 = a1 * x + F(1.0000001008167627f);
 return a0;
 }
 inline static float slepian35_remez_abs_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_ec_T8_0<float>(x);
@@ -11213,7 +11213,7 @@ auto const b0 = b1 * x + F(0.003499366277713417f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_ec_T8_8<float>(x);
@@ -11237,7 +11237,7 @@ auto const a0 = a1 * x + F(1.0000001510928072f);
 return a0;
 }
 inline static float slepian35_remez_abs_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_T8_0<float>(x);
@@ -11270,7 +11270,7 @@ auto const b0 = b1 * x + F(0.003499366277713417f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_T8_8<float>(x);
@@ -11294,7 +11294,7 @@ auto const a0 = math::fma(a1, x, F(1.000000136641168f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_ec_T8_0<float>(x);
@@ -11327,7 +11327,7 @@ auto const b0 = math::fma(b1, x, F(2.1627126236103493e-06f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_ec_T8_8<float>(x);
@@ -11351,7 +11351,7 @@ auto const a0 = math::fma(a1, x, F(1.000000136641168f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_T8_0<float>(x);
@@ -11384,7 +11384,7 @@ auto const b0 = math::fma(b1, x, F(2.1627126236103493e-06f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_T8_8<float>(x);
@@ -11408,7 +11408,7 @@ auto const a0 = a1 * x + F(1.000000136641168f);
 return a0;
 }
 inline static float slepian45_remez_abs_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_ec_T8_0<float>(x);
@@ -11441,7 +11441,7 @@ auto const b0 = b1 * x + F(2.1627126236103493e-06f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_ec_T8_8<float>(x);
@@ -11465,7 +11465,7 @@ auto const a0 = a1 * x + F(1.000000136641168f);
 return a0;
 }
 inline static float slepian45_remez_abs_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_T8_0<float>(x);
@@ -11498,7 +11498,7 @@ auto const b0 = b1 * x + F(2.1627126236103493e-06f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_T8_8<float>(x);
@@ -11522,7 +11522,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001724056327f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_ec_T8_0<float>(x);
@@ -11555,7 +11555,7 @@ auto const b0 = math::fma(b1, x, F(-1.1411127709129726e-08f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_ec_T8_8<float>(x);
@@ -11579,7 +11579,7 @@ auto const a0 = math::fma(a1, x, F(1.0000012854749163f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_T8_0<float>(x);
@@ -11612,7 +11612,7 @@ auto const b0 = math::fma(b1, x, F(-1.1411127709129726e-08f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_T8_8<float>(x);
@@ -11636,7 +11636,7 @@ auto const a0 = a1 * x + F(1.0000001724056327f);
 return a0;
 }
 inline static float slepian55_remez_abs_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_ec_T8_0<float>(x);
@@ -11669,7 +11669,7 @@ auto const b0 = b1 * x + F(-1.1411127709129726e-08f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_ec_T8_8<float>(x);
@@ -11693,7 +11693,7 @@ auto const a0 = a1 * x + F(1.0000012854749163f);
 return a0;
 }
 inline static float slepian55_remez_abs_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_T8_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_T8_0<float>(x);
@@ -11726,7 +11726,7 @@ auto const b0 = b1 * x + F(-1.1411127709129726e-08f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_T8_8<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_T8_8<float>(x);
@@ -11750,7 +11750,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_ec_T8_0<float>(x);
@@ -11783,7 +11783,7 @@ auto const b0 = math::fma(b1, x, F(0.12762810739396807f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_ec_T8_8<float>(x);
@@ -11807,7 +11807,7 @@ auto const a0 = math::fma(a1, x, F(1.000088264907631f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_T8_0<float>(x);
@@ -11840,7 +11840,7 @@ auto const b0 = math::fma(b1, x, F(0.12762810739396807f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_T8_8<float>(x);
@@ -11864,7 +11864,7 @@ auto const a0 = a1 * x + F(1.0f);
 return a0;
 }
 inline static float nuttall_remez_abs_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_ec_T8_0<float>(x);
@@ -11897,7 +11897,7 @@ auto const b0 = b1 * x + F(0.12762810739396807f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_ec_T8_8<float>(x);
@@ -11921,7 +11921,7 @@ auto const a0 = a1 * x + F(1.000088264907631f);
 return a0;
 }
 inline static float nuttall_remez_abs_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_T8_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_T8_0<float>(x);
@@ -11954,7 +11954,7 @@ auto const b0 = b1 * x + F(0.12762810739396807f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_T8_8<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_T8_8<float>(x);
@@ -11979,7 +11979,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000281925814f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_ec_T9_0<float>(x);
@@ -12014,7 +12014,7 @@ auto const b0 = math::fma(b1, x, F(0.00014891454688673196f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_ec_T9_9<float>(x);
@@ -12039,7 +12039,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000281635344f));
 return a0;
 }
 inline static float slepian15_remez_abs_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_fma_T9_0<float>(x);
@@ -12074,7 +12074,7 @@ auto const b0 = math::fma(b1, x, F(0.00014891454688673196f));
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_fma_T9_9<float>(x);
@@ -12099,7 +12099,7 @@ auto const a0 = a1 * x + F(1.0000000281925814f);
 return a0;
 }
 inline static float slepian15_remez_abs_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_ec_T9_0<float>(x);
@@ -12134,7 +12134,7 @@ auto const b0 = b1 * x + F(0.00014891454688673196f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_ec_T9_9<float>(x);
@@ -12159,7 +12159,7 @@ auto const a0 = a1 * x + F(1.0000000281635344f);
 return a0;
 }
 inline static float slepian15_remez_abs_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_abs_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_abs_T9_0<float>(x);
@@ -12194,7 +12194,7 @@ auto const b0 = b1 * x + F(0.00014891454688673196f);
 return a0 / b0;
 }
 inline static float slepian15_remez_pade_abs_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian15_remez_pade_abs_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian15_remez_pade_abs_T9_9<float>(x);
@@ -12219,7 +12219,7 @@ auto const a0 = math::fma(a1, x, F(1.000000064840385f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_ec_T9_0<float>(x);
@@ -12254,7 +12254,7 @@ auto const b0 = math::fma(b1, x, F(-2.955780676115949e-05f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_ec_T9_9<float>(x);
@@ -12279,7 +12279,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000628082686f));
 return a0;
 }
 inline static float slepian25_remez_abs_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_fma_T9_0<float>(x);
@@ -12314,7 +12314,7 @@ auto const b0 = math::fma(b1, x, F(-2.955780676115949e-05f));
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_fma_T9_9<float>(x);
@@ -12339,7 +12339,7 @@ auto const a0 = a1 * x + F(1.000000064840385f);
 return a0;
 }
 inline static float slepian25_remez_abs_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_ec_T9_0<float>(x);
@@ -12374,7 +12374,7 @@ auto const b0 = b1 * x + F(-2.955780676115949e-05f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_ec_T9_9<float>(x);
@@ -12399,7 +12399,7 @@ auto const a0 = a1 * x + F(1.0000000628082686f);
 return a0;
 }
 inline static float slepian25_remez_abs_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_abs_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_abs_T9_0<float>(x);
@@ -12434,7 +12434,7 @@ auto const b0 = b1 * x + F(-2.955780676115949e-05f);
 return a0 / b0;
 }
 inline static float slepian25_remez_pade_abs_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian25_remez_pade_abs_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian25_remez_pade_abs_T9_9<float>(x);
@@ -12459,7 +12459,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001008167627f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_ec_T9_0<float>(x);
@@ -12494,7 +12494,7 @@ auto const b0 = math::fma(b1, x, F(4.4521962882506096e-09f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_ec_T9_9<float>(x);
@@ -12519,7 +12519,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000887658216f));
 return a0;
 }
 inline static float slepian35_remez_abs_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_fma_T9_0<float>(x);
@@ -12554,7 +12554,7 @@ auto const b0 = math::fma(b1, x, F(4.4521962882506096e-09f));
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_fma_T9_9<float>(x);
@@ -12579,7 +12579,7 @@ auto const a0 = a1 * x + F(1.0000001008167627f);
 return a0;
 }
 inline static float slepian35_remez_abs_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_ec_T9_0<float>(x);
@@ -12614,7 +12614,7 @@ auto const b0 = b1 * x + F(4.4521962882506096e-09f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_ec_T9_9<float>(x);
@@ -12639,7 +12639,7 @@ auto const a0 = a1 * x + F(1.0000000887658216f);
 return a0;
 }
 inline static float slepian35_remez_abs_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_abs_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_abs_T9_0<float>(x);
@@ -12674,7 +12674,7 @@ auto const b0 = b1 * x + F(4.4521962882506096e-09f);
 return a0 / b0;
 }
 inline static float slepian35_remez_pade_abs_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian35_remez_pade_abs_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian35_remez_pade_abs_T9_9<float>(x);
@@ -12699,7 +12699,7 @@ auto const a0 = math::fma(a1, x, F(1.000000136641168f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_ec_T9_0<float>(x);
@@ -12734,7 +12734,7 @@ auto const b0 = math::fma(b1, x, F(0.0002665584380138204f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_ec_T9_9<float>(x);
@@ -12759,7 +12759,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001540122767f));
 return a0;
 }
 inline static float slepian45_remez_abs_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_fma_T9_0<float>(x);
@@ -12794,7 +12794,7 @@ auto const b0 = math::fma(b1, x, F(0.0002665584380138204f));
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_fma_T9_9<float>(x);
@@ -12819,7 +12819,7 @@ auto const a0 = a1 * x + F(1.000000136641168f);
 return a0;
 }
 inline static float slepian45_remez_abs_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_ec_T9_0<float>(x);
@@ -12854,7 +12854,7 @@ auto const b0 = b1 * x + F(0.0002665584380138204f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_ec_T9_9<float>(x);
@@ -12879,7 +12879,7 @@ auto const a0 = a1 * x + F(1.0000001540122767f);
 return a0;
 }
 inline static float slepian45_remez_abs_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_abs_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_abs_T9_0<float>(x);
@@ -12914,7 +12914,7 @@ auto const b0 = b1 * x + F(0.0002665584380138204f);
 return a0 / b0;
 }
 inline static float slepian45_remez_pade_abs_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian45_remez_pade_abs_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian45_remez_pade_abs_T9_9<float>(x);
@@ -12939,7 +12939,7 @@ auto const a0 = math::fma(a1, x, F(1.0000001724056327f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_ec_T9_0<float>(x);
@@ -12974,7 +12974,7 @@ auto const b0 = math::fma(b1, x, F(-2.6032334461675473e-06f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_ec_T9_9<float>(x);
@@ -12999,7 +12999,7 @@ auto const a0 = math::fma(a1, x, F(1.0000008557636566f));
 return a0;
 }
 inline static float slepian55_remez_abs_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_fma_T9_0<float>(x);
@@ -13034,7 +13034,7 @@ auto const b0 = math::fma(b1, x, F(-2.6032334461675473e-06f));
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_fma_T9_9<float>(x);
@@ -13059,7 +13059,7 @@ auto const a0 = a1 * x + F(1.0000001724056327f);
 return a0;
 }
 inline static float slepian55_remez_abs_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_ec_T9_0<float>(x);
@@ -13094,7 +13094,7 @@ auto const b0 = b1 * x + F(-2.6032334461675473e-06f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_ec_T9_9<float>(x);
@@ -13119,7 +13119,7 @@ auto const a0 = a1 * x + F(1.0000008557636566f);
 return a0;
 }
 inline static float slepian55_remez_abs_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_abs_T9_0<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_abs_T9_0<float>(x);
@@ -13154,7 +13154,7 @@ auto const b0 = b1 * x + F(-2.6032334461675473e-06f);
 return a0 / b0;
 }
 inline static float slepian55_remez_pade_abs_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return slepian55_remez_pade_abs_T9_9<cr::simd::float1x4>(x).first();
 #else
 return slepian55_remez_pade_abs_T9_9<float>(x);
@@ -13179,7 +13179,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_ec_T9_0<float>(x);
@@ -13214,7 +13214,7 @@ auto const b0 = math::fma(b1, x, F(0.35178651826863866f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_ec_T9_9<float>(x);
@@ -13239,7 +13239,7 @@ auto const a0 = math::fma(a1, x, F(0.9999914316331829f));
 return a0;
 }
 inline static float nuttall_remez_abs_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_fma_T9_0<float>(x);
@@ -13274,7 +13274,7 @@ auto const b0 = math::fma(b1, x, F(0.35178651826863866f));
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_fma_T9_9<float>(x);
@@ -13299,7 +13299,7 @@ auto const a0 = a1 * x + F(1.0f);
 return a0;
 }
 inline static float nuttall_remez_abs_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_ec_T9_0<float>(x);
@@ -13334,7 +13334,7 @@ auto const b0 = b1 * x + F(0.35178651826863866f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_ec_T9_9<float>(x);
@@ -13359,7 +13359,7 @@ auto const a0 = a1 * x + F(0.9999914316331829f);
 return a0;
 }
 inline static float nuttall_remez_abs_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_abs_T9_0<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_abs_T9_0<float>(x);
@@ -13394,7 +13394,7 @@ auto const b0 = b1 * x + F(0.35178651826863866f);
 return a0 / b0;
 }
 inline static float nuttall_remez_pade_abs_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return nuttall_remez_pade_abs_T9_9<cr::simd::float1x4>(x).first();
 #else
 return nuttall_remez_pade_abs_T9_9<float>(x);
@@ -13412,7 +13412,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_ec_T1_0<float>(x);
@@ -13432,7 +13432,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_ec_T1_1<float>(x);
@@ -13448,7 +13448,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float sin_unit1_quart_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_ec_T1_1<float>(x);
@@ -13466,7 +13466,7 @@ auto const a0 = math::fma(a1, x, F(0.10525683117650933f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_T1_0<float>(x);
@@ -13486,7 +13486,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_T1_1<float>(x);
@@ -13502,7 +13502,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float sin_unit1_quart_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_T1_1<float>(x);
@@ -13520,7 +13520,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_ec_T1_0<float>(x);
@@ -13540,7 +13540,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_ec_T1_1<float>(x);
@@ -13556,7 +13556,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float sin_unit1_quart_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_ec_T1_1<float>(x);
@@ -13574,7 +13574,7 @@ auto const a0 = a1 * x + F(0.10525683117650933f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_T1_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_T1_0<float>(x);
@@ -13594,7 +13594,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_T1_1<float>(x);
@@ -13610,7 +13610,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float sin_unit1_quart_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_T1_1<float>(x);
@@ -13628,7 +13628,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_ec_T1_0<float>(x);
@@ -13648,7 +13648,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_ec_T1_1<float>(x);
@@ -13664,7 +13664,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float sin_unit2_quart_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_ec_T1_1<float>(x);
@@ -13682,7 +13682,7 @@ auto const a0 = math::fma(a1, x, F(0.10525683117650933f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_T1_0<float>(x);
@@ -13702,7 +13702,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_T1_1<float>(x);
@@ -13718,7 +13718,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float sin_unit2_quart_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_T1_1<float>(x);
@@ -13736,7 +13736,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_ec_T1_0<float>(x);
@@ -13756,7 +13756,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_ec_T1_1<float>(x);
@@ -13772,7 +13772,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float sin_unit2_quart_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_ec_T1_1<float>(x);
@@ -13790,7 +13790,7 @@ auto const a0 = a1 * x + F(0.10525683117650933f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_T1_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_T1_0<float>(x);
@@ -13810,7 +13810,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_T1_1<float>(x);
@@ -13826,7 +13826,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float sin_unit2_quart_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_T1_1<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_T1_1<float>(x);
@@ -13845,7 +13845,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_ec_T2_0<float>(x);
@@ -13867,7 +13867,7 @@ auto const b0 = math::fma(b1, x, F(0.31951184389341f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_ec_T2_2<float>(x);
@@ -13886,7 +13886,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_ec_T2_2<float>(x);
@@ -13905,7 +13905,7 @@ auto const a0 = math::fma(a1, x, F(-0.013864950803149768f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_T2_0<float>(x);
@@ -13927,7 +13927,7 @@ auto const b0 = math::fma(b1, x, F(0.31951184389341f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_T2_2<float>(x);
@@ -13946,7 +13946,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_T2_2<float>(x);
@@ -13965,7 +13965,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_ec_T2_0<float>(x);
@@ -13987,7 +13987,7 @@ auto const b0 = b1 * x + F(0.31951184389341f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_ec_T2_2<float>(x);
@@ -14006,7 +14006,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_ec_T2_2<float>(x);
@@ -14025,7 +14025,7 @@ auto const a0 = a1 * x + F(-0.013864950803149768f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_T2_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_T2_0<float>(x);
@@ -14047,7 +14047,7 @@ auto const b0 = b1 * x + F(0.31951184389341f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_T2_2<float>(x);
@@ -14066,7 +14066,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_T2_2<float>(x);
@@ -14085,7 +14085,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_ec_T2_0<float>(x);
@@ -14107,7 +14107,7 @@ auto const b0 = math::fma(b1, x, F(0.6525525602679807f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_ec_T2_2<float>(x);
@@ -14126,7 +14126,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_ec_T2_2<float>(x);
@@ -14145,7 +14145,7 @@ auto const a0 = math::fma(a1, x, F(-0.013864950803149768f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_T2_0<float>(x);
@@ -14167,7 +14167,7 @@ auto const b0 = math::fma(b1, x, F(0.6525525602679807f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_T2_2<float>(x);
@@ -14186,7 +14186,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_T2_2<float>(x);
@@ -14205,7 +14205,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_ec_T2_0<float>(x);
@@ -14227,7 +14227,7 @@ auto const b0 = b1 * x + F(0.6525525602679807f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_ec_T2_2<float>(x);
@@ -14246,7 +14246,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_ec_T2_2<float>(x);
@@ -14265,7 +14265,7 @@ auto const a0 = a1 * x + F(-0.013864950803149768f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_T2_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_T2_0<float>(x);
@@ -14287,7 +14287,7 @@ auto const b0 = b1 * x + F(0.6525525602679807f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_T2_2<float>(x);
@@ -14306,7 +14306,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_T2_2<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_T2_2<float>(x);
@@ -14326,7 +14326,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_ec_T3_0<float>(x);
@@ -14350,7 +14350,7 @@ auto const b0 = math::fma(b1, x, F(0.6809613564895377f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_ec_T3_3<float>(x);
@@ -14370,7 +14370,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_ec_T3_3<float>(x);
@@ -14390,7 +14390,7 @@ auto const a0 = math::fma(a1, x, F(-0.0013670794478662853f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_T3_0<float>(x);
@@ -14414,7 +14414,7 @@ auto const b0 = math::fma(b1, x, F(0.6809613564895377f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_T3_3<float>(x);
@@ -14434,7 +14434,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_T3_3<float>(x);
@@ -14454,7 +14454,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_ec_T3_0<float>(x);
@@ -14478,7 +14478,7 @@ auto const b0 = b1 * x + F(0.6809613564895377f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_ec_T3_3<float>(x);
@@ -14498,7 +14498,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_ec_T3_3<float>(x);
@@ -14518,7 +14518,7 @@ auto const a0 = a1 * x + F(-0.0013670794478662853f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_T3_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_T3_0<float>(x);
@@ -14542,7 +14542,7 @@ auto const b0 = b1 * x + F(0.6809613564895377f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_T3_3<float>(x);
@@ -14562,7 +14562,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_T3_3<float>(x);
@@ -14582,7 +14582,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_ec_T3_0<float>(x);
@@ -14606,7 +14606,7 @@ auto const b0 = math::fma(b1, x, F(0.8951525474174579f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_ec_T3_3<float>(x);
@@ -14626,7 +14626,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_ec_T3_3<float>(x);
@@ -14646,7 +14646,7 @@ auto const a0 = math::fma(a1, x, F(-0.0013670794478662872f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_T3_0<float>(x);
@@ -14670,7 +14670,7 @@ auto const b0 = math::fma(b1, x, F(0.8951525474174579f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_T3_3<float>(x);
@@ -14690,7 +14690,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_T3_3<float>(x);
@@ -14710,7 +14710,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_ec_T3_0<float>(x);
@@ -14734,7 +14734,7 @@ auto const b0 = b1 * x + F(0.8951525474174579f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_ec_T3_3<float>(x);
@@ -14754,7 +14754,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_ec_T3_3<float>(x);
@@ -14774,7 +14774,7 @@ auto const a0 = a1 * x + F(-0.0013670794478662872f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_T3_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_T3_0<float>(x);
@@ -14798,7 +14798,7 @@ auto const b0 = b1 * x + F(0.8951525474174579f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_T3_3<float>(x);
@@ -14818,7 +14818,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_T3_3<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_T3_3<float>(x);
@@ -14839,7 +14839,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_ec_T4_0<float>(x);
@@ -14865,7 +14865,7 @@ auto const b0 = math::fma(b1, x, F(0.3537286411976476f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_ec_T4_4<float>(x);
@@ -14886,7 +14886,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_ec_T4_4<float>(x);
@@ -14907,7 +14907,7 @@ auto const a0 = math::fma(a1, x, F(0.00010772377991723675f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_T4_0<float>(x);
@@ -14933,7 +14933,7 @@ auto const b0 = math::fma(b1, x, F(0.3537286411976476f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_T4_4<float>(x);
@@ -14954,7 +14954,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_T4_4<float>(x);
@@ -14975,7 +14975,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_ec_T4_0<float>(x);
@@ -15001,7 +15001,7 @@ auto const b0 = b1 * x + F(0.3537286411976476f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_ec_T4_4<float>(x);
@@ -15022,7 +15022,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_ec_T4_4<float>(x);
@@ -15043,7 +15043,7 @@ auto const a0 = a1 * x + F(0.00010772377991723675f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_T4_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_T4_0<float>(x);
@@ -15069,7 +15069,7 @@ auto const b0 = b1 * x + F(0.3537286411976476f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_T4_4<float>(x);
@@ -15090,7 +15090,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_T4_4<float>(x);
@@ -15111,7 +15111,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_ec_T4_0<float>(x);
@@ -15137,7 +15137,7 @@ auto const b0 = math::fma(b1, x, F(0.7553729266999168f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_ec_T4_4<float>(x);
@@ -15158,7 +15158,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_ec_T4_4<float>(x);
@@ -15179,7 +15179,7 @@ auto const a0 = math::fma(a1, x, F(0.00010772377991722722f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_T4_0<float>(x);
@@ -15205,7 +15205,7 @@ auto const b0 = math::fma(b1, x, F(0.7553729266999168f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_T4_4<float>(x);
@@ -15226,7 +15226,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_T4_4<float>(x);
@@ -15247,7 +15247,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_ec_T4_0<float>(x);
@@ -15273,7 +15273,7 @@ auto const b0 = b1 * x + F(0.7553729266999168f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_ec_T4_4<float>(x);
@@ -15294,7 +15294,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_ec_T4_4<float>(x);
@@ -15315,7 +15315,7 @@ auto const a0 = a1 * x + F(0.00010772377991722722f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_T4_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_T4_0<float>(x);
@@ -15341,7 +15341,7 @@ auto const b0 = b1 * x + F(0.7553729266999168f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_T4_4<float>(x);
@@ -15362,7 +15362,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_T4_4<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_T4_4<float>(x);
@@ -15384,7 +15384,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_ec_T5_0<float>(x);
@@ -15412,7 +15412,7 @@ auto const b0 = math::fma(b1, x, F(0.6107155358023817f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_ec_T5_5<float>(x);
@@ -15434,7 +15434,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_ec_T5_5<float>(x);
@@ -15456,7 +15456,7 @@ auto const a0 = math::fma(a1, x, F(7.068518675479387e-06f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_T5_0<float>(x);
@@ -15484,7 +15484,7 @@ auto const b0 = math::fma(b1, x, F(0.6107155358023817f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_T5_5<float>(x);
@@ -15506,7 +15506,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_T5_5<float>(x);
@@ -15528,7 +15528,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_ec_T5_0<float>(x);
@@ -15556,7 +15556,7 @@ auto const b0 = b1 * x + F(0.6107155358023817f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_ec_T5_5<float>(x);
@@ -15578,7 +15578,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_ec_T5_5<float>(x);
@@ -15600,7 +15600,7 @@ auto const a0 = a1 * x + F(7.068518675479387e-06f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_T5_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_T5_0<float>(x);
@@ -15628,7 +15628,7 @@ auto const b0 = b1 * x + F(0.6107155358023817f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_T5_5<float>(x);
@@ -15650,7 +15650,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_T5_5<float>(x);
@@ -15672,7 +15672,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_ec_T5_0<float>(x);
@@ -15700,7 +15700,7 @@ auto const b0 = math::fma(b1, x, F(0.878568939675023f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_ec_T5_5<float>(x);
@@ -15722,7 +15722,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_ec_T5_5<float>(x);
@@ -15744,7 +15744,7 @@ auto const a0 = math::fma(a1, x, F(7.068518675469178e-06f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_T5_0<float>(x);
@@ -15772,7 +15772,7 @@ auto const b0 = math::fma(b1, x, F(0.878568939675023f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_T5_5<float>(x);
@@ -15794,7 +15794,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_T5_5<float>(x);
@@ -15816,7 +15816,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_ec_T5_0<float>(x);
@@ -15844,7 +15844,7 @@ auto const b0 = b1 * x + F(0.878568939675023f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_ec_T5_5<float>(x);
@@ -15866,7 +15866,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_ec_T5_5<float>(x);
@@ -15888,7 +15888,7 @@ auto const a0 = a1 * x + F(7.068518675469178e-06f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_T5_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_T5_0<float>(x);
@@ -15916,7 +15916,7 @@ auto const b0 = b1 * x + F(0.878568939675023f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_T5_5<float>(x);
@@ -15938,7 +15938,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_T5_5<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_T5_5<float>(x);
@@ -15961,7 +15961,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_ec_T6_0<float>(x);
@@ -15991,7 +15991,7 @@ auto const b0 = math::fma(b1, x, F(0.46938198447118495f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_ec_T6_6<float>(x);
@@ -16014,7 +16014,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_ec_T6_6<float>(x);
@@ -16037,7 +16037,7 @@ auto const a0 = math::fma(a1, x, F(-3.973469728241433e-07f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_T6_0<float>(x);
@@ -16067,7 +16067,7 @@ auto const b0 = math::fma(b1, x, F(0.46938198447118495f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_T6_6<float>(x);
@@ -16090,7 +16090,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_T6_6<float>(x);
@@ -16113,7 +16113,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_ec_T6_0<float>(x);
@@ -16143,7 +16143,7 @@ auto const b0 = b1 * x + F(0.46938198447118495f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_ec_T6_6<float>(x);
@@ -16166,7 +16166,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_ec_T6_6<float>(x);
@@ -16189,7 +16189,7 @@ auto const a0 = a1 * x + F(-3.973469728241433e-07f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_T6_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_T6_0<float>(x);
@@ -16219,7 +16219,7 @@ auto const b0 = b1 * x + F(0.46938198447118495f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_T6_6<float>(x);
@@ -16242,7 +16242,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_T6_6<float>(x);
@@ -16265,7 +16265,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_ec_T6_0<float>(x);
@@ -16295,7 +16295,7 @@ auto const b0 = math::fma(b1, x, F(0.8354208494236425f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_ec_T6_6<float>(x);
@@ -16318,7 +16318,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_ec_T6_6<float>(x);
@@ -16341,7 +16341,7 @@ auto const a0 = math::fma(a1, x, F(-3.9734697309065627e-07f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_T6_0<float>(x);
@@ -16371,7 +16371,7 @@ auto const b0 = math::fma(b1, x, F(0.8354208494236425f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_T6_6<float>(x);
@@ -16394,7 +16394,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_T6_6<float>(x);
@@ -16417,7 +16417,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_ec_T6_0<float>(x);
@@ -16447,7 +16447,7 @@ auto const b0 = b1 * x + F(0.8354208494236425f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_ec_T6_6<float>(x);
@@ -16470,7 +16470,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_ec_T6_6<float>(x);
@@ -16493,7 +16493,7 @@ auto const a0 = a1 * x + F(-3.9734697309065627e-07f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_T6_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_T6_0<float>(x);
@@ -16523,7 +16523,7 @@ auto const b0 = b1 * x + F(0.8354208494236425f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_T6_6<float>(x);
@@ -16546,7 +16546,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_T6_6<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_T6_6<float>(x);
@@ -16570,7 +16570,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_ec_T7_0<float>(x);
@@ -16602,7 +16602,7 @@ auto const b0 = math::fma(b1, x, F(0.6438091680946418f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_ec_T7_7<float>(x);
@@ -16626,7 +16626,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_ec_T7_7<float>(x);
@@ -16650,7 +16650,7 @@ auto const a0 = math::fma(a1, x, F(-1.9536771296259062e-08f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_T7_0<float>(x);
@@ -16682,7 +16682,7 @@ auto const b0 = math::fma(b1, x, F(0.6438091680946418f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_T7_7<float>(x);
@@ -16706,7 +16706,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_T7_7<float>(x);
@@ -16730,7 +16730,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_ec_T7_0<float>(x);
@@ -16762,7 +16762,7 @@ auto const b0 = b1 * x + F(0.6438091680946418f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_ec_T7_7<float>(x);
@@ -16786,7 +16786,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_ec_T7_7<float>(x);
@@ -16810,7 +16810,7 @@ auto const a0 = a1 * x + F(-1.9536771296259062e-08f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_T7_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_T7_0<float>(x);
@@ -16842,7 +16842,7 @@ auto const b0 = b1 * x + F(0.6438091680946418f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_T7_7<float>(x);
@@ -16866,7 +16866,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_T7_7<float>(x);
@@ -16890,7 +16890,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_ec_T7_0<float>(x);
@@ -16922,7 +16922,7 @@ auto const b0 = math::fma(b1, x, F(0.898457911939536f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_ec_T7_7<float>(x);
@@ -16946,7 +16946,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_ec_T7_7<float>(x);
@@ -16970,7 +16970,7 @@ auto const a0 = math::fma(a1, x, F(-1.9536773078228296e-08f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_T7_0<float>(x);
@@ -17002,7 +17002,7 @@ auto const b0 = math::fma(b1, x, F(0.898457911939536f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_T7_7<float>(x);
@@ -17026,7 +17026,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_T7_7<float>(x);
@@ -17050,7 +17050,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_ec_T7_0<float>(x);
@@ -17082,7 +17082,7 @@ auto const b0 = b1 * x + F(0.898457911939536f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_ec_T7_7<float>(x);
@@ -17106,7 +17106,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_ec_T7_7<float>(x);
@@ -17130,7 +17130,7 @@ auto const a0 = a1 * x + F(-1.9536773078228296e-08f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_T7_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_T7_0<float>(x);
@@ -17162,7 +17162,7 @@ auto const b0 = b1 * x + F(0.898457911939536f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_T7_7<float>(x);
@@ -17186,7 +17186,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_T7_7<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_T7_7<float>(x);
@@ -17211,7 +17211,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_ec_T8_0<float>(x);
@@ -17245,7 +17245,7 @@ auto const b0 = math::fma(b1, x, F(0.5746306609490105f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_ec_T8_8<float>(x);
@@ -17270,7 +17270,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_ec_T8_8<float>(x);
@@ -17295,7 +17295,7 @@ auto const a0 = math::fma(a1, x, F(8.535674292020048e-10f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_T8_0<float>(x);
@@ -17329,7 +17329,7 @@ auto const b0 = math::fma(b1, x, F(0.5746306609490105f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_T8_8<float>(x);
@@ -17354,7 +17354,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_T8_8<float>(x);
@@ -17379,7 +17379,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_ec_T8_0<float>(x);
@@ -17413,7 +17413,7 @@ auto const b0 = b1 * x + F(0.5746306609490105f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_ec_T8_8<float>(x);
@@ -17438,7 +17438,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_ec_T8_8<float>(x);
@@ -17463,7 +17463,7 @@ auto const a0 = a1 * x + F(8.535674292020048e-10f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_T8_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_T8_0<float>(x);
@@ -17497,7 +17497,7 @@ auto const b0 = b1 * x + F(0.5746306609490105f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_T8_8<float>(x);
@@ -17522,7 +17522,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_T8_8<float>(x);
@@ -17547,7 +17547,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_ec_T8_0<float>(x);
@@ -17581,7 +17581,7 @@ auto const b0 = math::fma(b1, x, F(0.8791456403896974f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_ec_T8_8<float>(x);
@@ -17606,7 +17606,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_ec_T8_8<float>(x);
@@ -17631,7 +17631,7 @@ auto const a0 = math::fma(a1, x, F(8.536076931784705e-10f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_T8_0<float>(x);
@@ -17665,7 +17665,7 @@ auto const b0 = math::fma(b1, x, F(0.8791456403896974f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_T8_8<float>(x);
@@ -17690,7 +17690,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_T8_8<float>(x);
@@ -17715,7 +17715,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_ec_T8_0<float>(x);
@@ -17749,7 +17749,7 @@ auto const b0 = b1 * x + F(0.8791456403896974f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_ec_T8_8<float>(x);
@@ -17774,7 +17774,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_ec_T8_8<float>(x);
@@ -17799,7 +17799,7 @@ auto const a0 = a1 * x + F(8.536076931784705e-10f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_T8_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_T8_0<float>(x);
@@ -17833,7 +17833,7 @@ auto const b0 = b1 * x + F(0.8791456403896974f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_T8_8<float>(x);
@@ -17858,7 +17858,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_T8_8<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_T8_8<float>(x);
@@ -17884,7 +17884,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_ec_T9_0<float>(x);
@@ -17920,7 +17920,7 @@ auto const b0 = math::fma(b1, x, F(0.6921749751658213f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_ec_T9_9<float>(x);
@@ -17946,7 +17946,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_ec_T9_9<float>(x);
@@ -17972,7 +17972,7 @@ auto const a0 = math::fma(a1, x, F(3.347641592134642e-11f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_fma_T9_0<float>(x);
@@ -18008,7 +18008,7 @@ auto const b0 = math::fma(b1, x, F(0.6921749751658213f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_fma_T9_9<float>(x);
@@ -18034,7 +18034,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_fma_T9_9<float>(x);
@@ -18060,7 +18060,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_ec_T9_0<float>(x);
@@ -18096,7 +18096,7 @@ auto const b0 = b1 * x + F(0.6921749751658213f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_ec_T9_9<float>(x);
@@ -18122,7 +18122,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_ec_T9_9<float>(x);
@@ -18148,7 +18148,7 @@ auto const a0 = a1 * x + F(3.347641592134642e-11f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit1_remez_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_T9_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_T9_0<float>(x);
@@ -18184,7 +18184,7 @@ auto const b0 = b1 * x + F(0.6921749751658213f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit1_remez_pade_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_remez_pade_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_remez_pade_T9_9<float>(x);
@@ -18210,7 +18210,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit1_quart_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit1_quart_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_unit1_quart_T9_9<float>(x);
@@ -18236,7 +18236,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_ec_T9_0<float>(x);
@@ -18272,7 +18272,7 @@ auto const b0 = math::fma(b1, x, F(0.9154596610529886f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_ec_T9_9<float>(x);
@@ -18298,7 +18298,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_ec_T9_9<float>(x);
@@ -18324,7 +18324,7 @@ auto const a0 = math::fma(a1, x, F(3.353307031816502e-11f));
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_fma_T9_0<float>(x);
@@ -18360,7 +18360,7 @@ auto const b0 = math::fma(b1, x, F(0.9154596610529886f));
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_fma_T9_9<float>(x);
@@ -18386,7 +18386,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_fma_T9_9<float>(x);
@@ -18412,7 +18412,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_ec_T9_0<float>(x);
@@ -18448,7 +18448,7 @@ auto const b0 = b1 * x + F(0.9154596610529886f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_ec_T9_9<float>(x);
@@ -18474,7 +18474,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_ec_T9_9<float>(x);
@@ -18500,7 +18500,7 @@ auto const a0 = a1 * x + F(3.353307031816502e-11f);
 return math::setSign(a0, half - x0 );
 }
 inline static float sin_unit2_remez_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_T9_0<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_T9_0<float>(x);
@@ -18536,7 +18536,7 @@ auto const b0 = b1 * x + F(0.9154596610529886f);
 return math::setSign(a0 / b0, half - x0 );
 }
 inline static float sin_unit2_remez_pade_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_remez_pade_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_remez_pade_T9_9<float>(x);
@@ -18562,7 +18562,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float sin_unit2_quart_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return sin_unit2_quart_T9_9<cr::simd::float1x4>(x).first();
 #else
 return sin_unit2_quart_T9_9<float>(x);
@@ -18580,7 +18580,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_ec_T1_0<float>(x);
@@ -18600,7 +18600,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_ec_T1_0<float>(x);
@@ -18615,7 +18615,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float cos_unit1_quart_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_ec_T1_1<float>(x);
@@ -18633,7 +18633,7 @@ auto const a0 = math::fma(a1, x, F(1.1052568311765094f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_T1_0<float>(x);
@@ -18653,7 +18653,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_T1_0<float>(x);
@@ -18668,7 +18668,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float cos_unit1_quart_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_T1_1<float>(x);
@@ -18686,7 +18686,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_ec_T1_0<float>(x);
@@ -18706,7 +18706,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_ec_T1_0<float>(x);
@@ -18721,7 +18721,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float cos_unit1_quart_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_ec_T1_1<float>(x);
@@ -18739,7 +18739,7 @@ auto const a0 = a1 * x + F(1.1052568311765094f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_T1_0<float>(x);
@@ -18759,7 +18759,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_T1_0<float>(x);
@@ -18774,7 +18774,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float cos_unit1_quart_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_T1_1<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_T1_1<float>(x);
@@ -18792,7 +18792,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_ec_T1_0<float>(x);
@@ -18812,7 +18812,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_ec_T1_0<float>(x);
@@ -18827,7 +18827,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float cos_unit2_quart_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_ec_T1_1<float>(x);
@@ -18845,7 +18845,7 @@ auto const a0 = math::fma(a1, x, F(1.1052568311765094f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_T1_0<float>(x);
@@ -18865,7 +18865,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_T1_0<float>(x);
@@ -18880,7 +18880,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float cos_unit2_quart_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_T1_1<float>(x);
@@ -18898,7 +18898,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_ec_T1_0<float>(x);
@@ -18918,7 +18918,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_ec_T1_0<float>(x);
@@ -18933,7 +18933,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float cos_unit2_quart_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_ec_T1_1<float>(x);
@@ -18951,7 +18951,7 @@ auto const a0 = a1 * x + F(1.1052568311765094f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_T1_0<float>(x);
@@ -18971,7 +18971,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_T1_0<float>(x);
@@ -18986,7 +18986,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float cos_unit2_quart_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_T1_1<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_T1_1<float>(x);
@@ -19004,7 +19004,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_ec_T1_0<float>(x);
@@ -19024,7 +19024,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_ec_T1_0<float>(x);
@@ -19039,7 +19039,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float cos_quart_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_ec_T1_1<float>(x);
@@ -19057,7 +19057,7 @@ auto const a0 = math::fma(a1, x, F(1.1052568311765094f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_T1_0<float>(x);
@@ -19077,7 +19077,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_T1_0<float>(x);
@@ -19092,7 +19092,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float cos_quart_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_T1_1<float>(x);
@@ -19110,7 +19110,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_ec_T1_0<float>(x);
@@ -19130,7 +19130,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_ec_T1_0<float>(x);
@@ -19145,7 +19145,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float cos_quart_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_ec_T1_1<float>(x);
@@ -19163,7 +19163,7 @@ auto const a0 = a1 * x + F(1.1052568311765094f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_T1_0<float>(x);
@@ -19183,7 +19183,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_T1_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_T1_0<float>(x);
@@ -19198,7 +19198,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float cos_quart_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_T1_1<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_T1_1<float>(x);
@@ -19217,7 +19217,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_ec_T2_0<float>(x);
@@ -19239,7 +19239,7 @@ auto const b0 = math::fma(b1, x, F(0.28626853389781265f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_ec_T2_0<float>(x);
@@ -19257,7 +19257,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_ec_T2_2<float>(x);
@@ -19275,7 +19275,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_half_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_half_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_half_fma_ec_T2_2<float>(x);
@@ -19294,7 +19294,7 @@ auto const a0 = math::fma(a1, x, F(1.0138649508031499f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_T2_0<float>(x);
@@ -19316,7 +19316,7 @@ auto const b0 = math::fma(b1, x, F(0.28626853389781265f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_T2_0<float>(x);
@@ -19334,7 +19334,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_T2_2<float>(x);
@@ -19352,7 +19352,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_half_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_half_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_half_fma_T2_2<float>(x);
@@ -19371,7 +19371,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_ec_T2_0<float>(x);
@@ -19393,7 +19393,7 @@ auto const b0 = b1 * x + F(0.28626853389781265f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_ec_T2_0<float>(x);
@@ -19411,7 +19411,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_ec_T2_2<float>(x);
@@ -19428,7 +19428,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_half_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_half_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_half_ec_T2_2<float>(x);
@@ -19447,7 +19447,7 @@ auto const a0 = a1 * x + F(1.0138649508031499f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_T2_0<float>(x);
@@ -19469,7 +19469,7 @@ auto const b0 = b1 * x + F(0.28626853389781265f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_T2_0<float>(x);
@@ -19487,7 +19487,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_T2_2<float>(x);
@@ -19504,7 +19504,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_half_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_half_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_half_T2_2<float>(x);
@@ -19523,7 +19523,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_ec_T2_0<float>(x);
@@ -19545,7 +19545,7 @@ auto const b0 = math::fma(b1, x, F(0.6160268370981704f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_ec_T2_0<float>(x);
@@ -19563,7 +19563,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_ec_T2_2<float>(x);
@@ -19581,7 +19581,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_half_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_half_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_half_fma_ec_T2_2<float>(x);
@@ -19600,7 +19600,7 @@ auto const a0 = math::fma(a1, x, F(1.0138649508031499f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_T2_0<float>(x);
@@ -19622,7 +19622,7 @@ auto const b0 = math::fma(b1, x, F(0.6160268370981704f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_T2_0<float>(x);
@@ -19640,7 +19640,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_T2_2<float>(x);
@@ -19658,7 +19658,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_half_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_half_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_half_fma_T2_2<float>(x);
@@ -19677,7 +19677,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_ec_T2_0<float>(x);
@@ -19699,7 +19699,7 @@ auto const b0 = b1 * x + F(0.6160268370981704f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_ec_T2_0<float>(x);
@@ -19717,7 +19717,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_ec_T2_2<float>(x);
@@ -19734,7 +19734,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_half_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_half_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_half_ec_T2_2<float>(x);
@@ -19753,7 +19753,7 @@ auto const a0 = a1 * x + F(1.0138649508031499f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_T2_0<float>(x);
@@ -19775,7 +19775,7 @@ auto const b0 = b1 * x + F(0.6160268370981704f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_T2_0<float>(x);
@@ -19793,7 +19793,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_T2_2<float>(x);
@@ -19810,7 +19810,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_half_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_half_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_half_T2_2<float>(x);
@@ -19829,7 +19829,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_ec_T2_0<float>(x);
@@ -19851,7 +19851,7 @@ auto const b0 = math::fma(b1, x, F(0.9405974240410021f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_ec_T2_0<float>(x);
@@ -19869,7 +19869,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_quart_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_ec_T2_2<float>(x);
@@ -19887,7 +19887,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_half_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_half_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_half_fma_ec_T2_2<float>(x);
@@ -19906,7 +19906,7 @@ auto const a0 = math::fma(a1, x, F(1.0138649508031499f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_T2_0<float>(x);
@@ -19928,7 +19928,7 @@ auto const b0 = math::fma(b1, x, F(0.9405974240410021f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_T2_0<float>(x);
@@ -19946,7 +19946,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_quart_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_T2_2<float>(x);
@@ -19964,7 +19964,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_half_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_half_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_half_fma_T2_2<float>(x);
@@ -19983,7 +19983,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_ec_T2_0<float>(x);
@@ -20005,7 +20005,7 @@ auto const b0 = b1 * x + F(0.9405974240410021f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_ec_T2_0<float>(x);
@@ -20023,7 +20023,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_quart_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_ec_T2_2<float>(x);
@@ -20040,7 +20040,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_half_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_half_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_half_ec_T2_2<float>(x);
@@ -20059,7 +20059,7 @@ auto const a0 = a1 * x + F(1.0138649508031499f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_T2_0<float>(x);
@@ -20081,7 +20081,7 @@ auto const b0 = b1 * x + F(0.9405974240410021f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_T2_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_T2_0<float>(x);
@@ -20099,7 +20099,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_quart_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_T2_2<float>(x);
@@ -20116,7 +20116,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_half_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_half_T2_2<cr::simd::float1x4>(x).first();
 #else
 return cos_half_T2_2<float>(x);
@@ -20136,7 +20136,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_ec_T3_0<float>(x);
@@ -20160,7 +20160,7 @@ auto const b0 = math::fma(b1, x, F(0.4047194819777204f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_ec_T3_0<float>(x);
@@ -20179,7 +20179,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_ec_T3_3<float>(x);
@@ -20199,7 +20199,7 @@ auto const a0 = math::fma(a1, x, F(0.9986329205521337f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_T3_0<float>(x);
@@ -20223,7 +20223,7 @@ auto const b0 = math::fma(b1, x, F(0.4047194819777204f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_T3_0<float>(x);
@@ -20242,7 +20242,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_T3_3<float>(x);
@@ -20262,7 +20262,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_ec_T3_0<float>(x);
@@ -20286,7 +20286,7 @@ auto const b0 = b1 * x + F(0.4047194819777204f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_ec_T3_0<float>(x);
@@ -20305,7 +20305,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_ec_T3_3<float>(x);
@@ -20325,7 +20325,7 @@ auto const a0 = a1 * x + F(0.9986329205521337f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_T3_0<float>(x);
@@ -20349,7 +20349,7 @@ auto const b0 = b1 * x + F(0.4047194819777204f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_T3_0<float>(x);
@@ -20368,7 +20368,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_T3_3<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_T3_3<float>(x);
@@ -20388,7 +20388,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_ec_T3_0<float>(x);
@@ -20412,7 +20412,7 @@ auto const b0 = math::fma(b1, x, F(0.7311481843432746f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_ec_T3_0<float>(x);
@@ -20431,7 +20431,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_ec_T3_3<float>(x);
@@ -20451,7 +20451,7 @@ auto const a0 = math::fma(a1, x, F(0.9986329205521337f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_T3_0<float>(x);
@@ -20475,7 +20475,7 @@ auto const b0 = math::fma(b1, x, F(0.7311481843432746f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_T3_0<float>(x);
@@ -20494,7 +20494,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_T3_3<float>(x);
@@ -20514,7 +20514,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_ec_T3_0<float>(x);
@@ -20538,7 +20538,7 @@ auto const b0 = b1 * x + F(0.7311481843432746f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_ec_T3_0<float>(x);
@@ -20557,7 +20557,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_ec_T3_3<float>(x);
@@ -20577,7 +20577,7 @@ auto const a0 = a1 * x + F(0.9986329205521337f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_T3_0<float>(x);
@@ -20601,7 +20601,7 @@ auto const b0 = b1 * x + F(0.7311481843432746f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_T3_0<float>(x);
@@ -20620,7 +20620,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_T3_3<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_T3_3<float>(x);
@@ -20640,7 +20640,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_ec_T3_0<float>(x);
@@ -20664,7 +20664,7 @@ auto const b0 = math::fma(b1, x, F(0.9640812305318149f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_ec_T3_0<float>(x);
@@ -20683,7 +20683,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_ec_T3_3<float>(x);
@@ -20703,7 +20703,7 @@ auto const a0 = math::fma(a1, x, F(0.9986329205521337f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_T3_0<float>(x);
@@ -20727,7 +20727,7 @@ auto const b0 = math::fma(b1, x, F(0.9640812305318149f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_T3_0<float>(x);
@@ -20746,7 +20746,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_T3_3<float>(x);
@@ -20766,7 +20766,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_ec_T3_0<float>(x);
@@ -20790,7 +20790,7 @@ auto const b0 = b1 * x + F(0.9640812305318149f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_ec_T3_0<float>(x);
@@ -20809,7 +20809,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_ec_T3_3<float>(x);
@@ -20829,7 +20829,7 @@ auto const a0 = a1 * x + F(0.9986329205521337f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_T3_0<float>(x);
@@ -20853,7 +20853,7 @@ auto const b0 = b1 * x + F(0.9640812305318149f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_T3_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_T3_0<float>(x);
@@ -20872,7 +20872,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_T3_3<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_T3_3<float>(x);
@@ -20893,7 +20893,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_ec_T4_0<float>(x);
@@ -20919,7 +20919,7 @@ auto const b0 = math::fma(b1, x, F(0.3594220656804006f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_ec_T4_0<float>(x);
@@ -20939,7 +20939,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_ec_T4_4<float>(x);
@@ -20959,7 +20959,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_half_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_half_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_half_fma_ec_T4_4<float>(x);
@@ -20980,7 +20980,7 @@ auto const a0 = math::fma(a1, x, F(0.9998922762200827f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_T4_0<float>(x);
@@ -21006,7 +21006,7 @@ auto const b0 = math::fma(b1, x, F(0.3594220656804006f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_T4_0<float>(x);
@@ -21026,7 +21026,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_T4_4<float>(x);
@@ -21046,7 +21046,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_half_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_half_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_half_fma_T4_4<float>(x);
@@ -21067,7 +21067,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_ec_T4_0<float>(x);
@@ -21093,7 +21093,7 @@ auto const b0 = b1 * x + F(0.3594220656804006f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_ec_T4_0<float>(x);
@@ -21113,7 +21113,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_ec_T4_4<float>(x);
@@ -21132,7 +21132,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_half_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_half_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_half_ec_T4_4<float>(x);
@@ -21153,7 +21153,7 @@ auto const a0 = a1 * x + F(0.9998922762200827f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_T4_0<float>(x);
@@ -21179,7 +21179,7 @@ auto const b0 = b1 * x + F(0.3594220656804006f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_T4_0<float>(x);
@@ -21199,7 +21199,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_T4_4<float>(x);
@@ -21218,7 +21218,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_half_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_half_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_half_T4_4<float>(x);
@@ -21239,7 +21239,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_ec_T4_0<float>(x);
@@ -21265,7 +21265,7 @@ auto const b0 = math::fma(b1, x, F(0.7685597371775325f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_ec_T4_0<float>(x);
@@ -21285,7 +21285,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_ec_T4_4<float>(x);
@@ -21305,7 +21305,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_half_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_half_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_half_fma_ec_T4_4<float>(x);
@@ -21326,7 +21326,7 @@ auto const a0 = math::fma(a1, x, F(0.9998922762200828f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_T4_0<float>(x);
@@ -21352,7 +21352,7 @@ auto const b0 = math::fma(b1, x, F(0.7685597371775325f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_T4_0<float>(x);
@@ -21372,7 +21372,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_T4_4<float>(x);
@@ -21392,7 +21392,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_half_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_half_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_half_fma_T4_4<float>(x);
@@ -21413,7 +21413,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_ec_T4_0<float>(x);
@@ -21439,7 +21439,7 @@ auto const b0 = b1 * x + F(0.7685597371775325f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_ec_T4_0<float>(x);
@@ -21459,7 +21459,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_ec_T4_4<float>(x);
@@ -21478,7 +21478,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_half_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_half_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_half_ec_T4_4<float>(x);
@@ -21499,7 +21499,7 @@ auto const a0 = a1 * x + F(0.9998922762200828f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_T4_0<float>(x);
@@ -21525,7 +21525,7 @@ auto const b0 = b1 * x + F(0.7685597371775325f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_T4_0<float>(x);
@@ -21545,7 +21545,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_T4_4<float>(x);
@@ -21564,7 +21564,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_half_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_half_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_half_T4_4<float>(x);
@@ -21585,7 +21585,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_ec_T4_0<float>(x);
@@ -21611,7 +21611,7 @@ auto const b0 = math::fma(b1, x, F(0.9745375040232929f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_ec_T4_0<float>(x);
@@ -21631,7 +21631,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_quart_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_ec_T4_4<float>(x);
@@ -21651,7 +21651,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_half_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_half_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_half_fma_ec_T4_4<float>(x);
@@ -21672,7 +21672,7 @@ auto const a0 = math::fma(a1, x, F(0.9998922762200828f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_T4_0<float>(x);
@@ -21698,7 +21698,7 @@ auto const b0 = math::fma(b1, x, F(0.9745375040232929f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_T4_0<float>(x);
@@ -21718,7 +21718,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_quart_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_T4_4<float>(x);
@@ -21738,7 +21738,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_half_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_half_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_half_fma_T4_4<float>(x);
@@ -21759,7 +21759,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_ec_T4_0<float>(x);
@@ -21785,7 +21785,7 @@ auto const b0 = b1 * x + F(0.9745375040232929f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_ec_T4_0<float>(x);
@@ -21805,7 +21805,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_quart_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_ec_T4_4<float>(x);
@@ -21824,7 +21824,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_half_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_half_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_half_ec_T4_4<float>(x);
@@ -21845,7 +21845,7 @@ auto const a0 = a1 * x + F(0.9998922762200828f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_T4_0<float>(x);
@@ -21871,7 +21871,7 @@ auto const b0 = b1 * x + F(0.9745375040232929f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_T4_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_T4_0<float>(x);
@@ -21891,7 +21891,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_quart_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_T4_4<float>(x);
@@ -21910,7 +21910,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_half_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_half_T4_4<cr::simd::float1x4>(x).first();
 #else
 return cos_half_T4_4<float>(x);
@@ -21932,7 +21932,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_ec_T5_0<float>(x);
@@ -21960,7 +21960,7 @@ auto const b0 = math::fma(b1, x, F(0.44008718467683083f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_ec_T5_0<float>(x);
@@ -21981,7 +21981,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_ec_T5_5<float>(x);
@@ -22003,7 +22003,7 @@ auto const a0 = math::fma(a1, x, F(1.0000070685186753f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_T5_0<float>(x);
@@ -22031,7 +22031,7 @@ auto const b0 = math::fma(b1, x, F(0.44008718467683083f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_T5_0<float>(x);
@@ -22052,7 +22052,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_T5_5<float>(x);
@@ -22074,7 +22074,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_ec_T5_0<float>(x);
@@ -22102,7 +22102,7 @@ auto const b0 = b1 * x + F(0.44008718467683083f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_ec_T5_0<float>(x);
@@ -22123,7 +22123,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_ec_T5_5<float>(x);
@@ -22145,7 +22145,7 @@ auto const a0 = a1 * x + F(1.0000070685186753f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_T5_0<float>(x);
@@ -22173,7 +22173,7 @@ auto const b0 = b1 * x + F(0.44008718467683083f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_T5_0<float>(x);
@@ -22194,7 +22194,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_T5_5<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_T5_5<float>(x);
@@ -22216,7 +22216,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_ec_T5_0<float>(x);
@@ -22244,7 +22244,7 @@ auto const b0 = math::fma(b1, x, F(0.808839913969847f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_ec_T5_0<float>(x);
@@ -22265,7 +22265,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_ec_T5_5<float>(x);
@@ -22287,7 +22287,7 @@ auto const a0 = math::fma(a1, x, F(1.0000070685186755f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_T5_0<float>(x);
@@ -22315,7 +22315,7 @@ auto const b0 = math::fma(b1, x, F(0.808839913969847f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_T5_0<float>(x);
@@ -22336,7 +22336,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_T5_5<float>(x);
@@ -22358,7 +22358,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_ec_T5_0<float>(x);
@@ -22386,7 +22386,7 @@ auto const b0 = b1 * x + F(0.808839913969847f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_ec_T5_0<float>(x);
@@ -22407,7 +22407,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_ec_T5_5<float>(x);
@@ -22429,7 +22429,7 @@ auto const a0 = a1 * x + F(1.0000070685186755f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_T5_0<float>(x);
@@ -22457,7 +22457,7 @@ auto const b0 = b1 * x + F(0.808839913969847f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_T5_0<float>(x);
@@ -22478,7 +22478,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_T5_5<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_T5_5<float>(x);
@@ -22500,7 +22500,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_ec_T5_0<float>(x);
@@ -22528,7 +22528,7 @@ auto const b0 = math::fma(b1, x, F(0.9790603818409398f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_ec_T5_0<float>(x);
@@ -22549,7 +22549,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_ec_T5_5<float>(x);
@@ -22571,7 +22571,7 @@ auto const a0 = math::fma(a1, x, F(1.0000070685186755f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_T5_0<float>(x);
@@ -22599,7 +22599,7 @@ auto const b0 = math::fma(b1, x, F(0.9790603818409398f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_T5_0<float>(x);
@@ -22620,7 +22620,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_T5_5<float>(x);
@@ -22642,7 +22642,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_ec_T5_0<float>(x);
@@ -22670,7 +22670,7 @@ auto const b0 = b1 * x + F(0.9790603818409398f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_ec_T5_0<float>(x);
@@ -22691,7 +22691,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_ec_T5_5<float>(x);
@@ -22713,7 +22713,7 @@ auto const a0 = a1 * x + F(1.0000070685186755f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_T5_0<float>(x);
@@ -22741,7 +22741,7 @@ auto const b0 = b1 * x + F(0.9790603818409398f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_T5_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_T5_0<float>(x);
@@ -22762,7 +22762,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_T5_5<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_T5_5<float>(x);
@@ -22785,7 +22785,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_ec_T6_0<float>(x);
@@ -22815,7 +22815,7 @@ auto const b0 = math::fma(b1, x, F(0.4894043108373957f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_ec_T6_0<float>(x);
@@ -22837,7 +22837,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_ec_T6_6<float>(x);
@@ -22859,7 +22859,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_half_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_half_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_half_fma_ec_T6_6<float>(x);
@@ -22882,7 +22882,7 @@ auto const a0 = math::fma(a1, x, F(1.000000397346973f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_T6_0<float>(x);
@@ -22912,7 +22912,7 @@ auto const b0 = math::fma(b1, x, F(0.4894043108373957f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_T6_0<float>(x);
@@ -22934,7 +22934,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_T6_6<float>(x);
@@ -22956,7 +22956,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_half_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_half_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_half_fma_T6_6<float>(x);
@@ -22979,7 +22979,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_ec_T6_0<float>(x);
@@ -23009,7 +23009,7 @@ auto const b0 = b1 * x + F(0.4894043108373957f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_ec_T6_0<float>(x);
@@ -23031,7 +23031,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_ec_T6_6<float>(x);
@@ -23052,7 +23052,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_half_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_half_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_half_ec_T6_6<float>(x);
@@ -23075,7 +23075,7 @@ auto const a0 = a1 * x + F(1.000000397346973f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_T6_0<float>(x);
@@ -23105,7 +23105,7 @@ auto const b0 = b1 * x + F(0.4894043108373957f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_T6_0<float>(x);
@@ -23127,7 +23127,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_T6_6<float>(x);
@@ -23148,7 +23148,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_half_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_half_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_half_T6_6<float>(x);
@@ -23171,7 +23171,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_ec_T6_0<float>(x);
@@ -23201,7 +23201,7 @@ auto const b0 = math::fma(b1, x, F(0.8481569705326283f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_ec_T6_0<float>(x);
@@ -23223,7 +23223,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_ec_T6_6<float>(x);
@@ -23245,7 +23245,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_half_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_half_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_half_fma_ec_T6_6<float>(x);
@@ -23268,7 +23268,7 @@ auto const a0 = math::fma(a1, x, F(1.000000397346973f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_T6_0<float>(x);
@@ -23298,7 +23298,7 @@ auto const b0 = math::fma(b1, x, F(0.8481569705326283f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_T6_0<float>(x);
@@ -23320,7 +23320,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_T6_6<float>(x);
@@ -23342,7 +23342,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_half_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_half_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_half_fma_T6_6<float>(x);
@@ -23365,7 +23365,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_ec_T6_0<float>(x);
@@ -23395,7 +23395,7 @@ auto const b0 = b1 * x + F(0.8481569705326283f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_ec_T6_0<float>(x);
@@ -23417,7 +23417,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_ec_T6_6<float>(x);
@@ -23438,7 +23438,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_half_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_half_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_half_ec_T6_6<float>(x);
@@ -23461,7 +23461,7 @@ auto const a0 = a1 * x + F(1.000000397346973f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_T6_0<float>(x);
@@ -23491,7 +23491,7 @@ auto const b0 = b1 * x + F(0.8481569705326283f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_T6_0<float>(x);
@@ -23513,7 +23513,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_T6_6<float>(x);
@@ -23534,7 +23534,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_half_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_half_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_half_T6_6<float>(x);
@@ -23557,7 +23557,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_ec_T6_0<float>(x);
@@ -23587,7 +23587,7 @@ auto const b0 = math::fma(b1, x, F(0.9839738392331364f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_ec_T6_0<float>(x);
@@ -23609,7 +23609,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_quart_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_ec_T6_6<float>(x);
@@ -23631,7 +23631,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_half_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_half_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_half_fma_ec_T6_6<float>(x);
@@ -23654,7 +23654,7 @@ auto const a0 = math::fma(a1, x, F(1.000000397346973f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_T6_0<float>(x);
@@ -23684,7 +23684,7 @@ auto const b0 = math::fma(b1, x, F(0.9839738392331364f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_T6_0<float>(x);
@@ -23706,7 +23706,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_quart_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_T6_6<float>(x);
@@ -23728,7 +23728,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_half_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_half_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_half_fma_T6_6<float>(x);
@@ -23751,7 +23751,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_ec_T6_0<float>(x);
@@ -23781,7 +23781,7 @@ auto const b0 = b1 * x + F(0.9839738392331364f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_ec_T6_0<float>(x);
@@ -23803,7 +23803,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_quart_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_ec_T6_6<float>(x);
@@ -23824,7 +23824,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_half_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_half_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_half_ec_T6_6<float>(x);
@@ -23847,7 +23847,7 @@ auto const a0 = a1 * x + F(1.000000397346973f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_T6_0<float>(x);
@@ -23877,7 +23877,7 @@ auto const b0 = b1 * x + F(0.9839738392331364f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_T6_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_T6_0<float>(x);
@@ -23899,7 +23899,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_quart_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_T6_6<float>(x);
@@ -23920,7 +23920,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_half_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_half_T6_6<cr::simd::float1x4>(x).first();
 #else
 return cos_half_T6_6<float>(x);
@@ -23944,7 +23944,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_ec_T7_0<float>(x);
@@ -23976,7 +23976,7 @@ auto const b0 = math::fma(b1, x, F(0.5383015765281692f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_ec_T7_0<float>(x);
@@ -23999,7 +23999,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_ec_T7_7<float>(x);
@@ -24023,7 +24023,7 @@ auto const a0 = math::fma(a1, x, F(0.9999999804632368f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_T7_0<float>(x);
@@ -24055,7 +24055,7 @@ auto const b0 = math::fma(b1, x, F(0.5383015765281692f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_T7_0<float>(x);
@@ -24078,7 +24078,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_T7_7<float>(x);
@@ -24102,7 +24102,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_ec_T7_0<float>(x);
@@ -24134,7 +24134,7 @@ auto const b0 = b1 * x + F(0.5383015765281692f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_ec_T7_0<float>(x);
@@ -24157,7 +24157,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_ec_T7_7<float>(x);
@@ -24181,7 +24181,7 @@ auto const a0 = a1 * x + F(0.9999999804632368f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_T7_0<float>(x);
@@ -24213,7 +24213,7 @@ auto const b0 = b1 * x + F(0.5383015765281692f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_T7_0<float>(x);
@@ -24236,7 +24236,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_T7_7<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_T7_7<float>(x);
@@ -24260,7 +24260,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_ec_T7_0<float>(x);
@@ -24292,7 +24292,7 @@ auto const b0 = math::fma(b1, x, F(0.8637030932768607f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_ec_T7_0<float>(x);
@@ -24315,7 +24315,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_ec_T7_7<float>(x);
@@ -24339,7 +24339,7 @@ auto const a0 = math::fma(a1, x, F(0.9999999804632268f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_T7_0<float>(x);
@@ -24371,7 +24371,7 @@ auto const b0 = math::fma(b1, x, F(0.8637030932768607f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_T7_0<float>(x);
@@ -24394,7 +24394,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_T7_7<float>(x);
@@ -24418,7 +24418,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_ec_T7_0<float>(x);
@@ -24450,7 +24450,7 @@ auto const b0 = b1 * x + F(0.8637030932768607f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_ec_T7_0<float>(x);
@@ -24473,7 +24473,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_ec_T7_7<float>(x);
@@ -24497,7 +24497,7 @@ auto const a0 = a1 * x + F(0.9999999804632268f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_T7_0<float>(x);
@@ -24529,7 +24529,7 @@ auto const b0 = b1 * x + F(0.8637030932768607f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_T7_0<float>(x);
@@ -24552,7 +24552,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_T7_7<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_T7_7<float>(x);
@@ -24576,7 +24576,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_ec_T7_0<float>(x);
@@ -24608,7 +24608,7 @@ auto const b0 = math::fma(b1, x, F(0.9856322374255826f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_ec_T7_0<float>(x);
@@ -24631,7 +24631,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_ec_T7_7<float>(x);
@@ -24655,7 +24655,7 @@ auto const a0 = math::fma(a1, x, F(0.9999999804632269f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_T7_0<float>(x);
@@ -24687,7 +24687,7 @@ auto const b0 = math::fma(b1, x, F(0.9856322374255826f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_T7_0<float>(x);
@@ -24710,7 +24710,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_T7_7<float>(x);
@@ -24734,7 +24734,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_ec_T7_0<float>(x);
@@ -24766,7 +24766,7 @@ auto const b0 = b1 * x + F(0.9856322374255826f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_ec_T7_0<float>(x);
@@ -24789,7 +24789,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_ec_T7_7<float>(x);
@@ -24813,7 +24813,7 @@ auto const a0 = a1 * x + F(0.9999999804632269f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_T7_0<float>(x);
@@ -24845,7 +24845,7 @@ auto const b0 = b1 * x + F(0.9856322374255826f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_T7_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_T7_0<float>(x);
@@ -24868,7 +24868,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_T7_7<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_T7_7<float>(x);
@@ -24893,7 +24893,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_ec_T8_0<float>(x);
@@ -24927,7 +24927,7 @@ auto const b0 = math::fma(b1, x, F(0.595261463217324f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_ec_T8_0<float>(x);
@@ -24951,7 +24951,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_ec_T8_8<float>(x);
@@ -24975,7 +24975,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_half_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_half_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_half_fma_ec_T8_8<float>(x);
@@ -25000,7 +25000,7 @@ auto const a0 = math::fma(a1, x, F(0.9999999991463964f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_T8_0<float>(x);
@@ -25034,7 +25034,7 @@ auto const b0 = math::fma(b1, x, F(0.595261463217324f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_T8_0<float>(x);
@@ -25058,7 +25058,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_T8_8<float>(x);
@@ -25082,7 +25082,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit1_half_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_half_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_half_fma_T8_8<float>(x);
@@ -25107,7 +25107,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_ec_T8_0<float>(x);
@@ -25141,7 +25141,7 @@ auto const b0 = b1 * x + F(0.595261463217324f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_ec_T8_0<float>(x);
@@ -25165,7 +25165,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_ec_T8_8<float>(x);
@@ -25188,7 +25188,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_half_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_half_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_half_ec_T8_8<float>(x);
@@ -25213,7 +25213,7 @@ auto const a0 = a1 * x + F(0.9999999991463964f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_T8_0<float>(x);
@@ -25247,7 +25247,7 @@ auto const b0 = b1 * x + F(0.595261463217324f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_T8_0<float>(x);
@@ -25271,7 +25271,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_T8_8<float>(x);
@@ -25294,7 +25294,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit1_half_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_half_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_half_T8_8<float>(x);
@@ -25319,7 +25319,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_ec_T8_0<float>(x);
@@ -25353,7 +25353,7 @@ auto const b0 = math::fma(b1, x, F(0.8871525993171197f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_ec_T8_0<float>(x);
@@ -25377,7 +25377,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_ec_T8_8<float>(x);
@@ -25401,7 +25401,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_half_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_half_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_half_fma_ec_T8_8<float>(x);
@@ -25426,7 +25426,7 @@ auto const a0 = math::fma(a1, x, F(0.9999999991463936f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_T8_0<float>(x);
@@ -25460,7 +25460,7 @@ auto const b0 = math::fma(b1, x, F(0.8871525993171197f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_T8_0<float>(x);
@@ -25484,7 +25484,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_T8_8<float>(x);
@@ -25508,7 +25508,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_unit2_half_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_half_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_half_fma_T8_8<float>(x);
@@ -25533,7 +25533,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_ec_T8_0<float>(x);
@@ -25567,7 +25567,7 @@ auto const b0 = b1 * x + F(0.8871525993171197f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_ec_T8_0<float>(x);
@@ -25591,7 +25591,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_ec_T8_8<float>(x);
@@ -25614,7 +25614,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_half_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_half_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_half_ec_T8_8<float>(x);
@@ -25639,7 +25639,7 @@ auto const a0 = a1 * x + F(0.9999999991463936f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_T8_0<float>(x);
@@ -25673,7 +25673,7 @@ auto const b0 = b1 * x + F(0.8871525993171197f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_T8_0<float>(x);
@@ -25697,7 +25697,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_T8_8<float>(x);
@@ -25720,7 +25720,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_unit2_half_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_half_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_half_T8_8<float>(x);
@@ -25745,7 +25745,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_ec_T8_0<float>(x);
@@ -25779,7 +25779,7 @@ auto const b0 = math::fma(b1, x, F(0.9882511327624647f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_ec_T8_0<float>(x);
@@ -25803,7 +25803,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_quart_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_ec_T8_8<float>(x);
@@ -25827,7 +25827,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_half_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_half_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_half_fma_ec_T8_8<float>(x);
@@ -25852,7 +25852,7 @@ auto const a0 = math::fma(a1, x, F(0.9999999991463919f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_T8_0<float>(x);
@@ -25886,7 +25886,7 @@ auto const b0 = math::fma(b1, x, F(0.9882511327624647f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_T8_0<float>(x);
@@ -25910,7 +25910,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_quart_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_T8_8<float>(x);
@@ -25934,7 +25934,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float cos_half_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_half_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_half_fma_T8_8<float>(x);
@@ -25959,7 +25959,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_ec_T8_0<float>(x);
@@ -25993,7 +25993,7 @@ auto const b0 = b1 * x + F(0.9882511327624647f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_ec_T8_0<float>(x);
@@ -26017,7 +26017,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_quart_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_ec_T8_8<float>(x);
@@ -26040,7 +26040,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_half_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_half_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_half_ec_T8_8<float>(x);
@@ -26065,7 +26065,7 @@ auto const a0 = a1 * x + F(0.9999999991463919f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_T8_0<float>(x);
@@ -26099,7 +26099,7 @@ auto const b0 = b1 * x + F(0.9882511327624647f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_T8_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_T8_0<float>(x);
@@ -26123,7 +26123,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_quart_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_T8_8<float>(x);
@@ -26146,7 +26146,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float cos_half_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_half_T8_8<cr::simd::float1x4>(x).first();
 #else
 return cos_half_T8_8<float>(x);
@@ -26172,7 +26172,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_ec_T9_0<float>(x);
@@ -26208,7 +26208,7 @@ auto const b0 = math::fma(b1, x, F(0.6240432225922865f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_ec_T9_0<float>(x);
@@ -26233,7 +26233,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_ec_T9_9<float>(x);
@@ -26259,7 +26259,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000000331344f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_fma_T9_0<float>(x);
@@ -26295,7 +26295,7 @@ auto const b0 = math::fma(b1, x, F(0.6240432225922865f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_fma_T9_0<float>(x);
@@ -26320,7 +26320,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_fma_T9_9<float>(x);
@@ -26346,7 +26346,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_ec_T9_0<float>(x);
@@ -26382,7 +26382,7 @@ auto const b0 = b1 * x + F(0.6240432225922865f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_ec_T9_0<float>(x);
@@ -26407,7 +26407,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_ec_T9_9<float>(x);
@@ -26433,7 +26433,7 @@ auto const a0 = a1 * x + F(1.0000000000331344f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit1_remez_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_T9_0<float>(x);
@@ -26469,7 +26469,7 @@ auto const b0 = b1 * x + F(0.6240432225922865f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit1_remez_pade_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_remez_pade_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_remez_pade_T9_0<float>(x);
@@ -26494,7 +26494,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit1_quart_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit1_quart_T9_9<cr::simd::float1x4>(x).first();
 #else
 return cos_unit1_quart_T9_9<float>(x);
@@ -26520,7 +26520,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_ec_T9_0<float>(x);
@@ -26556,7 +26556,7 @@ auto const b0 = math::fma(b1, x, F(0.8953700836409647f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_ec_T9_0<float>(x);
@@ -26581,7 +26581,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_ec_T9_9<float>(x);
@@ -26607,7 +26607,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000000335143f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_fma_T9_0<float>(x);
@@ -26643,7 +26643,7 @@ auto const b0 = math::fma(b1, x, F(0.8953700836409647f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_fma_T9_0<float>(x);
@@ -26668,7 +26668,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_fma_T9_9<float>(x);
@@ -26694,7 +26694,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_ec_T9_0<float>(x);
@@ -26730,7 +26730,7 @@ auto const b0 = b1 * x + F(0.8953700836409647f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_ec_T9_0<float>(x);
@@ -26755,7 +26755,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_ec_T9_9<float>(x);
@@ -26781,7 +26781,7 @@ auto const a0 = a1 * x + F(1.0000000000335143f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_unit2_remez_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_T9_0<float>(x);
@@ -26817,7 +26817,7 @@ auto const b0 = b1 * x + F(0.8953700836409647f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_unit2_remez_pade_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_remez_pade_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_remez_pade_T9_0<float>(x);
@@ -26842,7 +26842,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_unit2_quart_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_unit2_quart_T9_9<cr::simd::float1x4>(x).first();
 #else
 return cos_unit2_quart_T9_9<float>(x);
@@ -26868,7 +26868,7 @@ auto const a0 = math::fma(a1, x, F(1.0f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_ec_T9_0<float>(x);
@@ -26904,7 +26904,7 @@ auto const b0 = math::fma(b1, x, F(0.9891130188481712f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_ec_T9_0<float>(x);
@@ -26929,7 +26929,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_ec_T9_9<float>(x);
@@ -26955,7 +26955,7 @@ auto const a0 = math::fma(a1, x, F(1.0000000000335463f));
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_fma_T9_0<float>(x);
@@ -26991,7 +26991,7 @@ auto const b0 = math::fma(b1, x, F(0.9891130188481712f));
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_fma_T9_0<float>(x);
@@ -27016,7 +27016,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_fma_T9_9<float>(x);
@@ -27042,7 +27042,7 @@ auto const a0 = a1 * x + F(1.0f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_ec_T9_0<float>(x);
@@ -27078,7 +27078,7 @@ auto const b0 = b1 * x + F(0.9891130188481712f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_ec_T9_0<float>(x);
@@ -27103,7 +27103,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_ec_T9_9<float>(x);
@@ -27129,7 +27129,7 @@ auto const a0 = a1 * x + F(1.0000000000335463f);
 return math::setSign(a0, x_sign);
 }
 inline static float cos_remez_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_T9_0<float>(x);
@@ -27165,7 +27165,7 @@ auto const b0 = b1 * x + F(0.9891130188481712f);
 return math::setSign(a0 / b0, x_sign);
 }
 inline static float cos_remez_pade_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_remez_pade_T9_0<cr::simd::float1x4>(x).first();
 #else
 return cos_remez_pade_T9_0<float>(x);
@@ -27190,7 +27190,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float cos_quart_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return cos_quart_T9_9<cr::simd::float1x4>(x).first();
 #else
 return cos_quart_T9_9<float>(x);
@@ -27206,7 +27206,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_ec_T1_0<float>(x);
@@ -27224,7 +27224,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_ec_T1_1<float>(x);
@@ -27239,7 +27239,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float tanh_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_ec_T1_1<float>(x);
@@ -27255,7 +27255,7 @@ auto const a0 = math::fma(a1, x, F(0.3466026020695971f));
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_T1_0<float>(x);
@@ -27273,7 +27273,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_T1_1<float>(x);
@@ -27288,7 +27288,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float tanh_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_T1_1<float>(x);
@@ -27304,7 +27304,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_ec_T1_0<float>(x);
@@ -27322,7 +27322,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_ec_T1_1<float>(x);
@@ -27337,7 +27337,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float tanh_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return tanh_ec_T1_1<float>(x);
@@ -27353,7 +27353,7 @@ auto const a0 = a1 * x + F(0.3466026020695971f);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_T1_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_T1_0<float>(x);
@@ -27371,7 +27371,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_T1_1<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_T1_1<float>(x);
@@ -27386,7 +27386,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float tanh_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_T1_1<cr::simd::float1x4>(x).first();
 #else
 return tanh_T1_1<float>(x);
@@ -27403,7 +27403,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_ec_T2_0<float>(x);
@@ -27423,7 +27423,7 @@ auto const b0 = math::fma(b1, x, F(0.5001265341052017f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_ec_T2_2<float>(x);
@@ -27441,7 +27441,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tanh_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_ec_T2_2<float>(x);
@@ -27458,7 +27458,7 @@ auto const a0 = math::fma(a1, x, F(0.18056493113241695f));
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_T2_0<float>(x);
@@ -27478,7 +27478,7 @@ auto const b0 = math::fma(b1, x, F(0.5001265341052017f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_T2_2<float>(x);
@@ -27496,7 +27496,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tanh_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_T2_2<float>(x);
@@ -27513,7 +27513,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_ec_T2_0<float>(x);
@@ -27533,7 +27533,7 @@ auto const b0 = b1 * x + F(0.5001265341052017f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_ec_T2_2<float>(x);
@@ -27551,7 +27551,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tanh_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return tanh_ec_T2_2<float>(x);
@@ -27568,7 +27568,7 @@ auto const a0 = a1 * x + F(0.18056493113241695f);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_T2_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_T2_0<float>(x);
@@ -27588,7 +27588,7 @@ auto const b0 = b1 * x + F(0.5001265341052017f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_T2_2<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_T2_2<float>(x);
@@ -27606,7 +27606,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tanh_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_T2_2<cr::simd::float1x4>(x).first();
 #else
 return tanh_T2_2<float>(x);
@@ -27624,7 +27624,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_ec_T3_0<float>(x);
@@ -27646,7 +27646,7 @@ auto const b0 = math::fma(b1, x, F(0.9133744382158635f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_ec_T3_3<float>(x);
@@ -27665,7 +27665,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_ec_T3_3<float>(x);
@@ -27683,7 +27683,7 @@ auto const a0 = math::fma(a1, x, F(0.07438969218603325f));
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_T3_0<float>(x);
@@ -27705,7 +27705,7 @@ auto const b0 = math::fma(b1, x, F(0.9133744382158635f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_T3_3<float>(x);
@@ -27724,7 +27724,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_T3_3<float>(x);
@@ -27742,7 +27742,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_ec_T3_0<float>(x);
@@ -27764,7 +27764,7 @@ auto const b0 = b1 * x + F(0.9133744382158635f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_ec_T3_3<float>(x);
@@ -27783,7 +27783,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return tanh_ec_T3_3<float>(x);
@@ -27801,7 +27801,7 @@ auto const a0 = a1 * x + F(0.07438969218603325f);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_T3_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_T3_0<float>(x);
@@ -27823,7 +27823,7 @@ auto const b0 = b1 * x + F(0.9133744382158635f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_T3_3<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_T3_3<float>(x);
@@ -27842,7 +27842,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_T3_3<cr::simd::float1x4>(x).first();
 #else
 return tanh_T3_3<float>(x);
@@ -27861,7 +27861,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_ec_T4_0<float>(x);
@@ -27885,7 +27885,7 @@ auto const b0 = math::fma(b1, x, F(0.7578550598318982f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_ec_T4_4<float>(x);
@@ -27905,7 +27905,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tanh_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_ec_T4_4<float>(x);
@@ -27924,7 +27924,7 @@ auto const a0 = math::fma(a1, x, F(0.021899379182937787f));
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_T4_0<float>(x);
@@ -27948,7 +27948,7 @@ auto const b0 = math::fma(b1, x, F(0.7578550598318982f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_T4_4<float>(x);
@@ -27968,7 +27968,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tanh_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_T4_4<float>(x);
@@ -27987,7 +27987,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_ec_T4_0<float>(x);
@@ -28011,7 +28011,7 @@ auto const b0 = b1 * x + F(0.7578550598318982f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_ec_T4_4<float>(x);
@@ -28031,7 +28031,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tanh_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return tanh_ec_T4_4<float>(x);
@@ -28050,7 +28050,7 @@ auto const a0 = a1 * x + F(0.021899379182937787f);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_T4_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_T4_0<float>(x);
@@ -28074,7 +28074,7 @@ auto const b0 = b1 * x + F(0.7578550598318982f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_T4_4<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_T4_4<float>(x);
@@ -28094,7 +28094,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tanh_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_T4_4<cr::simd::float1x4>(x).first();
 #else
 return tanh_T4_4<float>(x);
@@ -28114,7 +28114,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_ec_T5_0<float>(x);
@@ -28140,7 +28140,7 @@ auto const b0 = math::fma(b1, x, F(0.789751052148912f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_ec_T5_5<float>(x);
@@ -28161,7 +28161,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_ec_T5_5<float>(x);
@@ -28181,7 +28181,7 @@ auto const a0 = math::fma(a1, x, F(0.004072058101450461f));
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_T5_0<float>(x);
@@ -28207,7 +28207,7 @@ auto const b0 = math::fma(b1, x, F(0.789751052148912f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_T5_5<float>(x);
@@ -28228,7 +28228,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_T5_5<float>(x);
@@ -28248,7 +28248,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_ec_T5_0<float>(x);
@@ -28274,7 +28274,7 @@ auto const b0 = b1 * x + F(0.789751052148912f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_ec_T5_5<float>(x);
@@ -28295,7 +28295,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return tanh_ec_T5_5<float>(x);
@@ -28315,7 +28315,7 @@ auto const a0 = a1 * x + F(0.004072058101450461f);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_T5_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_T5_0<float>(x);
@@ -28341,7 +28341,7 @@ auto const b0 = b1 * x + F(0.789751052148912f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_T5_5<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_T5_5<float>(x);
@@ -28362,7 +28362,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_T5_5<cr::simd::float1x4>(x).first();
 #else
 return tanh_T5_5<float>(x);
@@ -28383,7 +28383,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_ec_T6_0<float>(x);
@@ -28411,7 +28411,7 @@ auto const b0 = math::fma(b1, x, F(0.7903796209031667f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_ec_T6_6<float>(x);
@@ -28433,7 +28433,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tanh_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_ec_T6_6<float>(x);
@@ -28454,7 +28454,7 @@ auto const a0 = math::fma(a1, x, F(-0.009416703118150137f));
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_T6_0<float>(x);
@@ -28482,7 +28482,7 @@ auto const b0 = math::fma(b1, x, F(0.7903796209031667f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_T6_6<float>(x);
@@ -28504,7 +28504,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tanh_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_T6_6<float>(x);
@@ -28525,7 +28525,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_ec_T6_0<float>(x);
@@ -28553,7 +28553,7 @@ auto const b0 = b1 * x + F(0.7903796209031667f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_ec_T6_6<float>(x);
@@ -28575,7 +28575,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tanh_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return tanh_ec_T6_6<float>(x);
@@ -28596,7 +28596,7 @@ auto const a0 = a1 * x + F(-0.009416703118150137f);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_T6_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_T6_0<float>(x);
@@ -28624,7 +28624,7 @@ auto const b0 = b1 * x + F(0.7903796209031667f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_T6_6<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_T6_6<float>(x);
@@ -28646,7 +28646,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tanh_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_T6_6<cr::simd::float1x4>(x).first();
 #else
 return tanh_T6_6<float>(x);
@@ -28668,7 +28668,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_ec_T7_0<float>(x);
@@ -28698,7 +28698,7 @@ auto const b0 = math::fma(b1, x, F(0.7930122872249624f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_ec_T7_7<float>(x);
@@ -28721,7 +28721,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_ec_T7_7<float>(x);
@@ -28743,7 +28743,7 @@ auto const a0 = math::fma(a1, x, F(-0.005543581754291788f));
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_T7_0<float>(x);
@@ -28773,7 +28773,7 @@ auto const b0 = math::fma(b1, x, F(0.7930122872249624f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_T7_7<float>(x);
@@ -28796,7 +28796,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_T7_7<float>(x);
@@ -28818,7 +28818,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_ec_T7_0<float>(x);
@@ -28848,7 +28848,7 @@ auto const b0 = b1 * x + F(0.7930122872249624f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_ec_T7_7<float>(x);
@@ -28871,7 +28871,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return tanh_ec_T7_7<float>(x);
@@ -28893,7 +28893,7 @@ auto const a0 = a1 * x + F(-0.005543581754291788f);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_T7_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_T7_0<float>(x);
@@ -28923,7 +28923,7 @@ auto const b0 = b1 * x + F(0.7930122872249624f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_T7_7<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_T7_7<float>(x);
@@ -28946,7 +28946,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_T7_7<cr::simd::float1x4>(x).first();
 #else
 return tanh_T7_7<float>(x);
@@ -28969,7 +28969,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_ec_T8_0<float>(x);
@@ -29001,7 +29001,7 @@ auto const b0 = math::fma(b1, x, F(0.7942814686451519f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_ec_T8_8<float>(x);
@@ -29025,7 +29025,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tanh_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_ec_T8_8<float>(x);
@@ -29048,7 +29048,7 @@ auto const a0 = math::fma(a1, x, F(-0.0023480747042252544f));
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_T8_0<float>(x);
@@ -29080,7 +29080,7 @@ auto const b0 = math::fma(b1, x, F(0.7942814686451519f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_T8_8<float>(x);
@@ -29104,7 +29104,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tanh_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_T8_8<float>(x);
@@ -29127,7 +29127,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_ec_T8_0<float>(x);
@@ -29159,7 +29159,7 @@ auto const b0 = b1 * x + F(0.7942814686451519f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_ec_T8_8<float>(x);
@@ -29183,7 +29183,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tanh_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return tanh_ec_T8_8<float>(x);
@@ -29206,7 +29206,7 @@ auto const a0 = a1 * x + F(-0.0023480747042252544f);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_T8_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_T8_0<float>(x);
@@ -29238,7 +29238,7 @@ auto const b0 = b1 * x + F(0.7942814686451519f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_T8_8<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_T8_8<float>(x);
@@ -29262,7 +29262,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tanh_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_T8_8<cr::simd::float1x4>(x).first();
 #else
 return tanh_T8_8<float>(x);
@@ -29286,7 +29286,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_ec_T9_0<float>(x);
@@ -29320,7 +29320,7 @@ auto const b0 = math::fma(b1, x, F(0.7951204780184268f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_ec_T9_9<float>(x);
@@ -29345,7 +29345,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_ec_T9_9<float>(x);
@@ -29369,7 +29369,7 @@ auto const a0 = math::fma(a1, x, F(-0.000684723622067507f));
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_fma_T9_0<float>(x);
@@ -29403,7 +29403,7 @@ auto const b0 = math::fma(b1, x, F(0.7951204780184268f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_fma_T9_9<float>(x);
@@ -29428,7 +29428,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return tanh_fma_T9_9<float>(x);
@@ -29452,7 +29452,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_ec_T9_0<float>(x);
@@ -29486,7 +29486,7 @@ auto const b0 = b1 * x + F(0.7951204780184268f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_ec_T9_9<float>(x);
@@ -29511,7 +29511,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return tanh_ec_T9_9<float>(x);
@@ -29535,7 +29535,7 @@ auto const a0 = a1 * x + F(-0.000684723622067507f);
 return math::setSign(a0, x0);
 }
 inline static float tanh_remez_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_T9_0<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_T9_0<float>(x);
@@ -29569,7 +29569,7 @@ auto const b0 = b1 * x + F(0.7951204780184268f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tanh_remez_pade_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_remez_pade_T9_9<cr::simd::float1x4>(x).first();
 #else
 return tanh_remez_pade_T9_9<float>(x);
@@ -29594,7 +29594,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tanh_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tanh_T9_9<cr::simd::float1x4>(x).first();
 #else
 return tanh_T9_9<float>(x);
@@ -29614,7 +29614,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_fma_T1_0<float>(x);
@@ -29636,7 +29636,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_fma_T1_0<float>(x);
@@ -29653,7 +29653,7 @@ v *= v;
 return v;
 }
 inline static float exp_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return exp_fma_T1_1<float>(x);
@@ -29673,7 +29673,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_T1_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_T1_0<float>(x);
@@ -29695,7 +29695,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_T1_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_T1_0<float>(x);
@@ -29712,7 +29712,7 @@ v *= v;
 return v;
 }
 inline static float exp_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_T1_1<cr::simd::float1x4>(x).first();
 #else
 return exp_T1_1<float>(x);
@@ -29733,7 +29733,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_fma_T2_0<float>(x);
@@ -29757,7 +29757,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_fma_T2_0<float>(x);
@@ -29778,7 +29778,7 @@ v *= v;
 return v;
 }
 inline static float exp_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return exp_fma_T2_2<float>(x);
@@ -29799,7 +29799,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_T2_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_T2_0<float>(x);
@@ -29823,7 +29823,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_T2_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_T2_0<float>(x);
@@ -29843,7 +29843,7 @@ v *= v;
 return v;
 }
 inline static float exp_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_T2_2<cr::simd::float1x4>(x).first();
 #else
 return exp_T2_2<float>(x);
@@ -29865,7 +29865,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_fma_T3_0<float>(x);
@@ -29891,7 +29891,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_fma_T3_0<float>(x);
@@ -29913,7 +29913,7 @@ v *= v;
 return v;
 }
 inline static float exp_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return exp_fma_T3_3<float>(x);
@@ -29935,7 +29935,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_T3_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_T3_0<float>(x);
@@ -29961,7 +29961,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_T3_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_T3_0<float>(x);
@@ -29982,7 +29982,7 @@ v *= v;
 return v;
 }
 inline static float exp_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_T3_3<cr::simd::float1x4>(x).first();
 #else
 return exp_T3_3<float>(x);
@@ -30005,7 +30005,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_fma_T4_0<float>(x);
@@ -30033,7 +30033,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_fma_T4_0<float>(x);
@@ -30056,7 +30056,7 @@ v *= v;
 return v;
 }
 inline static float exp_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return exp_fma_T4_4<float>(x);
@@ -30079,7 +30079,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_T4_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_T4_0<float>(x);
@@ -30107,7 +30107,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_T4_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_T4_0<float>(x);
@@ -30129,7 +30129,7 @@ v *= v;
 return v;
 }
 inline static float exp_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_T4_4<cr::simd::float1x4>(x).first();
 #else
 return exp_T4_4<float>(x);
@@ -30153,7 +30153,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_fma_T5_0<float>(x);
@@ -30183,7 +30183,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_fma_T5_0<float>(x);
@@ -30207,7 +30207,7 @@ v *= v;
 return v;
 }
 inline static float exp_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return exp_fma_T5_5<float>(x);
@@ -30231,7 +30231,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_T5_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_T5_0<float>(x);
@@ -30261,7 +30261,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_T5_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_T5_0<float>(x);
@@ -30284,7 +30284,7 @@ v *= v;
 return v;
 }
 inline static float exp_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_T5_5<cr::simd::float1x4>(x).first();
 #else
 return exp_T5_5<float>(x);
@@ -30309,7 +30309,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_fma_T6_0<float>(x);
@@ -30341,7 +30341,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_fma_T6_0<float>(x);
@@ -30366,7 +30366,7 @@ v *= v;
 return v;
 }
 inline static float exp_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return exp_fma_T6_6<float>(x);
@@ -30391,7 +30391,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_T6_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_T6_0<float>(x);
@@ -30423,7 +30423,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_T6_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_T6_0<float>(x);
@@ -30447,7 +30447,7 @@ v *= v;
 return v;
 }
 inline static float exp_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_T6_6<cr::simd::float1x4>(x).first();
 #else
 return exp_T6_6<float>(x);
@@ -30473,7 +30473,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_fma_T7_0<float>(x);
@@ -30507,7 +30507,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_fma_T7_0<float>(x);
@@ -30533,7 +30533,7 @@ v *= v;
 return v;
 }
 inline static float exp_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return exp_fma_T7_7<float>(x);
@@ -30559,7 +30559,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_T7_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_T7_0<float>(x);
@@ -30593,7 +30593,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_T7_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_T7_0<float>(x);
@@ -30618,7 +30618,7 @@ v *= v;
 return v;
 }
 inline static float exp_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_T7_7<cr::simd::float1x4>(x).first();
 #else
 return exp_T7_7<float>(x);
@@ -30645,7 +30645,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_fma_T8_0<float>(x);
@@ -30681,7 +30681,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_fma_T8_0<float>(x);
@@ -30708,7 +30708,7 @@ v *= v;
 return v;
 }
 inline static float exp_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return exp_fma_T8_8<float>(x);
@@ -30735,7 +30735,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_T8_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_T8_0<float>(x);
@@ -30771,7 +30771,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_T8_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_T8_0<float>(x);
@@ -30797,7 +30797,7 @@ v *= v;
 return v;
 }
 inline static float exp_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_T8_8<cr::simd::float1x4>(x).first();
 #else
 return exp_T8_8<float>(x);
@@ -30825,7 +30825,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_fma_T9_0<float>(x);
@@ -30863,7 +30863,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_fma_T9_0<float>(x);
@@ -30891,7 +30891,7 @@ v *= v;
 return v;
 }
 inline static float exp_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return exp_fma_T9_9<float>(x);
@@ -30919,7 +30919,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_T9_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_T9_0<float>(x);
@@ -30957,7 +30957,7 @@ v *= v;
 return v;
 }
 inline static float exp_remez_pade_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_remez_pade_T9_0<cr::simd::float1x4>(x).first();
 #else
 return exp_remez_pade_T9_0<float>(x);
@@ -30984,7 +30984,7 @@ v *= v;
 return v;
 }
 inline static float exp_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_T9_9<cr::simd::float1x4>(x).first();
 #else
 return exp_T9_9<float>(x);
@@ -31003,7 +31003,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_ec_T1_0<float>(x);
@@ -31024,7 +31024,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_ec_T1_1<float>(x);
@@ -31043,7 +31043,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_ec_T1_1<float>(x);
@@ -31062,7 +31062,7 @@ auto const a0 = math::fma(a1, x, F(0.035557318801225236f));
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_T1_0<float>(x);
@@ -31083,7 +31083,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_T1_1<float>(x);
@@ -31102,7 +31102,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_T1_1<float>(x);
@@ -31121,7 +31121,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_ec_T1_0<float>(x);
@@ -31142,7 +31142,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_ec_T1_1<float>(x);
@@ -31161,7 +31161,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return atan_ec_T1_1<float>(x);
@@ -31180,7 +31180,7 @@ auto const a0 = a1 * x + F(0.035557318801225236f);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_T1_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_T1_0<float>(x);
@@ -31201,7 +31201,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_T1_1<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_T1_1<float>(x);
@@ -31220,7 +31220,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_T1_1<cr::simd::float1x4>(x).first();
 #else
 return atan_T1_1<float>(x);
@@ -31240,7 +31240,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_ec_T2_0<float>(x);
@@ -31263,7 +31263,7 @@ auto const b0 = math::fma(b1, x, F(0.8087215156059665f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_ec_T2_2<float>(x);
@@ -31285,7 +31285,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_ec_T2_2<float>(x);
@@ -31305,7 +31305,7 @@ auto const a0 = math::fma(a1, x, F(-0.0024522165013145733f));
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_T2_0<float>(x);
@@ -31328,7 +31328,7 @@ auto const b0 = math::fma(b1, x, F(0.8087215156059665f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_T2_2<float>(x);
@@ -31350,7 +31350,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_T2_2<float>(x);
@@ -31370,7 +31370,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_ec_T2_0<float>(x);
@@ -31393,7 +31393,7 @@ auto const b0 = b1 * x + F(0.8087215156059665f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_ec_T2_2<float>(x);
@@ -31415,7 +31415,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return atan_ec_T2_2<float>(x);
@@ -31435,7 +31435,7 @@ auto const a0 = a1 * x + F(-0.0024522165013145733f);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_T2_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_T2_0<float>(x);
@@ -31458,7 +31458,7 @@ auto const b0 = b1 * x + F(0.8087215156059665f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_T2_2<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_T2_2<float>(x);
@@ -31480,7 +31480,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_T2_2<cr::simd::float1x4>(x).first();
 #else
 return atan_T2_2<float>(x);
@@ -31501,7 +31501,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_ec_T3_0<float>(x);
@@ -31526,7 +31526,7 @@ auto const b0 = math::fma(b1, x, F(0.7060645013337433f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_ec_T3_3<float>(x);
@@ -31549,7 +31549,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_ec_T3_3<float>(x);
@@ -31570,7 +31570,7 @@ auto const a0 = math::fma(a1, x, F(-0.001104845772664728f));
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_T3_0<float>(x);
@@ -31595,7 +31595,7 @@ auto const b0 = math::fma(b1, x, F(0.7060645013337433f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_T3_3<float>(x);
@@ -31618,7 +31618,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_T3_3<float>(x);
@@ -31639,7 +31639,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_ec_T3_0<float>(x);
@@ -31664,7 +31664,7 @@ auto const b0 = b1 * x + F(0.7060645013337433f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_ec_T3_3<float>(x);
@@ -31687,7 +31687,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return atan_ec_T3_3<float>(x);
@@ -31708,7 +31708,7 @@ auto const a0 = a1 * x + F(-0.001104845772664728f);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_T3_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_T3_0<float>(x);
@@ -31733,7 +31733,7 @@ auto const b0 = b1 * x + F(0.7060645013337433f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_T3_3<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_T3_3<float>(x);
@@ -31756,7 +31756,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_T3_3<cr::simd::float1x4>(x).first();
 #else
 return atan_T3_3<float>(x);
@@ -31778,7 +31778,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_ec_T4_0<float>(x);
@@ -31805,7 +31805,7 @@ auto const b0 = math::fma(b1, x, F(0.5842979637068112f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_ec_T4_4<float>(x);
@@ -31829,7 +31829,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_ec_T4_4<float>(x);
@@ -31851,7 +31851,7 @@ auto const a0 = math::fma(a1, x, F(-0.0001061909142065518f));
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_T4_0<float>(x);
@@ -31878,7 +31878,7 @@ auto const b0 = math::fma(b1, x, F(0.5842979637068112f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_T4_4<float>(x);
@@ -31902,7 +31902,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_T4_4<float>(x);
@@ -31924,7 +31924,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_ec_T4_0<float>(x);
@@ -31951,7 +31951,7 @@ auto const b0 = b1 * x + F(0.5842979637068112f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_ec_T4_4<float>(x);
@@ -31975,7 +31975,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return atan_ec_T4_4<float>(x);
@@ -31997,7 +31997,7 @@ auto const a0 = a1 * x + F(-0.0001061909142065518f);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_T4_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_T4_0<float>(x);
@@ -32024,7 +32024,7 @@ auto const b0 = b1 * x + F(0.5842979637068112f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_T4_4<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_T4_4<float>(x);
@@ -32048,7 +32048,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_T4_4<cr::simd::float1x4>(x).first();
 #else
 return atan_T4_4<float>(x);
@@ -32071,7 +32071,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_ec_T5_0<float>(x);
@@ -32100,7 +32100,7 @@ auto const b0 = math::fma(b1, x, F(0.47840608520146294f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_ec_T5_5<float>(x);
@@ -32125,7 +32125,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_ec_T5_5<float>(x);
@@ -32148,7 +32148,7 @@ auto const a0 = math::fma(a1, x, F(2.093960587502647e-05f));
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_T5_0<float>(x);
@@ -32177,7 +32177,7 @@ auto const b0 = math::fma(b1, x, F(0.47840608520146294f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_T5_5<float>(x);
@@ -32202,7 +32202,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_T5_5<float>(x);
@@ -32225,7 +32225,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_ec_T5_0<float>(x);
@@ -32254,7 +32254,7 @@ auto const b0 = b1 * x + F(0.47840608520146294f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_ec_T5_5<float>(x);
@@ -32279,7 +32279,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return atan_ec_T5_5<float>(x);
@@ -32302,7 +32302,7 @@ auto const a0 = a1 * x + F(2.093960587502647e-05f);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_T5_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_T5_0<float>(x);
@@ -32331,7 +32331,7 @@ auto const b0 = b1 * x + F(0.47840608520146294f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_T5_5<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_T5_5<float>(x);
@@ -32356,7 +32356,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_T5_5<cr::simd::float1x4>(x).first();
 #else
 return atan_T5_5<float>(x);
@@ -32380,7 +32380,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_ec_T6_0<float>(x);
@@ -32411,7 +32411,7 @@ auto const b0 = math::fma(b1, x, F(0.38393604536820974f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_ec_T6_6<float>(x);
@@ -32437,7 +32437,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_ec_T6_6<float>(x);
@@ -32461,7 +32461,7 @@ auto const a0 = math::fma(a1, x, F(6.389349084684658e-06f));
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_T6_0<float>(x);
@@ -32492,7 +32492,7 @@ auto const b0 = math::fma(b1, x, F(0.38393604536820974f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_T6_6<float>(x);
@@ -32518,7 +32518,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_T6_6<float>(x);
@@ -32542,7 +32542,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_ec_T6_0<float>(x);
@@ -32573,7 +32573,7 @@ auto const b0 = b1 * x + F(0.38393604536820974f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_ec_T6_6<float>(x);
@@ -32599,7 +32599,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return atan_ec_T6_6<float>(x);
@@ -32623,7 +32623,7 @@ auto const a0 = a1 * x + F(6.389349084684658e-06f);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_T6_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_T6_0<float>(x);
@@ -32654,7 +32654,7 @@ auto const b0 = b1 * x + F(0.38393604536820974f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_T6_6<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_T6_6<float>(x);
@@ -32680,7 +32680,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_T6_6<cr::simd::float1x4>(x).first();
 #else
 return atan_T6_6<float>(x);
@@ -32705,7 +32705,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_ec_T7_0<float>(x);
@@ -32738,7 +32738,7 @@ auto const b0 = math::fma(b1, x, F(0.300687038158839f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_ec_T7_7<float>(x);
@@ -32765,7 +32765,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_ec_T7_7<float>(x);
@@ -32790,7 +32790,7 @@ auto const a0 = math::fma(a1, x, F(4.0811907897152897e-07f));
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_T7_0<float>(x);
@@ -32823,7 +32823,7 @@ auto const b0 = math::fma(b1, x, F(0.300687038158839f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_T7_7<float>(x);
@@ -32850,7 +32850,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_T7_7<float>(x);
@@ -32875,7 +32875,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_ec_T7_0<float>(x);
@@ -32908,7 +32908,7 @@ auto const b0 = b1 * x + F(0.300687038158839f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_ec_T7_7<float>(x);
@@ -32935,7 +32935,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return atan_ec_T7_7<float>(x);
@@ -32960,7 +32960,7 @@ auto const a0 = a1 * x + F(4.0811907897152897e-07f);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_T7_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_T7_0<float>(x);
@@ -32993,7 +32993,7 @@ auto const b0 = b1 * x + F(0.300687038158839f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_T7_7<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_T7_7<float>(x);
@@ -33020,7 +33020,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_T7_7<cr::simd::float1x4>(x).first();
 #else
 return atan_T7_7<float>(x);
@@ -33046,7 +33046,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_ec_T8_0<float>(x);
@@ -33081,7 +33081,7 @@ auto const b0 = math::fma(b1, x, F(0.23059093329120092f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_ec_T8_8<float>(x);
@@ -33109,7 +33109,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_ec_T8_8<float>(x);
@@ -33135,7 +33135,7 @@ auto const a0 = math::fma(a1, x, F(-1.8901150058855651e-07f));
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_T8_0<float>(x);
@@ -33170,7 +33170,7 @@ auto const b0 = math::fma(b1, x, F(0.23059093329120092f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_T8_8<float>(x);
@@ -33198,7 +33198,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_T8_8<float>(x);
@@ -33224,7 +33224,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_ec_T8_0<float>(x);
@@ -33259,7 +33259,7 @@ auto const b0 = b1 * x + F(0.23059093329120092f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_ec_T8_8<float>(x);
@@ -33287,7 +33287,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return atan_ec_T8_8<float>(x);
@@ -33313,7 +33313,7 @@ auto const a0 = a1 * x + F(-1.8901150058855651e-07f);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_T8_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_T8_0<float>(x);
@@ -33348,7 +33348,7 @@ auto const b0 = b1 * x + F(0.23059093329120092f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_T8_8<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_T8_8<float>(x);
@@ -33376,7 +33376,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_T8_8<cr::simd::float1x4>(x).first();
 #else
 return atan_T8_8<float>(x);
@@ -33403,7 +33403,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_ec_T9_0<float>(x);
@@ -33440,7 +33440,7 @@ auto const b0 = math::fma(b1, x, F(0.17760512380297674f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_ec_T9_9<float>(x);
@@ -33469,7 +33469,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_ec_T9_9<float>(x);
@@ -33496,7 +33496,7 @@ auto const a0 = math::fma(a1, x, F(-4.1632935878660326e-08f));
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_fma_T9_0<float>(x);
@@ -33533,7 +33533,7 @@ auto const b0 = math::fma(b1, x, F(0.17760512380297674f));
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_fma_T9_9<float>(x);
@@ -33562,7 +33562,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return atan_fma_T9_9<float>(x);
@@ -33589,7 +33589,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_ec_T9_0<float>(x);
@@ -33626,7 +33626,7 @@ auto const b0 = b1 * x + F(0.17760512380297674f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_ec_T9_9<float>(x);
@@ -33655,7 +33655,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return atan_ec_T9_9<float>(x);
@@ -33682,7 +33682,7 @@ auto const a0 = a1 * x + F(-4.1632935878660326e-08f);
 return math::setSign(a - a0, x0);
 }
 inline static float atan_remez_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_T9_0<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_T9_0<float>(x);
@@ -33719,7 +33719,7 @@ auto const b0 = b1 * x + F(0.17760512380297674f);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_remez_pade_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_remez_pade_T9_9<cr::simd::float1x4>(x).first();
 #else
 return atan_remez_pade_T9_9<float>(x);
@@ -33748,7 +33748,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a - a0 / b0, x0);
 }
 inline static float atan_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return atan_T9_9<cr::simd::float1x4>(x).first();
 #else
 return atan_T9_9<float>(x);
@@ -33762,7 +33762,7 @@ auto const a0 = math::fma(a1, x, F(-0.2196285777659353f));
 return a0;
 }
 inline static float log_remez_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_ec_T1_0<float>(x);
@@ -33778,7 +33778,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_ec_T1_1<float>(x);
@@ -33795,7 +33795,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_ec_T1_0<float>(x);
@@ -33814,7 +33814,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_ec_T1_1<float>(x);
@@ -33828,7 +33828,7 @@ auto const a0 = math::fma(a1, x, F(0.1480944322507843f));
 return a0;
 }
 inline static float log_remez_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_T1_0<float>(x);
@@ -33844,7 +33844,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_T1_1<float>(x);
@@ -33861,7 +33861,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_T1_0<float>(x);
@@ -33880,7 +33880,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_T1_1<float>(x);
@@ -33893,7 +33893,7 @@ auto const a0 = a1 * x + F(-0.2196285777659353f);
 return a0;
 }
 inline static float log_remez_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_ec_T1_0<float>(x);
@@ -33908,7 +33908,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_remez_pade_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_ec_T1_1<float>(x);
@@ -33925,7 +33925,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_ec_T1_0<float>(x);
@@ -33944,7 +33944,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_ec_T1_1<float>(x);
@@ -33957,7 +33957,7 @@ auto const a0 = a1 * x + F(0.1480944322507843f);
 return a0;
 }
 inline static float log_remez_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_T1_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_T1_0<float>(x);
@@ -33972,7 +33972,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_remez_pade_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_T1_1<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_T1_1<float>(x);
@@ -33989,7 +33989,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_T1_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_T1_0<float>(x);
@@ -34008,7 +34008,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_T1_1<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_T1_1<float>(x);
@@ -34025,7 +34025,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return log_fma_ec_T1_1<float>(x);
@@ -34042,7 +34042,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return log_fma_T1_1<float>(x);
@@ -34058,7 +34058,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return log_ec_T1_1<float>(x);
@@ -34074,7 +34074,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_T1_1<cr::simd::float1x4>(x).first();
 #else
 return log_T1_1<float>(x);
@@ -34089,7 +34089,7 @@ auto const a0 = math::fma(a1, x, F(-0.5385340871357702f));
 return a0;
 }
 inline static float log_remez_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_ec_T2_0<float>(x);
@@ -34107,7 +34107,7 @@ auto const b0 = math::fma(b1, x, F(0.9716285841822004f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_ec_T2_2<float>(x);
@@ -34125,7 +34125,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_ec_T2_0<float>(x);
@@ -34146,7 +34146,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_ec_T2_2<float>(x);
@@ -34161,7 +34161,7 @@ auto const a0 = math::fma(a1, x, F(-0.3350020163806786f));
 return a0;
 }
 inline static float log_remez_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_T2_0<float>(x);
@@ -34179,7 +34179,7 @@ auto const b0 = math::fma(b1, x, F(0.9716285841822004f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_T2_2<float>(x);
@@ -34197,7 +34197,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_T2_0<float>(x);
@@ -34218,7 +34218,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_T2_2<float>(x);
@@ -34232,7 +34232,7 @@ auto const a0 = a1 * x + F(-0.5385340871357702f);
 return a0;
 }
 inline static float log_remez_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_ec_T2_0<float>(x);
@@ -34249,7 +34249,7 @@ auto const b0 = b1 * x + F(0.9716285841822004f);
 return a0 / b0;
 }
 inline static float log_remez_pade_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_ec_T2_2<float>(x);
@@ -34267,7 +34267,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_ec_T2_0<float>(x);
@@ -34288,7 +34288,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_ec_T2_2<float>(x);
@@ -34302,7 +34302,7 @@ auto const a0 = a1 * x + F(-0.3350020163806786f);
 return a0;
 }
 inline static float log_remez_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_T2_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_T2_0<float>(x);
@@ -34319,7 +34319,7 @@ auto const b0 = b1 * x + F(0.9716285841822004f);
 return a0 / b0;
 }
 inline static float log_remez_pade_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_T2_2<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_T2_2<float>(x);
@@ -34337,7 +34337,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_T2_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_T2_0<float>(x);
@@ -34358,7 +34358,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_T2_2<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_T2_2<float>(x);
@@ -34377,7 +34377,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return log_fma_ec_T2_2<float>(x);
@@ -34396,7 +34396,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return log_fma_T2_2<float>(x);
@@ -34414,7 +34414,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return log_ec_T2_2<float>(x);
@@ -34432,7 +34432,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_T2_2<cr::simd::float1x4>(x).first();
 #else
 return log_T2_2<float>(x);
@@ -34448,7 +34448,7 @@ auto const a0 = math::fma(a1, x, F(-0.7130005147535754f));
 return a0;
 }
 inline static float log_remez_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_ec_T3_0<float>(x);
@@ -34468,7 +34468,7 @@ auto const b0 = math::fma(b1, x, F(0.786571131152619f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_ec_T3_3<float>(x);
@@ -34487,7 +34487,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_ec_T3_0<float>(x);
@@ -34510,7 +34510,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_ec_T3_3<float>(x);
@@ -34526,7 +34526,7 @@ auto const a0 = math::fma(a1, x, F(-0.6514777911845769f));
 return a0;
 }
 inline static float log_remez_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_T3_0<float>(x);
@@ -34546,7 +34546,7 @@ auto const b0 = math::fma(b1, x, F(0.786571131152619f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_T3_3<float>(x);
@@ -34565,7 +34565,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_T3_0<float>(x);
@@ -34588,7 +34588,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_T3_3<float>(x);
@@ -34603,7 +34603,7 @@ auto const a0 = a1 * x + F(-0.7130005147535754f);
 return a0;
 }
 inline static float log_remez_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_ec_T3_0<float>(x);
@@ -34622,7 +34622,7 @@ auto const b0 = b1 * x + F(0.786571131152619f);
 return a0 / b0;
 }
 inline static float log_remez_pade_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_ec_T3_3<float>(x);
@@ -34641,7 +34641,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_ec_T3_0<float>(x);
@@ -34664,7 +34664,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_ec_T3_3<float>(x);
@@ -34679,7 +34679,7 @@ auto const a0 = a1 * x + F(-0.6514777911845769f);
 return a0;
 }
 inline static float log_remez_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_T3_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_T3_0<float>(x);
@@ -34698,7 +34698,7 @@ auto const b0 = b1 * x + F(0.786571131152619f);
 return a0 / b0;
 }
 inline static float log_remez_pade_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_T3_3<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_T3_3<float>(x);
@@ -34717,7 +34717,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_T3_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_T3_0<float>(x);
@@ -34740,7 +34740,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_T3_3<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_T3_3<float>(x);
@@ -34761,7 +34761,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return log_fma_ec_T3_3<float>(x);
@@ -34782,7 +34782,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return log_fma_T3_3<float>(x);
@@ -34802,7 +34802,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return log_ec_T3_3<float>(x);
@@ -34822,7 +34822,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_T3_3<cr::simd::float1x4>(x).first();
 #else
 return log_T3_3<float>(x);
@@ -34839,7 +34839,7 @@ auto const a0 = math::fma(a1, x, F(-0.9379899009505013f));
 return a0;
 }
 inline static float log_remez_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_ec_T4_0<float>(x);
@@ -34861,7 +34861,7 @@ auto const b0 = math::fma(b1, x, F(0.46517241715590896f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_ec_T4_4<float>(x);
@@ -34881,7 +34881,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_ec_T4_0<float>(x);
@@ -34906,7 +34906,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_ec_T4_4<float>(x);
@@ -34923,7 +34923,7 @@ auto const a0 = math::fma(a1, x, F(-0.889063442034149f));
 return a0;
 }
 inline static float log_remez_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_T4_0<float>(x);
@@ -34945,7 +34945,7 @@ auto const b0 = math::fma(b1, x, F(0.46517241715590896f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_T4_4<float>(x);
@@ -34965,7 +34965,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_T4_0<float>(x);
@@ -34990,7 +34990,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_T4_4<float>(x);
@@ -35006,7 +35006,7 @@ auto const a0 = a1 * x + F(-0.9379899009505013f);
 return a0;
 }
 inline static float log_remez_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_ec_T4_0<float>(x);
@@ -35027,7 +35027,7 @@ auto const b0 = b1 * x + F(0.46517241715590896f);
 return a0 / b0;
 }
 inline static float log_remez_pade_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_ec_T4_4<float>(x);
@@ -35047,7 +35047,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_ec_T4_0<float>(x);
@@ -35072,7 +35072,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_ec_T4_4<float>(x);
@@ -35088,7 +35088,7 @@ auto const a0 = a1 * x + F(-0.889063442034149f);
 return a0;
 }
 inline static float log_remez_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_T4_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_T4_0<float>(x);
@@ -35109,7 +35109,7 @@ auto const b0 = b1 * x + F(0.46517241715590896f);
 return a0 / b0;
 }
 inline static float log_remez_pade_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_T4_4<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_T4_4<float>(x);
@@ -35129,7 +35129,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_T4_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_T4_0<float>(x);
@@ -35154,7 +35154,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_T4_4<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_T4_4<float>(x);
@@ -35177,7 +35177,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return log_fma_ec_T4_4<float>(x);
@@ -35200,7 +35200,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return log_fma_T4_4<float>(x);
@@ -35222,7 +35222,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return log_ec_T4_4<float>(x);
@@ -35244,7 +35244,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_T4_4<cr::simd::float1x4>(x).first();
 #else
 return log_T4_4<float>(x);
@@ -35262,7 +35262,7 @@ auto const a0 = math::fma(a1, x, F(-1.0931648846109996f));
 return a0;
 }
 inline static float log_remez_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_ec_T5_0<float>(x);
@@ -35286,7 +35286,7 @@ auto const b0 = math::fma(b1, x, F(0.22386298979764377f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_ec_T5_5<float>(x);
@@ -35307,7 +35307,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_ec_T5_0<float>(x);
@@ -35334,7 +35334,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_ec_T5_5<float>(x);
@@ -35352,7 +35352,7 @@ auto const a0 = math::fma(a1, x, F(-1.0798866237554652f));
 return a0;
 }
 inline static float log_remez_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_T5_0<float>(x);
@@ -35376,7 +35376,7 @@ auto const b0 = math::fma(b1, x, F(0.22386298979764377f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_T5_5<float>(x);
@@ -35397,7 +35397,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_T5_0<float>(x);
@@ -35424,7 +35424,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_T5_5<float>(x);
@@ -35441,7 +35441,7 @@ auto const a0 = a1 * x + F(-1.0931648846109996f);
 return a0;
 }
 inline static float log_remez_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_ec_T5_0<float>(x);
@@ -35464,7 +35464,7 @@ auto const b0 = b1 * x + F(0.22386298979764377f);
 return a0 / b0;
 }
 inline static float log_remez_pade_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_ec_T5_5<float>(x);
@@ -35485,7 +35485,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_ec_T5_0<float>(x);
@@ -35512,7 +35512,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_ec_T5_5<float>(x);
@@ -35529,7 +35529,7 @@ auto const a0 = a1 * x + F(-1.0798866237554652f);
 return a0;
 }
 inline static float log_remez_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_T5_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_T5_0<float>(x);
@@ -35552,7 +35552,7 @@ auto const b0 = b1 * x + F(0.22386298979764377f);
 return a0 / b0;
 }
 inline static float log_remez_pade_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_T5_5<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_T5_5<float>(x);
@@ -35573,7 +35573,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_T5_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_T5_0<float>(x);
@@ -35600,7 +35600,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_T5_5<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_T5_5<float>(x);
@@ -35625,7 +35625,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return log_fma_ec_T5_5<float>(x);
@@ -35650,7 +35650,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return log_fma_T5_5<float>(x);
@@ -35674,7 +35674,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return log_ec_T5_5<float>(x);
@@ -35698,7 +35698,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_T5_5<cr::simd::float1x4>(x).first();
 #else
 return log_T5_5<float>(x);
@@ -35717,7 +35717,7 @@ auto const a0 = math::fma(a1, x, F(-1.2523719952535337f));
 return a0;
 }
 inline static float log_remez_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_ec_T6_0<float>(x);
@@ -35743,7 +35743,7 @@ auto const b0 = math::fma(b1, x, F(0.07196305835396719f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_ec_T6_6<float>(x);
@@ -35765,7 +35765,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_ec_T6_0<float>(x);
@@ -35794,7 +35794,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_ec_T6_6<float>(x);
@@ -35813,7 +35813,7 @@ auto const a0 = math::fma(a1, x, F(-1.2395493157368045f));
 return a0;
 }
 inline static float log_remez_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_T6_0<float>(x);
@@ -35839,7 +35839,7 @@ auto const b0 = math::fma(b1, x, F(0.07196305835396719f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_T6_6<float>(x);
@@ -35861,7 +35861,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_T6_0<float>(x);
@@ -35890,7 +35890,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_T6_6<float>(x);
@@ -35908,7 +35908,7 @@ auto const a0 = a1 * x + F(-1.2523719952535337f);
 return a0;
 }
 inline static float log_remez_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_ec_T6_0<float>(x);
@@ -35933,7 +35933,7 @@ auto const b0 = b1 * x + F(0.07196305835396719f);
 return a0 / b0;
 }
 inline static float log_remez_pade_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_ec_T6_6<float>(x);
@@ -35955,7 +35955,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_ec_T6_0<float>(x);
@@ -35984,7 +35984,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_ec_T6_6<float>(x);
@@ -36002,7 +36002,7 @@ auto const a0 = a1 * x + F(-1.2395493157368045f);
 return a0;
 }
 inline static float log_remez_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_T6_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_T6_0<float>(x);
@@ -36027,7 +36027,7 @@ auto const b0 = b1 * x + F(0.07196305835396719f);
 return a0 / b0;
 }
 inline static float log_remez_pade_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_T6_6<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_T6_6<float>(x);
@@ -36049,7 +36049,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_T6_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_T6_0<float>(x);
@@ -36078,7 +36078,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_T6_6<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_T6_6<float>(x);
@@ -36105,7 +36105,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return log_fma_ec_T6_6<float>(x);
@@ -36132,7 +36132,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return log_fma_T6_6<float>(x);
@@ -36158,7 +36158,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return log_ec_T6_6<float>(x);
@@ -36184,7 +36184,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_T6_6<cr::simd::float1x4>(x).first();
 #else
 return log_T6_6<float>(x);
@@ -36204,7 +36204,7 @@ auto const a0 = math::fma(a1, x, F(-1.380072705236613f));
 return a0;
 }
 inline static float log_remez_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_ec_T7_0<float>(x);
@@ -36232,7 +36232,7 @@ auto const b0 = math::fma(b1, x, F(0.05084911482351578f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_ec_T7_7<float>(x);
@@ -36255,7 +36255,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_ec_T7_0<float>(x);
@@ -36286,7 +36286,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_ec_T7_7<float>(x);
@@ -36306,7 +36306,7 @@ auto const a0 = math::fma(a1, x, F(-1.3768935544154177f));
 return a0;
 }
 inline static float log_remez_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_T7_0<float>(x);
@@ -36334,7 +36334,7 @@ auto const b0 = math::fma(b1, x, F(0.05084911482351578f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_T7_7<float>(x);
@@ -36357,7 +36357,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_T7_0<float>(x);
@@ -36388,7 +36388,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_T7_7<float>(x);
@@ -36407,7 +36407,7 @@ auto const a0 = a1 * x + F(-1.380072705236613f);
 return a0;
 }
 inline static float log_remez_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_ec_T7_0<float>(x);
@@ -36434,7 +36434,7 @@ auto const b0 = b1 * x + F(0.05084911482351578f);
 return a0 / b0;
 }
 inline static float log_remez_pade_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_ec_T7_7<float>(x);
@@ -36457,7 +36457,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_ec_T7_0<float>(x);
@@ -36488,7 +36488,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_ec_T7_7<float>(x);
@@ -36507,7 +36507,7 @@ auto const a0 = a1 * x + F(-1.3768935544154177f);
 return a0;
 }
 inline static float log_remez_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_T7_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_T7_0<float>(x);
@@ -36534,7 +36534,7 @@ auto const b0 = b1 * x + F(0.05084911482351578f);
 return a0 / b0;
 }
 inline static float log_remez_pade_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_T7_7<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_T7_7<float>(x);
@@ -36557,7 +36557,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_T7_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_T7_0<float>(x);
@@ -36588,7 +36588,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_T7_7<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_T7_7<float>(x);
@@ -36617,7 +36617,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return log_fma_ec_T7_7<float>(x);
@@ -36646,7 +36646,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return log_fma_T7_7<float>(x);
@@ -36674,7 +36674,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return log_ec_T7_7<float>(x);
@@ -36702,7 +36702,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_T7_7<cr::simd::float1x4>(x).first();
 #else
 return log_T7_7<float>(x);
@@ -36723,7 +36723,7 @@ auto const a0 = math::fma(a1, x, F(-1.5009253727499972f));
 return a0;
 }
 inline static float log_remez_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_ec_T8_0<float>(x);
@@ -36753,7 +36753,7 @@ auto const b0 = math::fma(b1, x, F(0.025163179981830083f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_ec_T8_8<float>(x);
@@ -36777,7 +36777,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_ec_T8_0<float>(x);
@@ -36810,7 +36810,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_ec_T8_8<float>(x);
@@ -36831,7 +36831,7 @@ auto const a0 = math::fma(a1, x, F(-1.4974410828587126f));
 return a0;
 }
 inline static float log_remez_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_T8_0<float>(x);
@@ -36861,7 +36861,7 @@ auto const b0 = math::fma(b1, x, F(0.025163179981830083f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_T8_8<float>(x);
@@ -36885,7 +36885,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_T8_0<float>(x);
@@ -36918,7 +36918,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_T8_8<float>(x);
@@ -36938,7 +36938,7 @@ auto const a0 = a1 * x + F(-1.5009253727499972f);
 return a0;
 }
 inline static float log_remez_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_ec_T8_0<float>(x);
@@ -36967,7 +36967,7 @@ auto const b0 = b1 * x + F(0.025163179981830083f);
 return a0 / b0;
 }
 inline static float log_remez_pade_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_ec_T8_8<float>(x);
@@ -36991,7 +36991,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_ec_T8_0<float>(x);
@@ -37024,7 +37024,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_ec_T8_8<float>(x);
@@ -37044,7 +37044,7 @@ auto const a0 = a1 * x + F(-1.4974410828587126f);
 return a0;
 }
 inline static float log_remez_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_T8_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_T8_0<float>(x);
@@ -37073,7 +37073,7 @@ auto const b0 = b1 * x + F(0.025163179981830083f);
 return a0 / b0;
 }
 inline static float log_remez_pade_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_T8_8<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_T8_8<float>(x);
@@ -37097,7 +37097,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_T8_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_T8_0<float>(x);
@@ -37130,7 +37130,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_T8_8<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_T8_8<float>(x);
@@ -37161,7 +37161,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return log_fma_ec_T8_8<float>(x);
@@ -37192,7 +37192,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return log_fma_T8_8<float>(x);
@@ -37222,7 +37222,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return log_ec_T8_8<float>(x);
@@ -37252,7 +37252,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_T8_8<cr::simd::float1x4>(x).first();
 #else
 return log_T8_8<float>(x);
@@ -37274,7 +37274,7 @@ auto const a0 = math::fma(a1, x, F(-1.6056858059777708f));
 return a0;
 }
 inline static float log_remez_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_ec_T9_0<float>(x);
@@ -37306,7 +37306,7 @@ auto const b0 = math::fma(b1, x, F(0.010919293395678766f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_ec_T9_9<float>(x);
@@ -37331,7 +37331,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_ec_T9_0<float>(x);
@@ -37366,7 +37366,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_ec_T9_9<float>(x);
@@ -37388,7 +37388,7 @@ auto const a0 = math::fma(a1, x, F(-1.6048795712766586f));
 return a0;
 }
 inline static float log_remez_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_fma_T9_0<float>(x);
@@ -37420,7 +37420,7 @@ auto const b0 = math::fma(b1, x, F(0.010919293395678766f));
 return a0 / b0;
 }
 inline static float log_remez_pade_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_fma_T9_9<float>(x);
@@ -37445,7 +37445,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_fma_T9_0<float>(x);
@@ -37480,7 +37480,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_fma_T9_9<float>(x);
@@ -37501,7 +37501,7 @@ auto const a0 = a1 * x + F(-1.6056858059777708f);
 return a0;
 }
 inline static float log_remez_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_ec_T9_0<float>(x);
@@ -37532,7 +37532,7 @@ auto const b0 = b1 * x + F(0.010919293395678766f);
 return a0 / b0;
 }
 inline static float log_remez_pade_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_ec_T9_9<float>(x);
@@ -37557,7 +37557,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_ec_T9_0<float>(x);
@@ -37592,7 +37592,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_ec_T9_9<float>(x);
@@ -37613,7 +37613,7 @@ auto const a0 = a1 * x + F(-1.6048795712766586f);
 return a0;
 }
 inline static float log_remez_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_T9_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_T9_0<float>(x);
@@ -37644,7 +37644,7 @@ auto const b0 = b1 * x + F(0.010919293395678766f);
 return a0 / b0;
 }
 inline static float log_remez_pade_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_T9_9<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_T9_9<float>(x);
@@ -37669,7 +37669,7 @@ auto const r = a0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_recip_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_recip_T9_0<cr::simd::float1x4>(x).first();
 #else
 return log_remez_recip_T9_0<float>(x);
@@ -37704,7 +37704,7 @@ auto const r = a0 / b0;
 return math::blend(r, -r, m);
 }
 inline static float log_remez_pade_recip_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_remez_pade_recip_T9_9<cr::simd::float1x4>(x).first();
 #else
 return log_remez_pade_recip_T9_9<float>(x);
@@ -37737,7 +37737,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return log_fma_ec_T9_9<float>(x);
@@ -37770,7 +37770,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return a0 / b0;
 }
 inline static float log_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return log_fma_T9_9<float>(x);
@@ -37802,7 +37802,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return log_ec_T9_9<float>(x);
@@ -37834,7 +37834,7 @@ auto const b0 = b1 * x + F(1.0f);
 return a0 / b0;
 }
 inline static float log_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return log_T9_9<cr::simd::float1x4>(x).first();
 #else
 return log_T9_9<float>(x);
@@ -37852,7 +37852,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_ec_T1_0<float>(x);
@@ -37872,7 +37872,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_ec_T1_1<float>(x);
@@ -37890,7 +37890,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_ec_T1_1<float>(x);
@@ -37908,7 +37908,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_T1_0<float>(x);
@@ -37928,7 +37928,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_T1_1<float>(x);
@@ -37945,7 +37945,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_T1_1<float>(x);
@@ -37962,7 +37962,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_ec_T1_0<float>(x);
@@ -37981,7 +37981,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_ec_T1_1<float>(x);
@@ -37998,7 +37998,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return exp_special_ec_T1_1<float>(x);
@@ -38015,7 +38015,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_T1_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_T1_0<float>(x);
@@ -38034,7 +38034,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_T1_1<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_T1_1<float>(x);
@@ -38051,7 +38051,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_T1_1<cr::simd::float1x4>(x).first();
 #else
 return exp_special_T1_1<float>(x);
@@ -38070,7 +38070,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_ec_T2_0<float>(x);
@@ -38092,7 +38092,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_ec_T2_2<float>(x);
@@ -38113,7 +38113,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_ec_T2_2<float>(x);
@@ -38132,7 +38132,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_T2_0<float>(x);
@@ -38154,7 +38154,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_T2_2<float>(x);
@@ -38175,7 +38175,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_T2_2<float>(x);
@@ -38193,7 +38193,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_ec_T2_0<float>(x);
@@ -38214,7 +38214,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_ec_T2_2<float>(x);
@@ -38234,7 +38234,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return exp_special_ec_T2_2<float>(x);
@@ -38252,7 +38252,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_T2_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_T2_0<float>(x);
@@ -38273,7 +38273,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_T2_2<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_T2_2<float>(x);
@@ -38293,7 +38293,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_T2_2<cr::simd::float1x4>(x).first();
 #else
 return exp_special_T2_2<float>(x);
@@ -38313,7 +38313,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_ec_T3_0<float>(x);
@@ -38337,7 +38337,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_ec_T3_3<float>(x);
@@ -38359,7 +38359,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_ec_T3_3<float>(x);
@@ -38379,7 +38379,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_T3_0<float>(x);
@@ -38403,7 +38403,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_T3_3<float>(x);
@@ -38425,7 +38425,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_T3_3<float>(x);
@@ -38444,7 +38444,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_ec_T3_0<float>(x);
@@ -38467,7 +38467,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_ec_T3_3<float>(x);
@@ -38488,7 +38488,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return exp_special_ec_T3_3<float>(x);
@@ -38507,7 +38507,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_T3_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_T3_0<float>(x);
@@ -38530,7 +38530,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_T3_3<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_T3_3<float>(x);
@@ -38551,7 +38551,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_T3_3<cr::simd::float1x4>(x).first();
 #else
 return exp_special_T3_3<float>(x);
@@ -38572,7 +38572,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_ec_T4_0<float>(x);
@@ -38598,7 +38598,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_ec_T4_4<float>(x);
@@ -38621,7 +38621,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_ec_T4_4<float>(x);
@@ -38642,7 +38642,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_T4_0<float>(x);
@@ -38668,7 +38668,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_T4_4<float>(x);
@@ -38691,7 +38691,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_T4_4<float>(x);
@@ -38711,7 +38711,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_ec_T4_0<float>(x);
@@ -38736,7 +38736,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_ec_T4_4<float>(x);
@@ -38758,7 +38758,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return exp_special_ec_T4_4<float>(x);
@@ -38778,7 +38778,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_T4_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_T4_0<float>(x);
@@ -38803,7 +38803,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_T4_4<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_T4_4<float>(x);
@@ -38825,7 +38825,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_T4_4<cr::simd::float1x4>(x).first();
 #else
 return exp_special_T4_4<float>(x);
@@ -38847,7 +38847,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_ec_T5_0<float>(x);
@@ -38875,7 +38875,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_ec_T5_5<float>(x);
@@ -38899,7 +38899,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_ec_T5_5<float>(x);
@@ -38921,7 +38921,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_T5_0<float>(x);
@@ -38949,7 +38949,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_T5_5<float>(x);
@@ -38973,7 +38973,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_T5_5<float>(x);
@@ -38994,7 +38994,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_ec_T5_0<float>(x);
@@ -39021,7 +39021,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_ec_T5_5<float>(x);
@@ -39044,7 +39044,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return exp_special_ec_T5_5<float>(x);
@@ -39065,7 +39065,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_T5_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_T5_0<float>(x);
@@ -39092,7 +39092,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_T5_5<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_T5_5<float>(x);
@@ -39115,7 +39115,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_T5_5<cr::simd::float1x4>(x).first();
 #else
 return exp_special_T5_5<float>(x);
@@ -39138,7 +39138,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_ec_T6_0<float>(x);
@@ -39168,7 +39168,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_ec_T6_6<float>(x);
@@ -39193,7 +39193,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_ec_T6_6<float>(x);
@@ -39216,7 +39216,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_T6_0<float>(x);
@@ -39246,7 +39246,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_T6_6<float>(x);
@@ -39271,7 +39271,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_T6_6<float>(x);
@@ -39293,7 +39293,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_ec_T6_0<float>(x);
@@ -39322,7 +39322,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_ec_T6_6<float>(x);
@@ -39346,7 +39346,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return exp_special_ec_T6_6<float>(x);
@@ -39368,7 +39368,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_T6_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_T6_0<float>(x);
@@ -39397,7 +39397,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_T6_6<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_T6_6<float>(x);
@@ -39421,7 +39421,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_T6_6<cr::simd::float1x4>(x).first();
 #else
 return exp_special_T6_6<float>(x);
@@ -39445,7 +39445,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_ec_T7_0<float>(x);
@@ -39477,7 +39477,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_ec_T7_7<float>(x);
@@ -39503,7 +39503,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_ec_T7_7<float>(x);
@@ -39527,7 +39527,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_T7_0<float>(x);
@@ -39559,7 +39559,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_T7_7<float>(x);
@@ -39585,7 +39585,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_T7_7<float>(x);
@@ -39608,7 +39608,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_ec_T7_0<float>(x);
@@ -39639,7 +39639,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_ec_T7_7<float>(x);
@@ -39664,7 +39664,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return exp_special_ec_T7_7<float>(x);
@@ -39687,7 +39687,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_T7_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_T7_0<float>(x);
@@ -39718,7 +39718,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_T7_7<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_T7_7<float>(x);
@@ -39743,7 +39743,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_T7_7<cr::simd::float1x4>(x).first();
 #else
 return exp_special_T7_7<float>(x);
@@ -39768,7 +39768,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_ec_T8_0<float>(x);
@@ -39802,7 +39802,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_ec_T8_8<float>(x);
@@ -39829,7 +39829,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_ec_T8_8<float>(x);
@@ -39854,7 +39854,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_T8_0<float>(x);
@@ -39888,7 +39888,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_T8_8<float>(x);
@@ -39915,7 +39915,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_T8_8<float>(x);
@@ -39939,7 +39939,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_ec_T8_0<float>(x);
@@ -39972,7 +39972,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_ec_T8_8<float>(x);
@@ -39998,7 +39998,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return exp_special_ec_T8_8<float>(x);
@@ -40022,7 +40022,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_T8_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_T8_0<float>(x);
@@ -40055,7 +40055,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_T8_8<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_T8_8<float>(x);
@@ -40081,7 +40081,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_T8_8<cr::simd::float1x4>(x).first();
 #else
 return exp_special_T8_8<float>(x);
@@ -40107,7 +40107,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_ec_T9_0<float>(x);
@@ -40143,7 +40143,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_ec_T9_9<float>(x);
@@ -40171,7 +40171,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_ec_T9_9<float>(x);
@@ -40197,7 +40197,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_fma_T9_0<float>(x);
@@ -40233,7 +40233,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_fma_T9_9<float>(x);
@@ -40261,7 +40261,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return exp_special_fma_T9_9<float>(x);
@@ -40286,7 +40286,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_ec_T9_0<float>(x);
@@ -40321,7 +40321,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_ec_T9_9<float>(x);
@@ -40348,7 +40348,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return exp_special_ec_T9_9<float>(x);
@@ -40373,7 +40373,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_T9_0<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_T9_0<float>(x);
@@ -40408,7 +40408,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_remez_pade_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_remez_pade_T9_9<cr::simd::float1x4>(x).first();
 #else
 return exp_special_remez_pade_T9_9<float>(x);
@@ -40435,7 +40435,7 @@ a *= a;
 return a;
 }
 inline static float exp_special_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return exp_special_T9_9<cr::simd::float1x4>(x).first();
 #else
 return exp_special_T9_9<float>(x);
@@ -40452,7 +40452,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_ec_T1_0<float>(x);
@@ -40471,7 +40471,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_ec_T1_1<float>(x);
@@ -40484,7 +40484,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float tan_fma_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_ec_T1_1<float>(x);
@@ -40501,7 +40501,7 @@ auto const a0 = math::fma(a1, x, F(4.372649927747547f));
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_T1_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_T1_0<float>(x);
@@ -40520,7 +40520,7 @@ auto const b0 = math::fma(b1, x, F(1.0f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_T1_1<float>(x);
@@ -40533,7 +40533,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float tan_fma_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_T1_1<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_T1_1<float>(x);
@@ -40550,7 +40550,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_ec_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_ec_T1_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_ec_T1_0<float>(x);
@@ -40569,7 +40569,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_ec_T1_1<float>(x);
@@ -40582,7 +40582,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float tan_ec_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_ec_T1_1<cr::simd::float1x4>(x).first();
 #else
 return tan_ec_T1_1<float>(x);
@@ -40599,7 +40599,7 @@ auto const a0 = a1 * x + F(4.372649927747547f);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_T1_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_T1_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_T1_0<float>(x);
@@ -40618,7 +40618,7 @@ auto const b0 = b1 * x + F(1.0f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_T1_1<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_T1_1<float>(x);
@@ -40631,7 +40631,7 @@ auto const a0 = (a1 * x);
 return a0;
 }
 inline static float tan_T1_1_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_T1_1<cr::simd::float1x4>(x).first();
 #else
 return tan_T1_1<float>(x);
@@ -40649,7 +40649,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_ec_T2_0<float>(x);
@@ -40670,7 +40670,7 @@ auto const b0 = math::fma(b1, x, F(1.249984756870398f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_ec_T2_2<float>(x);
@@ -40687,7 +40687,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tan_fma_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_ec_T2_2<float>(x);
@@ -40705,7 +40705,7 @@ auto const a0 = math::fma(a1, x, F(6.564692262588139e-17f));
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_T2_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_T2_0<float>(x);
@@ -40726,7 +40726,7 @@ auto const b0 = math::fma(b1, x, F(1.249984756870398f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_T2_2<float>(x);
@@ -40743,7 +40743,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tan_fma_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_T2_2<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_T2_2<float>(x);
@@ -40761,7 +40761,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_ec_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_ec_T2_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_ec_T2_0<float>(x);
@@ -40782,7 +40782,7 @@ auto const b0 = b1 * x + F(1.249984756870398f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_ec_T2_2<float>(x);
@@ -40798,7 +40798,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tan_ec_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_ec_T2_2<cr::simd::float1x4>(x).first();
 #else
 return tan_ec_T2_2<float>(x);
@@ -40816,7 +40816,7 @@ auto const a0 = a1 * x + F(6.564692262588139e-17f);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_T2_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_T2_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_T2_0<float>(x);
@@ -40837,7 +40837,7 @@ auto const b0 = b1 * x + F(1.249984756870398f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_T2_2<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_T2_2<float>(x);
@@ -40853,7 +40853,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tan_T2_2_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_T2_2<cr::simd::float1x4>(x).first();
 #else
 return tan_T2_2<float>(x);
@@ -40872,7 +40872,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_ec_T3_0<float>(x);
@@ -40895,7 +40895,7 @@ auto const b0 = math::fma(b1, x, F(1.2540230636812253f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_ec_T3_3<float>(x);
@@ -40913,7 +40913,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_fma_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_ec_T3_3<float>(x);
@@ -40932,7 +40932,7 @@ auto const a0 = math::fma(a1, x, F(0.47337233813210294f));
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_T3_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_T3_0<float>(x);
@@ -40955,7 +40955,7 @@ auto const b0 = math::fma(b1, x, F(1.2540230636812253f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_T3_3<float>(x);
@@ -40973,7 +40973,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_fma_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_T3_3<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_T3_3<float>(x);
@@ -40992,7 +40992,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_ec_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_ec_T3_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_ec_T3_0<float>(x);
@@ -41015,7 +41015,7 @@ auto const b0 = b1 * x + F(1.2540230636812253f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_ec_T3_3<float>(x);
@@ -41032,7 +41032,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_ec_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_ec_T3_3<cr::simd::float1x4>(x).first();
 #else
 return tan_ec_T3_3<float>(x);
@@ -41051,7 +41051,7 @@ auto const a0 = a1 * x + F(0.47337233813210294f);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_T3_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_T3_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_T3_0<float>(x);
@@ -41074,7 +41074,7 @@ auto const b0 = b1 * x + F(1.2540230636812253f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_T3_3<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_T3_3<float>(x);
@@ -41091,7 +41091,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_T3_3_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_T3_3<cr::simd::float1x4>(x).first();
 #else
 return tan_T3_3<float>(x);
@@ -41111,7 +41111,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_ec_T4_0<float>(x);
@@ -41136,7 +41136,7 @@ auto const b0 = math::fma(b1, x, F(1.2683743067387852f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_ec_T4_4<float>(x);
@@ -41155,7 +41155,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tan_fma_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_ec_T4_4<float>(x);
@@ -41175,7 +41175,7 @@ auto const a0 = math::fma(a1, x, F(-6.99297652010507e-15f));
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_T4_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_T4_0<float>(x);
@@ -41200,7 +41200,7 @@ auto const b0 = math::fma(b1, x, F(1.2683743067387852f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_T4_4<float>(x);
@@ -41219,7 +41219,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tan_fma_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_T4_4<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_T4_4<float>(x);
@@ -41239,7 +41239,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_ec_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_ec_T4_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_ec_T4_0<float>(x);
@@ -41264,7 +41264,7 @@ auto const b0 = b1 * x + F(1.2683743067387852f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_ec_T4_4<float>(x);
@@ -41282,7 +41282,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tan_ec_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_ec_T4_4<cr::simd::float1x4>(x).first();
 #else
 return tan_ec_T4_4<float>(x);
@@ -41302,7 +41302,7 @@ auto const a0 = a1 * x + F(-6.99297652010507e-15f);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_T4_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_T4_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_T4_0<float>(x);
@@ -41327,7 +41327,7 @@ auto const b0 = b1 * x + F(1.2683743067387852f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_T4_4<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_T4_4<float>(x);
@@ -41345,7 +41345,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tan_T4_4_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_T4_4<cr::simd::float1x4>(x).first();
 #else
 return tan_T4_4<float>(x);
@@ -41366,7 +41366,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_ec_T5_0<float>(x);
@@ -41393,7 +41393,7 @@ auto const b0 = math::fma(b1, x, F(1.2765480175068256f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_ec_T5_5<float>(x);
@@ -41413,7 +41413,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_fma_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_ec_T5_5<float>(x);
@@ -41434,7 +41434,7 @@ auto const a0 = math::fma(a1, x, F(0.11925021509573677f));
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_T5_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_T5_0<float>(x);
@@ -41461,7 +41461,7 @@ auto const b0 = math::fma(b1, x, F(1.2765480175068256f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_T5_5<float>(x);
@@ -41481,7 +41481,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_fma_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_T5_5<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_T5_5<float>(x);
@@ -41502,7 +41502,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_ec_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_ec_T5_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_ec_T5_0<float>(x);
@@ -41529,7 +41529,7 @@ auto const b0 = b1 * x + F(1.2765480175068256f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_ec_T5_5<float>(x);
@@ -41548,7 +41548,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_ec_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_ec_T5_5<cr::simd::float1x4>(x).first();
 #else
 return tan_ec_T5_5<float>(x);
@@ -41569,7 +41569,7 @@ auto const a0 = a1 * x + F(0.11925021509573677f);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_T5_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_T5_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_T5_0<float>(x);
@@ -41596,7 +41596,7 @@ auto const b0 = b1 * x + F(1.2765480175068256f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_T5_5<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_T5_5<float>(x);
@@ -41615,7 +41615,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_T5_5_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_T5_5<cr::simd::float1x4>(x).first();
 #else
 return tan_T5_5<float>(x);
@@ -41637,7 +41637,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_ec_T6_0<float>(x);
@@ -41666,7 +41666,7 @@ auto const b0 = math::fma(b1, x, F(1.2819116400826853f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_ec_T6_6<float>(x);
@@ -41687,7 +41687,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tan_fma_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_ec_T6_6<float>(x);
@@ -41709,7 +41709,7 @@ auto const a0 = math::fma(a1, x, F(-4.030582117717073e-16f));
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_T6_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_T6_0<float>(x);
@@ -41738,7 +41738,7 @@ auto const b0 = math::fma(b1, x, F(1.2819116400826853f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_T6_6<float>(x);
@@ -41759,7 +41759,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tan_fma_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_T6_6<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_T6_6<float>(x);
@@ -41781,7 +41781,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_ec_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_ec_T6_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_ec_T6_0<float>(x);
@@ -41810,7 +41810,7 @@ auto const b0 = b1 * x + F(1.2819116400826853f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_ec_T6_6<float>(x);
@@ -41830,7 +41830,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tan_ec_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_ec_T6_6<cr::simd::float1x4>(x).first();
 #else
 return tan_ec_T6_6<float>(x);
@@ -41852,7 +41852,7 @@ auto const a0 = a1 * x + F(-4.030582117717073e-16f);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_T6_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_T6_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_T6_0<float>(x);
@@ -41881,7 +41881,7 @@ auto const b0 = b1 * x + F(1.2819116400826853f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_T6_6<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_T6_6<float>(x);
@@ -41901,7 +41901,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tan_T6_6_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_T6_6<cr::simd::float1x4>(x).first();
 #else
 return tan_T6_6<float>(x);
@@ -41924,7 +41924,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_ec_T7_0<float>(x);
@@ -41955,7 +41955,7 @@ auto const b0 = math::fma(b1, x, F(1.2856669145693667f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_ec_T7_7<float>(x);
@@ -41977,7 +41977,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_fma_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_ec_T7_7<float>(x);
@@ -42000,7 +42000,7 @@ auto const a0 = math::fma(a1, x, F(-0.03693893530573159f));
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_T7_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_T7_0<float>(x);
@@ -42031,7 +42031,7 @@ auto const b0 = math::fma(b1, x, F(1.2856669145693667f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_T7_7<float>(x);
@@ -42053,7 +42053,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_fma_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_T7_7<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_T7_7<float>(x);
@@ -42076,7 +42076,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_ec_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_ec_T7_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_ec_T7_0<float>(x);
@@ -42107,7 +42107,7 @@ auto const b0 = b1 * x + F(1.2856669145693667f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_ec_T7_7<float>(x);
@@ -42128,7 +42128,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_ec_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_ec_T7_7<cr::simd::float1x4>(x).first();
 #else
 return tan_ec_T7_7<float>(x);
@@ -42151,7 +42151,7 @@ auto const a0 = a1 * x + F(-0.03693893530573159f);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_T7_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_T7_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_T7_0<float>(x);
@@ -42182,7 +42182,7 @@ auto const b0 = b1 * x + F(1.2856669145693667f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_T7_7<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_T7_7<float>(x);
@@ -42203,7 +42203,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_T7_7_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_T7_7<cr::simd::float1x4>(x).first();
 #else
 return tan_T7_7<float>(x);
@@ -42227,7 +42227,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_ec_T8_0<float>(x);
@@ -42260,7 +42260,7 @@ auto const b0 = math::fma(b1, x, F(1.288469011478627f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_ec_T8_8<float>(x);
@@ -42283,7 +42283,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tan_fma_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_ec_T8_8<float>(x);
@@ -42307,7 +42307,7 @@ auto const a0 = math::fma(a1, x, F(4.515987303590891e-14f));
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_T8_0<float>(x);
@@ -42340,7 +42340,7 @@ auto const b0 = math::fma(b1, x, F(1.288469011478627f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_T8_8<float>(x);
@@ -42363,7 +42363,7 @@ auto const b0 = math::fma(b1, x2, F(1.0f));
 return a0 / b0;
 }
 inline static float tan_fma_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_T8_8<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_T8_8<float>(x);
@@ -42387,7 +42387,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_ec_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_ec_T8_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_ec_T8_0<float>(x);
@@ -42420,7 +42420,7 @@ auto const b0 = b1 * x + F(1.288469011478627f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_ec_T8_8<float>(x);
@@ -42442,7 +42442,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tan_ec_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_ec_T8_8<cr::simd::float1x4>(x).first();
 #else
 return tan_ec_T8_8<float>(x);
@@ -42466,7 +42466,7 @@ auto const a0 = a1 * x + F(4.515987303590891e-14f);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_T8_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_T8_0<float>(x);
@@ -42499,7 +42499,7 @@ auto const b0 = b1 * x + F(1.288469011478627f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_T8_8<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_T8_8<float>(x);
@@ -42521,7 +42521,7 @@ auto const b0 = b1 * x2 + F(1.0f);
 return a0 / b0;
 }
 inline static float tan_T8_8_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_T8_8<cr::simd::float1x4>(x).first();
 #else
 return tan_T8_8<float>(x);
@@ -42546,7 +42546,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_ec_T9_0<float>(x);
@@ -42581,7 +42581,7 @@ auto const b0 = math::fma(b1, x, F(1.2906079850700078f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_ec_T9_9<float>(x);
@@ -42605,7 +42605,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_fma_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_ec_T9_9<float>(x);
@@ -42630,7 +42630,7 @@ auto const a0 = math::fma(a1, x, F(0.012734635136421913f));
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_fma_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_fma_T9_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_fma_T9_0<float>(x);
@@ -42665,7 +42665,7 @@ auto const b0 = math::fma(b1, x, F(1.2906079850700078f));
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_fma_T9_9<float>(x);
@@ -42689,7 +42689,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_fma_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_fma_T9_9<cr::simd::float1x4>(x).first();
 #else
 return tan_fma_T9_9<float>(x);
@@ -42714,7 +42714,7 @@ auto const a0 = (a1 * x);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_ec_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_ec_T9_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_ec_T9_0<float>(x);
@@ -42749,7 +42749,7 @@ auto const b0 = b1 * x + F(1.2906079850700078f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_ec_T9_9<float>(x);
@@ -42772,7 +42772,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_ec_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_ec_T9_9<cr::simd::float1x4>(x).first();
 #else
 return tan_ec_T9_9<float>(x);
@@ -42797,7 +42797,7 @@ auto const a0 = a1 * x + F(0.012734635136421913f);
 return math::setSign(a0, x0);
 }
 inline static float tan_remez_abs_T9_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_abs_T9_0<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_abs_T9_0<float>(x);
@@ -42832,7 +42832,7 @@ auto const b0 = b1 * x + F(1.2906079850700078f);
 return math::setSign(a0 / b0, x0);
 }
 inline static float tan_remez_pade_abs_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_remez_pade_abs_T9_9<cr::simd::float1x4>(x).first();
 #else
 return tan_remez_pade_abs_T9_9<float>(x);
@@ -42855,7 +42855,7 @@ auto const a0 = (a1 * x);
 return a0 / b0;
 }
 inline static float tan_T9_9_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 return tan_T9_9<cr::simd::float1x4>(x).first();
 #else
 return tan_T9_9<float>(x);

@@ -4,7 +4,7 @@
 
 namespace cr::simd
 {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 	int4x4 cr::simd::float4x4::convertInt() const {
 		return int4x4(
 		    _mm_cvtps_epi32(this->f1),
@@ -22,7 +22,7 @@ namespace cr::simd
 		    _mm_castps_si128(this->f4)
 		);
 	}
-#elif defined(__ARM_NEON__)
+#elifdef ARCH_ARM
 	int4x4 float4x4::bitCastInt() const {
 		return int4x4(
 		    vreinterpretq_s32_f32(this->f1),

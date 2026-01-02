@@ -5,7 +5,7 @@
 
 namespace cr::simd
 {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 	int2x4 float2x4::bitCastInt() const {
 		return int2x4(
 		    _mm_castps_si128(this->f1),
@@ -20,14 +20,19 @@ namespace cr::simd
 		);
 	}
 
+#ifdef SIMD_8
 	double2x4 float2x4::convertDouble() const {
 		return double2x4(
 		    _mm256_cvtps_pd(this->f1),
 		    _mm256_cvtps_pd(this->f2)
 		);
 	}
-
-#elif defined(__ARM_NEON__)
+#else
+	float2x4 float2x4::convertDouble() const {
+		return *this;
+	}
+#endif
+#elifdef ARCH_ARM
 	int2x4 float2x4::bitCastInt() const {
 		return int2x4(
 		    vreinterpretq_s32_f32(this->f1),

@@ -195,18 +195,27 @@
 #define TRIG_FUNCTIONS
 #endif
 
-#define CR_ALL_DEFINITIONS \
-	DEFINE1S(max) \
-	DEFINE1S(min) \
-	DEFINE_CLAMP() \
-	DEFINE2(blend, blendv) \
-	DEFINE2(fma, fmadd) \
+#define CR_CMP_SSE \
+	DEFINE1(operator!=, cmpneq) \
+	DEFINE1(operator==, cmpeq) \
+	DEFINE1(operator>, cmpgt) \
+	DEFINE1(operator>=, cmpge) \
+	DEFINE1(operator<, cmplt) \
+	DEFINE1(operator<=, cmple)
+
+#define CR_CMP_AVX \
 	DEFINE1_CONSTANT(operator!=, cmp, _CMP_NEQ_OQ) \
 	DEFINE1_CONSTANT(operator==, cmp, _CMP_EQ_OQ) \
 	DEFINE1_CONSTANT(operator>, cmp, _CMP_GT_OQ) \
 	DEFINE1_CONSTANT(operator>=, cmp, _CMP_GE_OQ) \
 	DEFINE1_CONSTANT(operator<, cmp, _CMP_LT_OQ) \
-	DEFINE1_CONSTANT(operator<=, cmp, _CMP_LE_OQ) \
+	DEFINE1_CONSTANT(operator<=, cmp, _CMP_LE_OQ)
+
+#define CR_ALL_DEFINITIONS \
+	DEFINE1S(max) \
+	DEFINE1S(min) \
+	DEFINE_CLAMP() \
+	DEFINE2(blend, blendv) \
 	DEFINE1(and_not, andnot) \
 	DEFINE1(operator&&, and) \
 	DEFINE1(operator||, or) \

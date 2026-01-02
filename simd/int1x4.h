@@ -2,11 +2,12 @@
 
 #include <tepp/integers.h>
 
+#include "crath/simd/Info.h"
 #include "crath/simd/aligned_load_hint.h"
 
 #include <array>
 
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 #include <bit>
 #include <immintrin.h>
 
@@ -83,7 +84,7 @@ namespace cr::simd
 #undef CR_MACRO_DATA_TYPE
 #undef SURROUND
 
-#elif defined(__ARM_NEON__)
+#elifdef ARCH_ARM
 
 #include <tepp/integers.h>
 
@@ -140,11 +141,11 @@ namespace cr::simd
 			};
 		}
 
-        CR_INLINE int1x4 operator-(in_t(int1x4) a) const {
-            return {
-                    vsubq_s32(this->i1, a.i1),
-            };
-        }
+		CR_INLINE int1x4 operator-(in_t(int1x4) a) const {
+			return {
+				vsubq_s32(this->i1, a.i1),
+			};
+		}
 
 		CR_INLINE int1x4 operator*(in_t(int1x4) a) const {
 			return {

@@ -1,6 +1,6 @@
 #include "crath/simd/double1x4.h"
 
-#ifdef ARCH_x86_64
+#if defined(ARCH_x86) && defined(SIMD_8)
 #include "crath/simd/float1x4.h"
 
 namespace cr::simd

@@ -448,7 +448,7 @@ namespace fun
 		return a0;
 	}
 	CR_INLINE static float slepian25_remez_abs_fma_T8_0_float_simd(float x) {
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 		return slepian25_remez_abs_fma_T8_0<cr::simd::float1x4>(x).first();
 #else
 		return slepian25_remez_abs_fma_T8_0<float>(x);

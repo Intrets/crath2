@@ -2,7 +2,9 @@
 
 #include <tepp/integers.h>
 
-#ifdef ARCH_x86_64
+#include "crath/simd/Info.h"
+
+#if defined(ARCH_x86) && defined(SIMD_8)
 #include <bit>
 #include <immintrin.h>
 

@@ -1,6 +1,6 @@
 #include "crath/simd/double2x4.h"
 
-#ifdef ARCH_x86_64
+#if defined(ARCH_x86) && defined(SIMD_8)
 #include "crath/simd/float1x8.h"
 #include "crath/simd/float2x4.h"
 #include <immintrin.h>

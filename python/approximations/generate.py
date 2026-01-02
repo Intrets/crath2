@@ -281,7 +281,7 @@ def add_function2(taylor_series, out, fma_type, min_x, max_x, ref_min_x, ref_max
         out('}')
 
         out(f'inline static float {name_full}_float_simd(float x) {{')
-        out(f'#ifdef ARCH_x86_64')
+        out(f'#ifdef ARCH_x86')
         out(f'return {name_full}<cr::simd::float1x4>(x).first();')
         out(f'#else')
         out(f'return {name_full}<float>(x);')

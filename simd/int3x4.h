@@ -4,7 +4,9 @@
 
 #include <array>
 
-#ifdef ARCH_x86_64
+#include "crath/simd/Info.h"
+
+#ifdef ARCH_x86
 #include <bit>
 #include <immintrin.h>
 
@@ -91,7 +93,7 @@ namespace cr::simd
 #undef CR_MACRO_DATA_TYPE
 #undef SURROUND
 
-#elif defined(__ARM_NEON__)
+#elifdef ARCH_ARM
 
 #include <tepp/integers.h>
 

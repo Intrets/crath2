@@ -4,9 +4,10 @@
 
 #include <array>
 
+#include "crath/simd/Info.h"
 #include "crath/simd/array_simd.h"
 
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 
 #include <bit>
 #include <immintrin.h>
@@ -90,11 +91,24 @@ namespace cr::simd
 		}
 
 #define ID(X) X
+		CR_CMP_SSE
 		CR_ALL_DEFINITIONS
+
+#if !defined(ANDROID)
+		DEFINE2(fma, fmadd)
+#else
+		CR_INLINE float2x4 fma(in_t(float2x4) a, in_t(float2x4) b) const {
+			return (*this) * a + b;
+		}
+#endif
 
 		int2x4 bitCastInt() const;
 		int2x4 convertInt() const;
+#ifdef SIMD_8
 		double2x4 convertDouble() const;
+#else
+		float2x4 convertDouble() const;
+#endif
 	};
 }
 #undef ACCESSOR
@@ -204,7 +218,7 @@ namespace cr::simd
 
 		CR_INLINE float2x4& operator/=(float2x4 a) {
 			(*this) = (*this) / a;
-            return *this;
+			return *this;
 		}
 
 		CR_INLINE float2x4 operator/(float2x4 a) const {

@@ -4,7 +4,7 @@
 
 namespace cr::simd
 {
-#ifdef ARCH_x86_64
+#if defined(ARCH_x86) && defined(SIMD_8)
 	float1x8 int1x8::bitCastFloat() const {
 		return float1x8(
 		    _mm256_castsi256_ps(this->i1)

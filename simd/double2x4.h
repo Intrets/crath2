@@ -5,7 +5,9 @@
 
 #include <tepp/integers.h>
 
-#ifdef ARCH_x86_64
+#include "crath/simd/Info.h"
+
+#if defined(ARCH_x86) && defined(SIMD_8)
 #include <bit>
 #include <immintrin.h>
 
@@ -83,7 +85,16 @@ namespace cr::simd
 			return _mm_cvtsd_f64(lower);
 		}
 
+		CR_CMP_AVX
 		CR_ALL_DEFINITIONS
+
+#if !defined(ANDROID)
+		DEFINE2(fma, fmadd)
+#else
+		CR_INLINE double2x4 fma(in_t(double2x4) a, in_t(double2x4) b) const {
+			return (*this) * a + b;
+		}
+#endif
 
 		void convertFloat(float2x4& target) const;
 		void convertFloat(float1x8& target) const;

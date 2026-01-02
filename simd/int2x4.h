@@ -2,11 +2,12 @@
 
 #include <tepp/integers.h>
 
+#include "crath/simd/Info.h"
 #include "crath/simd/aligned_load_hint.h"
 
 #include <array>
 
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 #include <bit>
 #include <immintrin.h>
 
@@ -149,12 +150,12 @@ namespace cr::simd
 			};
 		}
 
-        CR_INLINE int2x4 operator-(in_t(int2x4) a) const {
-            return {
-                    vsubq_s32(this->i1, a.i1),
-                    vsubq_s32(this->i2, a.i2)
-            };
-        }
+		CR_INLINE int2x4 operator-(in_t(int2x4) a) const {
+			return {
+				vsubq_s32(this->i1, a.i1),
+				vsubq_s32(this->i2, a.i2)
+			};
+		}
 
 		CR_INLINE int2x4 operator*(in_t(int2x4) a) const {
 			return {

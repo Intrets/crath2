@@ -2,9 +2,11 @@
 
 #include <tepp/integers.h>
 
+#include "crath/simd/Info.h"
+
 #include <array>
 
-#ifdef ARCH_x86_64
+#ifdef ARCH_x86
 #include <bit>
 #include <immintrin.h>
 
@@ -74,7 +76,16 @@ namespace cr::simd
 			_mm_store_ps(&s + 8, this->f3);
 		}
 
+		CR_CMP_SSE
 		CR_ALL_DEFINITIONS
+
+#if !defined(ANDROID)
+		DEFINE2(fma, fmadd)
+#else
+		CR_INLINE float3x4 fma(in_t(float3x4) a, in_t(float3x4) b) const {
+			return (*this) * a + b;
+		}
+#endif
 
 		int3x4 bitCastInt() const;
 		int3x4 convertInt() const;
@@ -90,7 +101,7 @@ namespace cr::simd
 #undef CR_MACRO_DATA_TYPE
 #undef SURROUND
 
-#elif defined(__ARM_NEON__)
+#elifdef ARCH_ARM
 
 #include <arm_neon.h>
 

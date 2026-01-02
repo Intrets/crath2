@@ -1,6 +1,6 @@
 #include "simd/float1x8.h"
 
-#ifdef ARCH_x86_64
+#if defined(ARCH_x86) && defined(SIMD_8)
 #include "simd/int1x8.h"
 #include "simd/double2x4.h"
 

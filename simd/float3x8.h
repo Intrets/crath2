@@ -2,7 +2,9 @@
 
 #include <tepp/integers.h>
 
-#ifdef ARCH_x86_64
+#include "crath/simd/Info.h"
+
+#if defined(ARCH_x86) && defined(SIMD_8)
 
 #define CR_HAS_FLOAT_3x8
 
@@ -75,7 +77,16 @@ namespace cr::simd
 			_mm256_store_ps(&s + 16, this->f3);
 		}
 
+		CR_CMP_AVX
 		CR_ALL_DEFINITIONS
+
+#if !defined(ANDROID)
+		DEFINE2(fma, fmadd)
+#else
+		CR_INLINE float3x8 fma(in_t(float3x8) a, in_t(float3x8) b) const {
+			return (*this) * a + b;
+		}
+#endif
 
 		int3x8 bitCastInt() const;
 		int3x8 convertInt() const;

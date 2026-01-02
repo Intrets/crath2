@@ -3,6 +3,12 @@
 #include <concepts>
 #include <tepp/integers.h>
 
+#if defined(__x86_64__) || defined(__x86_64)
+#define ARCH_x86
+#elif defined(__arm__) || defined(__aarch64__)
+#define ARCH_ARM
+#endif
+
 namespace cr
 {
 	template<class F>
