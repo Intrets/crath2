@@ -49,7 +49,7 @@ if (OpenGL_FOUND)
 
   add_executable(${MODULE_NAME}_glfw_test TestGlfw.cpp TestResult.h TestResult.cpp AddTests.h AddTests.cpp)
   target_include_directories(${MODULE_NAME}_glfw_test PUBLIC ..)
-  target_link_libraries(imgui_glfw imgui GLFW3)
+  target_link_libraries(imgui_glfw imgui glfw)
   target_link_libraries(${MODULE_NAME}_glfw_test
     implot
     imgui

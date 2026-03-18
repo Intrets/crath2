@@ -52,9 +52,11 @@ namespace cr::simd
 		alignas(alignment) S data[N]{};
 
 		array_simd() = default;
+
 		array_simd(F const& a) {
 			this->write(a);
 		}
+
 		~array_simd() = default;
 
 		operator F() const {
@@ -185,6 +187,7 @@ namespace cr::simd
 		}
 
 		array_simd_processing() = delete;
+
 		array_simd_processing(array_simd<N, alignment, F>& array_)
 		    : array(array_),
 		      data(array.get()) {
@@ -200,8 +203,18 @@ namespace cr::simd
 		return array_simd_processing<N, alignment, F>(*this);
 	}
 
+	template<class T>
+	auto get_array_simd_type(te::Type_t<T>) {
+		if constexpr (is_array_simd_type<T>) {
+			return te::Type<T>;
+		}
+		else {
+			return te::Type<array_simd<get_simd_array_size<T>(), alignof(T), T>>;
+		}
+	}
+
 	template<class F>
-	using array_simd_type = array_simd<get_simd_array_size<F>(), alignof(F), F>;
+	using array_simd_type = Gettype(get_array_simd_type(te::Type<F>));
 
 	template<class T>
 	concept has_value_type = requires(T t) { typename T::value_type; };
