@@ -177,6 +177,7 @@ namespace fun
 		auto const b0 = forward_definitions::fma(b1, x2, F(1.0f));
 		return a0 / b0;
 	}
+
 	CR_INLINE static float cos_quart_fma_ec_T6_6_float_simd(float x) {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
 		return forward_definitions::get0(cos_quart_fma_ec_T6_6<cr::simd::float1x4>(x));
@@ -184,6 +185,7 @@ namespace fun
 		return cos_quart_fma_ec_T6_6<float>(x);
 #endif
 	}
+
 	template<class F>
 	CR_INLINE constexpr static F cos_unit1_quart_fma_ec_T6_6(in_t(F) x_) {
 		auto const x = forward_definitions::abs(x_ - F(0.5f)) - F(0.25f);
@@ -198,6 +200,7 @@ namespace fun
 		auto const b0 = forward_definitions::fma(b1, x2, F(1.0f));
 		return a0 / b0;
 	}
+
 	CR_INLINE static float cos_unit1_quart_fma_ec_T6_6_float_simd(float x) {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
 		return forward_definitions::get0(cos_unit1_quart_fma_ec_T6_6<cr::simd::float1x4>(x));
@@ -205,6 +208,7 @@ namespace fun
 		return cos_unit1_quart_fma_ec_T6_6<float>(x);
 #endif
 	}
+
 	template<class F>
 	CR_INLINE constexpr static F sin_unit2_quart_fma_ec_T6_6(in_t(F) x_) {
 		auto const quarter = F(0.5f);
@@ -220,6 +224,7 @@ namespace fun
 		auto const b0 = forward_definitions::fma(b1, x2, F(1.0f));
 		return a0 / b0;
 	}
+
 	CR_INLINE static float sin_unit2_quart_fma_ec_T6_6_float_simd(float x) {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
 		return forward_definitions::get0(sin_unit2_quart_fma_ec_T6_6<cr::simd::float1x4>(x));
@@ -227,6 +232,7 @@ namespace fun
 		return sin_unit2_quart_fma_ec_T6_6<float>(x);
 #endif
 	}
+
 	template<class F>
 	CR_INLINE constexpr static F sin_unit1_quart_fma_ec_T6_6(in_t(F) x_) {
 		auto const quarter = F(0.25f);
@@ -242,6 +248,7 @@ namespace fun
 		auto const b0 = forward_definitions::fma(b1, x2, F(1.0f));
 		return a0 / b0;
 	}
+
 	CR_INLINE static float sin_unit1_quart_fma_ec_T6_6_float_simd(float x) {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
 		return forward_definitions::get0(sin_unit1_quart_fma_ec_T6_6<cr::simd::float1x4>(x));
@@ -249,6 +256,7 @@ namespace fun
 		return sin_unit1_quart_fma_ec_T6_6<float>(x);
 #endif
 	}
+
 	template<class F>
 	CR_INLINE constexpr static F tanh_remez_pade_fma_T6_6(in_t(F) x_) {
 		auto const x0 = x_;
@@ -285,6 +293,7 @@ namespace fun
 		auto const a0 = (a1 * x);
 		return a0 / b0;
 	}
+
 	CR_INLINE static float tanh_fma_ec_T7_7_float_simd(float x) {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
 		return forward_definitions::get0(tanh_fma_ec_T7_7<cr::simd::float1x4>(x));
@@ -392,6 +401,7 @@ namespace fun
 		auto const b0 = forward_definitions::fma(b1, x2, F(1.0f));
 		return a0 / b0;
 	}
+
 	CR_INLINE static float sin_quart_fma_ec_T6_6_float_simd(float x) {
 #if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
 		return forward_definitions::get0(sin_quart_fma_ec_T6_6<cr::simd::float1x4>(x));
@@ -399,6 +409,7 @@ namespace fun
 		return sin_quart_fma_ec_T6_6<float>(x);
 #endif
 	}
+
 	template<class F>
 	CR_INLINE constexpr static F exp_T6_6(in_t(F) x) {
 		auto const x2 = x * x;
@@ -416,6 +427,7 @@ namespace fun
 		v *= v;
 		return v;
 	}
+
 	template<class F>
 	CR_INLINE constexpr static F exp_fma_T5_5(in_t(F) x) {
 		auto const x2 = x * x;
@@ -447,6 +459,7 @@ namespace fun
 		auto const a0 = forward_definitions::fma(a1, x, F(1.0000000625217975f));
 		return a0;
 	}
+
 	CR_INLINE static float slepian25_remez_abs_fma_T8_0_float_simd(float x) {
 #ifdef ARCH_x86
 		return slepian25_remez_abs_fma_T8_0<cr::simd::float1x4>(x).first();
@@ -1078,6 +1091,11 @@ namespace cr
 		CR_INLINE constexpr static F smoothstep(in_t(F) value) {
 			auto const v = value;
 			return v * v * (F(3.0f) - F(2.0f) * v);
+		}
+
+		template<class F>
+		CR_INLINE constexpr static F smoothstepBipolar(in_t(F) value) {
+			return value * (F(1.5f) - F(0.5f) * value * value);
 		}
 
 		CR_INLINE constexpr static integer_t toInt(float a) {
