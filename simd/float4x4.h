@@ -187,14 +187,14 @@ namespace cr::simd
 		      f4(helperLoad(a12, a13, a14, a15)) {
 		}
 
-		CR_INLINE float4x4(float* ptr)
+		CR_INLINE float4x4(float const* ptr)
 		    : f1(vld1q_f32(ptr)),
 		      f2(vld1q_f32(ptr + 4)),
 		      f3(vld1q_f32(ptr + 8)),
 		      f4(vld1q_f32(ptr + 12)) {
 		}
 
-		CR_INLINE float4x4(float* ptr, aligned_hint_t)
+		CR_INLINE float4x4(float const* ptr, aligned_hint_t)
 		    : f1(vld1q_f32(ptr)),
 		      f2(vld1q_f32(ptr + 4)),
 		      f3(vld1q_f32(ptr + 8)),
