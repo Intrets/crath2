@@ -38,4 +38,22 @@ namespace cr
 #endif
 #endif
 	}
+
+	std::byte* allocate_aligned_bytes(integer_t alignment, integer_t size) {
+#ifdef WIN32
+#ifdef CR_HAS_SIMD_TYPES
+		return std::launder(reinterpret_cast<std::byte*>(_aligned_malloc(size, cr::align_unit_size)));
+#else
+		return std::launder(reinterpret_cast<std::byte*>(std::malloc(size)));
+#endif
+#else
+#ifdef CR_HAS_SIMD_TYPES
+		void* ptr;
+		posix_memalign(&ptr, alignment, size);
+		return std::launder(reinterpret_cast<std::byte*>(ptr));
+#else
+		return std::launder(reinterpret_cast<std::byte*>(std::malloc(size)));
+#endif
+#endif
+	}
 }

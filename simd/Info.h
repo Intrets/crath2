@@ -67,5 +67,6 @@ namespace cr
 namespace cr
 {
 	float* allocate_aligned(integer_t alignment, integer_t size);
+	std::byte* allocate_aligned_bytes(integer_t alignment, integer_t size);
 	void free_aligned(void* data);
 }
