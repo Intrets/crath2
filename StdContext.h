@@ -467,6 +467,30 @@ namespace fun
 		return slepian25_remez_abs_fma_T8_0<float>(x);
 #endif
 	}
+
+	template<class F>
+	inline constexpr static F atan_remez_fma_T5_0(in_t(F) x) {
+		auto x0 = x;
+		x = forward_definitions::abs(x);
+		auto m = x > F(1.0f);
+		auto a = forward_definitions::blend(F(0.0f), F(1.5707963267948966f), m);
+		x = forward_definitions::blend(x, F(1.0f) / x, m);
+		auto const a5 = F(-0.04949958068912102f);
+		auto const a4 = forward_definitions::fma(a5, x, F(0.2641312250337389f));
+		auto const a3 = forward_definitions::fma(a4, x, F(-0.45114725009669326f));
+		auto const a2 = forward_definitions::fma(a3, x, F(0.023660525647713714f));
+		auto const a1 = forward_definitions::fma(a2, x, F(0.9982532435018099f));
+		auto const a0 = forward_definitions::fma(a1, x, F(2.093960587502647e-05f));
+		return forward_definitions::setSign(a - a0, x0);
+	}
+
+	inline static float atan_remez_fma_T5_0_float_simd(float x) {
+#ifdef ARCH_x86
+		return atan_remez_fma_T5_0<cr::simd::float1x4>(x).first();
+#else
+		return atan_remez_fma_T5_0<float>(x);
+#endif
+	}
 }
 
 namespace cr
@@ -579,6 +603,24 @@ namespace cr
 			}
 			else {
 				return fun::tanh_fma_ec_T7_7(x);
+			}
+		}
+
+		// domain: (-inf, inf)
+		// maximum absolute error: 0.0011637807
+		// maximum relative error:0.0011694467
+		template<class F>
+		CR_INLINE constexpr static F atan(in_t(F) x) {
+			if constexpr (std::same_as<F, float>) {
+				if (std::is_constant_evaluated()) {
+					return fun::atan_remez_fma_T5_0(x);
+				}
+				else {
+					return fun::atan_remez_fma_T5_0_float_simd(x);
+				}
+			}
+			else {
+				return fun::atan_remez_fma_T5_0(x);
 			}
 		}
 

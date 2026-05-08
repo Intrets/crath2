@@ -55,9 +55,9 @@ if (OpenGL_FOUND)
     imgui
     crath
     imgui_glfw
-    opengl32
+	OpenGL::GL
     font_resources
-    GLFW3
+    glfw
     mem
   )
 

@@ -42,6 +42,8 @@ int main() {
 
 	auto timingWorker = std::jthread([](std::stop_token stop, TestResult* testResult) { testResult->work(stop); }, &testResult);
 
+	glfwInitHint(GLFW_WAYLAND_LIBDECOR, GLFW_WAYLAND_DISABLE_LIBDECOR);
+
 	if (!glfwInit()) {
 		return 1;
 	}
@@ -69,7 +71,7 @@ int main() {
 			std::abort();
 		}
 
-		std::memcpy(freeBuffer, fontBuffer->getData<void*>(), fontBuffer->getSize<char>());
+		::memcpy(freeBuffer, fontBuffer->getData<void*>(), fontBuffer->getSize<char>());
 
 		auto size = te::safety_cast<int>(fontBuffer->getSize<char>());
 		io.Fonts->AddFontFromMemoryTTF(freeBuffer, size, 17.0f);
