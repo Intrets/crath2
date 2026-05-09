@@ -445,6 +445,14 @@ namespace fun
 		return v;
 	}
 
+	CR_INLINE static float exp_fma_T5_5_float_simd(float x) {
+#if defined(CR_HAS_SIMD_TYPES) && !defined(DO_NOT_USE_SIMD_FOR_SCALAR)
+		return forward_definitions::get0(exp_fma_T5_5<cr::simd::float1x4>(x));
+#else
+		return exp_fma_T5_5<float>(x);
+#endif
+	}
+
 	template<class F>
 	CR_INLINE constexpr static F slepian25_remez_abs_fma_T8_0(in_t(F) x_) {
 		auto const x = forward_definitions::abs(x_);
@@ -810,7 +818,26 @@ namespace cr
 					return fun::exp_T6_6<float>(x);
 				}
 				else {
-					return std::expf(x);
+					return fun::exp_fma_T5_5_float_simd(x);
+				}
+			}
+			else {
+				return fun::exp_fma_T5_5(x);
+			}
+		}
+
+		template<float b, class F>
+		CR_INLINE constexpr static F pow(in_t(F) x) {
+			constexpr float factor = log(b);
+
+			x *= F(factor);
+
+			if constexpr (std::same_as<F, float>) {
+				if (std::is_constant_evaluated()) {
+					return fun::exp_T6_6<float>(x);
+				}
+				else {
+					return fun::exp_fma_T5_5_float_simd(x);
 				}
 			}
 			else {
