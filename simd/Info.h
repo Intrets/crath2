@@ -51,6 +51,26 @@ namespace cr
 	constexpr inline integer_t simd_size(integer_t size) {
 		return simd_count(size) * sizeof(float);
 	}
+
+	template<class F>
+	static constexpr auto fromPointer(float const* f) {
+		if constexpr (std::same_as<F, float>) {
+			return *f;
+		}
+		else {
+			return F(f);
+		}
+	};
+
+	template<class F>
+	static constexpr auto writeToPointer(float* f, F const& data) {
+		if constexpr (std::same_as<F, float>) {
+			*f = data;
+		}
+		else {
+			data.write(*f);
+		}
+	};
 }
 
 #ifdef ANDROID
