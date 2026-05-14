@@ -98,6 +98,7 @@ namespace cr::simd
 		}
 
 		CR_CMP_AVX
+#define ID(X) X
 		CR_ALL_DEFINITIONS
 
 #if !defined(ANDROID)

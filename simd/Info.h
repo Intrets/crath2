@@ -84,6 +84,14 @@ namespace cr
 #define CR_ALIGN_CACHE_LINE alignas(CR_CACHE_LINE)
 #endif
 
+#ifdef COMPILER_CLANG
+#define CR_RESTRICT __restrict__
+#elifdef COMPILER_MSVC
+#define CR_RESTRICT __restrict
+#else
+#error restrict keyword macro not known for compiler
+#endif
+
 namespace cr
 {
 	float* allocate_aligned(integer_t alignment, integer_t size);
