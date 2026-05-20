@@ -12,6 +12,7 @@ namespace cr
 #ifdef SIMD_8
 	using simd_1x = cr::simd::float1x8;
 	using simd_2x = cr::simd::float2x8;
+	using simd_4 = cr::simd::float1x4;
 	using simd_8 = cr::simd::float1x8;
 	using simd_16 = cr::simd::float2x8;
 	using simd_type_or_fallback_scalar_1x = simd_1x;
@@ -19,6 +20,7 @@ namespace cr
 #elifdef SIMD_4
 	using simd_1x = cr::simd::float1x4;
 	using simd_2x = cr::simd::float2x4;
+	using simd_4 = cr::simd::float1x4;
 	using simd_8 = cr::simd::float2x4;
 	using simd_16 = cr::simd::float4x4;
 	using simd_type_or_fallback_scalar_1x = simd_1x;
