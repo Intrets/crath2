@@ -1,6 +1,8 @@
 #pragma once
 
 #include <concepts>
+#include <new>
+
 #include <tepp/integers.h>
 
 #if defined(__x86_64__) || defined(__x86_64)
